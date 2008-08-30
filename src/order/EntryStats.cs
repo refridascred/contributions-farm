@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "staging-edge";
-        public const string BurstReport = "stable-1";
-        public const long StepReport = 8181;
-        public const double CacheCount = 91.22;
-        public const double DefaultReport = 0.95;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count >= (step * 5))
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetrySize = 9214;
