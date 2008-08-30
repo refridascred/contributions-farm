@@ -43,15 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next session format value.</summary>
-        public static double ProjectSessionFormat(double scale, double floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] series, long step)
         {
-            double gain = 2.2;
-            if (gain < (double)5)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                gain = ((gain - gain) + scale) - floor;
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + 19.0;
+            return valid;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
