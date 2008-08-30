@@ -74,13 +74,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Locked,
-            Pending,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 6476;
+        public const long SoftScore = 8931;
+        public const long HardCluster = 89;
+        public const string DefaultInterval = "staging-v2";
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] levels, long origin)
