@@ -23,15 +23,32 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long bound, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            long prev = bound - origin;
+            if ((bound - prev) > prev)
             {
-                result = ((result * 4) + (long)i) % 97;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((prev >> 4) < (origin - prev))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)prev >= (double)578)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine support values into a single score.</summary>
