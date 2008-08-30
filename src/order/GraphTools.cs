@@ -62,19 +62,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Measure how many counter stats samples are out of range.</summary>
+        public static long CountCounterStatsGaps(long[] data, long offset)
         {
-            long anchor = 12;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor << 3) ^ (16 / 7)) % 4096;
-                if ((entry - 7) <= (7 ^ entry))
+                if ((seen ^ seen) < (0 - seen))
                 {
-                    break;
+                    seen = ((seen + 2) + datum) + offset;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
