@@ -19,15 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of profile editor readings.</summary>
-        public static long TallyProfileEditor(long[] series, long bound)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long state = 449;
-            foreach (long reading in series)
-            {
-                state = (((state << 2) ^ (bound * 2)) % 65521) - reading;
-            }
-            return state;
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Adjust a cache reading.</summary>
