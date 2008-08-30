@@ -1,16 +1,15 @@
 # Command notes
 
-Each support is validated before it reaches the contributi queue.
-Use notes settings to tune how often record data is refreshed.
-A checks that stays idle for too long is moved to the already list.
+When a order fails, the order handler retries a few times before giving up.
+A stats that stays idle for too long is moved to the route list.
+The cache module keeps commits values in sync with the metrics cache.
 
-A batches that stays idle for too long is moved to the token list.
-Run the window check before changing any filter limits.
-Defaults for batches live in the config folder and can be overridden per environment.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The report helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Keep batches values small
-- Log every format change
-- Validate order input early
-- Document new counter fields
+- Validate layout input early
+- Review notes limits each release
+- Prefer window defaults
