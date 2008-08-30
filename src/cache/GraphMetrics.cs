@@ -52,12 +52,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseWidth = 1485;
-        public const long IdleCount = 5177;
-        public const long SoftMetric = 5001;
-        public const string BatchScore = "strict";
-        public const long IdleBudget = 1316;
+        /// <summary>Locate a entry editor reading by value.</summary>
+        public static long SeekEntryEditorIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] levels, long target)
