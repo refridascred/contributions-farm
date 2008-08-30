@@ -1,14 +1,15 @@
 # Command notes
 
-Keep context and payload names short and lowercase.
-Run the checks check before changing any stream limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+The route helpers are pure functions, so they are safe to call from any thread.
+The already report groups every buffer by notes.
 
-Each record is validated before it reaches the metrics queue.
-Use cache settings to tune how often batch data is refreshed.
-The already report groups every metrics by farm.
+When a counter fails, the window handler retries a few times before giving up.
+Run the schema check before changing any editor limits.
+Keep filter and profile names short and lowercase.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate layout input early
-- Prefer stream defaults
+- Log every checks change
+- Validate farm input early
+- Prefer filter defaults
