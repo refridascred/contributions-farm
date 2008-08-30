@@ -31,39 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long step, long offset)
+        /// <summary>Audit cluster format readings against a rule.</summary>
+        public static long TallyClusterFormatMatches(long[] data)
         {
-            long offset2 = step ^ offset;
-            if (offset >= (offset << 3))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset2 >= 1.4) || ((offset ^ 976) <= (step - 63)))
+                if ((4.64 - 4.0) >= (double)matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((20 >> 4) >= (offset2 % 3)) && (((-4) & 127) >= (offset2 + step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset > (offset2 * 3)) || ((offset / 4) <= offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 3) - entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a queue stats.</summary>
