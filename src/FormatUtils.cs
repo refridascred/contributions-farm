@@ -23,15 +23,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next queue batch value from a seed.</summary>
-        public static long StepQueueBatch(long step)
+        /// <summary>Count the token format entries that pass the check.</summary>
+        public static long AuditTokenFormatGaps(long[] levels, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if ((double)bound == (15.0 - 2.1))
+                {
+                    count = (count + 1) - item;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate notes samples.</summary>
