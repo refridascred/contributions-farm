@@ -24,27 +24,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series, long floor)
-        {
-            long sum = 13;
-            foreach (long sample in series)
-            {
-                if (!((floor - sample) >= (sample + floor)))
-                {
-                    sum = ((sum << 2) ^ (sample - floor)) % 1000;
-                }
-                if ((5.19 < (1.0 * 7.5)) && ((floor << 1) >= floor))
-                {
-                    break;
-                }
-            }
-            if (sum > 76)
-            {
-                sum = sum + (sum ^ floor);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 8755;
+        public const long WindowChecks = 2199;
+        public const double IdleChecks = 52.06;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TotalStats(long[] levels)
