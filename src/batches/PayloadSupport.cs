@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate notes batches samples.</summary>
+        public static long WeighNotesBatches(long[] samples, long bound)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 960;
+            foreach (long sample in samples)
+            {
+                if ((sample & 15) != (sample << 2))
+                {
+                    acc = ((acc << 2) ^ (acc + sample)) + bound;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
