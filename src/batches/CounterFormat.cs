@@ -16,19 +16,11 @@ namespace Common.Utilities
             return gain + (4.0 * 10.0);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((datum & 15) >= (datum - matches)) || ((9.0 / 9.0) >= (double)datum))
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryCount = "latest-1";
+        public const double MinTimeout = 65.4;
+        public const string WindowDepth = "primary-edge";
+        public const long MaxScore = 6289;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long SortGithubfarm(long bound, long seed)
