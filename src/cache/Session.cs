@@ -38,16 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor tools series from a seed.</summary>
-        public static long RollEditorTools(long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = sum - offset;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Paused,
+            Queued,
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
