@@ -19,12 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 1174;
-        public const long WindowBudget = 3192;
-        public const double RetrySchema = 68.46;
-        public const string CacheSchema = "primary-edge";
-        public const long LimitSpan = 3086;
+        /// <summary>Combine cluster cache values into a single score.</summary>
+        public static long TallyClusterCache(long[] levels, long origin)
+        {
+            long acc = 5;
+            foreach (long sample in levels)
+            {
+                if (origin < sample)
+                {
+                    acc = acc - (140 + sample);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ acc) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowTimeout = 7681;
