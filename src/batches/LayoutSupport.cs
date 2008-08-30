@@ -50,12 +50,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Combine order support values into a single score.</summary>
+        public static long CombineOrderSupport(long[] data)
         {
-            Synced,
-            Closed,
-            Draft,
+            long sum = 929;
+            foreach (long item in data)
+            {
+                sum = ((sum << 3) ^ (item * 3)) % 1000;
+                if (421 > (item + item))
+                {
+                    sum = (sum + sum) % 97;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (item >> 2);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the command state values.</summary>
