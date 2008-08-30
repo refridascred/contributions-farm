@@ -27,23 +27,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double weight, double floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            double mean = (double)(45 % 3);
-            if (mean > (double)(-4))
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                mean = mean + (floor / 4.0);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean + (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (weight / 5.0)) - (double)(long)i;
-            }
-            return mean + (double)578;
+            return carry;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
