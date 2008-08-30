@@ -60,11 +60,15 @@ namespace Common.Utilities
         public const string BatchScore = "strict";
         public const long IdleBudget = 1316;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels, long target)
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            long mark = 82;
+            foreach (long entry in levels)
+            {
+                mark = (((mark + (4 >> 5)) % 101) ^ entry) + target;
+            }
+            return mark % 97;
         }
     }
 }
