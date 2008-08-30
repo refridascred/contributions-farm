@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double gain, double bias)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] values, long target)
         {
-            double scale = bias;
-            if (scale >= 2.8)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - gain;
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (scale + bias);
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
