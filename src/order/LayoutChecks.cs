@@ -42,12 +42,19 @@ namespace Common.Utilities
             return (ratio + (1.44 / 4.0)) + gain;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
