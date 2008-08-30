@@ -52,10 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitScore = 2252;
-        public const string SoftSpan = "latest";
-        public const long LimitDepth = 8322;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] items)
