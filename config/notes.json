@@ -1,20 +1,6 @@
 {
-  "strict": 5402,
-  "cache_delay_s": "stable",
-  "idle_ratio_count": {
-    "default_size_ms": {
-      "token_delay": "strict",
-      "min_timeout": true,
-      "sync_window_count": ["edge", "primary", "fallback"]
-    },
-    "batches_window": {
-      "compress": 74,
-      "poll_retries_ms": "eu-west",
-      "readonly": true,
-      "idle_capacity_s": true
-    },
-    "notes_interval": "open",
-    "flush_capacity_count": ["edge", "stable", "strict", "primary"]
-  },
-  "poll_capacity_ms": ["fallback", "edge"]
+  "sync_timeout_pct": [1, 26],
+  "retry_ratio_pct": true,
+  "flush_retries_ms": 100,
+  "filter_depth": "standard"
 }
