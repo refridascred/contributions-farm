@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] series, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (reading >= (tally ^ bound))
+                if (item <= floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the profile level values.</summary>
