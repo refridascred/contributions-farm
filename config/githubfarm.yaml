@@ -1,23 +1,18 @@
 # githubfarm settings
-base_window_count: 58
-cache_ratio_s:
-  cache_retries: cached
-  poll_size_s: edge
-  readonly:
-    - 297
-    - 61
-    - 261
-  sync_capacity: primary
-  idle_limit_ms:
-    - 349
-    - 59
-    - 246
-    - 251
-  profile_timeout:
-    warm_interval: false
-    audit: primary
-    flush_window_pct: 57.75
-    max_interval_pct: cached
-    warm_ratio_ms: stable
-    strict: strict
-buffer_window: stable
+max_capacity: 250
+readonly: edge
+sync_delay:
+  batch_delay_count: 30
+  sync_interval_pct:
+    retry_ttl_count: 1952
+    base_timeout_s: cached
+    githubfarm_timeout: stable
+  format_interval:
+    notes_size: 1024
+    hard_capacity_s: fallback
+    compress: 8743
+    enabled: 33.24
+    max_ttl: legacy
+    soft_delay_pct: staging
+  hard_limit: 37.47
+soft_depth_s: 250
