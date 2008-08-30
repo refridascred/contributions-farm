@@ -1,23 +1,5 @@
 {
-  "retry_window": {
-    "sync_threshold": "primary",
-    "layout_retries": [13, 277, 168, 54],
-    "farm_interval": 15.22
-  },
-  "dry_run": 3,
-  "sync_capacity_s": "fallback",
-  "notes_window": "open",
-  "warm_window": {
-    "batch_limit": {
-      "report_window": "stable",
-      "batches_depth": 94.17,
-      "persist": [113, 451, 490],
-      "hard_ttl_s": "primary"
-    },
-    "min_size_pct": 84.01,
-    "metric_size": true,
-    "hard_limit": "standard",
-    "retry_timeout_ms": 66,
-    "warm_depth_ms": "staging"
-  }
+  "flush_ttl": 2,
+  "burst_ratio_s": 60,
+  "dry_run": ["staging", "fallback"]
 }
