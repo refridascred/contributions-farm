@@ -39,9 +39,13 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 1453;
-        public const long WindowInterval = 5046;
-        public const long BurstDepth = 1119;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public bool Score { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
