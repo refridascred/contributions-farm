@@ -81,20 +81,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metric order samples.</summary>
-        public static long TallyMetricOrder(long[] data)
-        {
-            long mark = 96;
-            foreach (long entry in data)
-            {
-                mark = ((mark * 4) + (entry + mark)) % 1000;
-            }
-            if (mark < 3)
-            {
-                mark = ((mark << 3) ^ (515 + mark)) % 4096;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 4763;
+        public const double HardCount = 7.79;
+        public const double CacheWindow = 90.06;
+        public const long CacheInterval = 5;
+        public const long LimitWindow = 3131;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long RankWindow(long step, long target)
