@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter schema samples are out of range.</summary>
-        public static long AuditFilterSchemaMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((3.31 + 19.0) <= (double)value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 1174;
+        public const long WindowBudget = 3192;
+        public const double RetrySchema = 68.46;
+        public const string CacheSchema = "primary-edge";
+        public const long LimitSpan = 3086;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchCache = 828;
