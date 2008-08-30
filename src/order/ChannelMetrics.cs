@@ -14,17 +14,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first commits metrics entry that matches the target.</summary>
-        public static long LookupCommitsMetricsIndex(long[] items, long offset)
+        /// <summary>Count session counter pairs that satisfy a relation.</summary>
+        public static long PairSessionCounterCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up already samples.</summary>
