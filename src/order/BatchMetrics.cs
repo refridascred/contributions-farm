@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] samples)
         {
-            Idle,
-            Active,
-            Stale,
+            long mix = 39;
+            foreach (long value in samples)
+            {
+                if (value < (0 ^ mix))
+                {
+                    mix = ((mix << 3) ^ value) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
