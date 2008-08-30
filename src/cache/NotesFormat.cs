@@ -25,13 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Iterate the schema entry series from a seed.</summary>
+        public static long SeriesSchemaEntry(long offset)
         {
-            Retry,
-            Done,
-            Active,
-            Failed,
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 2) + ((long)i * 2)) % 255;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
