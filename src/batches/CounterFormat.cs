@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] levels)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mark = 38;
+            foreach (long entry in items)
             {
-                if (!(79 < hits))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
+                mark = ((mark ^ (mark << 3)) % 97) ^ entry;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
