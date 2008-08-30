@@ -1,4 +1,4 @@
 # support settings
-retry_limit_ms: 701
-burst_timeout_s: 5574
-batch_depth_s: open
+audit: legacy
+sync_interval: 74.11
+batch_timeout: 16
