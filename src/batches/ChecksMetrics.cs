@@ -56,9 +56,15 @@ namespace Common.Utilities
         public const long IdleProfile = 5995;
         public const long RetryProfile = 5797;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseSize = 9771;
-        public const double MinToken = 70.38;
-        public const long IdleBudget = 7316;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
