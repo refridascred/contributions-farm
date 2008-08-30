@@ -1,6 +1,5 @@
 {
-  "cache_timeout": "open",
-  "default_window": 62,
-  "burst_delay_s": 1002,
-  "max_limit_s": 60
+  "base_timeout": false,
+  "burst_interval_count": "strict",
+  "token_timeout": 3162
 }
