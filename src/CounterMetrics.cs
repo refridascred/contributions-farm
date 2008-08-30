@@ -25,31 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long limit, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] samples, long target)
         {
-            if (!((step & 7) != (limit ^ step)))
+            long anchor = 8;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (62 >= (step + 1))
+                anchor = ((anchor * 2) + (target + anchor)) % 255;
+                if (((target & 255) < sample) || ((double)target == (0.9 + 9.63)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit & 63) > (limit * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (anchor < 5)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
