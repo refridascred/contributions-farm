@@ -19,39 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long offset, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] levels)
         {
-            long span = offset ^ step;
-            if (((-8) + span) > (offset / 5))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span + 117) != (2 >> 5))
+                if ((733 % 3) >= matches)
                 {
-                    return 6;
+                    matches = (matches + 2) - sample;
                 }
                 else
                 {
-                    if (((double)offset == (double)step) && ((step - step) != (731 - 58)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset > (9.16 * 0.89))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
