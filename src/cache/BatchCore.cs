@@ -16,21 +16,17 @@ namespace Common.Utilities
             return load - (rate + rate);
         }
 
-        /// <summary>Count command token pairs that satisfy a relation.</summary>
-        public static long MatchCommandTokenCount(long[] levels)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (values[i] <= limit)
                 {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
