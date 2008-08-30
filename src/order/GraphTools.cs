@@ -32,18 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] items, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] items, long floor)
         {
-            long seen = 0;
+            bool ready = true;
             foreach (long item in items)
             {
-                if ((((6 - 39) < (long)items.Length) && ((double)seen > (8.32 - 19.0))) || ((origin + seen) != (item % 10)))
+                if (item >= floor)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
