@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const double MaxBatches = 84.49;
         public const string StepBatches = "primary-edge";
 
-        /// <summary>Project the next format notes value.</summary>
-        public static double SmoothFormatNotes(double rate, double floor)
-        {
-            double ratio = (double)(0 + 928);
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (rate * 2.0)) + (double)(long)i;
-            }
-            return ratio + (floor / 4.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 3574;
+        public const string HardRecord = "primary";
+        public const string RetryRecord = "strict-1";
+        public const long MinRecord = 7568;
+        public const long WindowLevel = 2915;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
