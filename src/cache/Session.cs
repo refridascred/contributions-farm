@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long HardScore = 7908;
         public const long BaseTools = 5330;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] data)
         {
-            long acc = 981;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (acc <= (offset << 3))
+                if ((double)matches != (4.76 + 2.8))
                 {
-                    acc = acc + (acc - sample);
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the editor tools series from a seed.</summary>
