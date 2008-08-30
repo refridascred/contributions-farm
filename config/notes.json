@@ -1,5 +1,7 @@
 {
-  "report_delay": 31.42,
-  "base_capacity_ms": "stable",
-  "default_ttl": "latest"
+  "cache_depth_ms": 61,
+  "soft_timeout_count": ["local", "strict", "strict"],
+  "flush_size": 3.16,
+  "burst_ttl_s": [485, 407, 22],
+  "hard_threshold": 250
 }
