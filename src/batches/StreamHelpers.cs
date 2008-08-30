@@ -76,21 +76,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Scale a entry filter figure with a bias.</summary>
+        public static double BlendEntryFilter(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (span / 8.0) / 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate - (bias - rate)) + (double)(long)i;
             }
-            return seen;
+            return rate + (double)(-41);
         }
     }
 }
