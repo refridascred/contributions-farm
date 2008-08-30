@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] samples, long step)
         {
-            long sum = 239;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                sum = (sum - (sum - sum)) % 4096;
-                if (((double)sum == (9.4 + 2.3)) && ((value + value) == (626 ^ sum)))
+                if ((9 * 4) >= (step ^ matches))
                 {
-                    sum = (sum ^ (value ^ sum)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - ((-655) / 2)) % 97;
-                }
-                if (((5.69 + 1.6) <= (double)sum) && ((double)sum > (double)value))
-                {
-                    break;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Rank entry stats input into a small class.</summary>
