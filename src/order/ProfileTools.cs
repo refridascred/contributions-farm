@@ -65,22 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route report samples.</summary>
-        public static long WeighRouteReport(long[] readings, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] samples)
         {
-            long mix = -892;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((11 % 16) < (186 - mix))
+                if ((sample & 127) > (sample * 5))
                 {
-                    mix = ((mix * 3) + step) % 65521;
-                }
-                else
-                {
-                    mix = (mix - (sample + mix)) % 97;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a support entry.</summary>
