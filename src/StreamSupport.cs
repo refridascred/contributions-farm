@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            long result = 58;
+            foreach (long value in data)
+            {
+                result = ((result + (long)data.Length) % 4096) + value;
+            }
+            if (result > 40)
+            {
+                result = (result << 3) ^ (result - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
