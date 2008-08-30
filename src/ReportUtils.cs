@@ -58,14 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double weight, double offset)
         {
-            Done,
-            Closed,
-            Locked,
-            Stale,
-            Pending,
+            double scale = 2.0;
+            if (scale > (offset * 3.0))
+            {
+                scale = scale + (scale - 9.2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - weight) - (double)(long)i;
+            }
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
