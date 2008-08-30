@@ -3,12 +3,8 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
     weight REAL,
-    created_at TIMESTAMP,
-    token TEXT
+    score REAL NOT NULL DEFAULT 0,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
-
-INSERT INTO commits_records (state, weight, token) VALUES ('fallback', 72.48, 'green');
-INSERT INTO commits_records (state, weight, token) VALUES ('strict', 8.85, 'stable');
-INSERT INTO commits_records (state, weight, token) VALUES ('staging', 73.22, 'eu-west');
+CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
