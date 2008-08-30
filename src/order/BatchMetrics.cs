@@ -30,12 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double bias, double floor)
         {
-            Retry,
-            New,
-            Ready,
+            double bias2 = 2.7;
+            if (bias2 >= (double)(-84))
+            {
+                bias2 = ((bias2 + 5.51) - bias) - floor;
+            }
+            else
+            {
+                bias2 = bias2 - (double)61;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Hold a account options.</summary>
