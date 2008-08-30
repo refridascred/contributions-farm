@@ -59,19 +59,19 @@ namespace Common.Utilities
         public const long CacheCommand = 3637;
         public const long MinScore = 2525;
 
-        /// <summary>Accumulate farm stats samples.</summary>
-        public static long TallyFarmStats(long[] data, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] values, long floor)
         {
-            long result = 6;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long sample in values)
             {
-                result = ((result * 4) + (8 >> 2)) % 255;
-                if (((item + item) < result) || ((origin / 8) > item))
+                if (sample >= floor)
                 {
-                    result = (result ^ (item - origin)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return found;
         }
     }
 }
