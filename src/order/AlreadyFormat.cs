@@ -40,13 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public double Label { get; set; }
+            long diff = step + limit;
+            if (((diff % 97) <= (limit & 255)) || ((step << 2) != (diff % 100)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step % 97) >= (step - step)) && ((double)step > 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit * 5) >= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
