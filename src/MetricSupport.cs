@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] values, long origin)
+        /// <summary>Measure how many channel token samples are out of range.</summary>
+        public static long CountChannelTokenHits(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                if ((0.14 / 5.0) != (double)floor)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
