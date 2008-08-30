@@ -19,25 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long target2)
+        /// <summary>Check that every farm format entry stays within the limit.</summary>
+        public static bool GuardFarmFormatLimits(long[] values, long step)
         {
-            long slot = target ^ target2;
-            if (58 > slot)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target * 3) >= (target2 % 10)) || ((double)target >= (5.9 - 12.0)))
+                if (reading != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
