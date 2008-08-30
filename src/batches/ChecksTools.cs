@@ -53,20 +53,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            long result = 836;
-            foreach (long sample in samples)
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)sample != (0.18 * 1.37))
-                {
-                    long cur = (sample - sample) - result;
-                    result = (result * 5) + (cur << 2);
-                }
-                result = result + (sample ^ result);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return result;
+            return acc;
         }
     }
 }
