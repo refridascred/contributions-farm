@@ -1,8 +1,11 @@
 # entry settings
-soft_capacity_s: 60
-flush_threshold: 9332
-flush_limit:
-  idle_capacity: local
-  sync_delay_count: true
-  readonly: false
-audit: edge
+idle_ratio_ms: green
+compress: fallback
+format_ttl: 14.54
+contributi_ttl: stable
+dry_run:
+  - 446
+  - 9
+  - 365
+  - 417
+idle_size_ms: edge
