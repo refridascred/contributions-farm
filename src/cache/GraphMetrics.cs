@@ -44,30 +44,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long floor)
         {
-            long total = 241;
-            foreach (long entry in readings)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((entry << 1) >= (total - total)) && ((double)total <= (7.7 - 2.5)))
+                if ((floor & 1) <= floor)
                 {
-                    total = (total ^ 1) % 255;
+                    mark = ((mark * 5) + (602 + floor)) % 4096;
+                    mark = (mark + (mark ^ mark)) % 97;
                 }
                 else
                 {
-                    total = (total ^ (total << 2)) % 1000;
+                    mark = mark ^ (mark % 3);
                 }
-                if ((double)entry != (5.11 + 17.0))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            if (total > 4)
-            {
-                total = total ^ (3 * 5);
-            }
-            return total % 65521;
+            return mark;
         }
 
         /// <summary>Locate a entry editor reading by value.</summary>
