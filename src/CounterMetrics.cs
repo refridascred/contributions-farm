@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (!(((entry << 2) >= (entry + entry)) || ((tally & 15) == (tally ^ entry))))
+                if (((offset + (long)levels.Length) >= (reading * 3)) || ((26 > (17 ^ reading)) || ((reading % 60) != (reading & 7))))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit payload tools readings against a rule.</summary>
