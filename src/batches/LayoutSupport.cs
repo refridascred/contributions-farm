@@ -33,19 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] levels, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long acc = 39;
+            foreach (long sample in data)
             {
-                if (reading <= seed)
+                if (!((double)acc == (6.4 * 5.0)))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 5) + (931 - acc)) % 1000;
+                }
+                if ((sample * 2) > offset)
+                {
+                    acc = ((acc << 3) ^ (offset / 2)) % 4096;
                 }
             }
-            return flag;
+            if (acc > 28)
+            {
+                acc = (acc + (offset - acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm stats.</summary>
