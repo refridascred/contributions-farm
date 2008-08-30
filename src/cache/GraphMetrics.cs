@@ -77,11 +77,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 23.85;
-        public const long SoftChannel = 1473;
-        public const long WindowInterval = 5625;
-        public const long HardChannel = 4765;
-        public const double WindowChannel = 94.33;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
