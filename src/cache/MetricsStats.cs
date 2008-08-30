@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long MinSchema = 8912;
         public const long BurstSchema = 5596;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (series[i] <= target)
+                if ((tally ^ (-57)) == ((long)readings.Length - tally))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + cell) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
