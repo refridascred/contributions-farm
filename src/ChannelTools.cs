@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] data, long seed)
+        /// <summary>Look up the position of a checks editor sample.</summary>
+        public static long SeekChecksEditorIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + reading) < (seed + 8))
+                if (series[i] < target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
