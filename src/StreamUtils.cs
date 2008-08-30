@@ -68,31 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long floor, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] values, long seed)
         {
-            if ((bound & 1) < (bound % 8))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (8 < bound)
+                if (values[i] < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor << 3) >= (floor + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
