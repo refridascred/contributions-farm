@@ -1,10 +1,17 @@
 {
-  "poll_retries": true,
-  "persist": 5887,
-  "warm_depth_pct": "blue",
-  "profile_limit": {
-    "base_threshold_count": 63,
-    "commits_threshold": 82,
-    "flush_limit_pct": 30
+  "base_limit_s": 39.63,
+  "soft_threshold_pct": "open",
+  "base_capacity_count": false,
+  "layout_timeout": 4633,
+  "cache_interval_s": {
+    "strict": {
+      "farm_ratio": "primary",
+      "tools_capacity": 79.4,
+      "retry_delay": 83
+    },
+    "format_delay": "blue",
+    "sync_timeout_count": 250,
+    "account_limit": "primary",
+    "counter_size": "fallback"
   }
 }
