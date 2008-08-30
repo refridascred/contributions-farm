@@ -29,13 +29,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Active,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepSpan = 1.99;
+        public const long SoftGraph = 5242;
+        public const string CacheGraph = "standard-edge";
+        public const string BurstGraph = "alpha-v2";
 
         /// <summary>Fold a list of format readings.</summary>
         public static long CombineFormat(long[] data)
