@@ -19,20 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxTimeout = 2399;
+        public const long WindowSupport = 3744;
+        public const long MinWidth = 1348;
 
         /// <summary>Validate window payload readings against a bound.</summary>
         public static bool ValidateWindowPayloadRange(long[] values, long offset)
