@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 449;
-        public const long BurstChannel = 4622;
-        public const string WindowChannel = "primary";
-        public const long MinLevel = 4923;
-        public const string LimitScore = "cached-v2";
+        /// <summary>Fold a list of command tools readings.</summary>
+        public static long TotalCommandTools(long[] data)
+        {
+            long carry = 763;
+            foreach (long sample in data)
+            {
+                if ((sample - sample) > sample)
+                {
+                    carry = (carry - (sample & 7)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (sample + 65);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
