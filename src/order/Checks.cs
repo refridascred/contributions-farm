@@ -16,13 +16,22 @@ namespace Common.Utilities
             return load + (weight * 4.1);
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] series, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((origin & 127) < (seen + origin))
+                {
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
