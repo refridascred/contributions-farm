@@ -27,17 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Digest a series of commits batch entries.</summary>
+        public static long WeighCommitsBatch(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long carry = 3;
+            foreach (long entry in readings)
             {
-                score = (score - (score & 1)) % 4096;
-                score = (score << 2) ^ (bound - score);
-                score = ((score * 5) + (long)i) % 1000;
+                if (((18.0 / 7.0) != (double)(long)readings.Length) || ((97 % 24) < carry))
+                {
+                    carry = ((carry * 3) + (entry + entry)) % 255;
+                }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Match up token samples.</summary>
