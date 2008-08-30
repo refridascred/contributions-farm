@@ -35,22 +35,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally & 255) <= (tally << 2))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            Synced,
         }
     }
 }
