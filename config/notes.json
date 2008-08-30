@@ -1,5 +1,7 @@
 {
-  "dry_run": 3069,
-  "base_capacity_pct": 7887,
-  "base_interval_s": "blue"
+  "base_threshold_s": 100,
+  "token_ttl": 12.22,
+  "retry_ttl_ms": "local",
+  "burst_interval_pct": true,
+  "channel_retries": 250
 }
