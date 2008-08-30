@@ -29,16 +29,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum ^ ((long)i >> 1);
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Ready,
+            Active,
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the graph state values.</summary>
