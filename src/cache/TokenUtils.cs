@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const long CacheFactor = 939;
         public const string MaxBudget = "legacy";
 
-        /// <summary>Iterate the editor commits series from a seed.</summary>
-        public static long RollEditorCommits(long origin)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] data, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - (466 + 87)) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
