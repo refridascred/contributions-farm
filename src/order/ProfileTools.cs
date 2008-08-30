@@ -66,26 +66,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] samples, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            long mark = 50;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((8 << 3) < (bound - 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ (cell / 6)) % 1000;
-                }
-                if ((double)1 >= (double)cell)
-                {
-                    mark = (mark ^ (cell - cell)) % 1000;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark - (bound - mark)) % 255;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a support entry.</summary>
