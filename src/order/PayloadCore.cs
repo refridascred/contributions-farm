@@ -45,20 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Check that every stream channel entry stays within the limit.</summary>
+        public static bool VerifyStreamChannelRange(long[] data, long floor)
         {
-            long total = 6;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                total = ((total * 2) + ((-324) - total)) ^ sample;
-                total = (total * 3) + (19 % 2);
+                if (reading > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total < (-71))
-            {
-                total = (total << 2) ^ total;
-            }
-            return total;
+            return ready;
         }
     }
 }
