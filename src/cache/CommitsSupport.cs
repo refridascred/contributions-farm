@@ -14,21 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of editor window readings.</summary>
-        public static long MatchEditorWindowCount(long[] levels)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Synced,
+            Done,
+            Ready,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
