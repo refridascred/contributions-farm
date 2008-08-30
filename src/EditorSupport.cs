@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const string IdleSize = "strict-edge";
         public const long HardInterval = 2515;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
