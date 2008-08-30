@@ -33,13 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] data, long offset)
         {
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 2) > reading)
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
         }
     }
 }
