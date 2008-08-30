@@ -26,17 +26,14 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 8031;
         public const long BatchFactor = 6711;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] samples, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Roll a window counter forward.</summary>
