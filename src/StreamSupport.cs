@@ -10,38 +10,19 @@ namespace Common.Utilities
         public const long MaxBuffer = 629;
         public const long BaseBuffer = 7493;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long floor, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] series, long target)
         {
-            if ((double)bound >= (double)floor)
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + bound) != (bound + bound))
+                if (item != target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((27 / 3) < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound & 31) <= (bound / 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Scale a already format figure with a bias.</summary>
