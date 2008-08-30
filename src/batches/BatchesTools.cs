@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = span + span;
+            if (drift > span)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - bias;
             }
-            return hits;
+            else
+            {
+                drift = drift - (bias + span);
+            }
+            return drift - (span / 3.0);
         }
 
         /// <summary>Adjust a token reading.</summary>
