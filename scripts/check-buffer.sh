@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached standard; do
+BUFFER_LIMIT=147
+log "limit is ${BUFFER_LIMIT}"
+
+for item in legacy eu-west green; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
