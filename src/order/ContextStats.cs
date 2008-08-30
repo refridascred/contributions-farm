@@ -46,14 +46,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Scale a stats checks figure with a bias.</summary>
+        public static double AdjustStatsChecks(double rate, double bias)
         {
-            Pending,
-            New,
-            Locked,
-            Paused,
-            Draft,
+            double ratio = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio - (bias - ratio);
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
