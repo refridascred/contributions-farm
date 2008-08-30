@@ -13,11 +13,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Classify a report counter pair into a bucket.</summary>
+        public static long ClassifyReportCounter(long step, long offset)
         {
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            long cur = step + offset;
+            if ((7.5 - 15.0) <= (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)cur != (4.8 / 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step < (252 & 15))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
