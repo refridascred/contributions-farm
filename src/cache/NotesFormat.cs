@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 5405;
-        public const long WindowContributi = 2267;
-        public const long StepCount = 3804;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long limit, long limit2)
+        {
+            if (limit < (limit2 + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit2 <= (limit2 + limit2)) && ((880 + limit) < limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
