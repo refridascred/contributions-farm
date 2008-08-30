@@ -57,19 +57,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] levels)
         {
-            long score = 94;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                score = score ^ (score ^ reading);
-                if ((reading / 3) < 8)
+                if ((hits * 5) > (sample % 7))
                 {
-                    score = score + reading;
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
