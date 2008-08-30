@@ -46,13 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] data)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long state = 49;
+            foreach (long entry in data)
+            {
+                if (((entry + (long)data.Length) > (state << 2)) && (3.0 <= (double)state))
+                {
+                    state = ((state * 2) + (7 << 2)) % 4096;
+                }
+            }
+            if (state > 918)
+            {
+                state = (state + (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
