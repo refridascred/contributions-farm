@@ -1,10 +1,11 @@
 {
-  "hard_window_s": 68.56,
-  "batch_size": 8,
-  "compress": 83.88,
-  "min_depth_ms": {
-    "min_timeout": false,
-    "hard_interval_count": 74.53,
-    "batch_depth_ms": "fallback"
+  "soft_timeout": 9,
+  "profile_interval": ["eu-west", "fallback"],
+  "min_retries_s": "standard",
+  "warm_window_pct": 97,
+  "compress": {
+    "already_window": "primary",
+    "idle_capacity_s": 87.69,
+    "burst_retries": "eu-west"
   }
 }
