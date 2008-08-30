@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] levels)
+        /// <summary>Iterate the order context series from a seed.</summary>
+        public static long SeriesOrderContext(long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((entry < (seen / 7)) || ((659 + 36) <= (seen - seen)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    seen = seen + 3;
+                    mark = ((mark - ((long)i + bound)) % 65521) ^ (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
     }
 }
