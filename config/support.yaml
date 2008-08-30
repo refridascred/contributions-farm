@@ -1,9 +1,5 @@
 # support settings
-persist: fallback
-flush_limit_s: legacy
-dry_run: 250
-hard_interval_pct:
-  - staging
-  - legacy
-  - blue
-  - edge
+persist: 33
+profile_retries: eu-west
+editor_depth: stable
+min_timeout_count: staging
