@@ -43,12 +43,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Locked,
+            Dropped,
             Failed,
-            Ready,
+            Queued,
+            Done,
+            Locked,
         }
     }
 }
