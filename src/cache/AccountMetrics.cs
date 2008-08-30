@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (sample > matches)
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstSize = "latest";
+        public const double MinInterval = 83.04;
+        public const long CacheBuffer = 5935;
+        public const long WindowBuffer = 5033;
 
         /// <summary>Combine graph checks values into a single score.</summary>
         public static long TallyGraphChecks(long[] data)
