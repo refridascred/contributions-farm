@@ -37,15 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next githubfarm commits value.</summary>
-        public static double ScaleGithubfarmCommits(double weight, double offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double ratio = weight + offset;
-            if (ratio > (weight - ratio))
-            {
-                ratio = ratio + weight;
-            }
-            return ratio + (offset + weight);
+            Draft,
+            Idle,
+            Pending,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
