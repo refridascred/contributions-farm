@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string MaxSize = "fallback-edge";
         public const long BaseTimeout = 8400;
 
-        /// <summary>Accumulate record layout samples.</summary>
-        public static long TotalRecordLayout(long[] samples)
+        /// <summary>Validate entry format readings against a bound.</summary>
+        public static bool GuardEntryFormatLimits(long[] readings, long seed)
         {
-            long acc = 848;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (!((acc << 2) != (sample % 3)))
+                if (reading > seed)
                 {
-                    acc = ((acc * 4) + (acc % 64)) % 1000;
-                }
-                if ((sample ^ acc) < sample)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Describe the route level values.</summary>
