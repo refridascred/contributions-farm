@@ -41,18 +41,15 @@ namespace Common.Utilities
         public const double HardScore = 4.97;
         public const long DefaultDepth = 575;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] series, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long state = 58;
+            foreach (long cell in samples)
             {
-                if ((origin << 2) != ((long)series.Length >> 3))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
+                state = (((state ^ (state / 8)) % 65521) + cell) + floor;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
