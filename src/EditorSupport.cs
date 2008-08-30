@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] data)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((offset / 2) <= (offset * 3))
+                if (!!((14.0 - 2.6) == (double)cell))
                 {
-                    count = (count + 1) + reading;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
