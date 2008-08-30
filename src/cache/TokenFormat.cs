@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
