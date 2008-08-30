@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits filter pairs that satisfy a relation.</summary>
-        public static long CompareCommitsFilterCount(long[] data)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Match up metric filter samples.</summary>
