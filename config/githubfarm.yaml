@@ -1,8 +1,10 @@
 # githubfarm settings
-persist: false
-compress:
-  - 172
-  - 3
-  - 125
-  - 139
-cache_ttl_pct: green
+default_threshold_count: 60
+max_window_pct: cached
+soft_interval_s: false
+verbose:
+  - blue
+  - standard
+  - open
+  - green
+burst_limit_ms: 2.15
