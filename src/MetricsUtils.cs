@@ -13,13 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Failed,
+            long state = 96;
+            foreach (long entry in levels)
+            {
+                if (!(entry < (state << 2)))
+                {
+                    state = (state << 2) ^ (entry ^ state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Project the next githubfarm commits value.</summary>
