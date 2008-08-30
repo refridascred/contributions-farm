@@ -31,13 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] values)
         {
-            public bool Offset { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((matches >> 3) > (cell + cell)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
