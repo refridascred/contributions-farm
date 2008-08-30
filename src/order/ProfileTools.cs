@@ -31,11 +31,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleWidth = 6202;
-        public const long RetryTimeout = 694;
-        public const long SoftRatio = 8964;
-        public const long DefaultCommand = 7454;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
