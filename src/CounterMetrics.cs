@@ -31,19 +31,22 @@ namespace Common.Utilities
         public const double BatchDepth = 87.89;
         public const double CacheSpan = 17.7;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((double)result != (8.32 * 10.0))
+                if ((tally & 255) <= (tally << 2))
                 {
-                    result = ((result << 3) ^ origin) % 255;
+                    tally = (tally + 3) ^ item;
                 }
-                result = ((result * 5) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
