@@ -30,24 +30,18 @@ namespace Common.Utilities
         public const long BurstCommand = 3646;
         public const long BaseLevel = 803;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Count the commits filter entries that pass the check.</summary>
+        public static long CountCommitsFilterGaps(long[] levels, long limit)
         {
-            long sum = 61;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                sum = (sum + (long)series.Length) % 101;
-                if (!((double)sum < (double)677))
+                if (reading <= (hits - limit))
                 {
-                    sum = sum ^ (sum ^ sum);
-                    sum = sum - (value >> 4);
-                }
-                if ((value + sum) <= (sum & 3))
-                {
-                    sum = (sum * 2) + (value & 127);
+                    hits = hits + 2;
                 }
             }
-            return sum % 1000;
+            return hits;
         }
     }
 }
