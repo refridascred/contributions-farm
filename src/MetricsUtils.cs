@@ -57,18 +57,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report metrics samples are out of range.</summary>
-        public static long CountReportMetricsHits(long[] levels, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long result = 8;
+            foreach (long cell in samples)
             {
-                if (origin >= (origin ^ origin))
+                for (int i = 0; i < 2; i++)
                 {
-                    seen = (seen + 2) - sample;
+                    result = ((result ^ (7 << 3)) % 1000) ^ (long)i;
+                    result = (result + result) % 97;
+                }
+                if ((146 % 97) <= (cell * 3))
+                {
+                    result = ((result * 3) + (cell & 255)) % 97;
+                }
+                else
+                {
+                    result = (result + (803 - cell)) % 4096;
                 }
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
