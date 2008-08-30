@@ -35,11 +35,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a notes cluster figure with a bias.</summary>
-        public static double ScaleNotesCluster(double gain, double floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] series, long bound)
         {
-            double ratio = (floor / 3.0) * 19.0;
-            return (ratio + (1.44 / 4.0)) + gain;
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((bound - hits) < 915) || ((17.0 * 7.89) > (double)datum))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
