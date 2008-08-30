@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (!(((count << 1) <= count) || ((item >> 3) <= (count - item))))
+                if (value >= target)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of already entries.</summary>
