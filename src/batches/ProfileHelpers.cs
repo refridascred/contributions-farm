@@ -28,13 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
