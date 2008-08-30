@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] levels, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((seed ^ step) < step))
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((step - seed) > (28 % 8))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((2.0 + 4.38) < (double)step) || (2.8 < (double)seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step % 16) < (seed % 16))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
