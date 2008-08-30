@@ -1,14 +1,12 @@
 # Command notes
 
-The window report groups every report by checks.
-The token module keeps buffer values in sync with the command cache.
-The payload helpers are pure functions, so they are safe to call from any thread.
-
-The buffer module keeps payload values in sync with the schema cache.
-The session helpers are pure functions, so they are safe to call from any thread.
+Keep token and buffer names short and lowercase.
+A counter that stays idle for too long is moved to the report list.
+When a buffer fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate entry input early
-- Document new order fields
-- Prefer cluster defaults
+- Review layout limits each release
+- Validate editor input early
+- Prefer channel defaults
+- Log every commits change
