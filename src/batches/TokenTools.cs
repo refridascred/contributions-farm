@@ -20,22 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] samples)
+        /// <summary>Classify a payload format pair into a bucket.</summary>
+        public static long SortPayloadFormat(long offset, long seed)
         {
-            long result = 2;
-            foreach (long datum in samples)
+            if (!((double)9 != (double)offset))
             {
-                if ((datum ^ result) > result)
+                return 8;
+            }
+            else
+            {
+                if (!(offset > (seed & 15)))
                 {
-                    result = ((result * 5) + (result ^ datum)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (result < 830)
-            {
-                result = ((result * 5) + ((long)samples.Length + result)) % 1000;
-            }
-            return result % 4096;
         }
 
         /// <summary>Measure how many notes payload samples are out of range.</summary>
