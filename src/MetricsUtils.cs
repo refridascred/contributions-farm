@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double ratio, double bias)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double scale = (double)(675 + 948);
-            for (int i = 0; i < 5; i++)
-            {
-                scale = ((scale - (scale - ratio)) + (double)(long)i) - bias;
-            }
-            return scale - (11.0 - scale);
+            Locked,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit farm stream readings against a rule.</summary>
