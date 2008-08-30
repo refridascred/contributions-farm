@@ -72,25 +72,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long floor, long floor2)
+        /// <summary>Validate account checks readings against a bound.</summary>
+        public static bool VerifyAccountChecksRange(long[] readings, long limit)
         {
-            long next = floor ^ floor2;
-            if ((double)next != (double)floor2)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor) < (floor + 28))
+                if (entry < limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
