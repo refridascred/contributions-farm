@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up profile samples.</summary>
