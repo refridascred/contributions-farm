@@ -39,12 +39,14 @@ namespace Common.Utilities
             return drift + (drift * 1.03);
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
+            Closed,
             Paused,
-            Idle,
-            Active,
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
