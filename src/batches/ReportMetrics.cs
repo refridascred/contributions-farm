@@ -29,18 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] series)
+        /// <summary>Validate batches context readings against a bound.</summary>
+        public static bool ValidateBatchesContextRange(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((value & 127) >= (166 << 3))
+                if (cell <= offset)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
