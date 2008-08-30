@@ -54,22 +54,9 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values)
-        {
-            long result = 96;
-            foreach (long datum in values)
-            {
-                if ((0.84 - 5.04) <= (double)result)
-                {
-                    result = ((result << 3) ^ (datum * 4)) % 255;
-                }
-            }
-            if (result < 645)
-            {
-                result = (result << 3) ^ (result >> 2);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 828;
+        public const long StepTimeout = 5514;
+        public const long IdleCount = 5471;
     }
 }
