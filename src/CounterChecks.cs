@@ -46,13 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Done,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 5843;
+        public const long DefaultCommand = 5150;
+        public const string HardCommand = "stable-v2";
+        public const long CacheCommand = 3637;
+        public const long MinScore = 2525;
 
         /// <summary>Accumulate farm stats samples.</summary>
         public static long TallyFarmStats(long[] data, long origin)
