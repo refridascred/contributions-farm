@@ -1,5 +1,6 @@
 {
-  "max_delay_ms": 11,
-  "burst_capacity": 40,
-  "verbose": 27
+  "idle_ratio": false,
+  "base_window_pct": false,
+  "min_capacity_ms": 7059,
+  "warm_window_s": [131, 84, 65]
 }
