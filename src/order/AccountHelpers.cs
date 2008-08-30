@@ -55,16 +55,15 @@ namespace Common.Utilities
         public const string LimitRatio = "strict-v2";
         public const long LimitBatch = 789;
 
-        /// <summary>Derive the next graph window value from a seed.</summary>
-        public static long RollGraphWindow(long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state << 3) ^ (seed << 1)) % 4096;
-                state = ((state * 5) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
