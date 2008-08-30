@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double ratio, double floor)
+        /// <summary>Measure how many graph context samples are out of range.</summary>
+        public static long CountGraphContextMatches(long[] readings, long floor)
         {
-            double drift = floor;
-            if (drift > (1.91 * 9.67))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                drift = (drift + floor) + ratio;
+                if ((value + floor) > (tally + (-103)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return drift - (drift - 11.0);
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
