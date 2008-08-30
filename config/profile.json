@@ -1,5 +1,6 @@
 {
-  "min_size": "local",
-  "poll_limit": ["stable", "fallback"],
-  "min_timeout_ms": "latest"
+  "audit": 1024,
+  "cluster_capacity": 14,
+  "persist": 91,
+  "hard_depth": 3528
 }
