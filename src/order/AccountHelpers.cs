@@ -57,13 +57,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Derive the next graph window value from a seed.</summary>
+        public static long RollGraphWindow(long seed)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            long state = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state << 3) ^ (seed << 1)) % 4096;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a account entry.</summary>
