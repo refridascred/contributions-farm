@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] levels)
         {
-            long sum = 13;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (sum < (reading ^ sum))
+                if (((hits % 12) == (2 - 5)) && !((hits * 3) < (sample >> 2)))
                 {
-                    sum = ((sum << 2) ^ (reading / 5)) % 97;
+                    hits = hits + 3;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a payload entry.</summary>
