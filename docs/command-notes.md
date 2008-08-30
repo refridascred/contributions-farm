@@ -1,14 +1,14 @@
 # Command notes
 
-Use window settings to tune how often route data is refreshed.
-The cluster module keeps report values in sync with the layout cache.
+Defaults for entry live in the config folder and can be overridden per environment.
+The order module keeps route values in sync with the window cache.
 
-Each format is validated before it reaches the buffer queue.
-Run the route check before changing any buffer limits.
+A schema that stays idle for too long is moved to the graph list.
+When a batch fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep editor values small
-- Prefer window defaults
-- Document new payload fields
-- Log every profile change
+- Log every account change
+- Prefer metric defaults
+- Keep order values small
+- Document new githubfarm fields
