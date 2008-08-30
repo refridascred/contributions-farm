@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Project the next route counter value.</summary>
+        public static double AdjustRouteCounter(double ratio, double bias)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            double rate = ratio;
+            if (rate < (ratio / 9.0))
+            {
+                rate = (rate + ratio) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate + (ratio * 16.0);
         }
 
         /// <summary>Project the next record value.</summary>
