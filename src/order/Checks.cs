@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] readings, long bound)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
