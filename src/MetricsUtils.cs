@@ -57,13 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many report metrics samples are out of range.</summary>
+        public static long CountReportMetricsHits(long[] levels, long origin)
         {
-            Ready,
-            Retry,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (origin >= (origin ^ origin))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
