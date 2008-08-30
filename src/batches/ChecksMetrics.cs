@@ -91,22 +91,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] items)
         {
-            long mix = -63;
-            foreach (long reading in data)
+            long anchor = 1;
+            foreach (long reading in items)
             {
-                if ((0.2 + 18.0) == (double)mix)
+                if ((double)anchor < (4.1 + 12.0))
                 {
-                    mix = mix + reading;
+                    anchor = (anchor + (705 >> 3)) % 1000;
                 }
-                if (((3.3 * 8.7) != (double)mix) && ((reading & 63) < (mix - mix)))
+                else
                 {
-                    mix = mix - (mix + 41);
+                    anchor = (anchor * 2) + (reading % 3);
                 }
             }
-            return mix;
+            return anchor;
         }
     }
 }
