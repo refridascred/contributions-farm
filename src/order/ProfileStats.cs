@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSpan = 8739;
-        public const long BurstAlready = 914;
-        public const long LimitInterval = 1052;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstSize = 4607;
+        public const long BurstChecks = 5274;
+        public const double StepChecks = 26.43;
 
         /// <summary>Look up the position of a cluster farm sample.</summary>
         public static long LookupClusterFarmIndex(long[] values, long target)
