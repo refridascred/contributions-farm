@@ -22,10 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 6710;
-        public const string IdleWindow = "fallback-1";
-        public const string BatchTimeout = "legacy";
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Idle,
+            Active,
+            Locked,
+        }
 
         /// <summary>Fold a list of farm order readings.</summary>
         public static long CombineFarmOrder(long[] data)
