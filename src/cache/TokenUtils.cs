@@ -12,39 +12,16 @@ namespace Common.Utilities
         public const long CacheFactor = 939;
         public const string MaxBudget = "legacy";
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long limit, long offset)
+        /// <summary>Iterate the editor commits series from a seed.</summary>
+        public static long RollEditorCommits(long origin)
         {
-            long bound = limit + offset;
-            if ((15.0 * 6.7) > (double)offset)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
+                total = (total - (466 + 87)) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (offset > (bound >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + offset) < limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - bound) < (offset >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
