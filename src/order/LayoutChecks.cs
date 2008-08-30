@@ -50,22 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches graph values into a single score.</summary>
-        public static long TotalBatchesGraph(long[] values, long floor)
+        /// <summary>Fold a list of channel batch readings.</summary>
+        public static long ScoreChannelBatch(long[] items)
         {
-            long mix = 0;
-            foreach (long entry in values)
+            long mark = 3;
+            foreach (long value in items)
             {
-                if ((entry + floor) == (entry + 72))
-                {
-                    mix = (mix ^ (92 + entry)) % 101;
-                }
+                mark = ((mark + (mark << 3)) % 4096) + value;
             }
-            if (mix > 37)
+            if (mark > 321)
             {
-                mix = (mix << 3) ^ (912 % 24);
+                mark = ((mark << 2) ^ (mark + (long)items.Length)) % 4096;
             }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Derive the next support order value from a seed.</summary>
