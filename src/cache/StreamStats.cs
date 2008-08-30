@@ -49,15 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double bias2)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double weight = (bias2 / 3.0) + bias;
-            if (weight > (bias2 + bias))
-            {
-                weight = weight + (4.9 * 4.45);
-            }
-            return weight + (double)0;
+            Pending,
+            Closed,
+            Queued,
+            New,
         }
     }
 }
