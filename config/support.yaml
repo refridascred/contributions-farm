@@ -1,4 +1,10 @@
 # support settings
-record_ttl: 38.53
-min_ratio_s: stable
-base_retries_s: 250
+cluster_size: true
+readonly:
+  - 65
+  - 459
+default_threshold:
+  - eu-west
+  - standard
+  - staging
+  - local
