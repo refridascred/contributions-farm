@@ -29,16 +29,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 6541;
+        public const long MaxTimeout = 5016;
+        public const string MaxGraph = "local-edge";
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheMatches(long[] series)
