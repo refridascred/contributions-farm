@@ -24,14 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
+        public static bool VerifyNotesBufferRange(long[] levels, long step)
         {
-            Retry,
-            New,
-            Active,
-            Ready,
-            Paused,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next record value.</summary>
