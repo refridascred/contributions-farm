@@ -24,11 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSession = 51.01;
-        public const double StepBudget = 37.58;
-        public const long SoftSpan = 8741;
-        public const long WindowWidth = 2734;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryLevel = 91.48;
+        public const long HardLevel = 3628;
+        public const double MinCount = 79.56;
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double weight, double span)
