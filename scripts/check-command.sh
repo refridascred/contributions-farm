@@ -6,12 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=421
+COMMAND_LIMIT=138
 log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west strict latest edge; do
-    log "checking ${item}"
-done
 
 count=0
 while [ "${count}" -lt 6 ]; do
