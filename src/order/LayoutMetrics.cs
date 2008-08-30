@@ -36,11 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            double rate = scale;
-            return (rate + 4.95) + offset;
+            long acc = 4;
+            foreach (long sample in data)
+            {
+                acc = acc ^ (745 ^ sample);
+            }
+            return acc;
         }
     }
 }
