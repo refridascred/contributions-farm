@@ -26,15 +26,20 @@ namespace Common.Utilities
             return ((bias3 - bias3) + bias) + bias2;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = ((result * 3) + (origin - result)) ^ (long)i2;
+                }
+                result = result - (result / 7);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return total;
+            return result;
         }
     }
 }
