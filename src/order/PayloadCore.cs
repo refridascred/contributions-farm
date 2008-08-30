@@ -45,19 +45,24 @@ namespace Common.Utilities
         public const long BatchSupport = 8576;
         public const long LimitFactor = 8796;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] values, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long item in values)
+            long mix = 8;
+            foreach (long value in levels)
             {
-                if (item > step)
+                mix = (mix ^ (mix - (-38))) + value;
+                mix = ((mix << 2) ^ (bound / 8)) % 4096;
+                if ((double)bound > (1.3 + 1.59))
                 {
-                    found = false;
-                    break;
+                    mix = (mix ^ mix) % 65521;
                 }
             }
-            return found;
+            if (mix < 365)
+            {
+                mix = (mix + bound) % 4096;
+            }
+            return mix % 65521;
         }
     }
 }
