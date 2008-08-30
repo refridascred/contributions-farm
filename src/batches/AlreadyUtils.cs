@@ -40,20 +40,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double ratio, double span)
-        {
-            double scale = ratio;
-            if (scale >= 18.0)
-            {
-                scale = (scale - ratio) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - 5.0) + (double)(long)i;
-            }
-            return scale + (ratio - ratio);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "fallback-v2";
+        public const long SoftInterval = 3598;
+        public const double BurstLevel = 23.18;
+        public const long MinRatio = 9424;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
