@@ -21,26 +21,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] readings, long origin)
         {
-            long score = 66;
-            foreach (long reading in series)
+            long carry = 48;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 9; i++)
+                if (!(carry >= (reading & 7)))
                 {
-                    score = ((score - ((long)i + score)) % 255) ^ reading;
+                    carry = (carry * 3) + (origin - carry);
                 }
-                if ((offset ^ 96) < offset)
+                carry = (carry * 2) + (reading + origin);
+                if (((reading << 1) < (97 % 24)) || ((reading % 5) != (reading + origin)))
                 {
-                    score = score - score;
-                }
-                else
-                {
-                    score = score - (offset % 2);
+                    carry = (carry * 4) + origin;
                 }
             }
-            return score;
+            return carry;
         }
     }
 }
