@@ -23,15 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            New,
+            Active,
+            Locked,
+            Dropped,
         }
     }
 }
