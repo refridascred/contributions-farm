@@ -14,18 +14,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] samples, long offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen + seen) > seen)
-                {
-                    seen = ((seen + 3) + cell) + offset;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the tools kind values.</summary>
