@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxCount = "legacy";
+        public const double StepSize = 34.87;
+        public const long LimitLayout = 5290;
+        public const long WindowLayout = 9378;
 
         /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
         public static long IterateContributiGithubfarm(long limit)
