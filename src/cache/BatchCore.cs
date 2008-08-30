@@ -30,21 +30,22 @@ namespace Common.Utilities
         public const long SoftAccount = 3209;
         public const long BaseSpan = 2985;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -309;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)reading <= (15.0 - 7.2))
                 {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score << 3) ^ (reading + score)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (2 >> 5)) % 97;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
