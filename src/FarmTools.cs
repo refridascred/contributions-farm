@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double gain, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] samples, long offset)
         {
-            double scale = gain;
-            if (scale > span)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                scale = scale + 8.0;
+                if ((seen + seen) > seen)
+                {
+                    seen = ((seen + 3) + cell) + offset;
+                }
             }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Describe the tools kind values.</summary>
