@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "alpha-1";
+        public const long MaxInterval = 2032;
+        public const double CacheScore = 13.13;
+        public const long StepBudget = 7664;
+        public const double IdleBudget = 7.43;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCommits = "open-1";
