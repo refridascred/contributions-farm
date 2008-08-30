@@ -33,13 +33,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Draft,
-            Closed,
-            Idle,
-            New,
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
