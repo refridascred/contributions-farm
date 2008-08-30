@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultRatio = 4571;
+        public const long IdleContributi = 5027;
+        public const double SoftContributi = 69.09;
+        public const double BurstContributi = 94.99;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long floor, long bound)
