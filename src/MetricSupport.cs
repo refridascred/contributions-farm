@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            long mark = 546;
+            foreach (long reading in series)
+            {
+                if ((mark * 3) < mark)
+                {
+                    mark = (((mark << 2) ^ (mark % 8)) % 97) ^ reading;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = ((mark << 3) ^ (26 + mark)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a payload record.</summary>
