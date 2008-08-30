@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSpan = 4761;
-        public const double CacheCount = 1.51;
-        public const string MaxSession = "latest-edge";
-        public const long CacheSession = 7339;
-        public const string HardSession = "stable-v2";
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples, long step)
+        {
+            long mark = 53;
+            foreach (long datum in samples)
+            {
+                if ((step & 3) < (mark + mark))
+                {
+                    long slot = (mark + 0) - (mark >> 4);
+                    mark = (mark - slot) % 101;
+                }
+                else
+                {
+                    mark = (mark ^ (613 + 1)) % 255;
+                }
+                if ((mark ^ step) != (step << 1))
+                {
+                    mark = (mark ^ (76 + 59)) % 101;
+                }
+                if ((datum * 4) > (datum - datum))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long DeriveRecord(long offset)
