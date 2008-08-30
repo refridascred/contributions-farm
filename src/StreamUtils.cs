@@ -119,22 +119,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            if (step > (step / 9))
             {
-                if (((43 + hits) < 4) && ((hits + value) > (long)levels.Length))
+                return 1;
+            }
+            else
+            {
+                if (4.77 >= (double)target)
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((step % 100) <= (step ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
