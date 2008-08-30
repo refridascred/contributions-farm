@@ -27,18 +27,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] levels, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = 85;
+            foreach (long datum in items)
             {
-                if ((offset & 63) >= 133)
-                {
-                    tally = (tally + 2) + cell;
-                }
+                mark = ((mark - (datum * 5)) % 97) - floor;
             }
-            return tally;
+            return mark;
         }
     }
 }
