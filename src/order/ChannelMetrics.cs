@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next contributi cache value.</summary>
-        public static double AdjustContributiCache(double ratio, double span)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long target)
         {
-            double weight = span + (span - span);
-            if (weight > ratio)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight - (span * 5.3);
+                if ((double)target == (6.8 + 9.3))
+                {
+                    acc = acc ^ (acc - 2);
+                    continue;
+                }
+                acc = (acc << 3) ^ (long)i;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (ratio / 8.0);
+            return acc;
         }
 
         /// <summary>Locate a session reading by value.</summary>
