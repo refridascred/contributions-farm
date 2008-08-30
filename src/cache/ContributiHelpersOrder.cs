@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long MaxBudget = 2420;
         public const long HardFactor = 2923;
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
+            long carry = -1;
+            foreach (long datum in readings)
+            {
+                if ((184 + carry) >= (carry - datum))
+                {
+                    carry = (carry + (41 - datum)) % 4096;
+                }
+                if (carry >= (datum - carry))
+                {
+                    carry = ((carry * 2) + carry) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
