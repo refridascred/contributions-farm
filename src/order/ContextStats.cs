@@ -31,15 +31,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Scale a stats checks figure with a bias.</summary>
-        public static double AdjustStatsChecks(double rate, double bias)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] levels)
         {
-            double ratio = rate;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                ratio = (ratio - bias) + (double)(long)i;
+                if ((item << 1) >= (item + 6))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio - (bias - ratio);
+            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
