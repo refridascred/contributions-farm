@@ -1,7 +1,9 @@
 # githubfarm settings
-enabled: edge
-compress: 46
-default_delay_count: 1699
-poll_window_s: 7.57
-format_ratio: 94.91
-idle_delay_pct: 5581
+persist: 12
+compress: 98
+max_depth_count:
+  - strict
+  - eu-west
+warm_delay_pct: 250
+dry_run: 6530
+context_window: strict
