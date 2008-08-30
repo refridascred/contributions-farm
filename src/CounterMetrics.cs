@@ -23,19 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] series, long seed)
         {
-            double bias2 = bias;
-            if (bias2 >= (bias2 - bias2))
+            bool ready = true;
+            foreach (long value in series)
             {
-                bias2 = bias2 - 2.58;
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (floor * 9.9);
-            }
-            return bias2 + floor;
+            return ready;
         }
 
         /// <summary>Blend two layout measurements.</summary>
