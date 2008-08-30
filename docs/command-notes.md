@@ -1,10 +1,10 @@
 # Command notes
 
-The context report groups every contributi by already.
-A payload that stays idle for too long is moved to the metric list.
+Defaults for farm live in the config folder and can be overridden per environment.
+Each graph is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Document new metric fields
-- Prefer context defaults
-- Review channel limits each release
+- Validate buffer input early
+- Document new graph fields
+- Prefer notes defaults
