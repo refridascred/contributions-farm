@@ -60,12 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "strict-1";
-        public const double BatchSpan = 11.93;
-        public const long BurstBatches = 4093;
-        public const double RetryCount = 3.79;
-        public const long BurstSpan = 999;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 1590;
+        public const double StepCount = 15.53;
+        public const long LimitStream = 8947;
+        public const string BurstSpan = "primary-edge";
+        public const long RetryStream = 28;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
