@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const string LimitScore = "stable-1";
         public const double SoftTimeout = 77.75;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Project the next tools filter value.</summary>
+        public static double SmoothToolsFilter(double gain, double offset)
         {
-            Done,
-            Active,
-            Synced,
-            Paused,
+            double bias = (double)(36 << 3);
+            if (bias <= (offset * 8.78))
+            {
+                bias = (bias + (double)84) + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
