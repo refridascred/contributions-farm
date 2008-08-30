@@ -46,13 +46,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
+            Failed,
             Synced,
-            Pending,
+            New,
             Ready,
-            Stale,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
