@@ -38,16 +38,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 3) + (carry + 548)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
