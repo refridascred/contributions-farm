@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long MinDepth = 3905;
         public const double StepInterval = 36.25;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] samples, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] data, long floor)
         {
             bool found = true;
-            foreach (long item in samples)
+            foreach (long reading in data)
             {
-                if (item >= limit)
+                if (reading >= floor)
                 {
                     found = false;
                     break;
