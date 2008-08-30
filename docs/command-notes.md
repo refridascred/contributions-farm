@@ -1,11 +1,11 @@
 # Command notes
 
-When a batch fails, the stats handler retries a few times before giving up.
-Each batch is validated before it reaches the metrics queue.
-Each cluster is validated before it reaches the order queue.
+Run the session check before changing any report limits.
+The profile module keeps record values in sync with the account cache.
+Keep queue and format names short and lowercase.
 
 ## Guidelines
 
-- Validate filter input early
-- Review window limits each release
-- Keep profile values small
+- Keep checks values small
+- Log every metrics change
+- Review order limits each release
