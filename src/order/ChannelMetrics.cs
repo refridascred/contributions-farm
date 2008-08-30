@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] data, long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double load = (weight * 7.45) - offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - offset) + (double)(long)i;
             }
-            return ok;
+            return load - (double)558;
         }
     }
 }
