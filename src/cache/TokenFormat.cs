@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 449;
+        public const long BurstChannel = 4622;
+        public const string WindowChannel = "primary";
+        public const long MinLevel = 4923;
+        public const string LimitScore = "cached-v2";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultBudget = 7139;
