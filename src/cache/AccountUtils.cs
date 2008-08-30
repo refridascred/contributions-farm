@@ -48,14 +48,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Locked,
-            Dropped,
-            Stale,
-            Idle,
+            Failed,
             Active,
+            New,
+            Synced,
         }
     }
 }
