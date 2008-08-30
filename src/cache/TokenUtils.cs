@@ -14,13 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] items, long step)
         {
-            Queued,
-            Idle,
-            Locked,
-            Draft,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
