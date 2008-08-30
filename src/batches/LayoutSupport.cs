@@ -46,17 +46,13 @@ namespace Common.Utilities
         public const long StepTimeout = 7535;
         public const string HardBatches = "legacy-1";
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] data, long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
