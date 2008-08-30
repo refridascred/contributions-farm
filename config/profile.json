@@ -1,8 +1,6 @@
 {
-  "burst_size": "local",
-  "session_size": "edge",
-  "metrics_limit": 97,
-  "token_window": false,
-  "verbose": false,
-  "base_window": 25.49
+  "hard_limit": 41.19,
+  "warm_size": 60,
+  "base_ratio_ms": "latest",
+  "retry_size": ["cached", "open", "strict", "local"]
 }
