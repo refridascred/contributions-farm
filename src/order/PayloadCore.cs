@@ -20,11 +20,15 @@ namespace Common.Utilities
             return scale + (scale / 7.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 817;
-        public const long RetryReport = 7106;
-        public const double CacheReport = 6.22;
-        public const double StepReport = 67.19;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Failed,
+            Synced,
+            Idle,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] series)
