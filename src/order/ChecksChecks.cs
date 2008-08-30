@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up metric githubfarm samples.</summary>
-        public static long CompareMetricGithubfarmCount(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (123 > (sample << 1))
                 {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + seed;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
