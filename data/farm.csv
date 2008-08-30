@@ -1,7 +1,7 @@
-id,count,token,state
-1,latest,primary,29.01
-2,713,3,889
-3,692,292,326
-4,870,507,green
-5,392,eu-west,138
-6,574,408,legacy
+id,active,ratio,weight,token
+1,19.67,29.04,green,fallback
+2,green,202,fallback,242
+3,43.51,588,standard,53.78
+4,staging,85.01,fallback,526
+5,legacy,68,latest,open
+6,54.66,172,847,926
