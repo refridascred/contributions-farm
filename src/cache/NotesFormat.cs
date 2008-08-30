@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mix = 620;
-            foreach (long item in items)
-            {
-                if ((mix + bound) >= bound)
-                {
-                    mix = (mix + bound) % 97;
-                }
-                if ((item < (item / 5)) || ((double)mix >= (8.2 * 2.48)))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Stale,
+            Failed,
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the cache mode values.</summary>
