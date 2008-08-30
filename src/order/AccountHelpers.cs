@@ -33,19 +33,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels, long step)
+        /// <summary>Count metric already pairs that satisfy a relation.</summary>
+        public static long CompareMetricAlreadyCount(long[] values)
         {
-            long sum = 274;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum << 2) ^ (sum + 96)) % 97) ^ datum;
-                if ((step << 2) != (sum - step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum * 4) + (long)levels.Length;
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
