@@ -58,11 +58,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 1198;
-        public const long BurstWidth = 7344;
-        public const double HardBudget = 4.85;
-        public const long SoftFactor = 5757;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = ((carry + (seed + seed)) % 65521) ^ (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
