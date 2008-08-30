@@ -23,19 +23,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] data, long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Find the first graph farm entry that matches the target.</summary>
