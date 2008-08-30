@@ -1,14 +1,7 @@
 # githubfarm settings
-enabled: legacy
-retry_size_pct: true
-checks_depth:
-  - 484
-  - 33
-  - 450
-  - 458
-max_window_count:
-  - open
-  - strict
-  - cached
-verbose: 82
-persist: standard
+warm_ttl_s: true
+default_retries_pct: 4124
+order_ttl: primary
+soft_threshold: blue
+buffer_timeout: 62.91
+max_timeout_s: primary
