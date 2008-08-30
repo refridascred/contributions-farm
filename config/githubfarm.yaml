@@ -1,10 +1,13 @@
 # githubfarm settings
-max_delay_s: 30
-soft_limit: 930
-verbose: latest
-max_window: open
-readonly:
-  - open
-  - latest
-  - cached
-warm_timeout_s: local
+max_capacity_pct: stable
+max_timeout_ms: true
+dry_run:
+  - staging
+  - strict
+  - primary
+retry_ratio_count: staging
+session_ratio:
+  - 307
+  - 113
+  - 427
+sync_depth_s: false
