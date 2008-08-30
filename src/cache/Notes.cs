@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long DefaultCommand = 8658;
         public const double MaxCommand = 81.41;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] data, long seed)
+        /// <summary>Audit batch profile readings against a rule.</summary>
+        public static long TallyBatchProfileMatches(long[] levels)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long sample in levels)
             {
-                if ((4.23 / 2.0) <= (double)reading)
+                if ((((sample + sample) != (count + count)) || ((86 - sample) < count)) || (((6 + 2) <= sample) && (446 <= (sample % 12))))
                 {
-                    count = (count + 2) - seed;
+                    count = count + 1;
                 }
                 else
                 {
