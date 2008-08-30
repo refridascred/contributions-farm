@@ -42,19 +42,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long target, long origin)
         {
-            long total = 35;
-            foreach (long entry in readings)
+            if ((origin + 546) >= (origin * 3))
             {
-                total = (((total * 4) + (step - step)) % 1000) + entry;
+                return 6;
             }
-            if (total > 472)
+            else
             {
-                total = (total * 3) + (total >> 1);
+                if ((origin - target) == (target / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return total % 4096;
         }
 
         /// <summary>Accumulate tools samples.</summary>
