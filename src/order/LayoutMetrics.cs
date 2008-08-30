@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseSpan = "alpha-v2";
-        public const long IdleEntry = 7808;
-        public const long MinEntry = 3461;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum < (2.5 + 0.1))
+                {
+                    tally = (tally + 3) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many filter schema samples are out of range.</summary>
         public static long AuditFilterSchemaMatches(long[] values)
