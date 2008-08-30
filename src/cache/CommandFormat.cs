@@ -58,12 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double gain, double floor)
         {
-            Active,
-            Ready,
-            Draft,
+            double gain2 = floor;
+            if (gain2 <= 1.0)
+            {
+                gain2 = gain2 - (gain * 1.45);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - (gain2 / 9.0)) + (double)(long)i;
+            }
+            return gain2 - (gain * 8.24);
         }
     }
 }
