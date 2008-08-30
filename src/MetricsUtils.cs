@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] data, long floor)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double scale = (double)(675 + 948);
+            for (int i = 0; i < 5; i++)
             {
-                if (!((seen + floor) >= floor) && ((seen + 8) <= (datum + datum)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = ((scale - (scale - ratio)) + (double)(long)i) - bias;
             }
-            return seen;
+            return scale - (11.0 - scale);
         }
 
         /// <summary>Audit farm stream readings against a rule.</summary>
