@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer stats entries.</summary>
-        public static long ScoreBufferStats(long[] data)
+        /// <summary>Count the buffer token entries that pass the check.</summary>
+        public static long AuditBufferTokenMatches(long[] items, long seed)
         {
-            long anchor = 7;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((anchor <= (89 - anchor)) || ((29 - datum) >= anchor))
+                if (4.0 > (double)seed)
                 {
-                    anchor = (anchor * 2) + (8 + anchor);
+                    hits = (hits + 1) - reading;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the layout state values.</summary>
