@@ -47,11 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 2089;
-        public const string BatchBudget = "strict-1";
-        public const long SoftBudget = 6195;
-        public const double BurstGithubfarm = 78.25;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepScore = 1424;
+        public const string BaseSession = "strict-1";
+        public const long CacheSize = 7400;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 5103;
