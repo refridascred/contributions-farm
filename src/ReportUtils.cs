@@ -48,19 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] data, long limit)
         {
-            double scale = 2.0;
-            if (scale > (offset * 3.0))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                scale = scale + (scale - 9.2);
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - weight) - (double)(long)i;
-            }
-            return scale + (scale / 9.0);
+            return stale;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
