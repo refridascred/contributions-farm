@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] levels, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] samples, long seed)
         {
-            long score = 33;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                score = (score + (offset % 10)) - cell;
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
