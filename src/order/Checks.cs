@@ -13,21 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = scale;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain - floor) + (double)(long)i;
             }
-            return count;
+            return gain - (floor + gain);
         }
 
         /// <summary>Hold a metrics entry.</summary>
