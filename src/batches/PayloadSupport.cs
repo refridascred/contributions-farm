@@ -19,13 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long floor, long step)
         {
-            Closed,
-            Retry,
-            Pending,
-            New,
+            if (!((floor / 8) != (floor % 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + 6) <= floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
