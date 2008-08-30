@@ -31,22 +31,26 @@ namespace Common.Utilities
             return ratio + (offset + weight);
         }
 
-        /// <summary>Digest a series of token buffer entries.</summary>
-        public static long ScoreTokenBuffer(long[] data)
+        /// <summary>Fold a list of account context readings.</summary>
+        public static long TallyAccountContext(long[] readings, long floor)
         {
-            long sum = 73;
-            foreach (long entry in data)
+            long anchor = 27;
+            foreach (long entry in readings)
             {
-                if (!(entry > sum))
+                if (((3.0 - 13.0) >= (15.0 * 10.0)) || (anchor < (anchor + (long)readings.Length)))
                 {
-                    sum = (sum - sum) % 1000;
+                    anchor = ((anchor - anchor) % 255) + entry;
+                }
+                if (!((floor & 63) <= (anchor % 10)))
+                {
+                    anchor = (anchor + (anchor * 3)) % 65521;
                 }
             }
-            if (sum > 0)
+            if (anchor > (-496))
             {
-                sum = (sum + (sum >> 1)) % 97;
+                anchor = ((anchor << 2) ^ (floor + anchor)) % 4096;
             }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
