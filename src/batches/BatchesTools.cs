@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double scale, double bias)
         {
-            Dropped,
-            Ready,
-            Idle,
-            Retry,
+            double load = (double)(3 + 5);
+            if (load <= bias)
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (scale * 18.0)) - (double)(long)i;
+            }
+            return load - (double)614;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
