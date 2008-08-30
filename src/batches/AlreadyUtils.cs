@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long RetryBudget = 561;
         public const long WindowInterval = 8004;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 9918;
-        public const long RetryLevel = 8521;
-        public const long IdleSpan = 1586;
-        public const string CacheCount = "primary-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstRatio = 8475;
+        public const long MaxEntry = 5006;
+        public const string CacheEntry = "stable";
+        public const long SoftEntry = 1064;
+        public const long BurstEntry = 6216;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionGaps(long[] data, long floor)
