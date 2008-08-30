@@ -65,19 +65,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] data, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
