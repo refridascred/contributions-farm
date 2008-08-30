@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long DefaultMetrics = 2704;
         public const long CacheMetrics = 670;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i / 9) < state)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state * 5) + (origin + state)) % 4096;
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
