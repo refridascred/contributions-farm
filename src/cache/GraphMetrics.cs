@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 52.66;
-        public const string DefaultLevel = "latest-1";
-        public const long SoftMetrics = 7826;
-        public const string RetryMetrics = "strict";
-        public const long RetryLevel = 8468;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((cell * 3) < 93) && ((matches * 4) > 5))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long FoldBuffer(long[] levels)
