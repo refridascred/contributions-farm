@@ -1,6 +1,6 @@
 {
-  "audit": 22.41,
-  "format_depth": ["open", "blue"],
-  "batch_retries_count": false,
-  "readonly": ["stable", "strict", "staging"]
+  "audit": 1024,
+  "max_retries_count": false,
+  "strict": 500,
+  "warm_capacity": 58.46
 }
