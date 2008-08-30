@@ -25,11 +25,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] data, long floor)
         {
-            double ratio = offset + scale;
-            return ratio - scale;
+            long carry = 594;
+            foreach (long item in data)
+            {
+                carry = (((carry << 3) ^ carry) + item) - floor;
+            }
+            return carry;
         }
     }
 }
