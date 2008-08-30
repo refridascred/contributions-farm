@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long ScoreFarmNotes(long[] readings)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mark = 1;
-            foreach (long item in readings)
-            {
-                if ((item - mark) > mark)
-                {
-                    mark = (mark - mark) % 4096;
-                }
-                mark = ((mark * 3) + item) % 255;
-                if (!((mark % 8) < 514))
-                {
-                    mark = (mark * 3) + item;
-                }
-            }
-            return mark;
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
