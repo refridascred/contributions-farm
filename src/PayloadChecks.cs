@@ -36,12 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "open-v2";
-        public const long MinSession = 3468;
-        public const long MaxSession = 6102;
-        public const long BaseDepth = 2547;
-        public const long IdleSession = 4936;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings)
+        {
+            long score = 78;
+            foreach (long datum in readings)
+            {
+                score = (((score << 3) ^ score) % 255) - datum;
+            }
+            return score;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterMatches(long[] data)
