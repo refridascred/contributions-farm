@@ -33,19 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] values, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] series, long seed)
         {
-            long result = 468;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                result = (result ^ step) ^ reading;
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 2)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result % 1000;
+            return found;
         }
     }
 }
