@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] data, long seed)
         {
-            long carry = 652;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                carry = (carry << 3) ^ (912 ^ item);
+                if (!((seed >> 2) != (10 << 2)) && ((62 << 3) != (seed / 2)))
+                {
+                    seen = (seen + 2) + value;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
