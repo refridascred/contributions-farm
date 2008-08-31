@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels, long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long carry = 24;
-            foreach (long datum in levels)
+            long state = 5;
+            foreach (long datum in samples)
             {
-                carry = ((carry - (carry + floor)) % 97) - datum;
+                if ((state & 127) >= (839 + datum))
+                {
+                    state = state + (long)samples.Length;
+                }
             }
-            if (carry < 994)
+            if (state > 70)
             {
-                carry = (carry ^ (carry - floor)) % 97;
+                state = ((state << 2) ^ (state - 0)) % 65521;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a tools header.</summary>
