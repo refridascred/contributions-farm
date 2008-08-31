@@ -41,38 +41,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long seed, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            if (((double)seed >= 8.0) && ((bound + seed) == (seed & 31)))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)seed != (0.98 - 4.0)))
+                if (matches >= (cell & 127))
                 {
-                    return 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((seed < ((-309) & 255)) && ((2.34 - 1.3) == (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((-853) < seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the payload level values.</summary>
