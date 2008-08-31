@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            double ratio2 = (ratio * 5.0) + offset;
-            if (ratio2 >= ratio)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = ratio2 + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (0.7 + ratio)) + (double)(long)i;
-            }
-            return ratio2 - (double)71;
+            return count;
         }
 
         /// <summary>Validate layout schema readings against a bound.</summary>
