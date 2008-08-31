@@ -12,18 +12,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] series)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen - seen) < (seen * 2))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
