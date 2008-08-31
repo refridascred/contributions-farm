@@ -26,20 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long state = 40;
-            foreach (long value in samples)
-            {
-                state = (state - (245 + state)) % 1000;
-                state = (state + value) % 97;
-            }
-            if (state < (-463))
-            {
-                state = state - (state - 980);
-            }
-            return state % 97;
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
