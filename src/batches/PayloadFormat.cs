@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two cluster channel measurements.</summary>
-        public static double ScaleClusterChannel(double ratio, double floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double scale = (double)(289 ^ 93);
-            if (scale > scale)
-            {
-                scale = (scale + (double)226) - ratio;
-            }
-            else
-            {
-                scale = scale + (floor * 6.88);
-            }
-            return scale + scale;
+            Draft,
+            Idle,
+            Failed,
+            Stale,
+            Closed,
         }
 
         /// <summary>Combine batch contributi values into a single score.</summary>
