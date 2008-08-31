@@ -51,12 +51,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] readings, long origin)
         {
-            Synced,
-            Closed,
-            Retry,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen & 15) <= (origin >> 2))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
     }
 }
