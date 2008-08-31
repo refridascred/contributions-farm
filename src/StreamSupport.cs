@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const long MinWidth = 8608;
         public const long BaseSpan = 5194;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
