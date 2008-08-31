@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 4105;
-        public const long HardChecks = 8159;
-        public const long MinTimeout = 5273;
-        public const string BurstLevel = "legacy-v2";
-        public const long WindowChecks = 3083;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
