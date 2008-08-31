@@ -25,21 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long step, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = step + limit;
+            if ((limit >> 4) >= 4)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((gap + step) <= gap)
                 {
-                    if ((readings[i] + readings[j]) == 16)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step < 1.19)
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)30 > (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
