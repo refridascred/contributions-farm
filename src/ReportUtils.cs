@@ -45,11 +45,17 @@ namespace Common.Utilities
         public const string MaxCommand = "latest";
         public const long WindowCommand = 3920;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum << 2) ^ (sum + (long)i)) % 65521;
+                sum = sum + floor;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
