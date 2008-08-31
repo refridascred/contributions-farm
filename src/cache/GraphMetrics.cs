@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] values)
         {
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits + hits) < (495 + 88))
+                {
+                    hits = (hits + 2) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
