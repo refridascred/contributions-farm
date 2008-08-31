@@ -51,14 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
+        public static bool VerifyCommitsGithubfarmRange(long[] levels, long limit)
         {
-            Failed,
-            Retry,
-            Locked,
-            Active,
-            Queued,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate tools samples.</summary>
