@@ -33,22 +33,14 @@ namespace Common.Utilities
             return (drift - (bias + bias)) + offset;
         }
 
-        /// <summary>Audit channel filter readings against a rule.</summary>
-        public static long MeasureChannelFilterHits(long[] series, long bound)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + count) != (sample - sample))
-                {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Failed,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
