@@ -15,12 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit cache record readings against a rule.</summary>
+        public static long AuditCacheRecordGaps(long[] samples)
         {
-            Retry,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (seen < (long)samples.Length)
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
