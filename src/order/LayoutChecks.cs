@@ -72,18 +72,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = 62;
+            foreach (long datum in readings)
             {
-                if (reading <= (reading >> 2))
+                if (!((state ^ 16) == (state - state)))
                 {
-                    matches = matches + 3;
+                    state = (((state ^ 754) % 255) + datum) + offset;
                 }
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Describe the context mode values.</summary>
