@@ -30,20 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits contributi values into a single score.</summary>
-        public static long TotalCommitsContributi(long[] series, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long bound)
         {
-            long state = 6;
-            foreach (long datum in series)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state + (floor << 2)) - datum;
-                state = (state - (29 / 4)) % 65521;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (state > (-50))
-            {
-                state = (state * 2) + (floor - state);
-            }
-            return state;
+            return mix;
         }
     }
 }
