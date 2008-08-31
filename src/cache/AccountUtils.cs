@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (entry > offset)
+                if (datum <= target)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
