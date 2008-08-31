@@ -27,18 +27,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] values, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((double)seen <= (9.24 + 7.0))
+                if (reading >= limit)
                 {
-                    seen = ((seen + 3) + reading) + floor;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
