@@ -35,11 +35,32 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double scale, double offset)
+        /// <summary>Classify a route metrics pair into a bucket.</summary>
+        public static long ClassifyRouteMetrics(long step, long offset)
         {
-            double drift = offset;
-            return (drift + offset) + scale;
+            long gap = step ^ offset;
+            if ((offset - gap) < step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step - gap) == (step & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + gap) == (step % 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
