@@ -30,23 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache already entries that pass the check.</summary>
-        public static long CountCacheAlreadyGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((67 * 2) >= matches)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 8543;
+        public const long BurstPayload = 6879;
+        public const long SoftFactor = 7160;
+        public const double BatchRatio = 95.71;
+        public const long MaxFactor = 6389;
 
         /// <summary>Check that every cache profile entry stays within the limit.</summary>
         public static bool VerifyCacheProfileLimits(long[] items, long origin)
