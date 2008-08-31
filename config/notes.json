@@ -1,6 +1,8 @@
 {
-  "max_threshold": 5187,
-  "sync_timeout": 9825,
-  "window_interval": "strict",
-  "base_threshold_count": [445, 238, 197, 35]
+  "enabled": 11.38,
+  "queue_timeout": 23.19,
+  "hard_retries_pct": 9.43,
+  "default_ratio": "cached",
+  "route_threshold": 6447,
+  "audit": 3960
 }
