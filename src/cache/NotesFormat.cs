@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Ready,
-            New,
-            Stale,
-            Closed,
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
