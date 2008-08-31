@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 87.34;
-        public const long CacheCounter = 8835;
-        public const long MaxCounter = 1318;
-        public const long SoftCounter = 7722;
+        /// <summary>Find the first layout payload entry that matches the target.</summary>
+        public static long LookupLayoutPayloadIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] values)
