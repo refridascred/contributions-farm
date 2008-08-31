@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long SoftBudget = 1328;
         public const long LimitSpan = 2867;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Draft,
-            New,
-            Ready,
-            Retry,
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a channel stats.</summary>
