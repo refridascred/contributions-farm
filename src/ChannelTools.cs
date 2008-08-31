@@ -20,20 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every payload batch entry stays within the limit.</summary>
-        public static bool CheckPayloadBatchLimits(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 9323;
+        public const long RetryTimeout = 5515;
+        public const long IdleMetrics = 2771;
 
         /// <summary>Adjust a account reading.</summary>
         public static double AdjustAccount(double weight, double floor)
