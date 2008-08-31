@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowDepth = 4961;
-        public const long LimitSize = 510;
-        public const string RetryBatches = "staging";
-        public const long CacheBatches = 790;
-        public const long CacheRatio = 9028;
+        /// <summary>Measure how many format tools samples are out of range.</summary>
+        public static long CountFormatToolsHits(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((95 >= (matches - offset)) || ((double)matches <= (2.1 / 6.0)))
+                {
+                    matches = (matches + 2) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine queue notes values into a single score.</summary>
         public static long FoldQueueNotes(long[] series, long offset)
