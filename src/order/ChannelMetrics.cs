@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] levels, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((offset - offset) >= ((-62) + hits))
+                if (value > limit)
                 {
-                    hits = (hits + 3) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
