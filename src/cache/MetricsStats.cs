@@ -54,11 +54,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowScore = "cached";
-        public const long RetryAccount = 1714;
-        public const long MaxInterval = 3302;
-        public const double LimitLevel = 57.96;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Queued,
+            Done,
+            Locked,
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionHits(long[] samples, long origin)
