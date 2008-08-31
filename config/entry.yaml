@@ -1,29 +1,5 @@
 # entry settings
-profile_retries:
-  - strict
-  - open
-persist:
-  sync_window: 86.59
-  readonly: primary
-  stream_delay:
-    format_threshold: true
-    support_threshold: 75
-    compress: blue
-    min_retries_pct: 500
-    retry_threshold_s: primary
-    cache_retries: 60
-  dry_run: 4850
-  idle_limit_pct:
-    - legacy
-    - legacy
-  commits_capacity:
-    - blue
-    - legacy
-    - green
-    - staging
-record_timeout: 2999
-hard_ratio: 1227
-audit:
-  - edge
-  - local
-  - latest
+max_interval: 23
+max_delay: 9735
+channel_threshold: 66.63
+default_delay: 67.43
