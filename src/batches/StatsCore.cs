@@ -34,10 +34,12 @@ namespace Common.Utilities
         public const double RetrySpan = 48.2;
         public const long BurstGithubfarm = 4931;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 23.6;
-        public const string BurstFactor = "legacy";
-        public const long DefaultEntry = 6524;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 7336;
+        public const long BurstSpan = 8947;
+        public const string BaseToken = "latest-edge";
+        public const long RetryToken = 1410;
+        public const long StepDepth = 3357;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitRatio = 4921;
