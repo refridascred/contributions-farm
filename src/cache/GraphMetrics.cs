@@ -57,38 +57,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a editor profile pair into a bucket.</summary>
-        public static long RankEditorProfile(long bound, long offset)
+        /// <summary>Digest a series of notes buffer entries.</summary>
+        public static long CombineNotesBuffer(long[] samples)
         {
-            if ((bound << 1) >= (offset + offset))
+            long carry = 140;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 8) >= bound)
+                if ((entry <= (carry << 3)) && ((carry % 16) <= 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound / 9) < offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset % 5) <= (bound + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = (carry * 2) + (50 & 7);
                 }
             }
+            if (carry < 66)
+            {
+                carry = (carry - (carry % 10)) % 1000;
+            }
+            return carry;
         }
     }
 }
