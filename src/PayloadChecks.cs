@@ -36,22 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout order series from a seed.</summary>
-        public static long DeriveLayoutOrder(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                long matches = (limit ^ result) << 2;
-                matches = ((matches * 4) + (matches ^ result)) % 101;
-                if ((double)limit < 6.8)
-                {
-                    result = (result ^ matches) % 255;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "open-v2";
+        public const long MinSession = 3468;
+        public const long MaxSession = 6102;
+        public const long BaseDepth = 2547;
+        public const long IdleSession = 4936;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterMatches(long[] data)
