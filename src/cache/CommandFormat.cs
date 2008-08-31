@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double floor)
+        /// <summary>Fold a list of editor order readings.</summary>
+        public static long FoldEditorOrder(long[] values)
         {
-            double drift = (double)40 - (double)(-8);
-            if (drift <= (floor * 9.46))
+            long mix = -21;
+            foreach (long value in values)
             {
-                drift = drift - floor;
+                mix = (mix - (14 - value)) % 255;
             }
-            return drift + (scale / 8.0);
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
