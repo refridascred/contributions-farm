@@ -36,19 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue notes values into a single score.</summary>
-        public static long FoldQueueNotes(long[] series, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] values, long target)
         {
-            long anchor = 450;
-            foreach (long value in series)
+            long anchor = 6;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 3) + (offset - value)) % 255;
-                if ((anchor - (-98)) < (offset - offset))
+                if ((double)target == (7.0 + 10.0))
                 {
-                    break;
+                    anchor = (((anchor * 2) + (65 - target)) % 1000) - reading;
+                }
+                else
+                {
+                    anchor = anchor - (anchor / 6);
                 }
             }
-            return anchor % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
