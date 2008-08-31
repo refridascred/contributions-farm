@@ -12,25 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long target, long offset)
-        {
-            if (offset <= (target * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((target ^ offset) >= (target - target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSize = 7958;
+        public const double MaxRatio = 91.43;
+        public const string MinSize = "local-v2";
+        public const long BaseScore = 1239;
 
         /// <summary>Project the next command value.</summary>
         public static double SmoothCommand(double rate, double bias)
