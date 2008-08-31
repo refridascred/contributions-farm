@@ -19,28 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] readings)
-        {
-            long total = 14;
-            foreach (long entry in readings)
-            {
-                total = total - (entry % 64);
-                if (((entry % 10) == (total & 1)) && (0 >= total))
-                {
-                    total = (total ^ (entry - entry)) % 4096;
-                }
-                if ((double)total != (4.2 / 8.0))
-                {
-                    break;
-                }
-            }
-            if (total > (-11))
-            {
-                total = total + (total ^ total);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinScore = 8733;
+        public const double StepMetric = 12.3;
+        public const string IdleMetric = "strict-1";
+        public const long SoftMetric = 7023;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] readings, long bound)
