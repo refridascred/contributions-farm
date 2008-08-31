@@ -19,32 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Count the session queue entries that pass the check.</summary>
+        public static long AuditSessionQueueGaps(long[] levels, long offset)
         {
-            long slot = step + seed;
-            if (((slot + (-19)) == (seed << 1)) && ((slot + slot) < (slot - step)))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step * 5) >= (seed + slot))
+                if (hits >= ((long)levels.Length ^ hits))
                 {
-                    return 0;
+                    hits = ((hits + 1) ^ cell) - offset;
                 }
                 else
                 {
-                    if (((15.0 * 7.8) != (double)slot) || ((step + step) < seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of schema farm entries.</summary>
