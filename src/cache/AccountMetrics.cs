@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const long CacheFactor = 2819;
         public const double LimitRatio = 64.91;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double bias = (double)(6 << 1);
-            if (bias >= (floor - bias))
-            {
-                bias = bias - floor;
-            }
-            else
-            {
-                bias = bias + (weight / 9.0);
-            }
-            return bias - (floor + floor);
+            Closed,
+            Failed,
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Count entry layout pairs that satisfy a relation.</summary>
