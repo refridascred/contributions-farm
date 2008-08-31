@@ -39,12 +39,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseRatio = 7932;
-        public const long BaseCommits = 1292;
-        public const string WindowCommits = "strict-v2";
-        public const long CacheCommits = 1587;
-        public const long RetryCommits = 9555;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 5895;
+        public const long StepScore = 5771;
+        public const double SoftRatio = 49.06;
+        public const double RetryRoute = 97.62;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
