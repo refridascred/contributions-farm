@@ -1,7 +1,7 @@
 {
-  "dry_run": false,
-  "batch_limit": 62,
-  "readonly": "latest",
-  "soft_limit": 68.61,
-  "strict": "blue"
+  "idle_depth_s": true,
+  "sync_threshold": 20,
+  "compress": 6355,
+  "order_capacity": false,
+  "hard_size": 60
 }
