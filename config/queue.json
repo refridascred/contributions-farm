@@ -1,6 +1,5 @@
 {
-  "tools_timeout": true,
-  "queue_ratio": false,
-  "sync_size": "edge",
-  "warm_size_s": "staging"
+  "burst_limit_ms": 40,
+  "dry_run": 47,
+  "batch_size": 12
 }
