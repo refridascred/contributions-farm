@@ -49,22 +49,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] levels, long step)
+        /// <summary>Roll a order cluster counter forward.</summary>
+        public static long StepOrderCluster(long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)cell < (18.0 + 4.1))
+                if ((offset * 5) == (offset + anchor))
                 {
-                    hits = (hits + 1) + step;
+                    anchor = (anchor << 2) ^ (offset % 16);
+                    anchor = (anchor + ((long)i / 9)) % 97;
                 }
-                else
+                if ((0.1 - 3.0) != (double)offset)
                 {
-                    hits = hits - 1;
+                    anchor = ((anchor << 2) ^ (offset + anchor)) % 4096;
+                    anchor = anchor - anchor;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
