@@ -38,10 +38,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleScore = 6442;
-        public const string RetryWidth = "local-v2";
-        public const long RetryInterval = 6685;
-        public const double MaxAlready = 20.81;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSize = 594;
+        public const long DefaultRatio = 1842;
+        public const double MaxSpan = 97.21;
+        public const long StepEditor = 1810;
+        public const double BatchEditor = 13.17;
     }
 }
