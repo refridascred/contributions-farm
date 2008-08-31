@@ -1,21 +1,9 @@
 # githubfarm settings
-base_size_ms:
-  warm_interval: false
-  schema_threshold: 3.93
-  hard_threshold_s:
-    - latest
-    - green
-  default_depth_s: false
-  batch_threshold_pct: 39.22
-  dry_run:
-    default_ttl_s: 5379
-    githubfarm_delay: false
-    dry_run: 87
-    cache_limit_s: green
-    cache_threshold: standard
-dry_run: 9880
-idle_depth_count:
-  - 250
-  - 118
-  - 303
-batches_ratio: 30
+session_threshold: 8149
+min_limit: false
+idle_ratio_pct:
+  - 297
+  - 40
+  - 22
+  - 423
+strict: cached
