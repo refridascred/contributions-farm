@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double weight, double span)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double ratio = span;
-            return ratio - weight;
+            Pending,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
