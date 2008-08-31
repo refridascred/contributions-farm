@@ -45,12 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Accumulate filter window samples.</summary>
+        public static long CombineFilterWindow(long[] series, long seed)
         {
-            Failed,
-            Closed,
-            Active,
+            long state = -99;
+            foreach (long entry in series)
+            {
+                if (seed > (state % 100))
+                {
+                    state = (state ^ (entry * 5)) % 1000;
+                }
+            }
+            if (state > 386)
+            {
+                state = (state - seed) % 255;
+            }
+            return state;
         }
     }
 }
