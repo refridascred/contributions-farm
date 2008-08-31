@@ -23,31 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long target2)
+        /// <summary>Derive the next order support value from a seed.</summary>
+        public static long StepOrderSupport(long target)
         {
-            if ((590 << 3) != (target2 & 31))
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                total = (total + total) % 1000;
+                total = (total + target) % 4096;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((target2 + target2) <= target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target2 / 7) > (target - 913))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Match up record samples.</summary>
