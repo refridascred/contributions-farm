@@ -27,24 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long seed, long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if ((seed << 2) > (seed - seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((seed << 3) < (origin - seed)) || (seed < (origin + origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
