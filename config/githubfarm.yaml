@@ -1,34 +1,12 @@
 # githubfarm settings
-cache_delay:
-  githubfarm_delay:
-    default_timeout: 446
-    dry_run: local
-    base_delay_s: 11.34
-  verbose: 1205
-  readonly: local
-  soft_capacity:
-    - 484
-    - 166
-    - 425
-    - 261
-  soft_delay_ms: 28.29
-base_capacity: false
-base_delay_s:
-  soft_size_s:
-    - 409
-    - 214
-    - 45
-  base_ratio_ms:
-    - standard
-    - cached
-    - latest
-    - standard
-  notes_retries:
-    - 131
-    - 303
-    - 163
-  notes_delay: 6.41
-  cache_ttl_pct: true
-flush_window_ms: 8
-burst_delay_pct: 54
-max_timeout_count: eu-west
+audit: true
+max_depth_s:
+  - stable
+  - stable
+  - latest
+dry_run: true
+max_ratio_s: false
+readonly: strict
+cache_depth_count:
+  - latest
+  - staging
