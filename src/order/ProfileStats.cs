@@ -24,17 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] values, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Accumulate route samples.</summary>
