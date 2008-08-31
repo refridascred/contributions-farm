@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const double BaseLevel = 63.71;
         public const long MinDepth = 6537;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long bound, long limit)
         {
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            long offset = bound + limit;
+            if ((double)limit > (3.71 - 1.1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the counter commits entries that pass the check.</summary>
