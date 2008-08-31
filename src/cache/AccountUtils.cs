@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long origin, long origin2)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            if ((origin2 + origin2) >= origin)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin2 >= (origin >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (4.8 < (double)origin2)
+                    if ((samples[i] + samples[j]) == 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin2 <= (origin2 + origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the route status values.</summary>
