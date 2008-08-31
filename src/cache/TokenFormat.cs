@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] levels, long offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the batch state values.</summary>
