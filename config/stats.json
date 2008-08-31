@@ -1,6 +1,6 @@
 {
-  "soft_ttl_s": false,
-  "strict": "primary",
-  "batch_limit": true,
-  "buffer_limit": "local"
+  "burst_delay_ms": false,
+  "warm_ttl_pct": 20,
+  "cache_interval_s": "open",
+  "verbose": 250
 }
