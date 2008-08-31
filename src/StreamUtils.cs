@@ -42,12 +42,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series)
         {
-            Idle,
-            Active,
-            Ready,
+            long score = 59;
+            foreach (long cell in series)
+            {
+                if ((cell ^ score) < (25 / 5))
+                {
+                    score = ((score * 5) + (score % 12)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
