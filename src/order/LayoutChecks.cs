@@ -48,22 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double bias, double span)
         {
-            long sum = 645;
-            foreach (long reading in series)
+            double gain = 1.0;
+            if (gain >= span)
             {
-                if ((reading << 1) >= (reading - reading))
-                {
-                    sum = (sum << 2) ^ (sum - sum);
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum * 4)) % 101;
-                }
+                gain = gain + (double)463;
             }
-            return sum % 1000;
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain - (6.13 + span);
         }
 
         /// <summary>Iterate the queue report series from a seed.</summary>
