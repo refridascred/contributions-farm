@@ -12,12 +12,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Match up farm queue samples.</summary>
+        public static long PairFarmQueueCount(long[] items)
         {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
