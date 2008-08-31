@@ -30,11 +30,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] data)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!(((821 + seen) < (seen >> 2)) && ((double)cell <= (6.1 * 6.13))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
