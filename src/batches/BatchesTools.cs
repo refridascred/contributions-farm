@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] samples, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((422 - hits) <= (hits + hits))
-                {
-                    hits = ((hits + 2) - entry) + floor;
-                }
+                long seen = 17;
+                carry = (carry + (carry ^ seen)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
