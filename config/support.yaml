@@ -1,10 +1,20 @@
 # support settings
-min_window_count:
+batch_retries:
+  entry_retries: 5606
+  audit: fallback
+  warm_depth_pct:
+    batches_retries: true
+    readonly: open
+    session_limit: 12
+default_depth: false
+idle_limit:
+  readonly: true
+  stats_interval: staging
+  burst_threshold: strict
+  flush_ttl_ms: open
+  retry_capacity_count: open
+token_depth:
   - 79
-  - 161
-account_capacity:
-  - 192
-  - 373
-  - 322
-  - 255
-base_timeout_ms: cached
+  - 23
+  - 390
+  - 48
