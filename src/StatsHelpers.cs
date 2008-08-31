@@ -66,14 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series)
         {
-            Done,
-            Draft,
-            Paused,
-            Queued,
-            Pending,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum <= (datum + 18)) && (((hits / 6) != (datum << 3)) || ((0.8 * 7.25) == (double)datum)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
