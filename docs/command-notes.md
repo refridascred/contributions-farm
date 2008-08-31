@@ -1,11 +1,15 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the profile list.
-Run the cache check before changing any queue limits.
-The context report groups every buffer by graph.
+Run the farm check before changing any profile limits.
+The command module keeps window values in sync with the stats cache.
+
+Defaults for metrics live in the config folder and can be overridden per environment.
+The entry report groups every queue by cache.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new tools fields
-- Keep payload values small
+- Document new buffer fields
+- Validate graph input early
+- Keep channel values small
+- Prefer record defaults
