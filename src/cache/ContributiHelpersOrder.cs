@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] data, long offset)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((offset + datum) >= (95 << 2)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next farm value.</summary>
