@@ -21,17 +21,15 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Find the first metrics contributi entry that matches the target.</summary>
-        public static long FindMetricsContributiIndex(long[] readings, long offset)
+        /// <summary>Adjust a githubfarm batches reading.</summary>
+        public static double BlendGithubfarmBatches(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)(5 / 6);
+            for (int i = 0; i < 4; i++)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - ratio) + (double)(long)i) + floor;
             }
-            return -1;
+            return rate - (double)2;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
