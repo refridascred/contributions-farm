@@ -41,19 +41,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools command readings.</summary>
-        public static long TotalToolsCommand(long[] values, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mix = 216;
-            foreach (long datum in values)
-            {
-                if (!((limit % 3) == (mix >> 4)))
-                {
-                    mix = (mix ^ (mix & 3)) + datum;
-                }
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
+            Retry,
+            Draft,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Roll a order cluster counter forward.</summary>
