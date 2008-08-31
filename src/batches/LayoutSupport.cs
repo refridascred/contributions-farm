@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
