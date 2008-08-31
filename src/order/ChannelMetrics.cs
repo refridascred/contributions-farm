@@ -24,38 +24,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a account stats value against two limits.</summary>
-        public static long BucketAccountStats(long bound, long limit)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double offset)
         {
-            if ((bound ^ limit) < (limit * 5))
+            double weight = 13.0;
+            if (weight >= weight)
             {
-                return 3;
+                weight = (weight - scale) - offset;
             }
-            else
-            {
-                if ((double)limit <= (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((13.0 - 1.0) >= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound < (limit & 15))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return weight + 4.21;
         }
     }
 }
