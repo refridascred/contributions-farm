@@ -54,18 +54,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] series, long bound)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (bound <= (datum - bound))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
