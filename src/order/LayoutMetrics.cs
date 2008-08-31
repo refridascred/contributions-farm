@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples, long target)
         {
-            long state = 500;
-            foreach (long cell in levels)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                if ((double)state < (double)cell)
-                {
-                    state = (state ^ state) % 101;
-                }
+                sum = ((sum * 4) + (sum >> 3)) - target;
+                sum = sum + item;
             }
-            if (state > 3)
-            {
-                state = (state + 33) % 97;
-            }
-            return state % 65521;
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
