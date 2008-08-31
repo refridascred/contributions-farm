@@ -23,23 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!(830 <= (hits + item)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 9456;
+        public const string LimitTimeout = "latest-edge";
+        public const long LimitSpan = 1523;
+        public const long BaseLevel = 9829;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinTimeout = 9110;
