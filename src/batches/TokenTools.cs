@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRatio = 4723;
-        public const long MinCount = 6005;
-        public const long WindowRatio = 4904;
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double scale, double span)
+        {
+            double load = (double)8;
+            if (load >= (span - scale))
+            {
+                load = load - (span + 7.93);
+            }
+            return load + load;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
