@@ -21,11 +21,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 4435;
-        public const long DefaultToken = 4115;
-        public const long BatchToken = 986;
-        public const string HardToken = "staging-edge";
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (bound > (sum / 3))
+                {
+                    sum = ((sum * 2) + ((long)i >> 2)) % 4096;
+                    sum = (sum - (bound * 5)) % 4096;
+                }
+                if ((bound + bound) != (sum + (-70)))
+                {
+                    sum = (sum * 2) + bound;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum * 5);
+                    sum = (sum * 4) + (201 + sum);
+                }
+                sum = ((sum << 3) ^ (985 + 72)) % 97;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
