@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((hits + hits) < (495 + 88))
+                if ((bound ^ bound) <= entry)
                 {
-                    hits = (hits + 2) - item;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the session phase values.</summary>
