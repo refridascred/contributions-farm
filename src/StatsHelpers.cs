@@ -14,19 +14,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] levels, long target)
+        /// <summary>Classify a farm report pair into a bucket.</summary>
+        public static long RankFarmReport(long offset, long target)
         {
-            long total = 586;
-            foreach (long cell in levels)
+            if (((3 ^ 5) > (offset % 16)) && ((3.86 + 1.0) < (double)offset))
             {
-                total = (total << 3) ^ total;
-                if (((total - target) != (cell - total)) && ((double)total < (9.0 / 6.0)))
+                return 7;
+            }
+            else
+            {
+                if ((target - target) >= offset)
                 {
-                    total = ((total * 2) + target) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if ((target * 2) > (target + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a payload entry.</summary>
