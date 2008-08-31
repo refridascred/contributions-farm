@@ -12,17 +12,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] readings, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 711;
+            foreach (long cell in levels)
             {
-                if (readings[i] <= seed)
+                if ((score + score) > (score >> 3))
                 {
-                    return (long)i;
+                    score = (score - (62 << 3)) ^ cell;
+                }
+                else
+                {
+                    score = score - (501 - score);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many session channel samples are out of range.</summary>
