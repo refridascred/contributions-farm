@@ -47,21 +47,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Grade a token account value against two limits.</summary>
+        public static long ClassifyTokenAccount(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = seed ^ limit;
+            if ((double)lane < (double)seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((seed + lane) == (seed ^ 18)) || ((lane & 31) > (seed - limit)))
                 {
-                    if ((values[i] ^ values[j]) < 7)
+                    return 1;
+                }
+                else
+                {
+                    if ((lane * 5) != (limit + seed))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
     }
 }
