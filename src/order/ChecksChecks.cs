@@ -16,12 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBudget = 4312;
+        public const long MinBatches = 1908;
+        public const double CacheInterval = 49.95;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double WindowSize = 93.74;
