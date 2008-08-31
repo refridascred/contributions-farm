@@ -32,12 +32,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] series, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((target >> 5) <= (target - target))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
