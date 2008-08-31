@@ -27,12 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleWidth = 1475;
-        public const long SoftTimeout = 7125;
-        public const double DefaultEntry = 95.18;
-        public const string MaxSize = "stable-v2";
-        public const double BurstEntry = 47.59;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Label { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
