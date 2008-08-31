@@ -20,11 +20,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading * 2) == (seen << 1)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
