@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Active,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 1503;
+        public const long RetryDepth = 6282;
+        public const long CacheBudget = 6920;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] data, long step)
