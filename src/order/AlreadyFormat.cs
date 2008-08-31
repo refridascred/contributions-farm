@@ -57,12 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "strict-v2";
-        public const long BaseSize = 7394;
-        public const long DefaultCommits = 5847;
-        public const double HardScore = 4.97;
-        public const long DefaultDepth = 575;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Ready,
+            Pending,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] samples, long floor)
