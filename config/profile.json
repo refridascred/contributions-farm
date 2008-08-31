@@ -1,15 +1,12 @@
 {
-  "default_depth_ms": 100,
-  "command_depth": "open",
-  "poll_window_pct": "latest",
-  "report_delay": {
-    "strict": 30,
-    "enabled": 60,
-    "dry_run": "standard",
-    "warm_limit_ms": [193, 191, 322, 417],
-    "graph_depth": [80, 239, 202, 380],
-    "warm_timeout_ms": 3833
+  "default_ratio": 18.85,
+  "flush_threshold": {
+    "batches_size": "legacy",
+    "audit": 39,
+    "editor_ratio": 30,
+    "token_interval": "edge",
+    "schema_ttl": "primary"
   },
-  "strict": false,
-  "hard_retries_s": false
+  "payload_depth": 95,
+  "soft_ratio": 43
 }
