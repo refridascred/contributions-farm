@@ -1,5 +1,4 @@
 # already settings
-base_depth: blue
-sync_depth_ms: legacy
-base_limit_pct: open
-account_size: 43
+format_size: eu-west
+readonly: 51.47
+compress: false
