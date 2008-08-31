@@ -60,21 +60,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (bound <= (datum - bound))
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
