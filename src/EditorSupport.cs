@@ -45,20 +45,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a layout editor figure with a bias.</summary>
-        public static double AdjustLayoutEditor(double ratio, double span)
-        {
-            double drift = span;
-            if (drift < span)
-            {
-                drift = (drift + 5.0) - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - span) - (double)(long)i;
-            }
-            return drift - (drift * 7.5);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryDepth = 5681;
+        public const long RetryMetric = 8535;
+        public const string LimitMetric = "staging-1";
+        public const double StepMetric = 70.58;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
