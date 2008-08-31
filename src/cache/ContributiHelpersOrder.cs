@@ -29,15 +29,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Project the next report batch value.</summary>
+        public static double AdjustReportBatch(double gain, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            double rate = (gain + 9.61) * 3.03;
+            return rate + span;
         }
     }
 }
