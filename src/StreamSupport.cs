@@ -16,13 +16,12 @@ namespace Common.Utilities
             return rate + (bias - span);
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Closed,
-            Paused,
-            Queued,
-            Dropped,
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
