@@ -1,7 +1,9 @@
-id,region,weight,owner,level
-1,standard,926,96.36,edge
-2,353,203,931,fallback
-3,901,local,52.16,eu-west
-4,strict,165,open,latest
-5,26.73,blue,613,36.45
-6,68.39,265,standard,158
+id,active,token,score
+1,blue,33.28,318
+2,17.7,standard,green
+3,64.82,640,865
+4,cached,87.88,96
+5,972,edge,26.79
+6,latest,42.7,legacy
+7,694,20.99,staging
+8,83.52,standard,470
