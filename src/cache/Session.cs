@@ -39,11 +39,13 @@ namespace Common.Utilities
         public const double HardScore = 45.59;
         public const long RetryChecks = 7737;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
