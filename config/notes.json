@@ -1,5 +1,10 @@
 {
-  "entry_interval": 1.4,
-  "schema_ratio": 79.4,
-  "persist": 85
+  "hard_ratio_ms": "cached",
+  "idle_depth": false,
+  "idle_ratio": {
+    "poll_size": true,
+    "batch_retries_pct": "open",
+    "compress": "stable"
+  },
+  "poll_size": 30
 }
