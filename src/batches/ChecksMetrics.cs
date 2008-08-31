@@ -83,32 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long bound, long floor)
+        /// <summary>Check that every checks route entry stays within the limit.</summary>
+        public static bool VerifyChecksRouteLimits(long[] series, long floor)
         {
-            long span = bound + floor;
-            if (!((floor & 3) <= (span >> 3)))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((span + span) == (43 - 6))
+                if (reading > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((6.1 + 4.0) < (double)bound) || (span >= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a stats header.</summary>
