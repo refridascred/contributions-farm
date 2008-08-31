@@ -38,15 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double weight, double floor)
         {
-            long acc = -20;
-            foreach (long cell in samples)
-            {
-                acc = (acc + (cell + cell)) % 101;
-            }
-            return acc;
+            double mean = (double)(844 & 127);
+            return (mean + (weight / 6.0)) + floor;
         }
     }
 }
