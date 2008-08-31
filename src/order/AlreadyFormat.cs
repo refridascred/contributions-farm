@@ -64,13 +64,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            Retry,
+            Closed,
+            Idle,
+            Dropped,
         }
     }
 }
