@@ -50,19 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] values, long origin)
+        /// <summary>Find the first cache window entry that matches the target.</summary>
+        public static long LookupCacheWindowIndex(long[] levels, long origin)
         {
-            long mark = 5;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
                 {
-                    mark = (mark - (mark + (long)i)) % 97;
+                    return (long)i;
                 }
-                mark = mark ^ (entry + origin);
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of notes buffer entries.</summary>
