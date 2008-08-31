@@ -29,11 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleFactor = 7275;
-        public const long BatchCount = 7248;
-        public const string StepBuffer = "legacy-edge";
-        public const long BurstBuffer = 8494;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!(((count + entry) == (entry & 127)) && ((entry + count) < (count * 5))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
