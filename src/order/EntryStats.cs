@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
