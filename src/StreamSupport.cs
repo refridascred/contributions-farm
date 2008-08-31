@@ -53,21 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count filter session pairs that satisfy a relation.</summary>
-        public static long PairFilterSessionCount(long[] levels)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 19)
+                    if ((levels[i] - levels[j]) < 18)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
