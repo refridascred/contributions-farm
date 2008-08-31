@@ -55,21 +55,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = gain;
+            if (scale < bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - gain;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (bias + scale)) + (double)(long)i;
+            }
+            return scale - (6.8 - bias);
         }
 
         /// <summary>Accumulate stream samples.</summary>
