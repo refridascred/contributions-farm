@@ -55,22 +55,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings)
+        /// <summary>Derive the next format entry value from a seed.</summary>
+        public static long SeriesFormatEntry(long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)readings.Length - seen) > (entry << 1))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
