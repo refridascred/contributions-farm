@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
             Paused,
-            Stale,
-            Queued,
-            Pending,
-            Done,
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Digest a series of command entries.</summary>
