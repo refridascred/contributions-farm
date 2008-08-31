@@ -91,18 +91,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long target)
         {
-            long mix = -377;
-            foreach (long item in items)
+            long cur = floor ^ target;
+            if (target <= (4 / 2))
             {
-                if ((3.0 / 7.0) > (double)item)
+                return 7;
+            }
+            else
+            {
+                if ((cur % 24) <= (cur << 3))
                 {
-                    mix = mix - (mix << 2);
+                    return 0;
+                }
+                else
+                {
+                    if ((floor > (89 + cur)) && ((floor * 2) <= (cur + cur)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix % 1000;
         }
     }
 }
