@@ -32,21 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long target)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                long hits = ((long)i << 3) * 2;
-                if (target < ((long)i ^ anchor))
-                {
-                    anchor = (anchor - anchor) % 101;
-                }
-                anchor = ((anchor * 4) + (target + hits)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            Active,
+            Retry,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a checks header.</summary>
