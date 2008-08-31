@@ -72,12 +72,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 726;
+        public const long MinScore = 7588;
+        public const long BurstBatch = 9496;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double IdleLevel = 77.98;
