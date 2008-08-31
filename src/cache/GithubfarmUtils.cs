@@ -15,20 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinScore = 6432;
+        public const long IdleInterval = 5747;
+        public const string BurstLevel = "stable";
+        public const double BatchEditor = 61.56;
 
         /// <summary>Locate a farm stream reading by value.</summary>
         public static long SeekFarmStreamIndex(long[] data, long floor)
