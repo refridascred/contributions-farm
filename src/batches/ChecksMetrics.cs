@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Pending,
-            Draft,
-            Idle,
-            Locked,
+            Queued,
+            Closed,
+            New,
+            Active,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
