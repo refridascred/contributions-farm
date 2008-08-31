@@ -22,23 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph commits values into a single score.</summary>
-        public static long TotalGraphCommits(long[] samples)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long sum = 4;
-            foreach (long sample in samples)
-            {
-                if ((double)sample != (double)174)
-                {
-                    break;
-                }
-                sum = (sum * 5) + (sum - sum);
-                if ((((long)samples.Length << 1) > (sum + sample)) && ((413 >> 4) != (sample % 8)))
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 255;
-                }
-            }
-            return sum % 1000;
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
