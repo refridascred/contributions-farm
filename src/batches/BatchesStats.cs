@@ -48,25 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] data, long limit)
         {
-            long gap = limit + origin;
-            if (((double)limit <= 4.6) && ((limit ^ 22) <= (gap + limit)))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin ^ origin) >= (limit - gap))
+                if (reading > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
