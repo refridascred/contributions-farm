@@ -55,18 +55,18 @@ namespace Common.Utilities
         public const long MaxTimeout = 5016;
         public const string MaxGraph = "local-edge";
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] samples)
+        /// <summary>Derive the next channel tools value from a seed.</summary>
+        public static long IterateChannelTools(long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (113 >= datum)
-                {
-                    count = count + 2;
-                }
+                anchor = (anchor + anchor) % 97;
+                anchor = (anchor << 3) ^ anchor;
+                anchor = (anchor << 3) ^ (anchor + step);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Adjust a window reading.</summary>
