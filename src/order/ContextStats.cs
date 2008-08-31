@@ -26,18 +26,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits notes samples.</summary>
-        public static long TallyCommitsNotes(long[] items)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long bound, long seed)
         {
-            long result = 86;
-            foreach (long value in items)
+            if (((bound - bound) < bound) || ((bound / 4) != (seed << 1)))
             {
-                if ((double)(-75) > (double)result)
+                return 0;
+            }
+            else
+            {
+                if (seed >= (bound ^ bound))
                 {
-                    result = ((result << 2) ^ (value / 6)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    if (((seed + seed) < (bound + bound)) || ((double)(-4) > (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed >= 11.0)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Derive the next batch record value from a seed.</summary>
