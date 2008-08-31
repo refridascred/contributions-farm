@@ -44,32 +44,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long floor, long limit)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long delta = floor - limit;
-            if ((delta & 1) <= floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)delta <= (19.0 + 4.4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor ^ limit) < (8 - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
