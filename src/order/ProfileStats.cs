@@ -47,13 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] series)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (7.0 <= (double)cell)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
