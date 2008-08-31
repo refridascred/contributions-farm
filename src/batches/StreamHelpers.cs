@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + acc) % 97;
-                if ((((long)i % 60) < (seed + 0)) || (seed <= acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc - 1) % 97;
+                    if ((values[i] - values[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
