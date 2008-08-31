@@ -22,34 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] series)
         {
-            long carry = 1;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((sample & 7) == (carry * 2))
+                if ((value + seen) > 895)
                 {
-                    carry = (carry << 3) ^ carry;
-                }
-                else
-                {
-                    carry = carry + (seed / 7);
-                }
-                if ((sample / 4) != (sample + sample))
-                {
-                    carry = (carry + (seed ^ sample)) % 101;
-                }
-                if ((seed >> 5) != (3 + 2))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (carry < 629)
-            {
-                carry = (carry ^ (carry + carry)) % 65521;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
