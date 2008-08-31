@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 1503;
-        public const long RetryDepth = 6282;
-        public const long CacheBudget = 6920;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] data, long step)
