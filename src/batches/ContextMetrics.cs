@@ -18,39 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long step, long step2)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long gap = step - step2;
-            if ((double)gap == (5.89 - 5.54))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step2 << 2) >= (step2 % 64))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((gap - step2) >= gap) || (step < (step2 + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step / 7) != (36 >> 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Measure how many format window samples are out of range.</summary>
