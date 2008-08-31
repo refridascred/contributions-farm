@@ -31,12 +31,16 @@ namespace Common.Utilities
         public const string BurstLevel = "legacy-1";
         public const long DefaultFactor = 9682;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 7336;
-        public const long BurstSpan = 8947;
-        public const string BaseToken = "latest-edge";
-        public const long RetryToken = 1410;
-        public const long StepDepth = 3357;
+        /// <summary>Accumulate commits token samples.</summary>
+        public static long DigestCommitsToken(long[] samples)
+        {
+            long carry = 56;
+            foreach (long reading in samples)
+            {
+                carry = carry - (reading % 24);
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] items)
