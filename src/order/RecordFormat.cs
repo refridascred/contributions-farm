@@ -23,10 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxInterval = 7929;
-        public const double IdleGithubfarm = 39.87;
-        public const long StepBudget = 6336;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen - seen) < (seen * 2))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long target, long floor)
