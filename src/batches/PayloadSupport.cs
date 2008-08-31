@@ -39,10 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 5619;
-        public const long StepLevel = 9133;
-        public const long LimitWidth = 1140;
-        public const long LimitTimeout = 5508;
+        /// <summary>Compare every pair of graph schema readings.</summary>
+        public static long PairGraphSchemaCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
