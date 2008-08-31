@@ -45,13 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Look up the position of a contributi batches sample.</summary>
+        public static long LookupContributiBatchesIndex(long[] items, long target)
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
