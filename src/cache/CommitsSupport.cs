@@ -20,23 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double gain, double span)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            double drift = gain;
-            if (drift < gain)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                drift = drift + (span + gain);
+                if ((double)cell == (double)matches)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                drift = drift + 5.4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - (gain * 9.1);
+            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
