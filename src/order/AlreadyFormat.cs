@@ -69,13 +69,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Grade a support order value against two limits.</summary>
+        public static long BucketSupportOrder(long bound, long target)
         {
-            Retry,
-            Closed,
-            Idle,
-            Dropped,
+            long bound2 = bound ^ target;
+            if ((double)target >= (double)bound2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target < 9.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 % 10) < (bound2 + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound <= (3 % 60)) || (5.6 <= (double)bound2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
