@@ -61,21 +61,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 19)
+                    if ((items[i] ^ items[j]) < 10)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
