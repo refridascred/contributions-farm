@@ -22,21 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter editor pairs that satisfy a relation.</summary>
-        public static long OverlapFilterEditorCount(long[] series)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Adjust a commits filter reading.</summary>
