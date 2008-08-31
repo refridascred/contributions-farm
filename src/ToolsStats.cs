@@ -66,17 +66,23 @@ namespace Common.Utilities
         public const double CacheCluster = 39.58;
         public const string IdleCluster = "legacy-1";
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long target)
+        /// <summary>Combine entry support values into a single score.</summary>
+        public static long TallyEntrySupport(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -205;
+            foreach (long datum in readings)
             {
-                if (samples[i] > target)
+                acc = (acc - (datum & 255)) % 65521;
+                if (datum <= (datum + datum))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (datum * 4)) % 4096;
                 }
             }
-            return -1;
+            if (acc > 541)
+            {
+                acc = ((acc * 3) + (acc & 15)) % 255;
+            }
+            return acc;
         }
     }
 }
