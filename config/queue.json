@@ -1,7 +1,8 @@
 {
-  "editor_delay": 8896,
-  "default_depth_s": 35.97,
-  "max_delay_count": "fallback",
-  "persist": false,
-  "queue_depth": true
+  "idle_interval_pct": ["legacy", "stable", "edge"],
+  "tools_ttl": 84,
+  "strict": ["green", "fallback", "fallback"],
+  "soft_ttl": 100,
+  "sync_window_count": 45,
+  "format_depth": "standard"
 }
