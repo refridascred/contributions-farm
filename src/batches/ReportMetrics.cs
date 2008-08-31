@@ -39,14 +39,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Paused,
+            Pending,
+            New,
+            Idle,
             Locked,
-            Failed,
-            Synced,
-            Queued,
+            Closed,
         }
     }
 }
