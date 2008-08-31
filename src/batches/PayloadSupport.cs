@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((((-93) - cell) <= cell) || ((cell - count) <= cell)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseWidth = 5442;
+        public const long WindowScore = 6997;
+        public const long HardDepth = 1380;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
