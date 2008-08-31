@@ -16,13 +16,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
+            Ready,
+            Active,
             Pending,
-            Draft,
-            Closed,
-            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the support status values.</summary>
