@@ -26,15 +26,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next already stream value.</summary>
-        public static double ScaleAlreadyStream(double scale, double floor)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double load = floor;
-            if (load <= (double)4)
-            {
-                load = (load - (double)7) + scale;
-            }
-            return load - (floor / 9.0);
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a commits batch sample.</summary>
