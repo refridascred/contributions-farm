@@ -62,13 +62,17 @@ namespace Common.Utilities
         public const double CacheCluster = 39.58;
         public const string IdleCluster = "legacy-1";
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long target)
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
