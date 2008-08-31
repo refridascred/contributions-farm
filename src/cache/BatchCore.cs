@@ -46,21 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up context tools samples.</summary>
-        public static long CompareContextToolsCount(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 417;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((total * 2) >= (0 & 255))
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + (offset % 60)) ^ reading;
                 }
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
