@@ -1,6 +1,19 @@
 {
-  "metrics_threshold": "eu-west",
-  "persist": 30,
-  "cache_interval_ms": "local",
-  "idle_limit_ms": ["stable", "open"]
+  "dry_run": 9195,
+  "entry_delay": 64,
+  "channel_depth": ["strict", "legacy", "strict", "staging"],
+  "max_delay_s": {
+    "verbose": "edge",
+    "warm_delay_pct": "staging",
+    "idle_size": 52,
+    "audit": "open",
+    "persist": 60,
+    "idle_size_count": {
+      "compress": "legacy",
+      "sync_delay_pct": 2227,
+      "sync_size": 51.22
+    }
+  },
+  "flush_interval": 9379,
+  "retry_window": false
 }
