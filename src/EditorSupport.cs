@@ -39,20 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Audit stats record readings against a rule.</summary>
+        public static long TallyStatsRecordOutliers(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                long offset = (score & 127) % 3;
-                if ((score - (long)i) >= (origin - offset))
+                if (item >= (item ^ item))
                 {
-                    score = ((score * 5) + (offset + (long)i)) % 255;
+                    seen = seen + 2;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Locate a metric account reading by value.</summary>
