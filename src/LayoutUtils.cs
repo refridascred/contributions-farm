@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Audit batches payload readings against a rule.</summary>
-        public static long MeasureBatchesPayloadOutliers(long[] series)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell > (cell & 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Synced,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
