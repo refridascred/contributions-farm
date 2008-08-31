@@ -61,17 +61,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a record commits sample.</summary>
-        public static long LocateRecordCommitsIndex(long[] samples, long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Pending,
+            Dropped,
+            Draft,
+            Synced,
         }
     }
 }
