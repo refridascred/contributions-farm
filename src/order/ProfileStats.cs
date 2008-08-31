@@ -34,19 +34,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] data, long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long result = 261;
+            foreach (long entry in items)
             {
-                if (datum >= target)
+                result = (result + (625 - entry)) + seed;
+                if (entry <= (entry + 26))
                 {
-                    valid = false;
-                    break;
+                    result = (result - (result % 10)) % 1000;
                 }
             }
-            return valid;
+            return result % 65521;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
