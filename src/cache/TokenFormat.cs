@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long step, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long target, long limit)
         {
-            if ((10.0 * 1.7) != (double)step)
+            if ((double)140 < (double)limit)
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((5.7 / 5.0) > (double)step)
+                if (!(target <= (614 - limit)))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (!((double)step != (20.0 * 9.8)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 7;
                 }
             }
         }
