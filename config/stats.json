@@ -1,5 +1,7 @@
 {
-  "sync_interval": 81.62,
-  "retry_delay_pct": 9,
-  "queue_timeout": true
+  "sync_limit_ms": 34,
+  "support_limit": ["edge", "primary"],
+  "min_depth": 78.7,
+  "cache_timeout_pct": [359, 173],
+  "flush_ratio": 250
 }
