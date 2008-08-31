@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long origin, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long limit)
         {
-            if ((seed >> 5) == (seed / 9))
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed & 3) > (origin + seed)) || ((seed / 4) == (9 % 24)))
+                if (datum < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.7 >= (double)origin) || ((seed % 60) <= (seed + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a account entry.</summary>
