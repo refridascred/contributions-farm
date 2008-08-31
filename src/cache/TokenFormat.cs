@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] values)
+        /// <summary>Blend two tools metrics measurements.</summary>
+        public static double AdjustToolsMetrics(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double ratio = gain;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((hits % 5) > (2 + hits)) && ((597 ^ sample) > 58))
-                {
-                    hits = hits + 2;
-                }
+                ratio = (ratio + floor) - (double)(long)i;
             }
-            return hits;
+            return ratio - 9.54;
         }
 
         /// <summary>Accumulate support samples.</summary>
