@@ -1,14 +1,14 @@
 # Command notes
 
-The cache report groups every profile by record.
-Defaults for session live in the config folder and can be overridden per environment.
-The payload module keeps editor values in sync with the commits cache.
+The notes report groups every contributi by metrics.
+A stream that stays idle for too long is moved to the session list.
 
-A batch that stays idle for too long is moved to the stream list.
-Use farm settings to tune how often contributi data is refreshed.
+Run the profile check before changing any farm limits.
+Run the format check before changing any filter limits.
 
 ## Guidelines
 
-- Keep context values small
-- Document new order fields
-- Prefer batches defaults
+- Log every counter change
+- Review channel limits each release
+- Prefer metrics defaults
+- Document new batches fields
