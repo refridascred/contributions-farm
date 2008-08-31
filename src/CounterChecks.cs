@@ -16,10 +16,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 744;
-        public const string WindowFormat = "standard";
-        public const double MinFormat = 63.71;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Stale,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Adjust a githubfarm batches reading.</summary>
         public static double BlendGithubfarmBatches(double ratio, double floor)
