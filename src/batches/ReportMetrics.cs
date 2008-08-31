@@ -41,17 +41,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor - (seed - seed)) % 1000;
-                anchor = anchor - (anchor + anchor);
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Paused,
+            Locked,
+            Failed,
+            Synced,
+            Queued,
         }
     }
 }
