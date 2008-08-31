@@ -1,13 +1,4 @@
 # route settings
-warm_delay_s:
-  - eu-west
-  - local
-  - strict
-  - stable
-poll_timeout:
-  persist: open
-  burst_delay_pct: green
-  verbose: true
-  compress: 19
-  enabled: 77.07
-persist: primary
+record_window: 91
+soft_capacity: blue
+layout_ratio: 2016
