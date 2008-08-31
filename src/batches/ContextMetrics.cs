@@ -13,17 +13,39 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long floor2)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long span = floor ^ floor2;
+            if (((span / 6) >= floor) || ((1.28 * 5.28) < (double)span))
             {
-                total = total ^ (total + total);
-                total = ((total << 3) ^ origin) % 101;
-                total = ((total * 4) + (long)i) % 97;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (!(floor < span))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)span == (20.0 / 5.0)) || ((floor + span) < 969))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor2 >= (span % 64))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many format window samples are out of range.</summary>
