@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const long HardSpan = 2614;
         public const string LimitFactor = "staging-v2";
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            Stale,
-            Synced,
-            Retry,
-            Dropped,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
