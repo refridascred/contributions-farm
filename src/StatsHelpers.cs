@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultRatio = 41.07;
-        public const long HardSpan = 2614;
-        public const string LimitFactor = "staging-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 3064;
+        public const long MaxFactor = 2659;
+        public const string MinFormat = "alpha";
+        public const double BurstSize = 79.61;
+        public const string LimitFormat = "fallback-edge";
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheRange(long[] readings, long bound)
