@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] series, long offset)
+        /// <summary>Match up editor commits samples.</summary>
+        public static long OverlapEditorCommitsCount(long[] items)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
