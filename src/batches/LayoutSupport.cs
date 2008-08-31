@@ -36,12 +36,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 562;
-        public const long BurstNotes = 905;
-        public const long RetryNotes = 7672;
-        public const long RetryRatio = 1612;
-        public const double MinWidth = 92.78;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((long)items.Length < tally)
+                {
+                    tally = ((tally + 3) + entry) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double AdjustBatches(double weight, double offset)
