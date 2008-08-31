@@ -27,18 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account notes readings against a rule.</summary>
-        public static long CountAccountNotesGaps(long[] data, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((value >> 4) == (tally % 24)) && (((2 + tally) >= target) && ((15.0 / 6.0) == (double)target)))
-                {
-                    tally = tally + 3;
-                }
+                total = ((total * 2) + total) % 101;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Audit already stream readings against a rule.</summary>
