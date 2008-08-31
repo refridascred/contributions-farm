@@ -1,7 +1,6 @@
 {
-  "sync_limit_ms": 34,
-  "support_limit": ["edge", "primary"],
-  "min_depth": 78.7,
-  "cache_timeout_pct": [359, 173],
-  "flush_ratio": 250
+  "audit": [90, 378],
+  "strict": 1024,
+  "compress": 61.41,
+  "flush_retries": "standard"
 }
