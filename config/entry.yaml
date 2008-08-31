@@ -1,4 +1,21 @@
 # entry settings
-notes_window: 53.93
-min_ttl_s: 30
-strict: 8060
+session_size:
+  - eu-west
+  - staging
+  - standard
+max_ratio_s: true
+min_capacity_ms: 7488
+hard_size:
+  cache_depth_ms:
+    batch_retries_ms: 63.6
+    base_interval: 2838
+    idle_retries: 68.09
+    max_retries_s: true
+    burst_window: stable
+    readonly: legacy
+  min_ttl_s: legacy
+  report_window: eu-west
+  soft_limit: 69
+  sync_retries_pct: blue
+  default_timeout_s: open
+hard_threshold: 47
