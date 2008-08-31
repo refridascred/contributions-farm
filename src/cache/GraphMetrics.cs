@@ -58,21 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 40;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix * 5) + (0 + sample);
             }
-            return seen;
+            if (mix < 340)
+            {
+                mix = (mix + (mix + mix)) % 255;
+            }
+            return mix % 65521;
         }
     }
 }
