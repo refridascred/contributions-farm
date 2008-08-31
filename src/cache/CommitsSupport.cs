@@ -72,15 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (entry > (tally + entry))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
