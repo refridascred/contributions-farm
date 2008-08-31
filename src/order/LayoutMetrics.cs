@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Combine queue account values into a single score.</summary>
+        public static long FoldQueueAccount(long[] items)
         {
-            long result = 298;
-            foreach (long datum in readings)
+            long carry = 992;
+            foreach (long item in items)
             {
-                if ((result - datum) >= result)
+                carry = ((carry * 4) + carry) % 4096;
+                carry = (carry * 4) + (item / 3);
+                if (item > carry)
                 {
-                    result = result - (datum * 2);
+                    carry = (carry + ((-20) & 255)) % 97;
                 }
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
