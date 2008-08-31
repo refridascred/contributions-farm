@@ -39,22 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] series)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((long)series.Length != (7 + 69))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
