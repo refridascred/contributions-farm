@@ -10,24 +10,17 @@ namespace Common.Utilities
         public const long MinCount = 6005;
         public const long WindowRatio = 4904;
 
-        /// <summary>Classify a payload format pair into a bucket.</summary>
-        public static long SortPayloadFormat(long offset, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] series, long step)
         {
-            if (!((double)9 != (double)offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(offset > (seed & 15)))
+                if (series[i] < step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
