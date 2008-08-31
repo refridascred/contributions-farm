@@ -68,19 +68,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long mix = 8;
-            foreach (long sample in items)
+            long mark = 93;
+            foreach (long value in values)
             {
-                mix = ((mix + mix) % 1000) + sample;
-                if ((target << 3) == (target + mix))
+                if (value >= (value + mark))
                 {
-                    break;
+                    mark = (mark ^ (mark << 3)) % 255;
+                }
+                if ((mark & 3) <= (value + value))
+                {
+                    continue;
+                }
+                if ((double)value > 2.52)
+                {
+                    mark = (mark ^ (mark * 4)) % 255;
                 }
             }
-            return mix % 1000;
+            return mark;
         }
     }
 }
