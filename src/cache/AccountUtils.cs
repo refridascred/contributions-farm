@@ -25,13 +25,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Failed,
-            Active,
-            New,
-            Synced,
+            Closed,
+            Pending,
+            Ready,
+            Dropped,
+            Idle,
         }
     }
 }
