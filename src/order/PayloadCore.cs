@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many account record samples are out of range.</summary>
-        public static long CountAccountRecordOutliers(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((item + seen) >= (seen + seen)) || ((item + 376) != (item + item)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
