@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitCount = 1910;
-        public const long BurstEditor = 117;
-        public const long BaseWidth = 8989;
-        public const long HardEditor = 6665;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!!((reading & 31) != (count * 3)))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double scale, double offset)
