@@ -1,29 +1,4 @@
 # support settings
-min_interval_s: open
-compress: false
-persist:
-  - 426
-  - 24
-  - 132
-cache_depth_ms: strict
-readonly:
-  persist: true
-  route_timeout:
-    - 175
-    - 208
-    - 323
-  burst_size_count: 60
-  max_ratio_s:
-    - 367
-    - 231
-  metrics_delay: eu-west
-  batch_ttl:
-    idle_ttl_ms: 90.49
-    channel_window:
-      - 216
-      - 424
-      - 343
-    soft_size_pct:
-      - 146
-      - 165
-flush_capacity_s: 302
+flush_window_pct: 52
+editor_ttl: 1056
+warm_size_ms: 59
