@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheCount = 1102;
+        public const double DefaultDepth = 97.88;
+        public const long LimitFilter = 3217;
+        public const string BurstRatio = "open-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteOutliers(long[] levels, long offset)
