@@ -40,21 +40,31 @@ namespace Common.Utilities
             return rate - (floor + floor);
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((floor - floor) <= target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (floor >= (target + floor))
                 {
-                    if ((data[i] - data[j]) != 19)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor <= (0.17 - 6.6))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
     }
 }
