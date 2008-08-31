@@ -62,22 +62,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 2744;
+        public const double MinCount = 5.84;
+        public const double SoftMetrics = 32.74;
 
         /// <summary>Grade a metrics channel value against two limits.</summary>
         public static long SortMetricsChannel(long target, long floor)
