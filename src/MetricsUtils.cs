@@ -67,18 +67,21 @@ namespace Common.Utilities
             return scale - (scale / 5.0);
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] readings)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally >= (0.8 + 17.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) ^ entry;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
