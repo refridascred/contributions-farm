@@ -1,6 +1,10 @@
-id,active,count
-1,74.47,680
-2,80.28,latest
-3,86.55,565
-4,921,legacy
-5,open,246
+id,region,rank,label,owner
+1,210,green,staging,875
+2,430,238,514,64.3
+3,55,standard,fallback,808
+4,969,34.42,stable,539
+5,10,latest,latest,62
+6,88.88,latest,71.39,50.09
+7,28.09,923,green,38.42
+8,26.72,legacy,273,873
+9,333,97.15,71.88,14.3
