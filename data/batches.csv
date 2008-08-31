@@ -1,9 +1,7 @@
-id,rank,active,state,score
-1,cached,352,77.74,staging
-2,844,fallback,edge,primary
-3,77.58,21.14,436,80.55
-4,local,latest,stable,green
-5,fallback,216,22.7,45.67
-6,450,18.33,342,primary
-7,stable,984,40.28,678
-8,green,fallback,489,legacy
+id,weight,rank,score,owner
+1,904,343,834,181
+2,local,332,476,17.76
+3,178,fallback,198,395
+4,open,78.69,980,25.02
+5,44.61,edge,89,11.43
+6,847,39.53,standard,62.26
