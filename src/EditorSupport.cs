@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats record readings against a rule.</summary>
-        public static long TallyStatsRecordOutliers(long[] items)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (item >= (item ^ item))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a metric account reading by value.</summary>
