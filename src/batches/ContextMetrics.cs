@@ -13,12 +13,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total ^ (total + total);
+                total = ((total << 3) ^ origin) % 101;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many format window samples are out of range.</summary>
