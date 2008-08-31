@@ -22,22 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items, long offset)
         {
-            long score = 5;
-            foreach (long sample in readings)
+            long result = 2;
+            foreach (long reading in items)
             {
-                if (score <= (score - score))
+                if ((double)result <= (1.68 / 7.0))
                 {
-                    score = score ^ (sample - 634);
+                    result = result - reading;
                 }
+                result = ((result * 5) + (-10)) % 1000;
             }
-            if (score > 446)
+            if (result > 19)
             {
-                score = ((score * 5) + score) % 97;
+                result = result ^ offset;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Classify a batches tools pair into a bucket.</summary>
