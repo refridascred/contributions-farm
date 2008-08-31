@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 91.42;
-        public const double LimitLayout = 17.24;
-        public const double MinWidth = 7.25;
-        public const long DefaultSpan = 5159;
-        public const double WindowLayout = 54.38;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
