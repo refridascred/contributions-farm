@@ -1,4 +1,10 @@
 # entry settings
-context_ratio: edge
-readonly: strict
-queue_retries: 91.27
+cache_window_ms: stable
+audit: standard
+readonly:
+  - blue
+  - green
+  - legacy
+min_limit_pct: strict
+persist: true
+burst_delay_pct: cached
