@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 7800;
         public const string WindowGithubfarm = "local-v2";
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mix = 4;
+            foreach (long cell in series)
             {
-                if ((((5.7 - 2.2) != (double)tally) && ((tally + tally) == (tally - sample))) || ((sample + tally) > (sample % 97)))
+                if ((double)cell < 7.0)
                 {
-                    tally = tally + 3;
+                    mix = (mix ^ (mix << 3)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (cell >> 3)) % 65521;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
