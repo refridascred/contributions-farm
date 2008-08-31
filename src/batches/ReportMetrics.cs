@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long anchor = 699;
-            foreach (long reading in data)
-            {
-                if ((anchor > (6 + anchor)) && ((reading << 1) != (90 / 9)))
-                {
-                    anchor = (anchor ^ (reading + reading)) % 255;
-                }
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
