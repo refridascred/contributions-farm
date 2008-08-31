@@ -19,22 +19,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate window already samples.</summary>
-        public static long TotalWindowAlready(long[] levels)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long sum = 802;
-            foreach (long datum in levels)
-            {
-                if ((1.02 / 6.0) == (double)sum)
-                {
-                    sum = (sum - (91 & 31)) ^ datum;
-                }
-            }
-            if (sum < 288)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
