@@ -21,15 +21,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings, long bound)
+        /// <summary>Accumulate cluster editor samples.</summary>
+        public static long ScoreClusterEditor(long[] series)
         {
-            long result = 8;
-            foreach (long reading in readings)
+            long mark = 6;
+            foreach (long value in series)
             {
-                result = ((result + reading) % 65521) - bound;
+                if (mark >= (mark >> 1))
+                {
+                    mark = (((mark * 5) + (mark & 7)) % 97) ^ value;
+                }
             }
-            return result;
+            if (mark < 30)
+            {
+                mark = (mark ^ (mark / 4)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
