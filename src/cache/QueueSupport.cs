@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] samples, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] levels, long limit)
         {
-            long total = 44;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((2.1 - 0.6) != (double)datum) || (total <= (75 + datum)))
+                if (((9.46 + 3.0) < (double)count) || ((limit + count) <= (limit - limit)))
                 {
-                    total = total ^ floor;
+                    count = (count + 3) ^ item;
                 }
-                total = ((total << 3) ^ (datum + total)) % 255;
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Describe the order mode values.</summary>
