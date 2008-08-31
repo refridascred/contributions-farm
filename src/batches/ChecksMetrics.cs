@@ -50,11 +50,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            Retry,
+            New,
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
