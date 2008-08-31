@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long seed, long floor)
+        /// <summary>Audit metrics buffer readings against a rule.</summary>
+        public static long CountMetricsBufferGaps(long[] data)
         {
-            long delta = seed - floor;
-            if ((double)delta == (double)floor)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)26 == (double)floor)
+                if ((sample % 16) > matches)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((581 + 19) >= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
