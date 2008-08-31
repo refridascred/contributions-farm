@@ -1,8 +1,12 @@
 # entry settings
-audit: 26
-idle_size: 92.64
-githubfarm_size:
-  - 333
-  - 460
-  - 88
-  - 394
+stream_capacity: true
+command_limit:
+  metrics_window: true
+  flush_window_count:
+    - green
+    - legacy
+  verbose: 79.1
+warm_interval:
+  strict: standard
+  cache_timeout: local
+  sync_retries_count: green
