@@ -67,10 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 2744;
-        public const double MinCount = 5.84;
-        public const double SoftMetrics = 32.74;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)count <= (double)item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a metrics channel value against two limits.</summary>
         public static long SortMetricsChannel(long target, long floor)
