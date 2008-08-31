@@ -1,6 +1,7 @@
-id,rank,active,token
-1,open,45.69,edge
-2,82.55,469,fallback
-3,450,44.62,368
-4,686,655,52.22
-5,904,931,442
+id,label,score,rank,owner
+1,71.55,247,709,421
+2,352,eu-west,387,cached
+3,34,458,strict,19.25
+4,12.26,551,edge,edge
+5,759,6.27,843,56.02
+6,14.77,330,905,eu-west
