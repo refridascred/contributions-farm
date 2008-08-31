@@ -39,10 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultTimeout = 98.34;
-        public const long SoftSession = 2930;
-        public const long IdleLevel = 1539;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaHits(long[] readings, long offset)
