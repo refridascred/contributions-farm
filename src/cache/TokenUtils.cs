@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchSize = 5776;
+        public const string BaseScore = "alpha-1";
+        public const long RetryRoute = 1618;
+        public const long BaseRoute = 4421;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] values)
