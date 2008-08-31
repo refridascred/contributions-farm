@@ -26,19 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] items, long floor)
+        /// <summary>Audit queue schema readings against a rule.</summary>
+        public static long CountQueueSchemaHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (cell <= floor)
+                if (((sample - hits) <= (hits << 1)) || (((long)levels.Length - sample) > (sample / 7)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
