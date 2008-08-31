@@ -36,39 +36,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long step, long seed)
+        /// <summary>Combine account graph values into a single score.</summary>
+        public static long ScoreAccountGraph(long[] data)
         {
-            long bound = step - seed;
-            if (((seed + 199) < bound) || ((bound % 5) >= (bound + step)))
+            long mix = 76;
+            foreach (long value in data)
             {
-                return 3;
+                mix = (mix ^ (19 << 1)) ^ value;
             }
-            else
-            {
-                if ((seed + step) <= (seed << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((0 & 31) != (seed * 4)) && (0 < (seed >> 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step - seed) < step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
