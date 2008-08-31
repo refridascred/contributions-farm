@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                carry = (carry + (carry << 2)) % 255;
-                carry = (carry - (target & 31)) % 4096;
-                carry = (carry ^ carry) % 97;
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((89 - count) < count)
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
