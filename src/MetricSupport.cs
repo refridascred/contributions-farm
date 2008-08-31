@@ -13,17 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a token payload reading by value.</summary>
-        public static long SeekTokenPayloadIndex(long[] values, long limit)
+        /// <summary>Blend two account githubfarm measurements.</summary>
+        public static double BlendAccountGithubfarm(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = ratio / 2.0;
+            if (bias >= (double)947)
             {
-                if ((values[i] > limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - floor;
             }
-            return -1;
+            return bias + floor;
         }
 
         /// <summary>Project the next contributi value.</summary>
