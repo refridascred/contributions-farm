@@ -25,18 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] data)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)reading >= (9.0 * 1.13)) && ((reading * 5) != (reading * 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
