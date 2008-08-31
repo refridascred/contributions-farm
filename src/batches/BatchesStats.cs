@@ -28,18 +28,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] values, long seed)
+        /// <summary>Classify a window channel pair into a bucket.</summary>
+        public static long RankWindowChannel(long limit, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if (!((double)limit < (6.0 - 3.28)))
             {
-                if ((cell + cell) > (seed - seen))
+                return 3;
+            }
+            else
+            {
+                if ((limit > (limit + target)) || (target > limit))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
