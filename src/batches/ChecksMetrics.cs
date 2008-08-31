@@ -111,19 +111,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer editor entry stays within the limit.</summary>
-        public static bool GuardBufferEditorRange(long[] series, long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
