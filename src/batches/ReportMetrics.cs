@@ -41,10 +41,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepScore = 2199;
-        public const long RetryTimeout = 1784;
-        public const double RetryStream = 72.68;
-        public const long DefaultStream = 3823;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor - (seed - seed)) % 1000;
+                anchor = anchor - (anchor + anchor);
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
