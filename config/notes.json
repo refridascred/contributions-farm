@@ -1,8 +1,14 @@
 {
-  "persist": false,
-  "batch_depth": "local",
-  "dry_run": 81.37,
-  "batch_timeout_s": 39.01,
-  "max_threshold_pct": 94.1,
-  "batches_retries": 45.13
+  "dry_run": {
+    "dry_run": "standard",
+    "channel_depth": [491, 410, 325, 168],
+    "verbose": "blue",
+    "githubfarm_capacity": "standard",
+    "soft_timeout_s": "edge"
+  },
+  "format_threshold": 42.96,
+  "burst_depth_pct": ["legacy", "staging", "staging"],
+  "soft_ratio_count": "eu-west",
+  "flush_ttl_s": [99, 251, 353],
+  "flush_delay": "local"
 }
