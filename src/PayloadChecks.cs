@@ -76,18 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] data)
+        /// <summary>Look up the position of a commits editor sample.</summary>
+        public static long SeekCommitsEditorIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry & 7) == (entry * 2))
+                if (items[i] >= seed)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
