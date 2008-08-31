@@ -1,20 +1,8 @@
 {
-  "idle_retries_pct": {
-    "dry_run": {
-      "warm_retries_ms": [417, 357, 205, 271],
-      "payload_ttl": 3669,
-      "contributi_interval": 82.09,
-      "verbose": 1024,
-      "soft_capacity_s": ["green", "local"],
-      "stream_ttl": 1024
-    },
-    "idle_retries": 50.89,
-    "verbose": 250,
-    "compress": "staging",
-    "account_timeout": 60
-  },
-  "batches_threshold": true,
-  "readonly": [335, 232],
-  "strict": 25,
-  "dry_run": false
+  "hard_size_count": 6622,
+  "batch_delay": true,
+  "warm_depth_pct": ["strict", "latest"],
+  "max_ttl_count": 60,
+  "readonly": "edge",
+  "retry_retries_s": [429, 234, 10]
 }
