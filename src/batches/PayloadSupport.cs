@@ -19,29 +19,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long limit, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long target, long seed)
         {
-            long next = limit - target;
-            if ((next + 887) >= limit)
+            long delta = target + seed;
+            if ((seed - target) == (3 + delta))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (!(target < (target - target)))
+                if (!((794 + 3) < (delta - delta)))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((509 % 24) < (target & 1))
+                    if (seed <= (seed - target))
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        return 2;
+                        if ((double)target <= (4.41 + 14.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
