@@ -16,11 +16,19 @@ namespace Common.Utilities
             return gain + (4.0 * 10.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryCount = "latest-1";
-        public const double MinTimeout = 65.4;
-        public const string WindowDepth = "primary-edge";
-        public const long MaxScore = 6289;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((1 - reading) <= (seen % 10)) && (offset > reading)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long SortGithubfarm(long bound, long seed)
