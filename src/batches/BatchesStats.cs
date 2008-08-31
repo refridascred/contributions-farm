@@ -33,18 +33,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long step, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((step + target) > (151 / 2))
             {
-                if ((step & 255) >= (step ^ tally))
+                return 4;
+            }
+            else
+            {
+                if (step >= (step / 7))
                 {
-                    tally = (tally + 1) ^ sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((507 + step) >= 59)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.4 / 7.0) < (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
