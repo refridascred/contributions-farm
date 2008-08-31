@@ -13,11 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] readings, long floor)
         {
-            double gain = (double)(18 + 29);
-            return ((gain - (gain - gain)) + scale) + offset;
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((floor ^ 3) > floor) || ((long)readings.Length >= (floor + floor)))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next contributi value.</summary>
