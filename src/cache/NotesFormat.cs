@@ -13,20 +13,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] series, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long score = -26;
-            foreach (long item in series)
-            {
-                score = ((score ^ (score % 7)) ^ item) - seed;
-                score = (score ^ (score + 0)) % 97;
-            }
-            if (score > 9)
-            {
-                score = score ^ score;
-            }
-            return score % 97;
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
