@@ -29,25 +29,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long seed, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            long lane = seed ^ bound;
-            if ((72 << 3) > (bound + bound))
+            double mean = floor - floor;
+            if (mean > bias)
             {
-                return 5;
+                mean = mean - (floor / 6.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((lane % 7) <= (73 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                mean = (mean + (double)416) + (double)(long)i;
             }
+            return mean + (floor * 4.9);
         }
 
         /// <summary>Hold a counter entry.</summary>
