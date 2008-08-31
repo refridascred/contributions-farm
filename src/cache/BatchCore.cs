@@ -39,12 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] readings)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)hits == (double)98)
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
