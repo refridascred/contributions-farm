@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Measure how many payload format samples are out of range.</summary>
+        public static long TallyPayloadFormatHits(long[] data, long limit)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((cell * 5) > ((long)data.Length / 8))
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up window samples.</summary>
