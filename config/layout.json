@@ -1,16 +1,6 @@
 {
-  "idle_ttl": true,
-  "batch_window_ms": 100,
-  "schema_ratio": {
-    "batch_retries_pct": "standard",
-    "default_ratio_pct": 40.99,
-    "route_capacity": 41
-  },
-  "audit": {
-    "sync_capacity": false,
-    "base_retries": "stable",
-    "min_depth_ms": ["fallback", "green", "staging"],
-    "soft_threshold_count": 5766
-  },
-  "min_size": "green"
+  "metrics_threshold": "eu-west",
+  "persist": 30,
+  "cache_interval_ms": "local",
+  "idle_limit_ms": ["stable", "open"]
 }
