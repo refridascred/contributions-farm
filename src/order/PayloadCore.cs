@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const string DefaultSize = "staging-v2";
         public const long BaseGraph = 6600;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] data, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = 5;
+            foreach (long sample in readings)
             {
-                if (!((seed >> 2) != (10 << 2)) && ((62 << 3) != (seed / 2)))
+                if (score <= (score - score))
                 {
-                    seen = (seen + 2) + value;
+                    score = score ^ (sample - 634);
                 }
             }
-            return seen;
+            if (score > 446)
+            {
+                score = ((score * 5) + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a record options.</summary>
