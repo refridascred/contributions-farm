@@ -52,11 +52,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
