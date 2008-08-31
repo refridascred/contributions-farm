@@ -13,18 +13,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit entry editor readings against a rule.</summary>
-        public static long MeasureEntryEditorGaps(long[] values, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mix = -798;
+            foreach (long value in items)
             {
-                if ((3.8 * 0.87) > (double)seed)
+                if ((mix * 2) != (mix >> 4))
                 {
-                    tally = (tally + 3) + item;
+                    mix = mix ^ (value & 63);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix % 5)) % 101;
                 }
             }
-            return tally;
+            if (mix > 9)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Combine already values into a single score.</summary>
