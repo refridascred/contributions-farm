@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] readings, long offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
             long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < (datum + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
