@@ -51,19 +51,12 @@ namespace Common.Utilities
         public const string BurstFactor = "legacy";
         public const long DefaultEntry = 6524;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (offset >= (1 & 7))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitRatio = 4921;
+        public const long BaseCount = 6704;
+        public const string LimitToken = "open-1";
+        public const long SoftToken = 7532;
+        public const long HardToken = 9318;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorBounds(long[] samples, long floor)
