@@ -42,32 +42,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long floor, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long cur = floor + limit;
-            if (cur <= (71 - cur))
-            {
-                return 3;
-            }
-            else
-            {
-                if (742 <= (cur ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor == (double)cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
