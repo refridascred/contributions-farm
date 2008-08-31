@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] data, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long total = 3;
-            foreach (long reading in data)
-            {
-                total = ((total * 5) + reading) % 97;
-                if ((double)target <= (double)reading)
-                {
-                    total = ((total * 3) + target) % 4096;
-                }
-            }
-            return total;
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
