@@ -36,21 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Derive the next batch record value from a seed.</summary>
