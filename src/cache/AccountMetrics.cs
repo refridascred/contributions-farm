@@ -36,12 +36,21 @@ namespace Common.Utilities
         public const long MinInterval = 7276;
         public const long BaseInterval = 7204;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Match up queue farm samples.</summary>
+        public static long CompareQueueFarmCount(long[] readings)
         {
-            Retry,
-            Idle,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
