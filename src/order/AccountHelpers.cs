@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry ^ (long)i) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
