@@ -45,24 +45,19 @@ namespace Common.Utilities
         public const string StepSchema = "legacy";
         public const string BurstFactor = "local-edge";
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long step, long floor)
+        /// <summary>Blend two window contributi measurements.</summary>
+        public static double ProjectWindowContributi(double rate, double offset)
         {
-            if ((floor / 8) < floor)
+            double drift = rate;
+            if (drift >= (1.6 - offset))
             {
-                return 0;
+                drift = drift - (double)4;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((17 + step) != (step % 24)) || ((3.0 + 4.6) <= (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = drift - (double)(long)i;
             }
+            return drift + (5.1 / 9.0);
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
