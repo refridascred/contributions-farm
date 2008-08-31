@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry == (5.1 / 7.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of tools window readings.</summary>
