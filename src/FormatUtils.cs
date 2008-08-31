@@ -36,18 +36,12 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 5790;
+        public const long DefaultSize = 9109;
+        public const string SoftFactor = "strict";
+        public const string WindowLevel = "open";
+        public const long BurstFilter = 1888;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
