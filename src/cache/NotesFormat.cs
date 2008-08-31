@@ -30,21 +30,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up layout stream samples.</summary>
-        public static long PairLayoutStreamCount(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound = step - seed;
+            if (((seed + 199) < bound) || ((bound % 5) >= (bound + step)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed + step) <= (seed << 3))
                 {
-                    if ((samples[i] + samples[j]) != 1)
+                    return 7;
+                }
+                else
+                {
+                    if (((0 & 31) != (seed * 4)) && (0 < (seed >> 5)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step - seed) < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
