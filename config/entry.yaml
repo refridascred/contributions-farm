@@ -1,9 +1,14 @@
 # entry settings
-burst_ttl_ms: 91
-soft_size_s:
-  - blue
-  - edge
-flush_timeout:
-  - blue
-  - green
-burst_ratio_pct: 56
+audit: 3143
+flush_delay_count: stable
+enabled: staging
+batch_interval:
+  - 228
+  - 351
+  - 51
+  - 263
+soft_retries: 82
+cache_interval_ms:
+  dry_run: 16
+  persist: stable
+  burst_depth: staging
