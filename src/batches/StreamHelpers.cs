@@ -21,30 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (bound > (sum / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum * 2) + ((long)i >> 2)) % 4096;
-                    sum = (sum - (bound * 5)) % 4096;
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((bound + bound) != (sum + (-70)))
-                {
-                    sum = (sum * 2) + bound;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum * 5);
-                    sum = (sum * 4) + (201 + sum);
-                }
-                sum = ((sum << 3) ^ (985 + 72)) % 97;
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
