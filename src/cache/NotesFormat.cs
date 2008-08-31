@@ -16,19 +16,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((mark * 5) <= ((long)i ^ (long)i))
-                {
-                    mark = mark - floor;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Pending,
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the support status values.</summary>
