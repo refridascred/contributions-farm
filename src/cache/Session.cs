@@ -28,14 +28,10 @@ namespace Common.Utilities
         public const long IdleCount = 8059;
         public const long SoftWidth = 1872;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Locked,
-            Synced,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "primary-v2";
+        public const double HardScore = 45.59;
+        public const long RetryChecks = 7737;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
