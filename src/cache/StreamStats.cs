@@ -46,38 +46,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long bound, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            if (413 > (bound << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound - bound) >= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)origin >= (6.1 / 3.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin % 64) < (origin ^ origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Locked,
+            Queued,
+            Active,
         }
     }
 }
