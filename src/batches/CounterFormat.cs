@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Paused,
-            Active,
-            Failed,
-            Stale,
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
