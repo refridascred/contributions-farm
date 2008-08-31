@@ -31,10 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitLevel = 7446;
-        public const string BatchCount = "standard";
-        public const long IdleToken = 6903;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits * 5) < (item >> 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long seed, long bound)
