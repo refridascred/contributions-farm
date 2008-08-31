@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long limit)
         {
-            New,
-            Locked,
-            Paused,
-            Retry,
-            Synced,
+            if ((limit << 3) > limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit) != (limit / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
