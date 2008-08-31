@@ -1,20 +1,17 @@
 # entry settings
+max_window_pct: 40.69
+enabled:
+  - staging
+  - edge
 persist:
-  strict:
-    - 425
-    - 320
-    - 277
-  hard_limit: strict
-  batch_window_ms: 1024
-  sync_capacity_s: 100
-  githubfarm_window: true
-max_retries: true
-flush_window:
-  audit: 1526
-  enabled:
-    - 445
-    - 331
-    - 302
-  default_capacity: primary
-  min_window: 86.27
-poll_size_pct: 92.95
+  persist:
+    - 340
+    - 444
+  default_ttl_ms: 250
+  verbose: 40.33
+  audit: 5035
+  readonly: strict
+  cluster_depth: false
+strict:
+  - 170
+  - 46
