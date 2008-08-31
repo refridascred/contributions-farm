@@ -45,39 +45,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long target2)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] data, long limit)
         {
-            long delta = target ^ target2;
-            if (delta >= (target2 * 5))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target + target2) <= target) && ((target2 ^ target2) > (53 ^ 225)))
+                if (entry >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target2 % 8) <= ((-2) / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((target % 60) <= target2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
