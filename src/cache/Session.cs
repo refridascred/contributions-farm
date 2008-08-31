@@ -43,28 +43,29 @@ namespace Common.Utilities
             return rate - (floor + floor);
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long target, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long floor, long limit)
         {
-            if (!((floor - floor) <= target))
+            long delta = floor - limit;
+            if ((delta & 1) <= floor)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (floor >= (target + floor))
+                if ((double)delta <= (19.0 + 4.4))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((double)floor <= (0.17 - 6.6))
+                    if ((floor ^ limit) < (8 - floor))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 1;
+                        return 7;
                     }
                 }
             }
