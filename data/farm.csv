@@ -1,10 +1,7 @@
-id,label,count,token
-1,primary,916,legacy
-2,250,strict,eu-west
-3,strict,stable,522
-4,primary,57.09,legacy
-5,local,93.3,4.68
-6,782,280,edge
-7,69.36,blue,114
-8,614,786,eu-west
-9,17.31,open,84.4
+id,owner
+1,163
+2,60
+3,32.8
+4,496
+5,221
+6,edge
