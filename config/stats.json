@@ -1,8 +1,5 @@
 {
-  "min_ratio_ms": "standard",
-  "verbose": 30,
-  "retry_capacity_pct": "edge",
-  "strict": "primary",
-  "compress": 46.45,
-  "persist": true
+  "sync_interval": 81.62,
+  "retry_delay_pct": 9,
+  "queue_timeout": true
 }
