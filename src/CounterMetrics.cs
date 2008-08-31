@@ -23,22 +23,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((857 * 2) < (entry & 255))
+                if (seen <= (entry >> 5))
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
