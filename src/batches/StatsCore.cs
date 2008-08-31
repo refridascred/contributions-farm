@@ -51,15 +51,18 @@ namespace Common.Utilities
         public const string BurstFactor = "legacy";
         public const long DefaultEntry = 6524;
 
-        /// <summary>Derive the next format entry value from a seed.</summary>
-        public static long SeriesFormatEntry(long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] readings, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (offset >= (1 & 7))
+                {
+                    seen = (seen + 3) + value;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
