@@ -15,16 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate batches order samples.</summary>
-        public static long FoldBatchesOrder(long[] levels)
+        /// <summary>Combine window report values into a single score.</summary>
+        public static long CombineWindowReport(long[] samples, long bound)
         {
-            long sum = 40;
-            foreach (long item in levels)
+            long sum = 238;
+            foreach (long item in samples)
             {
-                if ((item * 4) > item)
-                {
-                    sum = (sum ^ (item << 1)) % 97;
-                }
+                sum = ((sum * 3) + (item / 5)) - bound;
             }
             return sum;
         }
