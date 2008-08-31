@@ -28,12 +28,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
