@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long mix = 7;
-            foreach (long reading in samples)
-            {
-                mix = ((mix * 5) + (reading & 15)) % 4096;
-                if (!((mix - floor) < (reading - mix)))
-                {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = (mix + (floor << 2)) % 97;
-                }
-            }
-            return mix % 97;
+            Queued,
+            Locked,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Locate a cache batch reading by value.</summary>
