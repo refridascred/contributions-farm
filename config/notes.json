@@ -1,12 +1,7 @@
 {
-  "retry_timeout_pct": 19,
-  "schema_size": [80, 423, 85, 69],
-  "cache_ttl": {
-    "enabled": "open",
-    "graph_ttl": 5351,
-    "idle_ttl_pct": false,
-    "sync_delay_s": 94.5
-  },
-  "audit": false,
-  "max_ratio_count": 36.83
+  "flush_limit_ms": [17, 351, 286, 268],
+  "flush_interval_count": 60,
+  "sync_ttl_ms": 6577,
+  "cache_delay_s": 2165,
+  "editor_retries": 596
 }
