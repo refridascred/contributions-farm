@@ -42,12 +42,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 7213;
+        public const double IdleBudget = 94.42;
+        public const double MaxSize = 91.46;
     }
 }
