@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheCount = 1102;
-        public const double DefaultDepth = 97.88;
-        public const long LimitFilter = 3217;
-        public const string BurstRatio = "open-1";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteOutliers(long[] levels, long offset)
