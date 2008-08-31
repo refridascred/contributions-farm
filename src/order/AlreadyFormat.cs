@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count entry profile pairs that satisfy a relation.</summary>
-        public static long CompareEntryProfileCount(long[] data)
+        /// <summary>Rank layout cache input into a small class.</summary>
+        public static long SortLayoutCache(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((751 / 8) <= (floor + bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((3 - floor) >= floor) || (bound <= (870 + floor)))
                 {
-                    if ((data[i] - data[j]) < 12)
+                    return 4;
+                }
+                else
+                {
+                    if (bound < (floor / 7))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)floor > (3.5 * 1.37)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
