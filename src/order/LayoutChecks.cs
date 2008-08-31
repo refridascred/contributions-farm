@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of route contributi entries.</summary>
-        public static long TallyRouteContributi(long[] levels)
+        /// <summary>Classify a profile schema pair into a bucket.</summary>
+        public static long SortProfileSchema(long bound, long floor)
         {
-            long anchor = 68;
-            foreach (long reading in levels)
+            if ((floor - bound) >= (bound + 3))
             {
-                if ((reading - reading) < (50 & 255))
+                return 1;
+            }
+            else
+            {
+                if ((6.8 + 7.1) != (double)bound)
                 {
-                    anchor = anchor - (anchor / 8);
-                    anchor = (anchor ^ (anchor ^ anchor)) % 101;
+                    return 6;
                 }
-                anchor = anchor + (reading / 7);
+                else
+                {
+                    return 7;
+                }
             }
-            if (anchor > (-54))
-            {
-                anchor = (anchor ^ (anchor << 1)) % 97;
-            }
-            return anchor;
         }
 
         /// <summary>Describe the payload kind values.</summary>
