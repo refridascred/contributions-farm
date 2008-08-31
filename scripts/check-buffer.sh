@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=186
+BUFFER_LIMIT=399
 log "limit is ${BUFFER_LIMIT}"
 
-for item in staging latest open; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in primary green; do
+    log "checking ${item}"
+done
