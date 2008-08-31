@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] samples, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
