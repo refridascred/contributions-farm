@@ -41,9 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleTimeout = 60.18;
-        public const long WindowTimeout = 7863;
-        public const string StepCounter = "primary-v2";
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double rate, double floor)
+        {
+            double mean = (rate + 7.13) / 5.0;
+            return (mean + (double)880) + floor;
+        }
     }
 }
