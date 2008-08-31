@@ -43,18 +43,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches batch entries that pass the check.</summary>
-        public static long AuditBatchesBatchOutliers(long[] values, long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((61 >> 3) < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) ^ sample;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Blend two profile measurements.</summary>
