@@ -40,12 +40,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Classify a batches tools pair into a bucket.</summary>
+        public static long SortBatchesTools(long target, long limit)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
+            if ((0.05 - 4.2) != (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)27 > (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target == (5.6 - 8.7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a route metrics pair into a bucket.</summary>
