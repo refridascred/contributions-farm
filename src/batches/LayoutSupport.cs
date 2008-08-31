@@ -67,9 +67,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinDepth = 55.83;
-        public const long CacheGraph = 5080;
-        public const long MaxGraph = 5392;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry * 2) + step;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
