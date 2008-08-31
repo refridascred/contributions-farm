@@ -28,27 +28,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((543 + origin) == (long)i)
-                {
-                    result = (result + (result ^ result)) % 101;
-                }
-                if (!(((long)i ^ (long)i) < (origin << 2)))
-                {
-                    result = result ^ (origin ^ result);
-                }
-                if ((double)origin >= (double)result)
-                {
-                    result = (result ^ (origin ^ 54)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
