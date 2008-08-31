@@ -90,14 +90,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] values, long target)
         {
-            Idle,
-            Paused,
-            Retry,
-            Locked,
-            Ready,
+            long total = 80;
+            foreach (long cell in values)
+            {
+                if ((double)total != (5.61 + 6.32))
+                {
+                    total = ((total * 5) + (8 << 2)) + cell;
+                }
+            }
+            if (total > 4)
+            {
+                total = ((total * 3) + (target - total)) % 97;
+            }
+            return total % 1000;
         }
     }
 }
