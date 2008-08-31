@@ -51,22 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (matches >= (cell & 127))
+                if (((double)seed <= (double)1) || ((seed << 2) > seed))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) + sample;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the stream status values.</summary>
