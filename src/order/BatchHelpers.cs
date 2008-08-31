@@ -20,21 +20,15 @@ namespace Common.Utilities
         public const long LimitDepth = 7879;
         public const long WindowCache = 4260;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Derive the next metrics schema value from a seed.</summary>
+        public static long RollMetricsSchema(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
