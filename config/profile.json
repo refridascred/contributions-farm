@@ -1,6 +1,8 @@
 {
-  "poll_threshold_ms": 11.61,
-  "soft_size": "strict",
-  "sync_limit_pct": 53,
-  "strict": ["stable", "local", "standard", "open"]
+  "already_size": "legacy",
+  "min_depth_count": ["edge", "stable", "stable", "green"],
+  "hard_ttl_s": false,
+  "warm_retries_ms": 62.3,
+  "flush_delay_count": "edge",
+  "contributi_ttl": 97.36
 }
