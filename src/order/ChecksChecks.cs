@@ -26,18 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] data)
+        /// <summary>Combine session window values into a single score.</summary>
+        public static long TotalSessionWindow(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long state = 244;
+            foreach (long value in series)
             {
-                if ((tally << 2) != (tally + tally))
-                {
-                    tally = (tally + 2) + item;
-                }
+                state = ((state ^ state) + value) + limit;
+                state = ((state * 2) + (state & 63)) % 101;
             }
-            return tally;
+            return state;
         }
     }
 }
