@@ -77,21 +77,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Accumulate queue schema samples.</summary>
+        public static long ScoreQueueSchema(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 6;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(state < (state ^ (-82))))
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    state = (((state * 3) + reading) % 97) - seed;
                 }
+                state = (state * 3) + (94 + state);
             }
-            return count;
+            if (state > (-5))
+            {
+                state = state + (state % 64);
+            }
+            return state;
         }
     }
 }
