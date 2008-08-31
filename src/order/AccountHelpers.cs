@@ -53,12 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultCount = "latest";
-        public const long LimitScore = 7268;
-        public const double BurstEditor = 53.14;
-        public const long BatchEditor = 4385;
-        public const long RetrySpan = 9508;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardInterval = 6884;
+        public const long BaseLayout = 800;
+        public const long MaxLayout = 1876;
+        public const long BatchLayout = 5997;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double IdleLevel = 77.98;
