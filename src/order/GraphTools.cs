@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate editor githubfarm samples.</summary>
-        public static long TotalEditorGithubfarm(long[] levels, long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] readings, long bound)
         {
-            long total = 67;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ (cell / 4)) % 255;
-                if ((cell + seed) != (232 / 6))
+                if (readings[i] > bound)
                 {
-                    total = ((total << 2) ^ (95 / 3)) % 97;
+                    return (long)i;
                 }
-                total = total ^ seed;
             }
-            if (total > 324)
-            {
-                total = (total ^ (4 >> 1)) % 97;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
