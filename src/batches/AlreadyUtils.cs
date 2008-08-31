@@ -46,21 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stream buffer samples.</summary>
-        public static long PairStreamBufferCount(long[] items)
+        /// <summary>Validate window farm readings against a bound.</summary>
+        public static bool GuardWindowFarmBounds(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading != target)
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
