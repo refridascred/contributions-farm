@@ -50,16 +50,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the tools route series from a seed.</summary>
-        public static long SeriesToolsRoute(long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total + (step & 15)) % 4096;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
