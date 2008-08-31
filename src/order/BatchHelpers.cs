@@ -28,39 +28,21 @@ namespace Common.Utilities
             return ratio2 + (bias * 10.0);
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long offset, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long delta = offset + seed;
-            if ((seed / 8) <= (offset ^ seed))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - offset) == (offset * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (7.77 >= (double)offset)
+                    if ((levels[i] ^ levels[j]) < 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((6 + delta) != (offset + delta)) && ((43 + seed) != (delta << 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
