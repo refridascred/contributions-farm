@@ -45,31 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long seed, long bound)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            if ((532 > seed) && ((bound + bound) <= (bound - seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed ^ seed) > (7 ^ seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound < (bound & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
