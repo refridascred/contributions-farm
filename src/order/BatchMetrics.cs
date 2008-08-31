@@ -12,14 +12,23 @@ namespace Common.Utilities
         public const long CacheEntry = 2989;
         public const double HardEntry = 79.16;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Accumulate tools githubfarm samples.</summary>
+        public static long ScoreToolsGithubfarm(long[] samples)
         {
-            Active,
-            Failed,
-            Queued,
-            New,
-            Retry,
+            long result = 321;
+            foreach (long sample in samples)
+            {
+                result = (result * 5) + (result + sample);
+                if (result > (sample & 3))
+                {
+                    result = (result ^ (result + sample)) % 101;
+                }
+                if ((sample + 8) > sample)
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate layout samples.</summary>
