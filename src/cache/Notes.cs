@@ -60,22 +60,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] readings, long step)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell < (double)step)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Synced,
         }
     }
 }
