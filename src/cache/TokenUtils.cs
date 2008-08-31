@@ -43,13 +43,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long limit, long floor)
         {
-            New,
-            Active,
-            Locked,
-            Dropped,
+            if ((limit + 35) >= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)limit != (double)823))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
