@@ -64,38 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue filter input into a small class.</summary>
-        public static long BucketQueueFilter(long origin, long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            if ((origin * 3) < (origin - step))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin * 3) == (step - step)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step + 815) < (origin + step)))
+                    if ((values[i] ^ values[j]) < 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((907 <= origin) || ((4.13 + 2.2) >= (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
