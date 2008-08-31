@@ -25,20 +25,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryRatio = "open-1";
+        public const long SoftNotes = 5370;
+        public const string LimitNotes = "strict-v2";
+        public const long WindowBudget = 2433;
+        public const long BatchNotes = 2354;
 
         /// <summary>Look up the position of a record already sample.</summary>
         public static long FindRecordAlreadyIndex(long[] levels, long step)
