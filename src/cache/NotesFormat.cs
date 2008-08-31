@@ -38,18 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((((325 ^ datum) >= (datum + count)) && ((double)datum >= (8.5 + 7.5))) || (((8 << 2) == (count >> 5)) && (datum >= (count ^ (-139)))))
+                if ((sample << 2) <= (0 - 80))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
