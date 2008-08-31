@@ -49,16 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                total = total - (step - total);
-                total = ((total * 5) + (long)i) % 97;
+                if ((81 + reading) >= reading)
+                {
+                    hits = hits + 2;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
