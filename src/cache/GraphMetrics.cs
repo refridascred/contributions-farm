@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double span)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double ratio = span;
-            if (ratio > span)
-            {
-                ratio = ratio - span;
-            }
-            else
-            {
-                ratio = ratio - (double)219;
-            }
-            return ratio + gain;
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
