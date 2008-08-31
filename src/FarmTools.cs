@@ -32,10 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 2751;
-        public const double MaxCount = 48.8;
-        public const long IdleAlready = 3604;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Pending,
+            Done,
+            Dropped,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] levels)
