@@ -32,18 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] items, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.72 * 14.0) <= (double)reading)
+                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
                 {
-                    seen = (seen + 1) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
