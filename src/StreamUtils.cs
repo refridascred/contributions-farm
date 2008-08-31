@@ -42,13 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] data, long floor)
         {
-            Stale,
-            Pending,
-            Failed,
-            Ready,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((long)data.Length <= floor)
+                {
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch kind values.</summary>
