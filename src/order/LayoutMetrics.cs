@@ -39,19 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)bound != (9.94 + 7.75))
-                {
-                    score = (score + ((long)i << 3)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Idle,
+            Ready,
+            New,
+            Active,
         }
     }
 }
