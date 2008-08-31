@@ -1,8 +1,4 @@
 # entry settings
-sync_interval_ms: fallback
-batch_capacity_pct: 18.98
-soft_threshold_s:
-  warm_limit_s: 60
-  stream_timeout: 98.66
-  graph_delay: open
-compress: true
+notes_window: 53.93
+min_ttl_s: 30
+strict: 8060
