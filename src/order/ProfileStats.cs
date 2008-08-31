@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] series)
         {
-            Paused,
-            Retry,
-            Active,
-            Synced,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (0.05 >= (double)sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
