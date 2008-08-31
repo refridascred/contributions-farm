@@ -20,19 +20,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate queue buffer readings against a bound.</summary>
-        public static bool ValidateQueueBufferLimits(long[] levels, long step)
+        /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
+        public static long GradeGithubfarmLayout(long step, long bound)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if (((double)step > (11.0 - 1.87)) || ((bound + bound) > ((-93) / 2)))
             {
-                if (sample >= step)
+                return 0;
+            }
+            else
+            {
+                if ((bound & 31) != (96 ^ bound))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (bound / 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
