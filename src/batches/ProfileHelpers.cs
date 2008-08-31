@@ -59,12 +59,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Find the first metrics metric entry that matches the target.</summary>
+        public static long LocateMetricsMetricIndex(long[] samples, long limit)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
