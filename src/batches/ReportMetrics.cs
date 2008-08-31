@@ -38,12 +38,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepScore = 2199;
+        public const long RetryTimeout = 1784;
+        public const double RetryStream = 72.68;
+        public const long DefaultStream = 3823;
     }
 }
