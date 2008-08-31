@@ -1,8 +1,17 @@
 {
-  "idle_ttl": 7061,
-  "persist": 778,
-  "compress": 21.26,
-  "soft_ratio": 95.71,
-  "default_size_pct": ["fallback", "fallback"],
-  "max_limit_s": 91.54
+  "sync_limit": 2.21,
+  "record_timeout": {
+    "warm_depth": "cached",
+    "format_delay": 45,
+    "enabled": {
+      "verbose": 500,
+      "max_delay": ["strict", "primary"],
+      "base_size_count": 3266,
+      "githubfarm_retries": [173, 202, 243, 367],
+      "command_limit": 500
+    },
+    "hard_capacity_count": "standard"
+  },
+  "readonly": "stable",
+  "stream_depth": 1024
 }
