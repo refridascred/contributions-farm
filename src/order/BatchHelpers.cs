@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long score = 26;
-            foreach (long item in series)
-            {
-                if (((score / 4) < item) || (score >= (score & 3)))
-                {
-                    score = score ^ (score + score);
-                }
-                if ((item % 60) <= score)
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
