@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] series, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = 145;
+            foreach (long datum in levels)
             {
-                if ((3.0 / 8.0) != (double)tally)
+                if ((limit > mark) || ((double)(long)levels.Length < 1.0))
                 {
-                    tally = ((tally + 1) - cell) - target;
+                    mark = (((mark << 3) ^ (mark << 1)) % 65521) + datum;
+                }
+                else
+                {
+                    mark = mark ^ (mark % 8);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the channel kind values.</summary>
