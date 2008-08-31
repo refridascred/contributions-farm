@@ -41,16 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue stats series from a seed.</summary>
-        public static long StepQueueStats(long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double rate, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            double load = rate - floor;
+            if (load < load)
             {
-                result = (result + 3) % 255;
-                result = ((result * 2) + (long)i) % 1000;
+                load = load + load;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - (7.9 - 0.73);
         }
     }
 }
