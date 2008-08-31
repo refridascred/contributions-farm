@@ -1,23 +1,7 @@
 {
-  "payload_retries": "green",
-  "hard_window_count": ["stable", "green", "standard"],
-  "sync_ttl_count": {
-    "min_retries_pct": 60,
-    "min_depth_pct": "staging",
-    "persist": 96,
-    "farm_window": {
-      "soft_interval_s": ["stable", "cached", "staging", "primary"],
-      "enabled": ["cached", "local", "blue", "eu-west"],
-      "flush_window_ms": 32
-    },
-    "channel_retries": {
-      "max_timeout": "cached",
-      "burst_interval_pct": 29,
-      "warm_timeout": 65,
-      "default_ratio": true,
-      "poll_interval_count": 4060
-    }
-  },
-  "cache_window_count": "edge",
-  "max_interval_s": "open"
+  "poll_interval_ms": 7996,
+  "readonly": 1850,
+  "base_window_count": ["standard", "strict", "fallback", "staging"],
+  "verbose": "green",
+  "support_threshold": 63
 }
