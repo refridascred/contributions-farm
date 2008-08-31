@@ -54,14 +54,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of record payload readings.</summary>
+        public static long FoldRecordPayload(long[] series, long bound)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Draft,
-            Synced,
+            long score = 674;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length + entry) == (8 % 97))
+                {
+                    score = score - 863;
+                }
+                else
+                {
+                    score = score + (entry >> 4);
+                }
+                if (bound >= (score >> 2))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
     }
 }
