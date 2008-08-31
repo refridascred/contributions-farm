@@ -6,9 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west blue latest edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=279
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-stable}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
