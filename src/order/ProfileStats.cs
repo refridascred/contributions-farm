@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (0.05 >= (double)sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 4657;
+        public const double StepBuffer = 41.76;
+        public const long BatchBuffer = 1298;
+        public const long HardLevel = 3225;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] samples, long origin)
