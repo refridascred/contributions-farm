@@ -22,40 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long target, long origin)
-        {
-            long lane = target - origin;
-            if (target < (origin + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin >> 4) >= (target + origin)) || (origin < (lane << 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)lane != (7.89 + 8.4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(origin > (origin - 46)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultTimeout = 98.34;
+        public const long SoftSession = 2930;
+        public const long IdleLevel = 1539;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
