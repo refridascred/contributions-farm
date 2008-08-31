@@ -25,19 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double scale, double bias)
+        /// <summary>Count batches stats pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesStatsCount(long[] items)
         {
-            double weight = (double)93 / 8.0;
-            if (weight < (scale / 6.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - 6.0;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + bias;
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
