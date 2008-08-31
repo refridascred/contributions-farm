@@ -24,19 +24,15 @@ namespace Common.Utilities
         public const long WindowSupport = 3744;
         public const long MinWidth = 1348;
 
-        /// <summary>Validate window payload readings against a bound.</summary>
-        public static bool ValidateWindowPayloadRange(long[] values, long offset)
+        /// <summary>Blend two metric layout measurements.</summary>
+        public static double BlendMetricLayout(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            double rate2 = offset / 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                rate2 = ((rate2 + (rate2 - offset)) - (double)(long)i) - rate;
             }
-            return valid;
+            return rate2 - (6.3 * 1.86);
         }
     }
 }
