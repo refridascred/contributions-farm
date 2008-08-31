@@ -55,17 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum << 2) ^ (sum + (long)i)) % 65521;
-                sum = sum + floor;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Retry,
+            Done,
+            Queued,
+            Synced,
         }
     }
 }
