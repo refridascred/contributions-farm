@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = (result ^ (result + result)) % 255;
+                if ((result ^ datum) >= (limit + datum))
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Validate queue buffer readings against a bound.</summary>
