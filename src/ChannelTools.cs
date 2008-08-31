@@ -20,32 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long limit, long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double weight, double span)
         {
-            long next = limit ^ floor;
-            if (!(((-71) * 2) < (limit >> 4)))
+            double ratio = weight + (double)9;
+            if (ratio <= ratio)
             {
-                return 7;
+                ratio = (ratio - ratio) - span;
             }
-            else
-            {
-                if ((limit + 678) != (limit + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit ^ next) != (next >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return ratio + (weight + ratio);
         }
 
         /// <summary>Adjust a account reading.</summary>
