@@ -15,11 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record options.</summary>
