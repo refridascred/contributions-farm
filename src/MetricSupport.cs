@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up context githubfarm samples.</summary>
-        public static long CompareContextGithubfarmCount(long[] levels)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = weight;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ((ratio + (ratio + weight)) + (double)(long)i) + offset;
             }
-            return tally;
+            return ratio - weight;
         }
 
         /// <summary>Describe the format status values.</summary>
