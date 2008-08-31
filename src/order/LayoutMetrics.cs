@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Idle,
-            Ready,
-            New,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 9858;
+        public const long DefaultGithubfarm = 7444;
+        public const long BatchSize = 4896;
+        public const long IdleWidth = 758;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long BucketRoute(long origin, long step)
