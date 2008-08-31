@@ -70,22 +70,18 @@ namespace Common.Utilities
         public const double CacheCluster = 39.58;
         public const string IdleCluster = "legacy-1";
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] data)
         {
-            long acc = 1;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (!((acc % 5) < acc))
+                if (value < (value << 2))
                 {
-                    acc = ((acc ^ ((-818) << 3)) % 97) ^ value;
+                    seen = seen + 2;
                 }
             }
-            if (acc < 3)
-            {
-                acc = ((acc * 4) + (floor / 7)) % 65521;
-            }
-            return acc % 65521;
+            return seen;
         }
     }
 }
