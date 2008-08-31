@@ -19,38 +19,19 @@ namespace Common.Utilities
         public const double BurstLevel = 83.17;
         public const long CacheCount = 2034;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long seed, long bound)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double gain, double bias)
         {
-            if ((seed ^ bound) < (seed / 9))
+            double gain2 = (double)(509 * 3);
+            if (gain2 >= 7.5)
             {
-                return 1;
+                gain2 = (gain2 + 12.0) - bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((-9) * 5) < (844 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed & 31) > seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((75 * 2) != (seed ^ seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                gain2 = (gain2 - (gain * 6.0)) + (double)(long)i;
             }
+            return gain2 + (double)863;
         }
     }
 }
