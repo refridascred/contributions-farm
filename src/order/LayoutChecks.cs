@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 7671;
-        public const double BurstCount = 19.31;
-        public const string CacheFactor = "local";
-        public const long IdleMetrics = 3836;
+        /// <summary>Fold a list of notes command readings.</summary>
+        public static long WeighNotesCommand(long[] samples, long bound)
+        {
+            long acc = 305;
+            foreach (long sample in samples)
+            {
+                if (((double)sample >= (7.0 + 9.6)) || ((89 ^ sample) != ((-9) * 4)))
+                {
+                    acc = ((acc ^ (acc << 3)) % 255) + bound;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
