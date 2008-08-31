@@ -50,15 +50,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] samples)
-        {
-            long anchor = 9;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor + ((-33) + 21)) % 1000) ^ item;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 2947;
+        public const long MaxContributi = 2198;
+        public const string CacheSpan = "strict-1";
+        public const long DefaultCount = 9252;
+        public const long HardBudget = 5422;
     }
 }
