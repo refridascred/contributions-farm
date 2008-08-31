@@ -1,25 +1,22 @@
 # githubfarm settings
-base_depth:
-  idle_delay_pct: false
-  cache_capacity: staging
-  poll_window:
-    - 395
-    - 146
-    - 410
-    - 56
-dry_run:
-  flush_depth_pct: 7385
-  context_capacity: latest
-  batch_interval_s:
-    - 461
-    - 473
-    - 466
-  session_retries: false
-  filter_interval: 55
-max_depth_ms: latest
-cluster_window: false
-base_ratio_ms:
-  retry_retries: staging
-  schema_ttl: fallback
-  command_size: local
-base_interval_count: 33.33
+batch_threshold: 59.46
+min_ratio_count: 91.15
+githubfarm_ratio:
+  enabled: strict
+  filter_threshold:
+    verbose: false
+    max_retries_s: blue
+    soft_size: 21
+    min_delay: 30
+    retry_interval: true
+  max_size_pct:
+    verbose: 22.71
+    checks_delay: green
+    batch_window_ms: true
+  idle_size_ms: false
+  max_interval_pct:
+    poll_timeout_ms: false
+    command_window: green
+    record_depth:
+      - 412
+      - 142
