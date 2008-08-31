@@ -1,4 +1,14 @@
 # entry settings
-audit: standard
-route_ratio: 2.8
-batches_interval: blue
+soft_depth_count: edge
+idle_interval_s: true
+retry_ttl: 42.28
+stream_limit: 90
+batch_ttl_s:
+  buffer_delay: 28.55
+  burst_limit_pct: 36
+  burst_ttl_s: 4828
+  max_ttl: local
+  filter_threshold: fallback
+  burst_threshold_ms:
+    - 424
+    - 479
