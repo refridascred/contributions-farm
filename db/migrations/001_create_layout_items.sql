@@ -1,12 +1,13 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1
+    state TEXT NOT NULL DEFAULT 'new',
+    active INTEGER NOT NULL DEFAULT 1,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
+CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
 
-INSERT INTO layout_items (score, active) VALUES (70.92, 50);
-INSERT INTO layout_items (score, active) VALUES (93.12, 74);
+INSERT INTO layout_items (state, active, weight) VALUES ('staging', 57, 11.72);
+INSERT INTO layout_items (state, active, weight) VALUES ('primary', 66, 32.31);
+INSERT INTO layout_items (state, active, weight) VALUES ('green', 55, 74.83);
