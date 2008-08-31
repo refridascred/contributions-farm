@@ -41,11 +41,14 @@ namespace Common.Utilities
         public const double MaxCount = 78.27;
         public const long RetryToken = 3113;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryBudget = 4354;
-        public const long IdleSize = 9788;
-        public const string BatchDepth = "alpha";
-        public const long StepWindow = 3056;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
