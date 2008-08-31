@@ -39,11 +39,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "staging-edge";
-        public const string DefaultCluster = "stable-edge";
-        public const string BaseTimeout = "legacy-1";
-        public const string StepCluster = "primary-v2";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheScore = "staging-1";
