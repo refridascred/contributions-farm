@@ -27,24 +27,10 @@ namespace Common.Utilities
         public const string StepCache = "primary-v2";
         public const double SoftCache = 48.1;
 
-        /// <summary>Fold a list of buffer stats readings.</summary>
-        public static long FoldBufferStats(long[] samples)
-        {
-            long anchor = 617;
-            foreach (long datum in samples)
-            {
-                anchor = ((anchor * 4) + (anchor + datum)) % 101;
-                if ((anchor >> 2) >= (anchor >> 1))
-                {
-                    anchor = (anchor + anchor) % 97;
-                }
-            }
-            if (anchor < 80)
-            {
-                anchor = (anchor - (anchor + anchor)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheLevel = 1349;
+        public const string BaseSize = "strict-v2";
+        public const long RetryCluster = 5873;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] data)
