@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
