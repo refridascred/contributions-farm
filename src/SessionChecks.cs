@@ -51,20 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
-        public static bool VerifyCommitsGithubfarmRange(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 9740;
+        public const string BaseCommand = "alpha-edge";
+        public const long MaxRatio = 3860;
+        public const long BaseRatio = 541;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long FoldTools(long[] series)
