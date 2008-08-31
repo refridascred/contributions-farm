@@ -33,23 +33,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine queue session values into a single score.</summary>
-        public static long DigestQueueSession(long[] readings, long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            long result = 3;
-            foreach (long value in readings)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                result = result - (origin / 5);
-                if (((value - origin) > (result - 51)) && ((result + 9) > value))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            if (result < (-177))
-            {
-                result = (result << 3) ^ 872;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Look up the position of a counter batches sample.</summary>
