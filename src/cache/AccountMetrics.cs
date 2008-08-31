@@ -59,17 +59,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 8397;
         public const long IdleRatio = 3578;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long limit)
+        /// <summary>Count the batch session entries that pass the check.</summary>
+        public static long AuditBatchSessionGaps(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                if ((origin + count) <= (datum - origin))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
