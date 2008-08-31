@@ -19,32 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long bound, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long diff = bound - limit;
-            if ((double)diff <= (9.66 + 3.84))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((332 << 1) >= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff - 873) > (16 ^ diff))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
