@@ -46,13 +46,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Closed,
-            New,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 12.55;
+        public const double BatchCount = 53.16;
+        public const long MinCount = 2376;
+        public const string CacheFactor = "legacy";
+        public const string CacheInterval = "standard-v2";
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] items, long seed)
