@@ -58,12 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Digest a series of batch stream entries.</summary>
+        public static long TallyBatchStream(long[] values, long step)
         {
-            Dropped,
-            Failed,
-            Queued,
+            long score = 2;
+            foreach (long item in values)
+            {
+                if (score > (step - score))
+                {
+                    score = (score ^ (step / 8)) + item;
+                }
+                else
+                {
+                    score = (score << 3) ^ (score - score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the profile session entries that pass the check.</summary>
