@@ -1,16 +1,13 @@
 # githubfarm settings
-soft_ratio_ms: standard
-default_delay_pct:
-  profile_window:
-    - 223
-    - 182
-    - 480
-    - 32
-  base_interval_pct: true
-  audit: 250
-  poll_ratio_count: true
-  hard_depth: true
-base_timeout: 11.21
-poll_limit: 99
-poll_ttl_s: standard
-verbose: 279
+base_ratio_s: green
+hard_timeout: green
+schema_timeout: strict
+flush_retries_ms: green
+burst_ratio_ms:
+  already_capacity: fallback
+  max_limit_ms: true
+  default_ratio_pct: 12.44
+flush_interval:
+  - open
+  - strict
+  - strict
