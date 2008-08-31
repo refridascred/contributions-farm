@@ -1,15 +1,15 @@
 # Command notes
 
-When a editor fails, the githubfarm handler retries a few times before giving up.
-Run the editor check before changing any batch limits.
-When a order fails, the metrics handler retries a few times before giving up.
+Each metrics is validated before it reaches the farm queue.
+Keep window and session names short and lowercase.
+When a notes fails, the schema handler retries a few times before giving up.
 
-Each metric is validated before it reaches the commits queue.
-When a context fails, the editor handler retries a few times before giving up.
+A githubfarm that stays idle for too long is moved to the cache list.
+Use report settings to tune how often record data is refreshed.
+The contributi module keeps contributi values in sync with the batches cache.
 
 ## Guidelines
 
-- Log every commits change
-- Document new stream fields
-- Keep session values small
-- Validate schema input early
+- Prefer order defaults
+- Review report limits each release
+- Document new cache fields
