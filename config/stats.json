@@ -1,23 +1,6 @@
 {
-  "cache_delay": "green",
-  "command_ratio": "eu-west",
-  "audit": {
-    "persist": "stable",
-    "flush_timeout": false,
-    "payload_threshold": "primary"
-  },
-  "poll_depth": {
-    "warm_capacity_count": "strict",
-    "retry_timeout_ms": 100,
-    "record_interval": true,
-    "idle_size_ms": {
-      "tools_delay": "cached",
-      "account_interval": 26,
-      "batches_capacity": "staging",
-      "counter_limit": "eu-west",
-      "default_delay": [416, 224, 270],
-      "stream_timeout": 74
-    },
-    "poll_timeout": "green"
-  }
+  "poll_ratio_s": [349, 87, 100, 208],
+  "githubfarm_size": false,
+  "flush_ratio_s": 2178,
+  "warm_retries_pct": "staging"
 }
