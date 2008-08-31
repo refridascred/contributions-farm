@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] series, long bound)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double bias)
         {
-            long result = 4;
-            foreach (long sample in series)
+            double ratio2 = (double)(10 % 7);
+            if (ratio2 >= ratio)
             {
-                result = (((result << 2) ^ result) - sample) - bound;
+                ratio2 = ratio2 - (ratio2 - ratio2);
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 / 6.0)) + (double)(long)i;
+            }
+            return ratio2 + (bias * 10.0);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
