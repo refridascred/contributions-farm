@@ -19,38 +19,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a record metrics value against two limits.</summary>
-        public static long BucketRecordMetrics(long step, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long offset)
         {
-            if ((double)limit < (0.65 + 19.0))
+            bool found = true;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((14.0 / 3.0) != (double)limit)
+                if (cell > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit > ((-261) >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (10.0 + 1.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
