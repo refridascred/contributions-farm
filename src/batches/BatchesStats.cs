@@ -41,15 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] readings)
+        /// <summary>Audit already stream readings against a rule.</summary>
+        public static long CountAlreadyStreamMatches(long[] values)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long datum in values)
             {
-                if ((((entry / 4) > (entry / 6)) || ((tally * 2) <= ((-608) + entry))) || ((double)tally >= (4.14 + 6.0)))
+                if (!((datum + datum) <= (tally << 2)))
                 {
-                    tally = tally + 3;
+                    tally = tally + 1;
                 }
             }
             return tally;
