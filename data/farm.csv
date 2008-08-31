@@ -1,8 +1,7 @@
-id,state,owner,count,level
-1,legacy,516,91.23,standard
-2,strict,open,25.13,standard
-3,670,650,local,81.59
-4,612,4.67,700,180
-5,395,922,9.3,70.14
-6,48.45,61.82,305,edge
-7,blue,349,latest,green
+id,active,token,owner
+1,fallback,319,84.83
+2,25.63,49.2,938
+3,16.65,785,549
+4,446,strict,edge
+5,576,540,653
+6,open,edge,571
