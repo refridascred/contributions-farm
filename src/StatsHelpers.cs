@@ -27,16 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long score = 328;
-            foreach (long entry in items)
-            {
-                score = (score << 3) ^ entry;
-                score = ((score * 5) + (score & 127)) % 1000;
-            }
-            return score;
+            Queued,
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the format mode values.</summary>
