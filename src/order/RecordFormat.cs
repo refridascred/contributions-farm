@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a farm stats counter forward.</summary>
-        public static long DeriveFarmStats(long step)
+        /// <summary>Match up entry account samples.</summary>
+        public static long CompareEntryAccountCount(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every record context entry stays within the limit.</summary>
