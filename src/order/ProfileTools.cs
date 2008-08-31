@@ -17,19 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] values, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Classify a order account pair into a bucket.</summary>
