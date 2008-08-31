@@ -1,5 +1,18 @@
 {
-  "strict": 54,
-  "hard_ttl_count": "standard",
-  "base_window_count": ["open", "standard", "stable", "primary"]
+  "cache_timeout": 9510,
+  "hard_capacity": {
+    "account_retries": [376, 136, 353],
+    "cache_capacity": true,
+    "base_delay_count": {
+      "githubfarm_limit": "strict",
+      "sync_window_count": "local",
+      "sync_depth_ms": ["stable", "primary", "local"],
+      "verbose": "legacy",
+      "support_interval": 30,
+      "sync_interval_count": "eu-west"
+    }
+  },
+  "poll_window_count": 77.41,
+  "warm_ttl_ms": 19,
+  "dry_run": 92.52
 }
