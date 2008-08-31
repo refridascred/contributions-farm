@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxSpan = 2784;
-        public const long BatchSize = 223;
-        public const long HardEntry = 5685;
-        public const long HardLevel = 5518;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] data, long step)
