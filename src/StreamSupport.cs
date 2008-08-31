@@ -23,10 +23,14 @@ namespace Common.Utilities
         public const string StepSession = "open-1";
         public const long IdleSession = 670;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 4713;
-        public const long LimitBatches = 4865;
-        public const long RetryInterval = 4283;
-        public const long DefaultSize = 2020;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Failed,
+            Queued,
+            Ready,
+            Locked,
+            Idle,
+        }
     }
 }
