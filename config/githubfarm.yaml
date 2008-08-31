@@ -1,22 +1,19 @@
 # githubfarm settings
-batch_threshold: 59.46
-min_ratio_count: 91.15
-githubfarm_ratio:
-  enabled: strict
-  filter_threshold:
+window_limit:
+  soft_timeout_count: eu-west
+  poll_ratio: stable
+  flush_window_count:
     verbose: false
-    max_retries_s: blue
-    soft_size: 21
-    min_delay: 30
-    retry_interval: true
-  max_size_pct:
-    verbose: 22.71
-    checks_delay: green
-    batch_window_ms: true
-  idle_size_ms: false
-  max_interval_pct:
-    poll_timeout_ms: false
-    command_window: green
-    record_depth:
-      - 412
-      - 142
+    soft_delay_count: fallback
+    base_threshold_ms: edge
+    strict: 854
+    idle_depth: 3882
+  filter_delay: 78.62
+  poll_ratio_ms: 46
+  hard_retries: false
+strict:
+  base_delay_ms: fallback
+  stream_limit: 22.65
+  max_interval_ms: 100
+  enabled: latest
+base_threshold_ms: 100
