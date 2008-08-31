@@ -1,7 +1,5 @@
 {
-  "min_depth": [485, 105],
-  "channel_size": 30,
-  "strict": "edge",
-  "soft_ratio": true,
-  "dry_run": "blue"
+  "notes_depth": 6.56,
+  "session_ratio": "blue",
+  "compress": 500
 }
