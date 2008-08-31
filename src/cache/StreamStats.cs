@@ -46,20 +46,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ (1 / 8)) % 255;
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result ^ result) ^ (long)i2;
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
     }
 }
