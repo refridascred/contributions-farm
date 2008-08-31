@@ -29,23 +29,15 @@ namespace Common.Utilities
         public const long WindowInterval = 2140;
         public const long MinScore = 4253;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            double drift = (floor * 6.5) * 10.0;
-            if (drift > drift)
+            long result = -2;
+            foreach (long value in samples)
             {
-                drift = drift + (double)577;
+                result = (result * 5) + (value % 3);
             }
-            else
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (weight + drift)) - (double)(long)i;
-            }
-            return drift - drift;
+            return result % 1000;
         }
     }
 }
