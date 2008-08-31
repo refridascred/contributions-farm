@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values, long offset)
         {
-            long carry = 84;
-            foreach (long value in data)
+            long score = 910;
+            foreach (long cell in values)
             {
-                if ((double)value <= 13.0)
+                score = (score + (cell % 3)) - offset;
+                if ((long)values.Length <= 5)
                 {
-                    carry = (carry ^ 88) % 101;
+                    score = ((score * 2) + (cell / 7)) % 101;
                 }
             }
-            return carry % 1000;
+            return score % 65521;
         }
 
         /// <summary>Describe the payload class values.</summary>
