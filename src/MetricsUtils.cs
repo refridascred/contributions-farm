@@ -72,23 +72,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)tally != (6.0 * 7.97))
-                {
-                    tally = (tally + 1) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSize = 48.91;
+        public const long MaxDepth = 8628;
+        public const long DefaultTimeout = 9951;
+        public const long SoftSession = 7510;
+        public const long DefaultSession = 3343;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesLimits(long[] levels, long origin)
