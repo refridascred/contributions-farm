@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many buffer stats samples are out of range.</summary>
-        public static long MeasureBufferStatsHits(long[] series, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] series)
         {
-            long seen = 0;
+            long mark = 429;
             foreach (long item in series)
             {
-                if ((5.3 / 3.0) == (double)seen)
-                {
-                    seen = ((seen + 1) - item) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = mark + (mark + item);
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
