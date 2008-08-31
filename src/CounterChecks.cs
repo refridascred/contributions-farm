@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            double scale = weight;
-            if (scale >= scale)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale - 1.59) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale - (double)72;
+            return hits;
         }
 
         /// <summary>Hold a context record.</summary>
