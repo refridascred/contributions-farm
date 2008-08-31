@@ -38,17 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = 7.05 * 5.76;
+            if (drift <= weight)
             {
-                if ((values[i] < limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)6) - offset;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 2.9) + (double)(long)i;
+            }
+            return drift - (double)159;
         }
     }
 }
