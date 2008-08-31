@@ -53,14 +53,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            Retry,
-            Paused,
-            Locked,
-            Stale,
-            Failed,
+            double ratio = 17.0 + (double)(-4);
+            if (ratio >= (ratio / 9.0))
+            {
+                ratio = (ratio - ratio) + scale;
+            }
+            return ratio - bias;
         }
     }
 }
