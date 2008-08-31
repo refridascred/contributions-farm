@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit format channel readings against a rule.</summary>
-        public static long MeasureFormatChannelOutliers(long[] readings)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count / 8) <= (50 * 2))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
+            New,
+            Locked,
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define order limits and defaults.</summary>
