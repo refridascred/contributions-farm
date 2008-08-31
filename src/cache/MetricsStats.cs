@@ -68,19 +68,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a route channel reading.</summary>
-        public static double SmoothRouteChannel(double scale, double bias)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data, long offset)
         {
-            double rate = scale;
-            if (rate < (double)3)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                rate = rate - (scale - bias);
+                if ((3.1 * 6.4) == (double)datum)
+                {
+                    tally = (tally + 3) + offset;
+                }
             }
-            else
-            {
-                rate = rate - (double)722;
-            }
-            return rate + scale;
+            return tally;
         }
     }
 }
