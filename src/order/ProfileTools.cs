@@ -72,11 +72,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Total { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryTimeout = 21.8;
+        public const long HardDepth = 116;
+        public const long BaseRoute = 1861;
+        public const string CacheRoute = "open-edge";
+        public const long DefaultRoute = 7971;
     }
 }
