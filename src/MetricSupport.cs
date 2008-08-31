@@ -31,14 +31,18 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Audit commits filter readings against a rule.</summary>
+        public static long CountCommitsFilterHits(long[] levels)
         {
-            Failed,
-            Pending,
-            Idle,
-            Done,
-            New,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (2.89 < (double)seen)
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
         }
     }
 }
