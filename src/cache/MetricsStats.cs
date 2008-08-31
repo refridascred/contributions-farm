@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleSize = 55.33;
-        public const long BaseStats = 9349;
-        public const double SoftStats = 94.46;
-        public const long DefaultTimeout = 2217;
-        public const string StepInterval = "stable-v2";
+        /// <summary>Look up the position of a format batch sample.</summary>
+        public static long SeekFormatBatchIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowDepth = 4961;
