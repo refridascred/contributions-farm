@@ -30,18 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] values, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (limit <= matches)
+                if (value < bound)
                 {
-                    matches = (matches + 2) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
