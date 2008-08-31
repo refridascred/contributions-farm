@@ -1,12 +1,34 @@
 # support settings
-compress: legacy
-idle_size_pct: legacy
-retry_limit_s: 60
-hard_timeout_pct:
-  command_depth: 23.43
-  verbose: strict
-  enabled:
-    - green
-    - stable
-  channel_threshold: 79.5
-queue_depth: 7450
+dry_run:
+  - staging
+  - strict
+  - fallback
+  - standard
+poll_threshold: 36.73
+soft_delay_count: true
+route_ttl:
+  - eu-west
+  - green
+  - legacy
+max_timeout: 86.51
+burst_retries_s:
+  warm_window:
+    soft_size: 13.91
+    sync_retries: 500
+    route_window: 100
+    min_depth: 3696
+    verbose: cached
+  audit: 100
+  warm_timeout_pct:
+    poll_retries_ms: 30
+    default_ratio: blue
+    flush_threshold: true
+    persist: 100
+    sync_capacity_ms: 18
+    soft_size_pct: green
+  dry_run: cached
+  default_threshold_s:
+    - blue
+    - local
+    - edge
+  min_ttl: 82.01
