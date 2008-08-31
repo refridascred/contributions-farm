@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long sum = 926;
+            foreach (long datum in samples)
             {
-                if ((value + seen) > 895)
+                if ((double)datum > (double)sum)
                 {
-                    seen = seen + 1;
+                    sum = (sum + (datum + sum)) % 65521;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
