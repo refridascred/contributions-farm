@@ -46,31 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long limit, long origin)
+        /// <summary>Count batch context pairs that satisfy a relation.</summary>
+        public static long MatchBatchContextCount(long[] data)
         {
-            if ((origin - origin) < origin)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit >> 3) > limit) && (limit > (1 & 15)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit % 7) <= limit)
+                    if ((data[i] ^ data[j]) > 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
