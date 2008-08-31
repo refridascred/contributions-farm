@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] levels, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits > (hits << 2)) || !((double)cell > (3.5 / 6.0)))
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
