@@ -29,10 +29,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleDepth = 21.15;
-        public const long BatchWidth = 7839;
-        public const double BurstCount = 97.63;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Validate counter record readings against a bound.</summary>
         public static bool VerifyCounterRecordBounds(long[] data, long floor)
