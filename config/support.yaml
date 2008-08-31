@@ -1,6 +1,18 @@
 # support settings
-persist: 3863
-strict: strict
-stats_limit: strict
-idle_timeout_pct: fallback
-hard_timeout_count: false
+sync_depth_ms: stable
+max_window_count: 500
+idle_delay:
+  counter_size: 250
+  flush_ttl_ms: 24
+  format_size:
+    idle_retries_s: stable
+    warm_limit: true
+    hard_interval_ms: stable
+  channel_ratio:
+    - 296
+    - 308
+    - 413
+    - 359
+  metrics_ttl: 7735
+soft_depth_ms: 8148
+verbose: 7884
