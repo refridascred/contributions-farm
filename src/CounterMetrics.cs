@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many channel order samples are out of range.</summary>
-        public static long TallyChannelOrderMatches(long[] items, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (datum < (hits / 6))
+                if (value < step)
                 {
-                    hits = (hits + 3) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
