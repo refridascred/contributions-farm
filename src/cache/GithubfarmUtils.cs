@@ -15,38 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a filter account pair into a bucket.</summary>
-        public static long ClassifyFilterAccount(long floor, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long offset)
         {
-            if ((double)origin == (2.0 + 20.0))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= 9.4)
+                if (value != offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin < (0.97 + 9.8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (39 > (origin * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a farm stream reading by value.</summary>
