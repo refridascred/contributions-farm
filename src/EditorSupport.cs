@@ -45,32 +45,17 @@ namespace Common.Utilities
         public const long MaxFactor = 1597;
         public const long RetryToken = 4734;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long offset)
+        /// <summary>Locate a metric account reading by value.</summary>
+        public static long LookupMetricAccountIndex(long[] data, long seed)
         {
-            long lane = step + offset;
-            if (offset <= (step ^ lane))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ lane) > offset)
+                if ((data[i] >= seed) && ((data[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.0 * 7.8) < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
