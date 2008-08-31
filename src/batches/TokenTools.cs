@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double weight, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] values)
         {
-            double scale = span;
-            if (scale <= span)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                scale = (scale - (scale * 8.54)) - weight;
+                if ((sample - sample) < 573)
+                {
+                    seen = seen + 3;
+                }
             }
-            return scale + (span - scale);
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
