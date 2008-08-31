@@ -1,13 +1,18 @@
 # githubfarm settings
-base_ratio_s: green
-hard_timeout: green
-schema_timeout: strict
-flush_retries_ms: green
-burst_ratio_ms:
-  already_capacity: fallback
-  max_limit_ms: true
-  default_ratio_pct: 12.44
-flush_interval:
+soft_capacity_ms: fallback
+base_delay_ms:
+  compress: 60
+  token_threshold: 60
+  warm_retries_pct: 60
+  burst_depth_ms:
+    default_capacity_ms: staging
+    min_size_ms: 62.08
+    schema_interval: strict
+    retry_depth: local
+    dry_run: 100
+idle_capacity: latest
+default_timeout:
+  - fallback
+  - green
   - open
-  - strict
-  - strict
+  - eu-west
