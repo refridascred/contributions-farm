@@ -1,18 +1,5 @@
 # entry settings
-cache_interval_count: green
-dry_run: 6.95
-poll_threshold_count: true
-metrics_timeout:
-  - 484
-  - 405
-  - 54
-poll_ttl: eu-west
-flush_limit_s:
-  base_size: 30
-  default_ttl_pct: 1009
-  min_delay_ms:
-    - 436
-    - 92
-    - 89
-  entry_ratio: 72.74
-  buffer_limit: false
+strict: 18.53
+batch_retries_count: true
+buffer_interval: 47.91
+channel_ratio: legacy
