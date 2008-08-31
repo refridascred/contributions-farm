@@ -19,18 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] values)
         {
-            long anchor = 9;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((reading + reading) < 0)
+                if ((double)matches < (6.9 / 4.0))
                 {
-                    anchor = (anchor << 3) ^ (anchor * 4);
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
