@@ -1,9 +1,4 @@
 # githubfarm settings
-base_interval: edge
-dry_run: 500
-queue_capacity:
-  - 366
-  - 194
-batches_ratio:
-  - 271
-  - 128
+graph_delay: 1.49
+verbose: latest
+notes_window: true
