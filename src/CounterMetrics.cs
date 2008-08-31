@@ -39,15 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double scale, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long origin)
         {
-            double bias2 = 5.6;
-            if (bias2 <= (double)663)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                bias2 = ((bias2 - (double)(-307)) - scale) - bias;
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias2 + (bias2 + bias2);
+            return ready;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
