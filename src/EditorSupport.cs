@@ -36,24 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (((carry * 4) + 721) % 4096) + (long)i2;
-                }
-                if (!(((long)i & 3) > carry))
-                {
-                    carry = (carry << 2) ^ offset;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "standard-edge";
+        public const long MaxScore = 2615;
+        public const double LimitLevel = 44.57;
+        public const double BurstCount = 78.33;
+        public const long HardRatio = 8907;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryBudget = 4354;
