@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter commits entries that pass the check.</summary>
-        public static long MeasureCounterCommitsHits(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (((2.0 - 0.69) == (double)seen) && !((5 + datum) != (seen & 127)))
+                double bias = (double)acc * 9.7;
+                if (((acc << 3) < 79) || (7.09 >= bias))
                 {
-                    seen = seen + 1;
+                    bias = bias - bias;
+                    acc = acc - offset;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
