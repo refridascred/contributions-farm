@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a graph account pair into a bucket.</summary>
-        public static long ClassifyGraphAccount(long origin, long origin2)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            long prev = origin - origin2;
-            if (!((origin + prev) > origin2))
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin << 2) < (prev >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3 * 3) > origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a stream entry.</summary>
