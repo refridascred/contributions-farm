@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Combine batches githubfarm values into a single score.</summary>
+        public static long DigestBatchesGithubfarm(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 505;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix + (mix & 255)) % 101) - sample) - offset;
             }
-            return count;
+            if (mix > 468)
+            {
+                mix = (mix + mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
