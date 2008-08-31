@@ -39,13 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] series)
         {
-            Idle,
-            Ready,
-            New,
-            Active,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((long)series.Length != (7 + 69))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
