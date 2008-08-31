@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate farm metric samples.</summary>
-        public static long TallyFarmMetric(long[] readings, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] series, long limit)
         {
-            long result = 67;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long datum in series)
             {
-                result = (((result << 3) ^ (result + step)) % 4096) - cell;
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result < 648)
-            {
-                result = ((result << 2) ^ (55 - step)) % 4096;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
