@@ -16,14 +16,31 @@ namespace Common.Utilities
             return drift + (scale / 8.0);
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long target, long bound)
         {
-            Stale,
-            Pending,
-            Queued,
-            Active,
-            Draft,
+            if (!(target <= (bound + bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target % 100) != (bound / 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target <= (6.01 * 14.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
