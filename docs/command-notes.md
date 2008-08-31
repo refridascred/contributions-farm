@@ -1,14 +1,14 @@
 # Command notes
 
-When a window fails, the filter handler retries a few times before giving up.
-The route report groups every report by route.
-The batches report groups every window by payload.
+A session that stays idle for too long is moved to the cache list.
+Use order settings to tune how often farm data is refreshed.
 
-The layout module keeps batches values in sync with the report cache.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+The session helpers are pure functions, so they are safe to call from any thread.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new context fields
-- Keep batches values small
-- Validate session input early
+- Review metric limits each release
+- Validate support input early
+- Document new window fields
+- Log every stream change
