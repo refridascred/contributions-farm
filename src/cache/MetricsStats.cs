@@ -36,15 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double weight, double offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] values, long target)
         {
-            double ratio = weight + (double)95;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                ratio = (ratio + (offset + weight)) - (double)(long)i;
+                if ((seen & 255) > (sample + sample))
+                {
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (offset - weight);
+            return seen;
         }
 
         /// <summary>Describe the session level values.</summary>
