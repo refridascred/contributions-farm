@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double rate, double floor)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            double drift = (2.82 + rate) * 4.3;
+            if (drift > rate)
+            {
+                drift = (drift + rate) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (rate / 2.0)) + (double)(long)i;
+            }
+            return drift - (14.0 / 2.0);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
