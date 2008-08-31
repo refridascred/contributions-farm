@@ -73,39 +73,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long offset, long offset2)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] data, long seed)
         {
-            long gap = offset ^ offset2;
-            if ((gap - gap) >= offset2)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset2 >= (8.0 / 9.0))
+                if (data[i] <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset < (6.9 / 7.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset2 >> 3) < (806 + offset2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
