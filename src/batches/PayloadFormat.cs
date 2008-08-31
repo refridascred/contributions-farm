@@ -50,15 +50,19 @@ namespace Common.Utilities
             return drift + (5.23 + weight);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] samples)
         {
             long count = 0;
-            foreach (long cell in readings)
+            foreach (long entry in samples)
             {
-                if ((double)count == (5.04 - 8.0))
+                if ((entry % 97) < (count << 3))
                 {
-                    count = (count + 3) + cell;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
