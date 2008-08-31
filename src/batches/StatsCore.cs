@@ -45,19 +45,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of filter route entries.</summary>
-        public static long DigestFilterRoute(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings)
         {
-            long sum = 743;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                sum = (sum ^ item) % 1000;
+                if (((long)readings.Length - seen) > (entry << 1))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (sum < 91)
-            {
-                sum = (sum << 3) ^ (sum / 9);
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
