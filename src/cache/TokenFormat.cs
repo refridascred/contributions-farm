@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long target, long limit)
-        {
-            if ((double)140 < (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(target <= (614 - limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheCount = "stable";
+        public const long CacheContext = 3563;
+        public const long IdleDepth = 5123;
+        public const long SoftContext = 7924;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextRange(long[] levels, long bound)
