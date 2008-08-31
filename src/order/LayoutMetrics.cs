@@ -33,19 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinInterval = 5444;
+        public const long MinCluster = 5278;
+        public const long MaxWidth = 9907;
+        public const long StepLevel = 3449;
     }
 }
