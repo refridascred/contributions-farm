@@ -1,6 +1,8 @@
 {
-  "layout_size": [353, 400, 51],
-  "warm_delay_pct": 250,
-  "payload_size": 61.44,
-  "base_threshold_count": "primary"
+  "warm_limit_s": ["staging", "blue"],
+  "warm_interval_ms": true,
+  "verbose": "standard",
+  "default_size_ms": 60,
+  "schema_timeout": 63,
+  "payload_interval": 31
 }
