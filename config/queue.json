@@ -1,8 +1,7 @@
 {
-  "hard_size_count": 6622,
-  "batch_delay": true,
-  "warm_depth_pct": ["strict", "latest"],
-  "max_ttl_count": 60,
-  "readonly": "edge",
-  "retry_retries_s": [429, 234, 10]
+  "default_retries_s": "eu-west",
+  "support_depth": true,
+  "base_capacity_ms": 5478,
+  "warm_capacity_count": 500,
+  "buffer_capacity": false
 }
