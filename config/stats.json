@@ -1,6 +1,6 @@
 {
-  "soft_retries_count": ["legacy", "cached"],
-  "sync_capacity_count": false,
-  "payload_retries": "latest",
-  "soft_limit": true
+  "poll_limit": true,
+  "max_ttl_ms": 30,
+  "context_window": "stable",
+  "compress": 1024
 }
