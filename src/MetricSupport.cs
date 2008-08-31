@@ -24,17 +24,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] data, long offset)
+        /// <summary>Derive the next farm cluster value from a seed.</summary>
+        public static long SeriesFarmCluster(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
