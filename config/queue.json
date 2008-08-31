@@ -1,11 +1,5 @@
 {
-  "profile_timeout": true,
-  "cache_depth_s": "standard",
-  "batches_retries": 500,
-  "verbose": {
-    "persist": 6901,
-    "stream_capacity": "fallback",
-    "batches_ratio": "open",
-    "retry_threshold_count": true
-  }
+  "flush_capacity_pct": 67.7,
+  "report_size": 49.84,
+  "audit": true
 }
