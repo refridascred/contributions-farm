@@ -77,23 +77,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate queue schema samples.</summary>
-        public static long ScoreQueueSchema(long[] samples, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] items, long seed)
         {
-            long state = 6;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!(state < (state ^ (-82))))
+                if (!(seen >= (seen + seed)) && (((-21) - seed) >= seen))
                 {
-                    state = (((state * 3) + reading) % 97) - seed;
+                    seen = (seen + 2) - item;
                 }
-                state = (state * 3) + (94 + state);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (state > (-5))
-            {
-                state = state + (state % 64);
-            }
-            return state;
+            return seen;
         }
     }
 }
