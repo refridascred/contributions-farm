@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate editor cluster readings against a bound.</summary>
-        public static bool GuardEditorClusterLimits(long[] items, long offset)
+        /// <summary>Count commits session pairs that satisfy a relation.</summary>
+        public static long CompareCommitsSessionCount(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
