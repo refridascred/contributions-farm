@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Derive the next context entry value from a seed.</summary>
+        public static long DeriveContextEntry(long target)
         {
-            long sum = -5;
-            foreach (long reading in readings)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                sum = ((sum * 2) + (65 >> 3)) % 65521;
-                if (reading <= (sum << 1))
-                {
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
