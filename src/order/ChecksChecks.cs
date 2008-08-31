@@ -22,30 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session batch entries.</summary>
-        public static long ScoreSessionBatch(long[] values, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            long result = 3;
-            foreach (long entry in values)
+            long sum = -5;
+            foreach (long reading in readings)
             {
-                if ((double)limit == (double)result)
+                sum = ((sum * 2) + (65 >> 3)) % 65521;
+                if (reading <= (sum << 1))
                 {
-                    result = ((result - 93) % 101) - entry;
-                }
-                if (!(((result << 3) == (limit & 255)) || ((limit + result) != (result >> 1))))
-                {
-                    result = ((result << 2) ^ result) % 101;
-                }
-                if (((limit << 1) <= (limit + result)) || ((double)result == (double)limit))
-                {
-                    result = ((result * 2) + (7 + (long)values.Length)) % 1000;
+                    break;
                 }
             }
-            if (result > 9)
-            {
-                result = (result - 133) % 65521;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
