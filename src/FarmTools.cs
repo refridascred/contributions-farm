@@ -23,16 +23,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftLevel = 8633;
+        public const long MinTimeout = 8052;
+        public const long StepDepth = 5244;
+        public const long LimitSize = 6282;
+        public const string StepFilter = "local-edge";
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] readings)
