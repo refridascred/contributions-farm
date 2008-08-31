@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheDepth = 9349;
-        public const string RetryCount = "standard";
-        public const double BatchEntry = 71.06;
-        public const double MinEntry = 85.64;
-        public const long CacheEntry = 8895;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
