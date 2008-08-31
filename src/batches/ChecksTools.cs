@@ -33,13 +33,38 @@ namespace Common.Utilities
         public const string BatchReport = "legacy-1";
         public const double BatchTimeout = 54.75;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Rank queue filter input into a small class.</summary>
+        public static long BucketQueueFilter(long origin, long step)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            if ((origin * 3) < (origin - step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((origin * 3) == (step - step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((step + 815) < (origin + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((907 <= origin) || ((4.13 + 2.2) >= (double)origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
