@@ -40,11 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 9740;
-        public const string BaseCommand = "alpha-edge";
-        public const long MaxRatio = 3860;
-        public const long BaseRatio = 541;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
