@@ -50,12 +50,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] values, long origin)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits + origin) < reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
