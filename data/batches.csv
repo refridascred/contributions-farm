@@ -1,6 +1,11 @@
-id,active,region,rank,owner
-1,9.8,cached,906,636
-2,open,green,stable,64.39
-3,723,216,eu-west,stable
-4,23.28,76.49,blue,23.67
-5,714,fallback,9.09,eu-west
+id,token
+1,41.08
+2,447
+3,29.61
+4,584
+5,stable
+6,868
+7,86.29
+8,50.28
+9,5.27
+10,86
