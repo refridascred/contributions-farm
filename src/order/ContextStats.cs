@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next order support value from a seed.</summary>
-        public static long StepOrderSupport(long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] readings, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                total = (total + total) % 1000;
-                total = (total + target) % 4096;
-                total = ((total * 3) + (long)i) % 65521;
+                if (datum < (datum + offset))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate commits notes samples.</summary>
