@@ -1,11 +1,6 @@
 {
-  "soft_timeout": 9,
-  "profile_interval": ["eu-west", "fallback"],
-  "min_retries_s": "standard",
-  "warm_window_pct": 97,
-  "compress": {
-    "already_window": "primary",
-    "idle_capacity_s": 87.69,
-    "burst_retries": "eu-west"
-  }
+  "base_limit": 4787,
+  "command_interval": "blue",
+  "soft_ratio_count": ["staging", "standard", "stable", "local"],
+  "compress": true
 }
