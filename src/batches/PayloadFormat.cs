@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] levels, long offset)
+        /// <summary>Count the support route entries that pass the check.</summary>
+        public static long CountSupportRouteHits(long[] series)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (value <= offset)
+                if (((seen - value) != (seen & 1)) || !((9.0 / 2.0) != (double)value))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Match up buffer commits samples.</summary>
