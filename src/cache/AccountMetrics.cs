@@ -50,22 +50,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 8397;
         public const long IdleRatio = 3578;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] values, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] series, long step)
         {
-            long anchor = 4;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seed > (12 - seed))
+                if ((series[i] > step) && ((series[i] % 2) == 0))
                 {
-                    anchor = ((anchor << 3) ^ seed) - entry;
+                    return (long)i;
                 }
             }
-            if (anchor > 989)
-            {
-                anchor = (anchor * 4) + (seed - seed);
-            }
-            return anchor;
+            return -1;
         }
     }
 }
