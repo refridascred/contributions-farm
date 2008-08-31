@@ -17,13 +17,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double scale, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            double rate = (0.5 * 1.3) * 4.86;
+            if (rate > 8.1)
+            {
+                rate = (rate + (9.54 * 3.1)) - scale;
+            }
+            else
+            {
+                rate = rate - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + 17.0) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
