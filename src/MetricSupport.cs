@@ -23,18 +23,11 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Audit commits filter readings against a rule.</summary>
-        public static long CountCommitsFilterHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (2.89 < (double)seen)
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 1967;
+        public const long WindowFactor = 3573;
+        public const long RetryAlready = 7278;
+        public const long StepSpan = 2820;
+        public const string MinDepth = "alpha-v2";
     }
 }
