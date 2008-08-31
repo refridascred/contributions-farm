@@ -40,19 +40,9 @@ namespace Common.Utilities
         public const long IdleContext = 756;
         public const long LimitContext = 302;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitBudget = "open";
+        public const double StepCommand = 88.05;
+        public const long HardBudget = 9495;
     }
 }
