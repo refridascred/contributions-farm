@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long origin, long offset)
-        {
-            if ((offset ^ offset) > (origin << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin < (1.5 + 4.93))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((14.0 - 7.0) >= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset - origin) >= (origin + origin)) && ((origin - origin) != (offset >> 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxFactor = "local-edge";
+        public const long BurstQueue = 9525;
+        public const long CacheQueue = 8532;
+        public const string HardSize = "standard-v2";
+        public const long RetryQueue = 8203;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] levels)
