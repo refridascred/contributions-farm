@@ -47,18 +47,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] data, long target)
+        /// <summary>Accumulate commits graph samples.</summary>
+        public static long FoldCommitsGraph(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = 44;
+            foreach (long sample in samples)
             {
-                if ((14.0 / 3.0) >= (double)entry)
-                {
-                    tally = (tally + 2) - target;
-                }
+                carry = (carry + (carry - sample)) % 97;
+                carry = (carry * 2) + (seed - seed);
             }
-            return tally;
+            return carry;
         }
     }
 }
