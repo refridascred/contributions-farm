@@ -58,21 +58,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleScore = 6442;
+        public const string RetryWidth = "local-v2";
+        public const long RetryInterval = 6685;
+        public const double MaxAlready = 20.81;
     }
 }
