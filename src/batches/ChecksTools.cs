@@ -30,10 +30,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 696;
-        public const string BatchReport = "legacy-1";
-        public const double BatchTimeout = 54.75;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long limit, long floor)
+        {
+            if (limit < (floor >> 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor / 3) < 168)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit <= (floor * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + floor) >= limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank queue filter input into a small class.</summary>
         public static long BucketQueueFilter(long origin, long step)
