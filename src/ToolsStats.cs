@@ -66,12 +66,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 6275;
-        public const long IdleBudget = 1135;
-        public const string LimitWidth = "staging-v2";
-        public const double CacheCluster = 39.58;
-        public const string IdleCluster = "legacy-1";
+        /// <summary>Count the layout route entries that pass the check.</summary>
+        public static long AuditLayoutRouteOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally + sample) == (392 / 6))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsGaps(long[] data)
