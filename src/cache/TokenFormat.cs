@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools metrics measurements.</summary>
-        public static double AdjustToolsMetrics(double gain, double floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] levels, long bound)
         {
-            double ratio = gain;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                ratio = (ratio + floor) - (double)(long)i;
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio - 9.54;
+            return ready;
         }
 
         /// <summary>Accumulate support samples.</summary>
