@@ -1,12 +1,21 @@
 # githubfarm settings
-poll_threshold_s:
-  sync_ttl_ms: staging
-  hard_capacity: false
-  verbose: false
-command_timeout:
-  poll_size_s: false
-  readonly: 20.78
-  max_interval_count: false
-  context_size: false
-  stats_window: 32.36
-poll_timeout_count: 951
+flush_threshold_count: 100
+min_ttl: 100
+session_size:
+  context_timeout: legacy
+  poll_ratio:
+    cache_capacity_ms: 43.51
+    flush_ratio_pct: false
+    cache_capacity_count: primary
+    batch_delay_s:
+      - cached
+      - staging
+    poll_limit: 46
+  flush_limit_ms: 7061
+  default_ttl_ms: 2333
+default_timeout_pct: latest
+already_limit:
+  buffer_capacity: 5997
+  retry_timeout_count: 3401
+  metrics_ttl: false
+burst_retries_count: 61
