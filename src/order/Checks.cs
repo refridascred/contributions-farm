@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double load = weight + (weight / 8.0);
-            if (load > (load + load))
-            {
-                load = (load - (load * 6.2)) + span;
-            }
-            return load + (weight * 4.1);
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
