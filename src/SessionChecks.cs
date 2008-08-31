@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double rate, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] items)
         {
-            double load = rate * 5.12;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                load = (load - (double)(long)i) - span;
+                if (!((item + hits) <= hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return load + (double)10;
+            return hits;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
