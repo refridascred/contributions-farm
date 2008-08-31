@@ -27,18 +27,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the metric stream entries that pass the check.</summary>
-        public static long TallyMetricStreamGaps(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)item < (6.0 + 13.0))
+                if (item <= hits)
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
