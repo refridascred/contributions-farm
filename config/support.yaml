@@ -1,8 +1,6 @@
 # support settings
-warm_limit_pct: edge
-layout_window: local
-batch_ttl:
-  - legacy
-  - staging
-  - latest
-  - fallback
+hard_size: true
+dry_run: 37.77
+soft_depth_s: 100
+filter_ttl: 62.84
+hard_window_count: 5.71
