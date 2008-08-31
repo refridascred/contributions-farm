@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload stream readings against a rule.</summary>
-        public static long AuditPayloadStreamOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally << 3) < (datum + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 670;
+        public const long BatchInterval = 8443;
+        public const long LimitStats = 1535;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
