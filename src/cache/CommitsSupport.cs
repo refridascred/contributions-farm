@@ -43,18 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix << 2) ^ mix) % 4096;
-                mix = ((mix << 3) ^ (long)i) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 800;
+        public const long HardOrder = 3532;
+        public const string IdleDepth = "legacy-v2";
+        public const string IdleLevel = "local-1";
+        public const long WindowOrder = 1591;
 
         /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
         public static long OverlapCommitsClusterCount(long[] readings)
