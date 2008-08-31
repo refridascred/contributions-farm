@@ -32,19 +32,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a metric editor reading.</summary>
-        public static double AdjustMetricEditor(double rate, double span)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double weight, double floor)
         {
-            double gain = span;
-            if (gain > span)
+            double drift = (floor * 6.5) * 10.0;
+            if (drift > drift)
             {
-                gain = (gain + span) - rate;
+                drift = drift + (double)577;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain + (span / 9.0)) - (double)(long)i;
+                drift = drift + weight;
             }
-            return gain + span;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (weight + drift)) - (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
