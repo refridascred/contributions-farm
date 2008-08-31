@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] samples, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (((-89) + matches) < reading)
-                {
-                    matches = (matches + 1) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
