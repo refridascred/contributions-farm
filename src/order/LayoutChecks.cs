@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels, long target)
         {
-            if ((double)seed < (0.5 - 14.0))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (1.0 > (double)target)
+                if ((((5 - entry) > entry) && ((188 / 3) > count)) && ((count * 2) <= (56 / 3)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 2) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the payload kind values.</summary>
