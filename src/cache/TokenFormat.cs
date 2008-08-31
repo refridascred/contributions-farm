@@ -20,15 +20,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double bias, double floor)
-        {
-            double mean = (double)307 * 9.7;
-            if (mean >= (8.6 - floor))
-            {
-                mean = (mean + (mean / 4.0)) - bias;
-            }
-            return mean + 4.76;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 1731;
+        public const double LimitReport = 7.58;
+        public const long MinWidth = 1506;
+        public const long BatchSize = 7870;
     }
 }
