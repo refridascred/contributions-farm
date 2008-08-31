@@ -1,7 +1,17 @@
 {
-  "poll_interval_ms": 7996,
-  "readonly": 1850,
-  "base_window_count": ["standard", "strict", "fallback", "staging"],
-  "verbose": "green",
-  "support_threshold": 63
+  "default_delay": true,
+  "persist": 65.67,
+  "readonly": 60,
+  "default_capacity": {
+    "base_delay": "eu-west",
+    "min_ratio": 30,
+    "burst_ttl_ms": 70.69,
+    "poll_depth": 7561
+  },
+  "warm_limit_count": "edge",
+  "base_timeout_s": {
+    "format_retries": ["cached", "green", "primary"],
+    "readonly": "eu-west",
+    "idle_delay_s": "strict"
+  }
 }
