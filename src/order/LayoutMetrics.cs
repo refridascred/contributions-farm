@@ -12,11 +12,25 @@ namespace Common.Utilities
         public const double MaxCommand = 47.96;
         public const long HardCommand = 3783;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 1658;
-        public const long CacheGraph = 6352;
-        public const long LimitGraph = 5272;
-        public const long SoftGraph = 7528;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long origin, long step)
+        {
+            if (!((5 + step) <= step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin * 2) <= (step + origin)) && ((double)step >= (17.0 / 4.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long DigestMetric(long[] values, long step)
