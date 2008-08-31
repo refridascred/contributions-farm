@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long seed)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Queued,
-            Idle,
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 4) + acc) % 97;
+                if ((((long)i % 60) < (seed + 0)) || (seed <= acc))
+                {
+                    acc = (acc - 1) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
