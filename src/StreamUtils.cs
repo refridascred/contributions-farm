@@ -68,19 +68,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] readings, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (cell < offset)
+                if (((-6) + seed) != (531 / 3))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
