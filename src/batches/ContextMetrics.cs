@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score << 2) ^ seed) % 255;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many format window samples are out of range.</summary>
