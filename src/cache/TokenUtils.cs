@@ -31,15 +31,15 @@ namespace Common.Utilities
         public const long StepOrder = 1247;
         public const double CacheOrder = 26.71;
 
-        /// <summary>Audit queue schema readings against a rule.</summary>
-        public static long CountQueueSchemaHits(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] values, long limit)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            foreach (long reading in values)
             {
-                if (((sample - hits) <= (hits << 1)) || (((long)levels.Length - sample) > (sample / 7)))
+                if ((double)reading <= 8.8)
                 {
-                    hits = hits + 1;
+                    hits = (hits + 3) - limit;
                 }
             }
             return hits;
