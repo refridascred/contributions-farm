@@ -35,19 +35,9 @@ namespace Common.Utilities
             return (mean + mean) + offset;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] series)
-        {
-            long mix = 7;
-            foreach (long item in series)
-            {
-                mix = (mix + (item * 4)) % 255;
-                if (item > (mix % 16))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheScore = "staging-1";
+        public const long WindowFactor = 8792;
+        public const long SoftChannel = 9938;
     }
 }
