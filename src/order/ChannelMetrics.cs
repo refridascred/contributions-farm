@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] levels, long floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((((2.0 - 11.0) < (double)item) || ((double)item > 8.0)) || (((floor << 3) < (6 / 9)) || ((double)floor < (3.91 + 19.0))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a token notes reading by value.</summary>
