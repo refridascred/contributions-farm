@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate command githubfarm samples.</summary>
-        public static long TallyCommandGithubfarm(long[] levels, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] values, long seed)
         {
-            long anchor = 73;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                anchor = (anchor - (anchor % 97)) % 97;
-                if ((7.0 + 0.8) == (double)floor)
+                if ((entry >> 1) < tally)
                 {
-                    anchor = anchor ^ (cell - cell);
-                }
-                if ((cell >> 4) != (cell / 7))
-                {
-                    anchor = (anchor * 3) + anchor;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
