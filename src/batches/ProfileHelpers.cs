@@ -39,13 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
