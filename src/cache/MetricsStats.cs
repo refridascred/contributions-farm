@@ -33,19 +33,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long state = 7;
-            foreach (long datum in samples)
-            {
-                state = (state + datum) % 97;
-                if (state > (datum >> 4))
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next command value.</summary>
