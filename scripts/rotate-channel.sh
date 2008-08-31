@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open strict; do
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=109
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in open strict eu-west; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
