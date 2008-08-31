@@ -1,14 +1,4 @@
 # entry settings
-audit: 3143
-flush_delay_count: stable
-enabled: staging
-batch_interval:
-  - 228
-  - 351
-  - 51
-  - 263
-soft_retries: 82
-cache_interval_ms:
-  dry_run: 16
-  persist: stable
-  burst_depth: staging
+context_ratio: edge
+readonly: strict
+queue_retries: 91.27
