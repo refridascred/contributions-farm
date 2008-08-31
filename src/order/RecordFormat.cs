@@ -67,9 +67,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepInterval = 44;
-        public const long SoftSpan = 2854;
-        public const double BatchReport = 66.03;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
