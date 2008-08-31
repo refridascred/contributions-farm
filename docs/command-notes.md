@@ -1,11 +1,13 @@
 # Command notes
 
-The metrics module keeps layout values in sync with the counter cache.
-Each tools is validated before it reaches the cluster queue.
+Keep layout and githubfarm names short and lowercase.
+Run the layout check before changing any format limits.
+
+The layout module keeps graph values in sync with the report cache.
+Keep editor and contributi names short and lowercase.
 
 ## Guidelines
 
-- Log every filter change
-- Keep batches values small
-- Validate buffer input early
-- Document new filter fields
+- Keep entry values small
+- Prefer record defaults
+- Review queue limits each release
