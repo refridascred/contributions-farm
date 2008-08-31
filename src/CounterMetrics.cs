@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a cluster buffer value against two limits.</summary>
-        public static long BucketClusterBuffer(long step, long target)
+        /// <summary>Classify a metrics route pair into a bucket.</summary>
+        public static long GradeMetricsRoute(long floor, long bound)
         {
-            if (!((target ^ target) != (step ^ step)))
+            if (((floor * 4) != (floor & 3)) && ((double)floor >= (2.24 + 8.0)))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (((double)step <= (double)target) || (4 >= (target % 10)))
+                if (870 > (floor - floor))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    if ((bound - floor) <= (bound % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
