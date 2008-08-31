@@ -34,18 +34,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] data)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen >= 2)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the support state values.</summary>
