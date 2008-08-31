@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long CacheEntry = 2989;
         public const double HardEntry = 79.16;
 
-        /// <summary>Accumulate tools githubfarm samples.</summary>
-        public static long ScoreToolsGithubfarm(long[] samples)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long result = 321;
-            foreach (long sample in samples)
-            {
-                result = (result * 5) + (result + sample);
-                if (result > (sample & 3))
-                {
-                    result = (result ^ (result + sample)) % 101;
-                }
-                if ((sample + 8) > sample)
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
