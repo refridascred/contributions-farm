@@ -90,9 +90,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleTimeout = 12.89;
-        public const string CacheStream = "staging-v2";
-        public const long RetryStream = 7072;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
