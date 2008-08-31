@@ -1,14 +1,17 @@
 {
-  "compress": ["latest", "blue", "standard"],
-  "cache_capacity_s": {
-    "retry_limit_pct": ["blue", "strict", "primary", "open"],
-    "report_delay": 86.03,
-    "hard_ttl": "cached",
-    "max_retries_ms": false,
-    "default_ratio": ["latest", "primary", "standard"]
+  "base_timeout": false,
+  "cache_capacity": {
+    "base_interval_s": "standard",
+    "idle_window_count": true,
+    "soft_ratio_ms": ["standard", "cached", "standard"],
+    "flush_ratio_count": 64.39,
+    "metric_size": "open"
   },
-  "hard_window_pct": 60,
-  "verbose": 100,
-  "retry_window_pct": 30,
-  "hard_limit": "blue"
+  "cache_depth_s": {
+    "warm_ttl": "edge",
+    "token_threshold": ["green", "staging"],
+    "buffer_capacity": 9873,
+    "readonly": true
+  },
+  "token_capacity": true
 }
