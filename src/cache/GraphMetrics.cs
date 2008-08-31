@@ -34,17 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cache window entry that matches the target.</summary>
-        public static long LookupCacheWindowIndex(long[] levels, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate order samples.</summary>
