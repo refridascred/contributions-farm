@@ -29,39 +29,17 @@ namespace Common.Utilities
         public const long DefaultRecord = 8905;
         public const long MaxDepth = 3982;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long limit, long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] series, long step)
         {
-            long prev = limit ^ origin;
-            if ((origin + limit) != ((-40) % 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((prev ^ 10) != (9 + limit))
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin >= (limit + 540))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit % 3) == (limit + prev))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
