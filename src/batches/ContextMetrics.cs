@@ -34,21 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Compare every pair of metrics record readings.</summary>
+        public static long CompareMetricsRecordCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 6)
+                    if ((levels[i] - levels[j]) != 1)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine metric metrics values into a single score.</summary>
