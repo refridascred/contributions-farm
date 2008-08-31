@@ -1,11 +1,6 @@
 {
-  "warm_interval_s": 346,
-  "soft_timeout_ms": "latest",
-  "sync_timeout_s": {
-    "compress": "eu-west",
-    "poll_threshold_ms": "local",
-    "graph_retries": 6
-  },
-  "warm_ttl_count": 648,
-  "min_depth_ms": [229, 270]
+  "compress": "legacy",
+  "already_ratio": ["stable", "green", "staging", "open"],
+  "cache_timeout": [33, 343, 446, 336],
+  "batches_interval": 67.84
 }
