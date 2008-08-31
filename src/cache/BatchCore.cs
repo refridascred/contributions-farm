@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] data, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            long result = 50;
-            foreach (long sample in data)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample + 59) >= 700)
-                {
-                    result = (result * 2) + (step + sample);
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
