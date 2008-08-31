@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] values, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((count + cell) > count)
+                if (item < seed)
                 {
-                    count = (count + 3) + origin;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Accumulate payload samples.</summary>
