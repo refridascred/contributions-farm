@@ -26,22 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] items, long floor)
         {
-            long mix = 7;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((438 & 7) != ((long)values.Length % 97))
+                if (cell <= floor)
                 {
-                    mix = mix ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 6)
-            {
-                mix = (mix * 4) + (mix / 3);
-            }
-            return mix % 65521;
+            return ready;
         }
     }
 }
