@@ -1,7 +1,7 @@
 {
-  "max_size_s": "eu-west",
-  "stats_threshold": 55.38,
-  "readonly": "strict",
-  "retry_capacity_s": 82,
-  "warm_retries_count": 7650
+  "min_depth": [485, 105],
+  "channel_size": 30,
+  "strict": "edge",
+  "soft_ratio": true,
+  "dry_run": "blue"
 }
