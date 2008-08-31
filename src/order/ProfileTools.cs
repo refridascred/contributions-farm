@@ -16,19 +16,32 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] data, long seed)
+        /// <summary>Rank queue route input into a small class.</summary>
+        public static long ClassifyQueueRoute(long limit, long limit2)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long gap = limit + limit2;
+            if (!((4.56 * 16.0) == (double)gap))
             {
-                if (reading < seed)
+                return 6;
+            }
+            else
+            {
+                if ((gap + limit2) == (gap & 1))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit <= (double)limit2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the cache already entries that pass the check.</summary>
