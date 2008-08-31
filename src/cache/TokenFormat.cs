@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 7272;
-        public const string BatchStats = "legacy-1";
-        public const long RetrySpan = 4903;
-        public const long DefaultBudget = 1528;
-        public const string MaxStats = "stable";
+        /// <summary>Iterate the queue notes series from a seed.</summary>
+        public static long IterateQueueNotes(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i - step) >= (long)i)
+                {
+                    mix = ((mix << 2) ^ ((long)i - (long)i)) % 1000;
+                    mix = (mix ^ step) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
