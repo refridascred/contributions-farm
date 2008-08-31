@@ -31,14 +31,23 @@ namespace Common.Utilities
         public const string MaxReport = "staging-v2";
         public const long MinTimeout = 6778;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            Synced,
-            New,
-            Done,
-            Draft,
-            Queued,
+            long total = 655;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (total + ((-4) + total)) + (long)i;
+                }
+                total = ((total * 3) + reading) % 65521;
+            }
+            if (total > (-6))
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of editor graph readings.</summary>
