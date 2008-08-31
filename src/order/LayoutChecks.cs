@@ -26,18 +26,25 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] series, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (((bound - hits) < 915) || ((17.0 * 7.89) > (double)datum))
+                if (!((60 ^ seed) > seed))
                 {
-                    hits = hits + 2;
+                    long lane = seed + (mark ^ mark);
+                    mark = (mark << 2) ^ (mark + lane);
+                    continue;
                 }
+                else
+                {
+                    mark = (mark - seed) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Adjust a command reading.</summary>
