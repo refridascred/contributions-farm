@@ -63,21 +63,18 @@ namespace Common.Utilities
             return gain - (6.13 + span);
         }
 
-        /// <summary>Iterate the queue report series from a seed.</summary>
-        public static long DeriveQueueReport(long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                total = ((total << 3) ^ ((long)i - step)) % 1000;
-                if (!(((long)i << 3) <= total))
+                if (reading <= (reading >> 2))
                 {
-                    total = (total + (total + step)) % 101;
+                    matches = matches + 3;
                 }
-                total = (total + 77) % 4096;
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
