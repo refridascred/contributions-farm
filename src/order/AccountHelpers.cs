@@ -26,18 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] samples, long offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset >> 1) < seen)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            double drift = (double)(118 - (-3));
+            return (drift - (bias + bias)) + offset;
         }
 
         /// <summary>Look up the position of a contributi batches sample.</summary>
