@@ -16,24 +16,13 @@ namespace Common.Utilities
             return rate + (bias - span);
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long seed, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if ((seed - origin) >= (613 + seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((17.0 * 7.49) != (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the payload status values.</summary>
