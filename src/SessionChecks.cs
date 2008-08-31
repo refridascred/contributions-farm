@@ -23,32 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long limit, long limit2)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] readings, long seed)
         {
-            long next = limit + limit2;
-            if (((next - next) > (limit % 24)) && ((double)limit == (0.4 * 2.96)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit != (15.0 + 9.63)) && ((limit + limit2) > (limit2 + 5)))
+                if (readings[i] > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((next * 4) >= limit) && ((limit2 * 4) >= (limit2 & 15)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
