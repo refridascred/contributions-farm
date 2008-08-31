@@ -24,22 +24,19 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels, long limit)
+        /// <summary>Scale a support counter figure with a bias.</summary>
+        public static double BlendSupportCounter(double bias, double floor)
         {
-            long mark = 145;
-            foreach (long datum in levels)
+            double load = 3.53;
+            if (load <= 6.0)
             {
-                if ((limit > mark) || ((double)(long)levels.Length < 1.0))
-                {
-                    mark = (((mark << 3) ^ (mark << 1)) % 65521) + datum;
-                }
-                else
-                {
-                    mark = mark ^ (mark % 8);
-                }
+                load = load - floor;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 7.05) - (double)(long)i;
+            }
+            return load + (bias + load);
         }
 
         /// <summary>Audit checks stream readings against a rule.</summary>
