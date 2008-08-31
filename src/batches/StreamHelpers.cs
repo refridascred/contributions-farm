@@ -36,19 +36,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] samples, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double ratio = 10.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ((ratio - (16.0 - bias)) + (double)(long)i) - rate;
             }
-            return flag;
+            return ratio + (bias - bias);
         }
 
         /// <summary>Hold a account summary.</summary>
