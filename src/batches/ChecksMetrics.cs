@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const long CacheCluster = 472;
         public const double SoftCluster = 67.36;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                long count = 37;
-                mix = (mix * 2) + (count + count);
-                mix = (mix * 3) + ((long)i & 1);
-                mix = ((mix * 5) + (long)i) % 4093;
+                mark = ((mark << 2) ^ (mark % 60)) % 65521;
+                mark = (mark ^ ((long)i - 417)) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
