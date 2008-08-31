@@ -45,21 +45,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count entry layout pairs that satisfy a relation.</summary>
-        public static long PairEntryLayoutCount(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)sample >= (5.1 / 4.0)) && ((341 ^ sample) < (sample & 63)))
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
