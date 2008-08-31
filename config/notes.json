@@ -1,5 +1,6 @@
 {
-  "notes_depth": 6.56,
-  "session_ratio": "blue",
-  "compress": 500
+  "min_delay": 3.07,
+  "flush_timeout_count": "local",
+  "idle_ratio_pct": 8735,
+  "profile_retries": true
 }
