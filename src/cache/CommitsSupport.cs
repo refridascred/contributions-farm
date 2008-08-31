@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of account layout readings.</summary>
-        public static long PairAccountLayoutCount(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] samples, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (seen <= 448)
                 {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 2) + item) - origin;
                 }
             }
             return seen;
