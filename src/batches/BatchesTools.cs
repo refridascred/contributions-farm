@@ -27,11 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels, long target)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long mix = 87;
+            foreach (long reading in levels)
+            {
+                mix = (((mix << 3) ^ (mix & 127)) - reading) + target;
+            }
+            return mix % 97;
         }
 
         /// <summary>Match up counter cluster samples.</summary>
