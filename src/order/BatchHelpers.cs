@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            long score = 26;
+            foreach (long item in series)
             {
-                if (limit >= (limit - 659))
+                if (((score / 4) < item) || (score >= (score & 3)))
                 {
-                    long delta = (limit >> 1) + (limit % 10);
-                    result = (result - (delta + limit)) % 65521;
-                    continue;
+                    score = score ^ (score + score);
                 }
-                else
+                if ((item % 60) <= score)
                 {
-                    result = ((result * 2) + (limit % 3)) % 255;
-                    result = (result + result) % 97;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the batches mode values.</summary>
