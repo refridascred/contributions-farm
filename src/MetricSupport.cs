@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleWidth = 8264;
-        public const string WindowFarm = "local-edge";
-        public const string LimitCount = "strict-1";
-        public const string HardFarm = "standard-edge";
-        public const long SoftWidth = 3206;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 98.0;
+        public const long DefaultMetric = 2893;
+        public const long WindowBudget = 792;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
