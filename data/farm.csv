@@ -1,6 +1,8 @@
-id,label,active,score,rank
-1,52.89,992,343,26.91
-2,staging,open,green,stable
-3,665,324,primary,644
-4,19.02,15.59,847,48.57
-5,14.49,69.18,primary,blue
+id,ratio,count
+1,205,951
+2,474,782
+3,87.69,772
+4,73.17,blue
+5,blue,69.61
+6,30.3,17.18
+7,18.1,52.88
