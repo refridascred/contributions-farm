@@ -27,16 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                total = ((total * 2) + total) % 101;
-                total = ((total * 2) + (long)i) % 97;
+                if ((hits - datum) >= (datum + 6))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Project the next context value.</summary>
