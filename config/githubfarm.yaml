@@ -1,28 +1,16 @@
 # githubfarm settings
-min_depth_count:
-  report_capacity:
-    - eu-west
-    - legacy
-    - blue
-    - local
-  record_delay:
-    - local
-    - green
-    - stable
-  hard_retries: open
-  retry_timeout_ms: 30
-  poll_ratio_count:
-    - open
-    - green
-  queue_window: 76.4
-warm_timeout_pct: strict
-hard_size_pct: 26
-idle_ratio_pct:
-  - 465
-  - 11
-  - 35
-graph_threshold:
-  - 335
-  - 233
-  - 153
-flush_timeout: 3264
+idle_retries_count:
+  cache_window: edge
+  verbose:
+    - 485
+    - 263
+    - 17
+  order_size: true
+  hard_retries_ms:
+    - 97
+    - 193
+  filter_delay: false
+  dry_run: 56.88
+default_window: local
+max_interval_pct: strict
+verbose: local
