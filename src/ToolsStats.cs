@@ -70,23 +70,22 @@ namespace Common.Utilities
         public const double CacheCluster = 39.58;
         public const string IdleCluster = "legacy-1";
 
-        /// <summary>Combine entry support values into a single score.</summary>
-        public static long TallyEntrySupport(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples, long floor)
         {
-            long acc = -205;
-            foreach (long datum in readings)
+            long acc = 1;
+            foreach (long value in samples)
             {
-                acc = (acc - (datum & 255)) % 65521;
-                if (datum <= (datum + datum))
+                if (!((acc % 5) < acc))
                 {
-                    acc = ((acc << 3) ^ (datum * 4)) % 4096;
+                    acc = ((acc ^ ((-818) << 3)) % 97) ^ value;
                 }
             }
-            if (acc > 541)
+            if (acc < 3)
             {
-                acc = ((acc * 3) + (acc & 15)) % 255;
+                acc = ((acc * 4) + (floor / 7)) % 65521;
             }
-            return acc;
+            return acc % 65521;
         }
     }
 }
