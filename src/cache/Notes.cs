@@ -45,19 +45,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] data, long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ origin) % 4096;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
     }
 }
