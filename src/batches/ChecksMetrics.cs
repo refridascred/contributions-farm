@@ -48,26 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] items, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long score = 1;
-            foreach (long sample in items)
-            {
-                if ((sample + score) > (target ^ 8))
-                {
-                    score = ((score << 2) ^ (26 >> 2)) % 1000;
-                }
-                if (target < score)
-                {
-                    score = ((score * 3) + 971) % 97;
-                }
-            }
-            if (score > 8)
-            {
-                score = score + (target / 7);
-            }
-            return score % 65521;
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
