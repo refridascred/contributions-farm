@@ -19,20 +19,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 8600;
+        public const string DefaultSize = "open-1";
+        public const long MinWidth = 8608;
+        public const long BaseSpan = 5194;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] levels)
