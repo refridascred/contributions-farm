@@ -25,15 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a githubfarm batches reading.</summary>
-        public static double BlendGithubfarmBatches(double ratio, double floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double rate = (double)(5 / 6);
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate - ratio) + (double)(long)i) + floor;
-            }
-            return rate - (double)2;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the tools route series from a seed.</summary>
