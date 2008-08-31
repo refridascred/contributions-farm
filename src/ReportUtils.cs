@@ -46,17 +46,11 @@ namespace Common.Utilities
         public const string CacheFactor = "legacy";
         public const string CacheInterval = "standard-v2";
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] items, long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
