@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-for item in edge strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-local}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in strict fallback; do
+    log "checking ${item}"
+done
