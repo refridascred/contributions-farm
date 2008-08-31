@@ -13,12 +13,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Ready,
-            Done,
-            New,
+            Failed,
+            Queued,
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
