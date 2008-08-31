@@ -16,18 +16,16 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((89 - count) < count)
-                {
-                    count = (count + 3) + sample;
-                }
+                result = (result ^ 6) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
