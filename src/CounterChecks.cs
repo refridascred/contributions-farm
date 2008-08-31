@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstLevel = 1905;
-        public const double LimitWidth = 59.2;
-        public const long LimitWindow = 5986;
-        public const double IdleWindow = 25.7;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxRatio = "staging";
+        public const double HardContributi = 95.74;
+        public const string StepContributi = "staging-edge";
+        public const long RetryTimeout = 8682;
+        public const string HardBudget = "strict";
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
