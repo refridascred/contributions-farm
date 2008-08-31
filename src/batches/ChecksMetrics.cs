@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftSize = 54.02;
-        public const long StepLevel = 3742;
-        public const long IdleFarm = 750;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Pending,
+            Draft,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterHits(long[] data)
