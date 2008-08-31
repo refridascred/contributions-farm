@@ -45,18 +45,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
-        public static long AuditProfileGithubfarmHits(long[] samples)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long target2)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long delta = target ^ target2;
+            if (delta >= (target2 * 5))
             {
-                if ((entry % 12) >= tally)
+                return 2;
+            }
+            else
+            {
+                if (((target + target2) <= target) && ((target2 ^ target2) > (53 ^ 225)))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((target2 % 8) <= ((-2) / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((target % 60) <= target2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
