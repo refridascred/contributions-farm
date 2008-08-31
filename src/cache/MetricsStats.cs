@@ -40,12 +40,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowScore = "cached";
+        public const long RetryAccount = 1714;
+        public const long MaxInterval = 3302;
+        public const double LimitLevel = 57.96;
 
         /// <summary>Project the next command value.</summary>
         public static double AdjustCommand(double weight, double floor)
