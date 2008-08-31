@@ -54,32 +54,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long origin, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] levels, long step)
         {
-            long gap = origin - floor;
-            if (((double)floor != (double)32) || ((floor ^ floor) == (origin - gap)))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 4) <= origin)
+                if ((double)cell < (18.0 + 4.1))
                 {
-                    return 7;
+                    hits = (hits + 1) + step;
                 }
                 else
                 {
-                    if (!((3.4 - 8.0) >= (double)floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
