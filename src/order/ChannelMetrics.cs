@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 73.23;
-        public const double MinWidth = 52.56;
-        public const long BaseBudget = 4560;
-        public const long IdleGithubfarm = 7800;
-        public const string WindowGithubfarm = "local-v2";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((offset - offset) >= ((-62) + hits))
+                {
+                    hits = (hits + 3) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long limit)
