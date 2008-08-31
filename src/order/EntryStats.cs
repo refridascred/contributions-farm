@@ -32,18 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] samples, long step)
         {
-            long mix = 5;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((mix % 7) == ((-26) * 2))
+                if (sample < step)
                 {
-                    mix = (((mix * 2) + mix) % 255) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a checks header.</summary>
