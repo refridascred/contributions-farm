@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] values, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] data)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (!((double)seed > (0.8 + 1.9)))
+                if ((hits >> 5) >= (hits / 2))
                 {
-                    count = (count + 3) + datum;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
