@@ -1,7 +1,10 @@
 # entry settings
-record_size: 55.05
-notes_threshold: 62
-verbose: cached
-counter_ratio: 6089
-profile_threshold: 30
-batch_size: 34.16
+counter_timeout: 8222
+batch_ttl_s: 9750
+burst_threshold:
+  - 167
+  - 35
+  - 405
+  - 462
+default_capacity_ms: true
+route_threshold: 136
