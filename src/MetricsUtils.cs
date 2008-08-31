@@ -66,15 +66,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double ratio, double bias)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            double weight = bias * 15.0;
+            return weight - (bias - ratio);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
