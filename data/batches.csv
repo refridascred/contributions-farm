@@ -1,9 +1,6 @@
-id,count,score
-1,332,47.56
-2,17.12,598
-3,71,341
-4,79.56,92.85
-5,77.91,96.94
-6,latest,153
-7,344,606
-8,646,primary
+id,level,label,weight,owner
+1,258,eu-west,46.78,506
+2,348,eu-west,local,primary
+3,55.98,legacy,89.62,454
+4,stable,1.77,legacy,407
+5,latest,508,primary,open
