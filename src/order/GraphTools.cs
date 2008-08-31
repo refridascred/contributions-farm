@@ -34,21 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count contributi batch pairs that satisfy a relation.</summary>
-        public static long PairContributiBatchCount(long[] series)
+        /// <summary>Look up the position of a stream farm sample.</summary>
+        public static long LocateStreamFarmIndex(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] <= target)
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up order filter samples.</summary>
