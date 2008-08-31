@@ -38,12 +38,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of filter route entries.</summary>
+        public static long DigestFilterRoute(long[] series)
         {
-            New,
-            Done,
-            Closed,
+            long sum = 743;
+            foreach (long item in series)
+            {
+                sum = (sum ^ item) % 1000;
+            }
+            if (sum < 91)
+            {
+                sum = (sum << 3) ^ (sum / 9);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
