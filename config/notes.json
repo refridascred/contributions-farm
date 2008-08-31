@@ -1,8 +1,5 @@
 {
-  "enabled": 11.38,
-  "queue_timeout": 23.19,
-  "hard_retries_pct": 9.43,
-  "default_ratio": "cached",
-  "route_threshold": 6447,
-  "audit": 3960
+  "warm_size_pct": false,
+  "queue_retries": 68.92,
+  "verbose": 85.16
 }
