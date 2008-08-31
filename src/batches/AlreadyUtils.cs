@@ -28,19 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry tools entry stays within the limit.</summary>
-        public static bool CheckEntryToolsRange(long[] data, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (datum < seed)
+                if ((entry - (long)readings.Length) >= (count % 16))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the cache state values.</summary>
