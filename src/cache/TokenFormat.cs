@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            Locked,
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
