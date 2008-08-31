@@ -14,11 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "cached-v2";
-        public const long SoftGraph = 9137;
-        public const long StepCount = 740;
-        public const long IdleCount = 6406;
+        /// <summary>Fold a list of format support readings.</summary>
+        public static long TotalFormatSupport(long[] series, long floor)
+        {
+            long mix = 0;
+            foreach (long reading in series)
+            {
+                if ((floor - mix) > mix)
+                {
+                    mix = (((mix << 3) ^ 884) % 65521) - reading;
+                }
+            }
+            if (mix > 74)
+            {
+                mix = mix - (mix ^ 468);
+            }
+            return mix;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
