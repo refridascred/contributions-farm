@@ -1,5 +1,14 @@
 # githubfarm settings
-stream_interval: 12.24
-batch_timeout: 28
-idle_depth_count: cached
-cache_interval_s: 46.68
+hard_retries_s:
+  - edge
+  - legacy
+  - strict
+  - local
+sync_ratio_count: true
+enabled: true
+sync_delay_ms:
+  flush_ratio_pct: stable
+  window_limit: 250
+  verbose: staging
+  warm_interval_pct: strict
+  min_ratio: 49.85
