@@ -1,17 +1,7 @@
 {
-  "default_delay": true,
-  "persist": 65.67,
-  "readonly": 60,
-  "default_capacity": {
-    "base_delay": "eu-west",
-    "min_ratio": 30,
-    "burst_ttl_ms": 70.69,
-    "poll_depth": 7561
-  },
-  "warm_limit_count": "edge",
-  "base_timeout_s": {
-    "format_retries": ["cached", "green", "primary"],
-    "readonly": "eu-west",
-    "idle_delay_s": "strict"
-  }
+  "max_delay": ["fallback", "primary", "blue", "legacy"],
+  "persist": 500,
+  "min_threshold_ms": 18.04,
+  "cache_retries": "primary",
+  "sync_size_ms": 30
 }
