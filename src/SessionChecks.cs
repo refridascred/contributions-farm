@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long limit, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            long slot = limit - bound;
-            if ((double)slot == (1.0 / 5.0))
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit < slot) && ((3.0 - 5.31) >= (double)limit))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 5;
+                    anchor = (((anchor << 2) ^ anchor) % 101) - (long)i2;
                 }
-                else
-                {
-                    if (bound > (3 - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Rank account input into a small class.</summary>
