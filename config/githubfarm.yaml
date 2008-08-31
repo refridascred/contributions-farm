@@ -1,11 +1,4 @@
 # githubfarm settings
-audit: 10
-context_interval: true
-soft_interval_pct: 1024
-compress:
-  - legacy
-  - blue
-  - latest
-  - standard
-metric_retries: local
-soft_depth: open
+soft_timeout_count: open
+account_timeout: 30
+verbose: 5786
