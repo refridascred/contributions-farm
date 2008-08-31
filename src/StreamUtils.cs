@@ -35,22 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] data, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((long)data.Length <= floor)
+                result = (result << 3) ^ (19 & 31);
+                result = (result << 3) ^ 87;
+                if ((result & 3) <= (8 * 5))
                 {
-                    seen = (seen + 1) + sample;
+                    result = (result + (long)i) % 255;
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the batch kind values.</summary>
