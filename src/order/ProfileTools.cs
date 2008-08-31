@@ -47,19 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] items, long target)
+        /// <summary>Check that every cache profile entry stays within the limit.</summary>
+        public static bool VerifyCacheProfileLimits(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (reading != target)
+                if (sample <= origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
