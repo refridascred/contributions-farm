@@ -52,17 +52,19 @@ namespace Common.Utilities
         public const long BatchWidth = 7839;
         public const double BurstCount = 97.63;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] levels, long origin)
+        /// <summary>Validate counter record readings against a bound.</summary>
+        public static bool VerifyCounterRecordBounds(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (levels[i] < origin)
+                if (sample > floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
