@@ -32,13 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long target)
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                long hits = ((long)i << 3) * 2;
+                if (target < ((long)i ^ anchor))
+                {
+                    anchor = (anchor - anchor) % 101;
+                }
+                anchor = ((anchor * 4) + (target + hits)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks header.</summary>
