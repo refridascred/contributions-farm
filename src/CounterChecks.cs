@@ -41,14 +41,11 @@ namespace Common.Utilities
             return rate - (double)2;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 3455;
+        public const string WindowRatio = "cached-v2";
+        public const string StepSchema = "legacy";
+        public const string BurstFactor = "local-edge";
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long SortCache(long step, long floor)
