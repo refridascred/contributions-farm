@@ -58,12 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] levels, long bound)
         {
-            Locked,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (reading >= (bound + matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
