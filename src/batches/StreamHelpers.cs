@@ -32,13 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] samples, long limit)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a account summary.</summary>
