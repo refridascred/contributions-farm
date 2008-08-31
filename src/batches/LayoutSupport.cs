@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] series, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    acc = (acc + (58 - (long)i2)) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate queue samples.</summary>
