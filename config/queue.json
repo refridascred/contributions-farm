@@ -1,6 +1,19 @@
 {
-  "base_ratio_pct": 30,
-  "warm_retries": "standard",
-  "audit": 91,
-  "soft_threshold_pct": "fallback"
+  "payload_delay": 46,
+  "retry_size_count": 12.05,
+  "profile_limit": "open",
+  "retry_retries_count": 30,
+  "audit": ["edge", "local", "strict"],
+  "flush_retries": {
+    "cluster_limit": ["latest", "blue", "blue", "fallback"],
+    "enabled": 1024,
+    "strict": ["latest", "open", "blue"],
+    "soft_delay_count": {
+      "hard_limit_ms": "eu-west",
+      "default_capacity_ms": "blue",
+      "enabled": 83.12,
+      "compress": true,
+      "sync_size_s": true
+    }
+  }
 }
