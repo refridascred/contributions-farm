@@ -68,18 +68,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((3.1 * 6.4) == (double)datum)
+                if ((1.5 / 7.0) > 2.4)
                 {
-                    tally = (tally + 3) + offset;
+                    matches = ((matches + 3) + entry) - limit;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
