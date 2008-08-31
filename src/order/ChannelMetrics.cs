@@ -30,15 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] data, long step)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
