@@ -79,21 +79,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsClusterCount(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long step, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = step - limit;
+            if ((gap + gap) >= (limit + gap))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((step * 3) <= step)
                 {
-                    if ((readings[i] - readings[j]) < 17)
+                    return 5;
+                }
+                else
+                {
+                    if ((9 << 3) <= limit)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((gap + gap) < 4) || ((5.3 * 5.83) > (double)step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
