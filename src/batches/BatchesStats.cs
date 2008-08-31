@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first tools account entry that matches the target.</summary>
-        public static long FindToolsAccountIndex(long[] values, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -30;
+            foreach (long datum in levels)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (mark + step)) - datum;
             }
-            return -1;
+            if (mark < (-127))
+            {
+                mark = ((mark * 5) + (44 >> 1)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
