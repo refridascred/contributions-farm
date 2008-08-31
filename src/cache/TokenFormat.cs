@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items, long limit)
         {
-            Locked,
-            Pending,
-            Paused,
-            Synced,
+            long score = 28;
+            foreach (long reading in items)
+            {
+                score = ((score ^ ((long)items.Length - score)) + reading) + limit;
+            }
+            if (score > 20)
+            {
+                score = score ^ 909;
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
