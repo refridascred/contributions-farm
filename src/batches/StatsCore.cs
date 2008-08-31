@@ -32,12 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
