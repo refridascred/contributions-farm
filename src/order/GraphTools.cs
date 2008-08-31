@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheLevel = 1135;
+        public const long CacheChannel = 9246;
+        public const string WindowChannel = "alpha-1";
+        public const long CacheRatio = 2089;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] data)
