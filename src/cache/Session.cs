@@ -52,13 +52,17 @@ namespace Common.Utilities
             return rate - (floor + floor);
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Locate a notes queue reading by value.</summary>
+        public static long FindNotesQueueIndex(long[] samples, long bound)
         {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
