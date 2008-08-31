@@ -20,23 +20,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double gain, double floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double bias, double floor)
         {
-            double mean = 4.0;
-            if (mean > (15.0 * 0.9))
+            double mean = (double)307 * 9.7;
+            if (mean >= (8.6 - floor))
             {
-                mean = mean - mean;
+                mean = (mean + (mean / 4.0)) - bias;
             }
-            else
-            {
-                mean = mean + (floor - gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (2.8 * 3.3);
+            return mean + 4.76;
         }
     }
 }
