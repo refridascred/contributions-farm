@@ -36,11 +36,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long target, long origin)
         {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
+            if (((double)origin == (3.7 - 4.0)) && (origin > (origin & 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)target != (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target < (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a support order value against two limits.</summary>
