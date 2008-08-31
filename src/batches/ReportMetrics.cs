@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "primary-edge";
-        public const double LimitScore = 1.58;
-        public const double StepMetric = 25.35;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double ratio, double bias)
+        {
+            double ratio2 = (double)49 * 5.0;
+            if (ratio2 > 1.9)
+            {
+                ratio2 = (ratio2 - (double)892) - ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            return ratio2 + (bias * 1.4);
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long FoldOrder(long[] data, long offset)
