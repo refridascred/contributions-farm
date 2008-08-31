@@ -34,14 +34,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long limit, long limit2)
         {
-            Retry,
-            Closed,
-            Draft,
-            Ready,
-            Failed,
+            long span = limit + limit2;
+            if ((double)span < (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit - span) >= (92 << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit2 + limit2) > span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (9.8 <= (double)span)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
