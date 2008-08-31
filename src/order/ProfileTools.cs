@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] items, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (items[i] > limit)
+                if (reading < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the cache already entries that pass the check.</summary>
