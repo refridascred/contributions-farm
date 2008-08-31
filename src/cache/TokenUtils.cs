@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long WindowRatio = 5653;
         public const long CacheRatio = 1270;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheFactor = "legacy-1";
-        public const long CacheStats = 1364;
-        public const string BatchStats = "local";
-        public const string BaseTimeout = "primary-1";
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!!((2.4 * 7.26) > (double)(long)i))
+                {
+                    acc = acc - floor;
+                    acc = (acc * 5) + (long)i;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long bound, long seed)
