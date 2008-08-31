@@ -64,9 +64,18 @@ namespace Common.Utilities
             return weight - (bias - ratio);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 35.97;
-        public const long MinLayout = 7912;
-        public const long HardLayout = 8279;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)tally >= (0.8 + 17.0))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
     }
 }
