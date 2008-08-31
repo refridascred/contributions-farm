@@ -30,19 +30,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
