@@ -27,11 +27,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 1259;
-        public const double IdleStats = 18.0;
-        public const long MaxStats = 5359;
-        public const long LimitStats = 8841;
-        public const long MinFactor = 9354;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public long Mode { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
