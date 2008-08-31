@@ -33,22 +33,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Match up counter cluster samples.</summary>
+        public static long PairCounterClusterCount(long[] readings)
         {
-            long acc = 65;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value - acc) == (acc ^ (-9)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc + (acc + value)) % 4096;
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 70)
-            {
-                acc = ((acc * 4) + (46 ^ acc)) % 97;
-            }
-            return acc;
+            return matches;
         }
     }
 }
