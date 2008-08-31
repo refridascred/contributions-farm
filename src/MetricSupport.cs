@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] series, long target)
         {
-            Pending,
-            Active,
-            Draft,
-            Synced,
-            Dropped,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two account githubfarm measurements.</summary>
