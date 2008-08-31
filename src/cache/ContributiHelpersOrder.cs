@@ -41,39 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long limit, long limit2)
+        /// <summary>Iterate the queue stats series from a seed.</summary>
+        public static long StepQueueStats(long seed)
         {
-            long span = limit + limit2;
-            if ((double)span < (double)limit)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                result = (result + 3) % 255;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit - span) >= (92 << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit2 + limit2) > span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (9.8 <= (double)span)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
