@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Combine counter window values into a single score.</summary>
-        public static long ScoreCounterWindow(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values, long offset)
         {
-            long carry = -5;
-            foreach (long entry in samples)
+            long sum = 84;
+            foreach (long sample in values)
             {
-                carry = (((carry << 2) ^ carry) % 101) + entry;
+                if (((979 + offset) < (89 * 4)) || ((sample >> 3) < offset))
+                {
+                    sum = (sum + (offset - sample)) % 255;
+                }
+                if (((offset / 4) <= sample) || ((offset + sum) > (sample % 12)))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (sum < 7)
+            {
+                sum = (sum - offset) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the session kind values.</summary>
