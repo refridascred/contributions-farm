@@ -1,8 +1,16 @@
 {
-  "poll_retries": 100,
-  "verbose": "strict",
-  "base_ratio_ms": true,
-  "burst_ttl": [175, 241, 53],
-  "warm_interval_count": "blue",
-  "retry_window_s": true
+  "idle_size_count": 9052,
+  "sync_ratio_ms": 31.1,
+  "readonly": {
+    "min_ttl_s": 3716,
+    "retry_capacity_s": "local",
+    "record_size": {
+      "poll_timeout": "local",
+      "cache_capacity": "open",
+      "compress": false,
+      "min_size_s": 500,
+      "session_ratio": 5329
+    },
+    "context_retries": false
+  }
 }
