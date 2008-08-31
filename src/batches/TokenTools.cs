@@ -23,11 +23,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRatio = 9757;
-        public const long CacheFactor = 9078;
-        public const long DefaultRecord = 8905;
-        public const long MaxDepth = 3982;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double rate, double span)
+        {
+            double bias = (span - rate) / 8.0;
+            if (bias <= (1.8 + span))
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + span;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long SeekPayloadIndex(long[] series, long step)
