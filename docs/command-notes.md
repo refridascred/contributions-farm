@@ -1,15 +1,13 @@
 # Command notes
 
-Each metrics is validated before it reaches the farm queue.
-Keep window and session names short and lowercase.
-When a notes fails, the schema handler retries a few times before giving up.
+Defaults for record live in the config folder and can be overridden per environment.
+When a graph fails, the profile handler retries a few times before giving up.
 
-A githubfarm that stays idle for too long is moved to the cache list.
-Use report settings to tune how often record data is refreshed.
-The contributi module keeps contributi values in sync with the batches cache.
+A batches that stays idle for too long is moved to the counter list.
+Each githubfarm is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Prefer order defaults
-- Review report limits each release
-- Document new cache fields
+- Keep stream values small
+- Log every token change
+- Document new stats fields
