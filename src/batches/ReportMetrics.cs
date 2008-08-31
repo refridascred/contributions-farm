@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 4149;
+        public const long MaxWidth = 3157;
+        public const long MinInterval = 474;
+        public const long CacheBudget = 8918;
+        public const long WindowBatches = 2778;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long LimitCount = 9899;
