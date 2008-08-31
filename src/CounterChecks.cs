@@ -21,21 +21,17 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Match up batches record samples.</summary>
-        public static long OverlapBatchesRecordCount(long[] items)
+        /// <summary>Find the first metrics contributi entry that matches the target.</summary>
+        public static long FindMetricsContributiIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] <= offset)
                 {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
