@@ -39,15 +39,11 @@ namespace Common.Utilities
             return drift + (drift * 1.03);
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Paused,
-            Done,
-            Synced,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8431;
+        public const long BaseInterval = 8660;
+        public const long IdleBuffer = 248;
+        public const long CacheTimeout = 9598;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
