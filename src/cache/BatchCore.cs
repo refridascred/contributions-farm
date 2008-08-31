@@ -41,14 +41,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] series, long floor)
         {
-            Pending,
-            Ready,
-            Locked,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((1.0 / 5.0) <= (double)floor) && ((18.0 <= (double)floor) && (9 >= (floor / 8))))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
