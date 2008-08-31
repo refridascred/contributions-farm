@@ -29,24 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long seed, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            if ((limit + 6) >= (seed + 132))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((68 + limit) < (seed % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
