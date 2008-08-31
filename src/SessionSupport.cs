@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route session readings against a rule.</summary>
-        public static long TallyRouteSessionHits(long[] levels, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (((9.1 * 4.0) != (double)datum) && ((hits > seed) || ((datum >> 3) > (24 % 24))))
+                if ((30 / 4) == (floor % 97))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
