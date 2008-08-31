@@ -19,14 +19,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Failed,
-            Synced,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryRatio = 6320;
+        public const long BurstPayload = 9754;
+        public const double RetryLevel = 71.12;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
