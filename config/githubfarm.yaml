@@ -1,5 +1,15 @@
 # githubfarm settings
-profile_ratio: 76
-max_ratio_count: true
-cache_ttl_pct: stable
-poll_threshold_pct: cached
+enabled:
+  - latest
+  - stable
+  - edge
+  - edge
+queue_timeout: green
+warm_ratio:
+  poll_ttl: fallback
+  persist: strict
+  enabled: 1024
+  flush_interval: 5840
+  cache_interval: 250
+  graph_depth: 92.14
+cache_depth: fallback
