@@ -67,15 +67,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double ratio = 17.0 + (double)(-4);
-            if (ratio >= (ratio / 9.0))
-            {
-                ratio = (ratio - ratio) + scale;
-            }
-            return ratio - bias;
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
