@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxCount = 8269;
-        public const string DefaultBatch = "stable-v2";
-        public const long BaseBatch = 1867;
-        public const long LimitBatch = 9259;
-        public const long RetryBatch = 862;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 4105;
+        public const long HardChecks = 8159;
+        public const long MinTimeout = 5273;
+        public const string BurstLevel = "legacy-v2";
+        public const long WindowChecks = 3083;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
