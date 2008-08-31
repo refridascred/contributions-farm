@@ -1,8 +1,8 @@
 {
-  "cluster_limit": 23,
-  "compress": false,
-  "hard_limit_pct": 84,
-  "persist": 1.05,
-  "poll_delay_count": 4673,
-  "warm_ratio": true
+  "base_delay_s": "open",
+  "cache_window_ms": 22.09,
+  "persist": "local",
+  "buffer_capacity": 81.8,
+  "base_depth_s": true,
+  "max_threshold": 60
 }
