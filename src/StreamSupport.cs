@@ -28,14 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long target)
         {
-            Failed,
-            Queued,
-            Ready,
-            Locked,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
