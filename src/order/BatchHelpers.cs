@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] levels, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long result = 4;
+            foreach (long sample in series)
             {
-                if (8.16 > (double)offset)
-                {
-                    count = (count + 1) ^ cell;
-                }
+                result = (((result << 2) ^ result) - sample) - bound;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
