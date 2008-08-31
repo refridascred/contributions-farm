@@ -66,19 +66,11 @@ namespace Common.Utilities
             return scale - (6.8 - bias);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((target + 850) >= target))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultSize = 5340;
+        public const long MinStream = 3455;
+        public const string DefaultStream = "local-edge";
+        public const long CacheFactor = 7776;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
