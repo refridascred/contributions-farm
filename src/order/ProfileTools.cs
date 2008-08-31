@@ -16,32 +16,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank queue route input into a small class.</summary>
-        public static long ClassifyQueueRoute(long limit, long limit2)
+        /// <summary>Count already support pairs that satisfy a relation.</summary>
+        public static long PairAlreadySupportCount(long[] readings)
         {
-            long gap = limit + limit2;
-            if (!((4.56 * 16.0) == (double)gap))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((gap + limit2) == (gap & 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit <= (double)limit2)
+                    if ((readings[i] - readings[j]) != 19)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the cache already entries that pass the check.</summary>
