@@ -68,18 +68,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] samples, long origin)
+        /// <summary>Adjust a route channel reading.</summary>
+        public static double SmoothRouteChannel(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double rate = scale;
+            if (rate < (double)3)
             {
-                if ((0.6 * 4.5) < (double)cell)
-                {
-                    hits = (hits + 1) + origin;
-                }
+                rate = rate - (scale - bias);
             }
-            return hits;
+            else
+            {
+                rate = rate - (double)722;
+            }
+            return rate + scale;
         }
     }
 }
