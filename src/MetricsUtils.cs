@@ -19,39 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor cluster value against two limits.</summary>
-        public static long SortEditorCluster(long limit, long target)
+        /// <summary>Find the first cache farm entry that matches the target.</summary>
+        public static long FindCacheFarmIndex(long[] data, long target)
         {
-            long delta = limit + target;
-            if ((target >> 2) != (1 + 13))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)delta >= (6.61 + 9.0)))
+                if ((data[i] == target) && ((data[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (delta > 979)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)(-18) > (double)limit) || (818 >= target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
