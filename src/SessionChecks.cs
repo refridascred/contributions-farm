@@ -19,17 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((6.16 - 3.3) >= (double)bound)
             {
-                if (readings[i] > seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)7 <= (double)origin)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
