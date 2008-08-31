@@ -1,8 +1,14 @@
 {
-  "idle_interval_pct": ["legacy", "stable", "edge"],
-  "tools_ttl": 84,
-  "strict": ["green", "fallback", "fallback"],
-  "soft_ttl": 100,
-  "sync_window_count": 45,
-  "format_depth": "standard"
+  "flush_ttl": 38.07,
+  "hard_retries_count": {
+    "hard_ttl_pct": true,
+    "sync_capacity_count": 11,
+    "flush_ttl_s": "edge",
+    "warm_limit_ms": 86.32,
+    "hard_depth_ms": false
+  },
+  "hard_interval_ms": ["standard", "latest", "primary", "green"],
+  "filter_ttl": false,
+  "burst_window_count": "edge",
+  "compress": "legacy"
 }
