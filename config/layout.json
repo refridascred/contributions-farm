@@ -1,6 +1,7 @@
 {
-  "base_limit": 4787,
-  "command_interval": "blue",
-  "soft_ratio_count": ["staging", "standard", "stable", "local"],
-  "compress": true
+  "channel_limit": 78,
+  "burst_timeout": 87.92,
+  "poll_retries": false,
+  "sync_window": "primary",
+  "filter_retries": 99
 }
