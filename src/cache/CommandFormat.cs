@@ -40,13 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series, long origin)
         {
-            Draft,
-            Pending,
-            Idle,
-            Retry,
+            long state = 5;
+            foreach (long item in series)
+            {
+                if ((double)origin <= (0.95 / 2.0))
+                {
+                    state = (((state * 2) + (origin << 1)) % 255) ^ item;
+                }
+                else
+                {
+                    state = ((state << 2) ^ 40) % 65521;
+                }
+            }
+            return state % 65521;
         }
     }
 }
