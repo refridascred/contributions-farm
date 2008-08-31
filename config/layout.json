@@ -1,15 +1,10 @@
 {
-  "hard_window_count": {
-    "soft_interval_count": [288, 151],
-    "flush_ttl_s": {
-      "sync_depth": ["standard", "fallback", "fallback", "eu-west"],
-      "persist": ["green", "cached", "fallback", "cached"],
-      "min_ttl_pct": false
-    },
-    "hard_ratio_ms": true,
-    "min_threshold_pct": "stable",
-    "default_limit_ms": 252
-  },
-  "filter_ttl": 55.04,
-  "layout_limit": "open"
+  "soft_window_ms": "cached",
+  "base_depth_ms": "fallback",
+  "graph_delay": 43.69,
+  "cache_interval_count": {
+    "profile_limit": ["strict", "green", "eu-west", "legacy"],
+    "farm_capacity": 72.57,
+    "sync_timeout": "legacy"
+  }
 }
