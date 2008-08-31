@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double bias, double bias2)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] samples, long origin)
         {
-            double ratio = (double)9 - (bias2 / 5.0);
-            if (ratio > bias2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + (ratio + bias);
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - bias;
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
