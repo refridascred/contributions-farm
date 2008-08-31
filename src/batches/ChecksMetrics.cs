@@ -76,35 +76,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long origin, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long bound, long floor)
         {
-            if ((1 + offset) > (offset % 16))
+            long span = bound + floor;
+            if (!((floor & 3) <= (span >> 3)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((0.5 * 20.0) >= (double)origin)
+                if ((span + span) == (43 - 6))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((offset - offset) >= (offset << 1))
+                    if (((6.1 + 4.0) < (double)bound) || (span >= bound))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        if ((origin & 1) >= (offset - 97))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 6;
                     }
                 }
             }
