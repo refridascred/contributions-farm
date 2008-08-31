@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double rate, double bias)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double load = 11.0;
-            if (load >= load)
-            {
-                load = load + (load * 11.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (bias + rate)) + (double)(long)i;
-            }
-            return load + rate;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up layout samples.</summary>
