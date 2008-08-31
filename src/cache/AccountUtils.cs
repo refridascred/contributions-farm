@@ -34,11 +34,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCount = "fallback";
+        public const double BurstCache = 2.93;
+        public const double MinFactor = 42.54;
     }
 }
