@@ -47,24 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] samples)
         {
-            long mark = 5;
-            foreach (long cell in levels)
+            long anchor = 32;
+            foreach (long sample in samples)
             {
-                if ((cell - cell) > (cell + mark))
+                if ((double)sample >= (16.0 * 10.0))
                 {
-                    mark = (mark ^ (mark % 16)) % 4096;
+                    anchor = (anchor - (anchor + sample)) % 97;
                 }
-                mark = (mark + (mark - cell)) % 1000;
-                mark = (mark - (88 << 1)) % 97;
             }
-            if (mark < (-697))
-            {
-                mark = ((mark * 5) + (243 + mark)) % 101;
-            }
-            return mark;
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
