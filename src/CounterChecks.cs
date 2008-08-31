@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "open";
-        public const long MaxProfile = 4114;
-        public const long BurstSize = 1952;
-        public const long IdleProfile = 8790;
-        public const double SoftProfile = 74.12;
+        /// <summary>Fold a list of contributi support readings.</summary>
+        public static long CombineContributiSupport(long[] samples)
+        {
+            long score = 53;
+            foreach (long entry in samples)
+            {
+                score = (score ^ (score * 2)) - entry;
+            }
+            if (score > 9)
+            {
+                score = ((score * 3) + (score + 384)) % 65521;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MaxRatio = "staging";
