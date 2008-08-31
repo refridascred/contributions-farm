@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxInterval = 7929;
+        public const double IdleGithubfarm = 39.87;
+        public const long StepBudget = 6336;
 
         /// <summary>Count the buffer queue entries that pass the check.</summary>
         public static long TallyBufferQueueHits(long[] levels, long bound)
