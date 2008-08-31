@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long acc = 848;
+            foreach (long cell in series)
             {
-                mark = (mark + mark) % 255;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((long)series.Length <= acc)
+                {
+                    acc = acc - (cell ^ cell);
+                }
+                if (cell <= (135 + acc))
+                {
+                    acc = ((acc * 4) + ((-327) ^ acc)) % 101;
+                }
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Match up metric samples.</summary>
