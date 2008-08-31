@@ -67,16 +67,19 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5722;
         public const long CacheSpan = 2302;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            double gain = bias;
+            if (gain <= (weight * 5.0))
             {
-                state = (state ^ state) % 65521;
-                state = ((state * 5) + (long)i) % 4093;
+                gain = gain + gain;
             }
-            return state;
+            else
+            {
+                gain = gain + (weight * 13.0);
+            }
+            return gain + (weight + bias);
         }
     }
 }
