@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 86.34;
-        public const long IdleReport = 4793;
-        public const long BaseRatio = 5555;
-        public const long SoftReport = 8742;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double rate, double bias)
+        {
+            double load = 11.0;
+            if (load >= load)
+            {
+                load = load + (load * 11.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (bias + rate)) + (double)(long)i;
+            }
+            return load + rate;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] levels)
