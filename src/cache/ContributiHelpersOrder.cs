@@ -20,10 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 9792;
-        public const string LimitInterval = "strict";
-        public const double HardChannel = 29.73;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long step)
+        {
+            long slot = limit ^ step;
+            if (slot >= (slot & 255))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((slot ^ 79) < (limit ^ slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long GradeFilter(long limit, long limit2)
