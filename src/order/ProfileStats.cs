@@ -45,12 +45,18 @@ namespace Common.Utilities
         public const long IdleBuffer = 248;
         public const long CacheTimeout = 9598;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the schema format entries that pass the check.</summary>
+        public static long AuditSchemaFormatHits(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((8.4 / 4.0) != (double)hits)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
