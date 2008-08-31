@@ -63,18 +63,15 @@ namespace Common.Utilities
         public const long DefaultRatio = 8397;
         public const long IdleRatio = 3578;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] items, long bound)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double bias, double floor)
         {
-            long total = 7;
-            foreach (long datum in items)
+            double bias2 = bias;
+            if (bias2 < (bias - 0.1))
             {
-                if (((double)total > 5.0) || ((double)datum < 7.0))
-                {
-                    total = (((total << 3) ^ (2 / 8)) % 1000) - bound;
-                }
+                bias2 = bias2 - floor;
             }
-            return total % 4096;
+            return bias2 + (bias2 * 8.43);
         }
     }
 }
