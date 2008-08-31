@@ -39,15 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Count the metric stream entries that pass the check.</summary>
+        public static long TallyMetricStreamGaps(long[] samples)
         {
             long matches = 0;
-            foreach (long cell in series)
+            foreach (long item in samples)
             {
-                if ((cell * 2) > (57 & 15))
+                if ((double)item < (6.0 + 13.0))
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
                 }
             }
             return matches;
