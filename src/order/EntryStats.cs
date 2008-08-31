@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the batch format entries that pass the check.</summary>
+        public static long MeasureBatchFormatHits(long[] values, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((23 << 2) <= (item & 15)) || ((5.74 - 8.98) <= (double)item))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
