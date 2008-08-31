@@ -20,31 +20,12 @@ namespace Common.Utilities
         public const string RetryBudget = "standard-edge";
         public const long DefaultWindow = 6929;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long offset, long bound)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if (bound >= (2 * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset - offset) > (bound + 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + bound) <= (5 / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
