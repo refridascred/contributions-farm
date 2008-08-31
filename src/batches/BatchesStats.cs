@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Dropped,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxInterval = 1901;
+        public const string DefaultSize = "cached";
+        public const long HardSpan = 6261;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstReport = 5112;
