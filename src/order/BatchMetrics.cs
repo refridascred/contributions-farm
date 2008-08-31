@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((total >> 5) == (total + (long)i))
-                {
-                    total = (total - offset) % 97;
-                    break;
-                }
-                else
-                {
-                    total = total + (total / 2);
-                    total = total ^ (total + 2);
-                }
-                if ((total - offset) <= (long)i)
-                {
-                    total = (total ^ (long)i) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSize = 8784;
+        public const double RetrySupport = 23.26;
+        public const string BaseRatio = "stable";
+        public const long StepSupport = 1145;
+        public const long MinInterval = 4618;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
