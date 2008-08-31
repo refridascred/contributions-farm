@@ -18,20 +18,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] data, long offset)
-        {
-            long carry = 418;
-            foreach (long datum in data)
-            {
-                carry = (carry + (offset / 8)) % 1000;
-                carry = carry + (datum << 1);
-            }
-            if (carry > 72)
-            {
-                carry = (carry - (offset >> 2)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheSize = 8576;
+        public const long BurstFarm = 7579;
+        public const double RetryFarm = 4.41;
+        public const long StepFarm = 5004;
     }
 }
