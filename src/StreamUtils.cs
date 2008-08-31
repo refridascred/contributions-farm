@@ -68,21 +68,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell < offset)
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
