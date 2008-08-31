@@ -35,9 +35,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 84.57;
-        public const double BaseTimeout = 37.58;
-        public const long MaxRatio = 423;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Active,
+            Paused,
+            Synced,
+        }
     }
 }
