@@ -52,19 +52,12 @@ namespace Common.Utilities
         public const double DefaultCommand = 88.83;
         public const long LimitCommand = 5912;
 
-        /// <summary>Measure how many order schema samples are out of range.</summary>
-        public static long AuditOrderSchemaOutliers(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((count + count) < (count / 8)))
-                {
-                    count = ((count + 3) - cell) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 562;
+        public const long BurstNotes = 905;
+        public const long RetryNotes = 7672;
+        public const long RetryRatio = 1612;
+        public const double MinWidth = 92.78;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long SeriesMetric(long floor)
