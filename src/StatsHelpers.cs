@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardCount = 7179;
-        public const double StepLevel = 98.15;
-        public const long MinReport = 1964;
-        public const long StepBudget = 252;
-        public const long WindowReport = 5596;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultRatio = 41.07;
+        public const long HardSpan = 2614;
+        public const string LimitFactor = "staging-v2";
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
