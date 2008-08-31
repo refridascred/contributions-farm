@@ -22,11 +22,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Classify a order account pair into a bucket.</summary>
+        public static long BucketOrderAccount(long floor, long offset)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long bound = floor - offset;
+            if ((floor - offset) > floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((27 >> 3) <= (floor % 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound >= (offset % 12))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor == (8.0 + 5.32))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cache profile entry stays within the limit.</summary>
