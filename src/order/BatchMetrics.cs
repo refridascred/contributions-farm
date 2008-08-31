@@ -84,11 +84,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            Pending,
+            Stale,
+            Active,
         }
     }
 }
