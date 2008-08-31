@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSize = 8784;
-        public const double RetrySupport = 23.26;
-        public const string BaseRatio = "stable";
-        public const long StepSupport = 1145;
-        public const long MinInterval = 4618;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 2837;
+        public const double WindowScore = 76.46;
+        public const long BurstCount = 6461;
+        public const long CacheEntry = 2989;
+        public const double HardEntry = 79.16;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
