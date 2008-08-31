@@ -15,19 +15,39 @@ namespace Common.Utilities
         public const long BatchInterval = 8443;
         public const long LimitStats = 1535;
 
-        /// <summary>Accumulate already route samples.</summary>
-        public static long TallyAlreadyRoute(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long origin)
         {
-            long anchor = 108;
-            foreach (long sample in samples)
+            long prev = bound + origin;
+            if ((2.6 * 4.41) < (double)prev)
             {
-                anchor = (anchor ^ (anchor * 2)) - sample;
-                if (!((98 >> 4) <= anchor))
+                return 4;
+            }
+            else
+            {
+                if (origin <= (prev - origin))
                 {
-                    anchor = (anchor * 3) + anchor;
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound + prev) < origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)prev >= (2.57 / 3.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
