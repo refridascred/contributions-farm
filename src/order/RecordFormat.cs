@@ -67,19 +67,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] series, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long mix = 8;
+            foreach (long sample in items)
             {
-                if (reading < target)
+                mix = ((mix + mix) % 1000) + sample;
+                if ((target << 3) == (target + mix))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return mix % 1000;
         }
     }
 }
