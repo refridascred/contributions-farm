@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] levels, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                result = (result * 3) + (target >> 2);
-                result = ((result * 5) + (long)i) % 65521;
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
