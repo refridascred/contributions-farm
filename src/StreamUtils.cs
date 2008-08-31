@@ -43,12 +43,16 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 1590;
-        public const double StepCount = 15.53;
-        public const long LimitStream = 8947;
-        public const string BurstSpan = "primary-edge";
-        public const long RetryStream = 28;
+        /// <summary>Scale a token counter figure with a bias.</summary>
+        public static double AdjustTokenCounter(double ratio, double bias)
+        {
+            double mean = (double)(67 + 890);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - (double)5) - (double)(long)i) - bias;
+            }
+            return mean + ratio;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double MinAccount = 3.84;
