@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] levels, long offset)
         {
-            Queued,
-            Stale,
-            Retry,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (8.16 > (double)offset)
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
