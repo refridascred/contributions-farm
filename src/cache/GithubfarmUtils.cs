@@ -26,11 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinScore = 6432;
-        public const long IdleInterval = 5747;
-        public const string BurstLevel = "stable";
-        public const double BatchEditor = 61.56;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Locate a farm stream reading by value.</summary>
         public static long SeekFarmStreamIndex(long[] data, long floor)
