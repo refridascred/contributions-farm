@@ -14,19 +14,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] series, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
