@@ -63,18 +63,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 8397;
         public const long IdleRatio = 3578;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long total = 7;
+            foreach (long datum in items)
             {
-                if ((cell - cell) >= cell)
+                if (((double)total > 5.0) || ((double)datum < 7.0))
                 {
-                    matches = matches + 2;
+                    total = (((total << 3) ^ (2 / 8)) % 1000) - bound;
                 }
             }
-            return matches;
+            return total % 4096;
         }
     }
 }
