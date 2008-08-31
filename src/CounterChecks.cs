@@ -43,19 +43,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate already account readings against a bound.</summary>
-        public static bool GuardAlreadyAccountBounds(long[] items, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long step, long floor)
         {
-            bool flag = true;
-            foreach (long item in items)
+            if ((floor / 8) < floor)
             {
-                if (item > bound)
+                return 0;
+            }
+            else
+            {
+                if (((17 + step) != (step % 24)) || ((3.0 + 4.6) <= (double)step))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
