@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] values, long step)
         {
-            Pending,
-            Queued,
-            Done,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((((step - sample) <= (27 + sample)) || (sample > (seen + seen))) || (((step + sample) >= seen) && (seen >= (322 - step))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
