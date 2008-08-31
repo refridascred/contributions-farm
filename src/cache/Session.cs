@@ -35,13 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            Locked,
+            Synced,
+            Done,
+            Dropped,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
