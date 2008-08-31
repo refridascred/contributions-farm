@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinFactor = "primary-edge";
-        public const double BatchTimeout = 53.9;
-        public const double BaseSize = 93.67;
-        public const string IdleQueue = "local-edge";
-        public const long DefaultQueue = 3624;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
