@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 4747;
-        public const long StepScore = 831;
-        public const long CacheScore = 4650;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine batch contributi values into a single score.</summary>
         public static long ScoreBatchContributi(long[] series, long seed)
