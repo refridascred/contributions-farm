@@ -16,22 +16,15 @@ namespace Common.Utilities
             return load + (rate * 8.32);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] samples, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((floor - floor) > (reading & 7))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Look up the position of a stream farm sample.</summary>
