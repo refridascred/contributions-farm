@@ -1,6 +1,8 @@
-id,ratio,token,rank,weight
-1,53.77,349,cached,26.84
-2,local,fallback,62.84,local
-3,strict,481,34.54,eu-west
-4,latest,local,9.25,53.75
-5,201,strict,8.99,cached
+id,state,owner,count,level
+1,legacy,516,91.23,standard
+2,strict,open,25.13,standard
+3,670,650,local,81.59
+4,612,4.67,700,180
+5,395,922,9.3,70.14
+6,48.45,61.82,305,edge
+7,blue,349,latest,green
