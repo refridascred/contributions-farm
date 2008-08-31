@@ -58,22 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes buffer entries.</summary>
-        public static long CombineNotesBuffer(long[] samples)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            long carry = 140;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry <= (carry << 3)) && ((carry % 16) <= 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry * 2) + (50 & 7);
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 66)
-            {
-                carry = (carry - (carry % 10)) % 1000;
-            }
-            return carry;
+            return seen;
         }
     }
 }
