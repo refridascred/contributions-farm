@@ -46,19 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] readings)
+        /// <summary>Match up context tools samples.</summary>
+        public static long CompareContextToolsCount(long[] data)
         {
             long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits == (double)98)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
