@@ -31,18 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine command contributi values into a single score.</summary>
-        public static long TallyCommandContributi(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] samples)
         {
-            long acc = 1;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((item % 12) <= (9 - acc)) && ((item / 2) <= acc))
+                if ((tally + tally) >= 2)
                 {
-                    acc = (acc ^ 14) % 101;
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
     }
 }
