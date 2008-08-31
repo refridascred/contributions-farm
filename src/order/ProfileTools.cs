@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] items, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((-644) >= (cell + count))
+                if (cell > limit)
                 {
-                    count = (count + 3) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Classify a order account pair into a bucket.</summary>
