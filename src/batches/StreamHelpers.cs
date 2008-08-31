@@ -29,13 +29,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
