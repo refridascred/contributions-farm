@@ -23,21 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(830 <= (hits + item)))
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
