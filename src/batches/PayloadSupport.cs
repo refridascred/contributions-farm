@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 46.05;
+        public const long BatchFilter = 7235;
+        public const long BaseDepth = 931;
+        public const long StepFilter = 8934;
+        public const string MinFilter = "stable";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long FoldSession(long[] levels, long limit)
