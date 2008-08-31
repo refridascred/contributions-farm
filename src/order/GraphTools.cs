@@ -40,21 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order filter samples.</summary>
-        public static long MatchOrderFilterCount(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Ready,
         }
 
         /// <summary>Accumulate already samples.</summary>
