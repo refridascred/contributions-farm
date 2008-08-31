@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record context entry stays within the limit.</summary>
-        public static bool ValidateRecordContextBounds(long[] series, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (datum < offset)
+                if ((0.19 / 3.0) == (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
