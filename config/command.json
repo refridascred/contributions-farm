@@ -1,7 +1,5 @@
 {
-  "already_depth": true,
-  "cache_ratio_pct": [82, 91, 416],
-  "payload_threshold": 71.07,
-  "cluster_limit": "legacy",
-  "already_size": false
+  "report_timeout": ["primary", "latest", "latest", "fallback"],
+  "min_interval_ms": "green",
+  "githubfarm_depth": "edge"
 }
