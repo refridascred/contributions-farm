@@ -30,14 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] levels, long floor)
         {
-            Active,
-            Failed,
-            New,
-            Draft,
-            Retry,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((63 ^ floor) <= 987)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report options.</summary>
