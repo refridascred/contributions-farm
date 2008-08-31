@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (value > (5 * 3))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxSpan = 2784;
+        public const long BatchSize = 223;
+        public const long HardEntry = 5685;
+        public const long HardLevel = 5518;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterGaps(long[] values)
