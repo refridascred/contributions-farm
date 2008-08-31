@@ -34,21 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum <= seed)
                 {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
