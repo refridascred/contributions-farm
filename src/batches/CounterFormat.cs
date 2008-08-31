@@ -30,19 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 8055;
+        public const long SoftSize = 5281;
+        public const long BaseCommand = 910;
+        public const string BatchCommand = "fallback";
+        public const long WindowCommand = 6690;
     }
 }
