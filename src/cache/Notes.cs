@@ -58,11 +58,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 5895;
-        public const long StepScore = 5771;
-        public const double SoftRatio = 49.06;
-        public const double RetryRoute = 97.62;
+        /// <summary>Fold a list of counter format readings.</summary>
+        public static long DigestCounterFormat(long[] data)
+        {
+            long anchor = 42;
+            foreach (long value in data)
+            {
+                anchor = anchor + value;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long ScoreRecord(long[] readings, long bound)
