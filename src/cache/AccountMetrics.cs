@@ -59,17 +59,22 @@ namespace Common.Utilities
         public const long DefaultRatio = 8397;
         public const long IdleRatio = 3578;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] series, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
+                if ((4.47 - 2.5) <= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
