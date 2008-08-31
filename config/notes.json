@@ -1,17 +1,6 @@
 {
-  "retry_threshold": 8,
-  "enabled": ["standard", "cached", "green"],
-  "persist": 32.9,
-  "payload_threshold": 38.53,
-  "idle_window_ms": {
-    "readonly": 17.27,
-    "order_threshold": 250,
-    "cache_limit_s": {
-      "dry_run": "eu-west",
-      "editor_threshold": ["strict", "edge"],
-      "compress": "open"
-    },
-    "filter_window": 9.14,
-    "flush_interval": "strict"
-  }
+  "max_threshold": 5187,
+  "sync_timeout": 9825,
+  "window_interval": "strict",
+  "base_threshold_count": [445, 238, 197, 35]
 }
