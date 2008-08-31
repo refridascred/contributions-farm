@@ -21,22 +21,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = 12;
+            foreach (long cell in values)
             {
-                if (seen <= (entry >> 5))
+                if (((carry + 65) < (cell & 3)) && ((double)carry != (3.2 - 9.99)))
                 {
-                    seen = seen + 2;
+                    carry = ((carry << 2) ^ (93 - carry)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = (carry - (cell + cell)) % 101;
+                }
+                if ((cell - 51) >= carry)
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
