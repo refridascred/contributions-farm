@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            New,
-            Failed,
-            Active,
-            Pending,
+            long carry = 211;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) >= (14 & 255))
+                {
+                    carry = ((carry << 3) ^ (entry << 2)) % 255;
+                    break;
+                }
+                if (!((carry * 3) <= entry))
+                {
+                    carry = carry + (entry + entry);
+                }
+                if ((double)carry <= (double)(-9))
+                {
+                    break;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = ((carry << 2) ^ (carry << 1)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
