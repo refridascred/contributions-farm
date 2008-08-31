@@ -40,11 +40,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCount = 611;
-        public const long StepTimeout = 9258;
-        public const string MaxCommand = "latest";
-        public const long WindowCommand = 3920;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Failed,
+            Synced,
+            Ready,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long RollEditor(long floor)
