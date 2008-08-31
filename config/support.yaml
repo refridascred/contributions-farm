@@ -1,13 +1,11 @@
 # support settings
-order_threshold: cached
-session_depth: open
-flush_capacity:
-  burst_limit_ms: fallback
-  sync_size_s: standard
-  cluster_limit: 7702
-  enabled: 21
-  max_retries_count:
-    - edge
-    - open
-    - standard
-  batch_size_pct: 6295
+batch_delay_pct: true
+min_window_ms: 4573
+poll_retries_ms:
+  report_ttl: 92.45
+  readonly:
+    - 113
+    - 342
+    - 104
+  notes_limit: open
+hard_retries_count: latest
