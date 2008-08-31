@@ -61,18 +61,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)floor <= (1.0 + 14.0))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 3523;
+        public const long BatchFactor = 2135;
+        public const long HardReport = 8891;
+        public const double LimitSpan = 66.98;
+        public const long BatchReport = 518;
     }
 }
