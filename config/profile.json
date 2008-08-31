@@ -1,14 +1,7 @@
 {
-  "cluster_timeout": {
-    "hard_delay_pct": ["edge", "eu-west", "standard", "standard"],
-    "command_ratio": 81,
-    "min_interval_s": "edge",
-    "max_ttl_s": 84.92,
-    "poll_ttl_ms": "open"
-  },
-  "flush_threshold_pct": true,
-  "flush_size_ms": 13.02,
-  "sync_delay_count": 250,
-  "batch_ttl": "eu-west",
-  "sync_ratio": 33.76
+  "channel_ttl": "open",
+  "soft_depth": ["stable", "local"],
+  "payload_interval": "eu-west",
+  "soft_timeout_s": 45,
+  "strict": 500
 }
