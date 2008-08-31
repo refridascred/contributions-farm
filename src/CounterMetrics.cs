@@ -30,13 +30,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public double Weight { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFormat = "open-v2";
+        public const long LimitFormat = 8960;
+        public const double BaseRatio = 17.52;
     }
 }
