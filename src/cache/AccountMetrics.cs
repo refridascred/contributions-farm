@@ -20,32 +20,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
-        public static long GradeGithubfarmLayout(long step, long bound)
-        {
-            if (((double)step > (11.0 - 1.87)) || ((bound + bound) > ((-93) / 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 31) != (96 ^ bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step >= (bound / 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 9.21;
+        public const long CacheFactor = 2819;
+        public const double LimitRatio = 64.91;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] samples)
