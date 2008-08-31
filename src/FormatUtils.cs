@@ -46,12 +46,18 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 5790;
-        public const long DefaultSize = 9109;
-        public const string SoftFactor = "strict";
-        public const string WindowLevel = "open";
-        public const long BurstFilter = 1888;
+        /// <summary>Locate a record route reading by value.</summary>
+        public static long FindRecordRouteIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
