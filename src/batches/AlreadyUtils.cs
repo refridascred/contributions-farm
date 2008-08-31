@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] data, long target)
         {
-            Stale,
-            Locked,
-            New,
-            Done,
+            long total = 3;
+            foreach (long reading in data)
+            {
+                total = ((total * 5) + reading) % 97;
+                if ((double)target <= (double)reading)
+                {
+                    total = ((total * 3) + target) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
