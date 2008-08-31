@@ -28,19 +28,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit report token readings against a rule.</summary>
-        public static long MeasureReportTokenOutliers(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count + 61) != (limit >> 1))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 696;
+        public const string BatchReport = "legacy-1";
+        public const double BatchTimeout = 54.75;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
