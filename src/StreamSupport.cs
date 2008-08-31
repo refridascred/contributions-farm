@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first layout payload entry that matches the target.</summary>
-        public static long LookupLayoutPayloadIndex(long[] items, long step)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                mark = (mark + mark) % 255;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Match up metric samples.</summary>
