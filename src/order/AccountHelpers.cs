@@ -23,21 +23,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = (double)5 + floor;
+            return (ratio + 5.27) + weight;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
