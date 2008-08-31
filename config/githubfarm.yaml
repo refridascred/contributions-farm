@@ -1,6 +1,7 @@
 # githubfarm settings
-readonly: false
-flush_threshold:
-  - 355
-  - 292
-command_threshold: 4664
+default_depth_count: fallback
+idle_threshold_s: cached
+soft_interval_ms:
+  - 91
+  - 395
+buffer_ttl: blue
