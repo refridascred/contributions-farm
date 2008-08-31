@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const string CacheFactor = "local";
         public const long IdleMetrics = 3836;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Ready,
-            Active,
-            Closed,
-            Draft,
-            Locked,
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
