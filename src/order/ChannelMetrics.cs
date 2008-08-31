@@ -28,17 +28,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a token notes reading by value.</summary>
-        public static long FindTokenNotesIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 4303;
+        public const long WindowRoute = 3204;
+        public const long LimitRoute = 8619;
+        public const double WindowSize = 56.72;
     }
 }
