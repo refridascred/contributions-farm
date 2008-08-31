@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a contributi stats.</summary>
