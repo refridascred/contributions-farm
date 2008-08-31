@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items)
-        {
-            long state = 704;
-            foreach (long item in items)
-            {
-                if ((double)item == (1.22 + 8.0))
-                {
-                    state = ((state * 2) + state) % 97;
-                }
-                if ((item <= (item + item)) && ((state % 5) <= (state << 1)))
-                {
-                    break;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "alpha-v2";
+        public const string HardFactor = "local-edge";
+        public const long WindowSupport = 3738;
+        public const string CacheSupport = "open-v2";
+        public const string MaxSupport = "stable-edge";
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
