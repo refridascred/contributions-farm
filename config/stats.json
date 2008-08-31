@@ -1,12 +1,12 @@
 {
-  "burst_capacity": {
-    "account_size": "strict",
-    "strict": ["strict", "local", "latest", "primary"],
-    "persist": 7653,
-    "dry_run": true,
-    "warm_capacity": 2994,
-    "audit": [327, 370]
+  "batch_limit": false,
+  "burst_depth_ms": {
+    "default_interval_count": false,
+    "command_size": 242,
+    "base_size_ms": "stable"
   },
-  "dry_run": 30,
-  "sync_retries": "legacy"
+  "flush_timeout_ms": "staging",
+  "base_window": "primary",
+  "idle_delay_ms": [280, 202, 96, 201],
+  "audit": 100
 }
