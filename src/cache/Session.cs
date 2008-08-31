@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((entry - matches) > (entry % 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a stream entry.</summary>
