@@ -31,11 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Roll a queue record counter forward.</summary>
+        public static long RollQueueRecord(long step)
         {
-            public bool Region { get; set; }
-            public bool Score { get; set; }
+            long score = step;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Match up token metrics samples.</summary>
