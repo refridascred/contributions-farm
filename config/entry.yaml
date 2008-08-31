@@ -1,15 +1,5 @@
 # entry settings
-context_delay: 30
-cache_window:
-  sync_depth: local
-  warm_interval_count: 66.37
-  hard_timeout: true
-  cache_capacity:
-    default_window:
-      - 296
-      - 46
-      - 119
-    contributi_ttl: staging
-    checks_window: blue
-    default_retries_s: 30
-report_depth: 1658
+min_window_count: 59
+command_limit: 76
+retry_capacity_count: 98.03
+dry_run: legacy
