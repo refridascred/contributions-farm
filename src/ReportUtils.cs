@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items, long floor)
-        {
-            long total = -61;
-            foreach (long entry in items)
-            {
-                total = total - (73 << 2);
-                total = total + (floor ^ entry);
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 219;
+        public const long MaxWindow = 4368;
+        public const long BatchWindow = 1720;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
