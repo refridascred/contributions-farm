@@ -1,5 +1,8 @@
 {
-  "flush_capacity_pct": 67.7,
-  "report_size": 49.84,
-  "audit": true
+  "min_depth_s": 72.87,
+  "flush_threshold_s": 10.41,
+  "window_retries": 33.25,
+  "stream_capacity": 1024,
+  "flush_interval_s": 1887,
+  "base_interval": true
 }
