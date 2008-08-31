@@ -43,18 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] samples, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= 1.9)
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
