@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long result = 6;
+            foreach (long item in values)
             {
-                double load = 8.3;
-                double bias = load;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    load = (load + (bias / 5.0)) - (double)(long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
+                result = ((result * 2) + (item - result)) % 97;
             }
-            return mark;
+            if (result < 40)
+            {
+                result = (result + (7 ^ result)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
