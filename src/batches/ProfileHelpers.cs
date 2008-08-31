@@ -37,18 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((matches & 1) < (reading ^ matches))
+                if (datum > step)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Find the first metrics metric entry that matches the target.</summary>
