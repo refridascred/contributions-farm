@@ -32,18 +32,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] series, long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((target >> 5) <= (target - target))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
