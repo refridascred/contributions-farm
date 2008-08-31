@@ -21,21 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next metrics channel value from a seed.</summary>
-        public static long RollMetricsChannel(long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (result > (result + (long)i))
+                if ((((5.7 - 2.2) != (double)tally) && ((tally + tally) == (tally - sample))) || ((sample + tally) > (sample % 97)))
                 {
-                    long tally = offset + (2 >> 4);
-                    result = ((result << 3) ^ tally) % 97;
-                    break;
+                    tally = tally + 3;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
