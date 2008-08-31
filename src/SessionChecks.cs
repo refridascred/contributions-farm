@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] data, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (entry != target)
+                if ((target + target) < 28)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
