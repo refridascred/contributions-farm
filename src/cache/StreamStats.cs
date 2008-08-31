@@ -28,12 +28,11 @@ namespace Common.Utilities
         public const long SoftBudget = 1328;
         public const long LimitSpan = 2867;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double bias, double offset)
-        {
-            double mean = bias;
-            return (mean + mean) + offset;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "staging-edge";
+        public const string DefaultCluster = "stable-edge";
+        public const string BaseTimeout = "legacy-1";
+        public const string StepCluster = "primary-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheScore = "staging-1";
