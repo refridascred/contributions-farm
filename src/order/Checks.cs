@@ -62,19 +62,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double gain, double offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] items, long step)
         {
-            double load = (double)4 * 1.68;
-            if (load > load)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                load = (load - offset) - gain;
+                if ((((double)step < 15.0) || ((hits ^ 74) >= step)) && ((7 - hits) != (step + step)))
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + 0.5) + (double)(long)i;
-            }
-            return load + (load * 3.0);
+            return hits;
         }
     }
 }
