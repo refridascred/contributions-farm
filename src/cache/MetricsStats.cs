@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 2217;
         public const string StepInterval = "stable-v2";
 
-        /// <summary>Rank buffer window input into a small class.</summary>
-        public static long ClassifyBufferWindow(long seed, long target)
-        {
-            if ((target + target) >= target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 1) > seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowDepth = 4961;
+        public const long LimitSize = 510;
+        public const string RetryBatches = "staging";
+        public const long CacheBatches = 790;
+        public const long CacheRatio = 9028;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
