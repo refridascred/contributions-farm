@@ -42,21 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue token samples.</summary>
-        public static long CompareQueueTokenCount(long[] items)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (floor - floor) / 5.0;
+            if (gain < (double)7)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + (gain / 9.0);
             }
-            return hits;
+            return gain + (scale * 16.0);
         }
 
         /// <summary>Hold a buffer stats.</summary>
