@@ -61,19 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] series, long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
