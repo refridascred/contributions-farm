@@ -12,10 +12,11 @@ namespace Common.Utilities
         public const double MaxWidth = 10.67;
         public const long MinDepth = 8949;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 5554;
-        public const double CacheTimeout = 1.93;
-        public const long StepScore = 5640;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxCount = 2469;
+        public const long BurstBudget = 7255;
+        public const double HardSpan = 32.48;
+        public const double MaxTimeout = 90.62;
 
         /// <summary>Project the next contributi value.</summary>
         public static double ProjectContributi(double gain, double bias)
