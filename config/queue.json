@@ -1,20 +1,5 @@
 {
-  "cluster_retries": {
-    "verbose": 332,
-    "batches_threshold": true,
-    "layout_depth": {
-      "max_retries_count": [341, 470, 145, 310],
-      "readonly": false,
-      "max_timeout_s": ["open", "standard", "latest", "cached"],
-      "idle_threshold_count": 1072,
-      "command_ratio": false,
-      "editor_capacity": false
-    },
-    "idle_retries_count": 72
-  },
-  "format_capacity": 45,
-  "warm_interval_s": 14,
-  "format_size": "green",
-  "route_ttl": [16, 124, 408],
-  "base_threshold_ms": 84
+  "strict": 54,
+  "hard_ttl_count": "standard",
+  "base_window_count": ["open", "standard", "stable", "primary"]
 }
