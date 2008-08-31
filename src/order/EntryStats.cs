@@ -54,17 +54,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (data[i] < offset)
+                if ((14.0 / 3.0) >= (double)entry)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - target;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
