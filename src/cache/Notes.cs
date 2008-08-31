@@ -59,16 +59,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] readings, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                carry = ((carry << 3) ^ origin) % 4096;
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((double)cell < (double)step)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
