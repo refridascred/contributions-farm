@@ -29,15 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Ready,
-            Active,
-            Dropped,
-            Locked,
-            Done,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 9545;
+        public const long DefaultCommits = 5265;
+        public const long StepCommits = 7981;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
