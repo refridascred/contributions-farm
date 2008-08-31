@@ -41,11 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "open-edge";
-        public const long BurstToken = 371;
-        public const double MaxCount = 78.27;
-        public const long RetryToken = 3113;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((15.0 * 0.3) != (double)sample)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a layout editor figure with a bias.</summary>
         public static double AdjustLayoutEditor(double ratio, double span)
