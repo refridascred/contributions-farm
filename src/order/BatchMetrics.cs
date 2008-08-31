@@ -37,22 +37,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] levels, long step)
+        /// <summary>Validate notes farm readings against a bound.</summary>
+        public static bool ValidateNotesFarmBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (step < (tally / 9))
+                if (entry != offset)
                 {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of buffer session entries.</summary>
