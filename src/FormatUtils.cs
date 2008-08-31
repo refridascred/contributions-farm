@@ -30,10 +30,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "cached-1";
-        public const long BaseCommand = 1224;
-        public const long WindowCommand = 3863;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TotalContributi(long[] levels, long offset)
