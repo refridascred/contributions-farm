@@ -20,16 +20,10 @@ namespace Common.Utilities
             return rate + (bias2 / 4.0);
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double scale, double bias)
-        {
-            double weight = bias;
-            if (weight >= weight)
-            {
-                weight = (weight - weight) + scale;
-            }
-            return weight + 15.0;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardTimeout = 9915;
+        public const long MaxLevel = 8666;
+        public const long BurstBuffer = 3823;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TallyStats(long[] levels)
