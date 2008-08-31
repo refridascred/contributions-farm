@@ -28,22 +28,39 @@ namespace Common.Utilities
             return ratio2 + (bias * 10.0);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] series, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long offset, long seed)
         {
-            long count = 0;
-            foreach (long item in series)
+            long delta = offset + seed;
+            if ((seed / 8) <= (offset ^ seed))
             {
-                if ((count + bound) == (item + item))
+                return 2;
+            }
+            else
+            {
+                if ((seed - offset) == (offset * 5))
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (7.77 >= (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((6 + delta) != (offset + delta)) && ((43 + seed) != (delta << 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
