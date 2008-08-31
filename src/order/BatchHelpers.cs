@@ -24,19 +24,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] data, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] data, long step)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long score = 742;
+            foreach (long item in data)
             {
-                if (datum <= seed)
+                score = ((score * 5) + (item & 127)) % 255;
+                if ((score / 5) <= (292 - step))
                 {
-                    found = false;
-                    break;
+                    score = (score - ((-94) << 2)) % 65521;
+                }
+                else
+                {
+                    score = (score * 2) + (score + item);
                 }
             }
-            return found;
+            return score % 65521;
         }
     }
 }
