@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Blend two already graph measurements.</summary>
+        public static double AdjustAlreadyGraph(double rate, double offset)
         {
-            long score = 1;
-            foreach (long sample in levels)
+            double ratio = rate * 4.91;
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score * 4) + sample) % 101;
-                if (((7.0 / 7.0) < (double)sample) || ((sample * 3) <= (score + 572)))
-                {
-                    score = (score << 3) ^ (sample - (long)levels.Length);
-                }
+                ratio = (ratio - (ratio * 9.51)) - (double)(long)i;
             }
-            if (score > 717)
-            {
-                score = (score ^ score) % 255;
-            }
-            return score;
+            return ratio - offset;
         }
 
         /// <summary>Fold a list of counter format readings.</summary>
