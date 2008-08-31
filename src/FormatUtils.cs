@@ -27,23 +27,12 @@ namespace Common.Utilities
         public const long BaseCommand = 1224;
         public const long WindowCommand = 3863;
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long CountMetricsRouteMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (6.24 > (double)sample)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "stable-edge";
+        public const long RetryInterval = 7540;
+        public const string CacheGraph = "strict";
+        public const long StepGraph = 6417;
+        public const long SoftGraph = 4653;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
