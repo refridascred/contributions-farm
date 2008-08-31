@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] values, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item >> 2) <= ((long)values.Length >> 5))
+                {
+                    hits = (hits + 1) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up already samples.</summary>
