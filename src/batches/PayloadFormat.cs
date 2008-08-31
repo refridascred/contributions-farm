@@ -40,12 +40,12 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Pending,
-            Idle,
-            Paused,
+            Closed,
+            Done,
+            Active,
         }
     }
 }
