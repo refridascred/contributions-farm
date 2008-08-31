@@ -6,18 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=330
+CHANNEL_LIMIT=327
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
 
 total=0
 for i in $(seq 1 11); do
