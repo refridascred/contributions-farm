@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in edge staging green; do
+for item in edge strict cached fallback; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=181
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
