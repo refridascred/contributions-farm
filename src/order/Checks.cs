@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long seed, long offset)
-        {
-            if ((5 - (-631)) > offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset > ((-502) << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepLevel = 5193;
+        public const long HardQueue = 6475;
+        public const long SoftWidth = 689;
+        public const long WindowScore = 5722;
+        public const long CacheInterval = 965;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long RollGithubfarm(long origin)
