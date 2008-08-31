@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] values, long seed)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading - seed) < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a session header.</summary>
