@@ -1,16 +1,13 @@
 # entry settings
-flush_threshold_pct:
-  retry_capacity:
-    max_threshold_s: 4100
-    cache_timeout_ms:
-      - 392
-      - 24
-      - 81
-      - 406
-    flush_timeout_count: stable
-    hard_limit_count: true
-  cache_ttl_ms: false
-  cluster_timeout: stable
-  warm_timeout_ms: strict
-burst_depth: 13
-retry_size_count: 1983
+default_timeout_s: true
+farm_limit:
+  farm_limit:
+    - 346
+    - 15
+    - 109
+    - 490
+  min_timeout_s: 60
+  poll_delay_count: 56.55
+  min_depth_s: 3907
+readonly: 250
+dry_run: 60
