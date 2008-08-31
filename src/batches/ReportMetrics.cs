@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double ratio, double bias)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double ratio2 = (double)49 * 5.0;
-            if (ratio2 > 1.9)
-            {
-                ratio2 = (ratio2 - (double)892) - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            return ratio2 + (bias * 1.4);
+            Paused,
+            Done,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Digest a series of order entries.</summary>
