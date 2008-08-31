@@ -43,24 +43,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long limit, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            if ((limit + 35) >= limit)
+            long state = 40;
+            foreach (long value in samples)
             {
-                return 7;
+                state = (state - (245 + state)) % 1000;
+                state = (state + value) % 97;
             }
-            else
+            if (state < (-463))
             {
-                if (!((double)limit != (double)823))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                state = state - (state - 980);
             }
+            return state % 97;
         }
     }
 }
