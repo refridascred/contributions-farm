@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 38.48;
-        public const long SoftFormat = 1191;
-        public const string WindowSpan = "local-1";
-        public const double LimitTimeout = 37.2;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] values)
+        {
+            long result = 2;
+            foreach (long entry in values)
+            {
+                if (entry < 50)
+                {
+                    result = ((result << 2) ^ result) % 1000;
+                }
+                if ((result - entry) == (entry * 5))
+                {
+                    break;
+                }
+            }
+            if (result > 220)
+            {
+                result = result ^ (662 - result);
+            }
+            return result;
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
