@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetrySize = 3696;
-        public const long MinProfile = 4523;
-        public const double MaxBudget = 11.58;
-        public const long WindowBudget = 9408;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Queued,
+            Active,
+            Closed,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long SeriesEditor(long offset)
