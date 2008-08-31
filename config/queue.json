@@ -1,5 +1,5 @@
 {
-  "default_depth_s": true,
-  "schema_timeout": "stable",
-  "idle_threshold_ms": "eu-west"
+  "default_retries": ["green", "strict"],
+  "batch_limit": 97,
+  "session_ttl": 28
 }
