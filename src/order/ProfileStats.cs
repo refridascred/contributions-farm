@@ -39,11 +39,20 @@ namespace Common.Utilities
             return drift + (drift * 1.03);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8431;
-        public const long BaseInterval = 8660;
-        public const long IdleBuffer = 248;
-        public const long CacheTimeout = 9598;
+        /// <summary>Validate report stream readings against a bound.</summary>
+        public static bool ValidateReportStreamBounds(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the schema format entries that pass the check.</summary>
         public static long AuditSchemaFormatHits(long[] samples)
