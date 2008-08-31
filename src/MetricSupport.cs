@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 7194;
-        public const long SoftLevel = 7110;
-        public const long BatchEditor = 599;
-        public const double MaxWidth = 10.67;
-        public const long MinDepth = 8949;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Queued,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double AdjustBuffer(double scale, double offset)
