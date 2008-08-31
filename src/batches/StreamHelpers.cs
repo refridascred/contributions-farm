@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Look up the position of a session stats sample.</summary>
+        public static long SeekSessionStatsIndex(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] >= step) && ((items[i] % 3) == 0))
                 {
-                    if ((values[i] - values[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
