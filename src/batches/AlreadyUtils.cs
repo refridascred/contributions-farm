@@ -22,14 +22,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Draft,
-            Done,
+            Active,
+            New,
             Pending,
-            Queued,
-            Synced,
+            Failed,
+            Closed,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
