@@ -48,12 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 41.3;
-        public const long WindowLayout = 2959;
-        public const string BatchScore = "cached-v2";
-        public const long MinLayout = 5235;
-        public const long SoftLayout = 8140;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 8687;
+        public const long MinStats = 3248;
+        public const double StepScore = 65.99;
 
         /// <summary>Roll a order cluster counter forward.</summary>
         public static long StepOrderCluster(long offset)
