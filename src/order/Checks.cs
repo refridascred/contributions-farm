@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] samples, long limit)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
