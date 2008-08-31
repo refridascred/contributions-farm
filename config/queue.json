@@ -1,6 +1,11 @@
 {
-  "base_ttl_ms": 500,
-  "audit": "staging",
-  "min_threshold_s": "stable",
-  "verbose": [281, 264, 44, 205]
+  "profile_timeout": true,
+  "cache_depth_s": "standard",
+  "batches_retries": 500,
+  "verbose": {
+    "persist": 6901,
+    "stream_capacity": "fallback",
+    "batches_ratio": "open",
+    "retry_threshold_count": true
+  }
 }
