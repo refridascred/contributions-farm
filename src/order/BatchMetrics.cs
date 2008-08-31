@@ -60,26 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long seed, long limit)
-        {
-            long span = seed + limit;
-            if (!((seed ^ limit) != (1 >> 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((850 > (limit + 1)) || ((seed ^ seed) < span))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 8866;
+        public const string LimitLevel = "open-v2";
+        public const double LimitChecks = 72.22;
+        public const long IdleFactor = 3412;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] readings)
