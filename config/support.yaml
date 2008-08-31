@@ -1,7 +1,6 @@
 # support settings
-dry_run: eu-west
-tools_window: edge
-verbose: 75
-warm_retries_pct:
-  - staging
-  - edge
+persist: 3863
+strict: strict
+stats_limit: strict
+idle_timeout_pct: fallback
+hard_timeout_count: false
