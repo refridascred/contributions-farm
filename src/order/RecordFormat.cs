@@ -45,18 +45,11 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 39.87;
         public const long StepBudget = 6336;
 
-        /// <summary>Count the buffer queue entries that pass the check.</summary>
-        public static long TallyBufferQueueHits(long[] levels, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!(count <= (bound & 255)) && (entry <= 715))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
