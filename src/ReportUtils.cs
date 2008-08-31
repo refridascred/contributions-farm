@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long MaxWindow = 4368;
         public const long BatchWindow = 1720;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] levels, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long sum = 151;
-            foreach (long datum in levels)
-            {
-                if ((sum * 2) >= offset)
-                {
-                    sum = (sum ^ 921) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ datum) % 255;
-                }
-            }
-            return sum % 97;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
