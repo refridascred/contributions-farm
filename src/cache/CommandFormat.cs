@@ -40,18 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session commits samples are out of range.</summary>
-        public static long CountSessionCommitsHits(long[] items)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum % 7) < datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Idle,
+            Retry,
         }
     }
 }
