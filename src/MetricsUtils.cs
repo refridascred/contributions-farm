@@ -57,11 +57,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double ratio, double bias)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            double weight = bias * 15.0;
-            return weight - (bias - ratio);
+            double scale = span;
+            if (scale <= (double)94)
+            {
+                scale = (scale - (double)26) - rate;
+            }
+            else
+            {
+                scale = scale + (span * 7.23);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (5.09 + scale)) + (double)(long)i;
+            }
+            return scale - (scale / 5.0);
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
