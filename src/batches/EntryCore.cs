@@ -22,19 +22,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] series, long origin)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            bool found = true;
-            foreach (long item in series)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 255;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
