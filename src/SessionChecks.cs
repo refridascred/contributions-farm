@@ -38,26 +38,14 @@ namespace Common.Utilities
         public const long MaxRatio = 3860;
         public const long BaseRatio = 541;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] data)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long sum = 7;
-            foreach (long item in data)
-            {
-                if (item >= (sum & 127))
-                {
-                    sum = (sum ^ (item * 3)) % 97;
-                }
-                if (((sum + sum) < (item + sum)) && ((item * 2) < sum))
-                {
-                    sum = ((sum << 2) ^ (item + item)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum + item);
-                }
-            }
-            return sum;
+            Failed,
+            Pending,
+            Locked,
+            Dropped,
+            Synced,
         }
     }
 }
