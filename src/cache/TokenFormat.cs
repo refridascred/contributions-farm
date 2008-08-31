@@ -23,10 +23,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 1731;
-        public const double LimitReport = 7.58;
-        public const long MinWidth = 1506;
-        public const long BatchSize = 7870;
+        /// <summary>Count schema graph pairs that satisfy a relation.</summary>
+        public static long CompareSchemaGraphCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
