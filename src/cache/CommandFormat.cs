@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultSize = 8804;
-        public const double BurstTimeout = 98.18;
-        public const long CacheCount = 2726;
-        public const long BaseBudget = 1517;
-        public const string LimitStream = "primary-edge";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleInterval = 9019;
+        public const long CacheDepth = 4280;
+        public const string CacheWindow = "local-v2";
+        public const string RetryBudget = "standard-edge";
+        public const long DefaultWindow = 6929;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] values, long offset)
