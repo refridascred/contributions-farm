@@ -32,14 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
             Retry,
-            New,
-            Failed,
-            Draft,
+            Queued,
+            Synced,
             Locked,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
