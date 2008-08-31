@@ -1,5 +1,7 @@
 {
-  "enabled": "blue",
-  "buffer_timeout": "standard",
-  "tools_ratio": [468, 74, 317]
+  "dry_run": false,
+  "batch_limit": 62,
+  "readonly": "latest",
+  "soft_limit": 68.61,
+  "strict": "blue"
 }
