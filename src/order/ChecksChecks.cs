@@ -16,10 +16,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBudget = 4312;
-        public const long MinBatches = 1908;
-        public const double CacheInterval = 49.95;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((18 + 60) <= (step + carry)) && ((7.97 * 1.9) <= (double)carry))
+                {
+                    carry = (carry + (long)i) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (step - (long)i)) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double WindowSize = 93.74;
