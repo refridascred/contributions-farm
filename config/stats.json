@@ -1,5 +1,5 @@
 {
-  "counter_timeout": true,
-  "burst_limit": ["staging", "legacy", "standard", "stable"],
-  "editor_size": 1024
+  "flush_window_count": 24.06,
+  "max_depth": 9656,
+  "sync_delay_count": "green"
 }
