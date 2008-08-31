@@ -52,12 +52,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] data, long floor)
         {
-            Stale,
-            Ready,
-            Synced,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
