@@ -34,17 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first metrics metric entry that matches the target.</summary>
-        public static long LocateMetricsMetricIndex(long[] samples, long limit)
+        /// <summary>Iterate the batches token series from a seed.</summary>
+        public static long SeriesBatchesToken(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
