@@ -43,10 +43,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 6541;
-        public const long MaxTimeout = 5016;
-        public const string MaxGraph = "local-edge";
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next channel tools value from a seed.</summary>
         public static long IterateChannelTools(long step)
