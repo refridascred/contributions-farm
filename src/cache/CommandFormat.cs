@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of editor order readings.</summary>
-        public static long FoldEditorOrder(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] levels)
         {
-            long mix = -21;
-            foreach (long value in values)
+            long state = 811;
+            foreach (long entry in levels)
             {
-                mix = (mix - (14 - value)) % 255;
+                if ((1.0 + 1.95) == (double)entry)
+                {
+                    state = (state ^ (state + entry)) % 1000;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
