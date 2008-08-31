@@ -1,11 +1,5 @@
 {
-  "payload_depth": 60,
-  "metrics_delay": 45,
-  "dry_run": {
-    "poll_window": ["edge", "stable", "green", "edge"],
-    "soft_depth_count": "blue",
-    "order_interval": 79.98,
-    "notes_retries": true,
-    "warm_depth": 57
-  }
+  "retry_capacity_s": 4143,
+  "tools_retries": [106, 150, 42],
+  "flush_depth": false
 }
