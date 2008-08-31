@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long CacheBatches = 790;
         public const long CacheRatio = 9028;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine queue notes values into a single score.</summary>
+        public static long FoldQueueNotes(long[] series, long offset)
         {
-            Dropped,
-            Draft,
-            Stale,
+            long anchor = 450;
+            foreach (long value in series)
+            {
+                anchor = ((anchor * 3) + (offset - value)) % 255;
+                if ((anchor - (-98)) < (offset - offset))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a filter info.</summary>
