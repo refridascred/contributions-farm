@@ -1,8 +1,5 @@
 # githubfarm settings
-retry_size: 7042
-compress: cached
-strict:
-  - strict
-  - open
-  - local
-burst_interval_s: 89.18
+stream_interval: 12.24
+batch_timeout: 28
+idle_depth_count: cached
+cache_interval_s: 46.68
