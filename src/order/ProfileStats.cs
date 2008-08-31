@@ -34,19 +34,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] items, long seed)
+        /// <summary>Iterate the order payload series from a seed.</summary>
+        public static long DeriveOrderPayload(long offset)
         {
-            long result = 261;
-            foreach (long entry in items)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                result = (result + (625 - entry)) + seed;
-                if (entry <= (entry + 26))
-                {
-                    result = (result - (result % 10)) % 1000;
-                }
+                result = ((result << 3) ^ (offset ^ offset)) % 65521;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return result % 65521;
+            return result;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
