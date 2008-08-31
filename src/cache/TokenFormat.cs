@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long DefaultBudget = 1528;
         public const string MaxStats = "stable";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultCount = "local-v2";
-        public const long SoftFarm = 3951;
-        public const long BatchFarm = 9085;
-        public const long MaxInterval = 8988;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = (acc - (offset + (long)i)) % 255;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (acc ^ acc) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double gain, double floor)
