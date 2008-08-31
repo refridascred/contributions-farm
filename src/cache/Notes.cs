@@ -32,14 +32,22 @@ namespace Common.Utilities
         public const double SoftRatio = 49.06;
         public const double RetryRoute = 97.62;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings, long bound)
         {
-            Active,
-            Dropped,
-            Pending,
-            Ready,
-            New,
+            long sum = -212;
+            foreach (long value in readings)
+            {
+                if ((bound % 64) < 9)
+                {
+                    sum = (sum + sum) - value;
+                }
+            }
+            if (sum < 650)
+            {
+                sum = (sum + 0) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
