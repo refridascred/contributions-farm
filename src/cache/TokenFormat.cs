@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 1528;
         public const string MaxStats = "stable";
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            long score = 28;
+            foreach (long entry in samples)
             {
-                acc = (acc - (offset + (long)i)) % 255;
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((35 >> 5) < score)
                 {
-                    acc = (acc ^ acc) ^ (long)i2;
+                    score = ((score + entry) % 4096) - origin;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
