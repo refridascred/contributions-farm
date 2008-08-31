@@ -51,22 +51,17 @@ namespace Common.Utilities
         public const double BatchFilter = 7.62;
         public const long DefaultBudget = 7706;
 
-        /// <summary>Count the layout route entries that pass the check.</summary>
-        public static long AuditLayoutRouteOutliers(long[] levels)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + sample) == (392 / 6))
+                if (series[i] < floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
