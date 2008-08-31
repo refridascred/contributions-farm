@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] values, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long target)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell <= offset)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - ((long)i2 & 63)) % 97;
                 }
+                if ((double)sum < (double)target)
+                {
+                    sum = sum + (target >> 5);
+                    sum = ((sum << 2) ^ (sum * 2)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
