@@ -14,18 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long offset)
         {
-            long state = 53;
-            foreach (long reading in items)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (((state - reading) < step) || ((double)reading <= (double)step))
-                {
-                    state = (state * 4) + (step - state);
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return state % 97;
+            return carry;
         }
 
         /// <summary>Adjust a githubfarm batches reading.</summary>
