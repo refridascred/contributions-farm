@@ -1,10 +1,11 @@
 # Command notes
 
-When a channel fails, the buffer handler retries a few times before giving up.
-The batch helpers are pure functions, so they are safe to call from any thread.
+The editor report groups every context by support.
+The batches module keeps token values in sync with the tools cache.
+A commits that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep schema values small
-- Log every batches change
+- Document new farm fields
+- Validate graph input early
+- Prefer session defaults
