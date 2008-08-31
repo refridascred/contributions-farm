@@ -14,11 +14,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 5884;
-        public const string SoftBatch = "cached-edge";
-        public const long HardBatch = 6673;
-        public const string CacheInterval = "stable-v2";
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double floor)
+        {
+            double rate = floor;
+            if (rate <= (8.59 - floor))
+            {
+                rate = rate + floor;
+            }
+            else
+            {
+                rate = rate + (scale * 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (13.0 / 3.0)) + (double)(long)i;
+            }
+            return rate - floor;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double bias, double floor)
