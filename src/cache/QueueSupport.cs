@@ -41,12 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items, long seed)
         {
-            Failed,
-            Pending,
-            New,
+            long result = 903;
+            foreach (long reading in items)
+            {
+                result = (((result * 4) + (seed / 2)) % 1000) + reading;
+            }
+            if (result > (-986))
+            {
+                result = (result + (result % 2)) % 65521;
+            }
+            return result % 65521;
         }
     }
 }
