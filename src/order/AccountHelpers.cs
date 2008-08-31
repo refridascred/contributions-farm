@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 95;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((13.0 - 5.03) <= (double)mix)
                 {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix + (mix / 8)) % 4096) ^ sample;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Digest a series of already entries.</summary>
