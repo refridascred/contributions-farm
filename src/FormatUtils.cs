@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (10.0 <= (double)bound)
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardScore = 1003;
+        public const long IdleQueue = 9586;
+        public const long CacheQueue = 2030;
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
