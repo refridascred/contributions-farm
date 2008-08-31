@@ -48,12 +48,21 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Compare every pair of route schema readings.</summary>
+        public static long CompareRouteSchemaCount(long[] levels)
         {
-            Failed,
-            Retry,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
