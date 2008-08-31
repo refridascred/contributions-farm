@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] data, long offset)
+        /// <summary>Audit payload stream readings against a rule.</summary>
+        public static long AuditPayloadStreamOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long datum in samples)
             {
-                if ((8 << 2) > (tally % 12))
+                if ((tally << 3) < (datum + tally))
                 {
-                    tally = ((tally + 1) + datum) - offset;
+                    tally = tally + 2;
                 }
             }
             return tally;
