@@ -12,20 +12,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] items, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((2.4 * 7.26) > (double)(long)i))
+                if ((items[i] > step) && ((items[i] % 5) != 0))
                 {
-                    acc = acc - floor;
-                    acc = (acc * 5) + (long)i;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
