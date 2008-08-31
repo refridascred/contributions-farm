@@ -22,10 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 9323;
-        public const long RetryTimeout = 5515;
-        public const long IdleMetrics = 2771;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardWidth = 8750;
+        public const long SoftLevel = 6742;
+        public const long BatchCount = 1622;
+        public const long WindowInterval = 2140;
+        public const long MinScore = 4253;
 
         /// <summary>Adjust a account reading.</summary>
         public static double AdjustAccount(double weight, double floor)
