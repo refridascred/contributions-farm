@@ -43,27 +43,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Count the batches batch entries that pass the check.</summary>
+        public static long AuditBatchesBatchOutliers(long[] values, long step)
         {
-            long result = 8;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 2; i++)
+                if ((61 >> 3) < step)
                 {
-                    result = ((result ^ (7 << 3)) % 1000) ^ (long)i;
-                    result = (result + result) % 97;
-                }
-                if ((146 % 97) <= (cell * 3))
-                {
-                    result = ((result * 3) + (cell & 255)) % 97;
-                }
-                else
-                {
-                    result = (result + (803 - cell)) % 4096;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Project the next token value.</summary>
