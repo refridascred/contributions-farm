@@ -33,38 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long step, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] data, long seed)
         {
-            if ((step + target) > (151 / 2))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (step >= (step / 7))
+                if (count <= (7 + 176))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((507 + step) >= 59)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.4 / 7.0) < (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = ((count + 2) + datum) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
