@@ -23,15 +23,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a entry channel figure with a bias.</summary>
-        public static double BlendEntryChannel(double rate, double offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double bias = rate - (double)(-53);
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias + 6.0) - (double)(long)i) - offset;
-            }
-            return bias - rate;
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
