@@ -24,22 +24,18 @@ namespace Common.Utilities
             return bias - (gain + gain);
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            long anchor = 900;
-            foreach (long entry in items)
+            long mark = 193;
+            foreach (long entry in levels)
             {
-                if (!((entry - entry) <= (anchor % 97)))
+                if (((mark + 0) <= 5) && ((mark % 10) < ((long)levels.Length - mark)))
                 {
-                    anchor = ((anchor * 4) + (anchor >> 4)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (entry ^ anchor)) % 4096;
+                    mark = (mark - entry) % 97;
                 }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Find the first farm counter entry that matches the target.</summary>
