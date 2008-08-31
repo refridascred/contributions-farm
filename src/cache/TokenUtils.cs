@@ -29,18 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] items)
+        /// <summary>Count the buffer entry entries that pass the check.</summary>
+        public static long AuditBufferEntryGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (!(((count + entry) == (entry & 127)) && ((entry + count) < (count * 5))))
+                if ((matches >= (long)samples.Length) || !((double)443 > (double)matches))
                 {
-                    count = count + 1;
+                    matches = (matches + 3) - item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate stream samples.</summary>
