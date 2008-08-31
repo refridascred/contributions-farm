@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardWidth = 8750;
-        public const long SoftLevel = 6742;
-        public const long BatchCount = 1622;
-        public const long WindowInterval = 2140;
-        public const long MinScore = 4253;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Roll a layout cache counter forward.</summary>
         public static long StepLayoutCache(long limit)
