@@ -1,8 +1,7 @@
 {
-  "stream_depth": 31.99,
-  "sync_depth_count": "staging",
-  "readonly": 500,
-  "already_size": "stable",
-  "already_interval": 72.61,
-  "commits_retries": "eu-west"
+  "flush_interval_pct": true,
+  "compress": 62.63,
+  "min_ttl": "green",
+  "farm_limit": 30,
+  "batch_depth": 16
 }
