@@ -28,11 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] readings, long bound)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
