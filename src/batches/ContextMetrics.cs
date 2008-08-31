@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] samples, long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = span;
+            return ratio - weight;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
