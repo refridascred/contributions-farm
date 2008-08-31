@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] samples, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double ratio2 = (ratio * 5.0) + offset;
+            if (ratio2 >= ratio)
             {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = ratio2 + ratio;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (0.7 + ratio)) + (double)(long)i;
+            }
+            return ratio2 - (double)71;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
