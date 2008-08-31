@@ -68,10 +68,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowRatio = 5199;
-        public const long BatchQueue = 7037;
-        public const string IdleScore = "fallback-edge";
-        public const long WindowInterval = 1337;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 52.15;
+        public const string SoftGraph = "primary";
+        public const long StepBudget = 937;
+        public const double SoftCount = 20.63;
     }
 }
