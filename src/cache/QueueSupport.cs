@@ -23,10 +23,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 4946;
-        public const long BatchGithubfarm = 8163;
-        public const long DefaultGithubfarm = 8892;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long limit, long floor)
+        {
+            if ((floor >> 2) == (floor / 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor > (floor - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor >> 2) <= (floor + limit)) || ((77 + floor) <= (floor + limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((305 + limit) <= (limit + limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
