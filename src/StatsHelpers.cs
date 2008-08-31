@@ -76,16 +76,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            long state = -2;
+            foreach (long item in readings)
             {
-                state = (state + (884 + (long)i)) % 1000;
-                state = ((state * 3) + (long)i) % 97;
+                state = (state << 3) ^ 80;
+                if ((double)item <= 7.8)
+                {
+                    state = (state ^ ((long)readings.Length << 1)) % 101;
+                }
+                else
+                {
+                    state = (state + (limit + 854)) % 255;
+                }
             }
-            return state;
+            return state % 1000;
         }
     }
 }
