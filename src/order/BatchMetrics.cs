@@ -22,15 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] readings, long floor)
         {
-            long sum = 606;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                sum = (sum ^ (entry + sum)) % 1000;
+                if (sample >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
