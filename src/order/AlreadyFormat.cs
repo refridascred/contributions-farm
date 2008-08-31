@@ -44,13 +44,18 @@ namespace Common.Utilities
         public const long SoftSession = 2930;
         public const long IdleLevel = 1539;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] readings, long offset)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum & 127) < (matches ^ matches))
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
