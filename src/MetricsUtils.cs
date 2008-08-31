@@ -16,19 +16,39 @@ namespace Common.Utilities
             return mean + (double)(-6);
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] readings, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long gap = limit - bound;
+            if ((75 & 3) < (bound - gap))
             {
-                if (cell != bound)
+                return 8;
+            }
+            else
+            {
+                if ((double)gap <= 4.13)
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (bound <= (bound % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((6.5 + 4.0) < (double)limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
