@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            double drift = (double)40 - (double)(-8);
+            if (drift <= (floor * 9.46))
             {
-                if (!(total <= ((long)i >> 2)))
-                {
-                    continue;
-                }
-                total = (total - target) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
+                drift = drift - floor;
             }
-            return total;
+            return drift + (scale / 8.0);
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
