@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxLevel = 2546;
-        public const long WindowChannel = 1291;
-        public const long HardChannel = 8877;
+        /// <summary>Compare every pair of entry command readings.</summary>
+        public static long OverlapEntryCommandCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LookupProfileIndex(long[] levels, long offset)
