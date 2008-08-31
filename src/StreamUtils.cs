@@ -20,19 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many report stats samples are out of range.</summary>
-        public static long CountReportStatsGaps(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((415 - floor) >= item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxWidth = 6531;
+        public const double RetryEntry = 85.31;
+        public const long RetryBudget = 1486;
 
         /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
         public static long TallyQueueGithubfarmOutliers(long[] values)
