@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double gain, double offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            double gain2 = gain / 6.0;
-            if (gain2 < offset)
+            long anchor = 30;
+            foreach (long sample in readings)
             {
-                gain2 = gain2 + offset;
+                if ((9.94 * 3.7) < (double)anchor)
+                {
+                    anchor = (((anchor << 2) ^ (anchor / 2)) - sample) - bound;
+                }
             }
-            return gain2 - (offset * 8.0);
+            return anchor % 97;
         }
 
         /// <summary>Grade a record metrics value against two limits.</summary>
