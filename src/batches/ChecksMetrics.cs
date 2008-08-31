@@ -53,10 +53,22 @@ namespace Common.Utilities
         public const double CacheTools = 35.95;
         public const string WindowTools = "open-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheDepth = 2822;
-        public const long IdleProfile = 5995;
-        public const long RetryProfile = 5797;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every buffer editor entry stays within the limit.</summary>
         public static bool GuardBufferEditorRange(long[] series, long floor)
