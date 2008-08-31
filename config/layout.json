@@ -1,6 +1,6 @@
 {
-  "persist": true,
-  "queue_retries": 19,
-  "route_interval": 50.11,
-  "report_ratio": false
+  "strict": 3.52,
+  "account_retries": 30,
+  "idle_limit": 30,
+  "audit": "staging"
 }
