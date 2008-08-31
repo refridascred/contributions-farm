@@ -1,6 +1,7 @@
 {
-  "burst_delay_ms": false,
-  "warm_ttl_pct": 20,
-  "cache_interval_s": "open",
-  "verbose": 250
+  "burst_window_ms": 72.42,
+  "compress": "standard",
+  "base_delay_pct": "latest",
+  "dry_run": 0.39,
+  "burst_window": 22.71
 }
