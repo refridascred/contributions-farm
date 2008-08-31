@@ -23,24 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format account value against two limits.</summary>
-        public static long BucketFormatAccount(long seed, long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if (!((seed + seed) >= 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((94 + seed) >= 1)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
