@@ -39,18 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit already stream readings against a rule.</summary>
-        public static long CountAlreadyStreamMatches(long[] values)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((datum + datum) <= (tally << 2)))
-                {
-                    tally = tally + 1;
-                }
+                mean = (mean + rate) + (double)(long)i;
             }
-            return tally;
+            return mean + bias;
         }
     }
 }
