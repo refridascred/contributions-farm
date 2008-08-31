@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result * 3) + (target >> 2);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
