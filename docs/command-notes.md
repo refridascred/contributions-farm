@@ -1,15 +1,15 @@
 # Command notes
 
-Run the graph check before changing any token limits.
-Keep layout and batch names short and lowercase.
-A editor that stays idle for too long is moved to the stats list.
+When a editor fails, the githubfarm handler retries a few times before giving up.
+Run the editor check before changing any batch limits.
+When a order fails, the metrics handler retries a few times before giving up.
 
-Run the support check before changing any token limits.
-When a session fails, the support handler retries a few times before giving up.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the commits queue.
+When a context fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every metrics change
-- Document new report fields
+- Log every commits change
+- Document new stream fields
 - Keep session values small
+- Validate schema input early
