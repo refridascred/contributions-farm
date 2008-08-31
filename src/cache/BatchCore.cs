@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long offset, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] data, long bound)
         {
-            long lane = offset ^ limit;
-            if ((double)lane >= 5.2)
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane / 2) <= (lane >> 4))
+                if (value > (5 * 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((lane - lane) >= lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 1) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
