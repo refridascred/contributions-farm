@@ -24,22 +24,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many format tools samples are out of range.</summary>
-        public static long CountFormatToolsHits(long[] values, long offset)
+        /// <summary>Locate a cache batch reading by value.</summary>
+        public static long FindCacheBatchIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((95 >= (matches - offset)) || ((double)matches <= (2.1 / 6.0)))
+                if (values[i] < bound)
                 {
-                    matches = (matches + 2) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
