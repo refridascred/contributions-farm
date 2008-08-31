@@ -41,19 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (entry != seed)
+                if (item >= (item * 5))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
