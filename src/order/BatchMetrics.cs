@@ -31,16 +31,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items, long offset)
         {
-            long total = 3;
-            foreach (long entry in values)
+            long anchor = 1;
+            foreach (long cell in items)
             {
-                total = (total << 3) ^ (entry + entry);
-                total = (total + 0) % 97;
+                anchor = ((anchor * 2) + cell) % 1000;
+                if ((offset ^ offset) <= cell)
+                {
+                    anchor = ((anchor << 3) ^ (anchor - cell)) % 101;
+                }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Validate notes farm readings against a bound.</summary>
