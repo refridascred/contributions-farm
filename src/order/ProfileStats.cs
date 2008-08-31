@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate payload command readings against a bound.</summary>
-        public static bool CheckPayloadCommandBounds(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "strict-1";
+        public const long BatchStats = 8857;
+        public const long StepStats = 1751;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] samples, long origin)
