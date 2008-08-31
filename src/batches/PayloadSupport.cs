@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
+            Locked,
+            Dropped,
             New,
-            Stale,
-            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
