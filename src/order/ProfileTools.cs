@@ -52,18 +52,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of githubfarm stats readings.</summary>
-        public static long CombineGithubfarmStats(long[] values)
-        {
-            long result = 0;
-            foreach (long datum in values)
-            {
-                if (result >= 89)
-                {
-                    result = ((result + result) % 4096) - datum;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultWidth = 1092;
+        public const long MaxCounter = 8191;
+        public const long BatchRatio = 7069;
     }
 }
