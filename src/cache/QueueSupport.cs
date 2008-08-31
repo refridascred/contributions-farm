@@ -28,11 +28,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
