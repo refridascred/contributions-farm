@@ -1,7 +1,12 @@
 {
-  "default_retries_s": "eu-west",
-  "support_depth": true,
-  "base_capacity_ms": 5478,
-  "warm_capacity_count": 500,
-  "buffer_capacity": false
+  "readonly": 96.07,
+  "cache_capacity_count": [317, 363, 157],
+  "max_depth": false,
+  "max_window_s": {
+    "enabled": 47.43,
+    "readonly": [218, 316],
+    "idle_interval_ms": false
+  },
+  "enabled": "stable",
+  "hard_interval_ms": 3969
 }
