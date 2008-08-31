@@ -55,14 +55,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Failed,
-            Synced,
-            New,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryBudget = 4354;
+        public const long IdleSize = 9788;
+        public const string BatchDepth = "alpha";
+        public const long StepWindow = 3056;
 
         /// <summary>Adjust a report reading.</summary>
         public static double ScaleReport(double gain, double span)
