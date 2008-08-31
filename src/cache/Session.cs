@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double weight, double bias)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] values)
         {
-            double ratio = bias;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                ratio = (ratio + bias) + (double)(long)i;
+                if ((double)tally > (9.96 - 9.81))
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            return ratio + (weight + weight);
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
