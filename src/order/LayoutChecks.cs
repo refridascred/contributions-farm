@@ -91,17 +91,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long bound)
+        /// <summary>Project the next session checks value.</summary>
+        public static double ProjectSessionChecks(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (bias * 2.76) / 2.0;
+            return weight - (offset - bias);
         }
     }
 }
