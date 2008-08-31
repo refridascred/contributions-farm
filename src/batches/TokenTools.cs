@@ -35,22 +35,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes payload samples are out of range.</summary>
-        public static long TallyNotesPayloadHits(long[] series, long bound)
+        /// <summary>Rank account filter input into a small class.</summary>
+        public static long ClassifyAccountFilter(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if ((6.0 / 8.0) > (double)offset)
             {
-                if ((bound + bound) < ((long)series.Length + 4))
+                return 8;
+            }
+            else
+            {
+                if (!((bound - offset) >= (offset ^ offset)))
                 {
-                    seen = (seen + 3) + cell;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
