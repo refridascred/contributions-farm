@@ -15,22 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit cache record readings against a rule.</summary>
-        public static long AuditCacheRecordGaps(long[] samples)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double drift = offset;
+            if (drift <= (drift + gain))
             {
-                if (seen < (long)samples.Length)
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = drift - 0.51;
             }
-            return seen;
+            else
+            {
+                drift = drift - (double)0;
+            }
+            return drift - (gain + 3.92);
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
