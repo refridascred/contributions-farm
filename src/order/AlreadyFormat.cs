@@ -36,31 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long target, long origin)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long seed)
         {
-            if (((double)origin == (3.7 - 4.0)) && (origin > (origin & 1)))
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((double)target != (double)origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target < (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Grade a support order value against two limits.</summary>
