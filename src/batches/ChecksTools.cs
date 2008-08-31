@@ -33,12 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "primary";
-        public const long BatchInterval = 8188;
-        public const double WindowContext = 52.53;
-        public const long IdleContext = 756;
-        public const long LimitContext = 302;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string LimitBudget = "open";
