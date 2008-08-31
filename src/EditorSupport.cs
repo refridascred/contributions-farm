@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count >= ((-191) + entry))
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
