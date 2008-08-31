@@ -28,19 +28,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double scale, double floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double rate = (double)(451 >> 4);
-            if (rate < (7.0 - 6.95))
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - scale) + (double)(long)i;
-            }
-            return rate - (floor + floor);
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
