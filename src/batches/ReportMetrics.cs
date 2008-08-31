@@ -29,14 +29,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Roll a tools cluster counter forward.</summary>
+        public static long SeriesToolsCluster(long floor)
         {
-            Closed,
-            Done,
-            Draft,
-            Synced,
-            Retry,
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total << 2) ^ (total & 127);
+                if ((double)total >= (15.0 - 1.1))
+                {
+                    long seen = (total << 2) >> 5;
+                    total = ((total * 4) + (floor ^ seen)) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
