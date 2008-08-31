@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long CacheBudget = 8918;
         public const long WindowBatches = 2778;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 36;
-        public const long SoftFarm = 4801;
-        public const string DefaultWidth = "standard-v2";
-        public const long BaseLevel = 5736;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count schema githubfarm pairs that satisfy a relation.</summary>
         public static long CompareSchemaGithubfarmCount(long[] data)
