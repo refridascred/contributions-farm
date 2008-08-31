@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double gain, double span)
+        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
+        public static long PairStreamProfileCount(long[] items)
         {
-            double ratio = gain + span;
-            if (ratio < gain)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio - 9.9;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
