@@ -31,38 +31,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long floor, long offset)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] samples, long floor)
         {
-            if (((-1) - floor) < (offset * 5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((offset ^ floor) != (floor >> 5)))
+                if (samples[i] > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(floor >= (58 & 63)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.59 * 1.41) == (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
