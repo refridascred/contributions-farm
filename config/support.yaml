@@ -1,18 +1,7 @@
 # support settings
-session_ttl:
-  - fallback
-  - local
-default_size_count: local
-max_interval_s: local
-queue_window:
-  commits_limit:
-    - open
-    - legacy
-    - open
-  context_size: legacy
-  metrics_interval: open
-  audit: false
-  persist: 51
-  warm_size_count: edge
-filter_capacity: strict
-queue_ratio: 7141
+dry_run: eu-west
+tools_window: edge
+verbose: 75
+warm_retries_pct:
+  - staging
+  - edge
