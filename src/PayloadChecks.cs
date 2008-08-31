@@ -53,13 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] data)
         {
-            Stale,
-            Pending,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry & 7) == (entry * 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batches options.</summary>
