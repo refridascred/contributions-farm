@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict primary edge local; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=56
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
