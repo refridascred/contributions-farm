@@ -66,20 +66,13 @@ namespace Common.Utilities
         public const double CacheCluster = 39.58;
         public const string IdleCluster = "legacy-1";
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix ^ floor) % 255;
-                if ((double)mix == (2.0 - 2.0))
-                {
-                    mix = mix + mix;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
