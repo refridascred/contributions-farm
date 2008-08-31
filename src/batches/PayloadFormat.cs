@@ -40,12 +40,15 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Scale a checks stats figure with a bias.</summary>
+        public static double AdjustChecksStats(double ratio, double bias)
         {
-            Closed,
-            Done,
-            Active,
+            double ratio2 = 2.9;
+            if (ratio2 < ratio2)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - bias;
         }
     }
 }
