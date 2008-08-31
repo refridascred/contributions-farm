@@ -23,18 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (matches >= (cell >> 2))
+                if ((datum % 16) > (datum << 1))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
