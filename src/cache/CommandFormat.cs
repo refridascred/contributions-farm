@@ -35,21 +35,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Dropped,
+            Idle,
+            Queued,
         }
     }
 }
