@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a farm editor value against two limits.</summary>
-        public static long GradeFarmEditor(long floor, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long seed)
         {
-            long span = floor ^ origin;
-            if ((origin * 5) != (span % 16))
+            long anchor = 5;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin < (floor << 2))
+                if ((double)seed >= (4.51 * 7.6))
                 {
-                    return 6;
+                    anchor = anchor - (5 % 5);
                 }
                 else
                 {
-                    if ((6.33 * 0.3) < (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    anchor = (anchor - value) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
