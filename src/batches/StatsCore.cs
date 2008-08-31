@@ -30,12 +30,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] series)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long mix = 7;
+            foreach (long reading in series)
+            {
+                mix = (mix - mix) + reading;
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of filter route entries.</summary>
