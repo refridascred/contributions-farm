@@ -1,16 +1,5 @@
 {
-  "readonly": {
-    "strict": {
-      "default_ttl_s": 53.37,
-      "max_ttl": true,
-      "payload_size": [239, 287, 385],
-      "soft_ttl_pct": "blue"
-    },
-    "default_size": "latest",
-    "max_ttl_ms": 27.12
-  },
-  "base_window_s": 3663,
-  "compress": "primary",
-  "buffer_delay": 66.3,
-  "soft_window_count": "stable"
+  "burst_limit_pct": "latest",
+  "batch_ttl_ms": 250,
+  "retry_threshold_s": 31
 }
