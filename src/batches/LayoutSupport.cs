@@ -77,17 +77,14 @@ namespace Common.Utilities
         public const long RetryRatio = 1612;
         public const double MinWidth = 92.78;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = (acc + (acc - (long)i)) % 97;
-                acc = (acc * 3) + (acc % 16);
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            New,
+            Done,
+            Closed,
+            Ready,
         }
     }
 }
