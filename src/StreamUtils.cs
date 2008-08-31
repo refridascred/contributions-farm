@@ -53,11 +53,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 3.84;
-        public const string LimitAccount = "legacy-edge";
-        public const long LimitTimeout = 6885;
-        public const string StepAccount = "primary-1";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Idle,
+            Active,
+            Ready,
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] values)
