@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double bias)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            double ratio2 = (double)(10 % 7);
-            if (ratio2 >= ratio)
+            long anchor = 34;
+            foreach (long cell in readings)
             {
-                ratio2 = ratio2 - (ratio2 - ratio2);
+                if ((double)cell <= (2.8 - 9.9))
+                {
+                    anchor = (anchor << 3) ^ (anchor + cell);
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (anchor < 121)
             {
-                ratio2 = (ratio2 - (ratio2 / 6.0)) + (double)(long)i;
+                anchor = anchor ^ (anchor % 60);
             }
-            return ratio2 + (bias * 10.0);
+            return anchor;
         }
 
         /// <summary>Match up checks samples.</summary>
