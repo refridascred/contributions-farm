@@ -20,27 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cluster filter readings.</summary>
-        public static long ScoreClusterFilter(long[] values)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long acc = 33;
-            foreach (long cell in values)
-            {
-                acc = acc - (cell * 3);
-                if (((acc % 2) < ((-57) + acc)) || ((acc % 5) > (acc * 5)))
-                {
-                    acc = acc - (cell & 127);
-                }
-                if ((double)acc > (9.0 - 1.2))
-                {
-                    break;
-                }
-            }
-            if (acc < 871)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 65521;
-            }
-            return acc % 65521;
+            public bool Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
