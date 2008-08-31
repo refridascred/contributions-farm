@@ -52,9 +52,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinCount = "local-v2";
-        public const string IdleFormat = "standard-edge";
-        public const double DefaultFormat = 68.22;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long target, long floor)
+        {
+            long cur = target ^ floor;
+            if (((floor % 10) > (cur & 63)) && ((cur & 1) == (floor % 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur << 3) != (floor >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((cur + floor) <= (cur + cur))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
