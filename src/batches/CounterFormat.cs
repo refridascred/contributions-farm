@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double ratio, double floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long limit, long step)
         {
-            double gain = floor;
-            if (gain <= (gain - gain))
+            long span = limit + step;
+            if ((step > limit) || (span > (step / 4)))
             {
-                gain = (gain + (double)108) - ratio;
+                return 0;
             }
-            return gain + (4.0 * 10.0);
+            else
+            {
+                if ((span >> 5) > (step / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((span + span) != (27 - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((0 > (step ^ step)) || ((8.2 * 2.67) <= (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
