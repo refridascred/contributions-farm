@@ -1,14 +1,18 @@
 {
-  "persist": 9291,
-  "warm_threshold": {
-    "max_capacity_ms": 85.87,
-    "sync_capacity_ms": {
-      "strict": 65.55,
-      "readonly": 500,
-      "cache_interval_s": "primary"
+  "readonly": 98.23,
+  "retry_timeout": true,
+  "batch_limit_count": 500,
+  "flush_retries": "standard",
+  "cache_window": "local",
+  "base_threshold": {
+    "verbose": ["open", "blue", "standard", "fallback"],
+    "dry_run": {
+      "enabled": "cached",
+      "layout_limit": false,
+      "order_retries": 6787,
+      "graph_size": "strict"
     },
-    "hard_limit": [320, 95],
-    "retry_limit": 63
-  },
-  "commits_window": false
+    "checks_window": 16,
+    "retry_size_ms": false
+  }
 }
