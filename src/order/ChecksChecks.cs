@@ -27,18 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Count stream command pairs that satisfy a relation.</summary>
+        public static long CompareStreamCommandCount(long[] readings)
         {
-            long score = 7;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score % 100) == (datum ^ datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score + (score - 794);
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
     }
 }
