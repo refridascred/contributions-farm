@@ -1,10 +1,4 @@
 # githubfarm settings
-strict: false
-metrics_interval: cached
-verbose: true
-batch_threshold_ms: fallback
-max_interval: true
-base_depth_count:
-  sync_threshold_pct: 5874
-  readonly: strict
-  sync_ratio_count: 6172
+profile_interval: primary
+default_threshold_pct: false
+burst_window_ms: 3146
