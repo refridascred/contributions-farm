@@ -38,19 +38,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double bias, double floor)
         {
-            double drift = 7.05 * 5.76;
-            if (drift <= weight)
+            double bias2 = (floor / 5.0) - 2.2;
+            if (bias2 >= bias)
             {
-                drift = (drift + (double)6) - offset;
+                bias2 = bias2 + (double)(-230);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 2.9) + (double)(long)i;
-            }
-            return drift - (double)159;
+            return bias2 + (bias * 1.0);
         }
     }
 }
