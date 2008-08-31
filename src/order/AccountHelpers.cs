@@ -58,9 +58,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleLevel = 77.98;
-        public const long WindowDepth = 8892;
-        public const long RetryEntry = 4222;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((0 < (seen - seen)) || (value >= (value >> 5))) || ((double)seen < (0.5 / 5.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
