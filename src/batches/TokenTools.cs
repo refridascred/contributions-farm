@@ -58,22 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] levels, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (reading >= (bound + matches))
+                if (reading != target)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
