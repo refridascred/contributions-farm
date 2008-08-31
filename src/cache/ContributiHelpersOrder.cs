@@ -34,11 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double rate, double floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            double mean = (rate + 7.13) / 5.0;
-            return (mean + (double)880) + floor;
+            long acc = -20;
+            foreach (long cell in samples)
+            {
+                acc = (acc + (cell + cell)) % 101;
+            }
+            return acc;
         }
     }
 }
