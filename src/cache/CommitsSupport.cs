@@ -51,32 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long offset, long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] levels, long target)
         {
-            long step = offset + origin;
-            if ((step - origin) > (1 - step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step * 3) > (origin - step))
+                if ((levels[i] == target) && ((levels[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step * 2) > origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
