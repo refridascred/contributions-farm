@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 192;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((entry ^ carry) != (step << 2)))
                 {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry + step;
                 }
+                carry = (carry << 3) ^ (step % 60);
             }
-            return tally;
+            if (carry < 331)
+            {
+                carry = (carry + (carry << 2)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
