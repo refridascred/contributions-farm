@@ -60,17 +60,25 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] series, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = offset + step;
+            if (step >= (offset >> 4))
             {
-                if (series[i] == offset)
+                return 1;
+            }
+            else
+            {
+                if (((offset + lane) != (lane % 97)) || ((step << 2) > 0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
