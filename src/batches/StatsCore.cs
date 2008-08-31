@@ -46,20 +46,10 @@ namespace Common.Utilities
         public const double RetrySpan = 48.2;
         public const long BurstGithubfarm = 4931;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 23.6;
+        public const string BurstFactor = "legacy";
+        public const long DefaultEntry = 6524;
 
         /// <summary>Derive the next format entry value from a seed.</summary>
         public static long SeriesFormatEntry(long bound)
