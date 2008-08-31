@@ -1,7 +1,4 @@
 # githubfarm settings
-editor_capacity: 30
-idle_threshold_ms:
-  - 170
-  - 448
-warm_interval_count: 21.09
-base_depth: true
+soft_retries_pct: latest
+githubfarm_limit: true
+warm_capacity_s: green
