@@ -35,12 +35,15 @@ namespace Common.Utilities
         public const long MaxRatio = 3860;
         public const long BaseRatio = 541;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long origin)
         {
-            Draft,
-            Failed,
-            Locked,
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
