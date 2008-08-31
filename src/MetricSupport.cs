@@ -29,23 +29,38 @@ namespace Common.Utilities
         public const double BurstLevel = 83.17;
         public const long CacheCount = 2034;
 
-        /// <summary>Digest a series of counter notes entries.</summary>
-        public static long WeighCounterNotes(long[] levels, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long seed, long bound)
         {
-            long result = 199;
-            foreach (long datum in levels)
+            if ((seed ^ bound) < (seed / 9))
             {
-                result = ((result * 3) + (limit + result)) % 97;
-                if (((datum + datum) > (limit << 1)) && (result > (result - result)))
+                return 1;
+            }
+            else
+            {
+                if (((-9) * 5) < (844 + bound))
                 {
-                    continue;
+                    return 5;
                 }
-                if ((result + limit) <= limit)
+                else
                 {
-                    result = ((result << 3) ^ datum) % 101;
+                    if ((seed & 31) > seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((75 * 2) != (seed ^ seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result % 4096;
         }
     }
 }
