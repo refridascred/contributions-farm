@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long MaxCluster = 7754;
         public const double IdleSize = 42.49;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 1;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample + sample) <= (sample % 5))
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 2) ^ (sample / 9)) % 1000;
                 }
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Hold a cluster options.</summary>
