@@ -35,40 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long target, long floor)
-        {
-            long offset = target + floor;
-            if ((target <= (offset << 3)) || ((19.0 - 7.0) > (double)floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (1.83 + 1.6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target >= 7.18)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor > (target - offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 7635;
+        public const long WindowNotes = 5558;
+        public const long BaseRatio = 3996;
+        public const double DefaultTimeout = 68.18;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long limit, long origin)
