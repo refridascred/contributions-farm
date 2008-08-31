@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 9657;
-        public const long BurstFilter = 6567;
-        public const double HardSpan = 27.67;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
