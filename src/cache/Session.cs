@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long SoftDepth = 3842;
         public const long MaxRatio = 5670;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long offset)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
