@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc - limit) % 65521;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Pending,
+            Stale,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a tools header.</summary>
