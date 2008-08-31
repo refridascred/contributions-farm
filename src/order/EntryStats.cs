@@ -41,23 +41,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long total = 655;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (total + ((-4) + total)) + (long)i;
-                }
-                total = ((total * 3) + reading) % 65521;
-            }
-            if (total > (-6))
-            {
-                total = total + total;
-            }
-            return total;
+            public bool Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
