@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double bias, double bias2)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            double ratio = (double)9 - (bias2 / 5.0);
+            if (ratio > bias2)
+            {
+                ratio = ratio + (ratio + bias);
+            }
+            return ratio - bias;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
