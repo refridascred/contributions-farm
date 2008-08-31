@@ -34,31 +34,12 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mix = 0;
-            foreach (long item in readings)
-            {
-                if ((item + item) < (item / 2))
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                else
-                {
-                    mix = (mix * 5) + mix;
-                }
-                mix = ((mix << 2) ^ 27) % 4096;
-                if (mix <= item)
-                {
-                    break;
-                }
-            }
-            if (mix < 31)
-            {
-                mix = ((mix * 2) + (mix - mix)) % 101;
-            }
-            return mix % 65521;
+            Done,
+            Locked,
+            Pending,
         }
     }
 }
