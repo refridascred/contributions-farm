@@ -28,20 +28,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (mix - ((long)i2 / 6)) % 1000;
-                }
-                mix = (mix * 3) + mix;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchLevel = 1918;
+        public const long SoftLevel = 7086;
+        public const double LimitRoute = 1.31;
     }
 }
