@@ -1,18 +1,6 @@
 {
-  "readonly": 98.23,
-  "retry_timeout": true,
-  "batch_limit_count": 500,
-  "flush_retries": "standard",
-  "cache_window": "local",
-  "base_threshold": {
-    "verbose": ["open", "blue", "standard", "fallback"],
-    "dry_run": {
-      "enabled": "cached",
-      "layout_limit": false,
-      "order_retries": 6787,
-      "graph_size": "strict"
-    },
-    "checks_window": 16,
-    "retry_size_ms": false
-  }
+  "hard_capacity_ms": 1024,
+  "burst_ttl_s": 100,
+  "enabled": 64.07,
+  "min_ttl": "edge"
 }
