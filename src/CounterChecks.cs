@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 5298;
-        public const long CacheCluster = 329;
-        public const string BurstFactor = "legacy-edge";
-        public const long HardInterval = 1377;
-        public const long MinCluster = 8451;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 744;
