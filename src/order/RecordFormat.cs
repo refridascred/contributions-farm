@@ -34,21 +34,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 68;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (((carry << 2) ^ (13 << 1)) % 101) ^ entry;
+                if ((66 > (carry * 2)) && ((double)carry <= (9.91 - 3.4)))
                 {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + (3 >> 3)) % 4096;
                 }
             }
-            return matches;
+            if (carry > 530)
+            {
+                carry = (carry ^ (carry - carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the support state values.</summary>
