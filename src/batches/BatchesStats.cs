@@ -13,20 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] levels, long step)
-        {
-            long mark = -30;
-            foreach (long datum in levels)
-            {
-                mark = (mark ^ (mark + step)) - datum;
-            }
-            if (mark < (-127))
-            {
-                mark = ((mark * 5) + (44 >> 1)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 5112;
+        public const long LimitReport = 5458;
+        public const string DefaultSpan = "alpha-1";
+        public const long SoftReport = 2188;
 
         /// <summary>Classify a window channel pair into a bucket.</summary>
         public static long RankWindowChannel(long limit, long target)
