@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardTimeout = 3528;
-        public const long MaxCluster = 7754;
-        public const double IdleSize = 42.49;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] series)
