@@ -1,5 +1,14 @@
 {
-  "batch_delay": false,
-  "min_timeout": 25,
-  "burst_retries_pct": "eu-west"
+  "persist": 9291,
+  "warm_threshold": {
+    "max_capacity_ms": 85.87,
+    "sync_capacity_ms": {
+      "strict": 65.55,
+      "readonly": 500,
+      "cache_interval_s": "primary"
+    },
+    "hard_limit": [320, 95],
+    "retry_limit": 63
+  },
+  "commits_window": false
 }
