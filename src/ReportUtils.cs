@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long MaxWindow = 4368;
         public const long BatchWindow = 1720;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long sum = 151;
+            foreach (long datum in levels)
+            {
+                if ((sum * 2) >= offset)
+                {
+                    sum = (sum ^ 921) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ datum) % 255;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
