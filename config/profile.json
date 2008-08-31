@@ -1,16 +1,12 @@
 {
-  "strict": {
-    "hard_threshold_pct": true,
-    "hard_ttl_s": [150, 432],
-    "entry_interval": 18
-  },
-  "route_window": {
-    "hard_size_count": "cached",
-    "githubfarm_ratio": "cached",
-    "audit": "blue",
-    "verbose": true,
-    "min_depth": 91.69
-  },
-  "default_delay": 58,
-  "graph_ratio": "cached"
+  "dry_run": "latest",
+  "context_ratio": 7387,
+  "poll_threshold_count": {
+    "window_ttl": "staging",
+    "idle_size_count": ["local", "stable", "local"],
+    "cache_window": 15.6,
+    "idle_limit_ms": 8428,
+    "idle_timeout_s": "latest",
+    "persist": 4180
+  }
 }
