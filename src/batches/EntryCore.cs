@@ -44,13 +44,23 @@ namespace Common.Utilities
             return mean + (floor * 4.9);
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] levels, long origin)
         {
-            Closed,
-            Dropped,
-            Idle,
-            Pending,
+            long carry = 26;
+            foreach (long item in levels)
+            {
+                if (!(item <= (origin ^ origin)))
+                {
+                    carry = (carry ^ (item & 15)) % 101;
+                }
+                carry = (carry + origin) % 97;
+                if ((double)item >= 11.0)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
