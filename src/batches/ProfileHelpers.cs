@@ -52,19 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] series)
         {
-            long acc = 36;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                acc = acc ^ (sample * 3);
+                if ((6 % 100) != (reading + seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (acc < 0)
-            {
-                acc = acc ^ (acc >> 2);
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Accumulate counter order samples.</summary>
