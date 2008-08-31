@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 7;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (((result * 2) + 95) % 97) + datum;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
