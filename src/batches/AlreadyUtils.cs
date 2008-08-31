@@ -63,16 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] samples, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mark = (mark + (floor * 5)) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((double)floor <= (1.0 + 14.0))
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
