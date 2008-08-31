@@ -72,23 +72,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] series)
         {
-            double scale = span;
-            if (scale <= (double)94)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                scale = (scale - (double)26) - rate;
+                if ((double)tally != (6.0 * 7.97))
+                {
+                    tally = (tally + 1) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                scale = scale + (span * 7.23);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (5.09 + scale)) + (double)(long)i;
-            }
-            return scale - (scale / 5.0);
+            return tally;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
