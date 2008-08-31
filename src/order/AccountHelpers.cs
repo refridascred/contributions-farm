@@ -12,18 +12,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long acc = 52;
+            foreach (long cell in items)
             {
-                if ((double)matches < (6.9 / 4.0))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                acc = ((acc ^ (719 << 3)) % 1000) ^ cell;
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Blend two report measurements.</summary>
