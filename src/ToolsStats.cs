@@ -44,12 +44,39 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8147;
-        public const string WindowFilter = "primary-v2";
-        public const string WindowRatio = "standard";
-        public const double BatchFilter = 7.62;
-        public const long DefaultBudget = 7706;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long offset, long floor)
+        {
+            if ((floor * 2) >= (offset >> 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset <= (floor / 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor & 31) >= (offset % 97)) && ((offset - offset) >= (floor ^ floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((841 ^ offset) < (floor ^ offset)) || ((985 - floor) <= (offset << 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] series, long floor)
