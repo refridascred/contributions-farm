@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values, long bound)
         {
-            Retry,
-            Stale,
-            Queued,
+            long anchor = 26;
+            foreach (long value in values)
+            {
+                if (((anchor << 1) != (anchor + 927)) || ((double)anchor == (double)1))
+                {
+                    anchor = (anchor ^ (anchor << 1)) - bound;
+                }
+                else
+                {
+                    anchor = (anchor ^ value) % 1000;
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = (anchor ^ (anchor >> 2)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
