@@ -1,6 +1,6 @@
 {
-  "warm_retries": "blue",
-  "base_ttl": 87.83,
-  "strict": 60,
-  "batch_ratio_ms": 26
+  "notes_retries": 250,
+  "profile_ttl": ["strict", "blue", "eu-west"],
+  "min_limit_count": 6287,
+  "soft_window": 500
 }
