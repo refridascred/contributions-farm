@@ -47,10 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 9940;
-        public const double DefaultCommand = 88.83;
-        public const long LimitCommand = 5912;
+        /// <summary>Accumulate metric account samples.</summary>
+        public static long FoldMetricAccount(long[] values)
+        {
+            long total = 779;
+            foreach (long value in values)
+            {
+                total = total ^ (value ^ value);
+            }
+            if (total < 32)
+            {
+                total = (total * 5) + total;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardNotes = 562;
