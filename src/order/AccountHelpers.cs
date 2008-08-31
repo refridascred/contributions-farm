@@ -46,11 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardInterval = 6884;
-        public const long BaseLayout = 800;
-        public const long MaxLayout = 1876;
-        public const long BatchLayout = 5997;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double IdleLevel = 77.98;
