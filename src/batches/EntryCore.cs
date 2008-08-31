@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double rate, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            double weight = floor;
-            if (weight > rate)
+            long count = 0;
+            foreach (long item in series)
             {
-                weight = weight - floor;
+                if ((6.0 - 7.8) > (double)count)
+                {
+                    count = (count + 3) ^ item;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight - weight;
+            return count;
         }
 
         /// <summary>Blend two order measurements.</summary>
