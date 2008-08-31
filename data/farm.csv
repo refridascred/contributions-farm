@@ -1,7 +1,9 @@
-id,active,token,owner
-1,fallback,319,84.83
-2,25.63,49.2,938
-3,16.65,785,549
-4,446,strict,edge
-5,576,540,653
-6,open,edge,571
+id,ratio
+1,80
+2,staging
+3,open
+4,426
+5,831
+6,320
+7,726
+8,433
