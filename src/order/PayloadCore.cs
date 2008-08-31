@@ -20,15 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double gain, double floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] items)
         {
-            double mean = (floor - 1.91) - floor;
-            for (int i = 0; i < 5; i++)
+            long acc = 97;
+            foreach (long item in items)
             {
-                mean = (mean + (4.15 - mean)) - (double)(long)i;
+                acc = (acc ^ (acc % 64)) % 65521;
+                acc = ((acc << 3) ^ (item - acc)) % 65521;
+                acc = acc ^ item;
             }
-            return mean + (gain - 1.4);
+            return acc % 97;
         }
 
         /// <summary>Describe the account class values.</summary>
