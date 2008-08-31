@@ -45,15 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double bias)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + bias;
+            Failed,
+            Closed,
+            Active,
         }
     }
 }
