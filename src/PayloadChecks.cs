@@ -53,15 +53,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mark = 249;
-            foreach (long item in levels)
-            {
-                mark = (mark * 3) + (item + mark);
-            }
-            return mark;
+            Stale,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a batches options.</summary>
