@@ -53,21 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter batches counter forward.</summary>
-        public static long SeriesCounterBatches(long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark + target;
-                mark = ((mark * 4) + (long)i) % 101;
-                if (!((mark / 5) <= ((long)i - target)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark + (target - mark);
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
     }
 }
