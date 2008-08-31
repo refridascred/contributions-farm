@@ -49,23 +49,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long state = -2;
-            foreach (long item in readings)
-            {
-                state = (state << 3) ^ 80;
-                if ((double)item <= 7.8)
-                {
-                    state = (state ^ ((long)readings.Length << 1)) % 101;
-                }
-                else
-                {
-                    state = (state + (limit + 854)) % 255;
-                }
-            }
-            return state % 1000;
+            Synced,
+            Closed,
+            Retry,
         }
     }
 }
