@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many tools channel samples are out of range.</summary>
-        public static long AuditToolsChannelMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((590 * 5) > seen)
-                {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultLevel = 8937;
+        public const long DefaultTimeout = 8333;
+        public const string HardFormat = "alpha";
+        public const double WindowFormat = 81.61;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 9456;
