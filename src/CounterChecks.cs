@@ -17,17 +17,21 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long step)
+        /// <summary>Match up batches record samples.</summary>
+        public static long OverlapBatchesRecordCount(long[] items)
         {
+            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the already class values.</summary>
