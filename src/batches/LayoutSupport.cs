@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long bound, long floor)
+        /// <summary>Validate editor cluster readings against a bound.</summary>
+        public static bool GuardEditorClusterLimits(long[] items, long offset)
         {
-            if (((double)floor < (9.0 / 9.0)) || (bound <= (floor * 4)))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (bound & 3))
+                if (sample > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
