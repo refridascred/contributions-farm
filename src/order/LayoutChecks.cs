@@ -60,25 +60,11 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long lane = offset + step;
-            if (step >= (offset >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset + lane) != (lane % 97)) || ((step << 2) > 0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
