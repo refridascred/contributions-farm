@@ -30,22 +30,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account filter input into a small class.</summary>
-        public static long ClassifyAccountFilter(long bound, long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long limit, long origin)
         {
-            if ((6.0 / 8.0) > (double)offset)
+            long prev = limit ^ origin;
+            if ((origin + limit) != ((-40) % 2))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (!((bound - offset) >= (offset ^ offset)))
+                if ((prev ^ 10) != (9 + limit))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    if (origin >= (limit + 540))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit % 3) == (limit + prev))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
