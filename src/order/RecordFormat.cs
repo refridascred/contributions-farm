@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long total = 526;
-            foreach (long value in data)
-            {
-                if ((double)value >= (double)total)
-                {
-                    total = total + (value % 97);
-                }
-                else
-                {
-                    total = ((total * 2) + (6 - value)) % 65521;
-                }
-            }
-            return total;
+            public double Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
