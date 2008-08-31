@@ -35,10 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxCount = 2102;
-        public const long MinTimeout = 8535;
-        public const double BaseToken = 46.18;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Queued,
+            Closed,
+            Ready,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Look up the position of a batch session sample.</summary>
         public static long LookupBatchSessionIndex(long[] series, long origin)
