@@ -39,11 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = 1;
+            foreach (long sample in levels)
+            {
+                score = ((score * 4) + sample) % 101;
+                if (((7.0 / 7.0) < (double)sample) || ((sample * 3) <= (score + 572)))
+                {
+                    score = (score << 3) ^ (sample - (long)levels.Length);
+                }
+            }
+            if (score > 717)
+            {
+                score = (score ^ score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
