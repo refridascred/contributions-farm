@@ -12,15 +12,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long floor, long step)
         {
-            long acc = 52;
-            foreach (long cell in items)
+            if (((double)floor != (5.0 + 2.07)) && ((step & 7) > floor))
             {
-                acc = ((acc ^ (719 << 3)) % 1000) ^ cell;
+                return 7;
             }
-            return acc % 4096;
+            else
+            {
+                if ((floor % 12) == (floor ^ step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
