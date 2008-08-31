@@ -63,14 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double bias)
         {
-            New,
-            Paused,
-            Failed,
-            Done,
-            Active,
+            double bias2 = (double)(965 ^ 8);
+            if (bias2 < (double)7)
+            {
+                bias2 = (bias2 + (gain / 9.0)) - bias;
+            }
+            else
+            {
+                bias2 = bias2 + (double)5;
+            }
+            return bias2 + 2.0;
         }
 
         /// <summary>Accumulate graph samples.</summary>
