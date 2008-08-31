@@ -1,10 +1,5 @@
 # githubfarm settings
-soft_capacity_ms: 30
-contributi_window:
-  - 296
-  - 403
-  - 424
-  - 403
-idle_threshold: staging
-session_limit: open
-hard_window_ms: legacy
+min_retries_pct: legacy
+soft_window_s: eu-west
+cache_timeout_pct: latest
+window_timeout: 27.31
