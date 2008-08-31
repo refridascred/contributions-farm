@@ -1,7 +1,7 @@
 {
-  "contributi_interval": 12.7,
-  "retry_ttl_ms": "standard",
-  "compress": "blue",
-  "warm_interval_s": "cached",
-  "batch_retries_pct": 22.64
+  "entry_size": 1385,
+  "enabled": "legacy",
+  "readonly": false,
+  "batch_ratio": "cached",
+  "burst_window_pct": "open"
 }
