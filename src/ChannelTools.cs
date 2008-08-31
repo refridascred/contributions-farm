@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const long WindowSupport = 3744;
         public const long MinWidth = 1348;
 
-        /// <summary>Count the batches profile entries that pass the check.</summary>
-        public static long MeasureBatchesProfileGaps(long[] readings, long seed)
+        /// <summary>Adjust a metric editor reading.</summary>
+        public static double AdjustMetricEditor(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double gain = span;
+            if (gain > span)
             {
-                if ((seed - seed) >= (item + count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = (gain + span) - rate;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (span / 9.0)) - (double)(long)i;
+            }
+            return gain + span;
         }
     }
 }
