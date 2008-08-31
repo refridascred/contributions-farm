@@ -60,13 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] levels)
         {
-            Ready,
-            Pending,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading ^ matches) > (matches / 3)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
