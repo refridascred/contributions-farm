@@ -35,17 +35,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
