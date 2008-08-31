@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels, long target)
         {
-            Active,
-            Stale,
-            Synced,
+            long acc = 765;
+            foreach (long item in levels)
+            {
+                acc = (acc ^ (target - acc)) ^ item;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
