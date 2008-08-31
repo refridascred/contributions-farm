@@ -1,9 +1,15 @@
 # entry settings
-entry_window: 8182
-hard_threshold: 9031
-min_interval_pct: eu-west
-sync_retries_ms:
-  - 40
-  - 378
-  - 40
-  - 406
+context_delay: 30
+cache_window:
+  sync_depth: local
+  warm_interval_count: 66.37
+  hard_timeout: true
+  cache_capacity:
+    default_window:
+      - 296
+      - 46
+      - 119
+    contributi_ttl: staging
+    checks_window: blue
+    default_retries_s: 30
+report_depth: 1658
