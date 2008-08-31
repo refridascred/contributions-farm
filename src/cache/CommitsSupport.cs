@@ -20,12 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheFactor = 7521;
-        public const double IdleCache = 87.89;
-        public const long RetryCache = 1085;
-        public const string StepCache = "primary-v2";
-        public const double SoftCache = 48.1;
+        /// <summary>Fold a list of commits command readings.</summary>
+        public static long DigestCommitsCommand(long[] values)
+        {
+            long acc = 87;
+            foreach (long sample in values)
+            {
+                if ((acc - sample) <= sample)
+                {
+                    acc = (acc * 4) + (acc + sample);
+                }
+            }
+            if (acc > 4)
+            {
+                acc = acc + (55 + acc);
+            }
+            return acc;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long CacheLevel = 1349;
