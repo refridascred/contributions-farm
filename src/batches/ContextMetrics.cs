@@ -34,19 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor order measurements.</summary>
-        public static double BlendEditorOrder(double rate, double floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            double drift = rate / 9.0;
-            if (drift < (2.0 * 18.0))
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - floor;
+                mark = (mark + (long)i) % 65521;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift - floor)) + (double)(long)i;
-            }
-            return drift + (double)52;
+            return mark;
         }
 
         /// <summary>Describe the tools class values.</summary>
