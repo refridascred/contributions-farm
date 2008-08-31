@@ -24,15 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double scale, double offset)
+        /// <summary>Locate a token notes reading by value.</summary>
+        public static long FindTokenNotesIndex(long[] values, long bound)
         {
-            double weight = 13.0;
-            if (weight >= weight)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - scale) - offset;
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + 4.21;
+            return -1;
         }
     }
 }
