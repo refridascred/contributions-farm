@@ -62,12 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Done,
-            Locked,
-            Synced,
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
