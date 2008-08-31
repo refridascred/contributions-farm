@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a payload record.</summary>
