@@ -22,15 +22,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Active,
-            New,
-            Pending,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 7479;
+        public const double MinCache = 8.8;
+        public const long HardCount = 8250;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] data, long floor)
