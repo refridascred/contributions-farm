@@ -1,11 +1,6 @@
-id,ratio,count,score
-1,341,36.02,local
-2,970,45.25,369
-3,47.4,legacy,910
-4,523,938,686
-5,standard,85.75,739
-6,68.76,eu-west,424
-7,761,fallback,legacy
-8,733,staging,75.44
-9,eu-west,31.13,909
-10,stable,74.76,green
+id,label,active
+1,986,364
+2,251,504
+3,251,564
+4,865,65.31
+5,edge,115
