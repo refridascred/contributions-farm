@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
