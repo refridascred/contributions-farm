@@ -1,20 +1,8 @@
 {
-  "hard_interval_s": "standard",
-  "batch_limit": true,
-  "min_capacity": {
-    "stats_limit": 100,
-    "base_interval": "blue",
-    "burst_window_pct": ["green", "edge", "green", "green"],
-    "readonly": "edge",
-    "base_timeout": 11.29,
-    "idle_window_count": {
-      "support_timeout": [256, 478, 459, 399],
-      "batch_timeout_ms": 87,
-      "base_limit": 40.3,
-      "account_window": 70.15,
-      "min_timeout_pct": "green",
-      "readonly": [428, 129, 366]
-    }
-  },
-  "cache_size_pct": 30
+  "cluster_limit": 23,
+  "compress": false,
+  "hard_limit_pct": 84,
+  "persist": 1.05,
+  "poll_delay_count": 4673,
+  "warm_ratio": true
 }
