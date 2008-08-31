@@ -28,17 +28,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] levels, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    mix = (mix - ((long)i2 / 6)) % 1000;
                 }
+                mix = (mix * 3) + mix;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
