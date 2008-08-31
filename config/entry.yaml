@@ -1,8 +1,9 @@
 # entry settings
-poll_capacity_s: 76.11
-order_size: edge
-max_window: true
-poll_ttl_s:
-  - 467
-  - 42
-  - 182
+burst_ttl_ms: 91
+soft_size_s:
+  - blue
+  - edge
+flush_timeout:
+  - blue
+  - green
+burst_ratio_pct: 56
