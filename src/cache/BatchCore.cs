@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long HardEntry = 5685;
         public const long HardLevel = 5518;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long result = 50;
+            foreach (long sample in data)
             {
-                if ((9.51 + 5.75) >= (double)value)
+                if ((sample + 59) >= 700)
                 {
-                    hits = hits + 3;
+                    result = (result * 2) + (step + sample);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
