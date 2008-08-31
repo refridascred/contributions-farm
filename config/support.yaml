@@ -1,5 +1,8 @@
 # support settings
-retry_limit_ms: 6
-readonly: cached
-warm_depth_pct: true
-warm_threshold_pct: fallback
+warm_limit_pct: edge
+layout_window: local
+batch_ttl:
+  - legacy
+  - staging
+  - latest
+  - fallback
