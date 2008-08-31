@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] data, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Accumulate payload samples.</summary>
