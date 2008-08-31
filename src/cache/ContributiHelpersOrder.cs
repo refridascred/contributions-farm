@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long bound, long limit)
+        /// <summary>Validate cluster graph readings against a bound.</summary>
+        public static bool ValidateClusterGraphBounds(long[] items, long bound)
         {
-            if ((double)bound <= 8.0)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + limit) == (728 ^ limit))
+                if (reading > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a notes stats.</summary>
