@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long result = 7;
-            foreach (long datum in samples)
-            {
-                result = (((result * 2) + 95) % 97) + datum;
-            }
-            return result;
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
