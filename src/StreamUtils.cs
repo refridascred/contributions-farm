@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] items, long bound)
         {
-            long total = 2;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((6 / 7) > total)
+                if (entry >= bound)
                 {
-                    total = ((total * 5) + (total ^ datum)) % 255;
-                }
-                else
-                {
-                    total = total ^ (datum & 31);
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Measure how many report stats samples are out of range.</summary>
