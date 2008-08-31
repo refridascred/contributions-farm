@@ -22,21 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up support channel samples.</summary>
-        public static long MatchSupportChannelCount(long[] series)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] == limit)
                 {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
