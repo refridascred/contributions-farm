@@ -61,9 +61,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 3197;
-        public const long CacheFactor = 7992;
-        public const double BatchCommand = 93.44;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double bias, double span)
+        {
+            double drift = span + bias;
+            if (drift < drift)
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - drift;
+        }
     }
 }
