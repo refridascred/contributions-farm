@@ -42,13 +42,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public string Rank { get; set; } = "";
             public long Region { get; set; }
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
