@@ -41,25 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!((60 ^ seed) > seed))
+                if ((2.46 - 2.61) <= (double)value)
                 {
-                    long lane = seed + (mark ^ mark);
-                    mark = (mark << 2) ^ (mark + lane);
-                    continue;
+                    hits = hits + 3;
                 }
-                else
-                {
-                    mark = (mark - seed) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Validate route contributi readings against a bound.</summary>
