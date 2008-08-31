@@ -23,14 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 4946;
+        public const long BatchGithubfarm = 8163;
+        public const long DefaultGithubfarm = 8892;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
