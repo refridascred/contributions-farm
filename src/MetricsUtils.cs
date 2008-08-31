@@ -23,38 +23,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long floor, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            if ((floor > (origin >> 5)) || ((origin * 2) == (74 - 54)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin < floor) && ((origin - origin) <= 265))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor & 7) < (origin * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + origin) == (origin - floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
