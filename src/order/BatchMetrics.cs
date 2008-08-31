@@ -40,19 +40,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine support checks values into a single score.</summary>
-        public static long DigestSupportChecks(long[] readings)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            long state = 58;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 3) ^ cell) % 4096;
-                if (state < (cell + state))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Blend two queue measurements.</summary>
