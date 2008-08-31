@@ -39,22 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] data)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((sample << 2) <= (0 - 80))
+                if ((cell * 2) > (57 & 15))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
