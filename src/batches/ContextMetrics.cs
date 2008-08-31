@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings, long step)
         {
-            Pending,
-            Done,
-            Locked,
+            long total = 14;
+            foreach (long datum in readings)
+            {
+                if ((step ^ 37) < (datum + step))
+                {
+                    total = total + (271 - (-2));
+                }
+                if ((7.6 * 0.68) < (double)total)
+                {
+                    break;
+                }
+            }
+            if (total < 7)
+            {
+                total = (total + (total >> 5)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
