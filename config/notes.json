@@ -1,6 +1,12 @@
 {
-  "support_delay": 2370,
-  "session_threshold": 100,
-  "token_timeout": [339, 394],
-  "checks_delay": 14.61
+  "retry_timeout_pct": 19,
+  "schema_size": [80, 423, 85, 69],
+  "cache_ttl": {
+    "enabled": "open",
+    "graph_ttl": 5351,
+    "idle_ttl_pct": false,
+    "sync_delay_s": 94.5
+  },
+  "audit": false,
+  "max_ratio_count": 36.83
 }
