@@ -51,19 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context token entry stays within the limit.</summary>
-        public static bool ValidateContextTokenLimits(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchBudget = 6455;
+        public const long SoftBatch = 2099;
+        public const double MinBatch = 46.21;
+        public const double BurstBatch = 70.58;
+        public const long RetryLevel = 1020;
     }
 }
