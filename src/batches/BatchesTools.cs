@@ -35,17 +35,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first support format entry that matches the target.</summary>
-        public static long FindSupportFormatIndex(long[] data, long origin)
+        /// <summary>Digest a series of schema farm entries.</summary>
+        public static long FoldSchemaFarm(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 2;
+            foreach (long reading in series)
             {
-                if (data[i] > origin)
+                if ((reading >> 2) != (56 % 97))
                 {
-                    return (long)i;
+                    total = ((total * 5) + (total / 5)) % 101;
+                }
+                if ((total << 2) > 2)
+                {
+                    total = (total ^ reading) % 255;
+                }
+                else
+                {
+                    total = (total ^ (37 ^ reading)) % 255;
                 }
             }
-            return -1;
+            return total % 97;
         }
     }
 }
