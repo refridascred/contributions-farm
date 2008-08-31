@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultWidth = 9489;
-        public const long RetrySize = 2319;
-        public const double WindowNotes = 14.16;
-        public const long MinCount = 9793;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Draft,
+            Closed,
+            Failed,
+            New,
+            Ready,
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
