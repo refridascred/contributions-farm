@@ -38,17 +38,24 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] readings, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((2.0 - 18.0) > (double)limit) && (0 <= limit))
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((-463) * 3) != (limit + limit))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
