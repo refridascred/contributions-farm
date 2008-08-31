@@ -13,21 +13,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] levels, long limit)
-        {
-            long acc = 16;
-            foreach (long sample in levels)
-            {
-                acc = (acc ^ (limit ^ limit)) ^ sample;
-                acc = (acc * 2) + (acc ^ 94);
-            }
-            if (acc > 6)
-            {
-                acc = ((acc << 3) ^ limit) % 65521;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitCount = 9899;
+        public const long CacheTools = 1706;
+        public const string BaseRatio = "strict-v2";
 
         /// <summary>Roll a tools cluster counter forward.</summary>
         public static long SeriesToolsCluster(long floor)
