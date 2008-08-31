@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next editor checks value from a seed.</summary>
-        public static long StepEditorChecks(long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)i < (seed >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state << 3) ^ (state ^ state);
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    state = (state + (18 - seed)) % 65521;
-                }
-                state = state ^ ((long)i << 2);
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Roll a report counter forward.</summary>
