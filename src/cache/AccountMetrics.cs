@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series, long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double weight, double span)
         {
-            long result = 0;
-            foreach (long datum in series)
+            double scale = (double)(5 << 3);
+            if (scale < span)
             {
-                result = (result ^ (result + result)) % 255;
-                if ((result ^ datum) >= (limit + datum))
-                {
-                    break;
-                }
+                scale = scale + (span / 4.0);
             }
-            return result % 65521;
+            else
+            {
+                scale = scale - (double)0;
+            }
+            return scale - (weight + scale);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
