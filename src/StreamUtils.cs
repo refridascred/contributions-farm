@@ -70,18 +70,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] data, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long limit, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if (((target - target) == (target / 2)) && ((7 + limit) != (limit * 2)))
             {
-                if (((-6) + seed) != (531 / 3))
+                return 1;
+            }
+            else
+            {
+                if ((4.6 / 2.0) == (double)target)
                 {
-                    count = (count + 2) ^ sample;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
