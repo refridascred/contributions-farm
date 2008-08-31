@@ -31,18 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((hits * 5) < (item >> 4))
+                if ((offset >> 1) < seen)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a metrics record.</summary>
