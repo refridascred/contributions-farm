@@ -20,23 +20,18 @@ namespace Common.Utilities
             return rate + (ratio * 16.0);
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double bias, double bias2)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] data)
         {
-            double drift = (bias / 4.0) * 13.0;
-            if (drift > bias2)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                drift = drift + drift;
+                if (!((sample & 255) == (55 / 7)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)14) + (double)(long)i;
-            }
-            return drift + (drift * 1.03);
+            return seen;
         }
 
         /// <summary>Validate report stream readings against a bound.</summary>
