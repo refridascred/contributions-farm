@@ -20,12 +20,20 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 817;
-        public const double CacheCount = 35.66;
-        public const double BaseSpan = 43.44;
-        public const long CacheCluster = 472;
-        public const double SoftCluster = 67.36;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = ((state + ((long)i + state)) % 255) - (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long DeriveCommand(long offset)
