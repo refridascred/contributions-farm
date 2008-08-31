@@ -32,11 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 3.25;
-        public const string WindowOrder = "standard-v2";
-        public const double RetryOrder = 26.18;
-        public const double StepScore = 48.72;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double floor)
+        {
+            double scale = weight;
+            if (scale >= scale)
+            {
+                scale = (scale - 1.59) - floor;
+            }
+            return scale - (double)72;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
