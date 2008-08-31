@@ -1,11 +1,13 @@
 {
-  "readonly": 250,
-  "dry_run": 50.86,
-  "cache_interval_s": ["strict", "legacy"],
-  "soft_ratio": {
-    "hard_interval": [440, 393],
-    "min_ttl_pct": false,
-    "profile_limit": [452, 387],
-    "retry_window_pct": 91.75
+  "burst_limit_s": "fallback",
+  "already_window": "strict",
+  "compress": 7725,
+  "enabled": "legacy",
+  "burst_threshold": 30,
+  "dry_run": {
+    "sync_depth_s": 62.22,
+    "burst_threshold_s": ["primary", "open", "local"],
+    "contributi_ttl": "staging",
+    "persist": true
   }
 }
