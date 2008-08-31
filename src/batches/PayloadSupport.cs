@@ -19,14 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long limit, long target)
         {
-            Synced,
-            Ready,
-            Draft,
-            Queued,
-            New,
+            long next = limit - target;
+            if ((next + 887) >= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(target < (target - target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((509 % 24) < (target & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
