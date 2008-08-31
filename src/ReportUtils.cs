@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "staging-edge";
-        public const long StepOrder = 4841;
-        public const double RetryWidth = 26.38;
-        public const long MaxRatio = 2350;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items, long floor)
+        {
+            long total = -61;
+            foreach (long entry in items)
+            {
+                total = total - (73 << 2);
+                total = total + (floor ^ entry);
+            }
+            return total;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
