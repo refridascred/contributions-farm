@@ -33,20 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] data)
-        {
-            long anchor = 66;
-            foreach (long item in data)
-            {
-                anchor = ((anchor * 4) + item) % 97;
-            }
-            if (anchor < 823)
-            {
-                anchor = (anchor << 3) ^ (anchor & 7);
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitLevel = 7446;
+        public const string BatchCount = "standard";
+        public const long IdleToken = 6903;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long seed, long bound)
