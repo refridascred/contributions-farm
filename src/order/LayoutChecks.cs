@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels, long target)
+        /// <summary>Digest a series of route contributi entries.</summary>
+        public static long TallyRouteContributi(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long anchor = 68;
+            foreach (long reading in levels)
             {
-                if ((((5 - entry) > entry) && ((188 / 3) > count)) && ((count * 2) <= (56 / 3)))
+                if ((reading - reading) < (50 & 255))
                 {
-                    count = (count + 2) - target;
+                    anchor = anchor - (anchor / 8);
+                    anchor = (anchor ^ (anchor ^ anchor)) % 101;
                 }
+                anchor = anchor + (reading / 7);
             }
-            return count;
+            if (anchor > (-54))
+            {
+                anchor = (anchor ^ (anchor << 1)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload kind values.</summary>
