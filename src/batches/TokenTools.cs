@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] series, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long bound, long origin)
         {
-            long carry = 991;
-            foreach (long value in series)
+            long diff = bound - origin;
+            if (origin >= (diff + origin))
             {
-                if ((((long)series.Length + (long)series.Length) != (value >> 3)) && ((value >> 2) == (value / 7)))
+                return 6;
+            }
+            else
+            {
+                if (bound < origin)
                 {
-                    carry = (carry ^ (5 * 2)) + origin;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (carry > 232)
-            {
-                carry = (carry - 29) % 1000;
-            }
-            return carry % 97;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
