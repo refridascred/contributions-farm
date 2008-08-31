@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const long WindowSupport = 3744;
         public const long MinWidth = 1348;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the batches profile entries that pass the check.</summary>
+        public static long MeasureBatchesProfileGaps(long[] readings, long seed)
         {
-            Stale,
-            Closed,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((seed - seed) >= (item + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
