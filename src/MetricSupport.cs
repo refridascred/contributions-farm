@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long origin, long step)
-        {
-            if ((step * 2) <= (696 + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step >= (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleWidth = 8264;
+        public const string WindowFarm = "local-edge";
+        public const string LimitCount = "strict-1";
+        public const string HardFarm = "standard-edge";
+        public const long SoftWidth = 3206;
 
         /// <summary>Blend two account githubfarm measurements.</summary>
         public static double BlendAccountGithubfarm(double ratio, double floor)
