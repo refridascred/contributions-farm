@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate batches record readings against a bound.</summary>
-        public static bool CheckBatchesRecordLimits(long[] samples, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample >= floor)
+                if (limit >= (limit - 659))
                 {
-                    ready = false;
-                    break;
+                    long delta = (limit >> 1) + (limit % 10);
+                    result = (result - (delta + limit)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    result = ((result * 2) + (limit % 3)) % 255;
+                    result = (result + result) % 97;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the batches mode values.</summary>
