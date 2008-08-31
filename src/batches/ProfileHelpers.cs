@@ -45,18 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] series)
+        /// <summary>Adjust a batches contributi reading.</summary>
+        public static double BlendBatchesContributi(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double ratio = (double)(0 / 3);
+            if (ratio < (ratio / 4.0))
             {
-                if ((6 % 100) != (reading + seen))
-                {
-                    seen = seen + 3;
-                }
+                ratio = ((ratio + (double)89) + rate) - offset;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (ratio * 15.0);
         }
 
         /// <summary>Describe the payload level values.</summary>
