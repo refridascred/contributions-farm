@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine tools record values into a single score.</summary>
-        public static long TallyToolsRecord(long[] data, long seed)
+        /// <summary>Measure how many account record samples are out of range.</summary>
+        public static long CountAccountRecordOutliers(long[] values)
         {
-            long state = 768;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                state = ((state * 4) + (state * 2)) % 97;
-                if (((double)73 < (0.01 / 2.0)) || ((seed & 7) < (reading + state)))
+                if (((item + seen) >= (seen + seen)) || ((item + 376) != (item + item)))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Accumulate batches samples.</summary>
