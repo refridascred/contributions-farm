@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Describe the layout state values.</summary>
