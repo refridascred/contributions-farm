@@ -69,31 +69,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank graph cache input into a small class.</summary>
-        public static long ClassifyGraphCache(long bound, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] items)
         {
-            if ((target - 5) < (bound << 3))
+            long sum = 120;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target >= (2.9 * 3.4))
+                if ((-478) < (datum - 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - bound) > (target / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = (sum - (datum % 100)) % 101;
                 }
             }
+            if (sum > 24)
+            {
+                sum = sum ^ (sum % 3);
+            }
+            return sum;
         }
     }
 }
