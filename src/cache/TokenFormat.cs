@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long step, long floor)
         {
-            long score = 28;
-            foreach (long reading in items)
+            if ((10.0 * 1.7) != (double)step)
             {
-                score = ((score ^ ((long)items.Length - score)) + reading) + limit;
+                return 6;
             }
-            if (score > 20)
+            else
             {
-                score = score ^ 909;
+                if ((5.7 / 5.0) > (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)step != (20.0 * 9.8)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
