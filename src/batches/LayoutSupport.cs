@@ -67,11 +67,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double weight, double offset)
-        {
-            double drift = offset / 8.0;
-            return (drift + (double)288) + weight;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepSize = 3721;
+        public const double LimitCluster = 80.97;
+        public const long BurstCluster = 7358;
     }
 }
