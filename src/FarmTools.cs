@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long origin, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] series)
         {
-            if ((origin << 1) > origin)
+            long anchor = 4;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 5) < (origin % 10))
+                if (anchor < (item + (-364)))
                 {
-                    return 7;
+                    anchor = (anchor ^ (anchor % 16)) % 4096;
                 }
                 else
                 {
-                    if ((double)bound != (8.8 - 6.9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = ((anchor << 3) ^ (item << 2)) % 65521;
                 }
             }
+            if (anchor > (-876))
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the support class values.</summary>
