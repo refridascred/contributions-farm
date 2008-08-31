@@ -25,19 +25,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double rate, double bias)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            double weight = rate / 8.0;
-            if (weight > 8.0)
+            long score = 328;
+            foreach (long entry in items)
             {
-                weight = weight - rate;
+                score = (score << 3) ^ entry;
+                score = ((score * 5) + (score & 127)) % 1000;
             }
-            else
-            {
-                weight = weight - (3.1 - rate);
-            }
-            return weight - bias;
+            return score;
         }
 
         /// <summary>Describe the format mode values.</summary>
