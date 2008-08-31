@@ -32,18 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] samples, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((floor > (matches + floor)) && ((cell % 2) < floor))
+                if ((18.0 - 9.5) != (double)hits)
                 {
-                    matches = matches + 1;
+                    hits = ((hits + 1) + entry) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate window farm readings against a bound.</summary>
