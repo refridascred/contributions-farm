@@ -59,19 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] values, long limit)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long sum = 7;
-            foreach (long datum in values)
-            {
-                sum = (sum - (13 + 54)) ^ datum;
-                if (!((double)limit >= (double)sum))
-                {
-                    sum = sum ^ 639;
-                }
-            }
-            return sum;
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
