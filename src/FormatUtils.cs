@@ -39,19 +39,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] levels, long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long sum = 0;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    sum = ((sum ^ (764 / 3)) - (long)i) - offset;
-                }
-                sum = ((sum << 3) ^ item) % 97;
-            }
-            return sum % 1000;
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
