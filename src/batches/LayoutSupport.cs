@@ -46,22 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 9940;
+        public const double DefaultCommand = 88.83;
+        public const long LimitCommand = 5912;
 
         /// <summary>Measure how many order schema samples are out of range.</summary>
         public static long AuditOrderSchemaOutliers(long[] levels, long target)
