@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Grade a profile stream value against two limits.</summary>
+        public static long SortProfileStream(long floor, long step)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long span = floor ^ step;
+            if (step <= (892 - floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (span < (step % 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (10.0 < (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit route session readings against a rule.</summary>
