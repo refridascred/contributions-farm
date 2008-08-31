@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheLevel = 1135;
-        public const long CacheChannel = 9246;
-        public const string WindowChannel = "alpha-1";
-        public const long CacheRatio = 2089;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double rate, double floor)
+        {
+            double load = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - (rate + 13.0)) + (double)(long)i) + floor;
+            }
+            return load + (rate * 8.32);
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryGaps(long[] samples, long floor)
