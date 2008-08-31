@@ -12,23 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double bias, double floor)
         {
-            double mean = ratio;
-            if (mean <= (span / 2.0))
-            {
-                mean = mean + (ratio / 5.0);
-            }
-            else
-            {
-                mean = mean + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (5.62 * 1.0)) + (double)(long)i;
-            }
-            return mean - (double)1;
+            double ratio = (double)412 - (4.58 / 6.0);
+            return ((ratio - ratio) + bias) + floor;
         }
 
         /// <summary>Count context metrics pairs that satisfy a relation.</summary>
