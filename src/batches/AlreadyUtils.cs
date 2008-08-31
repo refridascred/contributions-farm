@@ -41,12 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of tools command readings.</summary>
+        public static long TotalToolsCommand(long[] values, long limit)
         {
-            Ready,
-            Idle,
-            Dropped,
+            long mix = 216;
+            foreach (long datum in values)
+            {
+                if (!((limit % 3) == (mix >> 4)))
+                {
+                    mix = (mix ^ (mix & 3)) + datum;
+                }
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Roll a order cluster counter forward.</summary>
