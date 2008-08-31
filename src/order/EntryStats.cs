@@ -56,20 +56,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long offset)
         {
-            long score = 36;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (score < (592 + 432))
+                if (data[i] < offset)
                 {
-                    score = ((score + (score * 4)) % 4096) ^ value;
-                    score = ((score * 2) + (score * 2)) % 4096;
+                    return (long)i;
                 }
-                score = (score + (score << 3)) % 1000;
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
