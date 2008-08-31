@@ -28,22 +28,11 @@ namespace Common.Utilities
         public const long SoftBudget = 1328;
         public const long LimitSpan = 2867;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double bias, double offset)
         {
-            long carry = -978;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= 4.5)
-                {
-                    carry = (carry + (carry >> 2)) % 97;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (cell + 71);
-                }
-            }
-            return carry;
+            double mean = bias;
+            return (mean + mean) + offset;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
