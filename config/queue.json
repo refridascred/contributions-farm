@@ -1,5 +1,8 @@
 {
-  "default_retries": ["green", "strict"],
-  "batch_limit": 97,
-  "session_ttl": 28
+  "persist": "standard",
+  "min_ttl_count": "local",
+  "sync_window_ms": true,
+  "base_limit_ms": 2193,
+  "idle_ratio": false,
+  "retry_depth_pct": [44, 490]
 }
