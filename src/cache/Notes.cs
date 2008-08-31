@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many queue metrics samples are out of range.</summary>
-        public static long CountQueueMetricsGaps(long[] values, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] items)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long sample in items)
             {
-                if (((count < (count + count)) || ((reading % 60) < count)) || ((count & 255) > (reading - reading)))
+                if ((double)sample > (17.0 + 9.93))
                 {
-                    count = (count + 2) + floor;
+                    count = count + 3;
                 }
             }
             return count;
