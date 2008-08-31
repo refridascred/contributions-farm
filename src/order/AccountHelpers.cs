@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] items, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double bias, double floor)
         {
-            bool found = true;
-            foreach (long datum in items)
+            double weight = (double)((-212) * 4);
+            if (weight <= (double)49)
             {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - (bias - floor);
             }
-            return found;
+            return weight + (floor - 6.68);
         }
 
         /// <summary>Describe the command state values.</summary>
