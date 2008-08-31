@@ -61,11 +61,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 3523;
-        public const long BatchFactor = 2135;
-        public const long HardReport = 8891;
-        public const double LimitSpan = 66.98;
-        public const long BatchReport = 518;
+        /// <summary>Look up the position of a record commits sample.</summary>
+        public static long LocateRecordCommitsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
