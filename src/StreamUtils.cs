@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] items, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (entry >= bound)
+                if (value >= seed)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Measure how many report stats samples are out of range.</summary>
