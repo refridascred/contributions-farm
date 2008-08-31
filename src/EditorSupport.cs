@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items, long offset)
         {
-            long anchor = 5;
-            foreach (long value in items)
+            long state = 3;
+            foreach (long cell in items)
             {
-                if ((anchor & 127) >= value)
+                state = ((state + 751) % 255) - offset;
+                if (!((12 & 3) != (state << 1)))
                 {
-                    anchor = ((anchor * 2) + (anchor << 2)) % 97;
+                    state = (state << 3) ^ (cell % 12);
+                }
+                if ((2.3 / 9.0) <= (7.2 - 6.83))
+                {
+                    break;
                 }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Match up payload samples.</summary>
