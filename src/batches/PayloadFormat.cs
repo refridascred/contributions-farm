@@ -35,38 +35,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long seed, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if ((double)target > (9.0 - 13.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target >= (4.9 * 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((-80) <= (seed ^ 80))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((69 + seed) <= (target >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
