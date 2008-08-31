@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Rank graph commits input into a small class.</summary>
+        public static long GradeGraphCommits(long limit, long origin)
         {
-            Failed,
-            Idle,
-            Paused,
-            Closed,
+            if ((9 / 6) >= (206 ^ limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)origin > 0.3) && (limit > (origin % 97)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit >> 1) > (limit >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
