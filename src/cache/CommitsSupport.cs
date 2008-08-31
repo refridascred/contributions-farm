@@ -54,21 +54,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long offset, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long step = offset + origin;
+            if ((step - origin) > (1 - step))
             {
-                long slot = sum;
-                if (((sum + slot) <= sum) && (limit > (limit + slot)))
-                {
-                    slot = (slot ^ limit) % 4096;
-                    slot = (slot ^ sum) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((step * 3) > (origin - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step * 2) > origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
