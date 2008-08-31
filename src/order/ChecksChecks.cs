@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long carry = 211;
-            foreach (long entry in readings)
-            {
-                if ((entry + entry) >= (14 & 255))
-                {
-                    carry = ((carry << 3) ^ (entry << 2)) % 255;
-                    break;
-                }
-                if (!((carry * 3) <= entry))
-                {
-                    carry = carry + (entry + entry);
-                }
-                if ((double)carry <= (double)(-9))
-                {
-                    break;
-                }
-            }
-            if (carry > 0)
-            {
-                carry = ((carry << 2) ^ (carry << 1)) % 1000;
-            }
-            return carry;
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
