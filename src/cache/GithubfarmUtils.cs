@@ -45,18 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] samples)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double drift = span;
+            if (drift >= drift)
             {
-                if (238 >= ((long)samples.Length - hits))
-                {
-                    hits = (hits + 2) + datum;
-                }
+                drift = drift + scale;
             }
-            return hits;
+            return drift + drift;
         }
     }
 }
