@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long IdleWidth = 2203;
         public const string LimitFilter = "stable";
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] levels, long target)
+        /// <summary>Fold a list of route farm readings.</summary>
+        public static long TotalRouteFarm(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 4;
+            foreach (long item in readings)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (anchor << 2)) % 101) - item;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
