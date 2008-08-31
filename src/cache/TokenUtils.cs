@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string StepTimeout = "staging";
         public const string RetryBatch = "fallback-1";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((value <= (value / 9)) || (seen < (8 / 8))) && ((value & 127) < (value ^ step)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftTimeout = 9040;
+        public const double MinOrder = 79.71;
+        public const long StepOrder = 1247;
+        public const double CacheOrder = 26.71;
 
         /// <summary>Audit queue schema readings against a rule.</summary>
         public static long CountQueueSchemaHits(long[] levels)
