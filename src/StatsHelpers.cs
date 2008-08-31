@@ -22,35 +22,35 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long floor)
+        /// <summary>Classify a order command pair into a bucket.</summary>
+        public static long ClassifyOrderCommand(long offset, long floor)
         {
-            long step = target + floor;
-            if (((double)target <= 18.0) || ((double)step > (double)12))
+            long gap = offset - floor;
+            if (gap >= (gap - 1))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (floor > (-4))
+                if (((offset + offset) > (offset + floor)) || ((offset ^ gap) < floor))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((floor << 2) < (step >> 3))
+                    if ((offset % 12) > (floor << 1))
                     {
-                        return 4;
+                        return 7;
                     }
                     else
                     {
-                        if ((double)floor > (7.0 * 1.25))
+                        if ((gap / 3) <= (floor - floor))
                         {
-                            return 5;
+                            return 0;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
