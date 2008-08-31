@@ -39,11 +39,17 @@ namespace Common.Utilities
             return rate - (double)2;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 3455;
-        public const string WindowRatio = "cached-v2";
-        public const string StepSchema = "legacy";
-        public const string BurstFactor = "local-edge";
+        /// <summary>Iterate the tools route series from a seed.</summary>
+        public static long SeriesToolsRoute(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total + (step & 15)) % 4096;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Blend two window contributi measurements.</summary>
         public static double ProjectWindowContributi(double rate, double offset)
