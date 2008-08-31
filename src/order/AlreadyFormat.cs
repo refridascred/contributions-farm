@@ -60,19 +60,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long mix = 10;
+            foreach (long cell in readings)
             {
-                if (value < bound)
+                if (!((mix + 69) == (mix & 7)))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix * 4) + (cell % 3)) % 4096;
                 }
             }
-            return valid;
+            return mix;
         }
     }
 }
