@@ -1,7 +1,12 @@
 # entry settings
-metrics_threshold: 16
-hard_timeout_pct: true
-hard_interval: local
-poll_retries_count: 75
-hard_ttl_count: standard
-report_size: blue
+strict: 25.33
+farm_delay:
+  flush_capacity_pct: green
+  poll_threshold_count: blue
+  soft_size: fallback
+  base_window: 73.15
+token_delay: true
+checks_capacity:
+  max_delay_pct: blue
+  idle_delay: 5855
+  enabled: 76
