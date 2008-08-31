@@ -13,32 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a githubfarm batches value against two limits.</summary>
-        public static long GradeGithubfarmBatches(long limit, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long diff = limit + origin;
-            if (((limit * 5) <= (diff ^ diff)) || ((6.5 / 9.0) > (double)origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((diff + diff) <= (diff << 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (19.0 <= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a batches summary.</summary>
