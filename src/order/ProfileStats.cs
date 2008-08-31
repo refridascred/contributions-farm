@@ -46,22 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (7.0 <= (double)cell)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 589;
+        public const string CacheMetrics = "primary-1";
+        public const long MaxMetrics = 7975;
+        public const double WindowLevel = 56.36;
+        public const long CacheSize = 4592;
     }
 }
