@@ -46,13 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            Locked,
+            Idle,
+            Draft,
         }
     }
 }
