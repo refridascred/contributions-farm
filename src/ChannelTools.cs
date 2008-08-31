@@ -22,12 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long limit, long target)
         {
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
+            long span = limit ^ target;
+            if (target > span)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((83 + span) != (span ^ 32))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit & 31) < (limit - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target % 2) <= (span >> 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a layout cache counter forward.</summary>
