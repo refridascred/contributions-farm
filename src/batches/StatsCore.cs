@@ -40,13 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinTimeout = 9110;
+        public const double RetrySpan = 48.2;
+        public const long BurstGithubfarm = 4931;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueBounds(long[] readings, long target)
