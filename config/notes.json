@@ -1,5 +1,6 @@
 {
-  "poll_retries_s": 60,
-  "hard_limit": 75.25,
-  "burst_ttl_pct": 2449
+  "strict": "stable",
+  "warm_ratio_ms": 250,
+  "counter_timeout": "blue",
+  "retry_retries_ms": "primary"
 }
