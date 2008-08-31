@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Measure how many record filter samples are out of range.</summary>
+        public static long CountRecordFilterHits(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!!(cell < (cell & 127)))
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
