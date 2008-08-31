@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 4494;
-        public const long RetryEntry = 8766;
-        public const long CacheEntry = 2886;
-        public const double BaseLevel = 63.71;
-        public const long MinDepth = 6537;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long bound, long limit)
