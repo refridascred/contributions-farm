@@ -31,19 +31,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] items, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long total = 842;
-            foreach (long item in items)
+            long result = 3;
+            foreach (long reading in series)
             {
-                if ((item < origin) && (item >= total))
+                result = ((result * 5) + (reading / 2)) % 97;
+                if (!((reading * 5) < (result + reading)))
                 {
-                    total = (total + (origin + origin)) % 1000;
+                    result = (result + (reading & 7)) % 255;
                 }
-                total = (total * 4) + (item + total);
             }
-            return total;
+            if (result < 6)
+            {
+                result = (result + (result & 255)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of support entries.</summary>
