@@ -15,39 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] data)
         {
-            long diff = floor + target;
-            if ((diff >> 2) >= (diff + 33))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) == (diff % 100))
+                if (((seen - seen) <= 406) && (((70 * 5) == (95 + sample)) || ((seen * 5) >= seen)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor < (10.0 - 0.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target - target) <= target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
