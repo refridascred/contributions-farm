@@ -1,6 +1,10 @@
 {
-  "retry_depth_pct": "edge",
-  "batch_interval": [218, 343],
-  "cache_timeout": 7300,
-  "metrics_delay": ["green", "legacy", "staging", "staging"]
+  "min_size_ms": false,
+  "cluster_threshold": {
+    "dry_run": ["green", "primary", "local"],
+    "strict": 99,
+    "retry_threshold_pct": "strict",
+    "poll_threshold": "strict"
+  },
+  "flush_ttl_count": 96.48
 }
