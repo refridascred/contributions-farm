@@ -29,17 +29,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] series, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
