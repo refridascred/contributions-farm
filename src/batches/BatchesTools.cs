@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] values, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >> 1) < tally)
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
