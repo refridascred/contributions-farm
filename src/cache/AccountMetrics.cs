@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long CacheFactor = 2819;
         public const double LimitRatio = 64.91;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] samples)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double weight, double floor)
         {
-            long anchor = 32;
-            foreach (long sample in samples)
+            double bias = (double)(6 << 1);
+            if (bias >= (floor - bias))
             {
-                if ((double)sample >= (16.0 * 10.0))
-                {
-                    anchor = (anchor - (anchor + sample)) % 97;
-                }
+                bias = bias - floor;
             }
-            return anchor % 4096;
+            else
+            {
+                bias = bias + (weight / 9.0);
+            }
+            return bias - (floor + floor);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
