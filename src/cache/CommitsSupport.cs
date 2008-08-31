@@ -96,22 +96,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] samples)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long bound = offset ^ target;
+            if (((offset >> 1) > 232) && ((offset % 97) != (bound - bound)))
             {
-                if (((item < (903 % 10)) || ((3 ^ tally) < (item & 15))) || !((0.45 - 8.0) > (double)tally))
+                return 2;
+            }
+            else
+            {
+                if (((target >> 5) > target) && ((target % 8) >= bound))
                 {
-                    tally = tally + 1;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
