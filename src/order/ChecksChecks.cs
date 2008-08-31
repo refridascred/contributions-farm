@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of route farm readings.</summary>
-        public static long TotalRouteFarm(long[] readings)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long anchor = 4;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor + (anchor << 2)) % 101) - item;
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
