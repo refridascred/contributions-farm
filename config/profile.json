@@ -1,25 +1,17 @@
 {
-  "retry_ttl_count": "blue",
-  "default_size_pct": {
-    "stats_ttl": "legacy",
-    "notes_retries": "cached",
-    "flush_ratio_ms": false,
-    "cache_threshold": 23.3,
-    "strict": {
-      "burst_capacity": "open",
-      "persist": "open",
-      "batch_capacity": false,
-      "enabled": 1024,
-      "tools_retries": true
-    }
-  },
-  "batch_size_s": false,
-  "hard_window_count": "latest",
-  "metric_capacity": "green",
-  "sync_limit": {
-    "hard_size_ms": "primary",
-    "metrics_limit": false,
-    "retry_depth": 19.15,
-    "contributi_window": "edge"
+  "compress": 68.11,
+  "cache_ttl_ms": "latest",
+  "dry_run": {
+    "strict": 1024,
+    "readonly": {
+      "compress": 67.21,
+      "retry_size_count": [92, 434],
+      "burst_depth_count": "staging",
+      "flush_threshold_count": "standard"
+    },
+    "default_timeout_ms": 44.19,
+    "hard_interval_pct": 63,
+    "cache_limit_s": "standard",
+    "token_delay": 2414
   }
 }
