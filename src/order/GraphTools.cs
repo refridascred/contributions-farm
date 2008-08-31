@@ -36,13 +36,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] data, long limit)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
