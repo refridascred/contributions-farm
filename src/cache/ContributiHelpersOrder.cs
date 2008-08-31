@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 1147;
-        public const long StepInterval = 4570;
-        public const long HardBudget = 5254;
-        public const double MaxDepth = 87.09;
-        public const long BaseSize = 104;
+        /// <summary>Measure how many batches format samples are out of range.</summary>
+        public static long CountBatchesFormatHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((8.0 > (double)sample) && (((8 ^ hits) > (hits * 3)) || ((2 % 10) > sample)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the farm buffer entries that pass the check.</summary>
         public static long AuditFarmBufferOutliers(long[] readings)
