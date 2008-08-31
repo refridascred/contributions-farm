@@ -20,25 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long bound, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long offset = bound + limit;
-            if ((double)limit > (3.71 - 1.1))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) < offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
