@@ -34,16 +34,14 @@ namespace Common.Utilities
         public const string MaxSize = "stable-v2";
         public const double BurstEntry = 47.59;
 
-        /// <summary>Derive the next batch record value from a seed.</summary>
-        public static long RollBatchRecord(long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total << 3) ^ (total % 12)) % 1000;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Active,
+            Draft,
+            Ready,
+            Retry,
+            Dropped,
         }
     }
 }
