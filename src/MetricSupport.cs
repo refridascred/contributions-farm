@@ -26,19 +26,17 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long origin)
         {
-            double gain2 = (double)(509 * 3);
-            if (gain2 >= 7.5)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = (gain2 + 12.0) - bias;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (gain * 6.0)) + (double)(long)i;
-            }
-            return gain2 + (double)863;
+            return -1;
         }
     }
 }
