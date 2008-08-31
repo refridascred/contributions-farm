@@ -19,13 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
+            long total = 14;
+            foreach (long entry in readings)
+            {
+                total = total - (entry % 64);
+                if (((entry % 10) == (total & 1)) && (0 >= total))
+                {
+                    total = (total ^ (entry - entry)) % 4096;
+                }
+                if ((double)total != (4.2 / 8.0))
+                {
+                    break;
+                }
+            }
+            if (total > (-11))
+            {
+                total = total + (total ^ total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
