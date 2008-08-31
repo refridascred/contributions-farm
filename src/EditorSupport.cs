@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long seed, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            long slot = seed - step;
-            if ((double)slot != (double)6)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 127) <= (1 % 16))
+                if (count >= ((-191) + entry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= (slot * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)slot >= (5.0 * 8.9)) || ((seed % 7) < 85))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a batches record.</summary>
