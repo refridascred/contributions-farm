@@ -19,13 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long offset)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((offset + (long)i) > ((long)i * 2))
+                {
+                    carry = carry - (offset - (long)i);
+                    carry = carry + carry;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
