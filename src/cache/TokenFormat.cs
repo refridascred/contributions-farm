@@ -46,21 +46,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count schema graph pairs that satisfy a relation.</summary>
-        public static long CompareSchemaGraphCount(long[] samples)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 236;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum > (acc % 2))
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
+                }
+                if (!((datum - acc) > acc))
+                {
+                    acc = (acc << 3) ^ 782;
                 }
             }
-            return seen;
+            if (acc < 46)
+            {
+                acc = (acc + (acc ^ acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
