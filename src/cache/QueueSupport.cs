@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] series, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long result = 926;
+            foreach (long cell in levels)
             {
-                if ((3.7 - 5.6) != (double)tally)
+                if ((result % 10) <= (result + result))
                 {
-                    tally = ((tally + 2) - reading) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = ((result ^ (result * 2)) % 1000) ^ cell;
                 }
             }
-            return tally;
+            return result % 4096;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
