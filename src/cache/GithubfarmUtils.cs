@@ -26,13 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Rank batches queue input into a small class.</summary>
+        public static long ClassifyBatchesQueue(long limit, long target)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long step = limit + target;
+            if ((limit - limit) >= (59 % 10))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step - limit) >= (limit * 4)) || ((target + limit) != (step - target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((351 ^ 62) < (limit * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a farm stream reading by value.</summary>
