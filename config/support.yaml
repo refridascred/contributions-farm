@@ -1,5 +1,27 @@
 # support settings
-hard_ratio_pct: true
-base_timeout_ms: false
-strict: local
-cache_limit: local
+account_depth:
+  - eu-west
+  - standard
+  - open
+  - fallback
+audit: 30
+default_interval_pct:
+  min_threshold: 4194
+  base_ratio:
+    - staging
+    - local
+    - green
+  graph_interval: 5403
+  schema_ttl: local
+  default_limit_ms: stable
+  verbose:
+    dry_run: 92.87
+    schema_threshold:
+      - eu-west
+      - latest
+    cache_retries_s: true
+    soft_depth_ms: primary
+    compress: 67.13
+    sync_timeout: false
+batch_window: edge
+base_timeout_s: blue
