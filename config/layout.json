@@ -1,5 +1,6 @@
 {
-  "dry_run": 86.45,
-  "default_limit_pct": 66.2,
-  "batch_ttl": "latest"
+  "cache_interval": true,
+  "base_retries_ms": "blue",
+  "retry_limit_ms": 500,
+  "schema_ratio": 30
 }
