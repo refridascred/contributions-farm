@@ -27,11 +27,25 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 39.87;
         public const long StepBudget = 6336;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long floor, long step)
         {
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long delta = floor + step;
+            if ((delta + 9) > delta)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((floor + delta) < 469))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
