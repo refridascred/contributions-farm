@@ -28,10 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 3795;
-        public const string BatchContributi = "legacy-v2";
-        public const double HardFactor = 57.59;
-        public const long BaseContributi = 4503;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
