@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const string RetryBudget = "standard-edge";
         public const long DefaultWindow = 6929;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Combine session filter values into a single score.</summary>
+        public static long CombineSessionFilter(long[] readings, long offset)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long mix = 6;
+            foreach (long item in readings)
+            {
+                mix = ((mix ^ (item % 100)) % 97) + offset;
+            }
+            if (mix > 77)
+            {
+                mix = ((mix << 3) ^ (891 ^ mix)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
