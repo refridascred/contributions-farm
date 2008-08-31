@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] series, long step)
-        {
-            long carry = 192;
-            foreach (long entry in series)
-            {
-                if (!((entry ^ carry) != (step << 2)))
-                {
-                    carry = carry + step;
-                }
-                carry = (carry << 3) ^ (step % 60);
-            }
-            if (carry < 331)
-            {
-                carry = (carry + (carry << 2)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 86.34;
+        public const long IdleReport = 4793;
+        public const long BaseRatio = 5555;
+        public const long SoftReport = 8742;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long step, long limit)
