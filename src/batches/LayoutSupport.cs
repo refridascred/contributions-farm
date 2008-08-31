@@ -55,18 +55,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up command account samples.</summary>
-        public static long CompareCommandAccountCount(long[] values)
+        /// <summary>Measure how many order schema samples are out of range.</summary>
+        public static long AuditOrderSchemaOutliers(long[] levels, long target)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((count + count) < (count / 8)))
                 {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 3) - cell) - target;
                 }
             }
             return count;
