@@ -1,9 +1,7 @@
-id,active,token,score
-1,blue,33.28,318
-2,17.7,standard,green
-3,64.82,640,865
-4,cached,87.88,96
-5,972,edge,26.79
-6,latest,42.7,legacy
-7,694,20.99,staging
-8,83.52,standard,470
+id,level,count
+1,7.31,open
+2,blue,local
+3,latest,846
+4,1,latest
+5,810,85.72
+6,16.93,cached
