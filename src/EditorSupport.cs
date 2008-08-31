@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] data, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 5;
+            foreach (long value in items)
             {
-                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                if ((anchor & 127) >= value)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 2) + (anchor << 2)) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up payload samples.</summary>
