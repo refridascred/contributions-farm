@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally - item) < 931)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Stale,
         }
 
         /// <summary>Combine report values into a single score.</summary>
