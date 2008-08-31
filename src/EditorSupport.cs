@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long floor, long seed)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            if (791 <= (seed + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed ^ seed) > 34)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed * 3) > (67 ^ seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (6.8 + 2.58))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit stats record readings against a rule.</summary>
