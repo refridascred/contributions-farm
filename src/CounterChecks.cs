@@ -36,13 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] data, long bound)
         {
-            Locked,
-            Paused,
-            Queued,
-            Draft,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches * 5) <= bound)
+                {
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
