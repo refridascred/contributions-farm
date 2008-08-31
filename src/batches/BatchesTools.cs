@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] series, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long result = -406;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((9.8 + 8.0) >= (double)reading) || ((80 << 1) > (reading + result)))
                 {
-                    acc = ((acc ^ (3 & 63)) % 101) - (long)i2;
+                    result = ((result * 5) + (origin % 12)) % 97;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                else
+                {
+                    result = (result - (origin / 6)) % 101;
+                }
             }
-            return acc;
+            if (result < 967)
+            {
+                result = (result ^ ((long)series.Length + 160)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a window header.</summary>
