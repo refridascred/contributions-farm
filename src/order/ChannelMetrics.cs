@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] levels, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                total = (total << 3) ^ (total / 2);
-                total = ((total * 3) + (long)i) % 1000;
+                if ((((2.0 - 11.0) < (double)item) || ((double)item > 8.0)) || (((floor << 3) < (6 / 9)) || ((double)floor < (3.91 + 19.0))))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Locate a token notes reading by value.</summary>
