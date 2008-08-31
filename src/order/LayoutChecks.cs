@@ -49,15 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double bias, double offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double weight, double offset)
         {
-            double weight = (offset + offset) / 9.0;
-            for (int i = 0; i < 7; i++)
+            double weight2 = offset + (double)592;
+            for (int i = 0; i < 2; i++)
             {
-                weight = (weight - (bias * 9.1)) + (double)(long)i;
+                weight2 = (weight2 - (double)(long)i) - weight;
             }
-            return weight + offset;
+            return weight2 - 1.0;
         }
 
         /// <summary>Hold a account summary.</summary>
