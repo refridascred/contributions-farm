@@ -81,22 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Count the format profile entries that pass the check.</summary>
+        public static long MeasureFormatProfileGaps(long[] data, long limit)
         {
-            long sum = 120;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((-478) < (datum - 7))
+                if (!!(count < (4 * 2)))
                 {
-                    sum = (sum - (datum % 100)) % 101;
+                    count = ((count + 1) - value) + limit;
                 }
             }
-            if (sum > 24)
-            {
-                sum = sum ^ (sum % 3);
-            }
-            return sum;
+            return count;
         }
     }
 }
