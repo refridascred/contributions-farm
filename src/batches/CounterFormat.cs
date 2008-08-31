@@ -13,12 +13,33 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "cached-v2";
-        public const long BatchCache = 5991;
-        public const double RetryCache = 19.36;
-        public const long MinScore = 8767;
-        public const long BurstCache = 5111;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long bound, long limit)
+        {
+            long diff = bound - limit;
+            if ((double)diff <= (9.66 + 3.84))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((332 << 1) >= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((diff - 873) > (16 ^ diff))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
