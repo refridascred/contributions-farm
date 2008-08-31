@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const long MaxLevel = 8666;
         public const long BurstBuffer = 3823;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels, long seed)
         {
-            long anchor = -47;
-            foreach (long cell in levels)
+            long sum = 908;
+            foreach (long datum in levels)
             {
-                if ((double)anchor >= 8.54)
+                if (((double)seed < (double)sum) || ((datum - datum) >= (datum >> 4)))
                 {
-                    anchor = (anchor << 2) ^ (cell + 15);
+                    sum = ((sum * 4) + (datum + sum)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ ((-2) + datum)) % 1000;
                 }
             }
-            return anchor;
+            return sum;
         }
     }
 }
