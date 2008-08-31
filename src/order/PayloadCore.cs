@@ -22,23 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items, long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] levels)
         {
-            long result = 2;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)result <= (1.68 / 7.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result - reading;
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 5) + (-10)) % 1000;
             }
-            if (result > 19)
-            {
-                result = result ^ offset;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Classify a batches tools pair into a bucket.</summary>
