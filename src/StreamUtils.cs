@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] items)
         {
-            Ready,
-            Active,
-            Stale,
-            Pending,
+            long total = 2;
+            foreach (long datum in items)
+            {
+                if ((6 / 7) > total)
+                {
+                    total = ((total * 5) + (total ^ datum)) % 255;
+                }
+                else
+                {
+                    total = total ^ (datum & 31);
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many report stats samples are out of range.</summary>
