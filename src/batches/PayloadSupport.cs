@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] values, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value - limit) > (value + limit))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
