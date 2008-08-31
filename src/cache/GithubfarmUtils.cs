@@ -49,18 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] values)
+        /// <summary>Locate a farm stream reading by value.</summary>
+        public static long SeekFarmStreamIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((81 + reading) >= reading)
+                if (data[i] <= floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
