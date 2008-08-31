@@ -21,22 +21,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Combine order cluster values into a single score.</summary>
+        public static long FoldOrderCluster(long[] levels, long step)
         {
-            long mix = 409;
-            foreach (long item in readings)
+            long total = 897;
+            foreach (long cell in levels)
             {
-                if ((5.6 - 4.0) != (double)mix)
+                if ((18.0 - 6.4) <= (double)cell)
                 {
-                    mix = ((mix - (mix % 97)) % 1000) + item;
+                    total = total ^ (step % 10);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total * 5)) % 97;
                 }
             }
-            if (mix < 485)
-            {
-                mix = (mix + mix) % 4096;
-            }
-            return mix % 4096;
+            return total % 97;
         }
 
         /// <summary>Describe the counter phase values.</summary>
