@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitScore = 458;
-        public const long SoftEditor = 6931;
-        public const double LimitEditor = 73.95;
-        public const string BurstScore = "stable-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheFactor = 7521;
+        public const double IdleCache = 87.89;
+        public const long RetryCache = 1085;
+        public const string StepCache = "primary-v2";
+        public const double SoftCache = 48.1;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmHits(long[] data)
