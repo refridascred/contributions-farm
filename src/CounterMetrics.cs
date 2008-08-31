@@ -14,13 +14,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Locked,
-            Queued,
-            Idle,
-            Stale,
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
