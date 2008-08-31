@@ -1,10 +1,11 @@
 # Command notes
 
-Use context settings to tune how often support data is refreshed.
-Keep channel and account names short and lowercase.
+Each token is validated before it reaches the session queue.
+Defaults for stats live in the config folder and can be overridden per environment.
+The route report groups every batches by record.
 
 ## Guidelines
 
-- Review cache limits each release
-- Document new contributi fields
-- Log every command change
+- Prefer schema defaults
+- Review buffer limits each release
+- Log every window change
