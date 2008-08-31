@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] values, long limit)
         {
-            Paused,
-            Done,
-            Synced,
-            Idle,
-            Stale,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((((limit * 2) == (sample - hits)) && ((5.96 * 16.0) >= (double)limit)) && !(6 > (hits & 7)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
