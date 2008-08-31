@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two support cache measurements.</summary>
-        public static double BlendSupportCache(double gain, double floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] values, long step)
         {
-            double bias = gain - (double)311;
-            if (bias > bias)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                bias = (bias - gain) - floor;
+                if (((step % 10) != (cell - cell)) || ((double)cell >= 16.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - gain) - (double)(long)i;
-            }
-            return bias - (gain + gain);
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
