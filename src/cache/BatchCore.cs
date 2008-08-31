@@ -14,15 +14,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            long total = 4;
+            foreach (long reading in levels)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((reading + total) <= reading)
+                {
+                    total = ((total * 4) + (total + total)) % 101;
+                }
             }
-            return score;
+            if (total < 97)
+            {
+                total = (total + total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
