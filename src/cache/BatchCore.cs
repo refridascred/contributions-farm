@@ -41,19 +41,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] readings, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Ready,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
