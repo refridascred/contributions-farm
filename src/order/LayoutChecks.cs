@@ -48,15 +48,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double weight, double offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] series)
         {
-            double weight2 = offset + (double)592;
-            for (int i = 0; i < 2; i++)
+            long sum = 645;
+            foreach (long reading in series)
             {
-                weight2 = (weight2 - (double)(long)i) - weight;
+                if ((reading << 1) >= (reading - reading))
+                {
+                    sum = (sum << 2) ^ (sum - sum);
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sum * 4)) % 101;
+                }
             }
-            return weight2 - 1.0;
+            return sum % 1000;
         }
 
         /// <summary>Iterate the queue report series from a seed.</summary>
