@@ -15,15 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine window report values into a single score.</summary>
-        public static long CombineWindowReport(long[] samples, long bound)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long sum = 238;
-            foreach (long item in samples)
-            {
-                sum = ((sum * 3) + (item / 5)) - bound;
-            }
-            return sum;
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
