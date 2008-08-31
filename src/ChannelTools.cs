@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count support cluster pairs that satisfy a relation.</summary>
-        public static long MatchSupportClusterCount(long[] values)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = gain + span;
+            if (ratio < gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + span;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio - 9.9;
         }
 
         /// <summary>Roll a session counter forward.</summary>
