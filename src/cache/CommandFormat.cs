@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long state = 811;
-            foreach (long entry in levels)
-            {
-                if ((1.0 + 1.95) == (double)entry)
-                {
-                    state = (state ^ (state + entry)) % 1000;
-                }
-            }
-            return state;
+            Active,
+            Synced,
+            New,
         }
 
         /// <summary>Define window limits and defaults.</summary>
