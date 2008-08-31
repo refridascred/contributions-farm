@@ -22,39 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long limit, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            long span = limit ^ target;
-            if (target > span)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
+                state = state ^ (635 % 60);
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((83 + span) != (span ^ 32))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit & 31) < (limit - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target % 2) <= (span >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Roll a layout cache counter forward.</summary>
