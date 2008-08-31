@@ -46,22 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            long anchor = 3;
-            foreach (long cell in samples)
+            long anchor = 9;
+            foreach (long item in samples)
             {
-                if ((cell + anchor) == (anchor >> 1))
-                {
-                    anchor = (anchor - (cell + anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor ^ 85) % 97;
-                }
+                anchor = ((anchor + ((-33) + 21)) % 1000) ^ item;
             }
-            return anchor % 1000;
+            return anchor % 97;
         }
     }
 }
