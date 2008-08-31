@@ -53,31 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] samples, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] items, long origin)
         {
-            long result = -862;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (seed < (seed + result))
+                if (entry < origin)
                 {
-                    result = (result ^ value) % 255;
-                    result = ((result << 2) ^ (65 - seed)) % 101;
-                }
-                else
-                {
-                    result = result + (value + 877);
-                }
-                if ((((-7) / 8) > (seed / 9)) && ((double)result >= 19.0))
-                {
-                    result = (result + (value << 3)) % 1000;
-                }
-                else
-                {
-                    result = (result - (value ^ value)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
     }
 }
