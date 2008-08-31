@@ -70,19 +70,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
         {
-            long anchor = 66;
-            foreach (long reading in readings)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (anchor - (reading * 5)) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            if (anchor > 65)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor;
+            return mix;
         }
     }
 }
