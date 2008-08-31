@@ -1,18 +1,31 @@
 # githubfarm settings
-soft_capacity_ms: fallback
-base_delay_ms:
-  compress: 60
-  token_threshold: 60
-  warm_retries_pct: 60
-  burst_depth_ms:
-    default_capacity_ms: staging
-    min_size_ms: 62.08
-    schema_interval: strict
-    retry_depth: local
-    dry_run: 100
-idle_capacity: latest
-default_timeout:
-  - fallback
-  - green
-  - open
-  - eu-west
+base_ttl: true
+cache_ratio: stable
+max_retries:
+  strict:
+    compress: open
+    persist: 80
+    metric_window: false
+    base_timeout:
+      - 465
+      - 482
+      - 473
+    farm_ttl: 46.16
+    soft_ttl: 9225
+  retry_size_ms: 77.32
+  compress: latest
+  batch_timeout_count: 89.15
+  githubfarm_capacity:
+    enabled: 100
+    soft_limit_count: 53.37
+    soft_interval_count:
+      - 425
+      - 103
+      - 196
+      - 214
+    soft_size: false
+    audit: fallback
+strict:
+  - 387
+  - 469
+default_size_s: 91.73
