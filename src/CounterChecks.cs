@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items, long seed)
         {
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            long acc = -26;
+            foreach (long datum in items)
+            {
+                acc = (acc - (datum % 2)) + seed;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
