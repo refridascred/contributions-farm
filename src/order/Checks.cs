@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long seed, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((5 - (-631)) > offset)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (offset > ((-502) << 1))
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
