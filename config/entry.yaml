@@ -1,5 +1,16 @@
 # entry settings
-notes_window: true
-base_interval_s: true
-poll_delay: 87
-flush_retries_count: 0.13
+record_delay:
+  persist: cached
+  tools_ttl: staging
+  poll_retries_s: legacy
+  retry_depth: 61.33
+token_ratio:
+  - local
+  - standard
+persist: 616
+readonly: 24.91
+verbose: 1024
+command_delay:
+  - strict
+  - stable
+  - strict
