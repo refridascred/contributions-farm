@@ -1,8 +1,7 @@
-id,label,level
-1,153,25.02
-2,84.1,384
-3,fallback,93.82
-4,30.86,73.68
-5,open,265
-6,24.01,strict
-7,78,open
+id,region,owner
+1,5.07,74.51
+2,53.9,827
+3,68.6,staging
+4,standard,latest
+5,38,local
+6,open,96
