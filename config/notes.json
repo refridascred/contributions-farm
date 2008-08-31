@@ -1,7 +1,7 @@
 {
-  "flush_limit_ms": [17, 351, 286, 268],
-  "flush_interval_count": 60,
-  "sync_ttl_ms": 6577,
-  "cache_delay_s": 2165,
-  "editor_retries": 596
+  "max_size_s": "eu-west",
+  "stats_threshold": 55.38,
+  "readonly": "strict",
+  "retry_capacity_s": 82,
+  "warm_retries_count": 7650
 }
