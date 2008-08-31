@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry << 3) ^ (carry - carry)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank buffer window input into a small class.</summary>
