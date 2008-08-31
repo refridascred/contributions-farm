@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowDepth = 2497;
+        public const long WindowScore = 5869;
+        public const long RetryStats = 9119;
+        public const long MinStats = 4169;
 
         /// <summary>Fold a list of commits command readings.</summary>
         public static long DigestCommitsCommand(long[] values)
