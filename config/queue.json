@@ -1,5 +1,5 @@
 {
-  "compress": "local",
-  "cache_interval_count": 17.41,
-  "audit": "green"
+  "default_depth_s": true,
+  "schema_timeout": "stable",
+  "idle_threshold_ms": "eu-west"
 }
