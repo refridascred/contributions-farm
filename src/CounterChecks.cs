@@ -48,19 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two window contributi measurements.</summary>
-        public static double ProjectWindowContributi(double rate, double offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long floor)
         {
-            double drift = rate;
-            if (drift >= (1.6 - offset))
+            bool ok = true;
+            foreach (long item in data)
             {
-                drift = drift - (double)4;
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (5.1 / 9.0);
+            return ok;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
