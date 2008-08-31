@@ -23,38 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long limit, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] values, long bound)
         {
-            if ((floor >> 2) == (floor / 7))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor > (floor - floor))
+                if (reading <= (bound >> 5))
                 {
-                    return 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    if (((floor >> 2) <= (floor + limit)) || ((77 + floor) <= (floor + limit)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((305 + limit) <= (limit + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the cluster status values.</summary>
