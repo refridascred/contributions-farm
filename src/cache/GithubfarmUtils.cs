@@ -15,19 +15,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data, long bound)
+        /// <summary>Classify a filter account pair into a bucket.</summary>
+        public static long ClassifyFilterAccount(long floor, long origin)
         {
-            long anchor = 29;
-            foreach (long item in data)
+            if ((double)origin == (2.0 + 20.0))
             {
-                anchor = ((anchor + (anchor * 4)) % 1000) - bound;
-                if ((item + anchor) != (item >> 3))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= 9.4)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin < (0.97 + 9.8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (39 > (origin * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
