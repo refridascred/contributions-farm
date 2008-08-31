@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const string StepTimeout = "staging";
         public const string RetryBatch = "fallback-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchSize = 5776;
-        public const string BaseScore = "alpha-1";
-        public const long RetryRoute = 1618;
-        public const long BaseRoute = 4421;
+        /// <summary>Count channel already pairs that satisfy a relation.</summary>
+        public static long CompareChannelAlreadyCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] values)
