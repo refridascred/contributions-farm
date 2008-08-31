@@ -12,24 +12,12 @@ namespace Common.Utilities
         public const long SoftWidth = 6262;
         public const long LimitStats = 4154;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long limit, long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if ((limit * 2) >= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-556) * 2) != (offset ^ offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Grade a channel counter value against two limits.</summary>
