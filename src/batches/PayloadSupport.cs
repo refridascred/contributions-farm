@@ -26,12 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
+            Synced,
+            Ready,
+            Draft,
+            Queued,
+            New,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
