@@ -1,4 +1,13 @@
 # githubfarm settings
-soft_retries_pct: latest
-githubfarm_limit: true
-warm_capacity_s: green
+commits_depth: 594
+idle_timeout_ms: 53.29
+account_limit:
+  sync_retries_pct:
+    - 353
+    - 284
+  poll_window_pct: 93
+  warm_threshold_count: blue
+  retry_limit: 27
+batch_capacity: false
+soft_timeout: 40.46
+max_threshold: false
