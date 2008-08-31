@@ -1,34 +1,17 @@
 # support settings
-dry_run:
-  - staging
-  - strict
-  - fallback
-  - standard
-poll_threshold: 36.73
-soft_delay_count: true
-route_ttl:
-  - eu-west
+sync_retries:
+  - 454
+  - 318
+  - 297
+  - 354
+enabled: 4715
+retry_size_s: stable
+flush_interval_pct:
+  readonly: 86.89
+  idle_capacity_count: 55.83
+  hard_capacity: 9
+  default_depth: strict
+warm_timeout_ms:
   - green
-  - legacy
-max_timeout: 86.51
-burst_retries_s:
-  warm_window:
-    soft_size: 13.91
-    sync_retries: 500
-    route_window: 100
-    min_depth: 3696
-    verbose: cached
-  audit: 100
-  warm_timeout_pct:
-    poll_retries_ms: 30
-    default_ratio: blue
-    flush_threshold: true
-    persist: 100
-    sync_capacity_ms: 18
-    soft_size_pct: green
-  dry_run: cached
-  default_threshold_s:
-    - blue
-    - local
-    - edge
-  min_ttl: 82.01
+  - standard
+burst_size_count: 82.18
