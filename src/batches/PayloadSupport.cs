@@ -32,21 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph schema readings.</summary>
-        public static long PairGraphSchemaCount(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)seed > (0.8 + 1.9)))
                 {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + datum;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
