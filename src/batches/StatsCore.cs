@@ -17,13 +17,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
             public long Limit { get; set; }
-            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a graph stats.</summary>
