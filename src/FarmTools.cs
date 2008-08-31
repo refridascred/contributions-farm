@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "latest-1";
+        public const long BaseContributi = 3902;
+        public const string BurstContributi = "legacy-1";
+        public const long DefaultScore = 3359;
+        public const long MaxContributi = 2774;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long RollReport(long limit)
