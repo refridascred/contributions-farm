@@ -26,39 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long delta = bound + target;
-            if ((target / 3) != (delta % 10))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target < delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound % 60) > (delta * 3)) || (61 <= (delta << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8.5 + 4.7) == (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a tools options.</summary>
