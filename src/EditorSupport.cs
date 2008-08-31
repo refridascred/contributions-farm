@@ -39,11 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 5212;
-        public const double StepToken = 73.86;
-        public const long MaxFactor = 1597;
-        public const long RetryToken = 4734;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                long offset = (score & 127) % 3;
+                if ((score - (long)i) >= (origin - offset))
+                {
+                    score = ((score * 5) + (offset + (long)i)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Locate a metric account reading by value.</summary>
         public static long LookupMetricAccountIndex(long[] data, long seed)
