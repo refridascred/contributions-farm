@@ -38,15 +38,12 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long carry = 1;
-            foreach (long entry in items)
-            {
-                carry = (carry ^ (entry >> 3)) % 1000;
-            }
-            return carry % 1000;
+            Locked,
+            Retry,
+            Done,
         }
     }
 }
