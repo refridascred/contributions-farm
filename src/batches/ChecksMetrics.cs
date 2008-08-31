@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (1 < (item & 31))
                 {
-                    state = ((state + ((long)i + state)) % 255) - (long)i2;
+                    tally = tally + 1;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a route counter forward.</summary>
