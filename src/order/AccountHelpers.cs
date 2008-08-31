@@ -12,24 +12,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long floor, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            if (((double)floor != (5.0 + 2.07)) && ((step & 7) > floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor % 12) == (floor ^ step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
