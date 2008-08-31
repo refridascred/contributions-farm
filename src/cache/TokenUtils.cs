@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 5840;
-        public const double HardTimeout = 26.94;
-        public const long MinEntry = 50;
-        public const long WindowRatio = 5653;
-        public const long CacheRatio = 1270;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Limit { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long floor)
