@@ -26,15 +26,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long origin, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long diff = origin ^ floor;
+            if (origin > (floor + origin))
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((8 + origin) < (origin / 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((diff + 1) <= (floor ^ origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (diff < origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter status values.</summary>
