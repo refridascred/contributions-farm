@@ -47,12 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] readings, long limit)
         {
-            Locked,
-            Idle,
-            Draft,
+            long score = 585;
+            foreach (long sample in readings)
+            {
+                if (9.9 <= (double)(long)readings.Length)
+                {
+                    score = ((score * 5) + (sample / 3)) - limit;
+                }
+            }
+            return score;
         }
     }
 }
