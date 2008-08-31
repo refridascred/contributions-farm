@@ -59,12 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 7332;
+        public const long BurstSpan = 53;
+        public const long DefaultLayout = 2630;
+        public const long SoftLayout = 974;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphOutliers(long[] samples)
