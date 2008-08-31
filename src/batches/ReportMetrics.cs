@@ -31,19 +31,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] items, long target)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
