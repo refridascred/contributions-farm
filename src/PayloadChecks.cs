@@ -64,13 +64,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
