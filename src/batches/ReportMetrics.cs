@@ -31,11 +31,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 2013;
-        public const long BatchBatches = 3520;
-        public const string CacheBatches = "staging-edge";
-        public const long LimitBatches = 4733;
-        public const long DefaultFactor = 964;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
