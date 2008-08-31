@@ -14,19 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] values, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] levels, long seed)
         {
-            long carry = 24;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry + (carry + carry)) + entry) + step;
+                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 0)
-            {
-                carry = (carry << 2) ^ 2;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate checks cache readings against a bound.</summary>
