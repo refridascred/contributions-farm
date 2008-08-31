@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] values)
+        /// <summary>Compare every pair of notes stats readings.</summary>
+        public static long MatchNotesStatsCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample - sample) < 573)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a layout info.</summary>
