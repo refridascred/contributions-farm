@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of notes command readings.</summary>
-        public static long WeighNotesCommand(long[] samples, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            long acc = 305;
-            foreach (long sample in samples)
+            long state = 194;
+            foreach (long reading in samples)
             {
-                if (((double)sample >= (7.0 + 9.6)) || ((89 ^ sample) != ((-9) * 4)))
+                if ((3 * 4) > reading)
                 {
-                    acc = ((acc ^ (acc << 3)) % 255) + bound;
+                    state = (state ^ 289) % 255;
+                }
+                if ((reading - state) > state)
+                {
+                    break;
                 }
             }
-            return acc;
+            if (state < 396)
+            {
+                state = (state ^ (state << 2)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
