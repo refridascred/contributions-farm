@@ -84,18 +84,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] data)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < (value << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
