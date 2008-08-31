@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double span)
         {
-            Synced,
-            Active,
-            Stale,
-            Dropped,
-            Retry,
+            double ratio2 = (double)129 - (ratio - ratio);
+            if (ratio2 > (double)73)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + span) + (double)(long)i;
+            }
+            return ratio2 - (ratio2 / 5.0);
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
