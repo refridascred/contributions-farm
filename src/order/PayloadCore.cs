@@ -20,17 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] readings, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 652;
+            foreach (long item in items)
             {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry << 3) ^ (912 ^ item);
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
