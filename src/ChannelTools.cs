@@ -20,16 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long limit, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long next = limit ^ floor;
+            if (!(((-71) * 2) < (limit >> 4)))
             {
-                total = (total - ((long)i & 31)) % 255;
-                total = ((total * 4) + (long)i) % 101;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((limit + 678) != (limit + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit ^ next) != (next >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a account reading.</summary>
