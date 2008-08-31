@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinScore = 9040;
+        public const string BurstFactor = "open-edge";
+        public const long CacheBatch = 4888;
+        public const string StepTimeout = "staging";
+        public const string RetryBatch = "fallback-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchSize = 5776;
