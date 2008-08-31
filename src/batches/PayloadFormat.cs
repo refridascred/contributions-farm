@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the support route entries that pass the check.</summary>
-        public static long CountSupportRouteHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((seen - value) != (seen & 1)) || !((9.0 / 2.0) != (double)value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryDepth = 2713;
+        public const long HardWindow = 8219;
+        public const double DefaultWindow = 51.78;
+        public const string IdleTimeout = "cached-edge";
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
