@@ -66,22 +66,18 @@ namespace Common.Utilities
             return scale - (6.8 - bias);
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (((double)matches == (8.2 + 3.0)) || (matches > (matches / 8)))
+                if (!((target + 850) >= target))
                 {
-                    matches = (matches + 3) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the buffer state values.</summary>
