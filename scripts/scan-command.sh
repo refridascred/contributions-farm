@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open stable strict; do
+for item in stable edge latest legacy; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+mode="${1:-legacy}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
