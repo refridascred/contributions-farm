@@ -1,7 +1,12 @@
 {
-  "flush_capacity_s": false,
-  "contributi_threshold": [35, 21, 147, 418],
-  "flush_delay_pct": 100,
-  "session_limit": 100,
-  "base_size": "blue"
+  "batch_ratio_pct": 27,
+  "batch_limit": "open",
+  "audit": {
+    "report_ttl": 63.07,
+    "readonly": 250,
+    "contributi_window": 6321,
+    "session_limit": ["fallback", "blue", "edge", "edge"],
+    "entry_retries": "local"
+  },
+  "default_window_count": 8694
 }
