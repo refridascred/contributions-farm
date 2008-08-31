@@ -23,12 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "primary";
+        public const long BatchInterval = 8188;
+        public const double WindowContext = 52.53;
+        public const long IdleContext = 756;
+        public const long LimitContext = 302;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] levels, long limit)
