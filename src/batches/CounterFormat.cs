@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((8.0 * 8.8) == (double)value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
