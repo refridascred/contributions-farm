@@ -1,7 +1,14 @@
 {
-  "batch_capacity": "latest",
-  "cluster_delay": "eu-west",
-  "soft_capacity": false,
-  "flush_ratio": 2.08,
-  "sync_timeout": 7476
+  "hard_capacity_count": 56.93,
+  "cache_ratio": 84.47,
+  "idle_ratio_pct": true,
+  "githubfarm_ttl": {
+    "cache_ratio_ms": 100,
+    "stream_retries": ["open", "open"],
+    "compress": 30,
+    "contributi_size": "local",
+    "githubfarm_ttl": "local"
+  },
+  "cache_timeout": "latest",
+  "verbose": 3101
 }
