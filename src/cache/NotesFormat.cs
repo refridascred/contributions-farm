@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
