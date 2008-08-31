@@ -33,19 +33,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double gain, double bias)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] levels, long step)
         {
-            double scale = gain;
-            if (scale < bias)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                scale = scale - gain;
+                if (step < (tally / 9))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (bias + scale)) + (double)(long)i;
-            }
-            return scale - (6.8 - bias);
+            return tally;
         }
 
         /// <summary>Digest a series of buffer session entries.</summary>
