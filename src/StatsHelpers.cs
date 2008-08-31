@@ -40,15 +40,13 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Done,
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
