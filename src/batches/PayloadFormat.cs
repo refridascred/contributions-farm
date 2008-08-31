@@ -37,15 +37,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double weight, double bias)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double weight, double span)
         {
-            double drift = bias;
-            if (drift < 7.72)
+            double mean = (span * 5.83) - (span * 4.2);
+            if (mean >= mean)
             {
-                drift = drift - weight;
+                mean = mean - weight;
             }
-            return drift + (5.23 + weight);
+            return mean - (weight + mean);
         }
 
         /// <summary>Describe the counter mode values.</summary>
