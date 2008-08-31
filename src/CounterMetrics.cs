@@ -14,10 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 6876;
-        public const long BurstSession = 5505;
-        public const long MaxScore = 6538;
+        /// <summary>Measure how many channel order samples are out of range.</summary>
+        public static long TallyChannelOrderMatches(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum < (hits / 6))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordRange(long[] readings, long offset)
