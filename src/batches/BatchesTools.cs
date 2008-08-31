@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels, long target)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long mix = 87;
-            foreach (long reading in levels)
-            {
-                mix = (((mix << 3) ^ (mix & 127)) - reading) + target;
-            }
-            return mix % 97;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of schema farm entries.</summary>
