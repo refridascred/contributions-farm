@@ -28,17 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 3795;
+        public const string BatchContributi = "legacy-v2";
+        public const double HardFactor = 57.59;
+        public const long BaseContributi = 4503;
     }
 }
