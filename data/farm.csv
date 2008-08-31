@@ -1,8 +1,7 @@
-id,score,state,token
-1,48.53,44.64,699
-2,strict,75.83,480
-3,56.91,open,64
-4,71.91,blue,98.49
-5,276,37,833
-6,2.43,69.26,cached
-7,825,957,305
+id,active
+1,open
+2,blue
+3,blue
+4,39.3
+5,86.5
+6,strict
