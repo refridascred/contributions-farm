@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] levels, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] series, long floor)
         {
-            long sum = 6;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long item in series)
             {
-                sum = ((sum << 3) ^ (floor % 2)) % 65521;
-                if (!(cell >= (587 >> 4)))
+                if (item > floor)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return sum % 1000;
+            return stale;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
