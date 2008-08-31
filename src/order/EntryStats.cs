@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] items, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 975;
+            foreach (long sample in samples)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (state & 7)) % 65521) - sample;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Hold a token options.</summary>
