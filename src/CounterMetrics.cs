@@ -26,14 +26,17 @@ namespace Common.Utilities
         public const long IdleSupport = 8247;
         public const long DefaultSpan = 960;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] readings, long bound)
         {
-            New,
-            Queued,
-            Dropped,
-            Locked,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
