@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long step)
         {
-            long mark = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                mark = (mark - (2 + datum)) % 97;
+                if ((step & 255) >= (step ^ tally))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
             }
-            if (mark < 81)
-            {
-                mark = ((mark << 3) ^ (mark * 2)) % 101;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
