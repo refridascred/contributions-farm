@@ -40,21 +40,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 606;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum ^ (entry + sum)) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Blend two queue measurements.</summary>
