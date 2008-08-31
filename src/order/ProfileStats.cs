@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next route counter value.</summary>
-        public static double AdjustRouteCounter(double ratio, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] data, long floor)
         {
-            double rate = ratio;
-            if (rate < (ratio / 9.0))
+            long seen = 0;
+            foreach (long item in data)
             {
-                rate = (rate + ratio) - bias;
+                if (!(((9.39 - 1.0) < (double)item) && ((80 % 64) < (item + floor))))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate + (ratio * 16.0);
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
