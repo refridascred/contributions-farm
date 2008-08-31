@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long acc = -26;
-            foreach (long datum in items)
-            {
-                acc = (acc - (datum % 2)) + seed;
-            }
-            return acc % 65521;
+            Failed,
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
