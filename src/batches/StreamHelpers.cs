@@ -46,20 +46,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 8619;
+        public const long DefaultStream = 9616;
+        public const long SoftStream = 1521;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long PairBatchCount(long[] items)
