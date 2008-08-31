@@ -53,19 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window farm readings against a bound.</summary>
-        public static bool GuardWindowFarmBounds(long[] samples, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the tools mode values.</summary>
