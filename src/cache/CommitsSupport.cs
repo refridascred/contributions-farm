@@ -20,11 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultInterval = 3428;
-        public const long MaxTimeout = 1103;
-        public const double MaxGraph = 12.7;
-        public const long IdleLevel = 9852;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitScore = 458;
+        public const long SoftEditor = 6931;
+        public const double LimitEditor = 73.95;
+        public const string BurstScore = "stable-edge";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmHits(long[] data)
