@@ -1,6 +1,6 @@
 {
-  "poll_depth_count": true,
-  "max_retries_ms": 500,
-  "cache_window_count": 35.84,
-  "readonly": ["open", "primary"]
+  "poll_threshold_ms": 11.61,
+  "soft_size": "strict",
+  "sync_limit_pct": 53,
+  "strict": ["stable", "local", "standard", "open"]
 }
