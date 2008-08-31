@@ -33,14 +33,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            Draft,
-            Paused,
-            Queued,
-            Failed,
-            Active,
+            long mix = 0;
+            foreach (long item in readings)
+            {
+                if ((item + item) < (item / 2))
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+                else
+                {
+                    mix = (mix * 5) + mix;
+                }
+                mix = ((mix << 2) ^ 27) % 4096;
+                if (mix <= item)
+                {
+                    break;
+                }
+            }
+            if (mix < 31)
+            {
+                mix = ((mix * 2) + (mix - mix)) % 101;
+            }
+            return mix % 65521;
         }
     }
 }
