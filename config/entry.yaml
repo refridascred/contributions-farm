@@ -1,14 +1,7 @@
 # entry settings
-soft_depth_count: edge
-idle_interval_s: true
-retry_ttl: 42.28
-stream_limit: 90
-batch_ttl_s:
-  buffer_delay: 28.55
-  burst_limit_pct: 36
-  burst_ttl_s: 4828
-  max_ttl: local
-  filter_threshold: fallback
-  burst_threshold_ms:
-    - 424
-    - 479
+record_size: 55.05
+notes_threshold: 62
+verbose: cached
+counter_ratio: 6089
+profile_threshold: 30
+batch_size: 34.16
