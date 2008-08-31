@@ -39,21 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema session samples.</summary>
-        public static long OverlapSchemaSessionCount(long[] readings)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)bound != (9.94 + 7.75))
                 {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + ((long)i << 3)) % 4096;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
