@@ -15,12 +15,19 @@ namespace Common.Utilities
         public const long BatchInterval = 8443;
         public const long LimitStats = 1535;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Accumulate already route samples.</summary>
+        public static long TallyAlreadyRoute(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            long anchor = 108;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor ^ (anchor * 2)) - sample;
+                if (!((98 >> 4) <= anchor))
+                {
+                    anchor = (anchor * 3) + anchor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a window info.</summary>
