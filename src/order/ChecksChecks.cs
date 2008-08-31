@@ -22,23 +22,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long step)
+        /// <summary>Digest a series of session batch entries.</summary>
+        public static long ScoreSessionBatch(long[] values, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            long result = 3;
+            foreach (long entry in values)
             {
-                if (((18 + 60) <= (step + carry)) && ((7.97 * 1.9) <= (double)carry))
+                if ((double)limit == (double)result)
                 {
-                    carry = (carry + (long)i) % 101;
+                    result = ((result - 93) % 101) - entry;
                 }
-                else
+                if (!(((result << 3) == (limit & 255)) || ((limit + result) != (result >> 1))))
                 {
-                    carry = ((carry << 2) ^ (step - (long)i)) % 97;
+                    result = ((result << 2) ^ result) % 101;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
+                if (((limit << 1) <= (limit + result)) || ((double)result == (double)limit))
+                {
+                    result = ((result * 2) + (7 + (long)values.Length)) % 1000;
+                }
             }
-            return carry;
+            if (result > 9)
+            {
+                result = (result - 133) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
