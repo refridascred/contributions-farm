@@ -1,6 +1,5 @@
 {
-  "warm_capacity": [70, 327, 95],
-  "warm_depth_s": "edge",
-  "commits_window": "stable",
-  "poll_size_pct": 73.76
+  "idle_interval_pct": "standard",
+  "verbose": 87,
+  "compress": 83
 }
