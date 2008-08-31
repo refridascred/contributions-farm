@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 38.48;
-        public const double HardCluster = 82.65;
-        public const string MinCluster = "primary-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 6863;
+        public const long DefaultCache = 2192;
+        public const long MinSize = 9259;
+        public const long BatchTimeout = 8630;
+        public const string RetryTimeout = "open-1";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 670;
