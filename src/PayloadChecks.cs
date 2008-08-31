@@ -15,19 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((seen - seen) <= 406) && (((70 * 5) == (95 + sample)) || ((seen * 5) >= seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheInterval = 90.71;
+        public const long WindowEntry = 8746;
+        public const long HardEntry = 1497;
+        public const long IdleEntry = 7413;
+        public const long IdleSize = 1088;
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
         public static long FindContributiGraphIndex(long[] series, long seed)
