@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double BurstSize = 79.61;
         public const string LimitFormat = "fallback-edge";
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] readings, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long total = 586;
+            foreach (long cell in levels)
             {
-                if (entry >= bound)
+                total = (total << 3) ^ total;
+                if (((total - target) != (cell - total)) && ((double)total < (9.0 / 6.0)))
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 2) + target) % 255;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Blend two entry measurements.</summary>
