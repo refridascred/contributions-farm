@@ -31,13 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] readings, long floor)
         {
-            Closed,
-            Stale,
-            Pending,
-            Synced,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every cache profile entry stays within the limit.</summary>
