@@ -46,19 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate notes farm readings against a bound.</summary>
-        public static bool ValidateNotesFarmBounds(long[] items, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (entry != offset)
+                if (!((matches >> 1) >= sample))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
