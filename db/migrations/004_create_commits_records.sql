@@ -3,11 +3,11 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
     ratio REAL,
-    rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new'
+    token TEXT,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
 
-INSERT INTO commits_records (label, ratio, rank, state) VALUES ('fallback', 75.02, 96, 'edge');
-INSERT INTO commits_records (label, ratio, rank, state) VALUES ('strict', 44.42, 81, 'eu-west');
+INSERT INTO commits_records (label, ratio, token) VALUES ('fallback', 12.48, 'fallback');
+INSERT INTO commits_records (label, ratio, token) VALUES ('fallback', 50.28, 'latest');
