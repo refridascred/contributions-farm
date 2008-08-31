@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const string BurstLevel = "legacy-v2";
         public const long WindowChecks = 3083;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Derive the next cache notes value from a seed.</summary>
+        public static long SeriesCacheNotes(long offset)
         {
-            Stale,
-            Failed,
-            Active,
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i - sum) < sum)
+                {
+                    sum = (sum ^ (offset + 26)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
