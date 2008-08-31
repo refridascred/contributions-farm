@@ -16,24 +16,19 @@ namespace Common.Utilities
         public const string DefaultSpan = "alpha-1";
         public const long SoftReport = 2188;
 
-        /// <summary>Classify a window channel pair into a bucket.</summary>
-        public static long RankWindowChannel(long limit, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] values, long seed)
         {
-            if (!((double)limit < (6.0 - 3.28)))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit > (limit + target)) || (target > limit))
+                if (reading <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
