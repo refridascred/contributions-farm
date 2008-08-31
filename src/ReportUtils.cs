@@ -33,11 +33,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 12.55;
-        public const double BatchCount = 53.16;
-        public const long MinCount = 2376;
-        public const string CacheFactor = "legacy";
-        public const string CacheInterval = "standard-v2";
+        public const long WindowCount = 611;
+        public const long StepTimeout = 9258;
+        public const string MaxCommand = "latest";
+        public const long WindowCommand = 3920;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
