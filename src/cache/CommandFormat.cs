@@ -43,9 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitSpan = 44.1;
-        public const string WindowRatio = "latest-1";
-        public const long HardLevel = 7249;
+        /// <summary>Measure how many session commits samples are out of range.</summary>
+        public static long CountSessionCommitsHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum % 7) < datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
