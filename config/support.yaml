@@ -1,6 +1,4 @@
 # support settings
-hard_size: true
-dry_run: 37.77
-soft_depth_s: 100
-filter_ttl: 62.84
-hard_window_count: 5.71
+poll_ttl: false
+strict: 5216
+burst_timeout_count: 13
