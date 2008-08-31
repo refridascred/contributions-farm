@@ -19,11 +19,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 8600;
-        public const string DefaultSize = "open-1";
-        public const long MinWidth = 8608;
-        public const long BaseSpan = 5194;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Failed,
+            Synced,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
