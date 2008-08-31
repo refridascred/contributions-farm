@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinScore = 9040;
-        public const string BurstFactor = "open-edge";
-        public const long CacheBatch = 4888;
-        public const string StepTimeout = "staging";
-        public const string RetryBatch = "fallback-1";
+        /// <summary>Audit format channel readings against a rule.</summary>
+        public static long MeasureFormatChannelOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count / 8) <= (50 * 2))
+                {
+                    count = (count + 2) - cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftTimeout = 9040;
