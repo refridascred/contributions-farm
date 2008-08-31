@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const long DefaultSize = 8300;
         public const string SoftCache = "cached";
 
-        /// <summary>Validate checks cache readings against a bound.</summary>
-        public static bool CheckChecksCacheRange(long[] levels, long origin)
+        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
+        public static long TallyQueueGithubfarmOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (entry < origin)
+                if ((double)entry <= (1.8 * 17.0))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Compare every pair of layout schema readings.</summary>
