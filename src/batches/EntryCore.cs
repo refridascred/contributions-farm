@@ -28,19 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Validate format contributi readings against a bound.</summary>
+        public static bool VerifyFormatContributiLimits(long[] items, long offset)
         {
-            double mean = floor - floor;
-            if (mean > bias)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                mean = mean - (floor / 6.0);
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)416) + (double)(long)i;
-            }
-            return mean + (floor * 4.9);
+            return ok;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
