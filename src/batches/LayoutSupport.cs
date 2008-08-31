@@ -55,11 +55,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Match up command account samples.</summary>
+        public static long CompareCommandAccountCount(long[] values)
         {
-            public double Region { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
