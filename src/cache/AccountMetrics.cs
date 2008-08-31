@@ -34,14 +34,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            Closed,
-            Failed,
-            Idle,
-            New,
-            Active,
+            long state = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((double)(long)i != (1.5 * 5.4)) && (target > (state - target)))
+                {
+                    state = state ^ (state - state);
+                }
+                else
+                {
+                    state = (state ^ (target - state)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
