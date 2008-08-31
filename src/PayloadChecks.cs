@@ -43,15 +43,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long step, long origin)
         {
-            long score = 78;
-            foreach (long datum in readings)
+            long lane = step ^ origin;
+            if ((step * 2) >= (lane >> 3))
             {
-                score = (((score << 3) ^ score) % 255) - datum;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((double)step < (5.24 - 8.9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6.4 * 12.0) == (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((1 ^ step) > (992 >> 4)) || ((double)lane >= (0.88 / 5.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
