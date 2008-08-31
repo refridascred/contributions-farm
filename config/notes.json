@@ -1,6 +1,19 @@
 {
-  "strict": "stable",
-  "warm_ratio_ms": 250,
-  "counter_timeout": "blue",
-  "retry_retries_ms": "primary"
+  "sync_size_count": "strict",
+  "sync_limit_count": 96.63,
+  "session_timeout": 83.7,
+  "batch_timeout": {
+    "burst_ratio_s": "local",
+    "warm_interval_ms": {
+      "burst_size_count": 1024,
+      "flush_threshold_s": 1024,
+      "audit": 1024,
+      "strict": 100
+    },
+    "metric_threshold": "edge",
+    "metrics_threshold": 9795,
+    "queue_limit": 6
+  },
+  "poll_window_count": "eu-west",
+  "readonly": ["strict", "legacy", "primary"]
 }
