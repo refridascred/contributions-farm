@@ -47,19 +47,14 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha";
         public const long StepWindow = 3056;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double gain, double span)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double bias = span;
-            if (bias < gain)
-            {
-                bias = bias + (bias + bias);
-            }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias - (double)203;
+            Synced,
+            Active,
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the stream counter entries that pass the check.</summary>
