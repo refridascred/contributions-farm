@@ -19,11 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Roll a format counter forward.</summary>
