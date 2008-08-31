@@ -57,18 +57,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stream counter entries that pass the check.</summary>
-        public static long MeasureStreamCounterMatches(long[] values)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((item << 1) < (996 << 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
