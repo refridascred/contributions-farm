@@ -1,37 +1,13 @@
 # entry settings
-max_size_s:
-  - 406
-  - 348
-poll_delay_pct: primary
-flush_threshold:
-  persist:
-    batch_interval: false
-    dry_run: standard
-    record_size: legacy
-  payload_ratio:
-    already_limit:
-      - 444
-      - 12
-      - 480
-      - 338
-    idle_retries: 84.46
-    audit: 31.03
-    batch_retries_pct: standard
-  checks_limit: 500
-  compress: 5205
-  readonly: strict
-dry_run:
-  poll_window: 18.13
-  batch_ttl_count: false
-  verbose: true
-  audit:
-    - eu-west
-    - latest
-    - standard
-  strict: 500
-  cache_capacity: 60
-warm_timeout:
-  max_ttl_pct: 100
-  soft_capacity_count: standard
-  base_retries_count: false
-  idle_ratio_pct: 3089
+compress: 1665
+base_ttl: blue
+flush_window_count: 6
+format_capacity:
+  compress: 1024
+  cache_depth_pct: latest
+  audit: 60
+  format_interval: 90
+  soft_ratio:
+    checks_depth: 67.03
+    batch_retries: 7253
+    flush_size: legacy
