@@ -28,15 +28,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine account graph values into a single score.</summary>
-        public static long ScoreAccountGraph(long[] data)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mix = 76;
-            foreach (long value in data)
-            {
-                mix = (mix ^ (19 << 1)) ^ value;
-            }
-            return mix;
+            Done,
+            Ready,
+            Synced,
+            Pending,
+            Retry,
         }
     }
 }
