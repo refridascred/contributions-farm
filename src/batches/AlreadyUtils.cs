@@ -28,18 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] data, long floor)
+        /// <summary>Check that every entry tools entry stays within the limit.</summary>
+        public static bool CheckEntryToolsRange(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((18.0 - 9.5) != (double)hits)
+                if (datum < seed)
                 {
-                    hits = ((hits + 1) + entry) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the cache state values.</summary>
