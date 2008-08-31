@@ -1,9 +1,4 @@
 # githubfarm settings
-session_threshold: 8149
-min_limit: false
-idle_ratio_pct:
-  - 297
-  - 40
-  - 22
-  - 423
-strict: cached
+dry_run: 648
+min_window: 100
+soft_interval_pct: false
