@@ -72,25 +72,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (target > (mix & 15))
-                {
-                    mix = (mix << 2) ^ (target << 2);
-                    mix = (mix << 2) ^ ((long)i & 15);
-                }
-                else
-                {
-                    mix = ((mix * 4) + mix) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 39.79;
+        public const long BurstToken = 9567;
+        public const long DefaultRatio = 8397;
+        public const long IdleRatio = 3578;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportHits(long[] items)
