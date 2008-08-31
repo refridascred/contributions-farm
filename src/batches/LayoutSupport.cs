@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up editor commits samples.</summary>
-        public static long OverlapEditorCommitsCount(long[] items)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((double)floor < (9.0 / 9.0)) || (bound <= (floor * 4)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (floor >= (bound & 3))
                 {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
