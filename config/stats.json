@@ -1,12 +1,16 @@
 {
-  "hard_timeout_pct": {
-    "soft_capacity_count": false,
-    "base_interval": true,
-    "base_timeout": "legacy",
-    "tools_depth": false
+  "readonly": {
+    "strict": {
+      "default_ttl_s": 53.37,
+      "max_ttl": true,
+      "payload_size": [239, 287, 385],
+      "soft_ttl_pct": "blue"
+    },
+    "default_size": "latest",
+    "max_ttl_ms": 27.12
   },
-  "enabled": 83,
-  "schema_window": "primary",
-  "max_ttl_count": "fallback",
-  "flush_depth_s": 30
+  "base_window_s": 3663,
+  "compress": "primary",
+  "buffer_delay": 66.3,
+  "soft_window_count": "stable"
 }
