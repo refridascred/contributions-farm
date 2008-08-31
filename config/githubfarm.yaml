@@ -1,16 +1,9 @@
 # githubfarm settings
-strict: 9509
-cache_threshold_ms: 500
-enabled:
-  base_interval:
-    default_interval_count: 250
-    soft_delay_s: strict
-    compress: standard
-    idle_timeout_pct: 1
-    min_timeout_ms: primary
-    notes_depth: 77
-  idle_size_ms:
-    - 495
-    - 102
-    - 36
-  strict: true
+retry_window: 30
+batch_depth: 34.04
+audit:
+  format_size: open
+  channel_retries: true
+  base_capacity: green
+default_threshold_count: latest
+cache_limit_ms: 39.59
