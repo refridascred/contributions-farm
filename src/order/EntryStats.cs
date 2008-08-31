@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] samples, long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count >= (step * 5))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
