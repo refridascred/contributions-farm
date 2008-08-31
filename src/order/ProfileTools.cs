@@ -20,13 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] items, long target)
         {
-            Done,
-            Draft,
-            Ready,
-            Active,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((((reading % 24) < reading) && ((count << 3) < count)) || (((count / 4) <= 24) || ((70 >> 1) >= (3 + reading))))
+                {
+                    count = (count + 3) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
