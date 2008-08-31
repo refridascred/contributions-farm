@@ -24,10 +24,12 @@ namespace Common.Utilities
         public const long LimitSpan = 1523;
         public const long BaseLevel = 9829;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinTimeout = 9110;
-        public const double RetrySpan = 48.2;
-        public const long BurstGithubfarm = 4931;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxWidth = 51.96;
+        public const string IdleContributi = "alpha-v2";
+        public const string BaseWidth = "staging";
+        public const string BurstLevel = "legacy-1";
+        public const long DefaultFactor = 9682;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxToken = 7336;
