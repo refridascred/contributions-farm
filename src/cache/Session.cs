@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] data, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((reading & 31) != (count * 3)))
+                if (values[i] < bound)
                 {
-                    count = (count + 3) + floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
