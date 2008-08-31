@@ -51,13 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count >> 5) >= (count + count))
+                {
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
