@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
