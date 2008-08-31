@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 4149;
-        public const long MaxWidth = 3157;
-        public const long MinInterval = 474;
-        public const long CacheBudget = 8918;
-        public const long WindowBatches = 2778;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 5.73;
+        public const double BurstInterval = 96.93;
+        public const long BatchRecord = 5342;
+        public const long StepBudget = 9187;
+        public const long CacheFactor = 1847;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long FoldOrder(long[] data, long offset)
