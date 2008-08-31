@@ -86,11 +86,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFactor = 68.4;
-        public const long CacheFormat = 4809;
-        public const long BatchFormat = 8918;
-        public const long SoftFormat = 2827;
-        public const long DefaultFormat = 4999;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((double)seen <= (3.8 + 7.5)))
+                {
+                    seen = ((seen + 3) ^ item) - limit;
+                }
+            }
+            return seen;
+        }
     }
 }
