@@ -1,7 +1,8 @@
 {
-  "entry_size": 1385,
-  "enabled": "legacy",
-  "readonly": false,
-  "batch_ratio": "cached",
-  "burst_window_pct": "open"
+  "stream_depth": 31.99,
+  "sync_depth_count": "staging",
+  "readonly": 500,
+  "already_size": "stable",
+  "already_interval": 72.61,
+  "commits_retries": "eu-west"
 }
