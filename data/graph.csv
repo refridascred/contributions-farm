@@ -1,6 +1,6 @@
-id,rank,owner,state,level
-1,94.51,45.52,17.01,19.62
-2,10.36,815,local,730
-3,fallback,14.61,6.54,fallback
-4,816,3.92,792,green
-5,275,845,blue,621
+id,token,label,state,owner
+1,cached,6.2,local,48.35
+2,42.36,647,stable,573
+3,709,open,105,staging
+4,714,94.33,46.28,520
+5,82.36,552,478,cached
