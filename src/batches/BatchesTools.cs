@@ -19,22 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session queue entries that pass the check.</summary>
-        public static long AuditSessionQueueGaps(long[] levels, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long anchor = 900;
+            foreach (long entry in items)
             {
-                if (hits >= ((long)levels.Length ^ hits))
+                if (!((entry - entry) <= (anchor % 97)))
                 {
-                    hits = ((hits + 1) ^ cell) - offset;
+                    anchor = ((anchor * 4) + (anchor >> 4)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = ((anchor << 3) ^ (entry ^ anchor)) % 4096;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Digest a series of schema farm entries.</summary>
