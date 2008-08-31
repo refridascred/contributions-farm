@@ -1,6 +1,8 @@
 {
-  "compress": "legacy",
-  "already_ratio": ["stable", "green", "staging", "open"],
-  "cache_timeout": [33, 343, 446, 336],
-  "batches_interval": 67.84
+  "strict": 20.93,
+  "batch_interval_count": ["open", "legacy"],
+  "warm_delay_pct": 6.2,
+  "verbose": [236, 407],
+  "max_delay": "legacy",
+  "enabled": "latest"
 }
