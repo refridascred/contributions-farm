@@ -60,17 +60,16 @@ namespace Common.Utilities
             return drift + (5.1 / 9.0);
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
+                state = (state ^ state) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
