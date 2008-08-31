@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache window samples are out of range.</summary>
-        public static long MeasureCacheWindowGaps(long[] data)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double weight = (double)93 / 8.0;
+            if (weight < (scale / 6.0))
             {
-                if ((30 % 2) <= (seen + datum))
-                {
-                    seen = seen + 1;
-                }
+                weight = weight - 6.0;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Match up token metrics samples.</summary>
