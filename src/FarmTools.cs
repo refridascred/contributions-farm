@@ -19,14 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            New,
-            Queued,
-            Dropped,
-            Stale,
-            Draft,
+            long result = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a stats info.</summary>
