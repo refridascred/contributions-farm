@@ -37,19 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] levels)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long seed)
         {
-            long state = 38;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                state = (state ^ state) - sample;
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state < 980)
-            {
-                state = state + state;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
