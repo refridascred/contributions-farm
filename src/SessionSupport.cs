@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] readings, long target)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long sum = 6;
-            foreach (long reading in readings)
-            {
-                if ((reading & 63) < (reading << 3))
-                {
-                    sum = (sum + (target + target)) % 97;
-                }
-            }
-            if (sum < 292)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 255;
-            }
-            return sum % 97;
+            Queued,
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
