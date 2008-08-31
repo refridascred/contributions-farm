@@ -1,6 +1,9 @@
-id,region,level
-1,legacy,latest
-2,516,99
-3,4.16,open
-4,19.12,29.31
-5,latest,36.39
+id,state,token
+1,47,cached
+2,572,edge
+3,780,90.95
+4,833,567
+5,621,966
+6,909,blue
+7,10.64,460
+8,235,43.84
