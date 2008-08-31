@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const string StepTimeout = "staging";
         public const string RetryBatch = "fallback-1";
 
-        /// <summary>Count channel already pairs that satisfy a relation.</summary>
-        public static long CompareChannelAlreadyCount(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((value <= (value / 9)) || (seen < (8 / 8))) && ((value & 127) < (value ^ step)))
                 {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
