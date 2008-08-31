@@ -1,20 +1,4 @@
 # entry settings
-default_threshold_pct: cached
-counter_limit: false
-default_threshold_count:
-  - edge
-  - legacy
-  - fallback
-  - eu-west
-poll_timeout_count:
-  batch_window_count: 30
-  poll_timeout_ms: 56.91
-  soft_limit_s: false
-  min_retries: 28.14
-  base_interval_count:
-    - cached
-    - staging
-    - eu-west
-    - primary
-burst_interval_ms: true
-token_interval: latest
+cache_capacity: primary
+poll_ratio: 8014
+sync_timeout_s: blue
