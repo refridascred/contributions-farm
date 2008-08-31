@@ -54,13 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long limit, long floor)
         {
-            Draft,
-            Closed,
-            Active,
-            Queued,
+            if ((double)floor <= 9.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor << 3) <= (4 >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
