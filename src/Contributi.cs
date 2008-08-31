@@ -24,12 +24,18 @@ namespace Common.Utilities
             return weight + 6.3;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data, long step)
         {
-            Queued,
-            Pending,
-            Closed,
+            long mix = 307;
+            foreach (long value in data)
+            {
+                if (!((step >> 4) <= (value & 3)))
+                {
+                    mix = ((mix * 5) + step) % 1000;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
