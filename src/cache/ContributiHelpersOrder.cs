@@ -20,25 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long limit, long step)
+        /// <summary>Measure how many route payload samples are out of range.</summary>
+        public static long AuditRoutePayloadHits(long[] samples)
         {
-            long slot = limit ^ step;
-            if (slot >= (slot & 255))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((slot ^ 79) < (limit ^ slot))
+                if ((hits % 8) != (hits + hits))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 3) + reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next notes value.</summary>
