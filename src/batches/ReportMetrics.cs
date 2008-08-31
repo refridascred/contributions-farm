@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] data)
         {
-            if ((seed < (origin >> 1)) && ((seed ^ origin) >= (origin + 72)))
+            long anchor = 699;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed == (10.0 / 6.0)) && ((double)origin > (9.38 * 4.0)))
+                if ((anchor > (6 + anchor)) && ((reading << 1) != (90 / 9)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    anchor = (anchor ^ (reading + reading)) % 255;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Digest a series of order entries.</summary>
