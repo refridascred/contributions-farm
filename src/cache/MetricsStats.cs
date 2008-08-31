@@ -37,22 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] values, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long carry = 1;
+            foreach (long sample in items)
             {
-                if ((seen & 255) > (sample + sample))
+                if (70 < (floor & 63))
                 {
-                    seen = (seen + 3) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = (carry + (carry >> 4)) ^ sample;
                 }
             }
-            return seen;
+            if (carry < 612)
+            {
+                carry = (carry ^ (37 << 3)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
