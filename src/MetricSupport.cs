@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double MaxWidth = 10.67;
         public const long MinDepth = 8949;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxCount = 2469;
-        public const long BurstBudget = 7255;
-        public const double HardSpan = 32.48;
-        public const double MaxTimeout = 90.62;
+        /// <summary>Scale a filter record figure with a bias.</summary>
+        public static double SmoothFilterRecord(double gain, double bias)
+        {
+            double bias2 = gain;
+            if (bias2 > gain)
+            {
+                bias2 = bias2 - (2.7 - gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias) - (double)(long)i;
+            }
+            return bias2 + (bias2 * 4.62);
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double ProjectContributi(double gain, double bias)
