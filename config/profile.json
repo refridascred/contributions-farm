@@ -1,12 +1,14 @@
 {
-  "batch_ratio_pct": 27,
-  "batch_limit": "open",
-  "audit": {
-    "report_ttl": 63.07,
-    "readonly": 250,
-    "contributi_window": 6321,
-    "session_limit": ["fallback", "blue", "edge", "edge"],
-    "entry_retries": "local"
-  },
-  "default_window_count": 8694
+  "readonly": 96.4,
+  "channel_capacity": true,
+  "poll_interval_ms": "local",
+  "base_delay": "primary",
+  "audit": true,
+  "enabled": {
+    "persist": [105, 359],
+    "batch_ttl_s": 1024,
+    "default_interval_s": "green",
+    "flush_depth_pct": true,
+    "format_capacity": 4.01
+  }
 }
