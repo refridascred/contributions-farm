@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a githubfarm account pair into a bucket.</summary>
-        public static long GradeGithubfarmAccount(long limit, long bound)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double gain, double offset)
         {
-            if ((limit & 63) <= limit)
+            double gain2 = gain / 6.0;
+            if (gain2 < offset)
             {
-                return 0;
+                gain2 = gain2 + offset;
             }
-            else
-            {
-                if (!((bound - 423) <= (-79)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return gain2 - (offset * 8.0);
         }
 
         /// <summary>Grade a record metrics value against two limits.</summary>
