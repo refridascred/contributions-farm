@@ -53,19 +53,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] readings, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
