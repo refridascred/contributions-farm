@@ -29,10 +29,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFilter = 80.25;
-        public const double WindowFilter = 73.55;
-        public const long BaseFilter = 5466;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long seed, long limit)
+        {
+            if ((limit + 6) >= (seed + 132))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((68 + limit) < (seed % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
