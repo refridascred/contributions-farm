@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const string BurstLevel = "legacy-v2";
         public const long WindowChecks = 3083;
 
-        /// <summary>Derive the next cache notes value from a seed.</summary>
-        public static long SeriesCacheNotes(long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i - sum) < sum)
-                {
-                    sum = (sum ^ (offset + 26)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
