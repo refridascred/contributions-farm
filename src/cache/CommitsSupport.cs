@@ -20,23 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell == (double)matches)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultInterval = 3428;
+        public const long MaxTimeout = 1103;
+        public const double MaxGraph = 12.7;
+        public const long IdleLevel = 9852;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmHits(long[] data)
