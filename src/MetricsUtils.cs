@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long seed, long floor)
         {
-            double mean = offset;
-            if (mean <= 0.36)
+            long delta = seed - floor;
+            if ((double)delta == (double)floor)
             {
-                mean = mean - (rate / 8.0);
+                return 8;
             }
-            return mean + (double)(-6);
+            else
+            {
+                if ((double)26 == (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((581 + 19) >= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
