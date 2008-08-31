@@ -83,13 +83,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Synced,
-            Dropped,
-            Paused,
-            Failed,
+            Draft,
+            New,
             Ready,
         }
     }
