@@ -41,32 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token account value against two limits.</summary>
-        public static long ClassifyTokenAccount(long seed, long limit)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] levels, long limit)
         {
-            long lane = seed ^ limit;
-            if ((double)lane < (double)seed)
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + lane) == (seed ^ 18)) || ((lane & 31) > (seed - limit)))
+                if (item <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane * 5) != (limit + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
