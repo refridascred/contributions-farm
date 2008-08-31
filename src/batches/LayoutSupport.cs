@@ -12,19 +12,38 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long target, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            if (!(5.3 <= (double)origin))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (acc + (58 - (long)i2)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (target <= (78 + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin >= (origin ^ origin)) || ((4.0 / 4.0) <= (double)target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target >> 5) <= (origin + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up notes samples.</summary>
