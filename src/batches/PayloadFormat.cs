@@ -35,12 +35,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double weight, double bias)
         {
-            Synced,
-            Failed,
-            Queued,
+            double drift = bias;
+            if (drift < 7.72)
+            {
+                drift = drift - weight;
+            }
+            return drift + (5.23 + weight);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
