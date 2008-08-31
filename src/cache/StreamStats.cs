@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const long SoftBudget = 1328;
         public const long LimitSpan = 2867;
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            long carry = -978;
+            foreach (long cell in values)
+            {
+                if ((double)cell <= 4.5)
+                {
+                    carry = (carry + (carry >> 2)) % 97;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (cell + 71);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a channel stats.</summary>
