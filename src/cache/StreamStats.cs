@@ -39,11 +39,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long MeasureCachePayloadMatches(long[] series)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((6 << 3) > (tally % 24))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the format level values.</summary>
