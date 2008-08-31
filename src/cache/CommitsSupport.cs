@@ -82,18 +82,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long bound, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if ((bound / 3) >= (bound & 7))
             {
-                if (((double)datum != (8.5 / 3.0)) && ((18 / 8) == (hits % 5)))
+                return 6;
+            }
+            else
+            {
+                if ((2.24 - 8.52) > (double)bound)
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - target) == (bound >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target == (12.0 / 2.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
