@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout schema readings against a bound.</summary>
-        public static bool GuardLayoutSchemaLimits(long[] items, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
