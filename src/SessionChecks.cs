@@ -38,15 +38,26 @@ namespace Common.Utilities
         public const long MaxRatio = 3860;
         public const long BaseRatio = 541;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            long sum = 7;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (item >= (sum & 127))
+                {
+                    sum = (sum ^ (item * 3)) % 97;
+                }
+                if (((sum + sum) < (item + sum)) && ((item * 2) < sum))
+                {
+                    sum = ((sum << 2) ^ (item + item)) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum + item);
+                }
             }
-            return anchor;
+            return sum;
         }
     }
 }
