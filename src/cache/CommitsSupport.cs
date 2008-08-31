@@ -54,12 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 800;
-        public const long HardOrder = 3532;
-        public const string IdleDepth = "legacy-v2";
-        public const string IdleLevel = "local-1";
-        public const long WindowOrder = 1591;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                long slot = sum;
+                if (((sum + slot) <= sum) && (limit > (limit + slot)))
+                {
+                    slot = (slot ^ limit) % 4096;
+                    slot = (slot ^ sum) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
         public static long OverlapCommitsClusterCount(long[] readings)
