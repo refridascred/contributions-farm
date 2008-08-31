@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3.0 / 8.0) != (double)tally)
                 {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 1) - cell) - target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the channel kind values.</summary>
