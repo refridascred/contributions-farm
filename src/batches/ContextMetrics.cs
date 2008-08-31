@@ -40,20 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items, long offset)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long result = 82;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result + (result << 1)) ^ entry;
-                result = ((result << 3) ^ ((long)items.Length / 3)) % 4096;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result < 997)
-            {
-                result = (result - (offset / 3)) % 101;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
