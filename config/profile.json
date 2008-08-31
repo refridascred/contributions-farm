@@ -1,14 +1,7 @@
 {
-  "readonly": 96.4,
-  "channel_capacity": true,
-  "poll_interval_ms": "local",
-  "base_delay": "primary",
-  "audit": true,
-  "enabled": {
-    "persist": [105, 359],
-    "batch_ttl_s": 1024,
-    "default_interval_s": "green",
-    "flush_depth_pct": true,
-    "format_capacity": 4.01
-  }
+  "contributi_interval": 12.7,
+  "retry_ttl_ms": "standard",
+  "compress": "blue",
+  "warm_interval_s": "cached",
+  "batch_retries_pct": 22.64
 }
