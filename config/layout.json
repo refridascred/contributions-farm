@@ -1,14 +1,7 @@
 {
-  "hard_capacity_count": 56.93,
-  "cache_ratio": 84.47,
-  "idle_ratio_pct": true,
-  "githubfarm_ttl": {
-    "cache_ratio_ms": 100,
-    "stream_retries": ["open", "open"],
-    "compress": 30,
-    "contributi_size": "local",
-    "githubfarm_ttl": "local"
-  },
-  "cache_timeout": "latest",
-  "verbose": 3101
+  "soft_depth_s": ["cached", "green", "strict"],
+  "retry_retries_count": 8917,
+  "dry_run": 67.64,
+  "persist": "latest",
+  "readonly": "latest"
 }
