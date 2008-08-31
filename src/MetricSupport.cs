@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a filter record reading by value.</summary>
-        public static long SeekFilterRecordIndex(long[] data, long limit)
+        /// <summary>Match up context githubfarm samples.</summary>
+        public static long CompareContextGithubfarmCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] <= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the format status values.</summary>
