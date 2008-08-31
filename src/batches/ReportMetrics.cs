@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 5.73;
-        public const double BurstInterval = 96.93;
-        public const long BatchRecord = 5342;
-        public const long StepBudget = 9187;
-        public const long CacheFactor = 1847;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long origin)
+        {
+            if ((seed < (origin >> 1)) && ((seed ^ origin) >= (origin + 72)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)seed == (10.0 / 6.0)) && ((double)origin > (9.38 * 4.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long FoldOrder(long[] data, long offset)
