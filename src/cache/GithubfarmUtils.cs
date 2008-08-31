@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long seed, long origin)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Active,
-            Stale,
+            long diff = seed ^ origin;
+            if (((seed << 2) <= origin) || ((diff & 31) != (origin + diff)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed <= (diff & 3)) || (diff < (seed ^ origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
