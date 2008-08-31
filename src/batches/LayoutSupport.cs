@@ -77,14 +77,11 @@ namespace Common.Utilities
         public const long RetryRatio = 1612;
         public const double MinWidth = 92.78;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double weight, double offset)
         {
-            Draft,
-            New,
-            Done,
-            Closed,
-            Ready,
+            double drift = offset / 8.0;
+            return (drift + (double)288) + weight;
         }
     }
 }
