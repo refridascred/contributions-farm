@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Audit entry editor readings against a rule.</summary>
+        public static long MeasureEntryEditorGaps(long[] values, long seed)
         {
-            long mix = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                mix = (mix - (mix ^ value)) % 255;
+                if ((3.8 * 0.87) > (double)seed)
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            if (mix > 7)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Describe the format phase values.</summary>
