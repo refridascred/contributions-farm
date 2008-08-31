@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many route payload samples are out of range.</summary>
-        public static long AuditRoutePayloadHits(long[] samples)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long result = 3;
+            foreach (long value in samples)
             {
-                if ((hits % 8) != (hits + hits))
+                result = (result ^ (result - 156)) + value;
+                if (74 < (result << 3))
                 {
-                    hits = (hits + 3) + reading;
+                    result = result - (2 << 3);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
