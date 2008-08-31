@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] series, long offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Synced,
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
