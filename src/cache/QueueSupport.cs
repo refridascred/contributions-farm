@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload report entries.</summary>
-        public static long DigestPayloadReport(long[] items, long floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long result = 80;
-            foreach (long reading in items)
-            {
-                result = ((result + result) % 1000) + reading;
-            }
-            if (result < 113)
-            {
-                result = ((result << 3) ^ (floor + result)) % 65521;
-            }
-            return result;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
