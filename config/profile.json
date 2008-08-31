@@ -1,5 +1,7 @@
 {
-  "compress": ["latest", "cached", "fallback"],
-  "base_retries_count": "open",
-  "readonly": ["legacy", "primary", "primary", "primary"]
+  "flush_capacity_s": false,
+  "contributi_threshold": [35, 21, 147, 418],
+  "flush_delay_pct": 100,
+  "session_limit": 100,
+  "base_size": "blue"
 }
