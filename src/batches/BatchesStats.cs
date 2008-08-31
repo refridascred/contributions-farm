@@ -16,19 +16,26 @@ namespace Common.Utilities
         public const string DefaultSpan = "alpha-1";
         public const long SoftReport = 2188;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] values, long seed)
+        /// <summary>Digest a series of githubfarm checks entries.</summary>
+        public static long ScoreGithubfarmChecks(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long anchor = 84;
+            foreach (long cell in levels)
             {
-                if (reading <= seed)
+                if ((anchor >> 4) <= (cell % 10))
                 {
-                    flag = false;
-                    break;
+                    continue;
+                }
+                if (((anchor + cell) >= (anchor ^ anchor)) || (19 > anchor))
+                {
+                    anchor = (anchor + (anchor ^ anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor - cell);
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
