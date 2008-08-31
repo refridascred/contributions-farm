@@ -38,17 +38,15 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] values, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 1;
+            foreach (long entry in items)
             {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ (entry >> 3)) % 1000;
             }
-            return -1;
+            return carry % 1000;
         }
     }
 }
