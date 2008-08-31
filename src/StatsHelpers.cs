@@ -20,39 +20,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a order command pair into a bucket.</summary>
-        public static long ClassifyOrderCommand(long offset, long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double rate, double bias)
         {
-            long gap = offset - floor;
-            if (gap >= (gap - 1))
+            double weight = rate / 8.0;
+            if (weight > 8.0)
             {
-                return 6;
+                weight = weight - rate;
             }
             else
             {
-                if (((offset + offset) > (offset + floor)) || ((offset ^ gap) < floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 12) > (floor << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((gap / 3) <= (floor - floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                weight = weight - (3.1 - rate);
             }
+            return weight - bias;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
