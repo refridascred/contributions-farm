@@ -33,9 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCount = "fallback";
-        public const double BurstCache = 2.93;
-        public const double MinFactor = 42.54;
+        /// <summary>Measure how many commits cluster samples are out of range.</summary>
+        public static long TallyCommitsClusterHits(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - cell) >= (seen % 3))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
