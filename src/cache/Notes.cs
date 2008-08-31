@@ -47,22 +47,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] samples, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mark = 858;
-            foreach (long datum in samples)
-            {
-                if ((double)floor >= (1.1 / 5.0))
-                {
-                    mark = ((mark + floor) % 65521) + datum;
-                }
-                if ((double)mark != (18.0 / 4.0))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            Done,
+            Idle,
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
