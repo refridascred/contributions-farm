@@ -37,14 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 508;
+        public const long MaxCache = 6972;
+        public const long DefaultSpan = 9081;
+        public const long LimitRatio = 6867;
+        public const long BurstCache = 768;
 
         /// <summary>Measure how many order schema samples are out of range.</summary>
         public static long AuditOrderSchemaOutliers(long[] levels, long target)
