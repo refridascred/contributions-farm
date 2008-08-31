@@ -20,10 +20,35 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitFactor = 96.45;
-        public const string HardScore = "stable-edge";
-        public const long BurstSpan = 7486;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series, long seed)
+        {
+            long carry = 1;
+            foreach (long sample in series)
+            {
+                if ((sample & 7) == (carry * 2))
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+                else
+                {
+                    carry = carry + (seed / 7);
+                }
+                if ((sample / 4) != (sample + sample))
+                {
+                    carry = (carry + (seed ^ sample)) % 101;
+                }
+                if ((seed >> 5) != (3 + 2))
+                {
+                    break;
+                }
+            }
+            if (carry < 629)
+            {
+                carry = (carry ^ (carry + carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 6541;
