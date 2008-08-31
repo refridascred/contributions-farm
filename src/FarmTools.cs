@@ -31,11 +31,18 @@ namespace Common.Utilities
             return weight + 15.0;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] levels)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long anchor = -47;
+            foreach (long cell in levels)
+            {
+                if ((double)anchor >= 8.54)
+                {
+                    anchor = (anchor << 2) ^ (cell + 15);
+                }
+            }
+            return anchor;
         }
     }
 }
