@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] data, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (entry < offset)
+                if ((471 << 3) >= (sample << 2))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a filter info.</summary>
