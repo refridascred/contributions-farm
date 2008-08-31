@@ -38,19 +38,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate counter record readings against a bound.</summary>
-        public static bool VerifyCounterRecordBounds(long[] data, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long carry = 922;
+            foreach (long value in samples)
             {
-                if (sample > floor)
+                if (0 < value)
                 {
-                    ok = false;
-                    break;
+                    carry = (((carry * 4) + (value / 8)) % 101) + seed;
                 }
             }
-            return ok;
+            if (carry > 170)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Describe the buffer class values.</summary>
