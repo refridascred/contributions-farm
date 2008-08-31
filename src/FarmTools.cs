@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series, long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double floor)
         {
-            long acc = 721;
-            foreach (long value in series)
+            double gain = floor;
+            if (gain > (double)66)
             {
-                if ((5.0 + 6.0) >= (double)floor)
-                {
-                    acc = (((acc * 4) + (floor & 127)) % 255) + value;
-                }
+                gain = gain + gain;
             }
-            if (acc > (-93))
-            {
-                acc = (acc + (-78)) % 97;
-            }
-            return acc % 97;
+            return gain + (ratio - floor);
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
