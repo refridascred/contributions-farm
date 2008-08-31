@@ -1,7 +1,7 @@
 {
-  "burst_window_ms": 72.42,
-  "compress": "standard",
-  "base_delay_pct": "latest",
-  "dry_run": 0.39,
-  "burst_window": 22.71
+  "idle_retries_s": 100,
+  "soft_delay_s": 7,
+  "strict": 30,
+  "warm_interval": 6017,
+  "schema_retries": 22.46
 }
