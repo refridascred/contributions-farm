@@ -1,23 +1,5 @@
 # githubfarm settings
-persist:
-  - 158
-  - 370
-default_threshold_ms:
-  batch_ratio: 8691
-  warm_retries_count: 100
-  payload_ttl: false
-compress:
-  hard_retries: 30
-  cache_threshold: strict
-  default_ttl: green
-  poll_delay_count: 50.84
-  batches_timeout: primary
-  default_depth: true
-max_interval_s: blue
-warm_ttl:
-  metrics_interval: blue
-  verbose: 36
-  strict: true
-  readonly:
-    - 178
-    - 27
+profile_ratio: 76
+max_ratio_count: true
+cache_ttl_pct: stable
+poll_threshold_pct: cached
