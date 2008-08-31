@@ -1,21 +1,11 @@
 # githubfarm settings
-flush_threshold_count: 100
-min_ttl: 100
-session_size:
-  context_timeout: legacy
-  poll_ratio:
-    cache_capacity_ms: 43.51
-    flush_ratio_pct: false
-    cache_capacity_count: primary
-    batch_delay_s:
-      - cached
-      - staging
-    poll_limit: 46
-  flush_limit_ms: 7061
-  default_ttl_ms: 2333
-default_timeout_pct: latest
-already_limit:
-  buffer_capacity: 5997
-  retry_timeout_count: 3401
-  metrics_ttl: false
-burst_retries_count: 61
+audit: 10
+context_interval: true
+soft_interval_pct: 1024
+compress:
+  - legacy
+  - blue
+  - latest
+  - standard
+metric_retries: local
+soft_depth: open
