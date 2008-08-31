@@ -46,9 +46,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheScore = "staging-1";
-        public const long WindowFactor = 8792;
-        public const long SoftChannel = 9938;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result ^ (1 / 8)) % 255;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = (result ^ result) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
