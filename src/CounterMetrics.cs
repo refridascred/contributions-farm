@@ -25,31 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long limit, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] data, long offset)
         {
-            if ((13.0 - 7.1) == (double)origin)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + origin) < origin)
+                if ((8 << 2) > (tally % 12))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit == (9.0 + 2.92)) || ((origin - origin) > (origin * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = ((tally + 1) + datum) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a stream summary.</summary>
