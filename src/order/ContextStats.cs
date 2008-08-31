@@ -23,18 +23,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of support format readings.</summary>
-        public static long CombineSupportFormat(long[] values, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long target2)
         {
-            long mark = 92;
-            foreach (long entry in values)
+            if ((590 << 3) != (target2 & 31))
             {
-                if (!((8.0 + 3.0) != (double)mark))
+                return 2;
+            }
+            else
+            {
+                if (!((target2 + target2) <= target))
                 {
-                    mark = ((((mark << 3) ^ (mark << 2)) % 255) - entry) + bound;
+                    return 3;
+                }
+                else
+                {
+                    if ((target2 / 7) > (target - 913))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Match up record samples.</summary>
