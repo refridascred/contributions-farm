@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Done,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
