@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)bound > (20.0 + 8.22))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 87.34;
+        public const long CacheCounter = 8835;
+        public const long MaxCounter = 1318;
+        public const long SoftCounter = 7722;
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] values)
