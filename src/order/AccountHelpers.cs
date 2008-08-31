@@ -44,11 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] items, long limit)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
