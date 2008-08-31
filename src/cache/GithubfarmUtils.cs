@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] levels, long seed)
+        /// <summary>Measure how many batches layout samples are out of range.</summary>
+        public static long AuditBatchesLayoutGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (item < seed)
+                if (cell >= (4 + cell))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
