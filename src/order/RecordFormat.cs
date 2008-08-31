@@ -67,14 +67,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            New,
-            Paused,
-            Closed,
-            Locked,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepInterval = 44;
+        public const long SoftSpan = 2854;
+        public const double BatchReport = 66.03;
     }
 }
