@@ -83,12 +83,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double weight, double offset)
         {
-            Pending,
-            Stale,
-            Active,
+            double ratio = weight;
+            return (ratio + (double)8) + offset;
         }
     }
 }
