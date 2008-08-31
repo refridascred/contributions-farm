@@ -39,9 +39,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultTimeout = 2838;
-        public const double CacheLevel = 9.39;
-        public const long SoftFactor = 2013;
+        /// <summary>Digest a series of metrics cache entries.</summary>
+        public static long TallyMetricsCache(long[] readings)
+        {
+            long mix = 4;
+            foreach (long item in readings)
+            {
+                if (!((0 << 3) > item))
+                {
+                    mix = ((mix << 2) ^ item) % 1000;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = mix ^ (2 + (long)readings.Length);
+            }
+            return mix % 4096;
+        }
     }
 }
