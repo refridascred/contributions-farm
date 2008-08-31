@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next farm commits value.</summary>
-        public static double ScaleFarmCommits(double weight, double floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double drift = weight;
-            if (drift > weight)
-            {
-                drift = (drift - (double)12) - floor;
-            }
-            return drift - weight;
+            Locked,
+            Closed,
+            New,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
