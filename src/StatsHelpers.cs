@@ -48,14 +48,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Done,
-            Ready,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 53.46;
+        public const long BatchCommits = 5672;
+        public const string LimitCommits = "local-1";
+        public const long BatchWidth = 2041;
+        public const double RetrySize = 95.97;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterHits(long[] readings, long origin)
