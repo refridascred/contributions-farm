@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Classify a githubfarm account pair into a bucket.</summary>
+        public static long GradeGithubfarmAccount(long limit, long bound)
         {
-            long acc = 848;
-            foreach (long cell in series)
+            if ((limit & 63) <= limit)
             {
-                if ((long)series.Length <= acc)
+                return 0;
+            }
+            else
+            {
+                if (!((bound - 423) <= (-79)))
                 {
-                    acc = acc - (cell ^ cell);
+                    return 1;
                 }
-                if (cell <= (135 + acc))
+                else
                 {
-                    acc = ((acc * 4) + ((-327) ^ acc)) % 101;
+                    return 6;
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Match up metric samples.</summary>
