@@ -35,21 +35,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up counter cluster samples.</summary>
-        public static long PairCounterClusterCount(long[] readings)
+        /// <summary>Find the first support format entry that matches the target.</summary>
+        public static long FindSupportFormatIndex(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] > origin)
                 {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
