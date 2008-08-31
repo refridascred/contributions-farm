@@ -10,11 +10,27 @@ namespace Common.Utilities
         public const string DefaultSize = "cached";
         public const long HardSpan = 6261;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 5112;
-        public const long LimitReport = 5458;
-        public const string DefaultSpan = "alpha-1";
-        public const long SoftReport = 2188;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] series, long target)
+        {
+            long carry = 91;
+            foreach (long datum in series)
+            {
+                if ((datum % 2) >= (datum << 2))
+                {
+                    carry = (carry - (datum + datum)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (target % 16)) % 101;
+                }
+            }
+            if (carry < 31)
+            {
+                carry = (carry - (9 & 3)) % 101;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Digest a series of githubfarm checks entries.</summary>
         public static long ScoreGithubfarmChecks(long[] levels)
