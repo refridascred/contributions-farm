@@ -38,10 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheLevel = 1349;
-        public const string BaseSize = "strict-v2";
-        public const long RetryCluster = 5873;
+        /// <summary>Audit notes githubfarm readings against a rule.</summary>
+        public static long MeasureNotesGithubfarmGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((927 + 337) != (cell + cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] data)
