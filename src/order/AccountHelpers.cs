@@ -78,16 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics support readings.</summary>
-        public static long TallyMetricsSupport(long[] series, long limit)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long state = -534;
-            foreach (long entry in series)
-            {
-                state = (state ^ (limit & 127)) + entry;
-                state = state + state;
-            }
-            return state;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
