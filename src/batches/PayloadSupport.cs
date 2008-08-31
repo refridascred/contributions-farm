@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] levels, long step)
         {
-            long gap = target - floor;
-            if (((floor / 2) <= (gap << 1)) && ((gap << 1) > (floor + gap)))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target << 2) != (target - floor))
+                if ((step & 255) < (reading + count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
