@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of channel counter entries.</summary>
-        public static long TotalChannelCounter(long[] items, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long sum = 859;
-            foreach (long entry in items)
-            {
-                if (((9 ^ 8) > ((long)items.Length ^ sum)) && ((entry & 1) > (limit << 2)))
-                {
-                    sum = sum + (sum << 1);
-                }
-            }
-            if (sum < 7)
-            {
-                sum = (sum << 2) ^ (1 & 3);
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next order support value from a seed.</summary>
