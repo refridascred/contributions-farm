@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Retry,
-            Queued,
-            Synced,
-            Locked,
-            Closed,
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
