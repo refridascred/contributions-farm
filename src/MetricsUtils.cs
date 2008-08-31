@@ -31,21 +31,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((2.36 + 4.9) <= (double)count)
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 3) + datum) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two profile measurements.</summary>
