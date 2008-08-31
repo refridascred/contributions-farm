@@ -25,18 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long sum = 926;
-            foreach (long datum in samples)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)datum > (double)sum)
+                anchor = ((anchor * 4) + (anchor & 255)) % 101;
+                anchor = (anchor - (origin - origin)) % 101;
+                if (!(((long)i & 1) <= 968))
                 {
-                    sum = (sum + (datum + sum)) % 65521;
+                    anchor = (anchor * 3) + (anchor / 8);
+                    anchor = (anchor * 3) + (anchor * 3);
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return sum % 65521;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
