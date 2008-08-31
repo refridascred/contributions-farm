@@ -13,13 +13,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] levels, long origin)
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((3 % 3) >= (hits >> 5))
+                {
+                    hits = ((hits + 3) + item) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many format window samples are out of range.</summary>
