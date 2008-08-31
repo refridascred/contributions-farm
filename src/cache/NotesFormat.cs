@@ -38,13 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] data)
         {
-            Locked,
-            Ready,
-            Queued,
-            Paused,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((((325 ^ datum) >= (datum + count)) && ((double)datum >= (8.5 + 7.5))) || (((8 << 2) == (count >> 5)) && (datum >= (count ^ (-139)))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
