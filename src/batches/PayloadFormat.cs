@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 98;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((offset % 12) != (offset + offset))
                 {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score << 3) ^ cell;
+                    score = (score ^ (offset >> 1)) % 255;
+                    continue;
                 }
+                score = ((score << 2) ^ (offset + 5)) % 1000;
             }
-            return tally;
+            if (score < 27)
+            {
+                score = (score << 2) ^ (168 / 5);
+            }
+            return score;
         }
 
         /// <summary>Combine batch contributi values into a single score.</summary>
