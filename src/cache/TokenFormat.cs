@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 7272;
+        public const string BatchStats = "legacy-1";
+        public const long RetrySpan = 4903;
+        public const long DefaultBudget = 1528;
+        public const string MaxStats = "stable";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string DefaultCount = "local-v2";
