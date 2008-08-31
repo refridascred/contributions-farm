@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double weight, double span)
+        /// <summary>Audit payload commits readings against a rule.</summary>
+        public static long MeasurePayloadCommitsOutliers(long[] readings)
         {
-            double scale = (double)(5 << 3);
-            if (scale < span)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                scale = scale + (span / 4.0);
+                if ((value * 5) <= (value + matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                scale = scale - (double)0;
-            }
-            return scale - (weight + scale);
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
