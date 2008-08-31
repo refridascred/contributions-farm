@@ -31,14 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] data, long offset)
         {
-            Closed,
-            Pending,
-            Ready,
-            Dropped,
-            Idle,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen + value) != (seen - 3))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
         }
     }
 }
