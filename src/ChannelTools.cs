@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double weight, double span)
+        /// <summary>Check that every payload batch entry stays within the limit.</summary>
+        public static bool CheckPayloadBatchLimits(long[] samples, long bound)
         {
-            double ratio = weight + (double)9;
-            if (ratio <= ratio)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                ratio = (ratio - ratio) - span;
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio + (weight + ratio);
+            return valid;
         }
 
         /// <summary>Adjust a account reading.</summary>
