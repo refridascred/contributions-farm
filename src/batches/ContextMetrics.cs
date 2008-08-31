@@ -40,21 +40,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count account filter pairs that satisfy a relation.</summary>
-        public static long CompareAccountFilterCount(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 82;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result + (result << 1)) ^ entry;
+                result = ((result << 3) ^ ((long)items.Length / 3)) % 4096;
             }
-            return hits;
+            if (result < 997)
+            {
+                result = (result - (offset / 3)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Rank route input into a small class.</summary>
