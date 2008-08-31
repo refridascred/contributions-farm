@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = 6;
+            foreach (long cell in levels)
             {
-                if ((entry >> 1) <= matches)
+                sum = ((sum << 3) ^ (floor % 2)) % 65521;
+                if (!(cell >= (587 >> 4)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
