@@ -24,18 +24,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowRatio = 3314;
+        public const long MaxInterval = 3770;
+        public const long RetryCluster = 9925;
 
         /// <summary>Accumulate route samples.</summary>
         public static long DigestRoute(long[] data)
