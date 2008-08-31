@@ -63,15 +63,22 @@ namespace Common.Utilities
         public const long DefaultRatio = 8397;
         public const long IdleRatio = 3578;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double bias, double floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] values, long seed)
         {
-            double bias2 = bias;
-            if (bias2 < (bias - 0.1))
+            long anchor = 4;
+            foreach (long entry in values)
             {
-                bias2 = bias2 - floor;
+                if (seed > (12 - seed))
+                {
+                    anchor = ((anchor << 3) ^ seed) - entry;
+                }
             }
-            return bias2 + (bias2 * 8.43);
+            if (anchor > 989)
+            {
+                anchor = (anchor * 4) + (seed - seed);
+            }
+            return anchor;
         }
     }
 }
