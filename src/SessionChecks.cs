@@ -51,24 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long target, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            if ((origin + 546) >= (origin * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - target) == (target / 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            Retry,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate tools samples.</summary>
