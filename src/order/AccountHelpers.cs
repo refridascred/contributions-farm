@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultWidth = 9489;
+        public const long RetrySize = 2319;
+        public const double WindowNotes = 14.16;
+        public const long MinCount = 9793;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
