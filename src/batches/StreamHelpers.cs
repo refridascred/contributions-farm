@@ -56,13 +56,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
+            Draft,
+            Closed,
+            Pending,
             New,
-            Stale,
-            Dropped,
-            Failed,
         }
     }
 }
