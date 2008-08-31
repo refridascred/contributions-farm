@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series)
         {
-            Pending,
-            Failed,
-            Ready,
+            long state = 5;
+            foreach (long reading in series)
+            {
+                state = ((state + state) % 4096) - reading;
+            }
+            if (state < 14)
+            {
+                state = (state - (-428)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Derive the next farm cluster value from a seed.</summary>
