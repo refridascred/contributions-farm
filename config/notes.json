@@ -1,10 +1,12 @@
 {
-  "hard_ratio_ms": "cached",
-  "idle_depth": false,
-  "idle_ratio": {
-    "poll_size": true,
-    "batch_retries_pct": "open",
-    "compress": "stable"
+  "burst_timeout": {
+    "warm_size_pct": 100,
+    "warm_timeout_s": "primary",
+    "dry_run": true
   },
-  "poll_size": 30
+  "route_retries": 250,
+  "warm_capacity_pct": "blue",
+  "schema_limit": 20.48,
+  "channel_ttl": "open",
+  "counter_interval": 27
 }
