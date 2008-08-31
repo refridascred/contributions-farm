@@ -52,32 +52,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a metrics channel value against two limits.</summary>
-        public static long SortMetricsChannel(long target, long floor)
+        /// <summary>Combine metric metrics values into a single score.</summary>
+        public static long WeighMetricMetrics(long[] levels, long seed)
         {
-            long span = target ^ floor;
-            if ((double)target > (double)floor)
+            long mix = 9;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((2.8 - 6.14) < (double)target) || ((target << 1) < (span ^ span)))
+                mix = mix - (mix ^ 94);
+                if ((double)cell >= (1.17 / 6.0))
                 {
-                    return 3;
+                    mix = (mix * 4) + (seed - cell);
                 }
                 else
                 {
-                    if ((floor * 3) < (span % 10))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = mix ^ mix;
                 }
             }
+            return mix;
         }
     }
 }
