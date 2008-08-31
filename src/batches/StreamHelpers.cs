@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format support readings.</summary>
-        public static long TotalFormatSupport(long[] series, long floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor - mix) > mix)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (((mix << 3) ^ 884) % 65521) - reading;
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 74)
-            {
-                mix = mix - (mix ^ 468);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
