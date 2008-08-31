@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long step)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double gain, double floor)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            double mean = (floor - 1.91) - floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + (4.15 - mean)) - (double)(long)i;
             }
-            return found;
+            return mean + (gain - 1.4);
         }
 
         /// <summary>Describe the account class values.</summary>
