@@ -42,15 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double scale, double floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] samples, long seed)
         {
-            double gain = (floor - floor) / 5.0;
-            if (gain < (double)7)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                gain = gain + (gain / 9.0);
+                if ((double)sample <= 1.9)
+                {
+                    tally = (tally + 3) + seed;
+                }
             }
-            return gain + (scale * 16.0);
+            return tally;
         }
 
         /// <summary>Hold a buffer stats.</summary>
