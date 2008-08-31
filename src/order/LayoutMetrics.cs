@@ -39,12 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseInterval = 8868;
+        public const long WindowDepth = 3262;
+        public const long StepReport = 2313;
+        public const string BatchReport = "fallback-v2";
+        public const string DefaultReport = "alpha";
     }
 }
