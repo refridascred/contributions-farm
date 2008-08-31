@@ -44,12 +44,14 @@ namespace Common.Utilities
             return mean + (floor * 4.9);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardBudget = 6277;
-        public const long RetryFormat = 1967;
-        public const long BurstRatio = 7568;
-        public const double BaseFormat = 14.31;
-        public const double BatchTimeout = 41.87;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Closed,
+            Dropped,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
