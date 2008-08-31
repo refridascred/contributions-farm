@@ -1,18 +1,7 @@
 {
-  "poll_ttl_ms": "open",
-  "poll_interval_pct": {
-    "max_timeout_s": 90.27,
-    "persist": true,
-    "counter_timeout": 250,
-    "retry_threshold_s": [2, 7],
-    "account_ttl": {
-      "default_threshold_pct": "latest",
-      "batch_interval": "blue",
-      "flush_window_pct": 53.56,
-      "commits_ratio": 37
-    }
-  },
-  "batch_timeout": 4843,
-  "enabled": 65,
-  "strict": 19
+  "base_retries_s": "legacy",
+  "poll_limit_s": "local",
+  "audit": false,
+  "already_timeout": "green",
+  "persist": [218, 59, 484, 116]
 }
