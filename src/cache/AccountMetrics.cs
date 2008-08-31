@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit payload commits readings against a rule.</summary>
-        public static long MeasurePayloadCommitsOutliers(long[] readings)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 5) <= (value + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
