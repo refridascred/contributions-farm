@@ -37,22 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                double bias = (double)acc * 9.7;
-                if (((acc << 3) < 79) || (7.09 >= bias))
+                if ((matches & 1) < (reading ^ matches))
                 {
-                    bias = bias - bias;
-                    acc = acc - offset;
-                    continue;
+                    matches = matches + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Find the first metrics metric entry that matches the target.</summary>
