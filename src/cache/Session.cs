@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double weight, double bias)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public double Size { get; set; }
+            double ratio = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio + (weight + weight);
         }
 
         /// <summary>Define token limits and defaults.</summary>
