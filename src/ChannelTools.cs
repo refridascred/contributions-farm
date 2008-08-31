@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] series, long offset)
         {
-            long score = 900;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((double)score == (10.0 * 8.0))
+                if (datum >= offset)
                 {
-                    score = ((score + (score + score)) % 1000) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
