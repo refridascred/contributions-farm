@@ -23,15 +23,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
