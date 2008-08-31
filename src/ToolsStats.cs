@@ -44,22 +44,12 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Match up token metrics samples.</summary>
-        public static long OverlapTokenMetricsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8147;
+        public const string WindowFilter = "primary-v2";
+        public const string WindowRatio = "standard";
+        public const double BatchFilter = 7.62;
+        public const long DefaultBudget = 7706;
 
         /// <summary>Count the layout route entries that pass the check.</summary>
         public static long AuditLayoutRouteOutliers(long[] levels)
