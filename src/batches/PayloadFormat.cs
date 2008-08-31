@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batch contributi values into a single score.</summary>
-        public static long ScoreBatchContributi(long[] series, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] items, long offset)
         {
-            long anchor = 69;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                anchor = ((((anchor * 2) + (82 ^ anchor)) % 4096) - item) - seed;
+                if (datum <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor > 2)
-            {
-                anchor = ((anchor << 2) ^ (anchor % 64)) % 1000;
-            }
-            return anchor % 4096;
+            return ok;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
