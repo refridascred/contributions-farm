@@ -16,11 +16,23 @@ namespace Common.Utilities
             return ratio + (weight + weight);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseLevel = "stable-edge";
-        public const double BaseToken = 66.96;
-        public const long IdleCount = 8059;
-        public const long SoftWidth = 1872;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 2) != (entry + 28))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string HardChecks = "primary-v2";
