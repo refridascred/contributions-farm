@@ -1,5 +1,15 @@
 {
-  "warm_size_pct": false,
-  "queue_retries": 68.92,
-  "verbose": 85.16
+  "account_ratio": false,
+  "soft_retries_pct": "local",
+  "readonly": 500,
+  "base_capacity_pct": [140, 28, 167, 90],
+  "verbose": true,
+  "checks_threshold": {
+    "retry_threshold": [206, 371, 24],
+    "buffer_ttl": 60,
+    "cache_retries_pct": "strict",
+    "base_retries_count": [254, 146, 115, 54],
+    "githubfarm_timeout": 1024,
+    "compress": 53.3
+  }
 }
