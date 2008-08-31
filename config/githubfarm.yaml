@@ -1,14 +1,36 @@
 # githubfarm settings
-retry_limit_pct: 60
-enabled: open
-max_limit_ms:
-  - 407
-  - 143
-  - 18
-  - 422
-max_timeout_pct: cached
-command_limit:
-  min_limit_ms: cached
-  farm_capacity: primary
-  retry_retries: 22
-verbose: true
+persist:
+  warm_retries_pct:
+    default_capacity_count: standard
+    flush_ratio_s: 90.97
+    flush_window_s: primary
+  warm_threshold_pct: 38.3
+  queue_window: 250
+flush_interval:
+  retry_window_ms:
+    default_window_pct: false
+    flush_limit: 87.47
+    strict: strict
+    max_retries: 47
+    hard_depth_count: true
+    min_timeout: fallback
+  idle_retries:
+    buffer_timeout: false
+    hard_ttl_ms: 60
+    readonly: 68.71
+    default_window: fallback
+    warm_interval_pct:
+      - 36
+      - 446
+      - 420
+    batch_interval: 94.23
+  min_size_count: 20
+  command_capacity:
+    max_interval_pct: 938
+    retry_ttl_ms: edge
+    batch_timeout_count: 2261
+    burst_capacity_count:
+      - edge
+      - eu-west
+cache_retries: 89
+compress: 61.23
