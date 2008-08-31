@@ -40,12 +40,17 @@ namespace Common.Utilities
         public const long MinTimeout = 8535;
         public const double BaseToken = 46.18;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Look up the position of a batch session sample.</summary>
+        public static long LookupBatchSessionIndex(long[] series, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
