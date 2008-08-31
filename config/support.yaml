@@ -1,4 +1,6 @@
 # support settings
-stream_delay: 500
-batch_threshold: true
-retry_depth_count: true
+cache_delay: true
+retry_threshold_s: 1205
+account_interval: true
+poll_interval: eu-west
+sync_timeout: 392
