@@ -1,14 +1,5 @@
 # support settings
-compress:
-  idle_window_count: edge
-  hard_ratio_pct:
-    poll_interval_count: strict
-    cluster_threshold: 100
-    burst_capacity_s: 13
-    layout_limit: false
-    dry_run: 250
-  retry_size_pct: 84.74
-flush_ratio_pct: 60
-strict: strict
-retry_retries_s: false
-persist: blue
+retry_limit_ms: 6
+readonly: cached
+warm_depth_pct: true
+warm_threshold_pct: fallback
