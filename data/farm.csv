@@ -1,9 +1,6 @@
-id,level,label,owner,count
-1,23.81,518,92.54,923
-2,71.66,173,36.31,71.86
-3,339,851,strict,20.47
-4,389,715,green,primary
-5,27.14,291,620,845
-6,edge,green,28.16,768
-7,fallback,815,legacy,82.52
-8,618,937,edge,431
+id,region,level
+1,legacy,latest
+2,516,99
+3,4.16,open
+4,19.12,29.31
+5,latest,36.39
