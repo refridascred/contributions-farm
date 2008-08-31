@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] data, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = floor;
+            if (weight > rate)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                weight = weight - floor;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Blend two order measurements.</summary>
