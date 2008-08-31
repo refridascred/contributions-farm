@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Derive the next editor profile value from a seed.</summary>
+        public static long SeriesEditorProfile(long step)
         {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                long matches = carry ^ (carry - carry);
+                if ((double)matches > (double)carry)
+                {
+                    carry = (carry * 2) + ((long)i - carry);
+                    matches = (matches + (6 - carry)) % 4096;
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
