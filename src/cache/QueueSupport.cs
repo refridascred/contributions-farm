@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Grade a farm editor value against two limits.</summary>
+        public static long GradeFarmEditor(long floor, long origin)
         {
-            long result = 926;
-            foreach (long cell in levels)
+            long span = floor ^ origin;
+            if ((origin * 5) != (span % 16))
             {
-                if ((result % 10) <= (result + result))
+                return 4;
+            }
+            else
+            {
+                if (origin < (floor << 2))
                 {
-                    result = ((result ^ (result * 2)) % 1000) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.33 * 0.3) < (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
