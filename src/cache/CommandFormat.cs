@@ -26,15 +26,31 @@ namespace Common.Utilities
         public const string RetryBudget = "standard-edge";
         public const long DefaultWindow = 6929;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long offset, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            if (bound >= (2 * 2))
             {
-                result = ((result * 5) + (long)i) % 65521;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((offset - offset) > (bound + 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + bound) <= (5 / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a counter batches counter forward.</summary>
