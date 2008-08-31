@@ -22,17 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cache farm entry that matches the target.</summary>
-        public static long FindCacheFarmIndex(long[] data, long target)
+        /// <summary>Count filter editor pairs that satisfy a relation.</summary>
+        public static long OverlapFilterEditorCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] == target) && ((data[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a commits filter reading.</summary>
