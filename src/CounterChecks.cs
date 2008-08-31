@@ -67,19 +67,39 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5722;
         public const long CacheSpan = 2302;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long offset, long offset2)
         {
-            double gain = bias;
-            if (gain <= (weight * 5.0))
+            long gap = offset ^ offset2;
+            if ((gap - gap) >= offset2)
             {
-                gain = gain + gain;
+                return 4;
             }
             else
             {
-                gain = gain + (weight * 13.0);
+                if ((double)offset2 >= (8.0 / 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset < (6.9 / 7.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset2 >> 3) < (806 + offset2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return gain + (weight + bias);
         }
     }
 }
