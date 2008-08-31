@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 7800;
         public const string WindowGithubfarm = "local-v2";
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long mix = 4;
-            foreach (long cell in series)
-            {
-                if ((double)cell < 7.0)
-                {
-                    mix = (mix ^ (mix << 3)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - (cell >> 3)) % 65521;
-                }
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Grade a account stats value against two limits.</summary>
