@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long DefaultBudget = 1528;
         public const string MaxStats = "stable";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples, long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long score = 28;
-            foreach (long entry in samples)
-            {
-                if ((35 >> 5) < score)
-                {
-                    score = ((score + entry) % 4096) - origin;
-                }
-            }
-            return score;
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
