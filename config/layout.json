@@ -1,12 +1,6 @@
 {
-  "report_ratio": 22,
-  "retry_ttl": true,
-  "batch_window_s": true,
-  "batch_window": true,
-  "verbose": ["latest", "open"],
-  "cache_depth_pct": {
-    "base_delay": 26.09,
-    "burst_ttl_count": false,
-    "flush_delay_count": 9131
-  }
+  "warm_retries": false,
+  "hard_ttl_count": true,
+  "min_size_count": 9737,
+  "metric_capacity": 100
 }
