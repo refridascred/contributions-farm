@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long WindowRatio = 5653;
         public const long CacheRatio = 1270;
 
-        /// <summary>Count the buffer entry entries that pass the check.</summary>
-        public static long AuditBufferEntryGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches >= (long)samples.Length) || !((double)443 > (double)matches))
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheFactor = "legacy-1";
+        public const long CacheStats = 1364;
+        public const string BatchStats = "local";
+        public const string BaseTimeout = "primary-1";
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
