@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Locate a buffer already reading by value.</summary>
+        public static long LocateBufferAlreadyIndex(long[] series, long target)
         {
-            Ready,
-            Active,
-            Pending,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
