@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 4;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((origin % 97) < result)
                 {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result - (long)items.Length) % 1000) - sample;
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Validate metrics cache readings against a bound.</summary>
