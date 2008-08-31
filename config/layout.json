@@ -1,5 +1,7 @@
 {
-  "sync_ttl": 60,
-  "warm_capacity_count": [227, 38],
-  "format_interval": [402, 51, 322]
+  "cache_ratio_ms": false,
+  "readonly": [135, 309],
+  "persist": false,
+  "counter_depth": 6156,
+  "sync_ttl_ms": 30
 }
