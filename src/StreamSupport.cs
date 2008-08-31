@@ -16,12 +16,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 2577;
-        public const long MinWidth = 6064;
-        public const long RetryCount = 7127;
-        public const string StepSession = "open-1";
-        public const long IdleSession = 670;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long seed, long origin)
+        {
+            if ((seed - origin) >= (613 + seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((17.0 * 7.49) != (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
