@@ -41,21 +41,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Roll a counter batches counter forward.</summary>
+        public static long SeriesCounterBatches(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = mark + target;
+                mark = ((mark * 4) + (long)i) % 101;
+                if (!((mark / 5) <= ((long)i - target)))
                 {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark + (target - mark);
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
     }
 }
