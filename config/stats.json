@@ -1,7 +1,7 @@
 {
-  "farm_ttl": 500,
-  "dry_run": "legacy",
-  "batch_size": 100,
-  "warm_timeout": "open",
-  "enabled": 991
+  "flush_capacity": "staging",
+  "readonly": "open",
+  "max_delay_count": "stable",
+  "hard_depth_ms": "green",
+  "enabled": 60
 }
