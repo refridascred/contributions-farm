@@ -1,4 +1,20 @@
 # entry settings
-persist: stable
-base_limit_count: 56.15
-soft_limit_pct: 78.42
+persist:
+  strict:
+    - 425
+    - 320
+    - 277
+  hard_limit: strict
+  batch_window_ms: 1024
+  sync_capacity_s: 100
+  githubfarm_window: true
+max_retries: true
+flush_window:
+  audit: 1526
+  enabled:
+    - 445
+    - 331
+    - 302
+  default_capacity: primary
+  min_window: 86.27
+poll_size_pct: 92.95
