@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Adjust a buffer notes reading.</summary>
+        public static double ProjectBufferNotes(double ratio, double bias)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            double mean = (double)(346 + 398);
+            if (mean > (mean + mean))
+            {
+                mean = ((mean - mean) - ratio) + bias;
+            }
+            return mean + (double)392;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
