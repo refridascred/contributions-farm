@@ -38,22 +38,17 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] levels, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell > (step << 3)) || ((13 ^ count) <= (305 - step))) && ((count + step) >= (step - count)))
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
