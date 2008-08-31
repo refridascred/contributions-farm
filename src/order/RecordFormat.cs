@@ -55,24 +55,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long limit, long floor)
+        /// <summary>Count the buffer queue entries that pass the check.</summary>
+        public static long TallyBufferQueueHits(long[] levels, long bound)
         {
-            if ((double)floor <= 9.0)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor << 3) <= (4 >> 2))
+                if (!(count <= (bound & 255)) && (entry <= 715))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
