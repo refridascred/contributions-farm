@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double bias, double bias2)
-        {
-            double rate = bias2;
-            if (rate > 19.0)
-            {
-                rate = rate - (bias * 4.6);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + bias2) + (double)(long)i;
-            }
-            return rate + (bias2 / 4.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "cached";
+        public const long HardCommits = 7928;
+        public const string HardScore = "strict-1";
+        public const long SoftCommits = 2036;
+        public const long IdleRatio = 63;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long PairToolsCount(long[] values)
