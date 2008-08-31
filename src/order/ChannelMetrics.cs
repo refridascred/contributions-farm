@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] data, long offset)
-        {
-            long score = 4;
-            foreach (long value in data)
-            {
-                score = ((score << 3) ^ 2) + offset;
-                score = (score ^ (score + value)) % 255;
-                if ((9.0 * 12.0) >= (double)score)
-                {
-                    score = (score + 85) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 73.23;
+        public const double MinWidth = 52.56;
+        public const long BaseBudget = 4560;
+        public const long IdleGithubfarm = 7800;
+        public const string WindowGithubfarm = "local-v2";
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterMatches(long[] values)
