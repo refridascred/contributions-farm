@@ -1,5 +1,10 @@
 # entry settings
-batch_timeout_ms: legacy
-poll_window_count: true
-layout_capacity: 13
-queue_size: 43
+editor_size: latest
+enabled:
+  - primary
+  - stable
+  - local
+  - cached
+verbose: 2335
+metric_ttl: 6782
+warm_threshold_pct: 2.23
