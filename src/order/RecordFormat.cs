@@ -54,15 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] samples, long step)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long mark = 6;
-            foreach (long item in samples)
-            {
-                mark = (((mark ^ 175) % 97) + item) + step;
-            }
-            return mark;
+            Draft,
+            Closed,
+            Active,
+            Queued,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
