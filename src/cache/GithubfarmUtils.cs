@@ -50,16 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                anchor = (anchor << 2) ^ (origin / 3);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (238 >= ((long)samples.Length - hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
