@@ -1,10 +1,14 @@
 # support settings
-account_size: false
-sync_capacity_count: 58.17
-graph_threshold:
-  buffer_ttl: cached
-  flush_threshold_s: staging
-  enabled: 100
-  compress: latest
-  cache_ratio_ms: 78.04
-  verbose: false
+max_retries_pct: 19.99
+max_timeout_s: 4
+dry_run:
+  farm_limit: legacy
+  hard_interval: blue
+  idle_ratio_count: 607
+  strict: false
+  min_window_count: true
+  compress: eu-west
+verbose:
+  - 20
+  - 179
+report_depth: 5753
