@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] >= bound)
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the route status values.</summary>
