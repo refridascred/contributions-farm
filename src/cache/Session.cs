@@ -19,19 +19,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate metrics cache readings against a bound.</summary>
-        public static bool GuardMetricsCacheBounds(long[] samples, long target)
+        /// <summary>Accumulate window already samples.</summary>
+        public static long TotalWindowAlready(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long sum = 802;
+            foreach (long datum in levels)
             {
-                if (datum > target)
+                if ((1.02 / 6.0) == (double)sum)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum - (91 & 31)) ^ datum;
                 }
             }
-            return flag;
+            if (sum < 288)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
