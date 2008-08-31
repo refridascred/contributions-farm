@@ -39,12 +39,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            New,
+            Stale,
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the editor phase values.</summary>
