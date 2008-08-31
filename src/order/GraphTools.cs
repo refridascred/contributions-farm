@@ -49,19 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] data, long floor)
+        /// <summary>Match up order filter samples.</summary>
+        public static long MatchOrderFilterCount(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the context kind values.</summary>
