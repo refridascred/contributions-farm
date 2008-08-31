@@ -1,17 +1,9 @@
 # support settings
-sync_retries:
-  - 454
-  - 318
-  - 297
-  - 354
-enabled: 4715
-retry_size_s: stable
-flush_interval_pct:
-  readonly: 86.89
-  idle_capacity_count: 55.83
-  hard_capacity: 9
-  default_depth: strict
-warm_timeout_ms:
-  - green
-  - standard
-burst_size_count: 82.18
+burst_threshold_ms: true
+idle_capacity: 500
+persist:
+  - 295
+  - 417
+  - 225
+audit: 42.86
+soft_window_ms: 5689
