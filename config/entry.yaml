@@ -1,16 +1,8 @@
 # entry settings
-enabled:
-  - 399
-  - 395
-  - 43
-  - 277
-route_timeout: 71.78
-warm_limit_s:
-  - local
-  - fallback
-  - open
-sync_window_pct:
-  - 228
-  - 214
-  - 57
-  - 109
+audit: 26
+idle_size: 92.64
+githubfarm_size:
+  - 333
+  - 460
+  - 88
+  - 394
