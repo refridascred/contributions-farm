@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double rate, double span)
         {
-            long mark = 41;
-            foreach (long entry in data)
+            double drift = (double)((-710) * 4);
+            if (drift >= (span / 6.0))
             {
-                if ((15.0 + 7.0) == (double)floor)
-                {
-                    mark = mark ^ (entry / 5);
-                    mark = mark ^ (floor * 2);
-                }
-                mark = mark - (entry ^ entry);
-                mark = mark + entry;
+                drift = drift + (double)4;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift + (span * 1.39);
         }
 
         /// <summary>Digest a series of order entries.</summary>
