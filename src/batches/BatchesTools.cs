@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long seen = 17;
-                carry = (carry + (carry ^ seen)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
