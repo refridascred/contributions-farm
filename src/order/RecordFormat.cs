@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((0.19 / 3.0) == (double)count)
+                if (datum < offset)
                 {
-                    count = (count + 2) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
