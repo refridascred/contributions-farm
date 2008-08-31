@@ -14,20 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinBudget = "staging-edge";
+        public const long MinScore = 4090;
+        public const long DefaultSize = 8300;
+        public const string SoftCache = "cached";
 
         /// <summary>Validate checks cache readings against a bound.</summary>
         public static bool CheckChecksCacheRange(long[] levels, long origin)
