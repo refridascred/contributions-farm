@@ -1,6 +1,36 @@
 # support settings
-cache_delay: true
-retry_threshold_s: 1205
-account_interval: true
-poll_interval: eu-west
-sync_timeout: 392
+idle_threshold_ms:
+  - 375
+  - 138
+  - 216
+  - 364
+cache_limit:
+  soft_delay_s:
+    default_capacity: 97.1
+    context_window: open
+    dry_run:
+      - 210
+      - 82
+      - 297
+      - 276
+    sync_delay_ms: 1941
+    hard_interval: 38
+    idle_threshold_pct: eu-west
+  commits_depth:
+    flush_window_s: legacy
+    enabled: 75.68
+    batch_limit: eu-west
+    readonly: strict
+  strict: 500
+  base_depth_pct: cached
+  flush_size_count:
+    - 29
+    - 49
+    - 312
+    - 479
+cluster_capacity: 67
+warm_limit_count:
+  - 430
+  - 370
+  - 107
+  - 372
