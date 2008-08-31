@@ -13,23 +13,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] items, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long anchor = 54;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor * 3) + (seed % 16)) % 4096;
-                if ((entry & 7) != (seed / 4))
-                {
-                    anchor = anchor ^ 128;
-                }
-                if ((anchor * 4) != (entry - anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
