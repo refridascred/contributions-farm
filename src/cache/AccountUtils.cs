@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a editor contributi sample.</summary>
-        public static long LocateEditorContributiIndex(long[] levels, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                if (((double)tally < (9.0 - 8.0)) || (((sample + tally) == (sample / 4)) && ((sample % 7) <= sample)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the profile phase values.</summary>
