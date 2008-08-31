@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 6863;
-        public const long DefaultCache = 2192;
-        public const long MinSize = 9259;
-        public const long BatchTimeout = 8630;
-        public const string RetryTimeout = "open-1";
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 670;
