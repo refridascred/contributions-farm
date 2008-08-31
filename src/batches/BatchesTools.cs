@@ -39,17 +39,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first farm counter entry that matches the target.</summary>
-        public static long FindFarmCounterIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultTimeout = 2838;
+        public const double CacheLevel = 9.39;
+        public const long SoftFactor = 2013;
     }
 }
