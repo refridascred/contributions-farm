@@ -13,13 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] items, long limit)
         {
-            Synced,
-            Pending,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((-644) >= (cell + count))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a order account pair into a bucket.</summary>
