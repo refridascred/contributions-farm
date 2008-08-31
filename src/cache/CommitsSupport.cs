@@ -83,18 +83,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] levels, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (!((double)seen <= (3.8 + 7.5)))
+                if (((double)datum != (8.5 / 3.0)) && ((18 / 8) == (hits % 5)))
                 {
-                    seen = ((seen + 3) ^ item) - limit;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
