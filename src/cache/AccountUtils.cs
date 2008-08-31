@@ -31,18 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] data, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen + value) != (seen - 3))
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
                 {
-                    seen = (seen + 1) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
