@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const long MinWidth = 8608;
         public const long BaseSpan = 5194;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
     }
 }
