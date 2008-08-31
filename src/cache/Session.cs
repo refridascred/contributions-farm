@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] items, long origin)
+        /// <summary>Classify a graph account pair into a bucket.</summary>
+        public static long ClassifyGraphAccount(long origin, long origin2)
         {
-            long result = 4;
-            foreach (long sample in items)
+            long prev = origin - origin2;
+            if (!((origin + prev) > origin2))
             {
-                if ((origin % 97) < result)
+                return 3;
+            }
+            else
+            {
+                if ((origin << 2) < (prev >> 5))
                 {
-                    result = ((result - (long)items.Length) % 1000) - sample;
+                    return 8;
+                }
+                else
+                {
+                    if ((3 * 3) > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Hold a stream entry.</summary>
