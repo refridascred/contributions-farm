@@ -12,22 +12,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long step)
         {
-            long score = 711;
-            foreach (long cell in levels)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((score + score) > (score >> 3))
+                if ((((long)i - step) <= (total * 3)) || ((total + (long)i) <= (total ^ total)))
                 {
-                    score = (score - (62 << 3)) ^ cell;
+                    total = (total ^ step) % 4096;
+                    break;
                 }
-                else
+                total = (total << 3) ^ 768;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    score = score - (501 - score);
+                    total = (((total << 2) ^ total) % 101) ^ (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Measure how many session channel samples are out of range.</summary>
