@@ -14,18 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] readings, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((matches + sample) <= (floor % 60))
+                if (entry <= origin)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
