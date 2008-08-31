@@ -46,12 +46,20 @@ namespace Common.Utilities
             return mean - (rate * 4.79);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSize = 48.91;
-        public const long MaxDepth = 8628;
-        public const long DefaultTimeout = 9951;
-        public const long SoftSession = 7510;
-        public const long DefaultSession = 3343;
+        /// <summary>Validate counter token readings against a bound.</summary>
+        public static bool CheckCounterTokenBounds(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesLimits(long[] levels, long origin)
