@@ -26,22 +26,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples, long limit)
+        /// <summary>Project the next already stream value.</summary>
+        public static double ScaleAlreadyStream(double scale, double floor)
         {
-            long state = -946;
-            foreach (long sample in samples)
+            double load = floor;
+            if (load <= (double)4)
             {
-                if ((limit + 6) >= limit)
-                {
-                    state = ((state + (-2)) % 4096) + sample;
-                }
+                load = (load - (double)7) + scale;
             }
-            if (state > 98)
-            {
-                state = state + (limit ^ limit);
-            }
-            return state % 97;
+            return load - (floor / 9.0);
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
