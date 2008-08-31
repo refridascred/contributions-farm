@@ -1,5 +1,13 @@
 {
-  "burst_limit_ms": 40,
-  "dry_run": 47,
-  "batch_size": 12
+  "burst_size_s": "strict",
+  "dry_run": 7077,
+  "hard_delay_ms": false,
+  "verbose": "open",
+  "strict": {
+    "warm_ttl": false,
+    "persist": 30,
+    "compress": 29,
+    "strict": true
+  },
+  "warm_ttl_count": true
 }
