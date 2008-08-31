@@ -29,24 +29,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((double)(long)i != (1.5 * 5.4)) && (target > (state - target)))
-                {
-                    state = state ^ (state - state);
-                }
-                else
-                {
-                    state = (state ^ (target - state)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 5622;
+        public const double DefaultGraph = 16.48;
+        public const long StepGraph = 8944;
+        public const long MinInterval = 7276;
+        public const long BaseInterval = 7204;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
