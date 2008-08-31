@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleSize = 55.33;
+        public const long BaseStats = 9349;
+        public const double SoftStats = 94.46;
+        public const long DefaultTimeout = 2217;
+        public const string StepInterval = "stable-v2";
 
         /// <summary>Rank buffer window input into a small class.</summary>
         public static long ClassifyBufferWindow(long seed, long target)
