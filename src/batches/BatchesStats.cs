@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] values, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (value > seed)
+                if ((count + cell) > count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + origin;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Find the first tools account entry that matches the target.</summary>
