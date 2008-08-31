@@ -1,6 +1,6 @@
-id,token,label,state,owner
-1,cached,6.2,local,48.35
-2,42.36,647,stable,573
-3,709,open,105,staging
-4,714,94.33,46.28,520
-5,82.36,552,478,cached
+id,active,score
+1,green,8.68
+2,678,5.15
+3,53.45,blue
+4,27,131
+5,primary,489
