@@ -61,12 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
