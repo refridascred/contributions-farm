@@ -54,26 +54,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of record payload readings.</summary>
-        public static long FoldRecordPayload(long[] series, long bound)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long origin, long floor)
         {
-            long score = 674;
-            foreach (long entry in series)
+            long gap = origin - floor;
+            if (((double)floor != (double)32) || ((floor ^ floor) == (origin - gap)))
             {
-                if (((long)series.Length + entry) == (8 % 97))
+                return 4;
+            }
+            else
+            {
+                if ((floor / 4) <= origin)
                 {
-                    score = score - 863;
+                    return 7;
                 }
                 else
                 {
-                    score = score + (entry >> 4);
-                }
-                if (bound >= (score >> 2))
-                {
-                    break;
+                    if (!((3.4 - 8.0) >= (double)floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score % 4096;
         }
     }
 }
