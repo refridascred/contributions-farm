@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowLevel = 4780;
+        public const long LimitProfile = 2975;
+        public const long BurstCount = 3900;
+        public const long MinProfile = 8869;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] data, long step)
