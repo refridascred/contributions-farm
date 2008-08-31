@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ratio2 - (double)71;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Validate layout schema readings against a bound.</summary>
+        public static bool GuardLayoutSchemaLimits(long[] items, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (value > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
