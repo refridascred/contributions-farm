@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double gain, double span)
         {
-            long total = 64;
-            foreach (long datum in values)
+            double scale = (4.0 * 6.3) - (double)486;
+            if (scale >= (double)8)
             {
-                total = (total - total) % 255;
-                if ((27 + datum) == (total & 63))
-                {
-                    total = (total ^ total) % 4096;
-                    break;
-                }
-                if ((57 + total) != (total * 4))
-                {
-                    total = (total + (datum + 332)) % 101;
-                }
-                else
-                {
-                    total = (total ^ (datum - datum)) % 255;
-                }
+                scale = scale + 4.36;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale + span)) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
