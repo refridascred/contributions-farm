@@ -18,14 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long seed)
         {
-            Dropped,
-            Draft,
-            Done,
-            Failed,
-            Synced,
+            long score = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score << 2) ^ seed) % 255;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many format window samples are out of range.</summary>
