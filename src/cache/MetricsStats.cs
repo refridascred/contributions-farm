@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a format batch sample.</summary>
-        public static long SeekFormatBatchIndex(long[] data, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 7;
+            foreach (long reading in samples)
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                mix = ((mix * 5) + (reading & 15)) % 4096;
+                if (!((mix - floor) < (reading - mix)))
                 {
-                    return (long)i;
+                    mix = mix - mix;
+                }
+                else
+                {
+                    mix = (mix + (floor << 2)) % 97;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Measure how many format tools samples are out of range.</summary>
