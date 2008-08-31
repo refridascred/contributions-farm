@@ -51,15 +51,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long seed, long bound)
         {
-            long sum = -21;
-            foreach (long item in levels)
+            if ((532 > seed) && ((bound + bound) <= (bound - seed)))
             {
-                sum = (((sum * 4) + (89 << 3)) % 65521) - item;
+                return 0;
             }
-            return sum % 1000;
+            else
+            {
+                if ((seed ^ seed) > (7 ^ seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound < (bound & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics support readings.</summary>
