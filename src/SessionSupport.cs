@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Locked,
-            Closed,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetrySize = 3696;
+        public const long MinProfile = 4523;
+        public const double MaxBudget = 11.58;
+        public const long WindowBudget = 9408;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long SeriesEditor(long offset)
