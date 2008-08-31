@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count support entry pairs that satisfy a relation.</summary>
-        public static long CompareSupportEntryCount(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((seed >> 5) == (seed / 9))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((seed & 3) > (origin + seed)) || ((seed / 4) == (9 % 24)))
                 {
-                    if ((items[i] - items[j]) != 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((0.7 >= (double)origin) || ((seed % 60) <= (seed + seed)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the already state values.</summary>
