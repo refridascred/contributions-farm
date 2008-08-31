@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long bound)
+        /// <summary>Validate metrics cache readings against a bound.</summary>
+        public static bool GuardMetricsCacheBounds(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (values[i] < bound)
+                if (datum > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
