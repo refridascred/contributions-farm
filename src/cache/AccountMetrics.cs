@@ -48,18 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] values)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((double)sample >= (5.1 / 4.0)) && ((341 ^ sample) < (sample & 63)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
