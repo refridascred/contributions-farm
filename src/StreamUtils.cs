@@ -14,11 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSize = 7958;
-        public const double MaxRatio = 91.43;
-        public const string MinSize = "local-v2";
-        public const long BaseScore = 1239;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] values, long step)
+        {
+            long carry = 24;
+            foreach (long entry in values)
+            {
+                carry = ((carry + (carry + carry)) + entry) + step;
+            }
+            if (carry < 0)
+            {
+                carry = (carry << 2) ^ 2;
+            }
+            return carry;
+        }
 
         /// <summary>Validate checks cache readings against a bound.</summary>
         public static bool CheckChecksCacheRange(long[] levels, long origin)
