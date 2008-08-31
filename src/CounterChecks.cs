@@ -40,13 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
