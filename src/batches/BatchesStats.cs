@@ -35,11 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 7635;
-        public const long WindowNotes = 5558;
-        public const long BaseRatio = 3996;
-        public const double DefaultTimeout = 68.18;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) > (seed - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long limit, long origin)
