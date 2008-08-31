@@ -36,19 +36,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] samples, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long anchor = 6;
+            foreach (long cell in readings)
             {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (((anchor * 3) + (cell << 3)) % 65521) + target;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
