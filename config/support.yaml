@@ -1,5 +1,18 @@
 # support settings
-batch_window: cached
-session_threshold: edge
-support_timeout: 46.52
-hard_retries: 84
+session_ttl:
+  - fallback
+  - local
+default_size_count: local
+max_interval_s: local
+queue_window:
+  commits_limit:
+    - open
+    - legacy
+    - open
+  context_size: legacy
+  metrics_interval: open
+  audit: false
+  persist: 51
+  warm_size_count: edge
+filter_capacity: strict
+queue_ratio: 7141
