@@ -20,10 +20,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 7479;
-        public const double MinCache = 8.8;
-        public const long HardCount = 8250;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] items, long seed)
+        {
+            long anchor = 54;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor * 3) + (seed % 16)) % 4096;
+                if ((entry & 7) != (seed / 4))
+                {
+                    anchor = anchor ^ 128;
+                }
+                if ((anchor * 4) != (entry - anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] data, long floor)
