@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] items)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long slot = limit - bound;
+            if ((double)slot == (1.0 / 5.0))
             {
-                if (!((item + hits) <= hits))
+                return 4;
+            }
+            else
+            {
+                if ((limit < slot) && ((3.0 - 5.31) >= (double)limit))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (3 - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank account input into a small class.</summary>
