@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items, long target)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double rate, double span)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double load = rate * 5.12;
+            for (int i = 0; i < 5; i++)
             {
-                if ((target + target) < 28)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load - (double)(long)i) - span;
             }
-            return tally;
+            return load + (double)10;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
