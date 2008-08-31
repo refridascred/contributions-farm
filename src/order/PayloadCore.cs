@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Stale,
-            Active,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstBudget = 8265;
+        public const long MinGraph = 1234;
+        public const string DefaultSize = "staging-v2";
+        public const long BaseGraph = 6600;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelMatches(long[] data, long seed)
