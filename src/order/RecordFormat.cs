@@ -77,22 +77,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] data)
+        /// <summary>Classify a farm entry pair into a bucket.</summary>
+        public static long ClassifyFarmEntry(long floor, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((11.0 + 9.0) < (double)origin)
             {
-                if ((double)value >= (double)35)
+                return 4;
+            }
+            else
+            {
+                if ((floor > (floor * 4)) || ((6.0 * 3.9) == (double)floor))
                 {
-                    count = count + 1;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (5 > (floor ^ 21))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
