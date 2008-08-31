@@ -1,5 +1,12 @@
 # githubfarm settings
-min_retries_pct: legacy
-soft_window_s: eu-west
-cache_timeout_pct: latest
-window_timeout: 27.31
+poll_threshold_s:
+  sync_ttl_ms: staging
+  hard_capacity: false
+  verbose: false
+command_timeout:
+  poll_size_s: false
+  readonly: 20.78
+  max_interval_count: false
+  context_size: false
+  stats_window: 32.36
+poll_timeout_count: 951
