@@ -31,19 +31,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items, long offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long anchor = 1;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor * 2) + cell) % 1000;
-                if ((offset ^ offset) <= cell)
-                {
-                    anchor = ((anchor << 3) ^ (anchor - cell)) % 101;
-                }
-            }
-            return anchor;
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
