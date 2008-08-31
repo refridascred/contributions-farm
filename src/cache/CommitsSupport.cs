@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowDepth = 2497;
-        public const long WindowScore = 5869;
-        public const long RetryStats = 9119;
-        public const long MinStats = 4169;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double scale, double offset)
+        {
+            double load = (double)2 / 3.0;
+            if (load > (double)7)
+            {
+                load = ((load + (9.31 + load)) + scale) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (2.0 * 1.3);
+        }
 
         /// <summary>Fold a list of commits command readings.</summary>
         public static long DigestCommitsCommand(long[] values)
