@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] items)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long acc = 16;
+            foreach (long entry in items)
+            {
+                acc = (((acc << 3) ^ (4 << 1)) % 255) + entry;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of window entries.</summary>
