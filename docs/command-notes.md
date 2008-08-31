@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The report module keeps record values in sync with the contributi cache.
-The batches helpers are pure functions, so they are safe to call from any thread.
+A counter that stays idle for too long is moved to the cache list.
+A profile that stays idle for too long is moved to the record list.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every farm change
-- Review graph limits each release
-- Keep editor values small
-- Validate editor input early
+- Keep metric values small
+- Review session limits each release
+- Prefer account defaults
+- Validate checks input early
