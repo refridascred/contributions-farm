@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long limit)
-        {
-            if (limit <= (origin ^ limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9 - limit) > origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinFactor = "primary-edge";
+        public const double BatchTimeout = 53.9;
+        public const double BaseSize = 93.67;
+        public const string IdleQueue = "local-edge";
+        public const long DefaultQueue = 3624;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
