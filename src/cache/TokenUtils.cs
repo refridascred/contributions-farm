@@ -20,38 +20,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long bound, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] values)
         {
-            if (((double)seed != (10.0 + 18.0)) || ((bound + 91) >= bound))
+            long mix = 7;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (6.0 >= (double)seed)
+                if ((438 & 7) != ((long)values.Length % 97))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((123 >> 2) >= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed >= (bound + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = mix ^ reading;
                 }
             }
+            if (mix < 6)
+            {
+                mix = (mix * 4) + (mix / 3);
+            }
+            return mix % 65521;
         }
     }
 }
