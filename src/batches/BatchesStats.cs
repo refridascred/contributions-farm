@@ -44,20 +44,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] data, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            long anchor = -5;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((0.6 + 6.0) != (double)origin)
                 {
-                    result = ((result ^ (result + result)) % 4096) + (long)i2;
+                    anchor = ((anchor << 3) ^ (anchor + 773)) % 101;
                 }
-                result = ((result * 5) + ((long)i & 63)) % 65521;
-                result = ((result * 3) + (long)i) % 4093;
+                if (origin <= (value + origin))
+                {
+                    anchor = anchor - (30 % 12);
+                }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
