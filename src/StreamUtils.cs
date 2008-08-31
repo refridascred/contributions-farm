@@ -14,11 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinBudget = "staging-edge";
-        public const long MinScore = 4090;
-        public const long DefaultSize = 8300;
-        public const string SoftCache = "cached";
+        /// <summary>Measure how many report stats samples are out of range.</summary>
+        public static long CountReportStatsGaps(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((415 - floor) >= item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
         public static long TallyQueueGithubfarmOutliers(long[] values)
