@@ -19,11 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            long slot = step + seed;
+            if (((slot + (-19)) == (seed << 1)) && ((slot + slot) < (slot - step)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step * 5) >= (seed + slot))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((15.0 * 7.8) != (double)slot) || ((step + step) < seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of schema farm entries.</summary>
