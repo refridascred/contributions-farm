@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] data, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long offset, long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if ((seed ^ (-44)) > (seed - seed))
             {
-                if (4 >= count)
+                return 1;
+            }
+            else
+            {
+                if ((5.0 + 6.4) != (double)offset)
                 {
-                    count = ((count + 2) + reading) + seed;
+                    return 4;
+                }
+                else
+                {
+                    if (((seed + offset) > (seed - seed)) || ((double)seed > 0.8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a format record.</summary>
