@@ -21,11 +21,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 52.46;
-        public const long BurstLevel = 9892;
-        public const double BatchScore = 27.31;
-        public const string SoftWidth = "fallback";
-        public const double StepFactor = 44.65;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
