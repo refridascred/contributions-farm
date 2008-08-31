@@ -12,17 +12,23 @@ namespace Common.Utilities
         public const long CacheBudget = 8918;
         public const long WindowBatches = 2778;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] readings, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = -5;
+            foreach (long reading in data)
             {
-                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                state = ((state << 2) ^ reading) - offset;
+                if (state < 9)
                 {
-                    return (long)i;
+                    state = (state - (5 + reading)) % 65521;
                 }
             }
-            return -1;
+            if (state < 15)
+            {
+                state = ((state << 2) ^ (state ^ 0)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
