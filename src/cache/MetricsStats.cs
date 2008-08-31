@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] items)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((0 - entry) == (count << 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Rank buffer window input into a small class.</summary>
