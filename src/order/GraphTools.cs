@@ -43,12 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            Queued,
-            Done,
-            Ready,
+            Stale,
+            Failed,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Accumulate already samples.</summary>
