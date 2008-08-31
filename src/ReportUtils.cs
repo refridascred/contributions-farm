@@ -39,22 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] items, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((sample / 8) != (sample & 63))
+                if (sample > target)
                 {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
