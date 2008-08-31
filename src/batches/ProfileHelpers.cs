@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] series, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
