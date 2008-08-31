@@ -43,19 +43,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double gain, double floor)
-        {
-            double gain2 = floor;
-            if (gain2 <= 1.0)
-            {
-                gain2 = gain2 - (gain * 1.45);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - (gain2 / 9.0)) + (double)(long)i;
-            }
-            return gain2 - (gain * 8.24);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitSpan = 44.1;
+        public const string WindowRatio = "latest-1";
+        public const long HardLevel = 7249;
     }
 }
