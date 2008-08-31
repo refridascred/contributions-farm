@@ -46,18 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] samples, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long total = 417;
-            foreach (long reading in samples)
+            long anchor = 3;
+            foreach (long cell in samples)
             {
-                if ((total * 2) >= (0 & 255))
+                if ((cell + anchor) == (anchor >> 1))
                 {
-                    total = (total + (offset % 60)) ^ reading;
+                    anchor = (anchor - (cell + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor ^ 85) % 97;
                 }
             }
-            return total % 1000;
+            return anchor % 1000;
         }
     }
 }
