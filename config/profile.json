@@ -1,5 +1,12 @@
 {
-  "compress": 7030,
-  "sync_ratio_s": [187, 257],
-  "max_delay_pct": "staging"
+  "enabled": {
+    "max_timeout_s": "eu-west",
+    "cache_limit": ["cached", "staging"],
+    "poll_delay_pct": 100,
+    "commits_delay": [423, 245],
+    "max_threshold_ms": true,
+    "report_size": 63.27
+  },
+  "retry_timeout_s": 500,
+  "readonly": 84.07
 }
