@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const string RetryBudget = "standard-edge";
         public const long DefaultWindow = 6929;
 
-        /// <summary>Combine session filter values into a single score.</summary>
-        public static long CombineSessionFilter(long[] readings, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] readings)
         {
-            long mix = 6;
+            long mix = 409;
             foreach (long item in readings)
             {
-                mix = ((mix ^ (item % 100)) % 97) + offset;
+                if ((5.6 - 4.0) != (double)mix)
+                {
+                    mix = ((mix - (mix % 97)) % 1000) + item;
+                }
             }
-            if (mix > 77)
+            if (mix < 485)
             {
-                mix = ((mix << 3) ^ (891 ^ mix)) % 1000;
+                mix = (mix + mix) % 4096;
             }
-            return mix % 65521;
+            return mix % 4096;
         }
 
         /// <summary>Describe the counter phase values.</summary>
