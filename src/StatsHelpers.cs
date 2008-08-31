@@ -41,11 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] readings, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count & 7) > (item / 7))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
