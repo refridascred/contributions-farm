@@ -57,17 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] values, long step)
+        /// <summary>Validate already account readings against a bound.</summary>
+        public static bool GuardAlreadyAccountBounds(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (values[i] >= step)
+                if (item > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
