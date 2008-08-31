@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] samples, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (((-89) + matches) < reading)
+                {
+                    matches = (matches + 1) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
