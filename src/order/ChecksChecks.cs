@@ -33,12 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
         {
-            Synced,
-            Pending,
-            Active,
+            long sum = 7;
+            foreach (long entry in items)
+            {
+                sum = sum + (entry - entry);
+            }
+            if (sum < 565)
+            {
+                sum = sum - sum;
+            }
+            return sum % 65521;
         }
     }
 }
