@@ -46,21 +46,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state ^ (811 * 5)) % 97;
+                state = (state + (3 - (long)i)) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
