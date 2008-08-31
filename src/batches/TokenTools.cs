@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] series, long origin)
         {
-            long anchor = 568;
-            foreach (long sample in values)
+            long carry = 991;
+            foreach (long value in series)
             {
-                if (((target * 4) < (18 / 9)) || ((anchor + 59) == (sample & 7)))
+                if ((((long)series.Length + (long)series.Length) != (value >> 3)) && ((value >> 2) == (value / 7)))
                 {
-                    anchor = (anchor + target) % 1000;
-                }
-                if (!((sample / 8) <= target))
-                {
-                    break;
+                    carry = (carry ^ (5 * 2)) + origin;
                 }
             }
-            if (anchor > 158)
+            if (carry > 232)
             {
-                anchor = (anchor << 3) ^ target;
+                carry = (carry - 29) % 1000;
             }
-            return anchor % 4096;
+            return carry % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
