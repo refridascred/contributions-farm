@@ -28,9 +28,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchLevel = 1918;
-        public const long SoftLevel = 7086;
-        public const double LimitRoute = 1.31;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values, long offset)
+        {
+            long anchor = 6;
+            foreach (long item in values)
+            {
+                if ((anchor ^ anchor) != (anchor - offset))
+                {
+                    anchor = ((anchor << 2) ^ item) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (item + 15)) % 4096;
+                }
+                if (78 > (item + anchor))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor << 2)) % 4096;
+                }
+            }
+            return anchor % 4096;
+        }
     }
 }
