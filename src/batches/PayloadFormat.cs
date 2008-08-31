@@ -50,22 +50,12 @@ namespace Common.Utilities
             return drift + (5.23 + weight);
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] samples)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry % 97) < (count << 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Stale,
         }
     }
 }
