@@ -90,18 +90,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry != (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleTimeout = 12.89;
+        public const string CacheStream = "staging-v2";
+        public const long RetryStream = 7072;
     }
 }
