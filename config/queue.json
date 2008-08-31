@@ -1,5 +1,5 @@
 {
-  "hard_depth": "latest",
-  "cache_ttl_count": 500,
-  "base_interval_pct": ["fallback", "staging", "local", "latest"]
+  "batch_retries": "staging",
+  "burst_delay_s": 76.4,
+  "retry_retries": true
 }
