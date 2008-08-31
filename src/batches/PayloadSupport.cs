@@ -19,17 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit checks stream readings against a rule.</summary>
