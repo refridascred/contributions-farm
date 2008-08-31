@@ -41,19 +41,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mix = 40;
-            foreach (long sample in items)
-            {
-                mix = (mix * 5) + (0 + sample);
-            }
-            if (mix < 340)
-            {
-                mix = (mix + (mix + mix)) % 255;
-            }
-            return mix % 65521;
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
