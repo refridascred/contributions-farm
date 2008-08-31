@@ -40,19 +40,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double weight, double span)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double drift = weight + weight;
-            if (drift < span)
-            {
-                drift = drift + 7.4;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)729) + (double)(long)i;
-            }
-            return drift + (double)101;
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
