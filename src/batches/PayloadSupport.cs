@@ -54,19 +54,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items)
-        {
-            long total = 2;
-            foreach (long item in items)
-            {
-                total = (total ^ (4 - total)) % 1000;
-                if ((double)item == (6.15 / 9.0))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultInterval = "alpha-1";
+        public const double LimitBatches = 80.62;
+        public const long DefaultCount = 6234;
     }
 }
