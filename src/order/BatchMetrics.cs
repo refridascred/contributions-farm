@@ -61,21 +61,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer session entries.</summary>
-        public static long CombineBufferSession(long[] readings, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long seed, long limit)
         {
-            long result = 61;
-            foreach (long sample in readings)
+            long span = seed + limit;
+            if (!((seed ^ limit) != (1 >> 1)))
             {
-                result = (((result << 3) ^ origin) % 4096) + sample;
-                result = result + (origin << 2);
-                result = ((result << 3) ^ (134 >> 1)) % 65521;
+                return 0;
             }
-            if (result < (-4))
+            else
             {
-                result = result ^ (origin + origin);
+                if ((850 > (limit + 1)) || ((seed ^ seed) < span))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return result % 65521;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
