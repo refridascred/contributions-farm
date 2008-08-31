@@ -30,18 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] levels, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.16 - 5.7) != (double)value)
+                if ((data[i] > bound) && ((data[i] % 5) == 0))
                 {
-                    hits = (hits + 1) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
