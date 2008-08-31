@@ -14,23 +14,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] data, long origin)
         {
-            double rate = floor;
-            if (rate <= (8.59 - floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + floor;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (scale * 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (13.0 / 3.0)) + (double)(long)i;
-            }
-            return rate - floor;
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
