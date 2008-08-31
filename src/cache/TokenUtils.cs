@@ -29,11 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 4924;
-        public const long BurstCount = 3941;
-        public const double BurstTimeout = 15.06;
-        public const string IdleCache = "staging-1";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleFactor = 7275;
+        public const long BatchCount = 7248;
+        public const string StepBuffer = "legacy-edge";
+        public const long BurstBuffer = 8494;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
