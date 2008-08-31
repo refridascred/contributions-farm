@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next editor profile value from a seed.</summary>
-        public static long SeriesEditorProfile(long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] levels, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long matches = carry ^ (carry - carry);
-                if ((double)matches > (double)carry)
+                if (levels[i] < seed)
                 {
-                    carry = (carry * 2) + ((long)i - carry);
-                    matches = (matches + (6 - carry)) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
