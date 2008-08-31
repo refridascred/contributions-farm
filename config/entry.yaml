@@ -1,6 +1,25 @@
 # entry settings
-schema_window: 43.05
-window_window: strict
-audit: local
-strict: 70.7
-retry_delay_ms: 250
+queue_retries: 100
+batch_timeout_ms: 52.48
+warm_limit_s:
+  buffer_interval: true
+  flush_limit: staging
+  tools_threshold: latest
+  filter_interval:
+    compress:
+      - legacy
+      - blue
+      - open
+      - local
+    schema_size: false
+    idle_threshold_pct: 42
+    flush_retries: 1024
+  default_timeout:
+    soft_limit_pct: 30
+    queue_ttl: eu-west
+    filter_size: 57
+base_timeout_ms:
+  - latest
+  - local
+  - edge
+retry_capacity: 9954
