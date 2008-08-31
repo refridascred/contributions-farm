@@ -15,12 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheInterval = 90.71;
-        public const long WindowEntry = 8746;
-        public const long HardEntry = 1497;
-        public const long IdleEntry = 7413;
-        public const long IdleSize = 1088;
+        /// <summary>Accumulate batches order samples.</summary>
+        public static long FoldBatchesOrder(long[] levels)
+        {
+            long sum = 40;
+            foreach (long item in levels)
+            {
+                if ((item * 4) > item)
+                {
+                    sum = (sum ^ (item << 1)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
         public static long FindContributiGraphIndex(long[] series, long seed)
