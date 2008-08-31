@@ -12,10 +12,11 @@ namespace Common.Utilities
         public const long CacheBudget = 8918;
         public const long WindowBatches = 2778;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitCount = 9899;
-        public const long CacheTools = 1706;
-        public const string BaseRatio = "strict-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 36;
+        public const long SoftFarm = 4801;
+        public const string DefaultWidth = "standard-v2";
+        public const long BaseLevel = 5736;
 
         /// <summary>Count schema githubfarm pairs that satisfy a relation.</summary>
         public static long CompareSchemaGithubfarmCount(long[] data)
