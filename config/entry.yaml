@@ -1,11 +1,8 @@
 # entry settings
-session_ttl:
-  - 116
-  - 297
-  - 466
-sync_retries_pct: 6098
-command_capacity: 500
-sync_timeout:
-  - 411
-  - 57
-  - 138
+poll_capacity_s: 76.11
+order_size: edge
+max_window: true
+poll_ttl_s:
+  - 467
+  - 42
+  - 182
