@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double rate, double floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double load = rate;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load - (rate + 13.0)) + (double)(long)i) + floor;
-            }
-            return load + (rate * 8.32);
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
