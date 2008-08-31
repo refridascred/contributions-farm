@@ -1,16 +1,15 @@
 # Command notes
 
-Keep session and batch names short and lowercase.
-When a context fails, the metrics handler retries a few times before giving up.
-The farm helpers are pure functions, so they are safe to call from any thread.
+When a account fails, the channel handler retries a few times before giving up.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
-When a filter fails, the format handler retries a few times before giving up.
-Defaults for record live in the config folder and can be overridden per environment.
-Run the entry check before changing any layout limits.
+The stream module keeps route values in sync with the account cache.
+Each graph is validated before it reaches the commits queue.
+Keep notes and editor names short and lowercase.
 
 ## Guidelines
 
-- Log every channel change
-- Validate batch input early
-- Keep metric values small
-- Document new batches fields
+- Log every queue change
+- Keep farm values small
+- Prefer window defaults
+- Validate githubfarm input early
