@@ -1,6 +1,8 @@
 # githubfarm settings
-retry_interval_pct: 4922
-burst_depth_pct: stable
-checks_retries: standard
-retry_limit_pct: 3741
-warm_ratio_ms: 250
+persist: eu-west
+queue_window: 60
+commits_delay: 2.81
+command_timeout: stable
+enabled:
+  - 168
+  - 305
