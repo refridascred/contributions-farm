@@ -33,14 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] readings, long origin)
         {
-            Done,
-            Ready,
-            Synced,
-            Pending,
-            Retry,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value << 2) <= (value & 3))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
