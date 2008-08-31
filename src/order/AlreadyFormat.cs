@@ -22,11 +22,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8315;
-        public const long DefaultSize = 1585;
-        public const long IdleLevel = 7087;
-        public const double RetryFilter = 68.41;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long target, long origin)
+        {
+            long lane = target - origin;
+            if (target < (origin + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin >> 4) >= (target + origin)) || (origin < (lane << 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)lane != (7.89 + 8.4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(origin > (origin - 46)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string WindowCommits = "strict-v2";
