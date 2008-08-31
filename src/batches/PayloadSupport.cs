@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] samples, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seen >= (8.0 - 5.0))
+                if ((((limit * 4) <= (tally & 127)) || ((limit - 736) >= (tally << 2))) && (((tally ^ 65) >= (228 / 6)) || ((limit + 77) >= reading)))
                 {
-                    seen = ((seen + 1) ^ entry) - limit;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
