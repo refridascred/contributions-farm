@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryDepth = 2713;
-        public const long HardWindow = 8219;
-        public const double DefaultWindow = 51.78;
-        public const string IdleTimeout = "cached-edge";
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor + ((long)i + offset)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] data, long origin)
