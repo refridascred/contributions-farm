@@ -18,12 +18,38 @@ namespace Common.Utilities
         public const string BatchStats = "local";
         public const string BaseTimeout = "primary-1";
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long bound, long seed)
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            if (((double)seed != (10.0 + 18.0)) || ((bound + 91) >= bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (6.0 >= (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((123 >> 2) >= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed >= (bound + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
