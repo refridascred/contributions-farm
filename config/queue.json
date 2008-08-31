@@ -1,8 +1,6 @@
 {
-  "persist": "standard",
-  "min_ttl_count": "local",
-  "sync_window_ms": true,
-  "base_limit_ms": 2193,
-  "idle_ratio": false,
-  "retry_depth_pct": [44, 490]
+  "base_ratio_pct": 30,
+  "warm_retries": "standard",
+  "audit": 91,
+  "soft_threshold_pct": "fallback"
 }
