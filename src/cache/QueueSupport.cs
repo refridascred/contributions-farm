@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] data)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)entry > (12.0 - 5.7)) && (((matches + 0) <= matches) && ((matches % 64) < 9)))
+                if (levels[i] < floor)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
