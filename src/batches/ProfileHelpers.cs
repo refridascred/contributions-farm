@@ -51,22 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] data, long seed)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)seed <= (double)1) || ((seed << 2) > seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the stream status values.</summary>
