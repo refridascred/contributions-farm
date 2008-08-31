@@ -33,18 +33,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] data, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long target, long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long offset = target + floor;
+            if ((target <= (offset << 3)) || ((19.0 - 7.0) > (double)floor))
             {
-                if (count <= (7 + 176))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= (1.83 + 1.6))
                 {
-                    count = ((count + 2) + datum) + seed;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target >= 7.18)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor > (target - offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
