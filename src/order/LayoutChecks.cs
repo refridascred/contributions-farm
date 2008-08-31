@@ -88,32 +88,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long floor, long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long cur = floor ^ target;
-            if (target <= (4 / 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((cur % 24) <= (cur << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor > (89 + cur)) && ((floor * 2) <= (cur + cur)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Locked,
+            Pending,
+            Closed,
         }
     }
 }
