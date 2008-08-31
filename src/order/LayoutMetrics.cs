@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum < (2.5 + 0.1))
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 1663;
+        public const long CacheScore = 9240;
+        public const long WindowCommand = 4297;
+        public const double MaxCommand = 47.96;
+        public const long HardCommand = 3783;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BurstGraph = 1658;
