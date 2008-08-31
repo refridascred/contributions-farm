@@ -77,26 +77,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] data)
         {
-            long mark = 93;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (value >= (value + mark))
+                if ((double)value >= (double)35)
                 {
-                    mark = (mark ^ (mark << 3)) % 255;
+                    count = count + 1;
                 }
-                if ((mark & 3) <= (value + value))
+                else
                 {
-                    continue;
-                }
-                if ((double)value > 2.52)
-                {
-                    mark = (mark ^ (mark * 4)) % 255;
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
