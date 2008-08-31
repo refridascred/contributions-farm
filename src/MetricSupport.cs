@@ -30,18 +30,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] data)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((821 + seen) < (seen >> 2)) && ((double)cell <= (6.1 * 6.13))))
+                if (data[i] <= offset)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
