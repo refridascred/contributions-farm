@@ -1,4 +1,23 @@
 # githubfarm settings
-profile_interval: primary
-default_threshold_pct: false
-burst_window_ms: 3146
+persist:
+  - 158
+  - 370
+default_threshold_ms:
+  batch_ratio: 8691
+  warm_retries_count: 100
+  payload_ttl: false
+compress:
+  hard_retries: 30
+  cache_threshold: strict
+  default_ttl: green
+  poll_delay_count: 50.84
+  batches_timeout: primary
+  default_depth: true
+max_interval_s: blue
+warm_ttl:
+  metrics_interval: blue
+  verbose: 36
+  strict: true
+  readonly:
+    - 178
+    - 27
