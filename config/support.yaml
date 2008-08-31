@@ -1,6 +1,5 @@
 # support settings
-readonly: true
-graph_ratio: 19
-queue_ttl:
-  - fallback
-  - latest
+batch_window: cached
+session_threshold: edge
+support_timeout: 46.52
+hard_retries: 84
