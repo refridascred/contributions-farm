@@ -34,19 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report stream readings against a bound.</summary>
-        public static bool ValidateReportStreamBounds(long[] samples, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long result = 8;
+            foreach (long cell in data)
             {
-                if (datum < floor)
+                if (504 < cell)
                 {
-                    ready = false;
+                    result = (result ^ (924 / 3)) % 97;
+                }
+                if (!((cell % 7) >= result))
+                {
                     break;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Count the schema format entries that pass the check.</summary>
