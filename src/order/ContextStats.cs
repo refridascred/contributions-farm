@@ -45,13 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Dropped,
-            Failed,
-            Retry,
-            Ready,
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
     }
 }
