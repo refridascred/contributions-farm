@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many filter record samples are out of range.</summary>
-        public static long CountFilterRecordHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen + seen) >= (2 + (long)values.Length))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 5298;
+        public const long CacheCluster = 329;
+        public const string BurstFactor = "legacy-edge";
+        public const long HardInterval = 1377;
+        public const long MinCluster = 8451;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 744;
