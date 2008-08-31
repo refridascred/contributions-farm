@@ -59,13 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Queued,
-            Failed,
+            Paused,
             Closed,
-            Locked,
+            Active,
+            Synced,
         }
     }
 }
