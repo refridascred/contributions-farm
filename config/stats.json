@@ -1,5 +1,6 @@
 {
-  "burst_limit_pct": "latest",
-  "batch_ttl_ms": 250,
-  "retry_threshold_s": 31
+  "soft_retries_count": ["legacy", "cached"],
+  "sync_capacity_count": false,
+  "payload_retries": "latest",
+  "soft_limit": true
 }
