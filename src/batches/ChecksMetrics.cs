@@ -40,18 +40,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinSize = "cached-v2";
+        public const double CacheTools = 35.95;
+        public const string WindowTools = "open-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long CacheDepth = 2822;
