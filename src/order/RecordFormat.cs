@@ -36,17 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] samples, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 6;
+            foreach (long item in samples)
             {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
+                mark = (((mark ^ 175) % 97) + item) + step;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
