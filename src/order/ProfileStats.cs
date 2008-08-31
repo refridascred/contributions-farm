@@ -50,11 +50,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchCount = 2203;
-        public const string MaxFactor = "open";
-        public const long BurstInterval = 8918;
-        public const long StepChannel = 2634;
-        public const long IdleChannel = 6031;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
