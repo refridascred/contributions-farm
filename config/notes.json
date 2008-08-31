@@ -1,19 +1,8 @@
 {
-  "sync_size_count": "strict",
-  "sync_limit_count": 96.63,
-  "session_timeout": 83.7,
-  "batch_timeout": {
-    "burst_ratio_s": "local",
-    "warm_interval_ms": {
-      "burst_size_count": 1024,
-      "flush_threshold_s": 1024,
-      "audit": 1024,
-      "strict": 100
-    },
-    "metric_threshold": "edge",
-    "metrics_threshold": 9795,
-    "queue_limit": 6
-  },
-  "poll_window_count": "eu-west",
-  "readonly": ["strict", "legacy", "primary"]
+  "persist": false,
+  "batch_depth": "local",
+  "dry_run": 81.37,
+  "batch_timeout_s": 39.01,
+  "max_threshold_pct": 94.1,
+  "batches_retries": 45.13
 }
