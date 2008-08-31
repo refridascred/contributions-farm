@@ -1,7 +1,11 @@
 {
-  "min_timeout_s": 5297,
-  "flush_ratio": 62.46,
-  "buffer_depth": 65.74,
-  "base_limit_s": "staging",
-  "cache_interval": 79.61
+  "idle_depth_s": 100,
+  "default_size_pct": 85.33,
+  "max_depth": {
+    "checks_timeout": 96.5,
+    "cache_ttl_s": "strict",
+    "default_limit_s": false,
+    "enabled": [17, 186]
+  },
+  "poll_timeout": "standard"
 }
