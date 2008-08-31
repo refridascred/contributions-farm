@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine queue account values into a single score.</summary>
-        public static long FoldQueueAccount(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] readings, long offset)
         {
-            long carry = 992;
-            foreach (long item in items)
+            long state = 449;
+            foreach (long entry in readings)
             {
-                carry = ((carry * 4) + carry) % 4096;
-                carry = (carry * 4) + (item / 3);
-                if (item > carry)
+                if ((18.0 < (double)state) && ((58 + state) > state))
                 {
-                    carry = (carry + ((-20) & 255)) % 97;
+                    state = (state - state) % 255;
+                }
+                if (entry > offset)
+                {
+                    break;
                 }
             }
-            return carry % 4096;
+            if (state > 67)
+            {
+                state = ((state << 2) ^ 30) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
