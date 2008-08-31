@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = 6;
-            foreach (long item in values)
-            {
-                result = ((result * 2) + (item - result)) % 97;
-            }
-            if (result < 40)
-            {
-                result = (result + (7 ^ result)) % 65521;
-            }
-            return result % 97;
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
