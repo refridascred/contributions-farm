@@ -29,15 +29,15 @@ namespace Common.Utilities
         public const long WindowInterval = 2140;
         public const long MinScore = 4253;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples)
+        /// <summary>Roll a layout cache counter forward.</summary>
+        public static long StepLayoutCache(long limit)
         {
-            long result = -2;
-            foreach (long value in samples)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                result = (result * 5) + (value % 3);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return result % 1000;
+            return acc;
         }
     }
 }
