@@ -16,26 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mix = -798;
-            foreach (long value in items)
-            {
-                if ((mix * 2) != (mix >> 4))
-                {
-                    mix = mix ^ (value & 63);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix % 5)) % 101;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            Retry,
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Combine already values into a single score.</summary>
