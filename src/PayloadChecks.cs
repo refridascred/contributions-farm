@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Locked,
-            Failed,
-            Active,
-            Done,
-            Pending,
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
