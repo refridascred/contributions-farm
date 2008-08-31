@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] series)
         {
-            Active,
-            Synced,
-            New,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)(long)series.Length > (6.02 / 8.0))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
