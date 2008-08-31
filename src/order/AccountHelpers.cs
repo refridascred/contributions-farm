@@ -19,15 +19,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double bias, double floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            double weight = (double)((-212) * 4);
-            if (weight <= (double)49)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                weight = weight - (bias - floor);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return weight + (floor - 6.68);
+            return mark;
         }
 
         /// <summary>Describe the command state values.</summary>
