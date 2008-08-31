@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] levels, long origin)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((3 % 3) >= (hits >> 5))
-                {
-                    hits = ((hits + 3) + item) - origin;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many format window samples are out of range.</summary>
