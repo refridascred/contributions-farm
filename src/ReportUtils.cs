@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "staging-edge";
+        public const long StepOrder = 4841;
+        public const double RetryWidth = 26.38;
+        public const long MaxRatio = 2350;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
