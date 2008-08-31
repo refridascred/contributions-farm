@@ -39,22 +39,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long MeasureCachePayloadMatches(long[] series)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((6 << 3) > (tally % 24))
+                if (((long)i + 2) <= ((long)i / 3))
                 {
-                    tally = (tally + 2) ^ datum;
+                    break;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score << 2) ^ (5 + floor);
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the format level values.</summary>
