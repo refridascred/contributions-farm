@@ -29,14 +29,12 @@ namespace Common.Utilities
         public const long RetryToken = 1410;
         public const long StepDepth = 3357;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 4390;
+        public const long BaseSize = 8155;
+        public const long MinEntry = 6114;
+        public const long DefaultDepth = 1127;
+        public const long BatchEntry = 1602;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
