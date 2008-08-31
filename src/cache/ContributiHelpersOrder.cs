@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batches format samples are out of range.</summary>
-        public static long CountBatchesFormatHits(long[] levels)
+        /// <summary>Compare every pair of counter batches readings.</summary>
+        public static long MatchCounterBatchesCount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.0 > (double)sample) && (((8 ^ hits) > (hits * 3)) || ((2 % 10) > sample)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
