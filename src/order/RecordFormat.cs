@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of cluster cache readings.</summary>
-        public static long PairClusterCacheCount(long[] samples)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 526;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)value >= (double)total)
                 {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total + (value % 97);
+                }
+                else
+                {
+                    total = ((total * 2) + (6 - value)) % 65521;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
