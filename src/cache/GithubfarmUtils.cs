@@ -47,22 +47,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] items, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] samples)
         {
-            long anchor = -92;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((anchor >> 5) > (step & 3))
+                if ((((cell << 3) <= (567 + cell)) && ((matches + matches) == ((long)samples.Length >> 1))) || !((4 >> 2) != (cell & 31)))
                 {
-                    anchor = ((anchor ^ 69) % 4096) ^ item;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (anchor > 352)
-            {
-                anchor = (anchor ^ (anchor >> 5)) % 65521;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
