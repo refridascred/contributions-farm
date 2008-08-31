@@ -40,26 +40,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            long acc = 236;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > (acc % 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
-                }
-                if (!((datum - acc) > acc))
-                {
-                    acc = (acc << 3) ^ 782;
+                    if ((data[i] + data[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 46)
-            {
-                acc = (acc + (acc ^ acc)) % 4096;
-            }
-            return acc;
+            return seen;
         }
     }
 }
