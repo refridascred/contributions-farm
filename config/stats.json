@@ -1,5 +1,12 @@
 {
-  "idle_capacity_ms": 26,
-  "commits_timeout": "eu-west",
-  "audit": [270, 139, 100, 444]
+  "enabled": ["stable", "blue", "stable"],
+  "base_depth_pct": {
+    "retry_capacity": "stable",
+    "batches_timeout": ["stable", "legacy", "stable"],
+    "entry_threshold": 60
+  },
+  "idle_ratio_s": true,
+  "min_window_pct": 1024,
+  "notes_window": "cached",
+  "readonly": "primary"
 }
