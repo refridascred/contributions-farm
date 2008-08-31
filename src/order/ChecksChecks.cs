@@ -27,21 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream command pairs that satisfy a relation.</summary>
-        public static long CompareStreamCommandCount(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally << 2) != (tally + tally))
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
