@@ -35,19 +35,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((6.0 + 6.9) == (double)matches) && (item < (item + item)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxCount = 2102;
+        public const long MinTimeout = 8535;
+        public const double BaseToken = 46.18;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
