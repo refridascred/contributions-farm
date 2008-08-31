@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ratio - 9.9;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Audit cluster graph readings against a rule.</summary>
+        public static long CountClusterGraphMatches(long[] readings, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                state = state ^ (635 % 60);
-                state = ((state * 5) + (long)i) % 97;
+                if ((tally + tally) >= tally)
+                {
+                    tally = ((tally + 1) ^ item) - step;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a layout cache counter forward.</summary>
