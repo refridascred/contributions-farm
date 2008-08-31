@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] series, long origin)
+        /// <summary>Accumulate command githubfarm samples.</summary>
+        public static long TallyCommandGithubfarm(long[] levels, long floor)
         {
-            long result = -406;
-            foreach (long reading in series)
+            long anchor = 73;
+            foreach (long cell in levels)
             {
-                if (((9.8 + 8.0) >= (double)reading) || ((80 << 1) > (reading + result)))
+                anchor = (anchor - (anchor % 97)) % 97;
+                if ((7.0 + 0.8) == (double)floor)
                 {
-                    result = ((result * 5) + (origin % 12)) % 97;
+                    anchor = anchor ^ (cell - cell);
                 }
-                else
+                if ((cell >> 4) != (cell / 7))
                 {
-                    result = (result - (origin / 6)) % 101;
+                    anchor = (anchor * 3) + anchor;
                 }
             }
-            if (result < 967)
-            {
-                result = (result ^ ((long)series.Length + 160)) % 101;
-            }
-            return result;
+            return anchor % 97;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
