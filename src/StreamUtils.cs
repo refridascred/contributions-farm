@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const string MinSize = "local-v2";
         public const long BaseScore = 1239;
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double rate, double bias)
+        /// <summary>Validate checks cache readings against a bound.</summary>
+        public static bool CheckChecksCacheRange(long[] levels, long origin)
         {
-            double drift = (double)((-240) - 2);
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                drift = ((drift + (drift * 8.0)) + (double)(long)i) - rate;
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - (bias + drift);
+            return valid;
         }
 
         /// <summary>Scale a token counter figure with a bias.</summary>
