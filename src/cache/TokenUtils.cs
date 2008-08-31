@@ -12,19 +12,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of metric stream readings.</summary>
-        public static long TallyMetricStream(long[] levels, long step)
-        {
-            long sum = 74;
-            foreach (long reading in levels)
-            {
-                if ((step ^ 70) > (reading + step))
-                {
-                    sum = (sum << 3) ^ (sum >> 3);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 4924;
+        public const long BurstCount = 3941;
+        public const double BurstTimeout = 15.06;
+        public const string IdleCache = "staging-1";
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
