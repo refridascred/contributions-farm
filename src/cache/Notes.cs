@@ -49,14 +49,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Done,
-            Idle,
             Active,
-            Stale,
+            Dropped,
+            Pending,
             Ready,
+            New,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
