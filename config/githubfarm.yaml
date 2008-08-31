@@ -1,4 +1,10 @@
 # githubfarm settings
-warm_size: 86.22
-filter_retries: 51.04
+strict: false
+metrics_interval: cached
 verbose: true
+batch_threshold_ms: fallback
+max_interval: true
+base_depth_count:
+  sync_threshold_pct: 5874
+  readonly: strict
+  sync_ratio_count: 6172
