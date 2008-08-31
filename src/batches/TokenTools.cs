@@ -23,19 +23,39 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double rate, double span)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long target)
         {
-            double bias = (span - rate) / 8.0;
-            if (bias <= (1.8 + span))
+            long delta = bound + target;
+            if ((target / 3) != (delta % 10))
             {
-                bias = bias + span;
+                return 7;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias = bias - (double)(long)i;
+                if (target < delta)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound % 60) > (delta * 3)) || (61 <= (delta << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8.5 + 4.7) == (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return bias + span;
         }
 
         /// <summary>Describe the notes level values.</summary>
