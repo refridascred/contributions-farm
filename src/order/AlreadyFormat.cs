@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -665;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading & 127) <= (score + score))
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score * 4) + (reading << 3);
+                }
+                else
+                {
+                    score = (score ^ reading) % 4096;
                 }
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Hold a entry info.</summary>
