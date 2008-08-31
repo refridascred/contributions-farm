@@ -42,31 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] samples, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double weight, double floor)
         {
-            long result = 370;
-            foreach (long cell in samples)
+            double weight2 = (double)(8 & 31);
+            if (weight2 > weight2)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = result - ((long)i % 7);
-                }
-                if ((result / 3) > (bound + result))
-                {
-                    result = result ^ (cell >> 1);
-                    result = (result << 2) ^ (result + cell);
-                }
-                if (((12 ^ result) < (5 / 8)) || ((bound << 1) == (0 & 31)))
-                {
-                    result = (result - (bound - 54)) % 101;
-                }
-                else
-                {
-                    result = (result ^ (result & 3)) % 255;
-                }
+                weight2 = weight2 - (weight + 4.56);
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - (floor + weight)) + (double)(long)i;
+            }
+            return weight2 + (double)833;
         }
     }
 }
