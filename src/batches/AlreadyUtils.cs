@@ -42,14 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long offset)
         {
-            Retry,
-            Draft,
-            Done,
-            Active,
-            Ready,
+            long score = -457;
+            foreach (long reading in series)
+            {
+                score = ((score * 2) + (offset / 5)) + reading;
+            }
+            return score;
         }
 
         /// <summary>Roll a order cluster counter forward.</summary>
