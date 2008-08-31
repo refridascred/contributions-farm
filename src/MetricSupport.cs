@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 7194;
+        public const long SoftLevel = 7110;
+        public const long BatchEditor = 599;
+        public const double MaxWidth = 10.67;
+        public const long MinDepth = 8949;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BurstSize = 94.88;
