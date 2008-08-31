@@ -38,18 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] readings, long origin)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 2) <= (value & 3))
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
+            Locked,
+            Ready,
+            Queued,
+            Paused,
         }
     }
 }
