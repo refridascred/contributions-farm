@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long offset, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = offset ^ limit;
+            if ((double)lane >= 5.2)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((lane / 2) <= (lane >> 4))
                 {
-                    if ((readings[i] - readings[j]) == 19)
+                    return 4;
+                }
+                else
+                {
+                    if ((lane - lane) >= lane)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
