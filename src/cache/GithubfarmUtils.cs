@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many batches layout samples are out of range.</summary>
-        public static long AuditBatchesLayoutGaps(long[] readings)
+        /// <summary>Compare every pair of graph notes readings.</summary>
+        public static long PairGraphNotesCount(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= (4 + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
