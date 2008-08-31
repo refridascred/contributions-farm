@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double BaseLevel = 63.71;
         public const long MinDepth = 6537;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] values, long step)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the counter commits entries that pass the check.</summary>
