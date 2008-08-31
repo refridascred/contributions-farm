@@ -21,18 +21,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] levels, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (7.19 > (double)seed)
+                if (hits < (409 - hits))
                 {
-                    matches = (matches + 3) - cell;
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up schema session samples.</summary>
