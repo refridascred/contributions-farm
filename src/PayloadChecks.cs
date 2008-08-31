@@ -90,12 +90,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long seed)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = (anchor - (long)i) % 255;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
