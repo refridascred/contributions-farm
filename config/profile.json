@@ -1,17 +1,11 @@
 {
-  "base_timeout": false,
-  "cache_capacity": {
-    "base_interval_s": "standard",
-    "idle_window_count": true,
-    "soft_ratio_ms": ["standard", "cached", "standard"],
-    "flush_ratio_count": 64.39,
-    "metric_size": "open"
+  "warm_interval_s": 346,
+  "soft_timeout_ms": "latest",
+  "sync_timeout_s": {
+    "compress": "eu-west",
+    "poll_threshold_ms": "local",
+    "graph_retries": 6
   },
-  "cache_depth_s": {
-    "warm_ttl": "edge",
-    "token_threshold": ["green", "staging"],
-    "buffer_capacity": 9873,
-    "readonly": true
-  },
-  "token_capacity": true
+  "warm_ttl_count": 648,
+  "min_depth_ms": [229, 270]
 }
