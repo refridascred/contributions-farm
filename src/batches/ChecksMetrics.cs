@@ -44,10 +44,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "local-1";
-        public const long WindowCommand = 81;
-        public const string BatchCommand = "cached";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] items, long target)
+        {
+            long score = 1;
+            foreach (long sample in items)
+            {
+                if ((sample + score) > (target ^ 8))
+                {
+                    score = ((score << 2) ^ (26 >> 2)) % 1000;
+                }
+                if (target < score)
+                {
+                    score = ((score * 3) + 971) % 97;
+                }
+            }
+            if (score > 8)
+            {
+                score = score + (target / 7);
+            }
+            return score % 65521;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] series)
