@@ -30,20 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] items, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mix = 750;
-            foreach (long cell in items)
-            {
-                mix = (mix << 2) ^ (cell + (long)items.Length);
-                mix = (mix - cell) % 97;
-            }
-            if (mix < 66)
-            {
-                mix = ((mix * 4) + (mix + offset)) % 4096;
-            }
-            return mix;
+            Draft,
+            Done,
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
