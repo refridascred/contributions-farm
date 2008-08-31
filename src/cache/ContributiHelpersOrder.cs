@@ -38,11 +38,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double weight, double floor)
+        /// <summary>Combine commits contributi values into a single score.</summary>
+        public static long TotalCommitsContributi(long[] series, long floor)
         {
-            double mean = (double)(844 & 127);
-            return (mean + (weight / 6.0)) + floor;
+            long state = 6;
+            foreach (long datum in series)
+            {
+                state = (state + (floor << 2)) - datum;
+                state = (state - (29 / 4)) % 65521;
+            }
+            if (state > (-50))
+            {
+                state = (state * 2) + (floor - state);
+            }
+            return state;
         }
     }
 }
