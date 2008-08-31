@@ -41,13 +41,19 @@ namespace Common.Utilities
         public const double MaxCount = 78.27;
         public const long RetryToken = 3113;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Scale a layout editor figure with a bias.</summary>
+        public static double AdjustLayoutEditor(double ratio, double span)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            double drift = span;
+            if (drift < span)
+            {
+                drift = (drift + 5.0) - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - span) - (double)(long)i;
+            }
+            return drift - (drift * 7.5);
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
