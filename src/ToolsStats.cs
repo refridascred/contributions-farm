@@ -25,18 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batches stats pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesStatsCount(long[] items)
+        /// <summary>Measure how many session channel samples are out of range.</summary>
+        public static long CountSessionChannelHits(long[] samples, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((hits * 4) == (bound >> 5)))
                 {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
             return hits;
