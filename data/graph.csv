@@ -1,7 +1,6 @@
-id,token,active,rank
-1,38,staging,29.73
-2,896,fallback,staging
-3,778,89,123
-4,271,79.5,legacy
-5,695,45.81,913
-6,9,84.59,947
+id,state,label,score,weight
+1,strict,92,46.12,green
+2,stable,66,90.42,173
+3,9.21,711,363,fallback
+4,63.3,228,582,strict
+5,485,80.38,78.29,88.0
