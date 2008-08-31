@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] readings, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] samples, long origin)
         {
             bool found = true;
-            foreach (long datum in readings)
+            foreach (long sample in samples)
             {
-                if (datum >= origin)
+                if (sample >= origin)
                 {
                     found = false;
                     break;
