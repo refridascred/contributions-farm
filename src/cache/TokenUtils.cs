@@ -12,17 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] items, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
