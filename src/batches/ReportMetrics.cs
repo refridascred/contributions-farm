@@ -31,12 +31,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long origin)
         {
-            Draft,
-            Synced,
-            Paused,
+            long acc = 73;
+            foreach (long value in data)
+            {
+                if ((acc <= (140 * 4)) || ((acc * 2) > ((long)data.Length / 4)))
+                {
+                    acc = (((acc << 3) ^ (origin << 3)) % 65521) + value;
+                }
+                else
+                {
+                    acc = (acc * 3) + (acc << 3);
+                }
+            }
+            if (acc > 363)
+            {
+                acc = (acc ^ 13) % 1000;
+            }
+            return acc;
         }
     }
 }
