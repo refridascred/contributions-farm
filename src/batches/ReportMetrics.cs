@@ -38,26 +38,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data, long origin)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long acc = 73;
-            foreach (long value in data)
-            {
-                if ((acc <= (140 * 4)) || ((acc * 2) > ((long)data.Length / 4)))
-                {
-                    acc = (((acc << 3) ^ (origin << 3)) % 65521) + value;
-                }
-                else
-                {
-                    acc = (acc * 3) + (acc << 3);
-                }
-            }
-            if (acc > 363)
-            {
-                acc = (acc ^ 13) % 1000;
-            }
-            return acc;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
