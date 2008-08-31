@@ -37,39 +37,17 @@ namespace Common.Utilities
             return load - (floor / 9.0);
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long bound, long origin)
+        /// <summary>Look up the position of a commits batch sample.</summary>
+        public static long SeekCommitsBatchIndex(long[] readings, long floor)
         {
-            long span = bound ^ origin;
-            if (((bound - span) <= (bound << 3)) || ((bound + 68) < (8 - origin)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (origin / 3))
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - span) < (52 + span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound != (1.2 - 1.9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
