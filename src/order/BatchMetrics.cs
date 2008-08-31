@@ -57,22 +57,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] items, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long result = -862;
+            foreach (long value in samples)
             {
-                if (!(seen >= (seen + seed)) && (((-21) - seed) >= seen))
+                if (seed < (seed + result))
                 {
-                    seen = (seen + 2) - item;
+                    result = (result ^ value) % 255;
+                    result = ((result << 2) ^ (65 - seed)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = result + (value + 877);
+                }
+                if ((((-7) / 8) > (seed / 9)) && ((double)result >= 19.0))
+                {
+                    result = (result + (value << 3)) % 1000;
+                }
+                else
+                {
+                    result = (result - (value ^ value)) % 65521;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
