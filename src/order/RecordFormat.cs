@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up entry account samples.</summary>
-        public static long CompareEntryAccountCount(long[] readings)
+        /// <summary>Classify a format already pair into a bucket.</summary>
+        public static long SortFormatAlready(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long prev = floor + target;
+            if ((target >> 4) <= (prev % 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (target > (62 & 31))
                 {
-                    if ((readings[i] + readings[j]) > 20)
+                    return 0;
+                }
+                else
+                {
+                    if ((prev & 15) < prev)
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target > (14.0 / 5.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
