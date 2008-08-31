@@ -13,38 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long target, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            if (!(5.3 <= (double)origin))
+            long mix = 0;
+            foreach (long value in data)
             {
-                return 0;
+                mix = (mix - (mix ^ value)) % 255;
             }
-            else
+            if (mix > 7)
             {
-                if (target <= (78 + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >= (origin ^ origin)) || ((4.0 / 4.0) <= (double)target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target >> 5) <= (origin + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mix = mix - (mix + mix);
             }
+            return mix % 4096;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
