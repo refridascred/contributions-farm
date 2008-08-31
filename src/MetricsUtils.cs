@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 1373;
-        public const long MaxBatch = 4186;
-        public const long MaxScore = 7332;
-        public const long StepBatch = 9175;
-        public const double WindowBatch = 55.06;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data)
+        {
+            long result = 3;
+            foreach (long item in data)
+            {
+                if ((result % 16) >= (result + result))
+                {
+                    result = (result ^ (item >> 5)) % 4096;
+                    break;
+                }
+                if (item <= (result - result))
+                {
+                    result = (result * 5) + 3;
+                }
+                if ((double)item > (2.0 + 3.78))
+                {
+                    result = (result ^ (result / 4)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
