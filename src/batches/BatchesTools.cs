@@ -38,22 +38,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metrics cache entries.</summary>
-        public static long TallyMetricsCache(long[] readings)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long limit)
         {
-            long mix = 4;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((0 << 3) > item))
+                if ((values[i] < limit) && ((values[i] % 3) == 0))
                 {
-                    mix = ((mix << 2) ^ item) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 4)
-            {
-                mix = mix ^ (2 + (long)readings.Length);
-            }
-            return mix % 4096;
+            return -1;
         }
     }
 }
