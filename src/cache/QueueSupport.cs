@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] data, long seed)
+        /// <summary>Digest a series of payload report entries.</summary>
+        public static long DigestPayloadReport(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 80;
+            foreach (long reading in items)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                result = ((result + result) % 1000) + reading;
             }
-            return -1;
+            if (result < 113)
+            {
+                result = ((result << 3) ^ (floor + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a payload record.</summary>
