@@ -1,10 +1,16 @@
 # Command notes
 
-Run the record check before changing any filter limits.
-Keep checks and record names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The graph report groups every cluster by channel.
+Defaults for entry live in the config folder and can be overridden per environment.
+
+Keep support and order names short and lowercase.
+Each order is validated before it reaches the checks queue.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate order input early
-- Log every queue change
-- Keep counter values small
+- Review stats limits each release
+- Prefer stream defaults
+- Validate already input early
+- Log every tools change
