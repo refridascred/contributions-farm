@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long acc = 1;
-            foreach (long sample in readings)
-            {
-                if (!(acc < (sample >> 1)))
-                {
-                    acc = ((acc * 3) + (sample % 10)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ 4) % 65521;
-                }
-            }
-            return acc % 97;
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
