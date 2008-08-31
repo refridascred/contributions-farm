@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] samples, long origin)
         {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
