@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseWidth = 5442;
-        public const long WindowScore = 6997;
-        public const long HardDepth = 1380;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long floor)
+        {
+            long gap = target - floor;
+            if (((floor / 2) <= (gap << 1)) && ((gap << 1) > (floor + gap)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target << 2) != (target - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
