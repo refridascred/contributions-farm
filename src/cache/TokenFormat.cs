@@ -18,13 +18,23 @@ namespace Common.Utilities
         public const long BatchFarm = 9085;
         public const long MaxInterval = 8988;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double floor)
         {
-            Synced,
-            Queued,
-            Idle,
-            Done,
+            double mean = 4.0;
+            if (mean > (15.0 * 0.9))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + (floor - gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (2.8 * 3.3);
         }
     }
 }
