@@ -11,24 +11,18 @@ namespace Common.Utilities
         public const long BatchSize = 4896;
         public const long IdleWidth = 758;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long origin, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] levels, long seed)
         {
-            if (!((5 + step) <= step))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin * 2) <= (step + origin)) && ((double)step >= (17.0 / 4.0)))
+                if (7.19 > (double)seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 3) - cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
