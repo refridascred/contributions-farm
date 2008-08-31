@@ -42,21 +42,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (origin <= (origin % 64))
                 {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 3) + (long)i) % 4096;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate route contributi readings against a bound.</summary>
