@@ -19,20 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset + (long)i) > ((long)i * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry - (offset - (long)i);
-                    carry = carry + carry;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
