@@ -32,21 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
