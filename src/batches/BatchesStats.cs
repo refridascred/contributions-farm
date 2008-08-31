@@ -27,22 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits - datum) >= (datum + 6))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Accumulate filter window samples.</summary>
