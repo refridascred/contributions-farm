@@ -1,24 +1,7 @@
 # entry settings
-batch_size_pct:
-  - standard
-  - local
-  - blue
-flush_depth_count:
-  hard_capacity_s: 30
-  warm_ttl:
-    - 269
-    - 390
-    - 287
-  readonly: 30
-  burst_depth_ms: legacy
-  default_ratio_s: false
-  warm_depth_pct: 86
-idle_delay_pct:
-  - 123
-  - 462
-  - 19
-stream_timeout: 2478
-verbose:
-  cache_ratio: false
-  queue_threshold: standard
-  sync_capacity: 64
+verbose: standard
+enabled: 17.54
+profile_window: blue
+batch_threshold_count: 4242
+compress: edge
+hard_depth_pct: 30
