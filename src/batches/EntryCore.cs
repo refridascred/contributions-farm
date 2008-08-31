@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Combine graph commits values into a single score.</summary>
+        public static long TotalGraphCommits(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 4;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample != (double)174)
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
+                }
+                sum = (sum * 5) + (sum - sum);
+                if ((((long)samples.Length << 1) > (sum + sample)) && ((413 >> 4) != (sample % 8)))
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) % 255;
                 }
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Rank report input into a small class.</summary>
