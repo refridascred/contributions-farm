@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 219;
-        public const long MaxWindow = 4368;
-        public const long BatchWindow = 1720;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
