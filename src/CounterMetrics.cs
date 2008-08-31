@@ -14,10 +14,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 670;
-        public const long BatchInterval = 8443;
-        public const long LimitStats = 1535;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 6876;
+        public const long BurstSession = 5505;
+        public const long MaxScore = 6538;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleLevel = 3997;
