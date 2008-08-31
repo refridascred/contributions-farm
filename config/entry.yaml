@@ -1,5 +1,5 @@
 # entry settings
-max_interval: 23
-max_delay: 9735
-channel_threshold: 66.63
-default_delay: 67.43
+batch_timeout_ms: legacy
+poll_window_count: true
+layout_capacity: 13
+queue_size: 43
