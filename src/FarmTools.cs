@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "latest-1";
-        public const long BaseContributi = 3902;
-        public const string BurstContributi = "legacy-1";
-        public const long DefaultScore = 3359;
-        public const long MaxContributi = 2774;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series, long floor)
+        {
+            long acc = 721;
+            foreach (long value in series)
+            {
+                if ((5.0 + 6.0) >= (double)floor)
+                {
+                    acc = (((acc * 4) + (floor & 127)) % 255) + value;
+                }
+            }
+            if (acc > (-93))
+            {
+                acc = (acc + (-78)) % 97;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long RollReport(long limit)
