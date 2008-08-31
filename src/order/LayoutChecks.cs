@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a profile schema pair into a bucket.</summary>
-        public static long SortProfileSchema(long bound, long floor)
-        {
-            if ((floor - bound) >= (bound + 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((6.8 + 7.1) != (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 7671;
+        public const double BurstCount = 19.31;
+        public const string CacheFactor = "local";
+        public const long IdleMetrics = 3836;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
