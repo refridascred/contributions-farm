@@ -1,5 +1,28 @@
 {
-  "max_size_ms": "legacy",
-  "min_depth": "standard",
-  "poll_ratio_ms": 41.95
+  "idle_size": true,
+  "payload_capacity": {
+    "sync_depth_count": {
+      "enabled": 1024,
+      "cache_capacity_s": "green",
+      "poll_timeout_count": 82.98,
+      "cache_window_count": [68, 284, 97],
+      "soft_delay_count": 31,
+      "verbose": [94, 439]
+    },
+    "flush_retries": {
+      "channel_ttl": 6364,
+      "poll_delay": "blue",
+      "max_interval": "blue"
+    },
+    "verbose": false,
+    "dry_run": "blue",
+    "max_delay": {
+      "burst_interval_ms": ["open", "primary", "strict"],
+      "enabled": 36.63,
+      "buffer_threshold": [152, 419],
+      "dry_run": [249, 247, 475],
+      "poll_retries_count": "blue"
+    }
+  },
+  "persist": 13.7
 }
