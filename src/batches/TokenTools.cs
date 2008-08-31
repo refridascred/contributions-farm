@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of notes stats readings.</summary>
-        public static long MatchNotesStatsCount(long[] series)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (7.0 * 0.1) + (9.87 / 8.0);
+            if (mean >= (16.0 / 5.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - bias;
             }
-            return hits;
+            else
+            {
+                mean = mean + floor;
+            }
+            return mean - (double)96;
         }
 
         /// <summary>Hold a layout info.</summary>
