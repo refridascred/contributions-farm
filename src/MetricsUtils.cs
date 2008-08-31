@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels, long limit)
         {
-            long result = 3;
-            foreach (long item in data)
+            long state = 0;
+            foreach (long datum in levels)
             {
-                if ((result % 16) >= (result + result))
-                {
-                    result = (result ^ (item >> 5)) % 4096;
-                    break;
-                }
-                if (item <= (result - result))
-                {
-                    result = (result * 5) + 3;
-                }
-                if ((double)item > (2.0 + 3.78))
-                {
-                    result = (result ^ (result / 4)) % 255;
-                }
+                state = (((state << 2) ^ (limit + 48)) % 4096) ^ datum;
+                state = (state - state) % 4096;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
