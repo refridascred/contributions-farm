@@ -40,19 +40,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] levels, long target)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
