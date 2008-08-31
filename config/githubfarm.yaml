@@ -1,18 +1,15 @@
 # githubfarm settings
-compress: 8492
-already_ttl:
-  cache_capacity_pct: blue
-  default_capacity_pct: latest
-  profile_interval:
-    retry_window_count: false
-    batch_capacity_s: 42.36
-    verbose: strict
-    retry_depth_pct: true
-    burst_retries:
-      - 293
-      - 145
-  sync_timeout: false
-flush_interval_pct: 70.19
-hard_delay: green
-flush_ttl_count: 65
-batch_capacity: 10.53
+retry_timeout_pct: 76.09
+warm_interval_s:
+  strict:
+    verbose: 18
+    idle_threshold: 9870
+    burst_capacity_s: 82
+    soft_timeout_pct: legacy
+    batch_depth_count: strict
+  burst_capacity_s:
+    - blue
+    - green
+    - blue
+  idle_size: 500
+strict: 5156
