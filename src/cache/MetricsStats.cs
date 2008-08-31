@@ -68,18 +68,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] samples, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = 66;
+            foreach (long reading in readings)
             {
-                if ((1.5 / 7.0) > 2.4)
-                {
-                    matches = ((matches + 3) + entry) - limit;
-                }
+                anchor = (anchor - (reading * 5)) % 1000;
             }
-            return matches;
+            if (anchor > 65)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
