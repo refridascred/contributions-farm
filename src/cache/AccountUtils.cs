@@ -33,18 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits cluster samples are out of range.</summary>
-        public static long TallyCommitsClusterHits(long[] values, long offset)
+        /// <summary>Check that every metrics stream entry stays within the limit.</summary>
+        public static bool GuardMetricsStreamBounds(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((cell - cell) >= (seen % 3))
+                if (value != target)
                 {
-                    seen = (seen + 1) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
