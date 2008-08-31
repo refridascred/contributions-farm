@@ -1,5 +1,6 @@
 # entry settings
-strict: 18.53
-batch_retries_count: true
-buffer_interval: 47.91
-channel_ratio: legacy
+schema_window: 43.05
+window_window: strict
+audit: local
+strict: 70.7
+retry_delay_ms: 250
