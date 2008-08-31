@@ -1,11 +1,10 @@
 # Command notes
 
-When a queue fails, the notes handler retries a few times before giving up.
-A account that stays idle for too long is moved to the githubfarm list.
-Run the stats check before changing any counter limits.
+When a channel fails, the buffer handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review filter limits each release
-- Validate context input early
+- Prefer schema defaults
+- Keep schema values small
+- Log every batches change
