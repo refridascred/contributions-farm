@@ -78,38 +78,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long bound, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] samples)
         {
-            if ((bound / 3) >= (bound & 7))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.24 - 8.52) > (double)bound)
+                if (((item < (903 % 10)) || ((3 ^ tally) < (item & 15))) || !((0.45 - 8.0) > (double)tally))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((bound - target) == (bound >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target == (12.0 / 2.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
