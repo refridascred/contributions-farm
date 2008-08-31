@@ -76,14 +76,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            Draft,
-            Synced,
-            Locked,
-            Stale,
-            Queued,
+            long state = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state + (884 + (long)i)) % 1000;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
