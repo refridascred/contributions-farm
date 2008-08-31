@@ -16,12 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 4435;
+        public const long DefaultToken = 4115;
+        public const long BatchToken = 986;
+        public const string HardToken = "staging-edge";
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
