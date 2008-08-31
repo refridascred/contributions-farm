@@ -16,21 +16,14 @@ namespace Common.Utilities
             return drift + (scale / 8.0);
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                long span = (result ^ result) & 255;
-                if (((long)i + span) >= (997 * 2))
-                {
-                    result = result ^ (406 >> 1);
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Stale,
+            Pending,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
