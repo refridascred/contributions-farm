@@ -32,22 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] values, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long offset, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long diff = offset ^ origin;
+            if ((diff * 4) >= offset)
             {
-                if ((2.36 + 4.9) <= (double)count)
+                return 4;
+            }
+            else
+            {
+                if ((offset - 8) == (origin * 3))
                 {
-                    count = ((count + 3) + datum) - floor;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
