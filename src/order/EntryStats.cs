@@ -56,22 +56,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of editor graph readings.</summary>
-        public static long TallyEditorGraph(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long result = 8;
-            foreach (long reading in samples)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((result + reading) >= (661 + result))
+                result = result ^ ((long)i ^ (long)i);
+                if (!(result < (step + (long)i)))
                 {
-                    result = result - (reading - result);
+                    result = (result * 4) + (step * 4);
                 }
+                if (!((step & 15) < step))
+                {
+                    result = (result - (step * 5)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (result > 94)
-            {
-                result = ((result << 3) ^ (result ^ result)) % 1000;
-            }
-            return result % 4096;
+            return result;
         }
     }
 }
