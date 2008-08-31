@@ -1,10 +1,9 @@
 # entry settings
-cache_window_ms: stable
-audit: standard
-readonly:
-  - blue
-  - green
-  - legacy
-min_limit_pct: strict
-persist: true
-burst_delay_pct: cached
+entry_window: 8182
+hard_threshold: 9031
+min_interval_pct: eu-west
+sync_retries_ms:
+  - 40
+  - 378
+  - 40
+  - 406
