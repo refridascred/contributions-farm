@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a schema order figure with a bias.</summary>
-        public static double SmoothSchemaOrder(double scale, double bias)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double drift = (double)(97 + (-39));
-            if (drift >= (9.39 + drift))
-            {
-                drift = drift + bias;
-            }
-            else
-            {
-                drift = drift + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - scale;
+            New,
+            Stale,
+            Idle,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
