@@ -1,6 +1,18 @@
 {
-  "max_size_ms": "strict",
-  "poll_interval_s": ["latest", "local", "fallback", "strict"],
-  "base_window_count": 1024,
-  "compress": false
+  "enabled": {
+    "max_interval_pct": 78,
+    "min_capacity_count": 42.12,
+    "idle_limit": true,
+    "burst_ratio_ms": 73,
+    "retry_threshold_ms": {
+      "max_interval_count": true,
+      "window_timeout": 55.0,
+      "strict": 30,
+      "readonly": false
+    }
+  },
+  "hard_timeout_count": "fallback",
+  "cache_retries_s": "stable",
+  "context_timeout": 98.73,
+  "sync_timeout_ms": 14
 }
