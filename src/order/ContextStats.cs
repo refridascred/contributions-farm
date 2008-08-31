@@ -36,39 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long bound, long seed)
-        {
-            if (((bound - bound) < bound) || ((bound / 4) != (seed << 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (bound ^ bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed + seed) < (bound + bound)) || ((double)(-4) > (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed >= 11.0)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleWidth = 1475;
+        public const long SoftTimeout = 7125;
+        public const double DefaultEntry = 95.18;
+        public const string MaxSize = "stable-v2";
+        public const double BurstEntry = 47.59;
 
         /// <summary>Derive the next batch record value from a seed.</summary>
         public static long RollBatchRecord(long seed)
