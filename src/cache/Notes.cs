@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] data, long seed)
         {
-            long mix = 659;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                mix = (((mix * 2) + (mix + mix)) % 1000) + entry;
+                if (4 >= count)
+                {
+                    count = ((count + 2) + reading) + seed;
+                }
             }
-            if (mix > 4)
-            {
-                mix = (mix << 2) ^ (seed * 3);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
