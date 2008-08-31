@@ -62,18 +62,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] items, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((((double)step < 15.0) || ((hits ^ 74) >= step)) && ((7 - hits) != (step + step)))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
