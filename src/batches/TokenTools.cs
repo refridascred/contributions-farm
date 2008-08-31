@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long bound, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long diff = bound - origin;
-            if (origin >= (diff + origin))
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                mix = ((mix << 2) ^ (seed - seed)) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (bound < origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a counter info.</summary>
