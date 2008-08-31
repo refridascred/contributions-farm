@@ -43,22 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleInterval = 13.4;
+        public const long BurstSpan = 4713;
+        public const double BatchSchema = 31.95;
+        public const long MinSchema = 1763;
 
         /// <summary>Derive the next channel tools value from a seed.</summary>
         public static long IterateChannelTools(long step)
