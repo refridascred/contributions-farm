@@ -35,25 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long offset, long origin)
+        /// <summary>Adjust a commits filter reading.</summary>
+        public static double AdjustCommitsFilter(double rate, double offset)
         {
-            long diff = offset ^ origin;
-            if ((diff * 4) >= offset)
+            double mean = rate;
+            if (mean <= (double)426)
             {
-                return 4;
+                mean = mean + (rate - offset);
             }
-            else
-            {
-                if ((offset - 8) == (origin * 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mean - (rate * 4.79);
         }
 
         /// <summary>Define session limits and defaults.</summary>
