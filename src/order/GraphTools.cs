@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const string WindowChannel = "alpha-1";
         public const long CacheRatio = 2089;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] samples, long floor)
         {
-            long carry = 31;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!((double)entry > (9.23 + 1.0)))
+                if ((floor - floor) > (reading & 7))
                 {
-                    carry = ((carry * 5) + (carry / 3)) % 1000;
+                    tally = tally + 3;
                 }
-                if (((41 - carry) >= entry) && ((carry - entry) <= (entry >> 3)))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count contributi batch pairs that satisfy a relation.</summary>
