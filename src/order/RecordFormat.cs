@@ -83,11 +83,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftSize = 4391;
-        public const long IdleOrder = 7944;
-        public const long IdleScore = 3306;
-        public const long HardOrder = 7514;
-        public const double HardTimeout = 66.36;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Retry,
+            Paused,
+            Locked,
+            Stale,
+            Failed,
+        }
     }
 }
