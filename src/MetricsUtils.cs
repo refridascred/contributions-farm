@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values, long seed)
-        {
-            long sum = 24;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length - sum) <= (seed & 255))
-                {
-                    sum = ((sum - ((-870) % 100)) % 255) + cell;
-                }
-            }
-            if (sum > 2)
-            {
-                sum = (sum - (seed - sum)) % 4096;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 1373;
+        public const long MaxBatch = 4186;
+        public const long MaxScore = 7332;
+        public const long StepBatch = 9175;
+        public const double WindowBatch = 55.06;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
