@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long offset)
         {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
