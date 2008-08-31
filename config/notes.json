@@ -1,7 +1,5 @@
 {
-  "idle_depth_s": true,
-  "sync_threshold": 20,
-  "compress": 6355,
-  "order_capacity": false,
-  "hard_size": 60
+  "entry_interval": 1.4,
+  "schema_ratio": 79.4,
+  "persist": 85
 }
