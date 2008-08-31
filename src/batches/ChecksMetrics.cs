@@ -63,17 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] series, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long target, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((target >> 5) < target))
             {
-                if (series[i] < limit)
+                return 8;
+            }
+            else
+            {
+                if (!((double)step != (3.41 * 9.85)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
