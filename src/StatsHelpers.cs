@@ -29,10 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 9545;
-        public const long DefaultCommits = 5265;
-        public const long StepCommits = 7981;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 80.25;
+        public const double WindowFilter = 73.55;
+        public const long BaseFilter = 5466;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
