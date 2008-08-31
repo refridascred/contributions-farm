@@ -54,25 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route batches pair into a bucket.</summary>
-        public static long SortRouteBatches(long target, long offset)
-        {
-            if (((target & 1) <= (offset % 100)) && (offset >= (offset + target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + target) > 591)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 4204;
+        public const long MinSpan = 1555;
+        public const long BurstGithubfarm = 2152;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long seed, long seed2)
