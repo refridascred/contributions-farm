@@ -47,10 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 4204;
-        public const long MinSpan = 1555;
-        public const long BurstGithubfarm = 2152;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long seed, long seed2)
