@@ -79,11 +79,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 9722;
-        public const string BaseNotes = "primary-edge";
-        public const long BurstNotes = 1911;
-        public const long RetryNotes = 3812;
-        public const long CacheWidth = 2884;
+        /// <summary>Grade a metrics channel value against two limits.</summary>
+        public static long SortMetricsChannel(long target, long floor)
+        {
+            long span = target ^ floor;
+            if ((double)target > (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((2.8 - 6.14) < (double)target) || ((target << 1) < (span ^ span)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor * 3) < (span % 10))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
