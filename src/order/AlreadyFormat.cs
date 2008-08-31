@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] series, long bound)
         {
-            if ((offset * 4) == (74 ^ 261))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - limit) > offset)
+                if ((series[i] < bound) && ((series[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - offset) < (-2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (20.0 <= (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
