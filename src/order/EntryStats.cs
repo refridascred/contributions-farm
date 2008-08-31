@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry < offset)
                 {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a token options.</summary>
