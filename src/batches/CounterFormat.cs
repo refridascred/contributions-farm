@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] readings, long bound)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine order values into a single score.</summary>
