@@ -36,26 +36,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema farm entries.</summary>
-        public static long FoldSchemaFarm(long[] series)
+        /// <summary>Find the first farm counter entry that matches the target.</summary>
+        public static long FindFarmCounterIndex(long[] samples, long target)
         {
-            long total = 2;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading >> 2) != (56 % 97))
+                if (samples[i] >= target)
                 {
-                    total = ((total * 5) + (total / 5)) % 101;
-                }
-                if ((total << 2) > 2)
-                {
-                    total = (total ^ reading) % 255;
-                }
-                else
-                {
-                    total = (total ^ (37 ^ reading)) % 255;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
     }
 }
