@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > seed)
                 {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Find the first tools account entry that matches the target.</summary>
