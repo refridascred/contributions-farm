@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable cached; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=128
+log "limit is ${BUFFER_LIMIT}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-BUFFER_LIMIT=300
-log "limit is ${BUFFER_LIMIT}"
