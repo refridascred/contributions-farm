@@ -26,11 +26,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowFactor = 30.2;
+        public const long DefaultWidth = 8669;
+        public const string HardRatio = "fallback";
+        public const long StepTimeout = 8020;
     }
 }
