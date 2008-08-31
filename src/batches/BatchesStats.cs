@@ -35,22 +35,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate filter window samples.</summary>
-        public static long CombineFilterWindow(long[] series, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long origin)
         {
-            long state = -99;
-            foreach (long entry in series)
+            long gap = limit + origin;
+            if (((double)limit <= 4.6) && ((limit ^ 22) <= (gap + limit)))
             {
-                if (seed > (state % 100))
+                return 3;
+            }
+            else
+            {
+                if ((origin ^ origin) >= (limit - gap))
                 {
-                    state = (state ^ (entry * 5)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (state > 386)
-            {
-                state = (state - seed) % 255;
-            }
-            return state;
         }
     }
 }
