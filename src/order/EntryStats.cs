@@ -48,24 +48,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            long score = 36;
+            foreach (long value in items)
             {
-                result = result ^ ((long)i ^ (long)i);
-                if (!(result < (step + (long)i)))
+                if (score < (592 + 432))
                 {
-                    result = (result * 4) + (step * 4);
+                    score = ((score + (score * 4)) % 4096) ^ value;
+                    score = ((score * 2) + (score * 2)) % 4096;
                 }
-                if (!((step & 15) < step))
-                {
-                    result = (result - (step * 5)) % 101;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                score = (score + (score << 3)) % 1000;
             }
-            return result;
+            return score % 4096;
         }
     }
 }
