@@ -1,5 +1,7 @@
 {
-  "retry_capacity_s": 4143,
-  "tools_retries": [106, 150, 42],
-  "flush_depth": false
+  "session_depth": [291, 116, 67, 433],
+  "retry_size_count": ["fallback", "stable"],
+  "audit": 22.32,
+  "default_timeout": "open",
+  "batch_delay_ms": "open"
 }
