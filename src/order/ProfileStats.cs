@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 4657;
-        public const double StepBuffer = 41.76;
-        public const long BatchBuffer = 1298;
-        public const long HardLevel = 3225;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (step < ((long)i << 1))
+                {
+                    total = total - (step + step);
+                }
+                else
+                {
+                    total = total ^ step;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] samples, long origin)
