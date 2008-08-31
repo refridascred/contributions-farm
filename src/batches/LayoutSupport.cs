@@ -67,19 +67,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] data, long floor)
-        {
-            long result = 91;
-            foreach (long entry in data)
-            {
-                result = (result - (floor % 100)) - entry;
-            }
-            if (result < 94)
-            {
-                result = result - (5 + floor);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinDepth = 55.83;
+        public const long CacheGraph = 5080;
+        public const long MaxGraph = 5392;
     }
 }
