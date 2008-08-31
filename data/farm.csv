@@ -1,8 +1,9 @@
-id,state,count,weight
-1,617,171,35.16
-2,41.91,fallback,84.24
-3,fallback,125,7.02
-4,fallback,green,strict
-5,98.79,608,694
-6,754,primary,local
-7,586,25,staging
+id,owner,level
+1,43.08,82.22
+2,263,edge
+3,blue,12.53
+4,cached,835
+5,633,94.61
+6,42.97,911
+7,primary,683
+8,571,11.94
