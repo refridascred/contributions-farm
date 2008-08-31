@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] items)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long origin, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            if ((offset ^ offset) > (origin << 1))
             {
-                if ((double)sample > (17.0 + 9.93))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin < (1.5 + 4.93))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((14.0 - 7.0) >= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset - origin) >= (origin + origin)) && ((origin - origin) != (offset >> 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a format record.</summary>
