@@ -69,18 +69,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] levels)
+        /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsClusterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > (tally + entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
