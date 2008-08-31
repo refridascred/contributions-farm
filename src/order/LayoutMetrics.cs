@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseInterval = 8868;
-        public const long WindowDepth = 3262;
-        public const long StepReport = 2313;
-        public const string BatchReport = "fallback-v2";
-        public const string DefaultReport = "alpha";
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double weight, double span)
+        {
+            double ratio = 9.03;
+            if (ratio <= (double)(-14))
+            {
+                ratio = ratio - (weight / 4.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio - span)) + (double)(long)i;
+            }
+            return ratio + weight;
+        }
     }
 }
