@@ -33,14 +33,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] series, long offset)
         {
-            Queued,
-            Closed,
-            Ready,
-            Retry,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
