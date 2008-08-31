@@ -1,36 +1,29 @@
 # support settings
-idle_threshold_ms:
-  - 375
-  - 138
-  - 216
-  - 364
-cache_limit:
-  soft_delay_s:
-    default_capacity: 97.1
-    context_window: open
-    dry_run:
-      - 210
-      - 82
-      - 297
-      - 276
-    sync_delay_ms: 1941
-    hard_interval: 38
-    idle_threshold_pct: eu-west
-  commits_depth:
-    flush_window_s: legacy
-    enabled: 75.68
-    batch_limit: eu-west
-    readonly: strict
-  strict: 500
-  base_depth_pct: cached
-  flush_size_count:
-    - 29
-    - 49
-    - 312
-    - 479
-cluster_capacity: 67
-warm_limit_count:
-  - 430
-  - 370
-  - 107
-  - 372
+min_interval_s: open
+compress: false
+persist:
+  - 426
+  - 24
+  - 132
+cache_depth_ms: strict
+readonly:
+  persist: true
+  route_timeout:
+    - 175
+    - 208
+    - 323
+  burst_size_count: 60
+  max_ratio_s:
+    - 367
+    - 231
+  metrics_delay: eu-west
+  batch_ttl:
+    idle_ttl_ms: 90.49
+    channel_window:
+      - 216
+      - 424
+      - 343
+    soft_size_pct:
+      - 146
+      - 165
+flush_capacity_s: 302
