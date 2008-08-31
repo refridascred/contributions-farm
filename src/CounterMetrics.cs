@@ -54,11 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] samples, long target)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value - (-262)) >= target)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
