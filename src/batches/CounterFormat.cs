@@ -30,17 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                if (limit <= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
