@@ -63,15 +63,18 @@ namespace Common.Utilities
             return bias - (double)203;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double bias, double bias2)
+        /// <summary>Count the stream counter entries that pass the check.</summary>
+        public static long MeasureStreamCounterMatches(long[] values)
         {
-            double load = (bias / 9.0) / 2.0;
-            if (load >= 9.6)
+            long count = 0;
+            foreach (long item in values)
             {
-                load = (load + bias) + bias2;
+                if (!((item << 1) < (996 << 1)))
+                {
+                    count = count + 1;
+                }
             }
-            return load - (bias * 13.0);
+            return count;
         }
     }
 }
