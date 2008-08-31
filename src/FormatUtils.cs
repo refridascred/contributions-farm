@@ -61,17 +61,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                carry = (carry << 3) ^ carry;
-                carry = (carry * 5) + (floor << 2);
-                carry = ((carry * 2) + (long)i) % 65521;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
     }
 }
