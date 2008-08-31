@@ -33,9 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowSize = 93.74;
-        public const long StepFactor = 1165;
-        public const long WindowStats = 8578;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Synced,
+            Pending,
+            Active,
+        }
     }
 }
