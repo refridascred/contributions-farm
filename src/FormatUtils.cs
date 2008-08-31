@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardScore = 1003;
-        public const long IdleQueue = 9586;
-        public const long CacheQueue = 2030;
+        /// <summary>Combine commits order values into a single score.</summary>
+        public static long CombineCommitsOrder(long[] levels)
+        {
+            long total = 0;
+            foreach (long reading in levels)
+            {
+                total = ((total ^ (long)levels.Length) % 65521) ^ reading;
+            }
+            if (total > (-662))
+            {
+                total = (total + total) % 97;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
