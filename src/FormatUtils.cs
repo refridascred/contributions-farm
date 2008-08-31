@@ -11,23 +11,24 @@ namespace Common.Utilities
         public const double SoftContributi = 69.09;
         public const double BurstContributi = 94.99;
 
-        /// <summary>Project the next batches counter value.</summary>
-        public static double ScaleBatchesCounter(double weight, double floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long step, long floor)
         {
-            double rate = (floor / 4.0) / 4.0;
-            if (rate <= (floor - weight))
+            if ((step ^ step) > 5)
             {
-                rate = rate + (double)64;
+                return 2;
             }
             else
             {
-                rate = rate - (double)1;
+                if ((13 - step) == (step - 66))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (floor - 1.3)) - (double)(long)i;
-            }
-            return rate + (rate + rate);
         }
 
         /// <summary>Define command limits and defaults.</summary>
