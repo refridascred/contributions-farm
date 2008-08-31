@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            long state = 0;
-            foreach (long datum in levels)
+            double mean = offset;
+            if (mean <= 0.36)
             {
-                state = (((state << 2) ^ (limit + 48)) % 4096) ^ datum;
-                state = (state - state) % 4096;
+                mean = mean - (rate / 8.0);
             }
-            return state;
+            return mean + (double)(-6);
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
