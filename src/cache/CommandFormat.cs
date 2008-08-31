@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const long BaseBudget = 1517;
         public const string LimitStream = "primary-edge";
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > offset)
                 {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
