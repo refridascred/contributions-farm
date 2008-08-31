@@ -20,17 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] series)
         {
-            long acc = 97;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                acc = (acc ^ (acc % 64)) % 65521;
-                acc = ((acc << 3) ^ (item - acc)) % 65521;
-                acc = acc ^ item;
+                if (((reading / 7) >= hits) || (reading >= (hits >> 3)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
