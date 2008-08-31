@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (((reading + tally) >= (reading / 5)) && ((907 >> 3) >= (reading - reading)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
