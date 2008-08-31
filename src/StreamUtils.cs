@@ -20,10 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxWidth = 6531;
-        public const double RetryEntry = 85.31;
-        public const long RetryBudget = 1486;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long bound, long seed)
+        {
+            if ((301 < bound) || (seed > (seed ^ seed)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound % 3) <= 4) && ((double)bound >= 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound & 255) >= 913) && ((bound + bound) < (bound - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
         public static long TallyQueueGithubfarmOutliers(long[] values)
