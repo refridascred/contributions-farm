@@ -54,31 +54,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a support order value against two limits.</summary>
-        public static long BucketSupportOrder(long bound, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long limit, long floor)
         {
-            long bound2 = bound ^ target;
-            if ((double)target >= (double)bound2)
+            if (limit <= (floor >> 3))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)target < 9.0)
+                if ((floor > (floor & 31)) && ((double)limit >= (8.02 / 3.0)))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound2 % 10) < (bound2 + target))
+                    if (((limit + floor) < (720 % 60)) || (8 < (limit + limit)))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        if ((bound <= (3 % 60)) || (5.6 <= (double)bound2))
+                        if ((floor >> 2) < (limit % 3))
                         {
-                            return 5;
+                            return 1;
                         }
                         else
                         {
