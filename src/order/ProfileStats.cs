@@ -24,10 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowRatio = 3314;
-        public const long MaxInterval = 3770;
-        public const long RetryCluster = 9925;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long DigestRoute(long[] data)
