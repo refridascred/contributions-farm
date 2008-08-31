@@ -44,15 +44,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a token counter figure with a bias.</summary>
-        public static double AdjustTokenCounter(double ratio, double bias)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double mean = (double)(67 + 890);
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - (double)5) - (double)(long)i) - bias;
-            }
-            return mean + ratio;
+            Stale,
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define account limits and defaults.</summary>
