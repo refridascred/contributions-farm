@@ -34,14 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Failed,
-            Draft,
-            Dropped,
-            Queued,
-            Synced,
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
