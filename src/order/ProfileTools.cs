@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long mark = 429;
-            foreach (long item in series)
-            {
-                mark = mark + (mark + item);
-            }
-            return mark % 1000;
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Count already support pairs that satisfy a relation.</summary>
