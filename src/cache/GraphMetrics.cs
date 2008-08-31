@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long cell in readings)
             {
-                if (((cell * 3) < 93) && ((matches * 4) > 5))
+                if (matches >= (cell >> 2))
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
                 }
             }
             return matches;
