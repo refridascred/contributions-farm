@@ -1,13 +1,15 @@
 {
-  "compress": 60,
-  "verbose": [158, 379, 500],
-  "hard_delay": 500,
-  "retry_ratio": ["stable", "edge", "edge"],
-  "soft_capacity": {
-    "route_capacity": "primary",
-    "min_size_pct": "green",
-    "flush_limit_s": 49.84,
-    "order_depth": [121, 484],
-    "sync_threshold_ms": ["open", "standard", "green", "green"]
-  }
+  "hard_window_count": {
+    "soft_interval_count": [288, 151],
+    "flush_ttl_s": {
+      "sync_depth": ["standard", "fallback", "fallback", "eu-west"],
+      "persist": ["green", "cached", "fallback", "cached"],
+      "min_ttl_pct": false
+    },
+    "hard_ratio_ms": true,
+    "min_threshold_pct": "stable",
+    "default_limit_ms": 252
+  },
+  "filter_ttl": 55.04,
+  "layout_limit": "open"
 }
