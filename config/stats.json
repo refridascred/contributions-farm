@@ -1,7 +1,12 @@
 {
-  "idle_retries_s": 100,
-  "soft_delay_s": 7,
-  "strict": 30,
-  "warm_interval": 6017,
-  "schema_retries": 22.46
+  "burst_capacity": {
+    "account_size": "strict",
+    "strict": ["strict", "local", "latest", "primary"],
+    "persist": 7653,
+    "dry_run": true,
+    "warm_capacity": 2994,
+    "audit": [327, 370]
+  },
+  "dry_run": 30,
+  "sync_retries": "legacy"
 }
