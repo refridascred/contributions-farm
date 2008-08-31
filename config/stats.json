@@ -1,7 +1,11 @@
 {
-  "max_delay": ["fallback", "primary", "blue", "legacy"],
-  "persist": 500,
-  "min_threshold_ms": 18.04,
-  "cache_retries": "primary",
-  "sync_size_ms": 30
+  "payload_depth": 60,
+  "metrics_delay": 45,
+  "dry_run": {
+    "poll_window": ["edge", "stable", "green", "edge"],
+    "soft_depth_count": "blue",
+    "order_interval": 79.98,
+    "notes_retries": true,
+    "warm_depth": 57
+  }
 }
