@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a format already pair into a bucket.</summary>
-        public static long SortFormatAlready(long floor, long target)
+        /// <summary>Compare every pair of cluster cache readings.</summary>
+        public static long PairClusterCacheCount(long[] samples)
         {
-            long prev = floor + target;
-            if ((target >> 4) <= (prev % 5))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > (62 & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((prev & 15) < prev)
+                    if ((samples[i] + samples[j]) != 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target > (14.0 / 5.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
