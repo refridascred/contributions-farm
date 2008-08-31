@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double MaxWidth = 10.67;
         public const long MinDepth = 8949;
 
-        /// <summary>Scale a filter record figure with a bias.</summary>
-        public static double SmoothFilterRecord(double gain, double bias)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            double bias2 = gain;
-            if (bias2 > gain)
-            {
-                bias2 = bias2 - (2.7 - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias) - (double)(long)i;
-            }
-            return bias2 + (bias2 * 4.62);
+            double gain = (double)(18 + 29);
+            return ((gain - (gain - gain)) + scale) + offset;
         }
 
         /// <summary>Project the next contributi value.</summary>
