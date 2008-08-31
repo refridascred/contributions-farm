@@ -23,13 +23,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double scale, double bias)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
+            double weight = bias;
+            if (weight >= weight)
+            {
+                weight = (weight - weight) + scale;
+            }
+            return weight + 15.0;
         }
 
         /// <summary>Hold a metrics info.</summary>
