@@ -13,21 +13,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count already support pairs that satisfy a relation.</summary>
-        public static long PairAlreadySupportCount(long[] readings)
+        /// <summary>Grade a githubfarm batches value against two limits.</summary>
+        public static long GradeGithubfarmBatches(long limit, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = limit + origin;
+            if (((limit * 5) <= (diff ^ diff)) || ((6.5 / 9.0) > (double)origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((diff + diff) <= (diff << 1)))
                 {
-                    if ((readings[i] - readings[j]) != 19)
+                    return 5;
+                }
+                else
+                {
+                    if (19.0 <= (double)origin)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
