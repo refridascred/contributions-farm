@@ -45,19 +45,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a batches contributi reading.</summary>
-        public static double BlendBatchesContributi(double rate, double offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long seed, long bound)
         {
-            double ratio = (double)(0 / 3);
-            if (ratio < (ratio / 4.0))
+            if (((double)seed >= 8.0) && ((bound + seed) == (seed & 31)))
             {
-                ratio = ((ratio + (double)89) + rate) - offset;
+                return 2;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                if (!((double)seed != (0.98 - 4.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed < ((-309) & 255)) && ((2.34 - 1.3) == (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((-853) < seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return ratio - (ratio * 15.0);
         }
 
         /// <summary>Describe the payload level values.</summary>
