@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long floor, long limit)
-        {
-            if ((6.1 - 13.0) == (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)6 == (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 24.92;
+        public const long MinPayload = 4055;
+        public const string CacheRatio = "latest-1";
+        public const long MinLevel = 7356;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long step, long limit)
