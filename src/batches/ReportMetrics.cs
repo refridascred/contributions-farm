@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Accumulate batches githubfarm samples.</summary>
+        public static long TallyBatchesGithubfarm(long[] values)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long carry = 10;
+            foreach (long datum in values)
+            {
+                carry = (carry + (carry >> 4)) + datum;
+            }
+            if (carry > (-510))
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of order entries.</summary>
