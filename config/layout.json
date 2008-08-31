@@ -1,7 +1,7 @@
 {
-  "channel_limit": 78,
-  "burst_timeout": 87.92,
-  "poll_retries": false,
-  "sync_window": "primary",
-  "filter_retries": 99
+  "batch_capacity": "latest",
+  "cluster_delay": "eu-west",
+  "soft_capacity": false,
+  "flush_ratio": 2.08,
+  "sync_timeout": 7476
 }
