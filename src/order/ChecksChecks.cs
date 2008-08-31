@@ -27,15 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long score = 7;
+            foreach (long datum in items)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((score % 100) == (datum ^ datum))
+                {
+                    score = score + (score - 794);
+                }
             }
-            return mark;
+            return score;
         }
     }
 }
