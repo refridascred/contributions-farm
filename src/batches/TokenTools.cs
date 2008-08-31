@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long MinCount = 6005;
         public const long WindowRatio = 4904;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] series, long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
