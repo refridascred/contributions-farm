@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)tally > (9.96 - 9.81))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftInterval = 5409;
+        public const long WindowDepth = 2286;
+        public const string WindowGithubfarm = "stable-edge";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueGaps(long[] samples)
