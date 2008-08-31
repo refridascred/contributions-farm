@@ -1,14 +1,18 @@
 {
-  "flush_ttl": 38.07,
-  "hard_retries_count": {
-    "hard_ttl_pct": true,
-    "sync_capacity_count": 11,
-    "flush_ttl_s": "edge",
-    "warm_limit_ms": 86.32,
-    "hard_depth_ms": false
+  "strict": true,
+  "soft_window_count": 9539,
+  "queue_interval": {
+    "contributi_delay": false,
+    "compress": {
+      "batches_ratio": 8815,
+      "verbose": ["latest", "open", "stable", "standard"],
+      "cache_limit": "green",
+      "enabled": false
+    },
+    "readonly": false,
+    "persist": [282, 366, 157],
+    "notes_ttl": 67.49
   },
-  "hard_interval_ms": ["standard", "latest", "primary", "green"],
-  "filter_ttl": false,
-  "burst_window_count": "edge",
-  "compress": "legacy"
+  "readonly": 60,
+  "hard_timeout_pct": 23.51
 }
