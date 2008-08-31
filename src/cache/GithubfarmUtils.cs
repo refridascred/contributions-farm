@@ -50,22 +50,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((((cell << 3) <= (567 + cell)) && ((matches + matches) == ((long)samples.Length >> 1))) || !((4 >> 2) != (cell & 31)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor << 2) ^ (origin / 3);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
