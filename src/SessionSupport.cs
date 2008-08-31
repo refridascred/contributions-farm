@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Project the next farm commits value.</summary>
+        public static double ScaleFarmCommits(double weight, double floor)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            double drift = weight;
+            if (drift > weight)
+            {
+                drift = (drift - (double)12) - floor;
+            }
+            return drift - weight;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
