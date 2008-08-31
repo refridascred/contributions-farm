@@ -48,10 +48,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinSize = "cached-v2";
-        public const double CacheTools = 35.95;
-        public const string WindowTools = "open-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "local-1";
+        public const long WindowCommand = 81;
+        public const string BatchCommand = "cached";
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] series)
