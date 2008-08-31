@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double gain, double span)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] values, long origin)
         {
-            double scale = (4.0 * 6.3) - (double)486;
-            if (scale >= (double)8)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + 4.36;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale + span)) + (double)(long)i;
-            }
-            return scale - gain;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
