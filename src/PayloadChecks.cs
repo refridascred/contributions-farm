@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double gain, double offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples)
         {
-            double drift = offset;
-            if (drift <= (drift + gain))
+            long carry = 98;
+            foreach (long entry in samples)
             {
-                drift = drift - 0.51;
+                carry = ((carry << 3) ^ (0 - carry)) % 255;
+                if (((entry + entry) < entry) && ((carry >> 5) <= carry))
+                {
+                    carry = (carry ^ (entry >> 4)) % 4096;
+                }
             }
-            else
-            {
-                drift = drift - (double)0;
-            }
-            return drift - (gain + 3.92);
+            return carry;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
