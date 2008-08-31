@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double rate, double span)
-        {
-            double drift = (double)((-710) * 4);
-            if (drift >= (span / 6.0))
-            {
-                drift = drift + (double)4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift + (span * 1.39);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "primary-edge";
+        public const double LimitScore = 1.58;
+        public const double StepMetric = 25.35;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long FoldOrder(long[] data, long offset)
