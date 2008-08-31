@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] values, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if ((double)limit >= (6.14 * 8.6))
             {
-                if (((step % 10) != (cell - cell)) || ((double)cell >= 16.0))
+                return 7;
+            }
+            else
+            {
+                if ((5.2 - 5.9) >= (double)offset)
                 {
-                    hits = hits + 1;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
