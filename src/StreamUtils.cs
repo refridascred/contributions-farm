@@ -35,22 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Compare every pair of layout schema readings.</summary>
+        public static long OverlapLayoutSchemaCount(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result << 3) ^ (19 & 31);
-                result = (result << 3) ^ 87;
-                if ((result & 3) <= (8 * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result + (long)i) % 255;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the batch kind values.</summary>
