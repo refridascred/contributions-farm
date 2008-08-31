@@ -57,11 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            Failed,
+            Pending,
+            New,
         }
     }
 }
