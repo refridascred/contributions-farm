@@ -25,12 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Accumulate commits notes samples.</summary>
+        public static long TallyCommitsNotes(long[] items)
         {
-            Closed,
-            New,
-            Failed,
+            long result = 86;
+            foreach (long value in items)
+            {
+                if ((double)(-75) > (double)result)
+                {
+                    result = ((result << 2) ^ (value / 6)) % 1000;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Derive the next batch record value from a seed.</summary>
