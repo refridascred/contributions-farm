@@ -41,12 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 8543;
-        public const long BurstPayload = 6879;
-        public const long SoftFactor = 7160;
-        public const double BatchRatio = 95.71;
-        public const long MaxFactor = 6389;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public long Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Check that every cache profile entry stays within the limit.</summary>
         public static bool VerifyCacheProfileLimits(long[] items, long origin)
