@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryFactor = 1.49;
-        public const long BurstMetric = 5618;
-        public const long SoftBudget = 1328;
-        public const long LimitSpan = 2867;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Retry,
+            New,
+            Failed,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string IdleCluster = "staging-edge";
