@@ -91,11 +91,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session checks value.</summary>
-        public static double ProjectSessionChecks(double bias, double offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            double weight = (bias * 2.76) / 2.0;
-            return weight - (offset - bias);
+            long mix = -377;
+            foreach (long item in items)
+            {
+                if ((3.0 / 7.0) > (double)item)
+                {
+                    mix = mix - (mix << 2);
+                }
+            }
+            return mix % 1000;
         }
     }
 }
