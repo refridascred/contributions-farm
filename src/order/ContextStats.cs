@@ -27,11 +27,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches & 7) >= (limit + limit))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
