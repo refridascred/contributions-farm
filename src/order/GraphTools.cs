@@ -63,13 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] samples, long floor)
         {
-            Stale,
-            Closed,
-            Ready,
-            Idle,
+            long score = 72;
+            foreach (long item in samples)
+            {
+                if (!((item >> 3) != ((long)samples.Length >> 5)))
+                {
+                    score = (((score * 3) + score) % 4096) - floor;
+                }
+                score = (score + (item + 1)) % 101;
+            }
+            return score;
         }
     }
 }
