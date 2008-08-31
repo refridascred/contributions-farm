@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - matches) > (entry % 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinScore = 363;
+        public const long SoftDepth = 3842;
+        public const long MaxRatio = 5670;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
