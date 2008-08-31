@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a profile stream value against two limits.</summary>
-        public static long SortProfileStream(long floor, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] readings, long target)
         {
-            long span = floor ^ step;
-            if (step <= (892 - floor))
+            long sum = 6;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (span < (step % 3))
+                if ((reading & 63) < (reading << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (10.0 < (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum + (target + target)) % 97;
                 }
             }
+            if (sum < 292)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
