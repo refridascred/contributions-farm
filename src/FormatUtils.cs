@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] values, long bound)
         {
-            Active,
-            Done,
-            Draft,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (10.0 <= (double)bound)
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support entry.</summary>
