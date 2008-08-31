@@ -40,15 +40,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double bias, double floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double bias2 = (floor / 5.0) - 2.2;
-            if (bias2 >= bias)
-            {
-                bias2 = bias2 + (double)(-230);
-            }
-            return bias2 + (bias * 1.0);
+            Draft,
+            Idle,
+            Active,
+            Stale,
+            Paused,
         }
     }
 }
