@@ -25,21 +25,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 31;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)entry > (9.23 + 1.0)))
                 {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry * 5) + (carry / 3)) % 1000;
+                }
+                if (((41 - carry) >= entry) && ((carry - entry) <= (entry >> 3)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
