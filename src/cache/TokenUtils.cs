@@ -12,21 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Fold a list of metric stream readings.</summary>
+        public static long TallyMetricStream(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 74;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((step ^ 70) > (reading + step))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum << 3) ^ (sum >> 3);
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the command level values.</summary>
