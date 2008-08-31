@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 4330;
-        public const string BatchBudget = "strict-edge";
-        public const long RetrySize = 8294;
-        public const long BurstDepth = 6572;
-        public const long CacheFactor = 8720;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftSize = 54.02;
+        public const long StepLevel = 3742;
+        public const long IdleFarm = 750;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterHits(long[] data)
