@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of command layout entries.</summary>
-        public static long DigestCommandLayout(long[] items, long floor)
+        /// <summary>Validate payload command readings against a bound.</summary>
+        public static bool CheckPayloadCommandBounds(long[] values, long offset)
         {
-            long mix = 97;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (((double)75 < (double)reading) || ((double)(long)items.Length == (1.0 * 6.4)))
+                if (cell >= offset)
                 {
-                    mix = ((mix * 5) + (floor << 2)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (mix > 6)
-            {
-                mix = (mix - floor) % 97;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
