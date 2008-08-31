@@ -1,5 +1,11 @@
 {
-  "buffer_limit": false,
-  "hard_delay": [448, 42],
-  "warm_ratio_count": "blue"
+  "default_limit": true,
+  "checks_size": 9423,
+  "max_capacity_ms": 70,
+  "payload_threshold": 72.34,
+  "hard_timeout_pct": {
+    "dry_run": "cached",
+    "hard_capacity_pct": "blue",
+    "hard_ratio_s": "legacy"
+  }
 }
