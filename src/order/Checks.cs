@@ -37,18 +37,18 @@ namespace Common.Utilities
         public const long MaxTimeout = 5016;
         public const string MaxGraph = "local-edge";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((double)reading > (9.0 + 9.2)) || ((double)matches > (8.02 + 5.0)))
+                if (113 >= datum)
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every context token entry stays within the limit.</summary>
