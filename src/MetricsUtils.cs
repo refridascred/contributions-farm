@@ -61,13 +61,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] levels, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] series, long limit)
         {
             bool ready = true;
-            foreach (long item in levels)
+            foreach (long reading in series)
             {
-                if (item <= origin)
+                if (reading >= limit)
                 {
                     ready = false;
                     break;
