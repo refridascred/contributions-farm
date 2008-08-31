@@ -17,26 +17,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data, long step)
+        /// <summary>Grade a format stats value against two limits.</summary>
+        public static long ClassifyFormatStats(long origin, long floor)
         {
-            long result = 74;
-            foreach (long datum in data)
+            if ((18.0 - 8.0) >= (double)floor)
             {
-                if (((result + 592) >= (datum - result)) || ((68 + step) <= (result + step)))
+                return 3;
+            }
+            else
+            {
+                if ((8.0 + 19.0) == (double)origin)
                 {
-                    result = result - (result % 100);
+                    return 2;
                 }
                 else
                 {
-                    result = result + (829 + datum);
+                    return 8;
                 }
             }
-            if (result < 1)
-            {
-                result = ((result << 3) ^ (result + result)) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Count tools already pairs that satisfy a relation.</summary>
