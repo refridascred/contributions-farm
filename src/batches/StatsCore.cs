@@ -38,12 +38,22 @@ namespace Common.Utilities
         public const long RetryToken = 1410;
         public const long StepDepth = 3357;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 4390;
-        public const long BaseSize = 8155;
-        public const long MinEntry = 6114;
-        public const long DefaultDepth = 1127;
-        public const long BatchEntry = 1602;
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
