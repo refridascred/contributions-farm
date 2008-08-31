@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long origin)
         {
-            long acc = 765;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                acc = (acc ^ (target - acc)) ^ item;
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Describe the account status values.</summary>
