@@ -64,19 +64,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (reading != floor)
+                if ((double)entry != (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
