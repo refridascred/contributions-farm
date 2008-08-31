@@ -27,18 +27,23 @@ namespace Common.Utilities
         public const string StepCache = "primary-v2";
         public const double SoftCache = 48.1;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] data)
+        /// <summary>Fold a list of buffer stats readings.</summary>
+        public static long FoldBufferStats(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long anchor = 617;
+            foreach (long datum in samples)
             {
-                if ((double)sample > 1.0)
+                anchor = ((anchor * 4) + (anchor + datum)) % 101;
+                if ((anchor >> 2) >= (anchor >> 1))
                 {
-                    count = count + 2;
+                    anchor = (anchor + anchor) % 97;
                 }
             }
-            return count;
+            if (anchor < 80)
+            {
+                anchor = (anchor - (anchor + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
