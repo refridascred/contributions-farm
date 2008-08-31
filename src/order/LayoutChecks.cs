@@ -43,11 +43,21 @@ namespace Common.Utilities
             return weight2 - 1.0;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Iterate the queue report series from a seed.</summary>
+        public static long DeriveQueueReport(long step)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long total = step;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total << 3) ^ ((long)i - step)) % 1000;
+                if (!(((long)i << 3) <= total))
+                {
+                    total = (total + (total + step)) % 101;
+                }
+                total = (total + 77) % 4096;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
