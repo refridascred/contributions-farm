@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxInterval = 1901;
-        public const string DefaultSize = "cached";
-        public const long HardSpan = 6261;
+        /// <summary>Match up stream commits samples.</summary>
+        public static long OverlapStreamCommitsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] series, long target)
