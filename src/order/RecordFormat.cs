@@ -67,11 +67,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            New,
+            Paused,
+            Closed,
+            Locked,
+            Done,
         }
     }
 }
