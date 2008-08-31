@@ -19,40 +19,12 @@ namespace Common.Utilities
         public const long BatchInterval = 8443;
         public const long LimitStats = 1535;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long origin)
-        {
-            long prev = bound + origin;
-            if ((2.6 * 4.41) < (double)prev)
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (prev - origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound + prev) < origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)prev >= (2.57 / 3.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleLevel = 3997;
+        public const double MinSupport = 77.53;
+        public const long StepSupport = 8513;
+        public const long IdleSupport = 8247;
+        public const long DefaultSpan = 960;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] samples, long target)
