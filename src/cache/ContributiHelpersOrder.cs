@@ -23,22 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm buffer entries that pass the check.</summary>
-        public static long AuditFarmBufferOutliers(long[] readings)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long origin)
         {
-            long tally = 0;
+            bool found = true;
             foreach (long item in readings)
             {
-                if ((7.6 / 3.0) <= (double)item)
+                if (item <= origin)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
