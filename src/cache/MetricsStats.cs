@@ -60,12 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] values, long offset)
         {
-            Queued,
-            Done,
-            Locked,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
