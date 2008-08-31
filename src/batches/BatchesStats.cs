@@ -32,26 +32,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of githubfarm checks entries.</summary>
-        public static long ScoreGithubfarmChecks(long[] levels)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = 84;
-            foreach (long cell in levels)
-            {
-                if ((anchor >> 4) <= (cell % 10))
-                {
-                    continue;
-                }
-                if (((anchor + cell) >= (anchor ^ anchor)) || (19 > anchor))
-                {
-                    anchor = (anchor + (anchor ^ anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor - cell);
-                }
-            }
-            return anchor;
+            Closed,
+            Synced,
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
