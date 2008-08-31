@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxFactor = "local-edge";
-        public const long BurstQueue = 9525;
-        public const long CacheQueue = 8532;
-        public const string HardSize = "standard-v2";
-        public const long RetryQueue = 8203;
+        /// <summary>Locate a batches route reading by value.</summary>
+        public static long LocateBatchesRouteIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] levels)
