@@ -22,19 +22,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] readings, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long total = 3;
+            foreach (long entry in values)
             {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total << 3) ^ (entry + entry);
+                total = (total + 0) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Validate notes farm readings against a bound.</summary>
