@@ -23,11 +23,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double bias, double offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] items, long seed)
         {
-            double drift = (double)(118 - (-3));
-            return (drift - (bias + bias)) + offset;
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the command state values.</summary>
