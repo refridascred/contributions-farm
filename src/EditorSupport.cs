@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long seed, long step)
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long slot = seed - step;
+            if ((double)slot != (double)6)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step & 127) <= (1 % 16))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= (slot * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)slot >= (5.0 * 8.9)) || ((seed % 7) < 85))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stats record readings against a rule.</summary>
