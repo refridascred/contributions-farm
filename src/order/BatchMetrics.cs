@@ -60,11 +60,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 8866;
-        public const string LimitLevel = "open-v2";
-        public const double LimitChecks = 72.22;
-        public const long IdleFactor = 3412;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values)
+        {
+            long mix = 36;
+            foreach (long datum in values)
+            {
+                mix = ((mix * 3) + datum) % 97;
+                mix = ((mix << 2) ^ datum) % 97;
+                mix = (mix ^ 370) % 4096;
+                if ((6.42 + 3.6) == (double)datum)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] readings)
