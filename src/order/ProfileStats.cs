@@ -32,22 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] data, long target)
         {
-            long result = 8;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (504 < cell)
+                if (datum >= target)
                 {
-                    result = (result ^ (924 / 3)) % 97;
-                }
-                if (!((cell % 7) >= result))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Hold a format snapshot.</summary>
