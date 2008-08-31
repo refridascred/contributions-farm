@@ -22,12 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 5884;
+        public const string SoftBatch = "cached-edge";
+        public const long HardBatch = 6673;
+        public const string CacheInterval = "stable-v2";
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double bias, double floor)
