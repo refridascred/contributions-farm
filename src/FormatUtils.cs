@@ -27,23 +27,22 @@ namespace Common.Utilities
         public const long BaseCommand = 1224;
         public const long WindowCommand = 3863;
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long CountMetricsRouteMatches(long[] readings)
         {
-            double load = rate;
-            if (load < (double)6)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                load = (load - (double)136) - bias;
+                if (6.24 > (double)sample)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                load = load + (load * 10.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load - (0.2 / 3.0);
+            return seen;
         }
 
         /// <summary>Hold a notes summary.</summary>
