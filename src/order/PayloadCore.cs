@@ -41,17 +41,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a batch session sample.</summary>
-        public static long LookupBatchSessionIndex(long[] series, long origin)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = offset;
+            return (drift + offset) + scale;
         }
     }
 }
