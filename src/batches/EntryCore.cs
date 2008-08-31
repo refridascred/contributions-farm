@@ -36,16 +36,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long seed, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            long lane = seed ^ bound;
+            if ((72 << 3) > (bound + bound))
             {
-                state = ((state * 2) + (long)i) % 255;
-                state = ((state * 4) + (long)i) % 65521;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((lane % 7) <= (73 << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
