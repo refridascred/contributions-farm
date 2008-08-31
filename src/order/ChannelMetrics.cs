@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 7800;
         public const string WindowGithubfarm = "local-v2";
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            Locked,
-            Dropped,
-            Idle,
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                total = (total << 3) ^ (total / 2);
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Grade a account stats value against two limits.</summary>
