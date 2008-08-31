@@ -24,15 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] data, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
     }
 }
