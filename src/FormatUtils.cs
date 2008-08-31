@@ -15,24 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long step, long floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            if ((step ^ step) > 5)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((13 - step) == (step - 66))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
