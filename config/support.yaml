@@ -1,21 +1,12 @@
 # support settings
-batches_ratio: 1751
-default_delay_ms: 100
-poll_threshold_ms: 73.31
-persist:
-  poll_retries: 250
-  cache_delay: 60
-  batch_ttl_s:
-    hard_capacity_ms: cached
-    enabled:
-      - 451
-      - 461
-      - 251
-      - 204
-    idle_retries_ms: 27.22
-    sync_capacity: 95.13
-  flush_window: 53
-hard_capacity_pct: true
-burst_timeout_pct:
-  - 142
-  - 400
+compress: legacy
+idle_size_pct: legacy
+retry_limit_s: 60
+hard_timeout_pct:
+  command_depth: 23.43
+  verbose: strict
+  enabled:
+    - green
+    - stable
+  channel_threshold: 79.5
+queue_depth: 7450
