@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] levels, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 6;
+            foreach (long datum in values)
             {
-                if (levels[i] <= floor)
+                if ((seed - seed) < ((long)values.Length & 15))
                 {
-                    return (long)i;
+                    sum = (sum + (sum + seed)) ^ datum;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
