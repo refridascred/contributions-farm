@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 2306;
-        public const long StepInterval = 141;
-        public const long StepTimeout = 7854;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((hits % 5) > (2 + hits)) && ((597 ^ sample) > 58))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count schema graph pairs that satisfy a relation.</summary>
         public static long CompareSchemaGraphCount(long[] samples)
