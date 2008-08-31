@@ -13,18 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] readings, long floor)
+        /// <summary>Locate a token payload reading by value.</summary>
+        public static long SeekTokenPayloadIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((floor ^ 3) > floor) || ((long)readings.Length >= (floor + floor)))
+                if ((values[i] > limit) && ((values[i] % 2) != 0))
                 {
-                    matches = (matches + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
