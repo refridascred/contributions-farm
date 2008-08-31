@@ -41,14 +41,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] data, long step)
         {
-            Retry,
-            New,
-            Idle,
-            Draft,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
