@@ -34,12 +34,11 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Done,
-            Locked,
-            Pending,
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
