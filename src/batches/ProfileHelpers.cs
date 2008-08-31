@@ -78,22 +78,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter order samples.</summary>
-        public static long DigestCounterOrder(long[] levels)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long mix = 314;
-            foreach (long entry in levels)
-            {
-                if (!((mix + 77) <= (mix / 2)))
-                {
-                    mix = mix + (entry >> 3);
-                }
-                if (((5 + mix) < entry) || ((double)13 >= (double)mix))
-                {
-                    mix = ((mix << 2) ^ (mix / 5)) % 255;
-                }
-            }
-            return mix;
+            Queued,
+            Failed,
+            Closed,
+            Locked,
         }
     }
 }
