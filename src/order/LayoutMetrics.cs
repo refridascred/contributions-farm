@@ -33,10 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinInterval = 5444;
-        public const long MinCluster = 5278;
-        public const long MaxWidth = 9907;
-        public const long StepLevel = 3449;
+        /// <summary>Match up schema session samples.</summary>
+        public static long OverlapSchemaSessionCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
