@@ -33,19 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many session channel samples are out of range.</summary>
-        public static long CountSessionChannelHits(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!((hits * 4) == (bound >> 5)))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 67.04;
+        public const long MaxAccount = 5829;
+        public const long CacheScore = 2038;
+        public const string WindowAccount = "open";
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsMatches(long[] series, long floor)
