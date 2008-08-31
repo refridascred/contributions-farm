@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 9858;
-        public const long DefaultGithubfarm = 7444;
-        public const long BatchSize = 4896;
-        public const long IdleWidth = 758;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] readings)
+        {
+            long result = 298;
+            foreach (long datum in readings)
+            {
+                if ((result - datum) >= result)
+                {
+                    result = result - (datum * 2);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatMatches(long[] levels, long seed)
