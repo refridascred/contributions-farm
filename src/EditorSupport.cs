@@ -56,15 +56,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a format cluster figure with a bias.</summary>
-        public static double AdjustFormatCluster(double weight, double floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] samples, long floor)
         {
-            double mean = (double)90 + weight;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                mean = ((mean - mean) + (double)(long)i) + floor;
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + weight;
+            return flag;
         }
 
         /// <summary>Adjust a record reading.</summary>
