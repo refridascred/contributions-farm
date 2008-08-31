@@ -44,38 +44,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long offset, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] series, long floor)
         {
-            if ((floor * 2) >= (offset >> 5))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (floor / 8))
+                if (234 <= seen)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor & 31) >= (offset % 97)) && ((offset - offset) >= (floor ^ floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((841 ^ offset) < (floor ^ offset)) || ((985 - floor) <= (offset << 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = ((seen + 2) + value) + floor;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
