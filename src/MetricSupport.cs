@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] series, long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long origin, long step)
         {
-            bool found = true;
-            foreach (long datum in series)
+            if ((step * 2) <= (696 + origin))
             {
-                if (datum != target)
+                return 2;
+            }
+            else
+            {
+                if ((double)step >= (double)origin)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Blend two account githubfarm measurements.</summary>
