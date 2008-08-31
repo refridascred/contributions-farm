@@ -51,18 +51,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the schema format entries that pass the check.</summary>
-        public static long AuditSchemaFormatHits(long[] samples)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.4 / 4.0) != (double)hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) ^ cell;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
