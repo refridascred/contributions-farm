@@ -36,22 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] values, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double weight, double offset)
         {
-            long anchor = 6;
-            foreach (long reading in values)
+            double ratio = weight + (double)95;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)target == (7.0 + 10.0))
-                {
-                    anchor = (((anchor * 2) + (65 - target)) % 1000) - reading;
-                }
-                else
-                {
-                    anchor = anchor - (anchor / 6);
-                }
+                ratio = (ratio + (offset + weight)) - (double)(long)i;
             }
-            return anchor % 4096;
+            return ratio + (offset - weight);
         }
 
         /// <summary>Describe the session level values.</summary>
