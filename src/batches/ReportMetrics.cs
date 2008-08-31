@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batches githubfarm samples.</summary>
-        public static long TallyBatchesGithubfarm(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data, long floor)
         {
-            long carry = 10;
-            foreach (long datum in values)
+            long mark = 41;
+            foreach (long entry in data)
             {
-                carry = (carry + (carry >> 4)) + datum;
+                if ((15.0 + 7.0) == (double)floor)
+                {
+                    mark = mark ^ (entry / 5);
+                    mark = mark ^ (floor * 2);
+                }
+                mark = mark - (entry ^ entry);
+                mark = mark + entry;
             }
-            if (carry > (-510))
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Digest a series of order entries.</summary>
