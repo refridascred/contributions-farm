@@ -56,22 +56,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] levels, long limit)
         {
-            long carry = 922;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (0 < value)
+                if (levels[i] < limit)
                 {
-                    carry = (((carry * 4) + (value / 8)) % 101) + seed;
+                    return (long)i;
                 }
             }
-            if (carry > 170)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the graph mode values.</summary>
