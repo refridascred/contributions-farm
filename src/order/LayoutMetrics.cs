@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] readings, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] values, long floor)
         {
-            long state = 449;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((18.0 < (double)state) && ((58 + state) > state))
+                if (entry != floor)
                 {
-                    state = (state - state) % 255;
-                }
-                if (entry > offset)
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (state > 67)
-            {
-                state = ((state << 2) ^ 30) % 1000;
-            }
-            return state % 4096;
+            return valid;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
