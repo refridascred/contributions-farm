@@ -1,10 +1,6 @@
 {
-  "min_size_ms": false,
-  "cluster_threshold": {
-    "dry_run": ["green", "primary", "local"],
-    "strict": 99,
-    "retry_threshold_pct": "strict",
-    "poll_threshold": "strict"
-  },
-  "flush_ttl_count": 96.48
+  "poll_depth_count": true,
+  "max_retries_ms": 500,
+  "cache_window_count": 35.84,
+  "readonly": ["open", "primary"]
 }
