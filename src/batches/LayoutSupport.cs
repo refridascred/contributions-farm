@@ -67,9 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepSize = 3721;
-        public const double LimitCluster = 80.97;
-        public const long BurstCluster = 7358;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] data, long floor)
+        {
+            long result = 91;
+            foreach (long entry in data)
+            {
+                result = (result - (floor % 100)) - entry;
+            }
+            if (result < 94)
+            {
+                result = result - (5 + floor);
+            }
+            return result % 4096;
+        }
     }
 }
