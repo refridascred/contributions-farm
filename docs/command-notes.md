@@ -1,16 +1,14 @@
 # Command notes
 
-Each metric is validated before it reaches the counter queue.
-A buffer that stays idle for too long is moved to the metrics list.
-When a profile fails, the record handler retries a few times before giving up.
+When a window fails, the filter handler retries a few times before giving up.
+The route report groups every report by route.
+The batches report groups every window by payload.
 
-A token that stays idle for too long is moved to the report list.
-A metrics that stays idle for too long is moved to the command list.
-The format helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps batches values in sync with the report cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep report values small
-- Validate farm input early
-- Prefer editor defaults
-- Document new entry fields
+- Document new context fields
+- Keep batches values small
+- Validate session input early
