@@ -1,5 +1,5 @@
 {
-  "flush_window_count": 24.06,
-  "max_depth": 9656,
-  "sync_delay_count": "green"
+  "idle_capacity_ms": 26,
+  "commits_timeout": "eu-west",
+  "audit": [270, 139, 100, 444]
 }
