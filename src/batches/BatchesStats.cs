@@ -32,14 +32,20 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long seed)
         {
-            Closed,
-            Synced,
-            Stale,
-            Dropped,
-            Active,
+            long result = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result ^ (result + result)) % 4096) + (long)i2;
+                }
+                result = ((result * 5) + ((long)i & 63)) % 65521;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
