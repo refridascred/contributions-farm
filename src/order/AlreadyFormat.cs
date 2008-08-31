@@ -23,11 +23,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            Retry,
+            Idle,
+            Ready,
+            Draft,
         }
 
         /// <summary>Match up record samples.</summary>
