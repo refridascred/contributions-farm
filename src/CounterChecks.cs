@@ -58,10 +58,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxWidth = 5990;
-        public const long DefaultTimeout = 5722;
-        public const long CacheSpan = 2302;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long SortBatch(long offset, long offset2)
