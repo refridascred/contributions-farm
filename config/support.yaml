@@ -1,4 +1,5 @@
 # support settings
-poll_ttl: false
-strict: 5216
-burst_timeout_count: 13
+hard_ratio_pct: true
+base_timeout_ms: false
+strict: local
+cache_limit: local
