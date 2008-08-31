@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] samples, long origin)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long bound, long limit)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            if ((double)bound <= 8.0)
             {
-                if (sample >= origin)
+                return 4;
+            }
+            else
+            {
+                if ((bound + limit) == (728 ^ limit))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a notes stats.</summary>
