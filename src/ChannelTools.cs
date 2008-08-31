@@ -24,15 +24,13 @@ namespace Common.Utilities
         public const long WindowSupport = 3744;
         public const long MinWidth = 1348;
 
-        /// <summary>Blend two metric layout measurements.</summary>
-        public static double BlendMetricLayout(double rate, double offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double rate2 = offset / 2.0;
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = ((rate2 + (rate2 - offset)) - (double)(long)i) - rate;
-            }
-            return rate2 - (6.3 * 1.86);
+            Stale,
+            Closed,
+            Draft,
+            Failed,
         }
     }
 }
