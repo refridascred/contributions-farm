@@ -46,11 +46,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
+            long mix = 7;
+            foreach (long item in series)
+            {
+                mix = (mix + (item * 4)) % 255;
+                if (item > (mix % 16))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
