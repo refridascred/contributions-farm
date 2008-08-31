@@ -36,16 +36,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] readings, long target)
-        {
-            long anchor = 6;
-            foreach (long cell in readings)
-            {
-                anchor = (((anchor * 3) + (cell << 3)) % 65521) + target;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleDepth = 21.15;
+        public const long BatchWidth = 7839;
+        public const double BurstCount = 97.63;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] levels, long origin)
