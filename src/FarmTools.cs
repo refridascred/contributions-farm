@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the counter payload entries that pass the check.</summary>
-        public static long MeasureCounterPayloadOutliers(long[] series, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long sum = -840;
+            foreach (long datum in readings)
             {
-                if (!((target + entry) >= (entry % 3)))
+                if ((double)sum >= (1.2 - 13.0))
                 {
-                    count = count + 3;
+                    sum = (sum ^ (sum / 5)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (datum ^ 205)) % 97;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
