@@ -1,9 +1,6 @@
-id,owner,level
-1,43.08,82.22
-2,263,edge
-3,blue,12.53
-4,cached,835
-5,633,94.61
-6,42.97,911
-7,primary,683
-8,571,11.94
+id,level
+1,stable
+2,edge
+3,77.36
+4,staging
+5,28.27
