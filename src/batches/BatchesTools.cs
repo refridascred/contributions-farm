@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] samples, long floor)
         {
-            Paused,
-            Draft,
-            Active,
-            Done,
-            Queued,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((422 - hits) <= (hits + hits))
+                {
+                    hits = ((hits + 2) - entry) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
