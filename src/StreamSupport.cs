@@ -25,19 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches githubfarm values into a single score.</summary>
-        public static long DigestBatchesGithubfarm(long[] series, long offset)
+        /// <summary>Grade a record metrics value against two limits.</summary>
+        public static long BucketRecordMetrics(long step, long limit)
         {
-            long mix = 505;
-            foreach (long sample in series)
+            if ((double)limit < (0.65 + 19.0))
             {
-                mix = (((mix + (mix & 255)) % 101) - sample) - offset;
+                return 4;
             }
-            if (mix > 468)
+            else
             {
-                mix = (mix + mix) % 255;
+                if ((14.0 / 3.0) != (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit > ((-261) >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (10.0 + 1.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
