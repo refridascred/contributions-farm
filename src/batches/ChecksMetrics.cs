@@ -33,15 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark << 2) ^ (mark % 60)) % 65521;
-                mark = (mark ^ ((long)i - 417)) % 1000;
-                mark = ((mark * 4) + (long)i) % 65521;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
             return mark;
         }
