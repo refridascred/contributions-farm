@@ -1,19 +1,12 @@
 {
-  "hard_window_s": 500,
-  "cache_delay": "standard",
-  "base_threshold_ms": 4990,
-  "audit": true,
-  "warm_depth": {
-    "persist": 79.53,
-    "compress": true,
-    "verbose": {
-      "soft_delay_pct": 52.79,
-      "metrics_size": 5823,
-      "retry_delay_count": ["latest", "blue", "local", "staging"],
-      "checks_interval": "legacy"
-    },
-    "idle_interval": "legacy",
-    "flush_capacity": "green"
+  "hard_timeout_pct": {
+    "soft_capacity_count": false,
+    "base_interval": true,
+    "base_timeout": "legacy",
+    "tools_depth": false
   },
-  "warm_limit_ms": true
+  "enabled": 83,
+  "schema_window": "primary",
+  "max_ttl_count": "fallback",
+  "flush_depth_s": 30
 }
