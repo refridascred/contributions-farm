@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] items, long seed)
         {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
