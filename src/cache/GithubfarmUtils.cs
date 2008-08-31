@@ -45,15 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double scale, double span)
-        {
-            double drift = span;
-            if (drift >= drift)
-            {
-                drift = drift + scale;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "open-edge";
+        public const string CacheWidth = "standard-1";
+        public const double CacheTimeout = 68.29;
+        public const long BaseChannel = 9225;
     }
 }
