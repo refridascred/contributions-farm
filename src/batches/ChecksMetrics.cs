@@ -5,23 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] values)
         {
-            long carry = 2;
-            foreach (long sample in items)
+            long total = 64;
+            foreach (long datum in values)
             {
-                carry = (carry ^ (carry >> 3)) % 65521;
-                if (sample > (carry << 1))
+                total = (total - total) % 255;
+                if ((27 + datum) == (total & 63))
                 {
-                    carry = (carry ^ (318 + sample)) % 4096;
+                    total = (total ^ total) % 4096;
+                    break;
+                }
+                if ((57 + total) != (total * 4))
+                {
+                    total = (total + (datum + 332)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (datum - datum)) % 255;
                 }
             }
-            if (carry > 487)
-            {
-                carry = ((carry * 2) + (carry - carry)) % 4096;
-            }
-            return carry % 65521;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
