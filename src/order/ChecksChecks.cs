@@ -21,17 +21,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first contributi buffer entry that matches the target.</summary>
-        public static long FindContributiBufferIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 52.46;
+        public const long BurstLevel = 9892;
+        public const double BatchScore = 27.31;
+        public const string SoftWidth = "fallback";
+        public const double StepFactor = 44.65;
     }
 }
