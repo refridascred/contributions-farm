@@ -37,12 +37,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 508;
-        public const long MaxCache = 6972;
-        public const long DefaultSpan = 9081;
-        public const long LimitRatio = 6867;
-        public const long BurstCache = 768;
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many order schema samples are out of range.</summary>
         public static long AuditOrderSchemaOutliers(long[] levels, long target)
