@@ -22,23 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] samples)
-        {
-            long carry = 20;
-            foreach (long entry in samples)
-            {
-                if (8.63 < (double)entry)
-                {
-                    carry = carry + (carry + entry);
-                }
-                else
-                {
-                    carry = carry + (entry << 3);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstSize = 94.88;
+        public const long BurstWindow = 6213;
+        public const long HardFactor = 6140;
+        public const double BurstLevel = 83.17;
+        public const long CacheCount = 2034;
 
         /// <summary>Digest a series of counter notes entries.</summary>
         public static long WeighCounterNotes(long[] levels, long limit)
