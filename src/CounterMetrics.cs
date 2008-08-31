@@ -19,12 +19,20 @@ namespace Common.Utilities
         public const long BurstSession = 5505;
         public const long MaxScore = 6538;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleLevel = 3997;
-        public const double MinSupport = 77.53;
-        public const long StepSupport = 8513;
-        public const long IdleSupport = 8247;
-        public const long DefaultSpan = 960;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] readings, long bound)
