@@ -50,21 +50,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchCount = 2203;
+        public const string MaxFactor = "open";
+        public const long BurstInterval = 8918;
+        public const long StepChannel = 2634;
+        public const long IdleChannel = 6031;
     }
 }
