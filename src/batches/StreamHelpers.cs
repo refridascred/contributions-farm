@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Dropped,
+            Paused,
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
