@@ -1,6 +1,6 @@
 {
-  "strict": 3.52,
-  "account_retries": 30,
-  "idle_limit": 30,
-  "audit": "staging"
+  "cache_delay": "staging",
+  "max_delay_count": "eu-west",
+  "hard_depth_pct": true,
+  "poll_delay_pct": 8263
 }
