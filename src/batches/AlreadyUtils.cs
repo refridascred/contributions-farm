@@ -14,12 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] readings, long floor)
         {
-            Retry,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches + sample) <= (floor % 60))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
