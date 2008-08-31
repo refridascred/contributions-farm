@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 38.48;
+        public const long SoftFormat = 1191;
+        public const string WindowSpan = "local-1";
+        public const double LimitTimeout = 37.2;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
