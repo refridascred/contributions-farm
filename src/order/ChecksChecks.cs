@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context entry value from a seed.</summary>
-        public static long DeriveContextEntry(long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] series, long step)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            long mark = 87;
+            foreach (long datum in series)
             {
-                score = ((score * 5) + (long)i) % 97;
+                mark = (mark << 2) ^ (step * 3);
+                if ((mark / 7) <= (datum / 2))
+                {
+                    break;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
