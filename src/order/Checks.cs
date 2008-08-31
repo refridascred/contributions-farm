@@ -44,13 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double gain, double offset)
         {
-            Ready,
-            Synced,
-            Active,
-            Retry,
+            double load = (double)4 * 1.68;
+            if (load > load)
+            {
+                load = (load - offset) - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + 0.5) + (double)(long)i;
+            }
+            return load + (load * 3.0);
         }
     }
 }
