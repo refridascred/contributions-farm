@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit counter token readings against a rule.</summary>
+        public static long MeasureCounterTokenHits(long[] series, long origin)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item > origin) && ((3.7 >= (double)tally) || ((tally / 3) >= (tally / 9))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format info.</summary>
