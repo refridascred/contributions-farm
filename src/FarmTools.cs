@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double ratio, double floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double bias2)
         {
-            double gain = floor;
-            if (gain > (double)66)
+            double rate = bias2;
+            if (rate > 19.0)
             {
-                gain = gain + gain;
+                rate = rate - (bias * 4.6);
             }
-            return gain + (ratio - floor);
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + bias2) + (double)(long)i;
+            }
+            return rate + (bias2 / 4.0);
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
