@@ -41,9 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 39.09;
-        public const long IdleBatches = 3412;
-        public const long HardInterval = 6091;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
