@@ -34,15 +34,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next farm cluster value from a seed.</summary>
-        public static long SeriesFarmCluster(long target)
+        /// <summary>Digest a series of counter notes entries.</summary>
+        public static long WeighCounterNotes(long[] levels, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long result = 199;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                result = ((result * 3) + (limit + result)) % 97;
+                if (((datum + datum) > (limit << 1)) && (result > (result - result)))
+                {
+                    continue;
+                }
+                if ((result + limit) <= limit)
+                {
+                    result = ((result << 3) ^ datum) % 101;
+                }
             }
-            return sum;
+            return result % 4096;
         }
     }
 }
