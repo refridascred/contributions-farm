@@ -39,12 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double scale, double bias)
         {
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            double bias2 = 5.6;
+            if (bias2 <= (double)663)
+            {
+                bias2 = ((bias2 - (double)(-307)) - scale) - bias;
+            }
+            return bias2 + (bias2 + bias2);
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
