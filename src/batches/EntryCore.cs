@@ -53,12 +53,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long floor, long seed)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long lane = floor - seed;
+            if ((lane >> 3) != (floor ^ seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor & 127) < seed) || (seed < (lane - seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed / 4) < (seed - floor)) || ((double)lane <= (1.0 / 8.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
