@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Derive the next editor checks value from a seed.</summary>
+        public static long StepEditorChecks(long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((long)i < (seed >> 3))
+                {
+                    state = (state << 3) ^ (state ^ state);
+                }
+                else
+                {
+                    state = (state + (18 - seed)) % 65521;
+                }
+                state = state ^ ((long)i << 2);
+                state = ((state * 5) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Roll a report counter forward.</summary>
