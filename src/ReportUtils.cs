@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinScore = 8733;
-        public const double StepMetric = 12.3;
-        public const string IdleMetric = "strict-1";
-        public const long SoftMetric = 7023;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] readings, long bound)
