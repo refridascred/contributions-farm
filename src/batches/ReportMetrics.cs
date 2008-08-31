@@ -31,13 +31,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            Draft,
+            Synced,
+            Paused,
         }
     }
 }
