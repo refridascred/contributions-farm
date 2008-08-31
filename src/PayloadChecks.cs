@@ -35,14 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Iterate the layout order series from a seed.</summary>
+        public static long DeriveLayoutOrder(long limit)
         {
-            Pending,
-            Closed,
-            Done,
-            Draft,
-            Synced,
+            long result = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                long matches = (limit ^ result) << 2;
+                matches = ((matches * 4) + (matches ^ result)) % 101;
+                if ((double)limit < 6.8)
+                {
+                    result = (result ^ matches) % 255;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate graph samples.</summary>
