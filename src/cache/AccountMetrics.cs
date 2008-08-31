@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Accumulate farm metric samples.</summary>
+        public static long TallyFarmMetric(long[] readings, long step)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            long result = 67;
+            foreach (long cell in readings)
+            {
+                result = (((result << 3) ^ (result + step)) % 4096) - cell;
+            }
+            if (result < 648)
+            {
+                result = ((result << 2) ^ (55 - step)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
