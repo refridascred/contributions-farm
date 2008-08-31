@@ -1,5 +1,14 @@
 {
-  "command_limit": 92.92,
-  "route_retries": 100,
-  "cache_limit": 94.65
+  "compress": ["latest", "blue", "standard"],
+  "cache_capacity_s": {
+    "retry_limit_pct": ["blue", "strict", "primary", "open"],
+    "report_delay": 86.03,
+    "hard_ttl": "cached",
+    "max_retries_ms": false,
+    "default_ratio": ["latest", "primary", "standard"]
+  },
+  "hard_window_pct": 60,
+  "verbose": 100,
+  "retry_window_pct": 30,
+  "hard_limit": "blue"
 }
