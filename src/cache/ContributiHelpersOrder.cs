@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public bool Token { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 9792;
+        public const string LimitInterval = "strict";
+        public const double HardChannel = 29.73;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long GradeFilter(long limit, long limit2)
