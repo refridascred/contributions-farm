@@ -62,20 +62,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxWidth = 5990;
+        public const long DefaultTimeout = 5722;
+        public const long CacheSpan = 2302;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long DeriveSchema(long bound)
