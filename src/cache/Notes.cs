@@ -45,18 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] readings)
+        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
+        public static long AuditProfileGithubfarmHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (((hits + 40) != (sample / 7)) || ((9.9 + 13.0) < (double)hits))
+                if ((entry % 12) >= tally)
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
