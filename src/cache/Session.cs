@@ -36,15 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double scale, double offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double scale, double floor)
         {
-            double mean = offset;
-            if (mean > offset)
+            double rate = (double)(451 >> 4);
+            if (rate < (7.0 - 6.95))
             {
-                mean = (mean - (offset / 7.0)) - scale;
+                rate = rate - floor;
             }
-            return mean + (double)621;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - scale) + (double)(long)i;
+            }
+            return rate - (floor + floor);
         }
 
         /// <summary>Hold a commits options.</summary>
