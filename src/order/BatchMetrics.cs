@@ -69,11 +69,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double weight, double offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series, long bound)
         {
-            double ratio = weight;
-            return (ratio + (double)8) + offset;
+            long carry = 20;
+            foreach (long datum in series)
+            {
+                carry = ((carry ^ ((-315) >> 5)) % 97) - bound;
+                if ((carry << 2) > carry)
+                {
+                    carry = (carry + datum) % 255;
+                }
+            }
+            if (carry > 615)
+            {
+                carry = carry + (carry & 1);
+            }
+            return carry;
         }
     }
 }
