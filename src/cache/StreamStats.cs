@@ -46,17 +46,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long bound, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            if (413 > (bound << 1))
             {
-                state = (state ^ (811 * 5)) % 97;
-                state = (state + (3 - (long)i)) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((bound - bound) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)origin >= (6.1 / 3.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin % 64) < (origin ^ origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
