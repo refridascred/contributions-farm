@@ -67,10 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "open-edge";
-        public const string CacheWidth = "standard-1";
-        public const double CacheTimeout = 68.29;
-        public const long BaseChannel = 9225;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Ready,
+            Pending,
+            Done,
+            Idle,
+        }
     }
 }
