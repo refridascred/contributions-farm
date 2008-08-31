@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor + ((long)i + offset)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            New,
+            Retry,
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
