@@ -76,15 +76,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double ratio, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long origin, long offset)
         {
-            double rate = (double)8 + (offset * 1.1);
-            if (rate <= (offset + 3.0))
+            if ((1 + offset) > (offset % 16))
             {
-                rate = (rate - (6.8 + rate)) - ratio;
+                return 7;
             }
-            return rate - rate;
+            else
+            {
+                if ((0.5 * 20.0) >= (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - offset) >= (offset << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin & 1) >= (offset - 97))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every buffer editor entry stays within the limit.</summary>
