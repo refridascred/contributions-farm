@@ -24,12 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
+            Dropped,
             Paused,
+            Queued,
             Done,
-            Draft,
+            Synced,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
