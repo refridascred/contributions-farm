@@ -26,22 +26,14 @@ namespace Common.Utilities
         public const long IdleSupport = 8247;
         public const long DefaultSpan = 960;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] samples, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value - (-262)) >= target)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Queued,
+            Dropped,
+            Locked,
+            Idle,
         }
     }
 }
