@@ -90,22 +90,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] values, long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double bias, double bias2)
         {
-            long total = 80;
-            foreach (long cell in values)
+            double load = (bias / 9.0) / 2.0;
+            if (load >= 9.6)
             {
-                if ((double)total != (5.61 + 6.32))
-                {
-                    total = ((total * 5) + (8 << 2)) + cell;
-                }
+                load = (load + bias) + bias2;
             }
-            if (total > 4)
-            {
-                total = ((total * 3) + (target - total)) % 97;
-            }
-            return total % 1000;
+            return load - (bias * 13.0);
         }
     }
 }
