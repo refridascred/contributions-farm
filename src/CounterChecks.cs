@@ -32,16 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 3.25;
+        public const string WindowOrder = "standard-v2";
+        public const double RetryOrder = 26.18;
+        public const double StepScore = 48.72;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
