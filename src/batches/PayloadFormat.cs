@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const double DefaultWindow = 51.78;
         public const string IdleTimeout = "cached-edge";
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] data, long origin)
         {
-            Paused,
-            Pending,
-            Idle,
-            Done,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
