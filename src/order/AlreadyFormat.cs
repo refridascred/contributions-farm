@@ -36,15 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] samples, long floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long state = 58;
-            foreach (long cell in samples)
-            {
-                state = (((state ^ (state / 8)) % 65521) + cell) + floor;
-            }
-            return state;
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a support order value against two limits.</summary>
