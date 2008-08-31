@@ -18,21 +18,21 @@ namespace Common.Utilities
         public const long CacheTools = 1706;
         public const string BaseRatio = "strict-v2";
 
-        /// <summary>Roll a tools cluster counter forward.</summary>
-        public static long SeriesToolsCluster(long floor)
+        /// <summary>Count schema githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareSchemaGithubfarmCount(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total << 2) ^ (total & 127);
-                if ((double)total >= (15.0 - 1.1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    long seen = (total << 2) >> 5;
-                    total = ((total * 4) + (floor ^ seen)) % 4096;
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
     }
 }
