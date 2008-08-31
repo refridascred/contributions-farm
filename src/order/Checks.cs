@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] series, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((origin & 127) < (seen + origin))
+                if ((double)entry != (6.0 / 2.0))
                 {
-                    seen = (seen + 1) + sample;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
