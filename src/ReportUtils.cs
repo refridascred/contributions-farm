@@ -26,22 +26,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate cluster editor samples.</summary>
-        public static long ScoreClusterEditor(long[] series)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            long mark = 6;
-            foreach (long value in series)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (mark >= (mark >> 1))
-                {
-                    mark = (((mark * 5) + (mark & 7)) % 97) ^ value;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (mark < 30)
-            {
-                mark = (mark ^ (mark / 4)) % 97;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
