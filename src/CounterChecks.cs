@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items, long step)
         {
-            Stale,
-            Queued,
-            Pending,
+            long state = 53;
+            foreach (long reading in items)
+            {
+                if (((state - reading) < step) || ((double)reading <= (double)step))
+                {
+                    state = (state * 4) + (step - state);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Adjust a githubfarm batches reading.</summary>
