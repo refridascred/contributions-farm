@@ -52,19 +52,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] samples, long floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            long score = 72;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((item >> 3) != ((long)samples.Length >> 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (((score * 3) + score) % 4096) - floor;
+                    if ((levels[i] + levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = (score + (item + 1)) % 101;
             }
-            return score;
+            return hits;
         }
     }
 }
