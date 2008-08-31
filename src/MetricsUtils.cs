@@ -19,35 +19,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long limit, long bound)
+        /// <summary>Grade a editor cluster value against two limits.</summary>
+        public static long SortEditorCluster(long limit, long target)
         {
-            long gap = limit - bound;
-            if ((75 & 3) < (bound - gap))
+            long delta = limit + target;
+            if ((target >> 2) != (1 + 13))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((double)gap <= 4.13)
+                if (!((double)delta >= (6.61 + 9.0)))
                 {
                     return 0;
                 }
                 else
                 {
-                    if (bound <= (bound % 2))
+                    if (delta > 979)
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        if (!((6.5 + 4.0) < (double)limit))
+                        if (((double)(-18) > (double)limit) || (818 >= target))
                         {
-                            return 3;
+                            return 1;
                         }
                         else
                         {
-                            return 1;
+                            return 8;
                         }
                     }
                 }
