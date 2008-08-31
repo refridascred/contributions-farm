@@ -29,19 +29,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] readings, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long state = 187;
+            foreach (long sample in data)
             {
-                if (reading < floor)
+                state = (state + sample) % 97;
+                if (((sample + state) <= (sample << 3)) || ((state + (-51)) < state))
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 2) ^ (962 + sample)) % 65521;
+                }
+                else
+                {
+                    state = (state + (state << 2)) % 97;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Check that every cache profile entry stays within the limit.</summary>
