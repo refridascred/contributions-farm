@@ -30,19 +30,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] data, long step)
+        /// <summary>Grade a account stats value against two limits.</summary>
+        public static long BucketAccountStats(long bound, long limit)
         {
-            bool ok = true;
-            foreach (long item in data)
+            if ((bound ^ limit) < (limit * 5))
             {
-                if (item < step)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= (double)bound)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((13.0 - 1.0) >= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound < (limit & 15))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
