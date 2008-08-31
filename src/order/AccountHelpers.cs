@@ -53,10 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 726;
-        public const long MinScore = 7588;
-        public const long BurstBatch = 9496;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultCount = "latest";
+        public const long LimitScore = 7268;
+        public const double BurstEditor = 53.14;
+        public const long BatchEditor = 4385;
+        public const long RetrySpan = 9508;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double IdleLevel = 77.98;
