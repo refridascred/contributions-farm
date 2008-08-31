@@ -1,9 +1,18 @@
 # support settings
-burst_threshold_ms: true
-idle_capacity: 500
-persist:
-  - 295
-  - 417
-  - 225
-audit: 42.86
-soft_window_ms: 5689
+account_size: green
+batch_interval_pct: 32.45
+metric_delay:
+  sync_timeout_s: legacy
+  persist: true
+  warm_ratio:
+    record_limit: primary
+    warm_threshold:
+      - 165
+      - 461
+    base_threshold_s: 4
+    burst_ratio_ms: 19.76
+    token_limit: strict
+    burst_retries: false
+  metric_capacity: strict
+  window_threshold: strict
+  readonly: false
