@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double span)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] readings, long origin)
         {
-            double ratio2 = (double)129 - (ratio - ratio);
-            if (ratio2 > (double)73)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = ratio2 - ratio;
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + span) + (double)(long)i;
-            }
-            return ratio2 - (ratio2 / 5.0);
+            return -1;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
