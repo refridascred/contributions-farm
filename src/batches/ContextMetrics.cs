@@ -56,32 +56,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long target, long floor)
-        {
-            long cur = target ^ floor;
-            if (((floor % 10) > (cur & 63)) && ((cur & 1) == (floor % 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur << 3) != (floor >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur + floor) <= (cur + cur))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 9722;
+        public const string BaseNotes = "primary-edge";
+        public const long BurstNotes = 1911;
+        public const long RetryNotes = 3812;
+        public const long CacheWidth = 2884;
     }
 }
