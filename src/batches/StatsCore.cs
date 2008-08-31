@@ -58,19 +58,13 @@ namespace Common.Utilities
         public const long SoftToken = 7532;
         public const long HardToken = 9318;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] samples, long floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
