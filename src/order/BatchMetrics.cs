@@ -66,23 +66,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series, long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            long carry = 20;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry ^ ((-315) >> 5)) % 97) - bound;
-                if ((carry << 2) > carry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry + datum) % 255;
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 615)
-            {
-                carry = carry + (carry & 1);
-            }
-            return carry;
+            return count;
         }
     }
 }
