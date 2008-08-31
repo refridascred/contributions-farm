@@ -66,14 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Queued,
-            Ready,
-            Done,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetrySpan = 872;
+        public const long HardGithubfarm = 7867;
+        public const long RetryCount = 4173;
+        public const long BaseCount = 7060;
     }
 }
