@@ -23,21 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count commits layout pairs that satisfy a relation.</summary>
-        public static long PairCommitsLayoutCount(long[] series)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Queued,
+            Failed,
+            Active,
         }
     }
 }
