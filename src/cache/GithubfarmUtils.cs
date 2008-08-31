@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] items, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seen ^ floor) <= cell)
-                {
-                    seen = seen + 2;
-                }
+                sum = (sum - step) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Rank batches queue input into a small class.</summary>
