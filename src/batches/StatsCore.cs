@@ -38,11 +38,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
