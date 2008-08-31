@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((8.0 * 8.8) == (double)value)
+                if (((hits - 862) <= ((long)readings.Length - cell)) && !((cell % 12) <= (long)readings.Length))
                 {
-                    tally = tally + 2;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
