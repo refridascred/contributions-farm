@@ -30,15 +30,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] readings, long target)
         {
-            long mix = 7;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                mix = (mix - mix) + reading;
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return flag;
         }
 
         /// <summary>Digest a series of filter route entries.</summary>
