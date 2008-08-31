@@ -35,12 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            Dropped,
-            Draft,
-            New,
+            long mark = 0;
+            foreach (long datum in readings)
+            {
+                mark = (mark - (2 + datum)) % 97;
+            }
+            if (mark < 81)
+            {
+                mark = ((mark << 3) ^ (mark * 2)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
