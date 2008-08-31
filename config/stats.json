@@ -1,17 +1,8 @@
 {
-  "token_window": ["local", "stable", "fallback", "fallback"],
-  "context_interval": {
-    "strict": 60,
-    "flush_interval_ms": {
-      "min_timeout": "green",
-      "cache_retries_pct": [49, 443, 431, 120],
-      "queue_delay": "stable",
-      "readonly": false
-    },
-    "warm_retries": 47.63,
-    "route_depth": 70.42,
-    "burst_capacity_ms": 1024
-  },
-  "enabled": true,
-  "batch_ttl_ms": [405, 222, 121, 315]
+  "base_threshold": 60,
+  "window_interval": false,
+  "strict": false,
+  "default_timeout_s": 81,
+  "warm_threshold": 54.18,
+  "window_size": 16
 }
