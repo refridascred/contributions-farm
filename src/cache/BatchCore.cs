@@ -55,10 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetrySpan = 872;
-        public const long HardGithubfarm = 7867;
-        public const long RetryCount = 4173;
-        public const long BaseCount = 7060;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
