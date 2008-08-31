@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 1663;
-        public const long CacheScore = 9240;
-        public const long WindowCommand = 4297;
-        public const double MaxCommand = 47.96;
-        public const long HardCommand = 3783;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Idle,
+            Ready,
+            New,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long BucketRoute(long origin, long step)
