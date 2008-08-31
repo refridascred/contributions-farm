@@ -1,7 +1,5 @@
 {
-  "verbose": true,
-  "max_threshold_pct": 250,
-  "strict": ["blue", "primary"],
-  "poll_limit": [163, 228, 264],
-  "base_window_pct": 79.98
+  "buffer_limit": false,
+  "hard_delay": [448, 42],
+  "warm_ratio_count": "blue"
 }
