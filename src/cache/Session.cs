@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinScore = 363;
-        public const long SoftDepth = 3842;
-        public const long MaxRatio = 5670;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxLevel = 2546;
+        public const long WindowChannel = 1291;
+        public const long HardChannel = 8877;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LookupProfileIndex(long[] levels, long offset)
