@@ -24,21 +24,19 @@ namespace Common.Utilities
             return bias - (gain + gain);
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell != bound)
                 {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Find the first farm counter entry that matches the target.</summary>
