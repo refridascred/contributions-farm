@@ -28,18 +28,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values, long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((matches >> 1) >= sample))
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
