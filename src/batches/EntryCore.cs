@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many payload format samples are out of range.</summary>
-        public static long TallyPayloadFormatHits(long[] data, long limit)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell * 5) > ((long)data.Length / 8))
+                if ((items[i] < target) && ((items[i] % 5) == 0))
                 {
-                    seen = (seen + 1) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine graph commits values into a single score.</summary>
