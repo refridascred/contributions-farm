@@ -1,4 +1,14 @@
 # githubfarm settings
-graph_delay: 1.49
-verbose: latest
-notes_window: true
+retry_limit_pct: 60
+enabled: open
+max_limit_ms:
+  - 407
+  - 143
+  - 18
+  - 422
+max_timeout_pct: cached
+command_limit:
+  min_limit_ms: cached
+  farm_capacity: primary
+  retry_retries: 22
+verbose: true
