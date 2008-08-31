@@ -18,35 +18,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long floor, long floor2)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long step, long step2)
         {
-            long span = floor ^ floor2;
-            if (((span / 6) >= floor) || ((1.28 * 5.28) < (double)span))
+            long gap = step - step2;
+            if ((double)gap == (5.89 - 5.54))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (!(floor < span))
+                if ((step2 << 2) >= (step2 % 64))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (((double)span == (20.0 / 5.0)) || ((floor + span) < 969))
+                    if (((gap - step2) >= gap) || (step < (step2 + step)))
                     {
-                        return 4;
+                        return 7;
                     }
                     else
                     {
-                        if (floor2 >= (span % 64))
+                        if ((step / 7) != (36 >> 4))
                         {
-                            return 0;
+                            return 3;
                         }
                         else
                         {
-                            return 2;
+                            return 1;
                         }
                     }
                 }
