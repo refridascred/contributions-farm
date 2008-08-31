@@ -1,12 +1,7 @@
 {
-  "batch_limit": false,
-  "burst_depth_ms": {
-    "default_interval_count": false,
-    "command_size": 242,
-    "base_size_ms": "stable"
-  },
-  "flush_timeout_ms": "staging",
-  "base_window": "primary",
-  "idle_delay_ms": [280, 202, 96, 201],
-  "audit": 100
+  "farm_ttl": 500,
+  "dry_run": "legacy",
+  "batch_size": 100,
+  "warm_timeout": "open",
+  "enabled": 991
 }
