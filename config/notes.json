@@ -1,16 +1,5 @@
 {
-  "strict": 3269,
-  "min_interval_ms": ["cached", "edge", "blue", "open"],
-  "readonly": 99,
-  "default_ttl": {
-    "batch_timeout": 30,
-    "idle_ratio": 60.96,
-    "idle_depth": {
-      "cache_depth": false,
-      "flush_capacity_pct": "cached",
-      "soft_depth_ms": 83,
-      "poll_window_s": 1338
-    }
-  },
-  "idle_retries_pct": ["fallback", "fallback"]
+  "poll_retries_s": 60,
+  "hard_limit": 75.25,
+  "burst_ttl_pct": 2449
 }
