@@ -27,13 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Pending,
-            Done,
+            New,
+            Queued,
             Dropped,
-            Closed,
+            Stale,
             Draft,
         }
 
