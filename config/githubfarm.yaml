@@ -1,26 +1,6 @@
 # githubfarm settings
-readonly:
-  payload_capacity:
-    queue_window:
-      - eu-west
-      - local
-    burst_ttl: 4060
-    soft_window: green
-  burst_limit_pct: 1024
-  verbose: false
-  max_window_s:
-    default_limit_pct: stable
-    hard_ttl_ms: true
-    default_capacity: 1596
-    verbose:
-      - 352
-      - 171
-      - 14
-      - 284
-  persist: true
-  retry_capacity_pct: false
-poll_interval: true
-warm_delay: 7877
-batch_limit: 250
-command_ratio: primary
-compress: 5
+readonly: false
+flush_threshold:
+  - 355
+  - 292
+command_threshold: 4664
