@@ -30,10 +30,10 @@ namespace Common.Utilities
             return rate + (rate + rate);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 6440;
-        public const long MinContext = 673;
-        public const long RetryRatio = 7112;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "cached-1";
+        public const long BaseCommand = 1224;
+        public const long WindowCommand = 3863;
 
         /// <summary>Project the next already value.</summary>
         public static double SmoothAlready(double rate, double bias)
