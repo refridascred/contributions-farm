@@ -23,17 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload channel counter forward.</summary>
-        public static long DerivePayloadChannel(long origin)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor * 4) + (anchor ^ origin);
-                anchor = ((anchor * 2) + (anchor & 1)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
