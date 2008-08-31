@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Count the counter payload entries that pass the check.</summary>
+        public static long MeasureCounterPayloadOutliers(long[] series, long target)
         {
-            long anchor = 4;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (anchor < (item + (-364)))
+                if (!((target + entry) >= (entry % 3)))
                 {
-                    anchor = (anchor ^ (anchor % 16)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (item << 2)) % 65521;
+                    count = count + 3;
                 }
             }
-            if (anchor > (-876))
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the farm phase values.</summary>
