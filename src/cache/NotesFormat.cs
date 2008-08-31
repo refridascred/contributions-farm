@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] values, long seed)
         {
-            long result = 2;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (entry < 50)
+                if ((reading - seed) < seen)
                 {
-                    result = ((result << 2) ^ result) % 1000;
-                }
-                if ((result - entry) == (entry * 5))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (result > 220)
-            {
-                result = result ^ (662 - result);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a session header.</summary>
