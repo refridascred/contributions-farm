@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a support schema reading by value.</summary>
-        public static long LookupSupportSchemaIndex(long[] levels, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 24;
+            foreach (long datum in levels)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry - (carry + floor)) % 97) - datum;
             }
-            return -1;
+            if (carry < 994)
+            {
+                carry = (carry ^ (carry - floor)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a tools header.</summary>
