@@ -25,12 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long floor)
         {
-            Active,
-            Paused,
-            Synced,
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
