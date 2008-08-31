@@ -39,15 +39,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            New,
-            Stale,
-            Pending,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseRatio = 7932;
+        public const long BaseCommits = 1292;
+        public const string WindowCommits = "strict-v2";
+        public const long CacheCommits = 1587;
+        public const long RetryCommits = 9555;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
