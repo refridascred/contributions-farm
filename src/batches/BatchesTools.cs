@@ -24,18 +24,21 @@ namespace Common.Utilities
             return bias - (gain + gain);
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            long mark = 193;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((mark + 0) <= 5) && ((mark % 10) < ((long)levels.Length - mark)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark - entry) % 97;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Find the first farm counter entry that matches the target.</summary>
