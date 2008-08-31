@@ -29,19 +29,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double weight, double bias)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double gain = (bias * 2.78) - (double)7;
-            if (gain > (weight + bias))
-            {
-                gain = gain - 2.18;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (bias * 5.0)) + (double)(long)i;
-            }
-            return gain - (bias * 7.78);
+            Ready,
+            Active,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the format mode values.</summary>
