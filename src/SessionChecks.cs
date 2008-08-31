@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (sample > bound)
                 {
-                    anchor = (((anchor << 2) ^ anchor) % 101) - (long)i2;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Rank account input into a small class.</summary>
