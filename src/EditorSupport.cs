@@ -49,17 +49,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a metric account reading by value.</summary>
-        public static long LookupMetricAccountIndex(long[] data, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    carry = (((carry * 4) + 721) % 4096) + (long)i2;
                 }
+                if (!(((long)i & 3) > carry))
+                {
+                    carry = (carry << 2) ^ offset;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
