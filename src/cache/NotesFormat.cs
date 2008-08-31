@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a buffer already reading by value.</summary>
-        public static long LocateBufferAlreadyIndex(long[] series, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((series[i] > target) && ((series[i] % 3) == 0))
+                if ((cell - cell) == (matches - cell))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the support status values.</summary>
