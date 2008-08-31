@@ -81,18 +81,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format profile entries that pass the check.</summary>
-        public static long MeasureFormatProfileGaps(long[] data, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (!!(count < (4 * 2)))
-                {
-                    count = ((count + 1) - value) + limit;
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Paused,
+            Failed,
+            Ready,
         }
     }
 }
