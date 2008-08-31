@@ -13,13 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long floor)
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((mark * 5) <= ((long)i ^ (long)i))
+                {
+                    mark = mark - floor;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine account graph values into a single score.</summary>
