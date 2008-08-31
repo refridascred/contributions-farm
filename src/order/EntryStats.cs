@@ -48,11 +48,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Idle,
+            Active,
         }
 
         /// <summary>Accumulate commits graph samples.</summary>
