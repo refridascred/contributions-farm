@@ -1,15 +1,9 @@
 # githubfarm settings
-enabled:
-  - latest
-  - stable
-  - edge
-  - edge
-queue_timeout: green
-warm_ratio:
-  poll_ttl: fallback
-  persist: strict
-  enabled: 1024
-  flush_interval: 5840
-  cache_interval: 250
-  graph_depth: 92.14
-cache_depth: fallback
+base_interval: edge
+dry_run: 500
+queue_capacity:
+  - 366
+  - 194
+batches_ratio:
+  - 271
+  - 128
