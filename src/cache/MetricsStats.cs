@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] < seed)
+                if ((0 - entry) == (count << 3))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank buffer window input into a small class.</summary>
