@@ -50,13 +50,11 @@ namespace Common.Utilities
         public const string BurstSpan = "primary-edge";
         public const long RetryStream = 28;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Draft,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 3.84;
+        public const string LimitAccount = "legacy-edge";
+        public const long LimitTimeout = 6885;
+        public const string StepAccount = "primary-1";
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] values)
