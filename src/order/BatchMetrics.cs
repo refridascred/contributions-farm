@@ -66,11 +66,22 @@ namespace Common.Utilities
             return scale - (6.8 - bias);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultSize = 5340;
-        public const long MinStream = 3455;
-        public const string DefaultStream = "local-edge";
-        public const long CacheFactor = 7776;
+        /// <summary>Digest a series of buffer session entries.</summary>
+        public static long CombineBufferSession(long[] readings, long origin)
+        {
+            long result = 61;
+            foreach (long sample in readings)
+            {
+                result = (((result << 3) ^ origin) % 4096) + sample;
+                result = result + (origin << 2);
+                result = ((result << 3) ^ (134 >> 1)) % 65521;
+            }
+            if (result < (-4))
+            {
+                result = result ^ (origin + origin);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
