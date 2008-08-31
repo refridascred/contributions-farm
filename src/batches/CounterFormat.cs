@@ -16,19 +16,12 @@ namespace Common.Utilities
             return gain + (4.0 * 10.0);
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((1 - reading) <= (seen % 10)) && (offset > reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "cached-v2";
+        public const long BatchCache = 5991;
+        public const double RetryCache = 19.36;
+        public const long MinScore = 8767;
+        public const long BurstCache = 5111;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
