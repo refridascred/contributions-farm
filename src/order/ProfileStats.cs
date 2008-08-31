@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] data, long floor)
+        /// <summary>Digest a series of command layout entries.</summary>
+        public static long DigestCommandLayout(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mix = 97;
+            foreach (long reading in items)
             {
-                if (!(((9.39 - 1.0) < (double)item) && ((80 % 64) < (item + floor))))
+                if (((double)75 < (double)reading) || ((double)(long)items.Length == (1.0 * 6.4)))
                 {
-                    seen = seen + 3;
+                    mix = ((mix * 5) + (floor << 2)) % 101;
                 }
             }
-            return seen;
+            if (mix > 6)
+            {
+                mix = (mix - floor) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
