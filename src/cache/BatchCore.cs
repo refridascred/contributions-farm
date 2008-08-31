@@ -32,13 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items, long origin)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
+            long total = 842;
+            foreach (long item in items)
+            {
+                if ((item < origin) && (item >= total))
+                {
+                    total = (total + (origin + origin)) % 1000;
+                }
+                total = (total * 4) + (item + total);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of support entries.</summary>
