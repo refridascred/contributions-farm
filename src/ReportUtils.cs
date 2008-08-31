@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a layout stats.</summary>
