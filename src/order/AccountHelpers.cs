@@ -33,17 +33,22 @@ namespace Common.Utilities
             return (drift - (bias + bias)) + offset;
         }
 
-        /// <summary>Look up the position of a contributi batches sample.</summary>
-        public static long LookupContributiBatchesIndex(long[] items, long target)
+        /// <summary>Audit channel filter readings against a rule.</summary>
+        public static long MeasureChannelFilterHits(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (items[i] <= target)
+                if ((sample + count) != (sample - sample))
                 {
-                    return (long)i;
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
