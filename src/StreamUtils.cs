@@ -39,12 +39,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long limit)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long edge = bound + limit;
+            if ((5.73 + 4.5) == (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit * 4) == (bound + edge))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
