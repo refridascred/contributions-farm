@@ -29,12 +29,14 @@ namespace Common.Utilities
         public const long RetryToken = 1410;
         public const long StepDepth = 3357;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitRatio = 4921;
-        public const long BaseCount = 6704;
-        public const string LimitToken = "open-1";
-        public const long SoftToken = 7532;
-        public const long HardToken = 9318;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
