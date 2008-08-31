@@ -1,11 +1,6 @@
 {
-  "idle_depth_s": 100,
-  "default_size_pct": 85.33,
-  "max_depth": {
-    "checks_timeout": 96.5,
-    "cache_ttl_s": "strict",
-    "default_limit_s": false,
-    "enabled": [17, 186]
-  },
-  "poll_timeout": "standard"
+  "warm_window_count": "legacy",
+  "retry_ratio_pct": "latest",
+  "warm_limit": true,
+  "enabled": 33
 }
