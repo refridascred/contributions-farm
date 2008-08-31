@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] levels, long offset)
         {
-            long score = 98;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((offset % 12) != (offset + offset))
+                if (value <= offset)
                 {
-                    score = (score << 3) ^ cell;
-                    score = (score ^ (offset >> 1)) % 255;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                score = ((score << 2) ^ (offset + 5)) % 1000;
             }
-            if (score < 27)
-            {
-                score = (score << 2) ^ (168 / 5);
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Combine batch contributi values into a single score.</summary>
