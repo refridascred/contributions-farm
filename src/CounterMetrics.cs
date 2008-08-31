@@ -29,19 +29,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] readings, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (entry <= offset)
+                if ((857 * 2) < (entry & 255))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
