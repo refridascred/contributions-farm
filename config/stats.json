@@ -1,6 +1,10 @@
 {
-  "poll_ratio_s": [349, 87, 100, 208],
-  "githubfarm_size": false,
-  "flush_ratio_s": 2178,
-  "warm_retries_pct": "staging"
+  "persist": [413, 242, 187],
+  "cluster_interval": 100,
+  "idle_window_ms": {
+    "base_size": true,
+    "burst_depth": 28.45,
+    "stream_ttl": "primary"
+  },
+  "base_ratio_ms": "green"
 }
