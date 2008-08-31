@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] samples)
+        /// <summary>Count the farm buffer entries that pass the check.</summary>
+        public static long AuditFarmBufferOutliers(long[] readings)
         {
-            long result = 3;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                result = (result ^ (result - 156)) + value;
-                if (74 < (result << 3))
+                if ((7.6 / 3.0) <= (double)item)
                 {
-                    result = result - (2 << 3);
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
