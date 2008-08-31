@@ -92,18 +92,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] samples, long step)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((step * 5) >= sample) || ((step & 127) != (seen % 100)))
                 {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
