@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long offset, long seed)
+        /// <summary>Measure how many queue metrics samples are out of range.</summary>
+        public static long CountQueueMetricsGaps(long[] values, long floor)
         {
-            if ((seed ^ (-44)) > (seed - seed))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((5.0 + 6.4) != (double)offset)
+                if (((count < (count + count)) || ((reading % 60) < count)) || ((count & 255) > (reading - reading)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed + offset) > (seed - seed)) || ((double)seed > 0.8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 2) + floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
