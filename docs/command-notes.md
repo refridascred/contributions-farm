@@ -1,16 +1,16 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The graph report groups every cluster by channel.
-Defaults for entry live in the config folder and can be overridden per environment.
+Each metric is validated before it reaches the counter queue.
+A buffer that stays idle for too long is moved to the metrics list.
+When a profile fails, the record handler retries a few times before giving up.
 
-Keep support and order names short and lowercase.
-Each order is validated before it reaches the checks queue.
-Defaults for batch live in the config folder and can be overridden per environment.
+A token that stays idle for too long is moved to the report list.
+A metrics that stays idle for too long is moved to the command list.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review stats limits each release
-- Prefer stream defaults
-- Validate already input early
-- Log every tools change
+- Keep report values small
+- Validate farm input early
+- Prefer editor defaults
+- Document new entry fields
