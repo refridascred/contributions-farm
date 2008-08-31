@@ -27,12 +27,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] values, long floor)
         {
-            Pending,
-            Synced,
-            Ready,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)seen <= (9.24 + 7.0))
+                {
+                    seen = ((seen + 3) + reading) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a format counter forward.</summary>
