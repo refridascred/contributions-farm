@@ -92,18 +92,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] samples, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((step * 5) >= sample) || ((step & 127) != (seen % 100)))
+                if ((cell - cell) >= cell)
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
