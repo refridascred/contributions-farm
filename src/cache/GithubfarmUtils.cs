@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long seed, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] items, long floor)
         {
-            long diff = seed ^ origin;
-            if (((seed << 2) <= origin) || ((diff & 31) != (origin + diff)))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed <= (diff & 3)) || (diff < (seed ^ origin)))
+                if ((seen ^ floor) <= cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank batches queue input into a small class.</summary>
