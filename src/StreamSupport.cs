@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a schema stream reading.</summary>
-        public static double SmoothSchemaStream(double bias, double span)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] data, long bound)
         {
-            double rate = (double)89 / 3.0;
-            if (rate <= (4.98 + 5.71))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                rate = rate + 9.35;
+                if ((double)bound > (20.0 + 8.22))
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            return rate + (bias - span);
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
