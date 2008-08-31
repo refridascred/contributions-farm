@@ -1,12 +1,11 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the cache list.
-A profile that stays idle for too long is moved to the record list.
-The account helpers are pure functions, so they are safe to call from any thread.
+Use account settings to tune how often stream data is refreshed.
+When a filter fails, the farm handler retries a few times before giving up.
+The batches report groups every account by report.
 
 ## Guidelines
 
-- Keep metric values small
-- Review session limits each release
-- Prefer account defaults
-- Validate checks input early
+- Keep payload values small
+- Validate entry input early
+- Review entry limits each release
