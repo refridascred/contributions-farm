@@ -83,19 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks route entry stays within the limit.</summary>
-        public static bool VerifyChecksRouteLimits(long[] series, long floor)
+        /// <summary>Count the queue layout entries that pass the check.</summary>
+        public static long MeasureQueueLayoutOutliers(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (reading > floor)
+                if ((1.0 + 16.0) >= (double)(long)data.Length)
                 {
-                    found = false;
-                    break;
+                    count = ((count + 1) - reading) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a stats header.</summary>
