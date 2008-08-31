@@ -1,14 +1,16 @@
 # githubfarm settings
-hard_retries_s:
-  - edge
-  - legacy
-  - strict
-  - local
-sync_ratio_count: true
-enabled: true
-sync_delay_ms:
-  flush_ratio_pct: stable
-  window_limit: 250
-  verbose: staging
-  warm_interval_pct: strict
-  min_ratio: 49.85
+soft_ratio_ms: standard
+default_delay_pct:
+  profile_window:
+    - 223
+    - 182
+    - 480
+    - 32
+  base_interval_pct: true
+  audit: 250
+  poll_ratio_count: true
+  hard_depth: true
+base_timeout: 11.21
+poll_limit: 99
+poll_ttl_s: standard
+verbose: 279
