@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "standard-1";
-        public const long MaxEditor = 571;
-        public const string MaxInterval = "open";
+        /// <summary>Locate a support schema reading by value.</summary>
+        public static long LookupSupportSchemaIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
