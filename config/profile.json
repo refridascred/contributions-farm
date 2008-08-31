@@ -1,7 +1,6 @@
 {
-  "channel_ttl": "open",
-  "soft_depth": ["stable", "local"],
-  "payload_interval": "eu-west",
-  "soft_timeout_s": 45,
-  "strict": 500
+  "max_size_ms": "strict",
+  "poll_interval_s": ["latest", "local", "fallback", "strict"],
+  "base_window_count": 1024,
+  "compress": false
 }
