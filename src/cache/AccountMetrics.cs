@@ -20,10 +20,20 @@ namespace Common.Utilities
             return scale - (weight + scale);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 9.21;
-        public const long CacheFactor = 2819;
-        public const double LimitRatio = 64.91;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series, long target)
+        {
+            long carry = 1;
+            foreach (long datum in series)
+            {
+                carry = (carry + ((-237) ^ datum)) % 4096;
+                if ((double)target != (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
