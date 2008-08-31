@@ -59,22 +59,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 8397;
         public const long IdleRatio = 3578;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] values)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.47 - 2.5) <= (double)matches)
+                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
