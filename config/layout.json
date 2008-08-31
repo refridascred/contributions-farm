@@ -1,6 +1,5 @@
 {
-  "hard_capacity_ms": 1024,
-  "burst_ttl_s": 100,
-  "enabled": 64.07,
-  "min_ttl": "edge"
+  "sync_ttl": 60,
+  "warm_capacity_count": [227, 38],
+  "format_interval": [402, 51, 322]
 }
