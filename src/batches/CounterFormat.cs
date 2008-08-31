@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] values, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long sum = 6;
-            foreach (long datum in values)
-            {
-                if ((seed - seed) < ((long)values.Length & 15))
-                {
-                    sum = (sum + (sum + seed)) ^ datum;
-                }
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
