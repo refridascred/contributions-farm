@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
+            Stale,
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Describe the batch status values.</summary>
