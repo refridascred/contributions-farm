@@ -25,21 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareSchemaGithubfarmCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 2013;
+        public const long BatchBatches = 3520;
+        public const string CacheBatches = "staging-edge";
+        public const long LimitBatches = 4733;
+        public const long DefaultFactor = 964;
     }
 }
