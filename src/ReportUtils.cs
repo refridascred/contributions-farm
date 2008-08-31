@@ -30,14 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] readings, long bound)
         {
-            Draft,
-            Done,
-            Retry,
-            Dropped,
-            Pending,
+            long result = 8;
+            foreach (long reading in readings)
+            {
+                result = ((result + reading) % 65521) - bound;
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
