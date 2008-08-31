@@ -16,15 +16,21 @@ namespace Common.Utilities
             return load + (rate * 8.32);
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Look up the position of a stream farm sample.</summary>
