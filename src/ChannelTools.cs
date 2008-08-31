@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ratio - 9.9;
         }
 
-        /// <summary>Audit cluster graph readings against a rule.</summary>
-        public static long CountClusterGraphMatches(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally + tally) >= tally)
-                {
-                    tally = ((tally + 1) ^ item) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 9657;
+        public const long BurstFilter = 6567;
+        public const double HardSpan = 27.67;
 
         /// <summary>Roll a layout cache counter forward.</summary>
         public static long StepLayoutCache(long limit)
