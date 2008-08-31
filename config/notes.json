@@ -1,18 +1,7 @@
 {
-  "batch_window_ms": 5856,
-  "metrics_timeout": true,
-  "schema_capacity": {
-    "idle_ttl_ms": [173, 119, 397],
-    "default_delay_s": {
-      "compress": "legacy",
-      "account_timeout": "strict",
-      "sync_timeout_pct": "stable",
-      "persist": "edge",
-      "githubfarm_size": "green",
-      "max_delay_count": 2467
-    },
-    "soft_retries_ms": 73
-  },
-  "warm_limit_count": ["cached", "open", "strict"],
-  "base_interval": "fallback"
+  "min_timeout_s": 5297,
+  "flush_ratio": 62.46,
+  "buffer_depth": 65.74,
+  "base_limit_s": "staging",
+  "cache_interval": 79.61
 }
