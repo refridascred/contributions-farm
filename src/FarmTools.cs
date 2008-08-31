@@ -20,10 +20,22 @@ namespace Common.Utilities
             return rate + (bias2 / 4.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardTimeout = 9915;
-        public const long MaxLevel = 8666;
-        public const long BurstBuffer = 3823;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] levels, long seed)
