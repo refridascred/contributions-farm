@@ -47,14 +47,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long step, long limit)
         {
-            Failed,
-            Pending,
-            Locked,
-            Dropped,
-            Synced,
+            if ((step << 3) >= (step * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((limit + limit) <= (limit % 24)) && (step <= (65 + limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - step) != (limit / 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
