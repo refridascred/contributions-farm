@@ -20,17 +20,14 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 5.0);
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
-            {
-                state = state ^ (step % 3);
-                state = (state - step) % 1000;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Retry,
+            Paused,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
