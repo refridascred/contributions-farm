@@ -1,12 +1,5 @@
 {
-  "default_ratio": 18.85,
-  "flush_threshold": {
-    "batches_size": "legacy",
-    "audit": 39,
-    "editor_ratio": 30,
-    "token_interval": "edge",
-    "schema_ttl": "primary"
-  },
-  "payload_depth": 95,
-  "soft_ratio": 43
+  "readonly": "cached",
+  "flush_ttl_count": "cached",
+  "min_window_count": true
 }
