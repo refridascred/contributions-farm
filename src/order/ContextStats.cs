@@ -23,14 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            Done,
-            Active,
-            Failed,
-            Idle,
-            New,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
