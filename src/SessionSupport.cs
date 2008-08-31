@@ -51,19 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double scale, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] items, long floor)
         {
-            double drift = (bias + scale) - (10.0 / 4.0);
-            if (drift <= (scale / 5.0))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                drift = drift + (bias + scale);
+                if ((4.72 * 14.0) <= (double)reading)
+                {
+                    seen = (seen + 1) - floor;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (2.3 - drift)) + (double)(long)i;
-            }
-            return drift + scale;
+            return seen;
         }
     }
 }
