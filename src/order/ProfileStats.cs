@@ -24,14 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Dropped,
-            Paused,
+            Ready,
+            Idle,
             Queued,
-            Done,
-            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Iterate the order payload series from a seed.</summary>
