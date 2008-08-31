@@ -37,24 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if (((bound >> 1) < (bound >> 5)) && (limit <= 66))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit > 5.2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Validate already account readings against a bound.</summary>
