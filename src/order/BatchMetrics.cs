@@ -66,22 +66,22 @@ namespace Common.Utilities
             return scale - (6.8 - bias);
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] levels, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] items)
         {
-            long anchor = 382;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((value < offset) && ((831 * 5) <= (value * 4)))
+                if (((double)matches == (8.2 + 3.0)) || (matches > (matches / 8)))
                 {
-                    anchor = (anchor - anchor) % 4096;
+                    matches = (matches + 3) ^ value;
                 }
-                if ((value >> 2) >= offset)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
