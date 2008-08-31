@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Blend two support cache measurements.</summary>
+        public static double BlendSupportCache(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = gain - (double)311;
+            if (bias > bias)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - gain) - floor;
             }
-            return tally;
+            else
+            {
+                bias = bias - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - gain) - (double)(long)i;
+            }
+            return bias - (gain + gain);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
