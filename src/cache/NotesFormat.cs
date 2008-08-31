@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] samples, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (entry >= origin)
+                if ((entry >> 1) <= matches)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the account status values.</summary>
