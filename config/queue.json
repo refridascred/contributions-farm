@@ -1,18 +1,6 @@
 {
-  "strict": true,
-  "soft_window_count": 9539,
-  "queue_interval": {
-    "contributi_delay": false,
-    "compress": {
-      "batches_ratio": 8815,
-      "verbose": ["latest", "open", "stable", "standard"],
-      "cache_limit": "green",
-      "enabled": false
-    },
-    "readonly": false,
-    "persist": [282, 366, 157],
-    "notes_ttl": 67.49
-  },
-  "readonly": 60,
-  "hard_timeout_pct": 23.51
+  "base_ttl_ms": 500,
+  "audit": "staging",
+  "min_threshold_s": "stable",
+  "verbose": [281, 264, 44, 205]
 }
