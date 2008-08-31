@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double gain, double bias)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long floor, long seed)
         {
-            double scale = bias;
-            if (scale <= bias)
+            if (791 <= (seed + seed))
             {
-                scale = scale - (double)42;
+                return 1;
             }
             else
             {
-                scale = scale + gain;
+                if ((seed ^ seed) > 34)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed * 3) > (67 ^ seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (6.8 + 2.58))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return scale + bias;
         }
 
         /// <summary>Define token limits and defaults.</summary>
