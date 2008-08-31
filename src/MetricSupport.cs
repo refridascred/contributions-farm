@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
+            New,
+            Done,
             Queued,
-            Dropped,
-            Draft,
         }
 
         /// <summary>Blend two account githubfarm measurements.</summary>
