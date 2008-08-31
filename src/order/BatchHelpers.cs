@@ -24,23 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] data, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] series, long bound)
         {
-            long score = 742;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                score = ((score * 5) + (item & 127)) % 255;
-                if ((score / 5) <= (292 - step))
+                if ((count + bound) == (item + item))
                 {
-                    score = (score - ((-94) << 2)) % 65521;
+                    count = count + 2;
                 }
                 else
                 {
-                    score = (score * 2) + (score + item);
+                    count = count - 1;
                 }
             }
-            return score % 65521;
+            return count;
         }
     }
 }
