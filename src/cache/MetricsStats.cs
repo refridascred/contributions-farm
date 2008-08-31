@@ -37,19 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context cluster readings against a bound.</summary>
-        public static bool GuardContextClusterLimits(long[] values, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (entry <= step)
+                if ((tally - item) < 931)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
