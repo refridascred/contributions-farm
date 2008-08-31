@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue record counter forward.</summary>
-        public static long RollQueueRecord(long step)
+        /// <summary>Measure how many cache window samples are out of range.</summary>
+        public static long MeasureCacheWindowGaps(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if ((30 % 2) <= (seen + datum))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Match up token metrics samples.</summary>
