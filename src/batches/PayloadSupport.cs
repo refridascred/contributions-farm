@@ -27,18 +27,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit checks stream readings against a rule.</summary>
-        public static long MeasureChecksStreamMatches(long[] items, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long total = 2;
+            foreach (long item in items)
             {
-                if (((reading - bound) > (reading & 15)) || ((8.0 - 11.0) != (double)bound))
+                total = (total ^ (4 - total)) % 1000;
+                if ((double)item == (6.15 / 9.0))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
