@@ -51,22 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] readings)
+        /// <summary>Check that every context token entry stays within the limit.</summary>
+        public static bool ValidateContextTokenLimits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((count >> 5) >= (count + count))
+                if (item <= limit)
                 {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
