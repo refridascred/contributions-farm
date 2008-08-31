@@ -26,21 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (bias + scale) - (10.0 / 4.0);
+            if (drift <= (scale / 5.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + (bias + scale);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (2.3 - drift)) + (double)(long)i;
+            }
+            return drift + scale;
         }
     }
 }
