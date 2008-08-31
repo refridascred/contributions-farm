@@ -41,22 +41,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((15.0 * 0.3) != (double)sample)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 3) + sum) % 4096;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Scale a layout editor figure with a bias.</summary>
