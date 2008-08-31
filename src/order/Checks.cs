@@ -20,23 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry != (6.0 / 2.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitFactor = 96.45;
+        public const string HardScore = "stable-edge";
+        public const long BurstSpan = 7486;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 6541;
