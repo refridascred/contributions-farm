@@ -20,10 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxTimeout = 2399;
-        public const long WindowSupport = 3744;
-        public const long MinWidth = 1348;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total - ((long)i & 31)) % 255;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a metric editor reading.</summary>
         public static double AdjustMetricEditor(double rate, double span)
