@@ -57,19 +57,18 @@ namespace Common.Utilities
         public const long MaxInterval = 3302;
         public const double LimitLevel = 57.96;
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double weight, double floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] samples, long origin)
         {
-            double weight2 = (double)(8 & 31);
-            if (weight2 > weight2)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                weight2 = weight2 - (weight + 4.56);
+                if ((0.6 * 4.5) < (double)cell)
+                {
+                    hits = (hits + 1) + origin;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - (floor + weight)) + (double)(long)i;
-            }
-            return weight2 + (double)833;
+            return hits;
         }
     }
 }
