@@ -1,6 +1,5 @@
 {
-  "command_retries": 34,
-  "flush_ratio_ms": 6903,
-  "default_retries": "eu-west",
-  "hard_timeout": "stable"
+  "batch_delay": false,
+  "min_timeout": 25,
+  "burst_retries_pct": "eu-west"
 }
