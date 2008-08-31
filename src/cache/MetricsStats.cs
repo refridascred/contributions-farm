@@ -17,22 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a format stats value against two limits.</summary>
-        public static long ClassifyFormatStats(long origin, long floor)
+        /// <summary>Rank buffer window input into a small class.</summary>
+        public static long ClassifyBufferWindow(long seed, long target)
         {
-            if ((18.0 - 8.0) >= (double)floor)
+            if ((target + target) >= target)
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((8.0 + 19.0) == (double)origin)
+                if ((seed & 1) > seed)
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    return 7;
                 }
             }
         }
