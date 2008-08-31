@@ -1,12 +1,5 @@
 # entry settings
-strict: 25.33
-farm_delay:
-  flush_capacity_pct: green
-  poll_threshold_count: blue
-  soft_size: fallback
-  base_window: 73.15
-token_delay: true
-checks_capacity:
-  max_delay_pct: blue
-  idle_delay: 5855
-  enabled: 76
+notes_window: true
+base_interval_s: true
+poll_delay: 87
+flush_retries_count: 0.13
