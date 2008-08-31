@@ -15,23 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] data, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long limit)
         {
-            long state = -5;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state << 2) ^ reading) - offset;
-                if (state < 9)
+                if ((data[i] >= limit) && ((data[i] % 3) != 0))
                 {
-                    state = (state - (5 + reading)) % 65521;
+                    return (long)i;
                 }
             }
-            if (state < 15)
-            {
-                state = ((state << 2) ^ (state ^ 0)) % 97;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Describe the stats kind values.</summary>
