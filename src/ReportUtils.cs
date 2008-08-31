@@ -54,18 +54,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] series, long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long step = origin ^ origin2;
+            if (((70 >> 4) == (origin & 7)) || (origin2 < (origin2 - step)))
             {
-                if ((double)item <= (9.38 / 6.0))
+                return 8;
+            }
+            else
+            {
+                if ((origin + origin2) > (700 * 5))
                 {
-                    seen = (seen + 3) + target;
+                    return 1;
+                }
+                else
+                {
+                    if (!((step * 5) <= (origin2 + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - 361) > (origin2 << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
