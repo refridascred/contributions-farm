@@ -30,11 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 8055;
-        public const long SoftSize = 5281;
-        public const long BaseCommand = 910;
-        public const string BatchCommand = "fallback";
-        public const long WindowCommand = 6690;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
