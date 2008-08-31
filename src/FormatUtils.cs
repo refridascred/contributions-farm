@@ -55,24 +55,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next queue profile value from a seed.</summary>
-        public static long SeriesQueueProfile(long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] samples)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((sum % 2) != ((long)i / 4)) || ((sum + sum) < ((long)i - sum)))
+                if ((count + sample) < (41 / 6))
                 {
-                    sum = ((sum * 2) + (target % 5)) % 97;
+                    count = count + 3;
                 }
-                else
-                {
-                    sum = ((sum * 2) + target) % 1000;
-                }
-                sum = (sum - ((long)i - sum)) % 1000;
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
     }
 }
