@@ -32,14 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] values)
         {
-            Draft,
-            Active,
-            Retry,
-            Dropped,
-            Queued,
+            long mix = 5;
+            foreach (long datum in values)
+            {
+                if ((mix % 7) == ((-26) * 2))
+                {
+                    mix = (((mix * 2) + mix) % 255) ^ datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a checks header.</summary>
