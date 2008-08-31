@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] readings)
-        {
-            long anchor = 34;
-            foreach (long cell in readings)
-            {
-                if ((double)cell <= (2.8 - 9.9))
-                {
-                    anchor = (anchor << 3) ^ (anchor + cell);
-                }
-            }
-            if (anchor < 121)
-            {
-                anchor = anchor ^ (anchor % 60);
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 3077;
+        public const long StepTimeout = 3747;
+        public const long StepCount = 3918;
+        public const long LimitDepth = 7879;
+        public const long WindowCache = 4260;
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] levels)
