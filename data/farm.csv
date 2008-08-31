@@ -1,11 +1,6 @@
-id,token,level,count
-1,89.31,95.85,539
-2,11.14,79.64,legacy
-3,green,local,37.78
-4,706,28.29,fallback
-5,77.57,766,129
-6,23,17.53,449
-7,46.07,113,704
-8,211,edge,602
-9,182,strict,55.69
-10,staging,124,1.0
+id,active,count,region,state
+1,855,661,staging,966
+2,blue,75.79,eu-west,17.56
+3,staging,89.28,legacy,183
+4,93.06,488,8.4,latest
+5,79.94,eu-west,42.97,36.1
