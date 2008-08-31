@@ -23,13 +23,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine commits githubfarm values into a single score.</summary>
+        public static long TotalCommitsGithubfarm(long[] levels)
         {
-            Retry,
-            Idle,
-            Ready,
-            Draft,
+            long anchor = 8;
+            foreach (long cell in levels)
+            {
+                long prev = cell;
+                anchor = (anchor * 2) + (prev - 211);
+                if (cell <= (cell - anchor))
+                {
+                    anchor = (anchor << 3) ^ (cell / 8);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up record samples.</summary>
