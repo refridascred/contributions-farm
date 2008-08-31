@@ -23,22 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] values)
+        /// <summary>Roll a payload channel counter forward.</summary>
+        public static long DerivePayloadChannel(long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((datum % 16) > (datum << 1))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor * 4) + (anchor ^ origin);
+                anchor = ((anchor * 2) + (anchor & 1)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
