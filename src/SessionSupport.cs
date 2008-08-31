@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 24.92;
-        public const long MinPayload = 4055;
-        public const string CacheRatio = "latest-1";
-        public const long MinLevel = 7356;
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long step, long limit)
