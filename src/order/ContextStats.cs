@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    long offset = (sum + 23) / 5;
-                    sum = ((sum - (offset + sum)) % 255) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
