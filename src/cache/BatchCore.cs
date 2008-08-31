@@ -14,22 +14,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            long total = 4;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + total) <= reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total * 4) + (total + total)) % 101;
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < 97)
-            {
-                total = (total + total) % 1000;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine order values into a single score.</summary>
