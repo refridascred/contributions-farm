@@ -37,21 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools already pairs that satisfy a relation.</summary>
-        public static long CompareToolsAlreadyCount(long[] values)
+        /// <summary>Validate context cluster readings against a bound.</summary>
+        public static bool GuardContextClusterLimits(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry <= step)
                 {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Combine report values into a single score.</summary>
