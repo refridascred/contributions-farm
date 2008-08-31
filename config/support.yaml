@@ -1,19 +1,6 @@
 # support settings
-verbose: 4092
-base_retries:
-  batch_depth_count: 3280
-  burst_timeout_s:
-    - 71
-    - 406
-    - 325
-    - 467
-  cache_ttl_s: latest
-retry_timeout: 87
-default_ttl_ms:
-  max_capacity: 72
-  batch_window_pct: 71.92
-  default_window_s: true
-  readonly: 94.36
-  enabled: 1507
-  base_threshold: 44
-command_window: strict
+readonly: true
+graph_ratio: 19
+queue_ttl:
+  - fallback
+  - latest
