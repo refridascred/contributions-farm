@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank layout cache input into a small class.</summary>
-        public static long SortLayoutCache(long bound, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long limit, long offset)
         {
-            if ((751 / 8) <= (floor + bound))
+            if ((offset * 4) == (74 ^ 261))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (((3 - floor) >= floor) || (bound <= (870 + floor)))
+                if ((limit - limit) > offset)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (bound < (floor / 7))
+                    if ((limit - offset) < (-2))
                     {
                         return 2;
                     }
                     else
                     {
-                        if (!((double)floor > (3.5 * 1.37)))
+                        if (20.0 <= (double)offset)
                         {
-                            return 1;
+                            return 6;
                         }
                         else
                         {
-                            return 5;
+                            return 3;
                         }
                     }
                 }
