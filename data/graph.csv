@@ -1,10 +1,6 @@
-id,count,region
-1,2.23,262
-2,22.19,strict
-3,634,42.66
-4,92.36,66.31
-5,113,497
-6,611,standard
-7,46.96,248
-8,strict,31.81
-9,666,90.65
+id,score,rank,region,label
+1,local,23,76.02,stable
+2,32.74,172,40,legacy
+3,29.45,286,latest,69.6
+4,local,284,eu-west,latest
+5,53.17,765,57.17,54.39
