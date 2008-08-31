@@ -35,26 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] data, long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long acc = 39;
-            foreach (long sample in data)
-            {
-                if (!((double)acc == (6.4 * 5.0)))
-                {
-                    acc = ((acc * 5) + (931 - acc)) % 1000;
-                }
-                if ((sample * 2) > offset)
-                {
-                    acc = ((acc << 3) ^ (offset / 2)) % 4096;
-                }
-            }
-            if (acc > 28)
-            {
-                acc = (acc + (offset - acc)) % 1000;
-            }
-            return acc;
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many order schema samples are out of range.</summary>
