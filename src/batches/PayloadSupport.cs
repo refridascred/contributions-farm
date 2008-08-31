@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] data)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits >> 5) >= (hits / 2))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Queued,
+            Synced,
         }
     }
 }
