@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a batch format value against two limits.</summary>
-        public static long RankBatchFormat(long origin, long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            long lane = origin + step;
-            if ((double)lane != (17.0 - 9.0))
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((30 % 24) > (lane * 2))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 7;
+                    acc = ((acc ^ (3 & 63)) % 101) - (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Hold a window header.</summary>
