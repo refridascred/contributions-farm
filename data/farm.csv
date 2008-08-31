@@ -1,6 +1,8 @@
-id,active,count,region,state
-1,855,661,staging,966
-2,blue,75.79,eu-west,17.56
-3,staging,89.28,legacy,183
-4,93.06,488,8.4,latest
-5,79.94,eu-west,42.97,36.1
+id,state,count,weight
+1,617,171,35.16
+2,41.91,fallback,84.24
+3,fallback,125,7.02
+4,fallback,green,strict
+5,98.79,608,694
+6,754,primary,local
+7,586,25,staging
