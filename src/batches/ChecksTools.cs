@@ -24,21 +24,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Grade a format account value against two limits.</summary>
+        public static long BucketFormatAccount(long seed, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((seed + seed) >= 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((94 + seed) >= 1)
                 {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
