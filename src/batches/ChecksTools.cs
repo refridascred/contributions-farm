@@ -30,38 +30,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long limit, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long origin)
         {
-            if (limit < (floor >> 5))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 3) < 168)
+                if (entry >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit <= (floor * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor + floor) >= limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
