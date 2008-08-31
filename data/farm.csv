@@ -1,9 +1,6 @@
-id,state,region,token,label
-1,72.69,cached,94.78,697
-2,939,239,365,primary
-3,6.12,15,96.98,edge
-4,328,eu-west,11.04,556
-5,856,cached,41.38,89.38
-6,green,staging,85,blue
-7,81.35,cached,legacy,604
-8,148,244,39,eu-west
+id,region,owner,weight,label
+1,37,67.62,staging,standard
+2,34.53,95.27,550,local
+3,67.72,241,primary,42.94
+4,223,78.32,standard,602
+5,301,847,82.26,56
