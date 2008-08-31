@@ -40,19 +40,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double floor)
-        {
-            double gain = (floor * 7.0) / 8.0;
-            if (gain >= floor)
-            {
-                gain = gain + (floor * 5.3);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain + (gain * 5.14);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowSize = 93.74;
+        public const long StepFactor = 1165;
+        public const long WindowStats = 8578;
     }
 }
