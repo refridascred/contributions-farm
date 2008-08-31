@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the queue notes series from a seed.</summary>
-        public static long IterateQueueNotes(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i - step) >= (long)i)
-                {
-                    mix = ((mix << 2) ^ ((long)i - (long)i)) % 1000;
-                    mix = (mix ^ step) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheDepth = 9349;
+        public const string RetryCount = "standard";
+        public const double BatchEntry = 71.06;
+        public const double MinEntry = 85.64;
+        public const long CacheEntry = 8895;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
