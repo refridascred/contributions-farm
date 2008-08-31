@@ -67,21 +67,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)8 + (offset * 1.1);
+            if (rate <= (offset + 3.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate - (6.8 + rate)) - ratio;
             }
-            return matches;
+            return rate - rate;
         }
 
         /// <summary>Check that every buffer editor entry stays within the limit.</summary>
