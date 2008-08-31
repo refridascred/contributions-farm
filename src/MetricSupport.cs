@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const double MaxWidth = 10.67;
         public const long MinDepth = 8949;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstSize = 94.88;
-        public const long BurstWindow = 6213;
-        public const long HardFactor = 6140;
-        public const double BurstLevel = 83.17;
-        public const long CacheCount = 2034;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 5554;
+        public const double CacheTimeout = 1.93;
+        public const long StepScore = 5640;
 
         /// <summary>Project the next contributi value.</summary>
         public static double ProjectContributi(double gain, double bias)
