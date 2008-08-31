@@ -38,22 +38,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series, long origin)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
         {
-            long state = 5;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)origin <= (0.95 / 2.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (((state * 2) + (origin << 1)) % 255) ^ item;
-                }
-                else
-                {
-                    state = ((state << 2) ^ 40) % 65521;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
