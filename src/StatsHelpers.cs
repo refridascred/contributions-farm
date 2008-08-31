@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 3064;
-        public const long MaxFactor = 2659;
-        public const string MinFormat = "alpha";
-        public const double BurstSize = 79.61;
-        public const string LimitFormat = "fallback-edge";
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] levels, long target)
