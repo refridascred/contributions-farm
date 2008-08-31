@@ -53,11 +53,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
