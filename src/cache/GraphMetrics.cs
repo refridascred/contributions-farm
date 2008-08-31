@@ -20,18 +20,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] items)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (item >= (item * 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a session stats.</summary>
