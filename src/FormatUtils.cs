@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultRatio = 4571;
-        public const long IdleContributi = 5027;
-        public const double SoftContributi = 69.09;
-        public const double BurstContributi = 94.99;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Active,
+            Done,
+            Draft,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long step, long floor)
