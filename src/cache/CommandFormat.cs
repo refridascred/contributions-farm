@@ -13,12 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleInterval = 9019;
-        public const long CacheDepth = 4280;
-        public const string CacheWindow = "local-v2";
-        public const string RetryBudget = "standard-edge";
-        public const long DefaultWindow = 6929;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Draft,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long DigestToken(long[] readings)
