@@ -27,23 +27,23 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 39.87;
         public const long StepBudget = 6336;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long floor, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long target, long floor)
         {
-            long delta = floor + step;
-            if ((delta + 9) > delta)
+            long slot = target + floor;
+            if (floor >= 3)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (!((floor + delta) < 469))
+                if ((target >= (slot + 435)) && ((7.5 - 5.0) > (double)slot))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 6;
+                    return 3;
                 }
             }
         }
