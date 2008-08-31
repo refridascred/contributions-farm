@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-When a graph fails, the profile handler retries a few times before giving up.
+The cache report groups every profile by record.
+Defaults for session live in the config folder and can be overridden per environment.
+The payload module keeps editor values in sync with the commits cache.
 
-A batches that stays idle for too long is moved to the counter list.
-Each githubfarm is validated before it reaches the entry queue.
+A batch that stays idle for too long is moved to the stream list.
+Use farm settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Keep stream values small
-- Log every token change
-- Document new stats fields
+- Keep context values small
+- Document new order fields
+- Prefer batches defaults
