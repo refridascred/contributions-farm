@@ -33,17 +33,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] series, long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long seed, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed << 2) > (seed - seed))
             {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((seed << 3) < (origin - seed)) || (seed < (origin + origin)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
