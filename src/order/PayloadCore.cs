@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstBudget = 8265;
-        public const long MinGraph = 1234;
-        public const string DefaultSize = "staging-v2";
-        public const long BaseGraph = 6600;
+        /// <summary>Match up schema commits samples.</summary>
+        public static long MatchSchemaCommitsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] readings)
