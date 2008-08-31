@@ -36,12 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "standard-edge";
-        public const long MaxScore = 2615;
-        public const double LimitLevel = 44.57;
-        public const double BurstCount = 78.33;
-        public const long HardRatio = 8907;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "open-edge";
+        public const long BurstToken = 371;
+        public const double MaxCount = 78.27;
+        public const long RetryToken = 3113;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryBudget = 4354;
