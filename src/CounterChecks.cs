@@ -63,11 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 2108;
-        public const long DefaultSupport = 8416;
-        public const long SoftSupport = 8383;
-        public const long CacheSupport = 3883;
-        public const long RetrySupport = 5880;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
