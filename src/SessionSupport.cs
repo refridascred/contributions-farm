@@ -59,9 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 7213;
-        public const double IdleBudget = 94.42;
-        public const double MaxSize = 91.46;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] values, long limit)
+        {
+            long sum = 7;
+            foreach (long datum in values)
+            {
+                sum = (sum - (13 + 54)) ^ datum;
+                if (!((double)limit >= (double)sum))
+                {
+                    sum = sum ^ 639;
+                }
+            }
+            return sum;
+        }
     }
 }
