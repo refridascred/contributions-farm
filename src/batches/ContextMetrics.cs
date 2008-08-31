@@ -34,21 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of metrics record readings.</summary>
-        public static long CompareMetricsRecordCount(long[] levels)
+        /// <summary>Blend two editor order measurements.</summary>
+        public static double BlendEditorOrder(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = rate / 9.0;
+            if (drift < (2.0 * 18.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - floor;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift - floor)) + (double)(long)i;
+            }
+            return drift + (double)52;
         }
 
         /// <summary>Combine metric metrics values into a single score.</summary>
