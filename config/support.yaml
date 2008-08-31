@@ -1,11 +1,29 @@
 # support settings
-batch_delay_pct: true
-min_window_ms: 4573
-poll_retries_ms:
-  report_ttl: 92.45
-  readonly:
-    - 113
-    - 342
-    - 104
-  notes_limit: open
-hard_retries_count: latest
+persist:
+  - 484
+  - 68
+  - 62
+min_limit_ms:
+  batch_interval:
+    compress: 1024
+    cache_threshold: 8.81
+    verbose: 44.11
+    poll_capacity_ms: 1024
+    hard_capacity_pct: eu-west
+  retry_ttl_ms: 89.84
+  enabled: blue
+  retry_ratio_s:
+    base_retries_s:
+      - local
+      - blue
+      - stable
+    profile_size: primary
+    burst_depth:
+      - cached
+      - local
+      - blue
+    poll_window_pct: 2351
+    route_ttl: 60
+    command_ttl: 5782
+commits_capacity: 30
+verbose: true
