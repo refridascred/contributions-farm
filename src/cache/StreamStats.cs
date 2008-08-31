@@ -39,23 +39,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long anchor = -34;
+            foreach (long value in levels)
             {
-                if (((long)i + 2) <= ((long)i / 3))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score << 2) ^ (5 + floor);
-                }
-                score = ((score * 4) + (long)i) % 97;
+                anchor = (((anchor ^ (anchor << 1)) % 65521) ^ value) - offset;
             }
-            return score;
+            return anchor % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
