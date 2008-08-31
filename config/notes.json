@@ -1,18 +1,6 @@
 {
-  "idle_capacity_s": 3739,
-  "retry_limit_ms": "local",
-  "commits_depth": 69,
-  "max_window": {
-    "hard_capacity_s": true,
-    "default_window": {
-      "batch_threshold_pct": false,
-      "poll_interval_ms": "fallback",
-      "readonly": 8950,
-      "retry_size": 76,
-      "hard_capacity_s": 49.77,
-      "burst_delay_s": ["local", "cached"]
-    },
-    "poll_retries_count": "primary"
-  },
-  "persist": "open"
+  "support_delay": 2370,
+  "session_threshold": 100,
+  "token_timeout": [339, 394],
+  "checks_delay": 14.61
 }
