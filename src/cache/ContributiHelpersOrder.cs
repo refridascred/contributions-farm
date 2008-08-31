@@ -41,19 +41,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double rate, double floor)
-        {
-            double load = rate - floor;
-            if (load < load)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load - (7.9 - 0.73);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleTimeout = 60.18;
+        public const long WindowTimeout = 7863;
+        public const string StepCounter = "primary-v2";
     }
 }
