@@ -1,8 +1,23 @@
 {
-  "min_depth_s": 72.87,
-  "flush_threshold_s": 10.41,
-  "window_retries": 33.25,
-  "stream_capacity": 1024,
-  "flush_interval_s": 1887,
-  "base_interval": true
+  "readonly": true,
+  "dry_run": 8606,
+  "base_ttl_s": 81.98,
+  "burst_depth_s": "staging",
+  "flush_ttl_s": {
+    "soft_size_s": 66,
+    "dry_run": "staging",
+    "audit": 56,
+    "hard_delay_pct": {
+      "burst_retries_ms": 2213,
+      "poll_size_pct": true,
+      "queue_ratio": true
+    },
+    "token_limit": {
+      "cache_threshold": 250,
+      "poll_size_count": 72,
+      "base_window": 44.47
+    },
+    "payload_window": 51.76
+  },
+  "sync_ttl": 60
 }
