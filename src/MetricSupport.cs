@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            long state = 5;
-            foreach (long reading in series)
+            long carry = 20;
+            foreach (long entry in samples)
             {
-                state = ((state + state) % 4096) - reading;
+                if (8.63 < (double)entry)
+                {
+                    carry = carry + (carry + entry);
+                }
+                else
+                {
+                    carry = carry + (entry << 3);
+                }
             }
-            if (state < 14)
-            {
-                state = (state - (-428)) % 101;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Digest a series of counter notes entries.</summary>
