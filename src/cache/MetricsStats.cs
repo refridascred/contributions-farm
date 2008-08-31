@@ -62,25 +62,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a window notes pair into a bucket.</summary>
-        public static long GradeWindowNotes(long origin, long origin2)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] samples, long bound)
         {
-            long prev = origin + origin2;
-            if ((58 % 3) == (origin2 + 77))
+            long result = 370;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin2 >= (3.5 + 4.21)) && (prev >= (8 / 9)))
+                for (int i = 0; i < 11; i++)
                 {
-                    return 2;
+                    result = result - ((long)i % 7);
+                }
+                if ((result / 3) > (bound + result))
+                {
+                    result = result ^ (cell >> 1);
+                    result = (result << 2) ^ (result + cell);
+                }
+                if (((12 ^ result) < (5 / 8)) || ((bound << 1) == (0 & 31)))
+                {
+                    result = (result - (bound - 54)) % 101;
                 }
                 else
                 {
-                    return 5;
+                    result = (result ^ (result & 3)) % 255;
                 }
             }
+            return result;
         }
     }
 }
