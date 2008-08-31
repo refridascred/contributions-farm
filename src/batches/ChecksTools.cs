@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 5.0);
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long step)
         {
-            Retry,
-            Paused,
-            Ready,
-            Active,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
