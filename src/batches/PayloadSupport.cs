@@ -40,13 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit checks stream readings against a rule.</summary>
+        public static long MeasureChecksStreamMatches(long[] items, long bound)
         {
-            Done,
-            Draft,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((reading - bound) > (reading & 15)) || ((8.0 - 11.0) != (double)bound))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
