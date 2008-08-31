@@ -31,12 +31,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryRatio = "open-1";
-        public const long SoftNotes = 5370;
-        public const string LimitNotes = "strict-v2";
-        public const long WindowBudget = 2433;
-        public const long BatchNotes = 2354;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a record already sample.</summary>
         public static long FindRecordAlreadyIndex(long[] levels, long step)
