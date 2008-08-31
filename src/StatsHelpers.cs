@@ -57,18 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((datum <= (datum + 18)) && (((hits / 6) != (datum << 3)) || ((0.8 * 7.25) == (double)datum)))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
