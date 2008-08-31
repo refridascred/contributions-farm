@@ -1,5 +1,6 @@
 {
-  "batch_retries": "staging",
-  "burst_delay_s": 76.4,
-  "retry_retries": true
+  "warm_retries": "blue",
+  "base_ttl": 87.83,
+  "strict": 60,
+  "batch_ratio_ms": 26
 }
