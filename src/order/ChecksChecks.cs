@@ -26,16 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session window values into a single score.</summary>
-        public static long TotalSessionWindow(long[] series, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] levels)
         {
-            long state = 244;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                state = ((state ^ state) + value) + limit;
-                state = ((state * 2) + (state & 63)) % 101;
+                if (((double)hits < 8.5) || ((cell & 31) == (209 & 3)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
