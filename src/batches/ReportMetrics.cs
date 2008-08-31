@@ -29,19 +29,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate batches context readings against a bound.</summary>
-        public static bool ValidateBatchesContextRange(long[] data, long offset)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Done,
+            Draft,
+            Synced,
+            Retry,
         }
     }
 }
