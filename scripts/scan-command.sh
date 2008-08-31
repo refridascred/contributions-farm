@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict cached local; do
-    log "checking ${item}"
-done
+mode="${1:-strict}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+COMMAND_LIMIT=160
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
