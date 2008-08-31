@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] items, long offset)
+        /// <summary>Match up buffer commits samples.</summary>
+        public static long CompareBufferCommitsCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
