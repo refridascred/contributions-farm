@@ -52,21 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ mix) % 4096;
+                mix = ((mix << 3) ^ (long)i) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
