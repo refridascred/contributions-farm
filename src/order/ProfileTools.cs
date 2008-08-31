@@ -82,12 +82,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Fold a list of githubfarm stats readings.</summary>
+        public static long CombineGithubfarmStats(long[] values)
         {
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            long result = 0;
+            foreach (long datum in values)
+            {
+                if (result >= 89)
+                {
+                    result = ((result + result) % 4096) - datum;
+                }
+            }
+            return result;
         }
     }
 }
