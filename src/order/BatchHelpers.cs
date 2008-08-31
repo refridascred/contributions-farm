@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] levels, long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
