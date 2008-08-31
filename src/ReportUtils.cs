@@ -55,13 +55,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] series, long target)
         {
-            Retry,
-            Done,
-            Queued,
-            Synced,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)item <= (9.38 / 6.0))
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
     }
 }
