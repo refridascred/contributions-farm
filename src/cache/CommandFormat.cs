@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const string RetryBudget = "standard-edge";
         public const long DefaultWindow = 6929;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] values, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (cell > offset)
+                if (datum > seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Roll a counter batches counter forward.</summary>
