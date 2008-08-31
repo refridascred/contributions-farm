@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            long mix = 95;
-            foreach (long sample in levels)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((13.0 - 5.03) <= (double)mix)
-                {
-                    mix = ((mix + (mix / 8)) % 4096) ^ sample;
-                }
+                carry = (carry ^ (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
