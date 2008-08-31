@@ -1,21 +1,7 @@
 # githubfarm settings
-graph_ratio:
-  poll_retries_ms: false
-  default_delay: 3747
-  compress:
-    persist: edge
-    idle_size: 100
-    min_window_ms: 43.97
-    report_size: 0.11
-  base_ttl_s: cached
-  layout_depth: 4836
-poll_retries_pct: 91
-batch_ttl: stable
-sync_interval_count:
-  enabled: latest
-  cache_depth_pct:
-    - 187
-    - 131
-    - 468
-    - 311
-  already_size: latest
+editor_capacity: 30
+idle_threshold_ms:
+  - 170
+  - 448
+warm_interval_count: 21.09
+base_depth: true
