@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] data, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((30 / 4) == (floor % 97))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry + (carry << 2)) % 255;
+                carry = (carry - (target & 31)) % 4096;
+                carry = (carry ^ carry) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
