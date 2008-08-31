@@ -50,9 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxFormat = "open-v2";
-        public const long LimitFormat = 8960;
-        public const double BaseRatio = 17.52;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
