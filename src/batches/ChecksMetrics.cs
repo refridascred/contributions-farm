@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] values, long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
+            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
