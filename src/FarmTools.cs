@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings)
-        {
-            long sum = -840;
-            foreach (long datum in readings)
-            {
-                if ((double)sum >= (1.2 - 13.0))
-                {
-                    sum = (sum ^ (sum / 5)) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (datum ^ 205)) % 97;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftBudget = 620;
+        public const long MaxFactor = 9496;
+        public const string MaxInterval = "primary-v2";
+        public const long MaxSize = 412;
+        public const long BaseCommand = 7654;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long RollReport(long limit)
