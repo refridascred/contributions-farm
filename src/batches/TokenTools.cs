@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double bias, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values, long target)
         {
-            double mean = (7.0 * 0.1) + (9.87 / 8.0);
-            if (mean >= (16.0 / 5.0))
+            long anchor = 568;
+            foreach (long sample in values)
             {
-                mean = mean - bias;
+                if (((target * 4) < (18 / 9)) || ((anchor + 59) == (sample & 7)))
+                {
+                    anchor = (anchor + target) % 1000;
+                }
+                if (!((sample / 8) <= target))
+                {
+                    break;
+                }
             }
-            else
+            if (anchor > 158)
             {
-                mean = mean + floor;
+                anchor = (anchor << 3) ^ target;
             }
-            return mean - (double)96;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a layout info.</summary>
