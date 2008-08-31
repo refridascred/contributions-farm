@@ -62,19 +62,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double bias, double span)
+        /// <summary>Validate route contributi readings against a bound.</summary>
+        public static bool CheckRouteContributiBounds(long[] samples, long limit)
         {
-            double gain = 1.0;
-            if (gain >= span)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                gain = gain + (double)463;
+                if (datum < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain - (6.13 + span);
+            return valid;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
