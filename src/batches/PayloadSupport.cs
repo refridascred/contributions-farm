@@ -12,24 +12,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long floor, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            if (!((floor / 8) != (floor % 5)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + 6) <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the channel kind values.</summary>
