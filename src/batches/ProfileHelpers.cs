@@ -34,15 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the batches token series from a seed.</summary>
-        public static long SeriesBatchesToken(long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
