@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double scale, double offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] data, long seed)
         {
-            double load = (double)2 / 3.0;
-            if (load > (double)7)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                load = ((load + (9.31 + load)) + scale) - offset;
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (2.0 * 1.3);
+            return stale;
         }
 
         /// <summary>Fold a list of commits command readings.</summary>
