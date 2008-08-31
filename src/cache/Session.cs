@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseLevel = "stable-edge";
+        public const double BaseToken = 66.96;
+        public const long IdleCount = 8059;
+        public const long SoftWidth = 1872;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
