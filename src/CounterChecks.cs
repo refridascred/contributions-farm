@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank graph commits input into a small class.</summary>
-        public static long GradeGraphCommits(long limit, long origin)
-        {
-            if ((9 / 6) >= (206 ^ limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin > 0.3) && (limit > (origin % 97)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >> 1) > (limit >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "open";
+        public const long MaxProfile = 4114;
+        public const long BurstSize = 1952;
+        public const long IdleProfile = 8790;
+        public const double SoftProfile = 74.12;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MaxRatio = "staging";
