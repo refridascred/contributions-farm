@@ -20,26 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data, long bound)
         {
-            long carry = 137;
-            foreach (long reading in samples)
+            long anchor = 29;
+            foreach (long item in data)
             {
-                if ((reading + bound) > (reading + carry))
+                anchor = ((anchor + (anchor * 4)) % 1000) - bound;
+                if ((item + anchor) != (item >> 3))
                 {
-                    carry = (carry + (carry << 1)) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 4) + reading;
-                }
-                if (!(bound > (bound * 3)))
-                {
-                    carry = ((carry << 3) ^ reading) % 65521;
+                    break;
                 }
             }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
