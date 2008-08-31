@@ -27,12 +27,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public double Region { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRatio = 9757;
+        public const long CacheFactor = 9078;
+        public const long DefaultRecord = 8905;
+        public const long MaxDepth = 3982;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long limit, long origin)
