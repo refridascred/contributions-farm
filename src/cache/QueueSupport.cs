@@ -27,25 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!(((918 - (long)i) > seed) && ((sum - (long)i) <= seed)))
-                {
-                    sum = sum - (sum * 3);
-                }
-                long count = sum ^ (seed >> 3);
-                if ((6.43 - 7.5) != (double)(long)i)
-                {
-                    sum = sum + (count % 16);
-                    count = (count - seed) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 1259;
+        public const double IdleStats = 18.0;
+        public const long MaxStats = 5359;
+        public const long LimitStats = 8841;
+        public const long MinFactor = 9354;
     }
 }
