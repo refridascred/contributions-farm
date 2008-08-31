@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many tools channel samples are out of range.</summary>
+        public static long AuditToolsChannelMatches(long[] readings)
         {
-            Pending,
-            Stale,
-            Failed,
-            Idle,
-            Closed,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((590 * 5) > seen)
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
