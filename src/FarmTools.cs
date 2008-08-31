@@ -29,22 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels, long seed)
+        /// <summary>Count the stream metrics entries that pass the check.</summary>
+        public static long TallyStreamMetricsHits(long[] readings, long bound)
         {
-            long sum = 908;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (((double)seed < (double)sum) || ((datum - datum) >= (datum >> 4)))
+                if ((double)bound < (double)datum)
                 {
-                    sum = ((sum * 4) + (datum + sum)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ ((-2) + datum)) % 1000;
+                    count = count + 3;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
