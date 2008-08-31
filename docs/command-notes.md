@@ -1,15 +1,15 @@
 # Command notes
 
-Run the farm check before changing any profile limits.
-The command module keeps window values in sync with the stats cache.
+When a buffer fails, the farm handler retries a few times before giving up.
+Keep batches and window names short and lowercase.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The entry report groups every queue by cache.
-Defaults for report live in the config folder and can be overridden per environment.
+Run the editor check before changing any layout limits.
+The support report groups every githubfarm by entry.
 
 ## Guidelines
 
-- Document new buffer fields
-- Validate graph input early
-- Keep channel values small
-- Prefer record defaults
+- Review checks limits each release
+- Validate schema input early
+- Document new route fields
+- Keep report values small
