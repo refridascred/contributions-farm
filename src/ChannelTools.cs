@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const long BurstFilter = 6567;
         public const double HardSpan = 27.67;
 
-        /// <summary>Roll a layout cache counter forward.</summary>
-        public static long StepLayoutCache(long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
