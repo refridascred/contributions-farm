@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] samples, long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            long total = 44;
+            foreach (long datum in samples)
+            {
+                if (((2.1 - 0.6) != (double)datum) || (total <= (75 + datum)))
+                {
+                    total = total ^ floor;
+                }
+                total = ((total << 3) ^ (datum + total)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
