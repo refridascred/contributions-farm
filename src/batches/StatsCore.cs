@@ -33,17 +33,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a commits batch sample.</summary>
-        public static long SeekCommitsBatchIndex(long[] readings, long floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = weight + weight;
+            if (drift < span)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + 7.4;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)729) + (double)(long)i;
+            }
+            return drift + (double)101;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
