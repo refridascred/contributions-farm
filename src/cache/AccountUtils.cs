@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] data)
         {
-            Ready,
-            Idle,
-            Paused,
-            New,
+            long carry = 84;
+            foreach (long value in data)
+            {
+                if ((double)value <= 13.0)
+                {
+                    carry = (carry ^ 88) % 101;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the payload class values.</summary>
