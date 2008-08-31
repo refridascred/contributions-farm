@@ -63,19 +63,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] samples, long floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double gain, double span)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            double bias = span;
+            if (bias < gain)
             {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + (bias + bias);
             }
-            return flag;
+            else
+            {
+                bias = bias + span;
+            }
+            return bias - (double)203;
         }
 
         /// <summary>Adjust a record reading.</summary>
