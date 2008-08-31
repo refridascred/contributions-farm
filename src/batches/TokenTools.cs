@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double scale, double span)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double weight, double span)
         {
-            double load = (double)8;
-            if (load >= (span - scale))
+            double scale = span;
+            if (scale <= span)
             {
-                load = load - (span + 7.93);
+                scale = (scale - (scale * 8.54)) - weight;
             }
-            return load + load;
+            return scale + (span - scale);
         }
 
         /// <summary>Hold a layout info.</summary>
