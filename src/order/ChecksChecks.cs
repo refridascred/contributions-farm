@@ -26,22 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] levels)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double gain = (floor * 7.0) / 8.0;
+            if (gain >= floor)
             {
-                if (((double)hits < 8.5) || ((cell & 31) == (209 & 3)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + (floor * 5.3);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain + (gain * 5.14);
         }
     }
 }
