@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const string HardFarm = "standard-edge";
         public const long SoftWidth = 3206;
 
-        /// <summary>Blend two account githubfarm measurements.</summary>
-        public static double BlendAccountGithubfarm(double ratio, double floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double bias = ratio / 2.0;
-            if (bias >= (double)947)
-            {
-                bias = bias - floor;
-            }
-            return bias + floor;
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
