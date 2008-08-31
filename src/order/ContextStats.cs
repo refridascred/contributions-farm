@@ -53,11 +53,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Derive the next batch record value from a seed.</summary>
+        public static long RollBatchRecord(long seed)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long total = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total << 3) ^ (total % 12)) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
