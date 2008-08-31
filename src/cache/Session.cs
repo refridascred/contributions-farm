@@ -43,17 +43,21 @@ namespace Common.Utilities
             return rate - (floor + floor);
         }
 
-        /// <summary>Locate a notes queue reading by value.</summary>
-        public static long FindNotesQueueIndex(long[] samples, long bound)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] == bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
