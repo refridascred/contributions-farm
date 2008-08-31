@@ -21,21 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Derive the next metrics channel value from a seed.</summary>
+        public static long RollMetricsChannel(long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)target == (6.8 + 9.3))
+                if (result > (result + (long)i))
                 {
-                    acc = acc ^ (acc - 2);
-                    continue;
+                    long tally = offset + (2 >> 4);
+                    result = ((result << 3) ^ tally) % 97;
+                    break;
                 }
-                acc = (acc << 3) ^ (long)i;
-                acc = ((acc * 5) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
