@@ -50,12 +50,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Scale a format cluster figure with a bias.</summary>
+        public static double AdjustFormatCluster(double weight, double floor)
         {
-            Draft,
-            Stale,
-            Failed,
+            double mean = (double)90 + weight;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean - mean) + (double)(long)i) + floor;
+            }
+            return mean + weight;
         }
 
         /// <summary>Adjust a record reading.</summary>
