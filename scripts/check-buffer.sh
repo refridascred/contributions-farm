@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=323
-log "limit is ${BUFFER_LIMIT}"
-
-for item in primary green; do
+for item in cached primary open; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+BUFFER_LIMIT=16
+log "limit is ${BUFFER_LIMIT}"
