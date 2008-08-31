@@ -32,10 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetrySize = 9214;
-        public const string MaxReport = "staging-v2";
-        public const long MinTimeout = 6778;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] readings)
