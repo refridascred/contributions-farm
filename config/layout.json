@@ -1,7 +1,21 @@
 {
-  "soft_depth_s": ["cached", "green", "strict"],
-  "retry_retries_count": 8917,
-  "dry_run": 67.64,
-  "persist": "latest",
-  "readonly": "latest"
+  "entry_timeout": 432,
+  "format_window": "edge",
+  "hard_interval_ms": 36.11,
+  "dry_run": {
+    "retry_timeout": true,
+    "soft_ratio_s": 79,
+    "base_interval_s": {
+      "cache_size": 94.34,
+      "cache_timeout_count": 63.71,
+      "flush_ttl": "standard",
+      "default_retries": "open",
+      "warm_delay": [472, 350, 359],
+      "verbose": "green"
+    },
+    "editor_delay": 100,
+    "max_ttl": "open"
+  },
+  "compress": 51.74,
+  "profile_retries": 93.12
 }
