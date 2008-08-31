@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] series, long step)
+        /// <summary>Combine tools record values into a single score.</summary>
+        public static long TallyToolsRecord(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long state = 768;
+            foreach (long reading in data)
             {
-                if (reading >= step)
+                state = ((state * 4) + (state * 2)) % 97;
+                if (((double)73 < (0.01 / 2.0)) || ((seed & 7) < (reading + state)))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
