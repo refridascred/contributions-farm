@@ -30,19 +30,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
-        {
-            long sum = 7;
-            foreach (long entry in items)
-            {
-                sum = sum + (entry - entry);
-            }
-            if (sum < 565)
-            {
-                sum = sum - sum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultRatio = 9259;
+        public const long DefaultTimeout = 5630;
+        public const long RetryWidth = 9630;
+        public const long SoftRatio = 484;
     }
 }
