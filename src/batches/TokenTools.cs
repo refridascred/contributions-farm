@@ -38,24 +38,17 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long step)
         {
-            if (((2.0 - 18.0) > (double)limit) && (0 <= limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-463) * 3) != (limit + limit))
+                if ((values[i] > step) && ((values[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
