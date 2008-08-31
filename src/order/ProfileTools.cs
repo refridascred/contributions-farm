@@ -72,11 +72,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryTimeout = 21.8;
-        public const long HardDepth = 116;
-        public const long BaseRoute = 1861;
-        public const string CacheRoute = "open-edge";
-        public const long DefaultRoute = 7971;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
