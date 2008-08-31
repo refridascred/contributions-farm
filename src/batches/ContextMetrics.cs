@@ -42,18 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] items)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)count <= (double)item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a metrics channel value against two limits.</summary>
