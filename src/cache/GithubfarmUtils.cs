@@ -20,18 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] series, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = 137;
+            foreach (long reading in samples)
             {
-                if ((6.8 + 2.87) == (double)reading)
+                if ((reading + bound) > (reading + carry))
                 {
-                    hits = (hits + 3) - limit;
+                    carry = (carry + (carry << 1)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 4) + reading;
+                }
+                if (!(bound > (bound * 3)))
+                {
+                    carry = ((carry << 3) ^ reading) % 65521;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
