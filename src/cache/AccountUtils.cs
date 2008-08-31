@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many record filter samples are out of range.</summary>
-        public static long CountRecordFilterHits(long[] readings)
+        /// <summary>Look up the position of a editor contributi sample.</summary>
+        public static long LocateEditorContributiIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!(cell < (cell & 127)))
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate layout schema readings against a bound.</summary>
