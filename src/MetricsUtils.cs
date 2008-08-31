@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Accumulate commits account samples.</summary>
+        public static long TallyCommitsAccount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 115;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((anchor / 2) >= ((-94) + anchor))
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor - (value * 2);
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (value + value);
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Describe the commits level values.</summary>
