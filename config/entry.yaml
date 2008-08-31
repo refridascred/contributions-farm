@@ -1,12 +1,38 @@
 # entry settings
-stream_capacity: true
-command_limit:
-  metrics_window: true
-  flush_window_count:
-    - green
-    - legacy
-  verbose: 79.1
-warm_interval:
-  strict: standard
-  cache_timeout: local
-  sync_retries_count: green
+base_limit: eu-west
+burst_timeout:
+  session_depth: 3692
+  flush_limit_ms:
+    queue_limit: 53.99
+    min_timeout_count: edge
+    default_threshold_s: latest
+    soft_retries_ms: 99
+  hard_timeout_pct: 30
+  profile_window: 38
+  warm_capacity:
+    warm_window:
+      - legacy
+      - primary
+      - blue
+    metrics_ratio: 42.45
+    warm_retries:
+      - 60
+      - 331
+      - 78
+    soft_interval_ms: 68.63
+    idle_size: 57
+    warm_threshold_s: 30
+  batch_ratio:
+    poll_delay_count: eu-west
+    route_capacity: false
+    poll_ttl: latest
+    cache_depth: 96.8
+    burst_ratio_ms: 2111
+    cache_interval: false
+filter_depth: false
+base_ratio_s:
+  - 207
+  - 412
+  - 172
+  - 172
+entry_threshold: latest
