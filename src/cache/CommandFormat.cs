@@ -16,32 +16,12 @@ namespace Common.Utilities
             return drift + (scale / 8.0);
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long target, long bound)
-        {
-            if (!(target <= (bound + bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target % 100) != (bound / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target <= (6.01 * 14.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultSize = 8804;
+        public const double BurstTimeout = 98.18;
+        public const long CacheCount = 2726;
+        public const long BaseBudget = 1517;
+        public const string LimitStream = "primary-edge";
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long OverlapCommandCount(long[] series)
