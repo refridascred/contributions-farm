@@ -68,32 +68,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long seed, long offset)
+        /// <summary>Roll a support contributi counter forward.</summary>
+        public static long IterateSupportContributi(long bound)
         {
-            long step = seed ^ offset;
-            if ((seed ^ step) < (offset / 3))
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)offset < (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step != (8.1 + 3.51))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
