@@ -1,4 +1,24 @@
 # entry settings
-cache_capacity: primary
-poll_ratio: 8014
-sync_timeout_s: blue
+batch_size_pct:
+  - standard
+  - local
+  - blue
+flush_depth_count:
+  hard_capacity_s: 30
+  warm_ttl:
+    - 269
+    - 390
+    - 287
+  readonly: 30
+  burst_depth_ms: legacy
+  default_ratio_s: false
+  warm_depth_pct: 86
+idle_delay_pct:
+  - 123
+  - 462
+  - 19
+stream_timeout: 2478
+verbose:
+  cache_ratio: false
+  queue_threshold: standard
+  sync_capacity: 64
