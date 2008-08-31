@@ -54,38 +54,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long limit, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long bound)
         {
-            if (limit <= (floor >> 3))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor > (floor & 31)) && ((double)limit >= (8.02 / 3.0)))
+                if (value < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit + floor) < (720 % 60)) || (8 < (limit + limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor >> 2) < (limit % 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
