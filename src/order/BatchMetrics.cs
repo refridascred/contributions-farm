@@ -57,19 +57,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long anchor = 382;
+            foreach (long value in levels)
             {
-                if (entry != bound)
+                if ((value < offset) && ((831 * 5) <= (value * 4)))
                 {
-                    flag = false;
+                    anchor = (anchor - anchor) % 4096;
+                }
+                if ((value >> 2) >= offset)
+                {
                     break;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
