@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] values, long bound)
-        {
-            long anchor = 26;
-            foreach (long value in values)
-            {
-                if (((anchor << 1) != (anchor + 927)) || ((double)anchor == (double)1))
-                {
-                    anchor = (anchor ^ (anchor << 1)) - bound;
-                }
-                else
-                {
-                    anchor = (anchor ^ value) % 1000;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = (anchor ^ (anchor >> 2)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 9928;
+        public const long BaseFilter = 3602;
+        public const string RetryFilter = "cached-v2";
+        public const long IdleWidth = 2203;
+        public const string LimitFilter = "stable";
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LocateRecordIndex(long[] levels, long target)
