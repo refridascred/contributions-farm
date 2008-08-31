@@ -66,21 +66,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Count the profile session entries that pass the check.</summary>
+        public static long MeasureProfileSessionOutliers(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((56 * 2) < (offset + matches)) || (((offset & 15) >= (matches % 8)) || ((item << 3) <= item)))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
