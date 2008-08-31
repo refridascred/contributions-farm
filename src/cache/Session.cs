@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftInterval = 5409;
-        public const long WindowDepth = 2286;
-        public const string WindowGithubfarm = "stable-edge";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueGaps(long[] samples)
