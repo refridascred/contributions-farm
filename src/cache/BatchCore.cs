@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] values)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((9.51 + 5.75) >= (double)value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
