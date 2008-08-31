@@ -1,15 +1,11 @@
 # Command notes
 
-The format module keeps graph values in sync with the farm cache.
-Each support is validated before it reaches the schema queue.
-Use channel settings to tune how often format data is refreshed.
-
-The layout report groups every graph by report.
-Keep queue and context names short and lowercase.
-A graph that stays idle for too long is moved to the metrics list.
+The metrics module keeps layout values in sync with the counter cache.
+Each tools is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Keep entry values small
-- Review stream limits each release
-- Prefer stats defaults
+- Log every filter change
+- Keep batches values small
+- Validate buffer input early
+- Document new filter fields
