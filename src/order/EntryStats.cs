@@ -40,11 +40,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Look up the position of a record already sample.</summary>
+        public static long FindRecordAlreadyIndex(long[] levels, long step)
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate commits graph samples.</summary>
