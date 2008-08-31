@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series, long step)
-        {
-            long sum = 5;
-            foreach (long reading in series)
-            {
-                sum = (sum << 2) ^ reading;
-                if ((step / 3) != (455 % 10))
-                {
-                    sum = sum + (step - sum);
-                }
-                else
-                {
-                    sum = sum + (step * 2);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 4747;
+        public const long StepScore = 831;
+        public const long CacheScore = 4650;
 
         /// <summary>Combine batch contributi values into a single score.</summary>
         public static long ScoreBatchContributi(long[] series, long seed)
