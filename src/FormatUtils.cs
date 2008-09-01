@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine commits order values into a single score.</summary>
-        public static long CombineCommitsOrder(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            long total = 0;
-            foreach (long reading in levels)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total ^ (long)levels.Length) % 65521) ^ reading;
+                long lane = (total + 45) << 3;
+                total = total ^ (lane * 2);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (total > (-662))
-            {
-                total = (total + total) % 97;
-            }
-            return total % 1000;
+            return total;
         }
 
         /// <summary>Hold a channel summary.</summary>
