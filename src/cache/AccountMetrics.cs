@@ -58,40 +58,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long seed, long limit)
-        {
-            long slot = seed ^ limit;
-            if ((double)823 != (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 1) <= (seed * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + limit) < (slot >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (slot >= (limit + slot))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowCount = "stable-1";
+        public const double IdleFormat = 68.59;
+        public const string MaxFormat = "alpha-v2";
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long bound, long limit)
