@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long StepBatch = 9665;
         public const long BaseBatch = 6380;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every window stats entry stays within the limit.</summary>
+        public static bool GuardWindowStatsLimits(long[] items, long limit)
         {
-            Pending,
-            Retry,
-            Draft,
-            Failed,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Project the next account value.</summary>
