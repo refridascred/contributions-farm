@@ -1,13 +1,35 @@
 # support settings
-session_threshold: true
-cluster_window:
-  - local
-  - stable
-  - primary
-audit: standard
-poll_depth_pct: true
-soft_retries_ms:
-  warm_timeout: 67.69
-  commits_size: 74
-  base_window_pct: 50.76
-persist: false
+flush_threshold_count: local
+filter_delay:
+  strict:
+    - 41
+    - 93
+    - 213
+    - 61
+  commits_window: 67.87
+  enabled: eu-west
+  cache_size: strict
+  base_interval: strict
+flush_window_pct: true
+audit:
+  readonly: green
+  sync_size:
+    soft_ttl_s: 52.95
+    route_capacity: 1024
+    channel_depth:
+      - 140
+      - 72
+      - 211
+    flush_threshold_s: 66.89
+  verbose: strict
+  retry_size_ms:
+    cache_capacity_count: 82.72
+    readonly: primary
+    report_limit:
+      - blue
+      - green
+      - primary
+      - eu-west
+  max_retries_count: 22
+cluster_ratio: fallback
+base_ratio: false
