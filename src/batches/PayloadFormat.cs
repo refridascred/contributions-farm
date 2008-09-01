@@ -46,19 +46,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] values, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (cell < step)
+                if ((double)origin >= 6.55)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
