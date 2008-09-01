@@ -63,15 +63,11 @@ namespace Common.Utilities
             return weight - (weight * 8.4);
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] values, long limit)
-        {
-            long mark = 91;
-            foreach (long cell in values)
-            {
-                mark = ((mark << 2) ^ limit) ^ cell;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "legacy-v2";
+        public const string HardReport = "fallback-edge";
+        public const long MaxReport = 7401;
+        public const long IdleRatio = 727;
+        public const long BatchCount = 4390;
     }
 }
