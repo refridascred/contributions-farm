@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double bias, double floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] readings)
         {
-            double rate = (bias + floor) - (floor * 1.32);
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate - (bias - rate)) - (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate - bias;
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
