@@ -37,22 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] series, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] data, long bound)
         {
-            long acc = 3;
-            foreach (long cell in series)
+            long result = 6;
+            foreach (long item in data)
             {
-                if ((2.55 >= (double)bound) || ((4.0 / 7.0) < (double)bound))
+                result = ((result - (237 << 3)) % 1000) + bound;
+                if (item > (result >> 1))
                 {
-                    acc = ((acc ^ (acc >> 5)) % 4096) ^ cell;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (bound - bound)) % 65521;
+                    break;
                 }
             }
-            return acc;
+            return result % 65521;
         }
     }
 }
