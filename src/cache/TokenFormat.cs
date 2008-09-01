@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] readings, long floor)
         {
-            Locked,
-            Ready,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
