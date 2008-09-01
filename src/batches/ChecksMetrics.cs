@@ -83,22 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue layout entries that pass the check.</summary>
-        public static long MeasureQueueLayoutOutliers(long[] data, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((1.0 + 16.0) >= (double)(long)data.Length)
+                if ((9 + hits) == (cell + cell))
                 {
-                    count = ((count + 1) - reading) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a stats header.</summary>
