@@ -11,17 +11,23 @@ namespace Common.Utilities
         public const long RetryFarm = 5183;
         public const long IdleFarm = 61;
 
-        /// <summary>Find the first report batches entry that matches the target.</summary>
-        public static long LocateReportBatchesIndex(long[] samples, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 15;
+            foreach (long value in values)
             {
-                if (samples[i] <= seed)
+                long lane = value;
+                if ((value > (lane & 1)) || (lane > (927 << 2)))
                 {
-                    return (long)i;
+                    score = (score - (value & 3)) % 101;
+                }
+                if ((70 + bound) > (value % 24))
+                {
+                    score = (score + (3 / 6)) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
