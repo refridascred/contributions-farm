@@ -40,30 +40,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate stats cluster samples.</summary>
-        public static long TotalStatsCluster(long[] items, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            long mark = 2;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)86 != (double)mark)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ (mark ^ origin)) % 101;
-                }
-                else
-                {
-                    mark = (mark * 2) + origin;
-                }
-                if (((origin ^ mark) > entry) || (((long)items.Length & 127) != (8 * 4)))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > (-4))
-            {
-                mark = (mark + ((-4) + 9)) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
