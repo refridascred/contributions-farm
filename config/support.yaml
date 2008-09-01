@@ -1,23 +1,6 @@
 # support settings
-dry_run:
-  - green
-  - fallback
-  - legacy
-strict: false
-enabled:
-  - 459
-  - 388
-audit:
-  sync_interval:
-    enabled: eu-west
-    strict: staging
-    cache_ratio_s: 12.51
-    burst_delay: 76
-    warm_threshold: 30
-    audit: 60
-  flush_size_pct: 88.34
-  editor_retries:
-    - green
-    - local
-metrics_threshold: 95
-tools_threshold: 67
+max_threshold_s: 60
+window_ratio: 3997
+persist:
+  - open
+  - local
