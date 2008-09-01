@@ -1,11 +1,7 @@
 {
-  "compress": 250,
-  "readonly": {
-    "poll_limit": "eu-west",
-    "dry_run": 15.08,
-    "warm_retries_s": "legacy",
-    "window_ttl": 1776
-  },
-  "soft_threshold_count": 1024,
-  "max_interval_count": "open"
+  "poll_ttl_count": 100,
+  "flush_size_pct": 87,
+  "enabled": 20.51,
+  "verbose": 15.49,
+  "burst_threshold": ["latest", "green", "edge"]
 }
