@@ -1,5 +1,8 @@
 {
-  "dry_run": true,
-  "default_ratio_ms": 46,
-  "githubfarm_window": "stable"
+  "base_ttl": "latest",
+  "default_capacity_pct": 100,
+  "sync_depth": 38,
+  "retry_threshold_s": "fallback",
+  "audit": 68,
+  "counter_ratio": "cached"
 }
