@@ -42,19 +42,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] series, long origin)
+        /// <summary>Grade a batch counter value against two limits.</summary>
+        public static long SortBatchCounter(long bound, long step)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long lane = bound - step;
+            if (bound < step)
             {
-                if (value > origin)
+                return 7;
+            }
+            else
+            {
+                if ((double)step <= 2.45)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((423 / 6) <= (bound / 6)) || ((16 - (-6)) > (lane * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(lane <= (step << 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every queue notes entry stays within the limit.</summary>
