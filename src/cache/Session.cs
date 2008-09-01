@@ -37,12 +37,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryTimeout = 8763;
-        public const long SoftMetric = 4502;
-        public const long IdleMetric = 7931;
-        public const string CacheMetric = "open";
-        public const long DefaultMetric = 9433;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Ready,
+            Done,
+            Retry,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] data)
