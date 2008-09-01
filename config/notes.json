@@ -1,15 +1,5 @@
 {
-  "persist": 100,
-  "idle_window_count": {
-    "default_threshold": 30,
-    "strict": "cached",
-    "poll_delay_pct": ["stable", "eu-west"],
-    "burst_size_ms": false,
-    "soft_ratio_s": true,
-    "sync_window": 47
-  },
-  "token_depth": "standard",
-  "soft_interval": [455, 97, 108, 366],
-  "metric_retries": "edge",
-  "batch_capacity": "staging"
+  "hard_retries_s": [469, 13],
+  "strict": 6.31,
+  "verbose": "green"
 }
