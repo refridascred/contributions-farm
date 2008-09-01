@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] levels, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= floor)
+                if ((series[i] <= offset) && ((series[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
