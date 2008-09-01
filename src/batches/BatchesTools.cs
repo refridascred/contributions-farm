@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] items, long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the cache level values.</summary>
