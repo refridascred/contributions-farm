@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] items, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] items, long step)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
+                if (items[i] > step)
                 {
                     return (long)i;
                 }
