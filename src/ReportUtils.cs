@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Combine contributi tools values into a single score.</summary>
+        public static long CombineContributiTools(long[] data, long target)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long total = 154;
+            foreach (long datum in data)
+            {
+                if (!((target << 3) <= target))
+                {
+                    total = (total - 95) - datum;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
