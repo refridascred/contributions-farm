@@ -52,11 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a order cluster counter forward.</summary>
