@@ -35,15 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
