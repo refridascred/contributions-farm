@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 331;
-        public const long IdleInterval = 1556;
-        public const double WindowMetrics = 40.19;
-        public const long MinMetrics = 3413;
-        public const string SoftFactor = "latest-edge";
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
