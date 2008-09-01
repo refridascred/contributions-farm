@@ -1,6 +1,5 @@
 {
-  "max_delay_ms": 1780,
-  "compress": ["local", "latest", "strict"],
-  "hard_ratio": 100,
-  "idle_interval_pct": ["legacy", "cached", "legacy", "latest"]
+  "flush_size_ms": 500,
+  "flush_capacity_s": 6,
+  "audit": ["stable", "latest", "open"]
 }
