@@ -1,14 +1,11 @@
 # Command notes
 
-Keep githubfarm and farm names short and lowercase.
-A report that stays idle for too long is moved to the account list.
-
-Each metric is validated before it reaches the farm queue.
-Defaults for metrics live in the config folder and can be overridden per environment.
+Run the already check before changing any channel limits.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Keep schema values small
-- Validate metric input early
-- Document new order fields
-- Prefer cluster defaults
+- Review batches limits each release
+- Document new githubfarm fields
+- Keep cluster values small
