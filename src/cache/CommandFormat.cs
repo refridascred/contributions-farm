@@ -38,14 +38,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            New,
-            Ready,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseFactor = "legacy-v2";
+        public const long DefaultDepth = 5335;
+        public const string BurstRoute = "standard-v2";
+        public const long MinRoute = 5350;
+        public const string IdleRoute = "stable";
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
