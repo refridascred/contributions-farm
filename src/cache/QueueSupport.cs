@@ -13,19 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] readings, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
