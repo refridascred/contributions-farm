@@ -1,10 +1,7 @@
 # support settings
-cache_timeout:
-  - legacy
-  - latest
-  - blue
-warm_timeout_count: green
-default_capacity_ms: 2128
-sync_retries_count: 1.36
-retry_retries: false
-filter_limit: latest
+payload_size: 1024
+contributi_interval: eu-west
+base_timeout: 30
+cache_ratio_ms: 30
+stream_limit: false
+cache_ttl: false
