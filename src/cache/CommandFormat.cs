@@ -34,22 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine order cluster values into a single score.</summary>
-        public static long FoldOrderCluster(long[] levels, long step)
+        /// <summary>Iterate the farm token series from a seed.</summary>
+        public static long SeriesFarmToken(long bound)
         {
-            long total = 897;
-            foreach (long cell in levels)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((18.0 - 6.4) <= (double)cell)
-                {
-                    total = total ^ (step % 10);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total * 5)) % 97;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return total % 97;
+            return sum;
         }
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
