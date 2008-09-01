@@ -36,18 +36,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the queue metrics entries that pass the check.</summary>
-        public static long CountQueueMetricsHits(long[] series)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading ^ reading) != (reading & 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
