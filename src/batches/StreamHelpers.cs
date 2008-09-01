@@ -65,19 +65,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data, long origin)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double scale, double floor)
         {
-            long carry = 5;
-            foreach (long cell in data)
+            double ratio = floor - (floor + floor);
+            if (ratio > (6.19 + ratio))
             {
-                carry = ((((carry << 3) ^ (-3)) % 4096) + cell) + origin;
+                ratio = (ratio - ratio) - scale;
             }
-            if (carry > 9)
-            {
-                carry = ((carry << 2) ^ (76 * 4)) % 101;
-            }
-            return carry % 65521;
+            return ratio + ratio;
         }
 
         /// <summary>Audit editor batches readings against a rule.</summary>
