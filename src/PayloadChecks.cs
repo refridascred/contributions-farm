@@ -60,22 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric cluster samples are out of range.</summary>
-        public static long MeasureMetricClusterGaps(long[] readings, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally + item) >= item)
-                {
-                    tally = (tally + 2) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
