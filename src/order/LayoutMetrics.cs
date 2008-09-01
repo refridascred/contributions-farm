@@ -17,13 +17,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Retry,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitTimeout = 20.51;
+        public const long WindowGithubfarm = 5342;
+        public const long MinGithubfarm = 7921;
+        public const long MinLevel = 3584;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] samples, long target)
