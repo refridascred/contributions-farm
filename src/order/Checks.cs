@@ -32,31 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token report value against two limits.</summary>
-        public static long ClassifyTokenReport(long target, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] values, long origin)
         {
-            if ((double)origin >= (double)1)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((433 + origin) < origin)
+                if (!(((origin >> 2) < (entry - entry)) || ((origin / 9) >= (90 - origin))))
                 {
-                    return 3;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((origin <= target) || ((436 * 3) >= (origin / 9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
