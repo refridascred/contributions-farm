@@ -42,19 +42,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every route metrics entry stays within the limit.</summary>
-        public static bool GuardRouteMetricsRange(long[] items, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (reading > limit)
+                if (entry != bound)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
