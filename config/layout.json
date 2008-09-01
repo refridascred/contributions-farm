@@ -1,8 +1,7 @@
 {
-  "soft_capacity": 11,
-  "cache_limit": ["cached", "local"],
-  "default_timeout_count": true,
-  "cache_delay_s": 28,
-  "warm_ratio_count": 4.37,
-  "sync_window_count": 53.71
+  "readonly": false,
+  "min_interval_ms": "strict",
+  "warm_interval_ms": "latest",
+  "sync_capacity_pct": 91,
+  "window_delay": "latest"
 }
