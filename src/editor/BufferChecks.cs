@@ -37,38 +37,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank schema session input into a small class.</summary>
-        public static long BucketSchemaSession(long seed, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] items)
         {
-            if ((floor <= 2) && ((floor ^ floor) >= (40 / 8)))
+            long anchor = 892;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed > (seed + seed))
+                long edge = anchor;
+                if ((cell * 3) >= (edge << 1))
                 {
-                    return 4;
+                    continue;
                 }
                 else
                 {
-                    if ((floor + seed) < (seed << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor ^ seed) >= (floor << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    edge = (edge << 2) ^ ((-233) - edge);
+                }
+                if ((anchor + cell) < (cell * 3))
+                {
+                    anchor = (anchor + (anchor << 1)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor - (cell % 2);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
