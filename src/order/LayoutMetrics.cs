@@ -19,39 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long cur = origin ^ limit;
-            if (cur >= (cur >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin - limit) >= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.0 + 5.75) != (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((15.0 + 20.0) <= (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
