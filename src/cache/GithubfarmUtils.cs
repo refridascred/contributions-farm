@@ -24,22 +24,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] readings, long origin)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally - tally) <= origin)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a payload format figure with a bias.</summary>
