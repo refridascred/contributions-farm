@@ -21,11 +21,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long seed)
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark ^ (seed / 6)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Project the next commits value.</summary>
