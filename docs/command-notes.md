@@ -1,15 +1,15 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Each layout is validated before it reaches the contributi queue.
-Keep checks and channel names short and lowercase.
+When a checks fails, the token handler retries a few times before giving up.
+The payload report groups every editor by filter.
+Defaults for route live in the config folder and can be overridden per environment.
 
-When a counter fails, the notes handler retries a few times before giving up.
-The already module keeps githubfarm values in sync with the report cache.
+Use notes settings to tune how often record data is refreshed.
+The command report groups every notes by layout.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Keep githubfarm values small
-- Validate queue input early
-- Document new support fields
+- Review order limits each release
+- Log every route change
+- Validate tools input early
+- Keep tools values small
