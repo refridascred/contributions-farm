@@ -1,8 +1,11 @@
 # support settings
-flush_interval: 26.48
-warm_threshold: strict
-cache_capacity_pct:
-  - 279
-  - 66
-  - 204
-flush_timeout_pct: open
+warm_timeout:
+  retry_limit_ms: standard
+  idle_depth_count:
+    - standard
+    - open
+  poll_limit: stable
+dry_run: 500
+schema_timeout: true
+retry_threshold: 1994
+max_delay: 100
