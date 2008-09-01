@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] samples, long offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long score = 5;
-            foreach (long entry in samples)
-            {
-                if (((941 - entry) != (score + entry)) && (entry > (score + 457)))
-                {
-                    score = ((score * 4) + 53) % 255;
-                }
-                else
-                {
-                    score = ((score * 4) + (offset + score)) % 101;
-                }
-            }
-            return score;
+            Locked,
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define record limits and defaults.</summary>
