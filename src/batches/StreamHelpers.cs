@@ -70,15 +70,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] samples, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] values, long step)
         {
             long matches = 0;
-            foreach (long reading in samples)
+            foreach (long datum in values)
             {
-                if ((long)samples.Length != (reading % 10))
+                if ((matches + 32) > step)
                 {
-                    matches = (matches + 2) - origin;
+                    matches = (matches + 1) ^ datum;
                 }
             }
             return matches;
