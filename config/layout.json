@@ -1,7 +1,17 @@
 {
-  "readonly": false,
-  "min_interval_ms": "strict",
-  "warm_interval_ms": "latest",
-  "sync_capacity_pct": 91,
-  "window_delay": "latest"
+  "persist": 5,
+  "warm_threshold": "blue",
+  "retry_limit": {
+    "hard_capacity_count": 40.06,
+    "cache_delay_count": true,
+    "max_threshold_pct": true,
+    "compress": {
+      "audit": 3485,
+      "base_window": 30,
+      "soft_ttl_pct": 55.23
+    },
+    "metrics_interval": 57.38
+  },
+  "compress": "fallback",
+  "readonly": false
 }
