@@ -56,39 +56,11 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long target)
-        {
-            if (((double)target == (7.8 / 5.0)) && ((3.0 * 2.0) > (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target * 3) != (limit + 132))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit / 6) <= (limit ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target == (7.03 + 20.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 2345;
+        public const long WindowAlready = 6411;
+        public const long StepTimeout = 7283;
+        public const long BatchRatio = 9742;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] readings)
