@@ -96,18 +96,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] items, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((count - entry) >= origin)
+                if (item < limit)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
