@@ -30,18 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] data, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(origin > (origin - tally)) && ((((-9) & 127) >= (tally % 24)) && ((origin * 4) < origin)))
+                if (values[i] >= seed)
                 {
-                    tally = (tally + 1) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
