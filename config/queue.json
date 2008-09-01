@@ -1,5 +1,12 @@
 {
-  "graph_limit": 85.77,
-  "base_timeout_s": 11.44,
-  "min_threshold_pct": "latest"
+  "report_window": 49.62,
+  "default_window_pct": {
+    "cache_window": "local",
+    "cluster_depth": 500,
+    "metric_timeout": "strict",
+    "audit": "fallback",
+    "account_ttl": ["stable", "fallback", "legacy"],
+    "record_size": "strict"
+  },
+  "sync_delay_pct": ["cached", "green", "edge"]
 }
