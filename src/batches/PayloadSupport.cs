@@ -34,13 +34,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] series)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long mix = 14;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (mix ^ (datum << 1)) ^ (long)i;
+                }
+                if (!((mix ^ mix) < (datum / 9)))
+                {
+                    mix = ((mix << 3) ^ (mix / 4)) % 65521;
+                }
+                mix = ((mix * 3) + (508 + mix)) % 255;
+            }
+            return mix;
         }
     }
 }
