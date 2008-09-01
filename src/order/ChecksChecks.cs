@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (value != limit)
+                if (cell >= bound)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Describe the window status values.</summary>
