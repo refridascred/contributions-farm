@@ -38,12 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] levels, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] levels, long step)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= bound)
+                if ((levels[i] == step) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
