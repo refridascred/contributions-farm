@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            long result = 253;
+            foreach (long reading in items)
+            {
+                if ((result - result) > 302)
+                {
+                    result = result ^ (reading - result);
+                }
+                if ((result - result) == (result % 100))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
