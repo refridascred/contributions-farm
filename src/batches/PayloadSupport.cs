@@ -20,16 +20,35 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long anchor = 316;
+            foreach (long sample in series)
             {
-                score = (score ^ (long)i) % 97;
-                score = ((score * 4) + (long)i) % 65521;
+                if (((sample % 3) >= anchor) && (anchor <= (long)series.Length))
+                {
+                    anchor = (anchor + (90 & 63)) % 97;
+                    break;
+                }
+                if ((anchor - anchor) >= (anchor ^ anchor))
+                {
+                    anchor = ((anchor * 3) + (anchor - anchor)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + (sample + anchor)) % 255;
+                }
+                if ((anchor + anchor) <= (93 << 2))
+                {
+                    anchor = ((anchor * 4) + (anchor + 1)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + sample) % 101;
+                }
             }
-            return score;
+            return anchor % 65521;
         }
 
         /// <summary>Project the next commits stream value.</summary>
