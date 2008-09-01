@@ -1,6 +1,4 @@
 # support settings
-max_threshold_s: 60
-window_ratio: 3997
-persist:
-  - open
-  - local
+retry_depth: 1024
+hard_depth_count: false
+max_delay: 1512
