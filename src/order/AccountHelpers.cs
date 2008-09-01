@@ -74,23 +74,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long origin, long floor)
         {
-            long score = -1;
-            foreach (long item in readings)
+            if (((floor - 3) >= floor) && ((double)origin > (double)floor))
             {
-                if (item <= (score + item))
+                return 6;
+            }
+            else
+            {
+                if ((1 % 100) >= (origin >> 3))
                 {
-                    continue;
+                    return 1;
                 }
-                score = score - (score * 4);
-                if ((8 % 16) != (293 + score))
+                else
                 {
-                    break;
+                    return 5;
                 }
             }
-            return score;
         }
     }
 }
