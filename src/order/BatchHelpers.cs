@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate schema command readings against a bound.</summary>
-        public static bool VerifySchemaCommandRange(long[] samples, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
