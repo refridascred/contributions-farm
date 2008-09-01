@@ -1,5 +1,13 @@
 # entry settings
-batch_depth_ms: fallback
-contributi_retries: green
-soft_size_ms: false
-commits_ratio: 15.65
+token_delay:
+  - 445
+  - 202
+  - 19
+  - 307
+hard_depth_count: 1339
+poll_size: primary
+record_threshold:
+  - open
+  - green
+  - local
+  - fallback
