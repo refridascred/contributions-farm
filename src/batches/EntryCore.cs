@@ -47,19 +47,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double rate, double span)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double scale, double floor)
         {
-            double drift = rate;
-            if (drift > (drift - drift))
+            double weight = floor;
+            if (weight <= weight)
             {
-                drift = drift - rate;
+                weight = weight + scale;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 4; i++)
             {
-                drift = (drift + span) + (double)(long)i;
+                weight = (weight - (floor - floor)) + (double)(long)i;
             }
-            return drift + drift;
+            return weight - (weight - scale);
         }
     }
 }
