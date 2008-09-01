@@ -43,12 +43,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] readings, long target)
         {
-            Retry,
-            Idle,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate commits graph samples.</summary>
