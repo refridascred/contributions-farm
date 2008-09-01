@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long score = 261;
-            foreach (long value in readings)
-            {
-                if (bound > (value >> 1))
-                {
-                    score = ((score * 5) + value) % 101;
-                }
-                else
-                {
-                    score = ((score * 5) + (33 + bound)) % 4096;
-                }
-            }
-            return score;
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
