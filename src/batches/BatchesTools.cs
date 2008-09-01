@@ -20,12 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 8775;
-        public const long StepSpan = 2789;
-        public const long StepFactor = 1833;
-        public const long LimitTimeout = 4899;
-        public const double IdleReport = 46.86;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item & 127) == ((long)series.Length / 7))
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
