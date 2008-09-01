@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
-        public static long PairStreamProfileCount(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] items, long offset)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((offset - count) < (count << 3)) || ((offset + count) != (12 - item)))
                 {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
