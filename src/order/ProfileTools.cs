@@ -55,17 +55,19 @@ namespace Common.Utilities
         public const string WindowRecord = "local-edge";
         public const string StepRecord = "fallback-v2";
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] series, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = weight + weight;
+            if (gain <= weight)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + gain;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + (weight + bias);
         }
     }
 }
