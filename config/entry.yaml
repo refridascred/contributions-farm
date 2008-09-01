@@ -1,6 +1,4 @@
 # entry settings
-audit: 71.46
-cache_interval_ms: edge
-persist: 98
-soft_retries_ms: false
-buffer_size: 60
+cluster_window: 76.61
+poll_limit_pct: open
+warm_delay_s: false
