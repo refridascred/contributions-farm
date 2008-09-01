@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] values, long limit)
         {
-            long mix = 98;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                mix = mix - (78 ^ reading);
-                if (mix < (mix + mix))
+                if ((tally << 1) >= (limit & 7))
                 {
-                    break;
+                    tally = (tally + 1) + value;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Fold a list of session readings.</summary>
