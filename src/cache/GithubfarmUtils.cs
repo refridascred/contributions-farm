@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
