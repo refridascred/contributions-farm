@@ -34,18 +34,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long sum = 1;
-            foreach (long reading in readings)
-            {
-                if ((sum + reading) < (sum - sum))
-                {
-                    sum = sum ^ sum;
-                }
-            }
-            return sum % 4096;
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
