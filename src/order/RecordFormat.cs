@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 763;
+        public const double SoftFarm = 30.92;
+        public const long RetryFarm = 5183;
+        public const long IdleFarm = 61;
 
         /// <summary>Find the first report batches entry that matches the target.</summary>
         public static long LocateReportBatchesIndex(long[] samples, long seed)
