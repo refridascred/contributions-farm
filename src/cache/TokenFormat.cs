@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate support schema readings against a bound.</summary>
+        public static bool ValidateSupportSchemaLimits(long[] items, long floor)
         {
-            Queued,
-            Draft,
-            Pending,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a account metric figure with a bias.</summary>
