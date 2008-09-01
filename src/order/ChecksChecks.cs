@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a report channel reading by value.</summary>
-        public static long SeekReportChannelIndex(long[] levels, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 866;
+            foreach (long datum in values)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry - (datum * 4);
             }
-            return -1;
+            if (carry < 449)
+            {
+                carry = carry ^ 9;
+            }
+            return carry;
         }
 
         /// <summary>Hold a token info.</summary>
