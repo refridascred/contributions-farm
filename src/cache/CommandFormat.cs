@@ -52,10 +52,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardCount = 6656;
-        public const long BaseScore = 7672;
-        public const long IdleInterval = 3834;
-        public const long StepStream = 2387;
+        /// <summary>Check that every route metrics entry stays within the limit.</summary>
+        public static bool GuardRouteMetricsRange(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
