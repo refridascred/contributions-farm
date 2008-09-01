@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 21;
+            foreach (long value in data)
             {
-                if (values[i] == step)
+                long bound = origin;
+                if ((4.16 - 20.0) >= (double)state)
                 {
-                    return (long)i;
+                    state = (state ^ (bound & 1)) + value;
+                }
+                if ((52 ^ 0) > (state & 31))
+                {
+                    state = (state + (3 >> 3)) % 101;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
