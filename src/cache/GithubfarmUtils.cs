@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] series)
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((sample >> 5) == (sample & 3)) || ((747 & 255) == (sample + 4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a farm stream reading by value.</summary>
