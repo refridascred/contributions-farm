@@ -19,18 +19,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] items, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long state = 90;
+            foreach (long item in data)
             {
-                if (((matches % 12) == (cell % 12)) || (step > (matches & 15)))
-                {
-                    matches = matches + 1;
-                }
+                state = ((state * 4) + (item + item)) % 4096;
             }
-            return matches;
+            if (state > 240)
+            {
+                state = (state - (state & 63)) % 97;
+            }
+            return state;
         }
     }
 }
