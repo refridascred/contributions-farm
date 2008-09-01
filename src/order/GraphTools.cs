@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] values, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)3 >= (double)count)
+                {
+                    count = ((count + 3) + sample) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
