@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series, long target)
-        {
-            long carry = 1;
-            foreach (long datum in series)
-            {
-                carry = (carry + ((-237) ^ datum)) % 4096;
-                if ((double)target != (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardBudget = "cached-edge";
+        public const string BaseBudget = "staging-v2";
+        public const long MinCounter = 6667;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 5622;
