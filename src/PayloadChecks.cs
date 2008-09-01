@@ -65,32 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order session input into a small class.</summary>
-        public static long BucketOrderSession(long target, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] levels, long seed)
         {
-            long bound2 = target - bound;
-            if (((bound / 3) >= 460) && ((bound + bound2) >= (target >> 4)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target < (double)bound)
+                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound2 + target) >= bound2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up session metrics samples.</summary>
