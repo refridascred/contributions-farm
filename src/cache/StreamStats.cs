@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a context contributi value against two limits.</summary>
-        public static long SortContextContributi(long origin, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] samples, long step)
         {
-            if ((7.4 - 16.0) < (double)target)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin + (-39)) > target) && ((double)origin > (2.99 + 1.33)))
+                if (entry >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin % 16) <= (target & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin != (9.85 * 1.1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Rank token input into a small class.</summary>
