@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long RetryStream = 7990;
         public const double LimitStream = 71.52;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "cached-1";
-        public const string StepRatio = "open";
-        public const long RetryEntry = 7062;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
