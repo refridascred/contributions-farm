@@ -67,14 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values)
         {
-            Stale,
-            Failed,
-            Active,
-            Draft,
-            Retry,
+            long anchor = 837;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 4096;
+                if (!((datum / 4) >= 0))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
