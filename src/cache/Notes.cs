@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double floor)
-        {
-            double bias = 8.0 + 1.8;
-            if (bias < (rate / 5.0))
-            {
-                bias = (bias - rate) - floor;
-            }
-            return bias + (rate - bias);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 4345;
+        public const long WindowTimeout = 8879;
+        public const double StepCommits = 84.61;
+        public const long StepTimeout = 9749;
+        public const long IdleDepth = 641;
 
         /// <summary>Blend two already graph measurements.</summary>
         public static double AdjustAlreadyGraph(double rate, double offset)
