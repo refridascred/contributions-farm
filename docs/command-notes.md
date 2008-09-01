@@ -1,14 +1,15 @@
 # Command notes
 
-The notes report groups every contributi by metrics.
-A stream that stays idle for too long is moved to the session list.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Each layout is validated before it reaches the contributi queue.
+Keep checks and channel names short and lowercase.
 
-Run the profile check before changing any farm limits.
-Run the format check before changing any filter limits.
+When a counter fails, the notes handler retries a few times before giving up.
+The already module keeps githubfarm values in sync with the report cache.
 
 ## Guidelines
 
-- Log every counter change
-- Review channel limits each release
-- Prefer metrics defaults
-- Document new batches fields
+- Prefer batches defaults
+- Keep githubfarm values small
+- Validate queue input early
+- Document new support fields
