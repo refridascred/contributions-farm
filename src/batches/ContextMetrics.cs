@@ -43,16 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                mark = (mark + (long)i) % 65521;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the tools class values.</summary>
