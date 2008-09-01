@@ -26,21 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command cluster samples.</summary>
-        public static long OverlapCommandClusterCount(long[] samples)
+        /// <summary>Derive the next profile layout value from a seed.</summary>
+        public static long DeriveProfileLayout(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((acc % 12) < (acc * 4)))
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
