@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepTimeout = 8840;
-        public const long WindowBudget = 8967;
-        public const long LimitLayout = 8038;
-        public const long WindowLayout = 6031;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string HardTools = "open";
