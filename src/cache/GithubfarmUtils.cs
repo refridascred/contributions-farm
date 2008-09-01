@@ -49,18 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue commits entries that pass the check.</summary>
-        public static long AuditQueueCommitsGaps(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((target ^ matches) != (cell & 15))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "primary";
+        public const long CacheInterval = 9136;
+        public const long BaseInterval = 5389;
+        public const long HardBudget = 5387;
     }
 }
