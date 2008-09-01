@@ -33,31 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long origin, long origin2)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if ((origin2 % 24) == (32 % 12))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((624 + origin) >= (origin % 8)) && (origin2 <= (origin2 - origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin2 - 1) > (0 + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
