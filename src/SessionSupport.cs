@@ -15,18 +15,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the notes session entries that pass the check.</summary>
-        public static long AuditNotesSessionMatches(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mix = 19;
+            foreach (long sample in items)
             {
-                if ((tally + tally) == (39 & 255))
+                if (((164 ^ mix) >= (54 + (long)items.Length)) && (mix < (sample + mix)))
                 {
-                    tally = (tally + 2) ^ item;
+                    mix = (mix * 5) + (603 & 127);
+                }
+                if ((origin + mix) <= (mix - 446))
+                {
+                    mix = ((mix << 3) ^ (mix * 3)) % 255;
                 }
             }
-            return tally;
+            if (mix < 27)
+            {
+                mix = ((mix << 3) ^ (146 >> 1)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of report readings.</summary>
