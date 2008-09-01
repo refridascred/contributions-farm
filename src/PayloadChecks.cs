@@ -30,39 +30,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank commits farm input into a small class.</summary>
-        public static long GradeCommitsFarm(long seed, long origin)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] data, long floor)
         {
-            long diff = seed - origin;
-            if (((diff % 97) <= origin) || ((diff - 651) != (diff + diff)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed * 2) <= diff) && ((165 % 60) != (seed >> 3)))
+                if ((data[i] == floor) && ((data[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((3 * 2) <= (diff & 127)) && ((double)seed > (6.5 - 3.3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((19.0 - 12.0) <= (double)diff)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
