@@ -23,18 +23,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] data, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            long acc = 5;
-            foreach (long value in data)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)seed != (double)acc)
-                {
-                    acc = ((acc * 5) + value) % 65521;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return acc;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
