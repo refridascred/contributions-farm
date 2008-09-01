@@ -21,11 +21,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Combine cache tools values into a single score.</summary>
+        public static long TotalCacheTools(long[] data, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long anchor = 1;
+            foreach (long cell in data)
+            {
+                if (((5.0 * 2.0) == (double)anchor) && (anchor > origin))
+                {
+                    anchor = (anchor + (origin ^ anchor)) % 101;
+                }
+                if ((cell + anchor) > (anchor - 417))
+                {
+                    anchor = ((anchor << 3) ^ (cell << 3)) % 101;
+                }
+                else
+                {
+                    anchor = anchor + (cell - anchor);
+                }
+                if ((anchor & 7) < (anchor - anchor))
+                {
+                    anchor = ((anchor * 3) + (3 + 25)) % 101;
+                }
+                if (!((origin ^ cell) <= (origin - 662)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 928)
+            {
+                anchor = (anchor - (anchor >> 2)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a schema options.</summary>
