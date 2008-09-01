@@ -30,25 +30,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long target, long floor)
+        /// <summary>Count the format stats entries that pass the check.</summary>
+        public static long MeasureFormatStatsMatches(long[] data)
         {
-            long slot = target + floor;
-            if (floor >= 3)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target >= (slot + 435)) && ((7.5 - 5.0) > (double)slot))
+                if (((double)sample >= (15.0 + 20.0)) && (((matches + matches) == (5 << 1)) || (82 <= matches)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
