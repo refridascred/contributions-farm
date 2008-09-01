@@ -1,5 +1,12 @@
 {
-  "cluster_limit": 1421,
-  "stats_threshold": 1487,
-  "flush_interval_count": 500
+  "strict": {
+    "enabled": [477, 458, 477, 361],
+    "soft_retries": 27.01,
+    "warm_delay_ms": 9154
+  },
+  "batch_limit": "stable",
+  "idle_timeout": ["legacy", "latest", "primary"],
+  "base_ttl": 7339,
+  "buffer_ttl": "primary",
+  "batches_capacity": [358, 211, 326, 419]
 }
