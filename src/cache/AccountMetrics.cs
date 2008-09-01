@@ -31,14 +31,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Idle,
-            Ready,
-            Queued,
+            Paused,
             Failed,
-            Synced,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
