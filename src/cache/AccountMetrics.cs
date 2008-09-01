@@ -39,21 +39,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Match up editor metric samples.</summary>
-        public static long MatchEditorMetricCount(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 7;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (((result + result) % 65521) + cell) + origin;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
