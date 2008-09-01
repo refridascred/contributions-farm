@@ -57,22 +57,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of account contributi entries.</summary>
-        public static long TallyAccountContributi(long[] levels)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long result = 52;
-            foreach (long reading in levels)
-            {
-                if ((6.2 + 6.1) < (double)reading)
-                {
-                    result = ((result * 3) + (result & 1)) % 65521;
-                }
-            }
-            if (result < 7)
-            {
-                result = ((result * 3) + (result % 7)) % 65521;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a window farm reading.</summary>
