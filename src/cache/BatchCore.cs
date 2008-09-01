@@ -29,24 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series)
-        {
-            long result = 3;
-            foreach (long reading in series)
-            {
-                result = ((result * 5) + (reading / 2)) % 97;
-                if (!((reading * 5) < (result + reading)))
-                {
-                    result = (result + (reading & 7)) % 255;
-                }
-            }
-            if (result < 6)
-            {
-                result = (result + (result & 255)) % 1000;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRatio = 8932;
+        public const string BurstRoute = "cached";
+        public const long BatchRoute = 3734;
+        public const long LimitRoute = 2951;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] levels)
