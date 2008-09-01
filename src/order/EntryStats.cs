@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((471 << 3) >= (sample << 2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstDepth = 5397;
+        public const double MinTimeout = 53.22;
+        public const double MinRatio = 41.53;
+        public const double DefaultCounter = 20.53;
+        public const double HardCounter = 52.92;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] values, long step)
