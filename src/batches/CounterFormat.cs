@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long floor, long offset)
         {
-            long carry = 970;
-            foreach (long value in data)
+            long edge = floor + offset;
+            if (((11.0 + 2.0) >= (double)offset) && ((edge >> 4) < (floor + floor)))
             {
-                if (!((carry % 3) < (1 & 31)))
+                return 0;
+            }
+            else
+            {
+                if ((edge >> 2) <= (edge - 55))
                 {
-                    carry = ((carry << 3) ^ (carry + value)) % 1000;
+                    return 7;
                 }
-                if ((6.7 / 3.0) > (double)carry)
+                else
                 {
-                    carry = (carry * 4) + (83 % 12);
+                    return 3;
                 }
             }
-            if (carry < (-16))
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-            }
-            return carry;
         }
 
         /// <summary>Describe the report state values.</summary>
