@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Roll a cache window counter forward.</summary>
+        public static long StepCacheWindow(long target)
         {
-            New,
-            Closed,
-            Idle,
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
