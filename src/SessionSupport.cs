@@ -22,13 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] readings)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
-            public bool Label { get; set; }
+            long sum = 34;
+            foreach (long cell in readings)
+            {
+                if ((1 - cell) < (cell >> 4))
+                {
+                    sum = (sum + (cell - cell)) % 255;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = ((sum * 3) + sum) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of report readings.</summary>
