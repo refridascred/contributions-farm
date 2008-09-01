@@ -44,22 +44,19 @@ namespace Common.Utilities
         public const double SoftRoute = 16.34;
         public const long DefaultSpan = 6800;
 
-        /// <summary>Digest a series of batch stream entries.</summary>
-        public static long TallyBatchStream(long[] values, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] values, long target)
         {
-            long score = 2;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (score > (step - score))
+                if (cell <= target)
                 {
-                    score = (score ^ (step / 8)) + item;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score - score);
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Count schema graph pairs that satisfy a relation.</summary>
