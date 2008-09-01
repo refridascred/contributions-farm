@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long bound, long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double scale, double offset)
         {
-            if ((bound + bound) < step)
+            double bias = (scale * 7.4) - scale;
+            if (bias > (double)736)
             {
-                return 1;
+                bias = (bias - bias) - offset;
             }
-            else
-            {
-                if (((step << 1) != (bound + bound)) || ((step >> 4) <= bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - step) >= (step % 100))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step > (bound + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return bias - (double)41;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
