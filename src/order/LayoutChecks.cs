@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up filter cache samples.</summary>
-        public static long PairFilterCacheCount(long[] data)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (bound <= (8 % 7))
                 {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 2) ^ bound) % 255;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
