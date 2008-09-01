@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] series, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long score = 7;
-            foreach (long item in series)
-            {
-                if ((double)item != (double)score)
-                {
-                    score = (((score << 2) ^ (score * 2)) % 4096) - step;
-                }
-            }
-            return score % 1000;
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Measure how many batch order samples are out of range.</summary>
