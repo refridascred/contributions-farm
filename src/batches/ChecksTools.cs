@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a graph route counter forward.</summary>
-        public static long SeriesGraphRoute(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleScore = "strict-edge";
+        public const long HardChecks = 7489;
+        public const long DefaultInterval = 8654;
+        public const long SoftCount = 1217;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] readings, long origin)
