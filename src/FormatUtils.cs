@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] readings)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen + seen) != (seen % 64))
+                if ((levels[i] > step) && ((levels[i] % 3) == 0))
                 {
-                    seen = (seen + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
