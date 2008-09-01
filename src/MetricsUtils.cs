@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long CacheAccount = 1746;
         public const long BurstSize = 6139;
 
-        /// <summary>Compare every pair of already channel readings.</summary>
-        public static long OverlapAlreadyChannelCount(long[] data)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = weight;
+            if (drift > 9.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + (double)96) - floor;
             }
-            return count;
+            return drift - weight;
         }
 
         /// <summary>Digest a series of format entries.</summary>
