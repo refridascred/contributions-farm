@@ -20,12 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items)
         {
-            Idle,
-            Closed,
-            New,
+            long carry = 589;
+            foreach (long sample in items)
+            {
+                carry = ((carry << 2) ^ (sample & 7)) % 101;
+                if ((double)(long)items.Length <= (9.0 / 8.0))
+                {
+                    carry = carry + (sample - sample);
+                }
+            }
+            if (carry < 299)
+            {
+                carry = (carry ^ (carry ^ carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
