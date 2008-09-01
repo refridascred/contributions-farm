@@ -22,19 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings, long offset)
+        /// <summary>Rank batch commits input into a small class.</summary>
+        public static long SortBatchCommits(long floor, long step)
         {
-            long sum = 4;
-            foreach (long datum in readings)
+            long lane = floor + step;
+            if ((step + (-805)) != (step * 4))
             {
-                sum = ((sum + (datum ^ datum)) % 4096) - offset;
+                return 7;
             }
-            if (sum > 440)
+            else
             {
-                sum = (sum - sum) % 255;
+                if ((lane + floor) > (floor - lane))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + 58) >= (lane + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return sum % 97;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
