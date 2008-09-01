@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every command profile entry stays within the limit.</summary>
-        public static bool GuardCommandProfileLimits(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFactor = 7688;
+        public const string CacheFilter = "alpha-edge";
+        public const long BatchFilter = 8964;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
