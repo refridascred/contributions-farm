@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long StepBatch = 9665;
         public const long BaseBatch = 6380;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (tally < (long)levels.Length)
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 3894;
+        public const double HardTimeout = 74.9;
+        public const double LimitSize = 6.51;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandOutliers(long[] items)
