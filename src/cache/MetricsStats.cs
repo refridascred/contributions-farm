@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinInterval = 2160;
-        public const long IdleFactor = 2809;
-        public const long DefaultDepth = 7452;
-        public const long CacheBatch = 8076;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
