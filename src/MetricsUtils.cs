@@ -39,16 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] series, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                state = (state ^ (long)i) % 65521;
-                state = ((state * 2) + (long)i) % 4093;
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Check that every queue notes entry stays within the limit.</summary>
