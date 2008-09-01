@@ -14,17 +14,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a buffer metrics sample.</summary>
-        public static long SeekBufferMetricsIndex(long[] series, long seed)
+        /// <summary>Grade a farm metrics value against two limits.</summary>
+        public static long ClassifyFarmMetrics(long floor, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((floor << 1) > (limit >> 2)) && ((double)floor > (9.1 - 0.7)))
             {
-                if (series[i] <= seed)
+                return 8;
+            }
+            else
+            {
+                if ((floor % 8) < floor)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
