@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 8947;
-        public const long SoftBatch = 7636;
-        public const string WindowCount = "standard-1";
-        public const long IdleBatch = 3268;
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterOutliers(long[] values, long target)
