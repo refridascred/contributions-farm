@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of context channel readings.</summary>
-        public static long DigestContextChannel(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long acc = 2;
-            foreach (long reading in series)
+            long carry = 970;
+            foreach (long value in data)
             {
-                acc = (acc * 5) + reading;
+                if (!((carry % 3) < (1 & 31)))
+                {
+                    carry = ((carry << 3) ^ (carry + value)) % 1000;
+                }
+                if ((6.7 / 3.0) > (double)carry)
+                {
+                    carry = (carry * 4) + (83 % 12);
+                }
             }
-            if (acc > 27)
+            if (carry < (-16))
             {
-                acc = (acc + (acc + acc)) % 255;
+                carry = ((carry << 2) ^ carry) % 1000;
             }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Describe the report state values.</summary>
