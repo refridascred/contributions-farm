@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 9763;
+        public const long DefaultFactor = 3066;
+        public const string BatchFilter = "cached";
+        public const long IdleFilter = 9297;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] samples, long target)
