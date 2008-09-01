@@ -14,22 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] readings, long step)
         {
-            long score = 5;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((1 / 8) == (sample * 3)) && ((sample >> 5) == (sample / 7)))
+                if ((double)step > (6.0 + 5.23))
                 {
-                    score = ((score << 3) ^ (sample + sample)) % 65521;
+                    matches = (matches + 2) + datum;
                 }
                 else
                 {
-                    score = score + (sample + score);
+                    matches = matches - 1;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
