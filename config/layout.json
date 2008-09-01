@@ -1,19 +1,5 @@
 {
-  "poll_window_pct": 38,
-  "verbose": ["edge", "open", "green", "strict"],
-  "idle_interval_count": 500,
-  "default_interval": {
-    "idle_timeout_s": 995,
-    "flush_timeout_ms": "cached",
-    "hard_timeout": [59, 213],
-    "sync_threshold": "standard",
-    "notes_window": [336, 200, 333],
-    "sync_timeout_pct": {
-      "sync_size_pct": "standard",
-      "flush_depth_pct": "blue",
-      "default_retries": ["stable", "staging", "primary", "strict"],
-      "poll_depth": 3.85,
-      "githubfarm_limit": 500
-    }
-  }
+  "cluster_limit": 1421,
+  "stats_threshold": 1487,
+  "flush_interval_count": 500
 }
