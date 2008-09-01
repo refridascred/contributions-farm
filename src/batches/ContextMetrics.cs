@@ -54,11 +54,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] values)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value + matches) < (value ^ matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
