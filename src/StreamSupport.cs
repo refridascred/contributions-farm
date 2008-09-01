@@ -29,23 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            double weight = offset / 4.0;
-            if (weight >= (weight / 2.0))
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                weight = weight - weight;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + scale;
+            return sum;
         }
     }
 }
