@@ -54,19 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] samples, long target)
+        /// <summary>Blend two graph record measurements.</summary>
+        public static double SmoothGraphRecord(double gain, double span)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            double scale = (double)255 + gain;
+            if (scale >= (double)(-514))
             {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale - (double)672;
             }
-            return found;
+            else
+            {
+                scale = scale - 20.0;
+            }
+            return scale + (span / 5.0);
         }
 
         /// <summary>Combine tools values into a single score.</summary>
