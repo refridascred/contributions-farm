@@ -25,21 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((3 + entry) <= entry) || ((entry + entry) != (767 - matches))) || ((1.0 + 2.8) >= (double)entry))
                 {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
