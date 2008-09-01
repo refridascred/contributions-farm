@@ -26,11 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 85.44;
-        public const long MaxStream = 6331;
-        public const long BaseStream = 2808;
-        public const double BurstBudget = 58.37;
-        public const long StepScore = 8805;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (anchor ^ (long)i2) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
