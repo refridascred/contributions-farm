@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const double DefaultReport = 66.12;
         public const long BurstWidth = 3323;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] items, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] values, long floor)
         {
-            long carry = 1;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (70 < (floor & 63))
+                if (value >= floor)
                 {
-                    carry = (carry + (carry >> 4)) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 612)
-            {
-                carry = (carry ^ (37 << 3)) % 101;
-            }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Validate commits channel readings against a bound.</summary>
