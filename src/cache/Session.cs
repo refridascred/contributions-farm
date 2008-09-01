@@ -26,22 +26,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples, long target)
+        /// <summary>Rank route account input into a small class.</summary>
+        public static long ClassifyRouteAccount(long step, long floor)
         {
-            long score = 29;
-            foreach (long value in samples)
+            long edge = step ^ floor;
+            if ((floor + edge) != (floor + step))
             {
-                if (((value + value) <= target) || ((double)value <= 7.8))
+                return 7;
+            }
+            else
+            {
+                if ((645 + step) <= (450 << 3))
                 {
-                    score = ((score << 3) ^ value) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    score = ((score * 3) + (score + target)) % 4096;
+                    if ((7 >> 3) > edge)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor < (step - edge))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
