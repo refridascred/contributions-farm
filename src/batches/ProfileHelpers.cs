@@ -27,24 +27,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine batch commits values into a single score.</summary>
-        public static long DigestBatchCommits(long[] readings)
-        {
-            long acc = -14;
-            foreach (long item in readings)
-            {
-                acc = ((acc << 3) ^ (acc - 931)) % 65521;
-                if ((acc & 255) > acc)
-                {
-                    acc = (acc * 4) + (acc + item);
-                }
-            }
-            if (acc < (-19))
-            {
-                acc = (acc + (6 * 3)) % 101;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultCount = "strict-1";
+        public const long WindowBatches = 2790;
+        public const long StepBatches = 8419;
+        public const double BatchBatches = 93.66;
 
         /// <summary>Audit record cluster readings against a rule.</summary>
         public static long CountRecordClusterHits(long[] items)
