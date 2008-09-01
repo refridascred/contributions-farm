@@ -17,11 +17,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 1967;
-        public const long WindowFactor = 3573;
-        public const long RetryAlready = 7278;
-        public const long StepSpan = 2820;
-        public const string MinDepth = "alpha-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 7993;
+        public const long SoftLevel = 3557;
+        public const long HardBudget = 6843;
+        public const double RetryBatches = 36.95;
     }
 }
