@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Find the first session checks entry that matches the target.</summary>
+        public static long LookupSessionChecksIndex(long[] values, long origin)
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
