@@ -22,23 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double bias, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] data)
         {
-            double load = (double)(4 - 2);
-            if (load >= 0.32)
+            long sum = 3;
+            foreach (long value in data)
             {
-                load = load - bias;
+                sum = (sum * 5) + (value + value);
             }
-            else
-            {
-                load = load + (load * 11.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - span;
+            return sum;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
