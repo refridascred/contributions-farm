@@ -34,14 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Locked,
-            Paused,
-            Draft,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 8836;
+        public const long LimitSpan = 7732;
+        public const string BaseStream = "local-1";
+        public const double BaseTimeout = 90.8;
+        public const long MaxStream = 2272;
     }
 }
