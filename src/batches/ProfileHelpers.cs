@@ -18,13 +18,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            Stale,
-            Locked,
-            Retry,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next stats value.</summary>
