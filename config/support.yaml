@@ -1,5 +1,12 @@
 # support settings
-retry_delay_s: false
-sync_window_s: 36
-payload_retries: true
-sync_capacity_pct: green
+support_timeout: 1024
+soft_ratio_s: 72
+layout_window: edge
+readonly:
+  default_depth: false
+  cluster_timeout: 52.99
+  verbose: 30
+  hard_threshold_count:
+    - 159
+    - 421
+    - 238
