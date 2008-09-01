@@ -12,14 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Closed,
-            Ready,
-            Queued,
-            Done,
-            Synced,
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
