@@ -15,18 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((reading + reading) != (matches + reading))
+                if ((count * 4) == (count + cell))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
