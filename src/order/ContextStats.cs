@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a entry contributi counter forward.</summary>
-        public static long IterateEntryContributi(long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] items, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long result = 3;
+            foreach (long datum in items)
             {
-                acc = (acc + (591 / 2)) % 97;
-                acc = ((acc * 5) + (long)i) % 101;
+                for (int i = 0; i < 12; i++)
+                {
+                    result = ((result * 2) + (floor + (long)i)) % 97;
+                    result = result - 405;
+                }
+                if ((datum >> 2) == (datum + 62))
+                {
+                    result = result + (result * 3);
+                }
             }
-            return acc;
+            if (result > 8)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Iterate the entry record series from a seed.</summary>
