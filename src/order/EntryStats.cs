@@ -73,13 +73,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            Locked,
+            Stale,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Grade a report stream value against two limits.</summary>
