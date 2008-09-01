@@ -24,13 +24,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long seed, long floor)
         {
-            Done,
-            Synced,
-            Closed,
-            Active,
+            long span = seed ^ floor;
+            if (span <= 26)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed != (double)3)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
