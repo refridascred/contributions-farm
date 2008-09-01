@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double drift = weight;
-            if (drift < (span + span))
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - (drift * 1.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + drift;
+            Pending,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a filter options.</summary>
