@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result + (result - (long)i)) % 255;
-                result = ((result * 4) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
