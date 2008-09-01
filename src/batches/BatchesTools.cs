@@ -20,12 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] values)
         {
-            Closed,
-            Dropped,
-            Locked,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (tally < reading)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cache level values.</summary>
