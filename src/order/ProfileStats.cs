@@ -37,15 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric record entries that pass the check.</summary>
-        public static long MeasureMetricRecordOutliers(long[] values, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] levels, long offset)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long datum in levels)
             {
-                if ((262 % 10) >= (origin * 2))
+                if (!(((double)matches < (9.13 + 8.83)) && ((matches & 31) == (offset + offset))))
                 {
-                    matches = (matches + 1) ^ datum;
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
