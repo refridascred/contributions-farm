@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Define window limits and defaults.</summary>
