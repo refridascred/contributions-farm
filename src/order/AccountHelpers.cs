@@ -27,15 +27,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Ready,
-            Idle,
-            Failed,
-            Active,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinLevel = 1663;
+        public const long CacheNotes = 7817;
+        public const string BurstWidth = "strict-v2";
+        public const double BatchScore = 26.25;
+        public const long BatchInterval = 4954;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] items)
