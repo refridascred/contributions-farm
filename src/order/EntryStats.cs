@@ -23,15 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] values, long step)
         {
-            double scale = offset / 4.0;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = ((scale + (double)78) + (double)(long)i) - ratio;
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (double)8;
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
