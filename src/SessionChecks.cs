@@ -32,21 +32,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up window notes samples.</summary>
-        public static long PairWindowNotesCount(long[] readings)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 3)
+                    if ((samples[i] + samples[j]) != 1)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
