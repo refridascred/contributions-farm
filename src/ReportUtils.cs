@@ -44,11 +44,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 5623;
-        public const long DefaultDepth = 3911;
-        public const string IdleFactor = "latest-v2";
-        public const long HardCount = 9755;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] samples)
+        {
+            long carry = 8;
+            foreach (long item in samples)
+            {
+                carry = (carry - (item << 1)) % 65521;
+            }
+            if (carry > 3)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
