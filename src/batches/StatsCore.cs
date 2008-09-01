@@ -37,38 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long seed, long seed2)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] levels, long bound)
         {
-            if ((seed2 + seed) <= seed2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed < (9.8 - 13.0))
+                if (levels[i] == bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed2 <= (seed % 24))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed <= (seed2 * 4)) && ((seed << 1) != (seed2 / 9)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
