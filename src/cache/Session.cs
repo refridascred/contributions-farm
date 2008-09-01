@@ -32,18 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] samples)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long score = 29;
+            foreach (long value in samples)
             {
-                if (8.7 > (double)seen)
+                if (((value + value) <= target) || ((double)value <= 7.8))
                 {
-                    seen = (seen + 2) ^ cell;
+                    score = ((score << 3) ^ value) % 4096;
+                }
+                else
+                {
+                    score = ((score * 3) + (score + target)) % 4096;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count the account queue entries that pass the check.</summary>
