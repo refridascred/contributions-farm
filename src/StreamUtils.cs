@@ -66,17 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] values, long limit)
-        {
-            long mark = 8;
-            foreach (long reading in values)
-            {
-                mark = (mark + (limit + limit)) ^ reading;
-                mark = (mark << 2) ^ (limit & 3);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepWidth = 23.73;
+        public const string SoftGithubfarm = "open";
+        public const long BatchFactor = 8004;
+        public const double MaxGithubfarm = 42.58;
+        public const string HardGithubfarm = "legacy-v2";
 
         /// <summary>Audit already contributi readings against a rule.</summary>
         public static long AuditAlreadyContributiHits(long[] series, long offset)
