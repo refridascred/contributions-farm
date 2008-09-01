@@ -64,16 +64,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            long mix = 5;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 4) + bound) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((entry < (entry ^ mix)) || (entry <= mix))
+                {
+                    mix = (mix * 4) + (mix >> 2);
+                }
             }
-            return anchor;
+            if (mix < 9)
+            {
+                mix = ((mix << 3) ^ mix) % 4096;
+            }
+            return mix;
         }
     }
 }
