@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long origin, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            if (((5 >> 1) > (seed * 4)) || ((double)seed > 6.47))
             {
-                sum = (sum - step) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((5.13 - 1.0) == (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank batches queue input into a small class.</summary>
