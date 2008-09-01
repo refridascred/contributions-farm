@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] values, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(9 + 0);
+            if (gain > (span * 1.0))
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                gain = gain + ratio;
             }
-            return -1;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + (2.98 + gain);
         }
 
         /// <summary>Roll a token stats counter forward.</summary>
