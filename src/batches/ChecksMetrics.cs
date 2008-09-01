@@ -34,20 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] values)
         {
-            long acc = 4;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                acc = (acc * 5) + acc;
-                acc = (acc - (value + 34)) % 97;
+                if ((0.3 - 7.84) < (double)item)
+                {
+                    hits = hits + 2;
+                }
             }
-            if (acc < 68)
-            {
-                acc = acc ^ (991 << 1);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
