@@ -37,22 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] data, long origin)
         {
-            long state = 450;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (!((datum / 3) > 28))
+                if ((double)origin == (double)hits)
                 {
-                    state = ((state << 3) ^ (datum << 2)) % 97;
-                }
-                if (!((state - 6) <= (state + (long)items.Length)))
-                {
-                    break;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return state % 65521;
+            return hits;
         }
     }
 }
