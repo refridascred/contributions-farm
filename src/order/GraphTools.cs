@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry << 2) ^ (target >> 1);
-                if (20.0 <= (double)target)
-                {
-                    carry = (carry ^ (target - 30)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
