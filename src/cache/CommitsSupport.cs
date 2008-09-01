@@ -62,15 +62,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine support batches values into a single score.</summary>
-        public static long DigestSupportBatches(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data)
         {
-            long total = 78;
-            foreach (long entry in items)
+            long score = 828;
+            foreach (long item in data)
             {
-                total = ((total ^ (13 + 8)) % 1000) ^ entry;
+                score = ((score << 2) ^ (item % 10)) % 1000;
+                if ((24 + item) == (score / 2))
+                {
+                    break;
+                }
             }
-            return total;
+            return score % 1000;
         }
     }
 }
