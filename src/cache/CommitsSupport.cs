@@ -50,11 +50,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBudget = "standard";
-        public const long CacheBatch = 1606;
-        public const double MinBatch = 53.82;
-        public const double MaxBatch = 18.03;
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long DigestQueueBuffer(long[] values, long bound)
+        {
+            long mark = 8;
+            foreach (long cell in values)
+            {
+                if (2.45 > (double)bound)
+                {
+                    mark = ((mark - mark) % 255) + cell;
+                }
+                else
+                {
+                    mark = (mark ^ (bound + mark)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long offset, long target)
