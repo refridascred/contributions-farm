@@ -36,11 +36,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Project the next cluster profile value.</summary>
-        public static double SmoothClusterProfile(double bias, double floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double gain = 5.02 / 9.0;
-            return (gain + (floor / 6.0)) + bias;
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
