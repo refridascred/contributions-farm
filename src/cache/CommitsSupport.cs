@@ -24,21 +24,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Audit contributi metric readings against a rule.</summary>
