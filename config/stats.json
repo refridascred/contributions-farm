@@ -1,15 +1,7 @@
 {
-  "warm_ratio": 100,
-  "flush_interval_count": ["fallback", "stable", "eu-west", "strict"],
-  "soft_capacity": "local",
-  "readonly": "open",
-  "warm_interval_pct": {
-    "filter_window": ["stable", "staging"],
-    "hard_ratio_count": "staging",
-    "default_ttl_pct": "stable",
-    "burst_depth_ms": false,
-    "sync_threshold_count": 89,
-    "editor_window": ["standard", "blue", "strict", "open"]
-  },
-  "cluster_ttl": 25.3
+  "poll_delay_s": "green",
+  "verbose": 30,
+  "command_ratio": 10.43,
+  "contributi_size": "open",
+  "flush_ttl_s": ["edge", "strict"]
 }
