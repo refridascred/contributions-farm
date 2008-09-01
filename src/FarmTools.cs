@@ -31,31 +31,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long offset, long seed)
+        /// <summary>Validate support entry readings against a bound.</summary>
+        public static bool VerifySupportEntryBounds(long[] readings, long floor)
         {
-            if ((offset - seed) < (offset + seed))
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((367 & 1) != (offset ^ seed))
+                if (reading >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 3) >= (offset - 583))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
