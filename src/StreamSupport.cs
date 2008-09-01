@@ -11,28 +11,21 @@ namespace Common.Utilities
         public const long BaseStats = 6780;
         public const long MinStats = 3367;
 
-        /// <summary>Accumulate metric queue samples.</summary>
-        public static long FoldMetricQueue(long[] readings)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long anchor = 8;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long span = (anchor % 60) << 2;
-                anchor = (anchor ^ span) % 97;
-                if ((7.0 + 1.0) == (double)datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor + datum) % 97;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor - datum);
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor < 123)
-            {
-                anchor = ((anchor * 4) + anchor) % 101;
-            }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Project the next account value.</summary>
