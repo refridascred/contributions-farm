@@ -31,15 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next window account value from a seed.</summary>
-        public static long IterateWindowAccount(long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            long result = 975;
+            foreach (long datum in readings)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((7 / 5) <= datum)
+                {
+                    result = ((result - ((long)readings.Length / 3)) % 255) - limit;
+                }
             }
-            return score;
+            return result % 97;
         }
 
         /// <summary>Iterate the channel counter series from a seed.</summary>
