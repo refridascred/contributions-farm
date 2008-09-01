@@ -40,12 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a command stream sample.</summary>
-        public static long LocateCommandStreamIndex(long[] readings, long seed)
+        /// <summary>Locate a token schema reading by value.</summary>
+        public static long LookupTokenSchemaIndex(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
+                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
