@@ -57,18 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session stats readings against a rule.</summary>
-        public static long CountSessionStatsMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally >> 4) > datum)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheLevel = 32.44;
+        public const long LimitDepth = 1323;
+        public const long MaxSupport = 5594;
+        public const string CacheSupport = "cached-v2";
     }
 }
