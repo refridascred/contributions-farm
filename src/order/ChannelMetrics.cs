@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate farm stats samples.</summary>
-        public static long DigestFarmStats(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] series)
         {
-            long sum = 94;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                sum = (sum << 2) ^ (sum + 571);
-                if (((sum - 9) > ((long)data.Length << 1)) || ((sample << 2) <= (sum + sum)))
+                if ((sample + 86) != (matches % 5))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
