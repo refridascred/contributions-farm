@@ -31,23 +31,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] items, long step)
         {
-            long acc = 35;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc << 3) ^ (95 / 4)) % 101;
-                if ((acc - 862) > acc)
+                if ((count * 2) == (count - cell))
                 {
-                    acc = (acc * 3) + entry;
+                    count = (count + 2) - step;
                 }
             }
-            if (acc < 8)
-            {
-                acc = acc ^ (acc + 24);
-            }
-            return acc;
+            return count;
         }
     }
 }
