@@ -14,18 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long state = 42;
+            foreach (long value in items)
             {
-                if (1 < (item & 31))
+                if ((state % 97) > (3 - state))
                 {
-                    tally = tally + 1;
+                    state = (state + 56) + value;
+                }
+                else
+                {
+                    state = (state - (target * 4)) % 101;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a channel entry.</summary>
