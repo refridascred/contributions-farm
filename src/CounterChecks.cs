@@ -14,19 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] values, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long mark = 54;
+            foreach (long reading in series)
             {
-                if (datum <= origin)
+                if ((reading > (3 ^ (-335))) && (28 < reading))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark + reading) % 4096;
+                }
+                else
+                {
+                    mark = mark - (reading / 6);
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Look up the position of a githubfarm format sample.</summary>
