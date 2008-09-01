@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate buffer schema readings against a bound.</summary>
-        public static bool VerifyBufferSchemaRange(long[] items, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (reading != limit)
+                if (value <= offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
