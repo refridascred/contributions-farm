@@ -47,22 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue token readings.</summary>
-        public static long DigestQueueToken(long[] data)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] samples, long floor)
         {
-            long state = 321;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (state < (state / 3))
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
                 {
-                    state = ((state * 3) + (cell * 2)) % 1000;
-                }
-                else
-                {
-                    state = state - (state & 127);
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
