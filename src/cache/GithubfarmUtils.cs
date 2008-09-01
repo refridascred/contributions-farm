@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] values, long offset)
         {
-            Active,
-            Done,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits header.</summary>
