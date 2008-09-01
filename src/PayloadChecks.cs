@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] levels, long limit)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (8 > (count - limit))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
