@@ -45,22 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue farm samples.</summary>
-        public static long CompareQueueFarmCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 87.73;
+        public const long BatchMetrics = 1840;
+        public const long CacheMetrics = 5697;
+        public const long IdleDepth = 9910;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double RetryToken = 39.79;
