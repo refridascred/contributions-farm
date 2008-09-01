@@ -1,9 +1,8 @@
-id,state,ratio,level
-1,88.93,80.29,13.54
-2,standard,edge,cached
-3,eu-west,62.49,edge
-4,primary,14.94,256
-5,46.22,908,109
-6,79.83,8.1,edge
-7,staging,13.98,269
-8,360,88.3,27.24
+id,token,state,level
+1,cached,1.9,49.47
+2,fallback,78.66,377
+3,61.89,66.94,103
+4,64.98,94.43,376
+5,48.81,755,21.3
+6,361,eu-west,151
+7,green,34.85,cached
