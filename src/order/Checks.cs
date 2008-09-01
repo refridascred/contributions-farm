@@ -24,11 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleInterval = 13.4;
-        public const long BurstSpan = 4713;
-        public const double BatchSchema = 31.95;
-        public const long MinSchema = 1763;
+        /// <summary>Count profile batches pairs that satisfy a relation.</summary>
+        public static long MatchProfileBatchesCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ScaleCounter(double scale, double span)
