@@ -1,7 +1,11 @@
 {
-  "schema_window": true,
-  "retry_size": true,
-  "queue_capacity": "green",
-  "strict": 8118,
-  "min_ratio": 100
+  "layout_ratio": "edge",
+  "flush_delay_ms": {
+    "readonly": "primary",
+    "idle_ttl_pct": "legacy",
+    "entry_retries": [156, 80, 484, 11],
+    "batch_size_ms": true
+  },
+  "token_size": 500,
+  "editor_timeout": 21
 }
