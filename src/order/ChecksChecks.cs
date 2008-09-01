@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Digest a series of checks cache entries.</summary>
+        public static long CombineChecksCache(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 69;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry - (datum + offset)) % 4096;
+                if (((offset - offset) >= (4 << 3)) || ((carry - datum) > (long)values.Length))
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + (carry / 5)) % 97;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (datum ^ 61);
                 }
             }
-            return count;
+            if (carry > 470)
+            {
+                carry = (carry * 2) + offset;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of report entries.</summary>
