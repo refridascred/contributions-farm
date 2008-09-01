@@ -36,19 +36,14 @@ namespace Common.Utilities
         public const long BaseTimeout = 1254;
         public const string SoftDepth = "legacy-1";
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long state = 1;
-            foreach (long entry in series)
-            {
-                state = ((state - (state ^ state)) % 65521) + entry;
-            }
-            if (state > 20)
-            {
-                state = state + (state & 255);
-            }
-            return state % 4096;
+            Locked,
+            Failed,
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
