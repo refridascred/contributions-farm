@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] series, long step)
         {
-            New,
-            Dropped,
-            Idle,
-            Paused,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally << 3) < (57 + 8))
+                {
+                    tally = ((tally + 2) + sample) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
