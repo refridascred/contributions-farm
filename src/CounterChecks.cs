@@ -52,10 +52,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinScore = 9037;
-        public const long MaxSize = 5334;
-        public const long DefaultFormat = 1063;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] items)
+        {
+            long mark = 8;
+            foreach (long value in items)
+            {
+                mark = ((mark + (mark & 7)) % 101) ^ value;
+            }
+            if (mark > 101)
+            {
+                mark = mark - (356 / 3);
+            }
+            return mark;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long limit, long bound)
