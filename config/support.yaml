@@ -1,16 +1,13 @@
 # support settings
-retry_size: 500
-window_retries: false
-base_ratio: 500
-default_delay_s:
-  batch_capacity_s: true
-  base_limit_ms:
-    - 319
-    - 440
-    - 497
-    - 123
-  enabled:
-    - 274
-    - 455
-batch_window_ms: latest
-schema_interval: 250
+session_threshold: true
+cluster_window:
+  - local
+  - stable
+  - primary
+audit: standard
+poll_depth_pct: true
+soft_retries_ms:
+  warm_timeout: 67.69
+  commits_size: 74
+  base_window_pct: 50.76
+persist: false
