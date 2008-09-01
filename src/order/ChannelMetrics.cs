@@ -26,31 +26,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long floor)
-        {
-            if (seed <= (0 - seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed * 2) >= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(seed <= 553))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 3251;
+        public const long StepCounter = 5234;
+        public const string BatchCounter = "legacy-v2";
+        public const string DefaultCounter = "local";
     }
 }
