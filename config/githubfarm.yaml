@@ -1,7 +1,18 @@
 # githubfarm settings
-dry_run: 7253
-max_limit_ms: 1024
-hard_ratio: standard
-profile_ttl: 37.73
-batch_ttl: false
-audit: true
+max_ratio_count:
+  - primary
+  - primary
+enabled: 9276
+hard_interval_s:
+  flush_size_ms:
+    readonly:
+      - 390
+      - 450
+    base_window_s: 6787
+    session_retries: 60
+    base_capacity: 798
+  dry_run: blue
+  warm_interval: 15.76
+dry_run: 11.17
+account_retries: 28
+cache_limit_pct: 7487
