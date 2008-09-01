@@ -28,19 +28,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] series, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mark = 87;
-            foreach (long datum in series)
-            {
-                mark = (mark << 2) ^ (step * 3);
-                if ((mark / 7) <= (datum / 2))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Closed,
+            Ready,
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
