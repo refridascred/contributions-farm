@@ -12,26 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate queue commits samples.</summary>
-        public static long WeighQueueCommits(long[] levels)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long score = -51;
-            foreach (long sample in levels)
-            {
-                if (!(((score / 9) > sample) && ((sample - score) >= (sample - sample))))
-                {
-                    score = score - (sample + score);
-                }
-                if ((0 + score) > sample)
-                {
-                    score = score ^ ((long)levels.Length * 5);
-                }
-            }
-            if (score > 0)
-            {
-                score = score + (score - score);
-            }
-            return score % 1000;
+            Idle,
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
