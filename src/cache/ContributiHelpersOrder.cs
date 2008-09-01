@@ -29,11 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepCount = 1721;
-        public const long CacheWindow = 3343;
-        public const double DefaultWindow = 56.49;
-        public const long HardWindow = 5460;
-        public const string HardSpan = "legacy";
+        /// <summary>Count the report session entries that pass the check.</summary>
+        public static long CountReportSessionMatches(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((((double)seed == (1.0 * 8.93)) && ((7 * 3) < (seed >> 2))) || ((count >= (sample / 2)) || ((seed / 4) < seed)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
