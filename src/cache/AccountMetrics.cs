@@ -64,31 +64,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long seed, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] levels, long limit)
         {
-            if ((bound >= (bound - bound)) && (22 > (seed ^ bound)))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (1.71 <= (double)bound)
+                if (reading > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.03 - 9.26) <= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the report class values.</summary>
