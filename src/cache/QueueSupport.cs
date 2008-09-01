@@ -13,20 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Count order record pairs that satisfy a relation.</summary>
+        public static long CompareOrderRecordCount(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result + result) <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result + (result + (long)i)) % 65521;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = (result << 2) ^ target;
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Project the next graph value.</summary>
