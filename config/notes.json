@@ -1,14 +1,7 @@
 {
-  "dry_run": {
-    "dry_run": "standard",
-    "channel_depth": [491, 410, 325, 168],
-    "verbose": "blue",
-    "githubfarm_capacity": "standard",
-    "soft_timeout_s": "edge"
-  },
-  "format_threshold": 42.96,
-  "burst_depth_pct": ["legacy", "staging", "staging"],
-  "soft_ratio_count": "eu-west",
-  "flush_ttl_s": [99, 251, 353],
-  "flush_delay": "local"
+  "burst_timeout": "blue",
+  "readonly": 79.42,
+  "hard_ttl": "primary",
+  "default_ratio": true,
+  "min_ratio_count": ["open", "fallback", "legacy", "staging"]
 }
