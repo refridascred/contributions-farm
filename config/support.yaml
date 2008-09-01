@@ -1,14 +1,4 @@
 # support settings
-default_depth: strict
-warm_window_count:
-  graph_retries:
-    - local
-    - legacy
-    - primary
-  hard_delay: 66.93
-  enabled:
-    - 27
-    - 222
-  idle_ratio: 33.81
-soft_timeout_count: 564
-cache_timeout_pct: true
+strict: 250
+record_window: 64.74
+sync_timeout: false
