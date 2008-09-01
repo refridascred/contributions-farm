@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long sample in samples)
             {
-                if (((double)seen > (double)datum) || (datum > (7 & 127)))
+                if (seen >= (sample - 0))
                 {
                     seen = seen + 3;
                 }
