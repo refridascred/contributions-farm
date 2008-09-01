@@ -51,13 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] samples, long bound)
         {
-            Pending,
-            Idle,
-            Locked,
-            Retry,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
