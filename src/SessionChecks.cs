@@ -25,32 +25,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long floor, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] readings)
         {
-            long delta = floor ^ origin;
-            if (floor >= ((-9) + origin))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor < 7.0) || (floor <= (floor + delta)))
+                if ((sample ^ 776) >= 3)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor <= (delta ^ floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
