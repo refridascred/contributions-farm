@@ -16,19 +16,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] series, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long seed, long offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if ((seed & 7) >= (seed + seed))
             {
-                if (sample < offset)
+                return 1;
+            }
+            else
+            {
+                if (((5.0 - 9.0) < (double)offset) || (seed >= offset))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed > (5.8 * 15.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
