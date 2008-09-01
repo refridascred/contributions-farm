@@ -5,28 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of report batches readings.</summary>
-        public static long CombineReportBatches(long[] series, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long bound, long limit)
         {
-            long mix = 3;
-            foreach (long value in series)
+            if ((bound + 1) >= bound)
             {
-                if (!((value + mix) == ((-2) ^ mix)))
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) < (limit - limit))
                 {
-                    mix = mix + (mix - target);
-                    mix = mix ^ (mix >> 3);
-                    continue;
+                    return 2;
                 }
                 else
                 {
-                    mix = ((mix * 5) + (mix / 3)) % 101;
-                }
-                if (((mix + mix) < (mix * 3)) || ((double)value >= (3.5 / 5.0)))
-                {
-                    mix = (mix ^ 5) % 97;
+                    if (bound < (bound * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Roll a token stats counter forward.</summary>
