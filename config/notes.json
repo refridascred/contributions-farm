@@ -1,12 +1,12 @@
 {
-  "cache_threshold": 77,
-  "flush_depth_ms": "latest",
-  "enabled": {
-    "compress": true,
-    "metric_delay": "standard",
-    "burst_depth_count": 29,
-    "filter_ttl": 2269,
-    "persist": false,
-    "enabled": 1630
-  }
+  "poll_ttl_s": 7618,
+  "stats_limit": 7449,
+  "audit": {
+    "dry_run": ["stable", "legacy", "fallback"],
+    "persist": 60,
+    "audit": true,
+    "window_ttl": 250
+  },
+  "verbose": [400, 12, 56],
+  "base_ratio": "blue"
 }
