@@ -40,19 +40,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] values, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (entry != bound)
+                if ((((5 % 8) <= (long)values.Length) && ((4 << 3) >= (item - (long)values.Length))) && ((double)item == (20.0 - 1.7)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
