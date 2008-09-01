@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of checks cache entries.</summary>
-        public static long CombineChecksCache(long[] values, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] readings, long limit)
         {
-            long carry = 69;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                carry = (carry - (datum + offset)) % 4096;
-                if (((offset - offset) >= (4 << 3)) || ((carry - datum) > (long)values.Length))
+                if (value != limit)
                 {
-                    carry = (carry + (carry / 5)) % 97;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (datum ^ 61);
+                    ready = false;
+                    break;
                 }
             }
-            if (carry > 470)
-            {
-                carry = (carry * 2) + offset;
-            }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Describe the window status values.</summary>
