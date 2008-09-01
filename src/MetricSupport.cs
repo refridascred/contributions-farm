@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] samples)
         {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches & 127) != (matches - entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the farm payload entries that pass the check.</summary>
