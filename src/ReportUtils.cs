@@ -44,19 +44,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings, long target)
         {
-            long carry = 8;
-            foreach (long item in samples)
+            long state = 9;
+            foreach (long entry in readings)
             {
-                carry = (carry - (item << 1)) % 65521;
+                state = state ^ (444 >> 3);
+                if (((entry % 2) > (state - state)) || ((target + state) > 47))
+                {
+                    state = ((state * 4) + 6) % 97;
+                }
+                if ((double)entry < (5.37 * 19.0))
+                {
+                    break;
+                }
             }
-            if (carry > 3)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the profile state values.</summary>
