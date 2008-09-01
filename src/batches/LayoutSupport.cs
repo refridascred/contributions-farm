@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long WindowRoute = 3967;
         public const double MinRoute = 73.29;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double rate = weight + (offset + 7.23);
-            if (rate <= offset)
-            {
-                rate = rate + (offset + 6.3);
-            }
-            else
-            {
-                rate = rate + (rate * 6.1);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + weight) - (double)(long)i;
-            }
-            return rate + (weight * 0.5);
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
