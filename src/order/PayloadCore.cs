@@ -47,10 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 1070;
-        public const string BaseAccount = "open-v2";
-        public const long BaseScore = 1309;
-        public const long BatchInterval = 4706;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = sum - (66 % 8);
+                if ((1.1 / 9.0) > (double)origin)
+                {
+                    sum = sum ^ (long)i;
+                }
+                if (((long)i % 12) < sum)
+                {
+                    sum = (sum - (origin ^ (-2))) % 97;
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
