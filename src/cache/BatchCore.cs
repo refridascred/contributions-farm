@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double offset)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double gain, double span)
         {
-            double bias2 = offset;
-            if (bias2 < (offset * 11.0))
+            double scale = gain + (gain - span);
+            if (scale >= (gain - scale))
             {
-                bias2 = (bias2 + bias2) - bias;
+                scale = scale + (double)82;
             }
-            return bias2 - (bias2 - 1.8);
+            return scale - (double)0;
         }
 
         /// <summary>Define token limits and defaults.</summary>
