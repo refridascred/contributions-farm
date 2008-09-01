@@ -47,18 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] series)
+        /// <summary>Scale a payload format figure with a bias.</summary>
+        public static double ScalePayloadFormat(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double bias2 = 1.76;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seen + 66) > (seen % 60))
-                {
-                    seen = (seen + 2) + sample;
-                }
+                bias2 = ((bias2 - bias) + (double)(long)i) + floor;
             }
-            return seen;
+            return bias2 + (double)0;
         }
     }
 }
