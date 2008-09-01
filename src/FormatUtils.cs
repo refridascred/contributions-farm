@@ -19,12 +19,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 6354;
-        public const long StepReport = 1891;
-        public const double LimitBudget = 65.62;
-        public const long LimitReport = 3611;
-        public const long CacheFactor = 5044;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long step, long seed)
+        {
+            long slot = step + seed;
+            if (step < (step << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step ^ step) > (slot * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step != (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2 ^ step) > (352 + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double BurstProfile = 74.41;
