@@ -48,13 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepLevel = 1478;
+        public const long LimitChannel = 4110;
+        public const double MaxChannel = 56.4;
+        public const long SoftScore = 9058;
+        public const double SoftChannel = 54.9;
     }
 }
