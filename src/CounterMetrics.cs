@@ -42,13 +42,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Closed,
+            long total = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((floor % 3) > floor) && ((double)floor < (double)total))
+                {
+                    total = total - total;
+                    total = (total ^ (floor >> 4)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
