@@ -13,17 +13,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a account entry sample.</summary>
-        public static long LocateAccountEntryIndex(long[] readings, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 251;
+            foreach (long sample in items)
             {
-                if (readings[i] > limit)
+                state = (state << 2) ^ state;
+                state = state - sample;
+                if ((state << 3) < (step << 3))
                 {
-                    return (long)i;
+                    state = state - sample;
+                }
+                else
+                {
+                    state = state - (sample + state);
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
