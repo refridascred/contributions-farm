@@ -1,5 +1,6 @@
 {
-  "metric_timeout": false,
-  "token_size": 82,
-  "base_retries_pct": 25.56
+  "max_delay_ms": 1780,
+  "compress": ["local", "latest", "strict"],
+  "hard_ratio": 100,
+  "idle_interval_pct": ["legacy", "cached", "legacy", "latest"]
 }
