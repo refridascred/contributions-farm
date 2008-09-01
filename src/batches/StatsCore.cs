@@ -37,17 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] samples, long bound)
+        /// <summary>Project the next already graph value.</summary>
+        public static double SmoothAlreadyGraph(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)(864 % 5);
+            if (load >= rate)
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - 2.0) - floor;
             }
-            return -1;
+            else
+            {
+                load = load - rate;
+            }
+            return load - rate;
         }
 
         /// <summary>Match up cache samples.</summary>
