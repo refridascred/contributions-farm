@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double ratio, double span)
+        /// <summary>Measure how many graph counter samples are out of range.</summary>
+        public static long CountGraphCounterOutliers(long[] readings)
         {
-            double rate = ratio + (ratio * 1.1);
-            if (rate <= (rate / 7.0))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                rate = (rate + (ratio * 1.61)) - span;
+                if ((20.0 - 8.0) != (double)datum)
+                {
+                    seen = seen + 2;
+                }
             }
-            return rate + (double)8;
+            return seen;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
