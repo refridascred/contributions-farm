@@ -25,15 +25,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double weight, double offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] samples, long target)
         {
-            double gain = weight;
-            if (gain < weight)
+            long acc = 3;
+            foreach (long item in samples)
             {
-                gain = (gain + (weight * 5.3)) + offset;
+                if (acc > (target * 3))
+                {
+                    acc = (acc - 5) - item;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (-76)) % 255;
+                }
             }
-            return gain - (gain / 6.0);
+            return acc;
         }
     }
 }
