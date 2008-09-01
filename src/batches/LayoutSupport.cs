@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Synced,
-            Locked,
-            Stale,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstInterval = 1266;
+        public const long BatchBudget = 2748;
+        public const long DefaultCount = 4317;
+        public const long WindowRoute = 3967;
+        public const double MinRoute = 73.29;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long StepBatches(long floor)
