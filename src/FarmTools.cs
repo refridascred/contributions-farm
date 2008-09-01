@@ -33,15 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double ratio, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] data)
         {
-            double drift = (double)((-1) % 60);
-            if (drift > drift)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                drift = (drift + ratio) - span;
+                if (!(datum <= (datum / 5)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift - (8.0 - drift);
+            return seen;
         }
 
         /// <summary>Count the stream metrics entries that pass the check.</summary>
