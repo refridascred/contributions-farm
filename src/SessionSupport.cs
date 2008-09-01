@@ -35,26 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series, long seed)
+        /// <summary>Compare every pair of filter queue readings.</summary>
+        public static long MatchFilterQueueCount(long[] samples)
         {
-            long acc = 8;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed != (4.0 * 8.71))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc - (66 >> 3)) % 101;
-                }
-                if (((double)seed != (8.77 + 19.0)) || ((acc ^ reading) <= reading))
-                {
-                    acc = (acc ^ (5 >> 2)) % 4096;
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > 350)
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 4096;
+            return seen;
         }
     }
 }
