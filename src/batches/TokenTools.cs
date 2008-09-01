@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Closed,
-            New,
-            Draft,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryDepth = 9880;
+        public const double BaseAccount = 43.01;
+        public const long StepTimeout = 2053;
+        public const double LimitTimeout = 78.17;
 
         /// <summary>Project the next batch value.</summary>
         public static double BlendBatch(double weight, double floor)
