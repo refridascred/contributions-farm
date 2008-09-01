@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] series, long origin)
         {
-            Active,
-            Locked,
-            Ready,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
