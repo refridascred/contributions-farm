@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Compare every pair of editor graph readings.</summary>
+        public static long CompareEditorGraphCount(long[] series)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
