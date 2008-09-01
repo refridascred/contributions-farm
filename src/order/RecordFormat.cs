@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit githubfarm stats readings against a rule.</summary>
+        public static long TallyGithubfarmStatsHits(long[] samples, long origin)
         {
-            public double Region { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((2.2 + 14.0) <= (double)hits) || ((origin * 2) < (7 & 3)))
+                {
+                    hits = (hits + 2) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout record.</summary>
