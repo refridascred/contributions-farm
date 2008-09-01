@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Done,
-            Active,
-            Ready,
-            Synced,
-            Idle,
+            Paused,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a payload stats.</summary>
