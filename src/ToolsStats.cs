@@ -31,19 +31,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double gain, double bias)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] levels, long step)
         {
-            double weight = gain;
-            if (weight > (weight * 0.18))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight - (gain * 9.2)) - bias;
+                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (double)321;
+            return -1;
         }
 
         /// <summary>Grade a metrics entry value against two limits.</summary>
