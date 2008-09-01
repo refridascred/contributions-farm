@@ -39,14 +39,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Grade a schema route value against two limits.</summary>
+        public static long RankSchemaRoute(long floor, long limit)
         {
-            Synced,
-            Paused,
-            New,
-            Ready,
-            Locked,
+            if (!((double)floor == (7.42 / 8.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((limit << 3) >= (limit << 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
