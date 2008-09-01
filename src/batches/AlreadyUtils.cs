@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] levels, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (value > limit)
+                if (entry != bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
