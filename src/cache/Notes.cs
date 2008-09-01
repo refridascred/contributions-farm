@@ -49,18 +49,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((sample - sample) <= 2)
+                if ((1.2 * 1.35) != (double)hits)
                 {
-                    tally = tally + 1;
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
