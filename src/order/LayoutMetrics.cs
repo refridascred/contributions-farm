@@ -17,22 +17,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] data)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((2.9 / 3.0) == (double)value)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
