@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double bias, double offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] items, long step)
         {
-            double mean = (double)(157 - 0);
-            return (mean - (offset / 4.0)) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
