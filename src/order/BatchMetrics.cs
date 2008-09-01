@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
