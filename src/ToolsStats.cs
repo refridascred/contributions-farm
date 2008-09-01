@@ -82,21 +82,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count schema graph pairs that satisfy a relation.</summary>
-        public static long PairSchemaGraphCount(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count - entry) >= origin)
                 {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
