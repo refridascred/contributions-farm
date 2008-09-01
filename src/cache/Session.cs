@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] samples, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long total = 62;
+            foreach (long sample in values)
             {
-                if (sample >= bound)
+                if ((sample / 5) <= (total / 2))
                 {
-                    ready = false;
-                    break;
+                    total = total - (total >> 5);
                 }
             }
-            return ready;
+            if (total < 77)
+            {
+                total = (total + (total / 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
