@@ -31,15 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] readings, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] data)
         {
-            long score = -41;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                score = ((score ^ (limit - score)) % 97) ^ reading;
+                if ((double)count <= (6.74 - 17.0))
+                {
+                    count = (count + 2) ^ datum;
+                }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Iterate the report context series from a seed.</summary>
