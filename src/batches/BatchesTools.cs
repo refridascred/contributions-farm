@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long limit, long offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double bias, double span)
         {
-            if ((double)limit >= (6.14 * 8.6))
+            double ratio = (double)(71 - 514);
+            if (ratio <= 0.54)
             {
-                return 7;
+                ratio = (ratio - (bias / 2.0)) + span;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((5.2 - 5.9) >= (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
+                ratio = (ratio - bias) + (double)(long)i;
             }
+            return ratio - (double)198;
         }
 
         /// <summary>Describe the graph state values.</summary>
