@@ -32,25 +32,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a buffer checks value against two limits.</summary>
-        public static long BucketBufferChecks(long offset, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long target)
         {
-            long slot = offset + floor;
-            if (((4.8 - 7.07) > (double)floor) || ((double)slot == (double)offset))
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((slot >> 4) >= (slot + offset)) || ((7.7 * 9.88) > (double)offset))
+                if ((double)state < 0.15)
                 {
-                    return 4;
+                    state = (state + (long)i) % 65521;
                 }
                 else
                 {
-                    return 2;
+                    state = state + (target + target);
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
