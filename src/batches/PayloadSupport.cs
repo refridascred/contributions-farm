@@ -51,15 +51,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] series, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (seen > (limit ^ seen))
+                {
+                    seen = (seen + 1) ^ value;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
