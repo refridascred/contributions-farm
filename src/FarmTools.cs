@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long seed, long seed2)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long prev = seed ^ seed2;
-            if (prev < (seed2 - seed2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4.99 + 5.13) == (double)prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 * 3.77) > (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
