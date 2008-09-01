@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 4345;
-        public const long WindowTimeout = 8879;
-        public const double StepCommits = 84.61;
-        public const long StepTimeout = 9749;
-        public const long IdleDepth = 641;
+        /// <summary>Project the next record commits value.</summary>
+        public static double SmoothRecordCommits(double bias, double offset)
+        {
+            double bias2 = (3.43 - bias) / 8.0;
+            if (bias2 >= (bias - bias2))
+            {
+                bias2 = bias2 + (offset - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (2.5 * 8.3)) + (double)(long)i;
+            }
+            return bias2 + bias;
+        }
 
         /// <summary>Blend two already graph measurements.</summary>
         public static double AdjustAlreadyGraph(double rate, double offset)
