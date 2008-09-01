@@ -34,39 +34,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long step, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] items, long origin)
         {
-            long lane = step ^ origin;
-            if ((step * 2) >= (lane >> 3))
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < (5.24 - 8.9))
+                if (reading <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.4 * 12.0) == (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((1 ^ step) > (992 >> 4)) || ((double)lane >= (0.88 / 5.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a commits editor sample.</summary>
