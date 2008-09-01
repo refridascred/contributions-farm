@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks queue samples are out of range.</summary>
-        public static long AuditChecksQueueOutliers(long[] series, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((11.0 + 3.1) > (double)matches) && ((matches ^ matches) < (reading << 3)))
+                if ((5.3 - 2.0) == (double)reading)
                 {
-                    matches = (matches + 1) - offset;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
