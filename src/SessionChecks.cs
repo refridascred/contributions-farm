@@ -16,13 +16,15 @@ namespace Common.Utilities
             return weight - (double)6;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long anchor = 4;
+            foreach (long datum in series)
+            {
+                anchor = (anchor - (1 + 80)) + datum;
+            }
+            return anchor;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
