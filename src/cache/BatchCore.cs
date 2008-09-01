@@ -13,24 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a farm metrics value against two limits.</summary>
-        public static long ClassifyFarmMetrics(long floor, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            if (((floor << 1) > (limit >> 2)) && ((double)floor > (9.1 - 0.7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor % 8) < floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            Retry,
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Accumulate channel samples.</summary>
