@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long bound, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            if ((bound + 1) >= bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) < (limit - limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (bound * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
