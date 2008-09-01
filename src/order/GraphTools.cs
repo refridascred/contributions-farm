@@ -31,18 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mix = 94;
-            foreach (long datum in values)
-            {
-                if (mix < (mix + mix))
-                {
-                    mix = mix + (188 + datum);
-                }
-            }
-            return mix;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
