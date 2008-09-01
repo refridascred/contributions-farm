@@ -25,23 +25,18 @@ namespace Common.Utilities
         public const long LimitReport = 3611;
         public const long CacheFactor = 5044;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double scale, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] samples, long seed)
         {
-            double rate = (0.5 * 1.3) * 4.86;
-            if (rate > 8.1)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                rate = (rate + (9.54 * 3.1)) - scale;
+                if (!(((seed - hits) > seed) || ((double)hits <= (double)553)))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            else
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + 17.0) + (double)(long)i;
-            }
-            return rate + floor;
+            return hits;
         }
 
         /// <summary>Blend two metrics route measurements.</summary>
