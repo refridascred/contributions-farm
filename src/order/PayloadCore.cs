@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples, long offset)
-        {
-            long state = 23;
-            foreach (long reading in samples)
-            {
-                if (((2.1 / 5.0) > (double)state) && ((reading & 1) >= state))
-                {
-                    state = ((state - ((long)samples.Length << 1)) % 101) - offset;
-                }
-                state = (state << 3) ^ 329;
-                state = (state ^ reading) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 331;
+        public const long IdleInterval = 1556;
+        public const double WindowMetrics = 40.19;
+        public const long MinMetrics = 3413;
+        public const string SoftFactor = "latest-edge";
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
