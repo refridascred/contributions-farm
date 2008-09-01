@@ -26,20 +26,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            if (seed <= (0 - seed))
             {
-                if (((8.57 + 1.7) >= (double)limit) || ((limit >> 5) != (136 + limit)))
-                {
-                    result = (result - result) % 1000;
-                }
-                result = result + result;
-                result = ((result * 2) + (long)i) % 1000;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((seed * 2) >= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(seed <= 553))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
