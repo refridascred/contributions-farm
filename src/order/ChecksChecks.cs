@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] values, long target)
         {
-            public bool Count { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((seen / 2) <= (target + seen)) && ((5 % 3) <= (seen % 8)))
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
