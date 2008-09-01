@@ -36,20 +36,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((13.0 + 6.0) < (double)state)
-                {
-                    state = (state << 2) ^ state;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowSpan = 2942;
+        public const long IdleTimeout = 8026;
+        public const long BatchWidth = 9355;
+        public const long StepQueue = 6005;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxSpan = 8985;
