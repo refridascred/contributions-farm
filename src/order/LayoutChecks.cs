@@ -92,12 +92,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
+            Done,
+            Draft,
+            Paused,
+            New,
+            Failed,
         }
     }
 }
