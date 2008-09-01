@@ -48,15 +48,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double gain, double floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double mean = (double)(8 - 64);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean - floor) + (double)(long)i) - gain;
-            }
-            return mean - (mean + floor);
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
