@@ -1,11 +1,25 @@
 {
-  "layout_ratio": "edge",
-  "flush_delay_ms": {
-    "readonly": "primary",
-    "idle_ttl_pct": "legacy",
-    "entry_retries": [156, 80, 484, 11],
-    "batch_size_ms": true
+  "readonly": 36,
+  "record_retries": false,
+  "default_depth_pct": "blue",
+  "dry_run": {
+    "warm_size_s": 80.64,
+    "schema_ratio": 65.66,
+    "soft_window_ms": {
+      "stats_window": 500,
+      "cache_timeout_ms": "blue",
+      "metrics_depth": 5225,
+      "compress": false
+    },
+    "min_limit_ms": 7439,
+    "dry_run": true,
+    "sync_retries_count": {
+      "sync_interval": 9.8,
+      "readonly": 33,
+      "idle_ratio": "eu-west",
+      "compress": true
+    }
   },
-  "token_size": 500,
-  "editor_timeout": 21
+  "order_size": false,
+  "min_ttl": "stable"
 }
