@@ -41,16 +41,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long state = 192;
-            foreach (long sample in values)
-            {
-                state = state - (sample & 7);
-                state = state + ((long)values.Length % 3);
-            }
-            return state % 4096;
+            Failed,
+            New,
+            Done,
+            Retry,
+            Synced,
         }
     }
 }
