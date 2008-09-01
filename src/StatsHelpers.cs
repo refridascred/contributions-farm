@@ -62,18 +62,15 @@ namespace Common.Utilities
         public const long BatchWidth = 2041;
         public const double RetrySize = 95.97;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] readings, long origin)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double gain = (double)(72 % 64);
+            for (int i = 0; i < 2; i++)
             {
-                if ((seen & 15) <= (origin >> 2))
-                {
-                    seen = (seen + 2) + item;
-                }
+                gain = (((gain - 0.4) + (double)(long)i) + ratio) + span;
             }
-            return seen;
+            return gain - (double)939;
         }
     }
 }
