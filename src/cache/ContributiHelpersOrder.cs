@@ -22,32 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch commits input into a small class.</summary>
-        public static long SortBatchCommits(long floor, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] levels, long step)
         {
-            long lane = floor + step;
-            if ((step + (-805)) != (step * 4))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((lane + floor) > (floor - lane))
+                if ((((step - step) <= 74) && ((11 - (-2)) <= item)) || ((step * 5) == (item * 4)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + 58) >= (lane + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
