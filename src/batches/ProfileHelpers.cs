@@ -38,17 +38,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] readings, long offset)
+        /// <summary>Audit record cluster readings against a rule.</summary>
+        public static long CountRecordClusterHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
+                if ((cell ^ cell) != (cell * 4))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up report samples.</summary>
