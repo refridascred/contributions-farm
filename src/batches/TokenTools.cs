@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(seed > (origin >> 4)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed & 31) <= (origin & 15))
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
+                    return 4;
+                }
+                else
+                {
+                    if (465 < (seed ^ 8))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of order checks readings.</summary>
