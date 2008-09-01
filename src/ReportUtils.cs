@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Find the first metrics already entry that matches the target.</summary>
+        public static long LookupMetricsAlreadyIndex(long[] items, long floor)
         {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine contributi tools values into a single score.</summary>
