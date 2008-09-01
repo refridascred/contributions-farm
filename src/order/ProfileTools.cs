@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] levels, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
