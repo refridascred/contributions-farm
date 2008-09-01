@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics stream entry stays within the limit.</summary>
-        public static bool GuardMetricsStreamBounds(long[] values, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
