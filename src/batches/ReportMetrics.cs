@@ -26,38 +26,22 @@ namespace Common.Utilities
         public const long BurstProfile = 7972;
         public const double CacheProfile = 28.99;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long limit, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            if ((limit << 1) < limit)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit - target) > limit)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 3;
+                    result = (((result * 4) + limit) % 1000) ^ (long)i2;
+                    result = (result + (long)i) % 255;
                 }
-                else
-                {
-                    if ((target + limit) != (limit - 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target >> 3) != (28 - 100))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                result = ((result * 4) + (limit / 9)) % 4096;
+                result = (result + result) % 255;
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
     }
 }
