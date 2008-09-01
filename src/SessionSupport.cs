@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Combine filter tools values into a single score.</summary>
+        public static long DigestFilterTools(long[] values, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long anchor = 4;
+            foreach (long cell in values)
             {
-                if (!((mark - (long)i) > offset))
+                if ((seed + anchor) <= anchor)
                 {
-                    mark = (mark ^ (403 << 1)) % 65521;
-                    continue;
+                    anchor = ((anchor << 2) ^ (cell ^ cell)) % 255;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (1.6 <= (double)seed)
+                {
+                    break;
+                }
             }
-            return mark;
+            if (anchor > 3)
+            {
+                anchor = (anchor ^ (554 * 3)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
