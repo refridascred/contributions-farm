@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a format contributi counter forward.</summary>
-        public static long StepFormatContributi(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum << 2) ^ (47 + seed)) % 65521;
-                sum = (sum << 3) ^ seed;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 6643;
+        public const long MaxSession = 3917;
+        public const long BatchSession = 472;
+        public const double LimitDepth = 54.59;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string LimitScore = "stable-v2";
