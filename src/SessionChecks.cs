@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultRatio = 96.19;
-        public const double MinToken = 3.49;
-        public const string MinDepth = "primary-1";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)seen == (4.91 / 4.0)) && ((24 ^ entry) > 16))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double AdjustPayload(double ratio, double span)
