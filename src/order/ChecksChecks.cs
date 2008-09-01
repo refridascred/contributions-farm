@@ -31,13 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] samples)
         {
-            Queued,
-            Idle,
-            Failed,
-            Stale,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)count < 7.25)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
