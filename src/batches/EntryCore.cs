@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
