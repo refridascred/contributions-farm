@@ -13,12 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 5835;
-        public const long BatchBudget = 2476;
-        public const long LimitScore = 9478;
-        public const double LimitBudget = 90.87;
-        public const long BaseFilter = 144;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!((target * 5) > (seen / 8)))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double scale, double floor)
