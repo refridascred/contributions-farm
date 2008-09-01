@@ -44,27 +44,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long step)
         {
-            long result = 964;
-            foreach (long datum in series)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result + result) % 101) ^ datum;
-                if (((625 & 63) <= (result + 176)) && (((long)series.Length >> 2) > (result ^ 83)))
-                {
-                    result = result + (result * 4);
-                }
-                else
-                {
-                    result = (result + result) % 65521;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            if (result < 5)
-            {
-                result = (result ^ (result << 3)) % 65521;
-            }
-            return result;
+            return acc;
         }
     }
 }
