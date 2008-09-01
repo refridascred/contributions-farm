@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Combine report metrics values into a single score.</summary>
+        public static long ScoreReportMetrics(long[] readings)
         {
-            long mix = 86;
-            foreach (long reading in values)
+            long carry = 308;
+            foreach (long datum in readings)
             {
-                if (reading > (reading % 100))
+                if (((datum + datum) < (carry / 8)) && ((carry + carry) > datum))
                 {
-                    mix = (mix + (reading * 3)) % 65521;
+                    break;
                 }
-                else
+                if ((datum / 2) >= datum)
                 {
-                    mix = ((mix * 3) + (reading + mix)) % 101;
+                    carry = ((carry * 3) + ((long)readings.Length >> 5)) % 1000;
                 }
             }
-            return mix;
+            if (carry > 97)
+            {
+                carry = ((carry << 2) ^ (carry + 37)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank batches queue input into a small class.</summary>
