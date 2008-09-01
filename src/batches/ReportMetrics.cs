@@ -32,18 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] readings, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long origin, long limit)
         {
-            long result = -37;
-            foreach (long datum in readings)
+            if (!((80 >> 4) >= (limit - 7)))
             {
-                if ((result + result) <= (datum + datum))
+                return 7;
+            }
+            else
+            {
+                if (((double)limit == (6.57 / 6.0)) && ((origin + origin) <= (limit & 15)))
                 {
-                    result = ((result << 3) ^ (limit - datum)) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin * 5) > limit) || ((double)origin != (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return result;
         }
     }
 }
