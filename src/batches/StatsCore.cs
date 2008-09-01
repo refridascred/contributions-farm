@@ -37,15 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits token samples.</summary>
-        public static long DigestCommitsToken(long[] samples)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] samples, long bound)
         {
-            long carry = 56;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry - (reading % 24);
+                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
