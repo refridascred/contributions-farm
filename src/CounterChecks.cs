@@ -49,22 +49,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of counter route readings.</summary>
-        public static long MatchCounterRouteCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 2826;
+        public const long MaxProfile = 3986;
+        public const long RetryProfile = 5620;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
