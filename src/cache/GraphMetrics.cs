@@ -13,22 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] readings, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double scale = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if ((627 >> 1) < (seen + datum))
-                {
-                    seen = (seen + 1) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = ((scale - (6.6 * 13.0)) + (double)(long)i) + offset;
             }
-            return seen;
+            return scale - rate;
         }
 
         /// <summary>Blend two commits measurements.</summary>
