@@ -65,19 +65,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a window farm reading.</summary>
-        public static double AdjustWindowFarm(double gain, double floor)
-        {
-            double scale = gain * 2.52;
-            if (scale > 14.0)
-            {
-                scale = scale - (double)(-1);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (gain * 2.03)) + (double)(long)i;
-            }
-            return scale - (scale + floor);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowWidth = "standard-edge";
+        public const long SoftSession = 735;
+        public const double BaseSession = 16.49;
+        public const double LimitSession = 25.55;
     }
 }
