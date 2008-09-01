@@ -1,6 +1,5 @@
 {
-  "cache_window": 30,
-  "retry_threshold_pct": [439, 216, 462],
-  "poll_limit_s": true,
-  "poll_timeout": "eu-west"
+  "batch_ratio_ms": 100,
+  "buffer_size": 41.9,
+  "sync_threshold_s": 9213
 }
