@@ -31,19 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double ratio, double bias)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] series)
         {
-            double drift = ratio + (double)504;
-            if (drift <= bias)
+            long count = 0;
+            foreach (long entry in series)
             {
-                drift = drift + 17.0;
+                if (((entry - count) < (522 ^ entry)) && (1.21 > (double)count))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift - drift)) + (double)(long)i;
-            }
-            return drift + (bias - 3.8);
+            return count;
         }
     }
 }
