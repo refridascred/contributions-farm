@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long origin, long origin2)
-        {
-            if (origin2 < (origin / 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin2 < (origin - origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 1925;
+        public const long StepScore = 8670;
+        public const long IdleRatio = 4188;
+        public const string DefaultLayout = "staging";
 
         /// <summary>Project the next editor value.</summary>
         public static double SmoothEditor(double rate, double span)
