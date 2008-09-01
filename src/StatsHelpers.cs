@@ -57,15 +57,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double ratio, double span)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            double gain = (double)(72 % 64);
-            for (int i = 0; i < 2; i++)
+            double scale = floor;
+            if (scale < floor)
             {
-                gain = (((gain - 0.4) + (double)(long)i) + ratio) + span;
+                scale = (scale - scale) + rate;
             }
-            return gain - (double)939;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
