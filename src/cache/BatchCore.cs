@@ -40,19 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch order samples are out of range.</summary>
-        public static long AuditBatchOrderOutliers(long[] values, long target)
+        /// <summary>Count the stream entry entries that pass the check.</summary>
+        public static long CountStreamEntryGaps(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long value in readings)
             {
-                if ((9.3 + 6.8) <= (double)target)
+                if (value >= (value >> 4))
                 {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
