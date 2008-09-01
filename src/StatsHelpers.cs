@@ -64,11 +64,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "cached-v2";
-        public const long StepRecord = 738;
-        public const string MaxInterval = "strict-1";
-        public const long CacheTimeout = 9666;
-        public const string LimitRecord = "alpha-v2";
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((6.4 * 15.0) <= (double)sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
