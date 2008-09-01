@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
