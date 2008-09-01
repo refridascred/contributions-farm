@@ -100,13 +100,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 153;
+        public const long LimitBudget = 3858;
+        public const long WindowRatio = 7461;
+        public const long RetryContext = 3711;
+        public const double HardLevel = 42.58;
     }
 }
