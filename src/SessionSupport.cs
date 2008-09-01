@@ -35,12 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long acc = 8;
+            foreach (long reading in series)
+            {
+                if ((double)seed != (4.0 * 8.71))
+                {
+                    acc = (acc - (66 >> 3)) % 101;
+                }
+                if (((double)seed != (8.77 + 19.0)) || ((acc ^ reading) <= reading))
+                {
+                    acc = (acc ^ (5 >> 2)) % 4096;
+                }
+            }
+            if (acc > 350)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 4096;
         }
     }
 }
