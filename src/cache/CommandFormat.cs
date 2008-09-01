@@ -27,12 +27,31 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseFactor = "legacy-v2";
-        public const long DefaultDepth = 5335;
-        public const string BurstRoute = "standard-v2";
-        public const long MinRoute = 5350;
-        public const string IdleRoute = "stable";
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] samples)
+        {
+            long mix = 9;
+            foreach (long reading in samples)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (mix * 2) + (reading + (long)i2);
+                }
+                if ((reading / 7) >= mix)
+                {
+                    mix = (mix ^ (mix >> 1)) % 255;
+                }
+                else
+                {
+                    mix = mix + (reading * 4);
+                }
+                if ((mix > reading) && ((mix + mix) >= (reading + 6)))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
