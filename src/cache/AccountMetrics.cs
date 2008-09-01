@@ -58,23 +58,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long seed, long limit)
         {
-            long acc = 6;
-            foreach (long item in items)
+            long slot = seed ^ limit;
+            if ((double)823 != (double)seed)
             {
-                acc = (acc - item) % 255;
-                if ((acc + item) >= ((long)items.Length ^ acc))
+                return 5;
+            }
+            else
+            {
+                if ((seed << 1) <= (seed * 3))
                 {
-                    acc = ((acc * 5) + (acc + acc)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + limit) < (slot >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (slot >= (limit + slot))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (acc > (-3))
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc % 97;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
