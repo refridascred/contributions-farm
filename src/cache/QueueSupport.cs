@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] values, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long value in readings)
             {
-                if (reading <= (bound >> 5))
+                if ((((37 >> 3) == (value >> 1)) || ((value / 2) >= (62 + count))) && ((8.0 + 0.92) < (double)value))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
