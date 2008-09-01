@@ -33,12 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 580;
-        public const long BurstQueue = 6308;
-        public const long IdleQueue = 798;
-        public const double BaseSpan = 38.67;
-        public const long BatchQueue = 9201;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 9646;
+        public const long WindowRatio = 6453;
+        public const double RetryWidth = 89.13;
+        public const string BaseChannel = "staging-v2";
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
