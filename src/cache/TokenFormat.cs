@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long IdleDepth = 5123;
         public const long SoftContext = 7924;
 
-        /// <summary>Iterate the layout record series from a seed.</summary>
-        public static long StepLayoutRecord(long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long result = 64;
+            foreach (long sample in values)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((sample >= (result & 31)) || ((sample * 3) < sample))
+                {
+                    result = (result - (sample + (-6))) % 1000;
+                }
             }
-            return acc;
+            if (result < 441)
+            {
+                result = result - (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
