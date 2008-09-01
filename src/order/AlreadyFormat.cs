@@ -15,12 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Failed,
+            Queued,
+            Retry,
             New,
-            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
