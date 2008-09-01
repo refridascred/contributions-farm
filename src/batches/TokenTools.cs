@@ -27,15 +27,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double weight, double floor)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            double scale = (double)(29 & 15);
-            if (scale <= scale)
+            double drift = bias;
+            if (drift < (double)1)
             {
-                scale = ((scale - 9.58) - weight) + floor;
+                drift = drift + scale;
             }
-            return scale + scale;
+            return drift + (drift - scale);
         }
     }
 }
