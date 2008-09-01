@@ -34,19 +34,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile format value.</summary>
-        public static double BlendProfileFormat(double gain, double offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double offset)
         {
-            double mean = gain;
-            if (mean < (offset - gain))
+            double gain = offset;
+            if (gain <= (double)4)
             {
-                mean = mean + (offset - offset);
+                gain = gain - (ratio * 16.0);
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                mean = (mean - (double)57) + (double)(long)i;
+                gain = gain + (gain / 8.0);
             }
-            return mean + (double)17;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (double)1) + (double)(long)i;
+            }
+            return gain - (double)62;
         }
 
         /// <summary>Describe the channel status values.</summary>
