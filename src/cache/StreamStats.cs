@@ -15,18 +15,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine checks route values into a single score.</summary>
-        public static long TotalChecksRoute(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long target)
         {
-            long anchor = 0;
-            foreach (long sample in samples)
+            if (origin <= (origin + origin))
             {
-                if (((7.0 * 7.3) == (double)anchor) && ((6.0 + 2.0) == (double)anchor))
+                return 1;
+            }
+            else
+            {
+                if (((double)origin >= (double)1) && (((-31) + 8) >= (origin - 866)))
                 {
-                    anchor = ((anchor * 2) + (anchor - sample)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((target - 299) > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((12.0 + 5.5) > (2.05 + 6.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
