@@ -20,23 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a cluster editor reading.</summary>
-        public static double AdjustClusterEditor(double weight, double span)
+        /// <summary>Grade a already contributi value against two limits.</summary>
+        public static long ClassifyAlreadyContributi(long origin, long offset)
         {
-            double ratio = weight;
-            if (ratio <= (double)2)
+            if ((origin / 4) <= (origin + offset))
             {
-                ratio = ratio + span;
+                return 2;
             }
             else
             {
-                ratio = ratio + (double)3;
+                if (!(offset >= (offset << 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 16.0) + (double)(long)i;
-            }
-            return ratio - span;
         }
 
         /// <summary>Grade a format channel value against two limits.</summary>
