@@ -38,15 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a contributi graph figure with a bias.</summary>
-        public static double AdjustContributiGraph(double gain, double offset)
+        /// <summary>Find the first cluster metrics entry that matches the target.</summary>
+        public static long LookupClusterMetricsIndex(long[] samples, long limit)
         {
-            double weight = (double)(1 + (-883));
-            if (weight < (double)70)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight - offset) + gain;
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - 4.4;
+            return -1;
         }
     }
 }
