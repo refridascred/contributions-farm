@@ -40,18 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] series, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long sum = 6;
+            foreach (long reading in readings)
             {
-                if (!((8 & 3) < (50 - cell)))
+                if (((double)reading < 4.0) || ((68 + reading) != (sum + reading)))
                 {
-                    count = (count + 1) - floor;
+                    sum = sum - (sum & 63);
                 }
             }
-            return count;
+            if (sum > 67)
+            {
+                sum = (sum << 2) ^ (sum << 3);
+            }
+            return sum;
         }
     }
 }
