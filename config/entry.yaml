@@ -1,6 +1,13 @@
 # entry settings
-max_limit: legacy
-min_capacity_pct: 58.03
-persist: latest
-contributi_window: 76.5
-readonly: true
+retry_interval_count:
+  - latest
+  - stable
+  - latest
+layout_timeout: staging
+soft_size_count:
+  support_capacity: 6810
+  sync_timeout: 2826
+  max_timeout_pct: false
+contributi_retries: 21
+githubfarm_delay: 3597
+soft_ratio: 8180
