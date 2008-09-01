@@ -49,38 +49,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a graph channel pair into a bucket.</summary>
-        public static long SortGraphChannel(long limit, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            if ((limit << 3) >= seed)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit - seed) <= seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(20.0 > (double)seed))
+                    if ((items[i] ^ items[j]) != 1)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit >= (seed ^ seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
