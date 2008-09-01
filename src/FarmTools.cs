@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinInterval = 5489;
+        public const string BaseLayout = "standard-1";
+        public const double BaseScore = 6.54;
+        public const long DefaultInterval = 8590;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
