@@ -58,11 +58,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 4299;
-        public const long BaseFilter = 5393;
-        public const long BurstFilter = 5296;
-        public const long LimitScore = 5484;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items)
+        {
+            long acc = 6;
+            foreach (long item in items)
+            {
+                acc = (acc - item) % 255;
+                if ((acc + item) >= ((long)items.Length ^ acc))
+                {
+                    acc = ((acc * 5) + (acc + acc)) % 101;
+                }
+            }
+            if (acc > (-3))
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long bound, long limit)
