@@ -1,10 +1,14 @@
 # Command notes
 
-The schema report groups every checks by tools.
-The context module keeps order values in sync with the farm cache.
+Each window is validated before it reaches the buffer queue.
+Keep checks and notes names short and lowercase.
+
+The metric report groups every farm by contributi.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every context change
-- Validate session input early
-- Prefer layout defaults
+- Document new notes fields
+- Log every contributi change
+- Review profile limits each release
+- Validate tools input early
