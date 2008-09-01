@@ -1,36 +1,10 @@
 # support settings
-max_retries:
-  - 452
-  - 77
-  - 400
-enabled: 250
-verbose:
-  soft_delay:
-    queue_size: 4444
-    flush_delay_s: true
-    default_window: open
-    layout_delay:
-      - local
-      - standard
-      - green
-      - standard
-    sync_limit_count: 91
-    enabled:
-      - cached
-      - fallback
-      - legacy
-  max_retries_count:
-    - green
-    - legacy
-    - standard
-    - eu-west
-  max_capacity: strict
-  verbose: true
-  hard_depth_count: 18
-  support_ttl:
-    - cached
-    - edge
-    - fallback
-    - standard
-retry_limit: 100
-sync_delay_count: 1.51
+max_capacity_count:
+  cache_interval: blue
+  cluster_retries: 250
+  command_timeout: 500
+  persist: true
+  warm_retries_s: 5881
+idle_size_count: 6.89
+max_ratio_pct: 5660
+warm_depth_s: 23
