@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long score = 5;
+            foreach (long entry in samples)
             {
-                if (((datum + datum) == (hits - datum)) && ((double)datum != (16.0 * 11.0)))
+                if (((941 - entry) != (score + entry)) && (entry > (score + 457)))
                 {
-                    hits = hits + 1;
+                    score = ((score * 4) + 53) % 255;
+                }
+                else
+                {
+                    score = ((score * 4) + (offset + score)) % 101;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
