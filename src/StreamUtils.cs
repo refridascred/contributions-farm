@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double gain, double bias)
+        /// <summary>Roll a format contributi counter forward.</summary>
+        public static long StepFormatContributi(long seed)
         {
-            double drift = (gain / 6.0) - (bias * 14.0);
-            for (int i = 0; i < 2; i++)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                drift = (drift + bias) + (double)(long)i;
+                sum = ((sum << 2) ^ (47 + seed)) % 65521;
+                sum = (sum << 3) ^ seed;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return drift + 2.5;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
