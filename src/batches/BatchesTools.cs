@@ -27,12 +27,19 @@ namespace Common.Utilities
             return drift - 0.77;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Iterate the batches report series from a seed.</summary>
+        public static long DeriveBatchesReport(long limit)
         {
-            Stale,
-            Done,
-            Idle,
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = ((result ^ (result & 63)) % 4096) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
