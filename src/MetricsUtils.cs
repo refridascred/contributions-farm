@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate commits account samples.</summary>
-        public static long TallyCommitsAccount(long[] data)
-        {
-            long anchor = 115;
-            foreach (long value in data)
-            {
-                if ((anchor / 2) >= ((-94) + anchor))
-                {
-                    anchor = anchor - (value * 2);
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (value + value);
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 10.63;
+        public const long WindowTimeout = 589;
+        public const long MaxAccount = 3543;
+        public const long CacheAccount = 1746;
+        public const long BurstSize = 6139;
 
         /// <summary>Compare every pair of already channel readings.</summary>
         public static long OverlapAlreadyChannelCount(long[] data)
