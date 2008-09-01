@@ -1,7 +1,6 @@
 # githubfarm settings
-flush_size: 37.3
-dry_run: primary
-support_ttl: 86.5
-hard_delay_s:
-  - 473
-  - 147
+format_retries: 65.73
+readonly: 100
+min_size: 69.09
+flush_depth_count: stable
+compress: 8956
