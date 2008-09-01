@@ -53,22 +53,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings, long origin)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long result = 482;
-            foreach (long datum in readings)
-            {
-                if ((double)datum < 0.31)
-                {
-                    result = result - (origin - result);
-                }
-                if (origin < (result >> 1))
-                {
-                    result = (result * 3) + (result % 60);
-                }
-            }
-            return result;
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
