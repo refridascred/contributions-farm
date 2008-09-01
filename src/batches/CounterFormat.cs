@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] readings, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long target)
         {
             bool stale = true;
-            foreach (long value in readings)
+            foreach (long reading in samples)
             {
-                if (value >= bound)
+                if (reading > target)
                 {
                     stale = false;
                     break;
