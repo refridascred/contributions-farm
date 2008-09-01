@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Draft,
-            Stale,
-            Queued,
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
