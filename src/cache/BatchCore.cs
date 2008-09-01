@@ -33,27 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] readings, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series, long limit)
         {
-            long carry = 0;
-            foreach (long value in readings)
+            long mark = -617;
+            foreach (long datum in series)
             {
-                carry = carry ^ value;
-                if (((double)origin < (9.41 - 4.08)) && (value > (951 - carry)))
-                {
-                    carry = (carry << 3) ^ (carry / 6);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (249 + value)) % 4096;
-                }
+                mark = (mark + (limit - mark)) - datum;
             }
-            if (carry > 8)
+            if (mark > 20)
             {
-                carry = carry - (carry / 3);
+                mark = (mark * 3) + (2 * 3);
             }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
