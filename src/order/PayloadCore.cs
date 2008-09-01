@@ -36,20 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 7088;
+        public const string LimitTimeout = "legacy-edge";
+        public const long HardDepth = 5167;
+        public const long BatchContributi = 583;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultAccount = 1070;
