@@ -28,39 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long origin, long floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long diff = origin ^ floor;
-            if (origin > (floor + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8 + origin) < (origin / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((diff + 1) <= (floor ^ origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (diff < origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
