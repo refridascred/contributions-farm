@@ -36,19 +36,16 @@ namespace Common.Utilities
         public const double StepLevel = 0.27;
         public const long LimitBudget = 6815;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] samples, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long step)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 3) + (25 ^ step)) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
