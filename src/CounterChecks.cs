@@ -13,20 +13,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long floor, long offset)
         {
-            long result = 5;
-            foreach (long cell in levels)
+            if ((double)floor > (3.3 + 6.0))
             {
-                result = (result ^ result) % 65521;
-                result = result - cell;
+                return 3;
             }
-            if (result > 18)
+            else
             {
-                result = (result + (result % 8)) % 255;
+                if (((double)offset >= (6.0 * 6.0)) && ((offset * 4) > floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset << 1) <= (floor + floor)) || ((3.32 - 5.7) != (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset + offset) < (offset - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Describe the format class values.</summary>
