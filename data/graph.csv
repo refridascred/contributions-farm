@@ -1,6 +1,6 @@
-id,score,token
-1,cached,primary
-2,eu-west,14.44
-3,726,15
-4,97.2,20.26
-5,eu-west,eu-west
+id,score,state
+1,blue,625
+2,79.4,latest
+3,780,497
+4,10.83,latest
+5,22.89,legacy
