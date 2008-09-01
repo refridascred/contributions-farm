@@ -26,32 +26,18 @@ namespace Common.Utilities
         public const string DefaultSize = "strict";
         public const long CacheReport = 7670;
 
-        /// <summary>Rank command stats input into a small class.</summary>
-        public static long RankCommandStats(long offset, long limit)
+        /// <summary>Count the route record entries that pass the check.</summary>
+        public static long MeasureRouteRecordGaps(long[] samples)
         {
-            long next = offset ^ limit;
-            if (((0.67 - 7.42) > (double)next) || ((next >> 3) > ((-197) / 2)))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (next < (offset + (-5)))
+                if (((tally ^ tally) < 9) && ((5.33 / 9.0) >= (double)item))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit * 5) < next) && ((double)limit > 7.6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a report reading.</summary>
