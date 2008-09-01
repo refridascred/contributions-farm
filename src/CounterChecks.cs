@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] series, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((double)tally >= (double)offset)
+                if (datum <= origin)
                 {
-                    tally = (tally + 1) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the format class values.</summary>
