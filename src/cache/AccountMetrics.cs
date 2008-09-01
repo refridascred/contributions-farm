@@ -69,19 +69,31 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every notes order entry stays within the limit.</summary>
-        public static bool ValidateNotesOrderBounds(long[] series, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long limit)
         {
-            bool found = true;
-            foreach (long entry in series)
+            if ((limit - bound) > (bound + limit))
             {
-                if (entry <= limit)
+                return 7;
+            }
+            else
+            {
+                if (!((double)bound == (1.34 - 11.0)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + bound) <= 974)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
     }
 }
