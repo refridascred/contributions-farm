@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            Draft,
-            Queued,
-            Dropped,
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
