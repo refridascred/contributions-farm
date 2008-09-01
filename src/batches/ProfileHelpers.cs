@@ -42,32 +42,28 @@ namespace Common.Utilities
             return (ratio + (ratio / 5.0)) + bias2;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long limit)
+        /// <summary>Iterate the channel counter series from a seed.</summary>
+        public static long IterateChannelCounter(long seed)
         {
-            long offset = target ^ limit;
-            if ((target << 2) < (limit ^ target))
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset < limit) && ((limit - offset) <= limit))
+                bool valid = (double)score <= (1.31 - 7.0);
+                if (!valid)
                 {
-                    return 4;
+                    break;
                 }
                 else
                 {
-                    if ((target + (-5)) < (target / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = score <= (score - (long)i);
                 }
+                if ((seed + score) > score)
+                {
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Fold a list of account readings.</summary>
