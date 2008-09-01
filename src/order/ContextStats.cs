@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftInterval = 4679;
-        public const long IdleCount = 953;
-        public const long LimitPayload = 3587;
+        /// <summary>Audit token buffer readings against a rule.</summary>
+        public static long TallyTokenBufferGaps(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((69 << 2) <= (origin / 4))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] data, long origin)
