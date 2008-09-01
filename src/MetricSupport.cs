@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 98.0;
-        public const long DefaultMetric = 2893;
-        public const long WindowBudget = 792;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] samples)
+        {
+            long acc = 494;
+            foreach (long reading in samples)
+            {
+                if ((reading << 1) > (acc ^ reading))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (reading - acc)) % 65521;
+                }
+                if ((double)acc <= 5.11)
+                {
+                    acc = acc - (acc + reading);
+                }
+                acc = (acc ^ (reading / 5)) % 65521;
+                if (6.65 >= (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
