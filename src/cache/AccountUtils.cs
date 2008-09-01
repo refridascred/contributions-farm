@@ -26,13 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (reading >= (matches ^ reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
