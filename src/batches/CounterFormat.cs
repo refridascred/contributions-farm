@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            Stale,
-            Pending,
-            Synced,
+            long carry = 63;
+            foreach (long datum in levels)
+            {
+                carry = ((carry ^ (carry / 9)) % 255) + datum;
+            }
+            if (carry > 787)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
