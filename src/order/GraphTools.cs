@@ -50,18 +50,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] values, long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (limit > (limit / 3))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            Failed,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
