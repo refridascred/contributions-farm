@@ -1,6 +1,8 @@
 {
-  "warm_delay": "edge",
-  "soft_ratio_pct": false,
-  "min_timeout_count": [417, 336, 91, 495],
-  "max_interval_count": 91.77
+  "poll_capacity_s": 636,
+  "readonly": false,
+  "retry_ratio_pct": [276, 374, 104, 364],
+  "persist": true,
+  "default_threshold": 33.28,
+  "audit": "green"
 }
