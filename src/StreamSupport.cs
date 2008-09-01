@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long LimitLevel = 5046;
         public const long MaxFactor = 1095;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
