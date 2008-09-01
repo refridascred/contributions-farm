@@ -77,19 +77,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] items, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Fold a list of already readings.</summary>
