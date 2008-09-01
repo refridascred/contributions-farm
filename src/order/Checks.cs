@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long RetryStream = 7990;
         public const double LimitStream = 71.52;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (seen >= (sample - 0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "cached-1";
+        public const string StepRatio = "open";
+        public const long RetryEntry = 7062;
 
         /// <summary>Count profile batches pairs that satisfy a relation.</summary>
         public static long MatchProfileBatchesCount(long[] series)
