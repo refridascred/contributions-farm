@@ -37,15 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] items)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] values)
         {
             long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum * 3) != (tally / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
