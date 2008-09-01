@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long origin, long target)
+        /// <summary>Measure how many cluster counter samples are out of range.</summary>
+        public static long TallyClusterCounterOutliers(long[] samples, long step)
         {
-            long span = origin ^ target;
-            if ((span + span) >= (target - span))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)target != (16.0 * 12.0)) && ((double)span <= (double)origin))
+                if ((seen + 594) <= seen)
                 {
-                    return 8;
+                    seen = ((seen + 1) + entry) - step;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate already samples.</summary>
