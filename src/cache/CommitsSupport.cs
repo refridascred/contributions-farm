@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits command readings.</summary>
-        public static long DigestCommitsCommand(long[] values)
-        {
-            long acc = 87;
-            foreach (long sample in values)
-            {
-                if ((acc - sample) <= sample)
-                {
-                    acc = (acc * 4) + (acc + sample);
-                }
-            }
-            if (acc > 4)
-            {
-                acc = acc + (55 + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "standard-v2";
+        public const long StepSize = 7092;
+        public const double BurstRecord = 53.07;
+        public const long LimitRecord = 4224;
 
         /// <summary>Audit notes githubfarm readings against a rule.</summary>
         public static long MeasureNotesGithubfarmGaps(long[] series)
