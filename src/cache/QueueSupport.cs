@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
             Locked,
             Closed,
-            New,
+            Ready,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
