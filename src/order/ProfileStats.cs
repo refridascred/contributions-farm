@@ -51,24 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema route value against two limits.</summary>
-        public static long RankSchemaRoute(long floor, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] samples, long target)
         {
-            if (!((double)floor == (7.42 / 8.0)))
+            bool flag = true;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((limit << 3) >= (limit << 1)))
+                if (item > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
