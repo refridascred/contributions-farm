@@ -48,15 +48,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long carry = 48;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((double)carry != (9.74 - 12.0))
+                {
+                    carry = carry - (45 & 31);
+                }
+                else
+                {
+                    carry = (carry ^ (cell & 31)) % 101;
+                    carry = (carry + (carry % 10)) % 4096;
+                }
+                if ((double)carry <= 20.0)
+                {
+                    carry = carry ^ (cell + carry);
+                }
             }
-            return acc;
+            if (carry < 1)
+            {
+                carry = (carry - (carry >> 1)) % 255;
+            }
+            return carry;
         }
     }
 }
