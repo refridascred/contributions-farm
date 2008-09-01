@@ -1,10 +1,9 @@
 # support settings
-retry_ratio_count:
-  - latest
-  - latest
-max_size_ms:
-  - 402
-  - 125
-  - 133
-flush_window_s: 30
-route_limit: false
+cache_threshold_count: true
+retry_capacity_s: 35.71
+audit: 6454
+compress:
+  - legacy
+  - legacy
+  - local
+checks_timeout: green
