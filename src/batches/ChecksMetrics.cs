@@ -41,11 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowAccount = "alpha";
-        public const long BurstRatio = 7501;
-        public const double MinAccount = 19.46;
-        public const long HardTimeout = 2472;
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long RankOrder(long target, long step)
