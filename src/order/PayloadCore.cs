@@ -53,11 +53,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 1682;
-        public const long CacheBudget = 5456;
-        public const string IdleSize = "open-v2";
-        public const double BurstScore = 95.93;
-        public const double BurstEntry = 54.69;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 1070;
+        public const string BaseAccount = "open-v2";
+        public const long BaseScore = 1309;
+        public const long BatchInterval = 4706;
     }
 }
