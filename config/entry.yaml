@@ -1,18 +1,47 @@
 # entry settings
-profile_window: false
-entry_delay:
-  burst_threshold_s: stable
-  compress: 1024
-  hard_capacity: strict
-  commits_ttl:
-    route_interval:
+dry_run:
+  - 109
+  - 380
+  - 417
+cache_retries: 17.01
+retry_window: 23.24
+poll_threshold_pct:
+  max_retries_s:
+    default_ttl_count: 500
+    verbose: 95.13
+    poll_depth: 94.74
+    checks_capacity: 40
+  layout_ratio:
+    retry_ttl:
+      - legacy
       - open
+    enabled: 6942
+    flush_delay_ms:
+      - 68
+      - 23
+      - 136
+      - 192
+  cache_timeout_pct: eu-west
+  sync_depth_s:
+    filter_interval: false
+    githubfarm_ratio: 3322
+    schema_retries: eu-west
+    burst_capacity: 78.91
+    account_window: true
+  graph_interval:
+    min_timeout: edge
+    strict: open
+    soft_window: 9330
+  dry_run:
+    entry_window: false
+    hard_window_s:
+      - fallback
+      - edge
+      - strict
+    flush_timeout_ms:
+      - blue
       - open
-    audit: 1516
-    strict: 80.35
-    window_timeout: 1024
-    verbose: 61
-batch_timeout: true
-verbose: 67.74
-cache_timeout_s: 16
-base_threshold: 82
+      - fallback
+    sync_size: standard
+    metrics_depth: 30
+hard_depth_count: false
