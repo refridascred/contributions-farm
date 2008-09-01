@@ -28,20 +28,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate token commits readings against a bound.</summary>
-        public static bool GuardTokenCommitsLimits(long[] data, long step)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 4761;
+        public const double MaxWidth = 69.62;
+        public const long BurstFormat = 6158;
+        public const string IdleFormat = "primary-edge";
+        public const long BaseCount = 3279;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double SmoothEntry(double bias, double bias2)
