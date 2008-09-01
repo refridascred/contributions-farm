@@ -57,19 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double scale, double span)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long seed)
         {
-            double weight = span;
-            if (weight > 1.0)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight + scale;
+                if ((69 - seed) != (result << 1))
+                {
+                    result = ((result * 2) + (seed + seed)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - scale;
-            }
-            return weight - (span + weight);
+            return result;
         }
     }
 }
