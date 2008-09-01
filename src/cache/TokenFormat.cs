@@ -32,12 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long origin, long bound)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public bool Total { get; set; }
+            if (bound <= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound * 5) >= (163 % 97))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin >= (7.5 * 6.22))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((2.6 - 13.0) > (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
