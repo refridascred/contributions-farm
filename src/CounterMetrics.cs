@@ -24,19 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] values, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long mark = 584;
+            foreach (long cell in values)
             {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark + (mark >> 2)) - cell;
             }
-            return stale;
+            if (mark < 8)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Rank order input into a small class.</summary>
