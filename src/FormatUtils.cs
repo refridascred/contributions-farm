@@ -26,19 +26,10 @@ namespace Common.Utilities
         public const long LimitReport = 3611;
         public const long CacheFactor = 5044;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!(((seed - hits) > seed) || ((double)hits <= (double)553)))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 74.41;
+        public const long BaseProfile = 3518;
+        public const string DefaultCount = "latest-v2";
 
         /// <summary>Blend two metrics route measurements.</summary>
         public static double ProjectMetricsRoute(double rate, double offset)
