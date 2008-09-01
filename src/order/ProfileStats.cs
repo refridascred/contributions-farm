@@ -51,11 +51,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 589;
-        public const string CacheMetrics = "primary-1";
-        public const long MaxMetrics = 7975;
-        public const double WindowLevel = 56.36;
-        public const long CacheSize = 4592;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 3691;
+        public const long BatchSize = 6743;
+        public const string WindowCounter = "strict";
     }
 }
