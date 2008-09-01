@@ -54,11 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double scale, double bias)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            double rate = (double)(68 + 28);
+            if (rate > rate)
+            {
+                rate = (rate + scale) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (8.88 + rate)) + (double)(long)i;
+            }
+            return rate - (scale / 8.0);
         }
     }
 }
