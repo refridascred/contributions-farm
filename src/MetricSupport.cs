@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] levels, long origin)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (seen < (seen + seen))
-                {
-                    seen = ((seen + 1) + reading) + origin;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Count the farm payload entries that pass the check.</summary>
