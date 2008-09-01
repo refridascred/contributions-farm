@@ -39,23 +39,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] samples, long limit)
+        /// <summary>Match up editor metric samples.</summary>
+        public static long MatchEditorMetricCount(long[] readings)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc * 4) + acc) % 65521) + sample;
-                if ((limit & 63) < ((long)samples.Length % 100))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = acc + acc;
-                }
-                else
-                {
-                    acc = (acc + (acc >> 3)) % 97;
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
