@@ -1,4 +1,5 @@
 # githubfarm settings
-support_interval: 69.31
-report_capacity: stable
-window_ratio: 77.36
+burst_interval_ms: false
+strict: 93
+poll_ttl_count: 70.4
+verbose: primary
