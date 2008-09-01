@@ -1,4 +1,6 @@
 # entry settings
-cluster_window: 76.61
-poll_limit_pct: open
-warm_delay_s: false
+max_limit: legacy
+min_capacity_pct: 58.03
+persist: latest
+contributi_window: 76.5
+readonly: true
