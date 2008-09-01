@@ -70,18 +70,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] samples, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally ^ item) > (item + origin))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Locked,
+            Retry,
         }
     }
 }
