@@ -55,18 +55,15 @@ namespace Common.Utilities
         public const long DefaultRatio = 8397;
         public const long IdleRatio = 3578;
 
-        /// <summary>Count the batch session entries that pass the check.</summary>
-        public static long AuditBatchSessionGaps(long[] series, long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mark = 44;
+            foreach (long sample in readings)
             {
-                if ((origin + count) <= (datum - origin))
-                {
-                    count = count + 2;
-                }
+                mark = ((((mark << 2) ^ 0) % 255) ^ sample) - limit;
             }
-            return count;
+            return mark;
         }
     }
 }
