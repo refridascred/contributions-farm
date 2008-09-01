@@ -40,16 +40,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate commits graph samples.</summary>
-        public static long FoldCommitsGraph(long[] samples, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long carry = 44;
-            foreach (long sample in samples)
-            {
-                carry = (carry + (carry - sample)) % 97;
-                carry = (carry * 2) + (seed - seed);
-            }
-            return carry;
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
