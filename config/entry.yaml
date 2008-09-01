@@ -1,19 +1,10 @@
 # entry settings
-enabled: 46
-compress:
-  poll_window: open
-  batch_retries_pct:
-    min_ttl: 5
-    audit: false
-    min_timeout_ms: 82
-  audit: 3233
-  base_interval: strict
-  base_threshold:
-    batch_depth_s: 12.91
-    audit: green
-    verbose: 28
-    retry_window_count: legacy
-  flush_size_ms: 500
-audit: true
-batch_retries: 100
-readonly: 3316
+retry_size_pct: edge
+support_threshold:
+  poll_retries: cached
+  cache_retries_ms: stable
+  base_threshold: eu-west
+  compress: 77
+  retry_timeout: eu-west
+dry_run: 81
+warm_delay_pct: blue
