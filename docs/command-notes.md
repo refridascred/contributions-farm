@@ -1,12 +1,11 @@
 # Command notes
 
-A session that stays idle for too long is moved to the checks list.
-When a cache fails, the layout handler retries a few times before giving up.
-The graph report groups every entry by entry.
+Each entry is validated before it reaches the channel queue.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Keep session and route names short and lowercase.
 
 ## Guidelines
 
-- Keep queue values small
-- Review cache limits each release
+- Prefer metrics defaults
 - Log every format change
-- Document new stats fields
+- Keep notes values small
