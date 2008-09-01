@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseSize = 68.94;
-        public const long LimitScore = 2647;
-        public const long SoftCounter = 7391;
-        public const long LimitWidth = 6404;
-        public const long WindowCounter = 9108;
+        /// <summary>Project the next batches already value.</summary>
+        public static double ProjectBatchesAlready(double bias, double offset)
+        {
+            double scale = (double)(1 * 4);
+            return (scale - (bias / 6.0)) + offset;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryOrder = 4.97;
