@@ -52,22 +52,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] items, long offset)
+        /// <summary>Classify a graph channel pair into a bucket.</summary>
+        public static long SortGraphChannel(long limit, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if ((limit << 3) >= seed)
             {
-                if (((11.0 * 2.9) < (double)entry) || ((entry & 255) <= (count ^ count)))
+                return 7;
+            }
+            else
+            {
+                if (!((limit - seed) <= seed))
                 {
-                    count = (count + 2) + offset;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!(20.0 > (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit >= (seed ^ seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
