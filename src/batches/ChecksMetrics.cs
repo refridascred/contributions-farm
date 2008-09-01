@@ -36,32 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series)
-        {
-            long mark = 3;
-            foreach (long item in series)
-            {
-                mark = (mark ^ (item + 85)) % 255;
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = (mark ^ item) ^ (long)i;
-                }
-                if (!(mark > (93 - mark)))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                else
-                {
-                    mark = mark - (mark << 3);
-                }
-            }
-            if (mark < 627)
-            {
-                mark = (mark << 3) ^ (mark % 24);
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowAccount = "alpha";
+        public const long BurstRatio = 7501;
+        public const double MinAccount = 19.46;
+        public const long HardTimeout = 2472;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long RankOrder(long target, long step)
