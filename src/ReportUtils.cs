@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double scale, double span)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double rate = (2.0 / 3.0) / 8.0;
-            if (rate < (7.0 - 11.0))
-            {
-                rate = ((rate - 0.4) - scale) + span;
-            }
-            else
-            {
-                rate = rate - (double)728;
-            }
-            return rate + (rate - rate);
+            Done,
+            Active,
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Accumulate stats samples.</summary>
