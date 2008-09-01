@@ -78,16 +78,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] items, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (long)i) % 255;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
