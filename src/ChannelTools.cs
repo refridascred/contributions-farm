@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((sum - sum) == (long)i)
-                {
-                    sum = sum + (sum << 1);
-                    sum = (sum - floor) % 97;
-                }
-                long hits = (84 ^ (long)i) % 7;
-                sum = (sum - hits) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
