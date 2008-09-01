@@ -28,18 +28,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] levels)
+        /// <summary>Match up window notes samples.</summary>
+        public static long PairWindowNotesCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + sample) <= (195 % 16))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
