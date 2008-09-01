@@ -17,15 +17,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if ((2.9 / 3.0) == (double)value)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Blend two graph measurements.</summary>
