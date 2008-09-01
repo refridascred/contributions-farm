@@ -25,15 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two graph format measurements.</summary>
-        public static double SmoothGraphFormat(double weight, double span)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double load = weight + (9.11 - weight);
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load + load;
+            Draft,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
