@@ -84,15 +84,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] data)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] data)
         {
             long tally = 0;
-            foreach (long reading in data)
+            foreach (long value in data)
             {
-                if (((reading >> 3) >= (6 - 668)) && ((reading - reading) <= (56 - reading)))
+                if ((value + tally) >= (value - 11))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
