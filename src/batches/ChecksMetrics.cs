@@ -34,19 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((0.3 - 7.84) < (double)item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowWidth = "latest-1";
+        public const string CacheLevel = "staging-v2";
+        public const string WindowLevel = "latest";
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long RankOrder(long target, long step)
