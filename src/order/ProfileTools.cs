@@ -64,9 +64,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultWidth = 1092;
-        public const long MaxCounter = 8191;
-        public const long BatchRatio = 7069;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
