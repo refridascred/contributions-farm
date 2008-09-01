@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a account metric figure with a bias.</summary>
-        public static double AdjustAccountMetric(double ratio, double floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            double ratio2 = (double)(22 + 38);
-            if (ratio2 < (ratio / 9.0))
-            {
-                ratio2 = ratio2 - (ratio2 / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 - (floor - 11.0);
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
