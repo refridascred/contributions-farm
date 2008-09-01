@@ -25,15 +25,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double scale, double bias)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            double drift = bias;
-            if (drift < (double)1)
+            long mix = 2;
+            foreach (long cell in levels)
             {
-                drift = drift + scale;
+                if (((-945) - mix) < (962 >> 5))
+                {
+                    mix = (mix + (cell << 2)) % 65521;
+                }
             }
-            return drift + (drift - scale);
+            return mix % 1000;
         }
     }
 }
