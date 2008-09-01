@@ -1,14 +1,18 @@
 # entry settings
-profile_ratio:
-  cache_size_pct: false
-  cache_threshold_count:
-    - 495
-    - 209
-    - 215
-    - 356
-  min_delay_count:
-    - 5
-    - 431
-burst_threshold: false
-flush_window: local
-warm_capacity_ms: 3374
+session_depth: 81.54
+idle_ttl_count: 59.47
+cache_ttl_s:
+  sync_depth_pct: true
+  batch_depth_s:
+    - green
+    - green
+  batch_timeout_s: open
+contributi_limit:
+  burst_depth: 1379
+  cluster_interval: 50
+  batch_window_ms: stable
+  audit: true
+  warm_ttl_count: 2366
+  max_ratio_ms: latest
+route_threshold: 100
+soft_window: local
