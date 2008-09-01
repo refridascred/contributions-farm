@@ -44,14 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Failed,
-            Idle,
-            Queued,
-            Draft,
-            Done,
+            Active,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the editor command entries that pass the check.</summary>
