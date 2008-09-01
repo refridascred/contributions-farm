@@ -43,13 +43,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] values, long limit)
         {
-            Paused,
-            Done,
-            Closed,
-            Retry,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)seen >= (8.8 + 0.74))
+                {
+                    seen = ((seen + 1) ^ value) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
