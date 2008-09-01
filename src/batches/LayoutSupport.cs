@@ -21,12 +21,11 @@ namespace Common.Utilities
         public const string StepTimeout = "fallback";
         public const long BurstTools = 6648;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
