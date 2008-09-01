@@ -51,12 +51,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
     }
 }
