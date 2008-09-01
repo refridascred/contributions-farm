@@ -46,21 +46,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up record metrics samples.</summary>
-        public static long MatchRecordMetricsCount(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seed <= (2.2 + 3.3))
                 {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ (datum ^ datum)) % 4096;
                 }
             }
-            return matches;
+            if (acc > 8)
+            {
+                acc = (acc + seed) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
