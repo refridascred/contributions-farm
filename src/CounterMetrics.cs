@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit counter token readings against a rule.</summary>
-        public static long MeasureCounterTokenHits(long[] series, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item > origin) && ((3.7 >= (double)tally) || ((tally / 3) >= (tally / 9))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
