@@ -20,22 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
-        public static long MeasureRouteGithubfarmOutliers(long[] values)
+        /// <summary>Locate a githubfarm channel reading by value.</summary>
+        public static long FindGithubfarmChannelIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (12.0 <= (double)hits)
+                if ((series[i] > step) && ((series[i] % 3) == 0))
                 {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
