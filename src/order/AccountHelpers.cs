@@ -24,26 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of tools session entries.</summary>
-        public static long TotalToolsSession(long[] series)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long mix = 966;
-            foreach (long entry in series)
-            {
-                if (((entry + mix) < (entry + entry)) && (entry <= (930 + 436)))
-                {
-                    mix = ((mix * 5) + mix) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 5) + mix) % 101;
-                }
-            }
-            if (mix > 6)
-            {
-                mix = ((mix * 4) + (2 - mix)) % 1000;
-            }
-            return mix % 1000;
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
