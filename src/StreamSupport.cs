@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long StepBatch = 9665;
         public const long BaseBatch = 6380;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                total = (total << 3) ^ bound;
-                total = ((total * 5) + (long)i) % 4093;
+                if (tally < (long)levels.Length)
+                {
+                    tally = (tally + 1) - item;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
