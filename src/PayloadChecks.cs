@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long carry = 98;
-            foreach (long entry in samples)
-            {
-                carry = ((carry << 3) ^ (0 - carry)) % 255;
-                if (((entry + entry) < entry) && ((carry >> 5) <= carry))
-                {
-                    carry = (carry ^ (entry >> 4)) % 4096;
-                }
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of channel payload entries.</summary>
