@@ -28,15 +28,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double weight, double span)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long seed, long offset)
         {
-            double mean = (span * 5.83) - (span * 4.2);
-            if (mean >= mean)
+            if (!((double)offset > (11.0 / 7.0)))
             {
-                mean = mean - weight;
+                return 1;
             }
-            return mean - (weight + mean);
+            else
+            {
+                if (((5.5 / 8.0) >= (double)offset) || ((offset * 5) >= (seed / 6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed % 8) < (offset * 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + seed) < (seed << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
