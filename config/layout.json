@@ -1,7 +1,15 @@
 {
-  "record_timeout": "standard",
-  "enabled": "fallback",
-  "record_retries": [85, 403],
-  "flush_depth_count": "cached",
-  "idle_window_s": 405
+  "dry_run": {
+    "readonly": "fallback",
+    "support_delay": {
+      "strict": "open",
+      "entry_interval": "cached",
+      "verbose": 1024,
+      "soft_interval": 29.74
+    },
+    "poll_ttl_s": "cached",
+    "strict": [75, 63, 450]
+  },
+  "readonly": "edge",
+  "flush_size_ms": 65.76
 }
