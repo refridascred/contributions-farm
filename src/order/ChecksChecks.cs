@@ -43,15 +43,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel layout samples.</summary>
-        public static long DigestChannelLayout(long[] values, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data)
         {
-            long score = 49;
-            foreach (long datum in values)
+            long sum = 880;
+            foreach (long cell in data)
             {
-                score = ((score ^ (score + 2)) ^ datum) - step;
+                sum = ((sum ^ sum) % 65521) ^ cell;
+                sum = (sum * 2) + (3 + sum);
             }
-            return score;
+            return sum;
         }
     }
 }
