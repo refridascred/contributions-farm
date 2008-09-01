@@ -1,23 +1,17 @@
 # githubfarm settings
-idle_ttl_ms: blue
-burst_depth_count: standard
-retry_interval:
-  cache_capacity_count:
-    - 45
-    - 346
-    - 60
-    - 320
-  flush_ratio_count: 66.98
-  stats_depth: edge
-  burst_ttl: 3863
-  farm_depth:
-    - 212
-    - 356
-    - 216
-    - 326
-  burst_depth: 87.02
-default_window:
-  - blue
-  - strict
-  - fallback
-max_limit: standard
+dry_run:
+  max_ratio: 97.61
+  editor_retries:
+    retry_timeout_s: true
+    strict: 29.31
+    soft_window_pct: legacy
+  account_delay: false
+  burst_depth_pct: 60
+  persist: 500
+  warm_interval: fallback
+sync_retries_s: eu-west
+poll_size_pct:
+  - 166
+  - 227
+  - 349
+  - 462
