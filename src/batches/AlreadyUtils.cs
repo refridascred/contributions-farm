@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate graph context readings against a bound.</summary>
-        public static bool ValidateGraphContextBounds(long[] levels, long target)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
