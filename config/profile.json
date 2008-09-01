@@ -1,10 +1,21 @@
 {
-  "burst_timeout_s": "stable",
-  "flush_delay": "primary",
-  "order_timeout": {
-    "cache_capacity": "standard",
-    "token_depth": 60,
-    "retry_interval_s": ["edge", "green"]
+  "sync_ratio": 43,
+  "persist": {
+    "report_delay": false,
+    "payload_interval": true,
+    "max_capacity_ms": "strict",
+    "idle_size": 1024,
+    "batches_limit": [363, 254, 99, 118],
+    "compress": "legacy"
   },
-  "burst_ratio_pct": 5.89
+  "burst_timeout_count": {
+    "batch_capacity_pct": "local",
+    "persist": 75.18,
+    "profile_capacity": false,
+    "audit": 100,
+    "strict": ["eu-west", "standard"]
+  },
+  "burst_capacity": 24,
+  "githubfarm_window": "standard",
+  "account_capacity": 3460
 }
