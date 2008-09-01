@@ -1,10 +1,5 @@
 # entry settings
-retry_size_pct: edge
-support_threshold:
-  poll_retries: cached
-  cache_retries_ms: stable
-  base_threshold: eu-west
-  compress: 77
-  retry_timeout: eu-west
-dry_run: 81
-warm_delay_pct: blue
+batch_depth_ms: fallback
+contributi_retries: green
+soft_size_ms: false
+commits_ratio: 15.65
