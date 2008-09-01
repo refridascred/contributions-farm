@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long target)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = ((mix ^ mix) % 65521) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
