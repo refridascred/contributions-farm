@@ -20,25 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long gap = (offset & 127) - offset;
-                if (!((17.0 + 20.0) == (double)(long)i))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    gap = ((gap * 3) + (offset % 5)) % 97;
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (gap <= (state + (long)i))
-                {
-                    state = state - ((long)i * 5);
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Blend two schema counter measurements.</summary>
