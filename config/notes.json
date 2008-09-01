@@ -1,18 +1,12 @@
 {
-  "soft_size_ms": {
-    "min_depth_s": "edge",
-    "cache_timeout_s": {
-      "report_interval": "cached",
-      "record_capacity": "blue",
-      "entry_interval": "standard",
-      "githubfarm_ratio": 89.58,
-      "payload_window": 4658
-    },
-    "payload_interval": "green"
-  },
-  "cluster_ratio": 55.94,
-  "compress": 4559,
-  "retry_threshold": 97,
-  "context_capacity": 18.04,
-  "cache_ratio": false
+  "cache_threshold": 77,
+  "flush_depth_ms": "latest",
+  "enabled": {
+    "compress": true,
+    "metric_delay": "standard",
+    "burst_depth_count": 29,
+    "filter_ttl": 2269,
+    "persist": false,
+    "enabled": 1630
+  }
 }
