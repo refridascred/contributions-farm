@@ -79,18 +79,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema commits entries that pass the check.</summary>
-        public static long AuditSchemaCommitsOutliers(long[] items)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long floor, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long diff = floor ^ target;
+            if (((4 - target) >= (target & 31)) && ((14.0 + 3.3) == (double)diff))
             {
-                if ((matches > (44 - sample)) && ((sample < (65 / 6)) || ((sample / 9) <= (sample & 31))))
+                return 6;
+            }
+            else
+            {
+                if (!((floor + (-69)) >= (floor + diff)))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a stats header.</summary>
