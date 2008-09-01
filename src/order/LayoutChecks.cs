@@ -57,16 +57,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Digest a series of account contributi entries.</summary>
+        public static long TallyAccountContributi(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long result = 52;
+            foreach (long reading in levels)
             {
-                total = total - (total + total);
-                total = ((total * 4) + (long)i) % 4093;
+                if ((6.2 + 6.1) < (double)reading)
+                {
+                    result = ((result * 3) + (result & 1)) % 65521;
+                }
             }
-            return total;
+            if (result < 7)
+            {
+                result = ((result * 3) + (result % 7)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the graph mode values.</summary>
