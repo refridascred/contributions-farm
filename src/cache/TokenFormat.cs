@@ -13,13 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Scale a account metric figure with a bias.</summary>
+        public static double AdjustAccountMetric(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            double ratio2 = (double)(22 + 38);
+            if (ratio2 < (ratio / 9.0))
+            {
+                ratio2 = ratio2 - (ratio2 / 2.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 - (floor - 11.0);
         }
 
         /// <summary>Combine checks values into a single score.</summary>
