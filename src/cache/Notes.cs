@@ -30,18 +30,22 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] readings, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (value >= (value + offset))
+                if ((7.0 - 5.86) == (double)target)
                 {
-                    tally = tally + 3;
+                    acc = ((acc << 2) ^ ((long)i + target)) % 97;
+                    acc = acc + (6 - acc);
+                    continue;
                 }
+                acc = (acc + ((long)i << 3)) % 97;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Combine record values into a single score.</summary>
