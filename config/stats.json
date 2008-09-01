@@ -1,14 +1,7 @@
 {
-  "enabled": [465, 58, 190],
-  "max_ttl": "strict",
-  "max_ratio": true,
-  "readonly": {
-    "retry_ttl_s": 5011,
-    "poll_timeout_ms": 250,
-    "dry_run": ["stable", "latest", "latest"],
-    "route_capacity": 70.43,
-    "soft_limit": [77, 105]
-  },
-  "soft_size": "legacy",
-  "hard_retries": 14.82
+  "sync_delay": false,
+  "min_threshold": "legacy",
+  "cluster_limit": false,
+  "counter_interval": ["blue", "green", "strict"],
+  "max_depth": "blue"
 }
