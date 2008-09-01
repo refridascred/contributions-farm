@@ -75,14 +75,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Done,
-            Draft,
+            Idle,
+            Stale,
             Paused,
-            New,
-            Failed,
+            Queued,
+            Locked,
         }
     }
 }
