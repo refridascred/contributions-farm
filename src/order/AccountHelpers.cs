@@ -24,12 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((((seen - seen) != (target + target)) && ((double)seen < (7.0 - 4.61))) || ((cell & 3) < (seen >> 1)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up record metrics samples.</summary>
