@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double rate, double bias)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double weight = bias;
-            if (weight > (18.0 * 8.0))
-            {
-                weight = (weight - bias) - rate;
-            }
-            else
-            {
-                weight = weight - (3.77 - bias);
-            }
-            return weight + weight;
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
