@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 4028;
-        public const string LimitBatch = "cached-edge";
-        public const long DefaultBatch = 2668;
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenMatches(long[] readings)
