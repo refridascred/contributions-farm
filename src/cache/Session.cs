@@ -16,22 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry * 2) != (entry + 28))
+                if ((readings[i] < step) && ((readings[i] % 5) != 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many cluster commits samples are out of range.</summary>
