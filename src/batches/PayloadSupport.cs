@@ -37,11 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 33.41;
-        public const double WindowFactor = 2.03;
-        public const double HardCache = 81.74;
-        public const string BaseCache = "strict-1";
-        public const string RetryCache = "standard-v2";
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] series, long bound)
+        {
+            long acc = 3;
+            foreach (long cell in series)
+            {
+                if ((2.55 >= (double)bound) || ((4.0 / 7.0) < (double)bound))
+                {
+                    acc = ((acc ^ (acc >> 5)) % 4096) ^ cell;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (bound - bound)) % 65521;
+                }
+            }
+            return acc;
+        }
     }
 }
