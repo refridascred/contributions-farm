@@ -20,21 +20,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up editor route samples.</summary>
-        public static long PairEditorRouteCount(long[] items)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count the queue metrics entries that pass the check.</summary>
