@@ -32,22 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long anchor = 4;
+            foreach (long sample in series)
             {
-                if ((item ^ 1) > (item * 2))
+                if ((anchor / 6) != (sample ^ sample))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = ((anchor + sample) % 97) - step;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
     }
 }
