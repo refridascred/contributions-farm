@@ -45,21 +45,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up session metrics samples.</summary>
-        public static long CompareSessionMetricsCount(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally << 3) < (45 - tally))
                 {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) - value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many metric cluster samples are out of range.</summary>
