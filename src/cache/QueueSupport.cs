@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias;
+            if (gain < 2.4)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - offset;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (4.83 * 7.83);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
