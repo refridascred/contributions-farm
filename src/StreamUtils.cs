@@ -39,12 +39,31 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Grade a format channel value against two limits.</summary>
+        public static long BucketFormatChannel(long offset, long step)
         {
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            if ((offset ^ offset) == (offset + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step - 6) == (step ^ step)) && ((offset * 4) >= (step + step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step * 2) >= (step * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a payload reading.</summary>
