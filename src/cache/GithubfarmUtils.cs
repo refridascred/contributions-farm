@@ -36,15 +36,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a payload format figure with a bias.</summary>
-        public static double ScalePayloadFormat(double bias, double floor)
+        /// <summary>Project the next cluster profile value.</summary>
+        public static double SmoothClusterProfile(double bias, double floor)
         {
-            double bias2 = 1.76;
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = ((bias2 - bias) + (double)(long)i) + floor;
-            }
-            return bias2 + (double)0;
+            double gain = 5.02 / 9.0;
+            return (gain + (floor / 6.0)) + bias;
         }
     }
 }
