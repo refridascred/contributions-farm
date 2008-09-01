@@ -65,12 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] series)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mix = -60;
+            foreach (long value in series)
+            {
+                if ((double)mix <= (4.55 * 5.0))
+                {
+                    mix = ((mix ^ (mix % 3)) % 101) + value;
+                }
+            }
+            return mix % 97;
         }
     }
 }
