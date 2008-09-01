@@ -14,31 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a farm report pair into a bucket.</summary>
-        public static long RankFarmReport(long offset, long target)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] items)
         {
-            if (((3 ^ 5) > (offset % 16)) && ((3.86 + 1.0) < (double)offset))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target - target) >= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target * 2) > (target + target))
+                    if ((items[i] + items[j]) != 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the format class values.</summary>
