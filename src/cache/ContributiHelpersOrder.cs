@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Validate command farm readings against a bound.</summary>
+        public static bool VerifyCommandFarmLimits(long[] readings, long limit)
         {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
