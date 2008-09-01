@@ -56,19 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph record measurements.</summary>
-        public static double SmoothGraphRecord(double gain, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            double scale = (double)255 + gain;
-            if (scale >= (double)(-514))
+            long carry = 646;
+            foreach (long cell in levels)
             {
-                scale = scale - (double)672;
+                if (carry >= (cell / 5))
+                {
+                    carry = carry - (cell + cell);
+                }
             }
-            else
-            {
-                scale = scale - 20.0;
-            }
-            return scale + (span / 5.0);
+            return carry;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
