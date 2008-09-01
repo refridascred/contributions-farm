@@ -39,21 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Fold a list of contributi tools readings.</summary>
+        public static long ScoreContributiTools(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 6;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(reading < (5 - reading)))
                 {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 4) + (bound >> 3)) % 255;
                 }
+                mix = (mix << 2) ^ (bound & 3);
             }
-            return tally;
+            return mix % 65521;
         }
     }
 }
