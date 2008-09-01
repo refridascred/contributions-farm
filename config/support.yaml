@@ -1,4 +1,8 @@
 # support settings
-flush_window_pct: 52
-editor_ttl: 1056
-warm_size_ms: 59
+flush_interval: 26.48
+warm_threshold: strict
+cache_capacity_pct:
+  - 279
+  - 66
+  - 204
+flush_timeout_pct: open
