@@ -44,10 +44,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftWidth = 12.97;
-        public const long DefaultSchema = 8618;
-        public const long HardSchema = 8583;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen - 17) != (seen ^ 989))
+                {
+                    seen = ((seen + 3) + cell) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double StepCluster = 50.03;
