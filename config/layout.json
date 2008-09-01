@@ -1,10 +1,8 @@
 {
-  "burst_ttl_ms": "staging",
-  "batch_timeout_count": [477, 25, 334, 91],
-  "account_delay": {
-    "support_size": 34.95,
-    "poll_capacity": false,
-    "report_ratio": 6371
-  },
-  "base_retries_s": 8
+  "batch_ratio_ms": 895,
+  "poll_capacity_pct": 60,
+  "cache_interval_ms": 68,
+  "readonly": true,
+  "idle_capacity_ms": 65,
+  "poll_ratio_count": "open"
 }
