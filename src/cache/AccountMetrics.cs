@@ -25,24 +25,14 @@ namespace Common.Utilities
         public const string BaseBudget = "staging-v2";
         public const long MinCounter = 6667;
 
-        /// <summary>Rank profile route input into a small class.</summary>
-        public static long RankProfileRoute(long target, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if (((-24) + origin) <= (366 & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target * 4) >= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Ready,
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
