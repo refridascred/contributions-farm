@@ -17,17 +17,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] series, long seed)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Blend two graph measurements.</summary>
