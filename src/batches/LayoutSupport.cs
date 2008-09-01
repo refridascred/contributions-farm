@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            long acc = 16;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc << 3) ^ (4 << 1)) % 255) + entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
