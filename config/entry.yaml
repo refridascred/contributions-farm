@@ -1,13 +1,4 @@
 # entry settings
-token_delay:
-  - 445
-  - 202
-  - 19
-  - 307
-hard_depth_count: 1339
-poll_size: primary
-record_threshold:
-  - open
-  - green
-  - local
-  - fallback
+verbose: true
+counter_depth: 9163
+compress: true
