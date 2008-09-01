@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowDepth = 31.27;
-        public const double MinCache = 63.37;
-        public const string HardCache = "cached-edge";
-        public const string IdleCache = "open";
-        public const long HardFactor = 5632;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
