@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-The profile report groups every tools by account.
+When a tools fails, the filter handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate route input early
-- Review editor limits each release
+- Review session limits each release
+- Validate entry input early
+- Document new format fields
