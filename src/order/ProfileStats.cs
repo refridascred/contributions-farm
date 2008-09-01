@@ -24,19 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (reading > target)
+                if ((0.82 - 5.6) <= (double)matches)
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 2) + value) - origin;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Iterate the order payload series from a seed.</summary>
