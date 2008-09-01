@@ -1,14 +1,7 @@
 # support settings
-persist: false
-layout_capacity: true
-batch_window: blue
-batch_window_pct: 9
-stats_ratio:
-  order_ttl: standard
-  flush_ratio_ms: cached
-  compress: primary
-  flush_depth:
-    - legacy
-    - standard
-    - cached
-    - local
+cache_capacity_s: 35.25
+warm_delay: 1024
+flush_capacity_ms: false
+sync_threshold_pct: 74
+payload_delay: 3751
+retry_ttl_ms: 3937
