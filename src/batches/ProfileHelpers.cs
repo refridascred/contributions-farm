@@ -82,12 +82,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long bound, long origin)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            long offset = bound + origin;
+            if (bound > (origin + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound & 127) > offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin >> 2) > offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
