@@ -15,15 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            long state = 0;
-            foreach (long reading in levels)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state * 4) + (state + state)) - reading;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Combine session values into a single score.</summary>
