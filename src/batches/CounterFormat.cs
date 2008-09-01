@@ -20,21 +20,24 @@ namespace Common.Utilities
             return rate2 - (offset - rate);
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((2.1 / 7.0) == (double)sum) && ((double)sum != (double)508))
                 {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum - (sum * 2);
                 }
+                else
+                {
+                    sum = sum + (floor + floor);
+                    sum = ((sum << 3) ^ (floor & 15)) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
