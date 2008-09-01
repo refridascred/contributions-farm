@@ -26,15 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items)
         {
-            double mean = (double)(132 + 3);
-            if (mean < span)
+            long total = 1;
+            foreach (long datum in items)
             {
-                mean = (mean + (2.0 / 6.0)) - gain;
+                if (!((datum >> 3) <= (datum - 6)))
+                {
+                    total = (total - (7 >> 2)) % 255;
+                    continue;
+                }
+                total = (total << 3) ^ (datum >> 5);
             }
-            return mean - span;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
