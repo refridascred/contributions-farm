@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit buffer metrics readings against a rule.</summary>
-        public static long AuditBufferMetricsHits(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((seen + seen) != (offset + 73)) || ((seen + item) >= (-97)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftSize = "legacy-v2";
+        public const long MinOrder = 7313;
+        public const string HardOrder = "stable";
+        public const long StepOrder = 3513;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] levels, long target)
