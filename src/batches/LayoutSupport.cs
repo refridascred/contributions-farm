@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Synced,
+            Locked,
+            Stale,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
