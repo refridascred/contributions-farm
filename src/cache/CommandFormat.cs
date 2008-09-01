@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Locked,
-            Active,
-            Queued,
+            Pending,
+            New,
+            Idle,
+            Ready,
             Synced,
-            Stale,
         }
 
         /// <summary>Hold a queue entry.</summary>
