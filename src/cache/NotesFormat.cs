@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account buffer entries that pass the check.</summary>
-        public static long MeasureAccountBufferHits(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] data)
         {
             long seen = 0;
             foreach (long datum in data)
             {
-                if (datum > ((long)data.Length + seen))
+                if ((datum + seen) > (datum >> 2))
                 {
                     seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
                 }
             }
             return seen;
