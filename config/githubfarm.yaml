@@ -1,13 +1,8 @@
 # githubfarm settings
-cache_depth_count: strict
-idle_timeout_pct: 1024
-default_depth: stable
-sync_interval_pct:
-  metric_ratio: edge
-  min_depth_ms:
-    - stable
-    - stable
-    - open
-  compress: 9134
-batches_threshold: 35.68
-base_interval_s: 250
+batch_depth: green
+base_ratio: 18
+batches_depth:
+  - 126
+  - 174
+  - 71
+  - 196
