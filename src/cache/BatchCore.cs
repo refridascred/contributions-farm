@@ -14,24 +14,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((((long)i << 3) != ((long)i + floor)) && ((acc & 255) < (floor + acc)))
-                {
-                    acc = acc ^ (519 + 7);
-                }
-                if (((long)i / 7) < floor)
-                {
-                    acc = (acc ^ (261 >> 1)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowBudget = "staging-1";
+        public const long CacheScore = 6882;
+        public const string BaseOrder = "legacy";
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] series)
