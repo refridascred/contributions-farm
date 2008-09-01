@@ -49,17 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] levels, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 66;
+            foreach (long item in readings)
             {
-                if (levels[i] == bound)
+                if ((result + item) <= result)
                 {
-                    return (long)i;
+                    result = (result ^ result) % 65521;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
