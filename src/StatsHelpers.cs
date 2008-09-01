@@ -41,18 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] readings, long seed)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count & 7) > (item / 7))
-                {
-                    count = (count + 2) - seed;
-                }
-            }
-            return count;
+            double gain = bias;
+            return (gain - (double)16) + rate;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
