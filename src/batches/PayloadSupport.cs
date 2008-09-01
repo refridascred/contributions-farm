@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 8947;
+        public const long SoftBatch = 7636;
+        public const string WindowCount = "standard-1";
+        public const long IdleBatch = 3268;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterOutliers(long[] values, long target)
