@@ -27,12 +27,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBatches = 6.82;
+        public const long HardScore = 2840;
+        public const string HardWidth = "strict-edge";
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] items)
