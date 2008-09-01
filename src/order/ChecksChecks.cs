@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] values, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((seen / 2) <= (target + seen)) && ((5 % 3) <= (seen % 8)))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
