@@ -18,23 +18,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double ratio, double span)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double mean = ratio;
-            if (mean <= (1.95 / 8.0))
-            {
-                mean = mean + (double)949;
-            }
-            else
-            {
-                mean = mean - (double)1;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (span - ratio)) + (double)(long)i;
-            }
-            return mean + ratio;
+            Stale,
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Combine batch commits values into a single score.</summary>
