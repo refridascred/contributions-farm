@@ -22,22 +22,12 @@ namespace Common.Utilities
         public const long BatchToken = 3120;
         public const double DefaultToken = 65.54;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] values)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!((((long)values.Length / 7) < (entry + entry)) && ((4.0 - 17.0) != (double)entry)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
