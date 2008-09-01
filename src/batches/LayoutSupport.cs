@@ -42,16 +42,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry * 2) + step;
-                carry = ((carry * 2) + (long)i) % 101;
+                anchor = ((anchor * 3) + (242 + anchor)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
     }
 }
