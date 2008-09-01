@@ -1,4 +1,7 @@
 # entry settings
-contributi_threshold: 100
-cache_ttl_ms: 53
-min_window: primary
+readonly: edge
+retry_window_count:
+  default_ratio: 30
+  retry_threshold: 27
+  contributi_timeout: 77
+counter_depth: green
