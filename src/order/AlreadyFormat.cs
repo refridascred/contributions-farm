@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] items, long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long result = 1;
-            foreach (long entry in items)
-            {
-                if (result >= (result ^ result))
-                {
-                    result = (((result << 3) ^ result) - entry) - seed;
-                }
-            }
-            return result % 4096;
+            Retry,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
