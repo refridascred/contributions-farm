@@ -27,15 +27,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double weight, double span)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double mean = weight * 9.79;
-            if (mean > weight)
-            {
-                mean = mean - (weight / 8.0);
-            }
-            return mean - (span * 7.8);
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
