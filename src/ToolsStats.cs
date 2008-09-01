@@ -12,25 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((((long)i - step) <= (total * 3)) || ((total + (long)i) <= (total ^ total)))
-                {
-                    total = (total ^ step) % 4096;
-                    break;
-                }
-                total = (total << 3) ^ 768;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (((total << 2) ^ total) % 101) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
