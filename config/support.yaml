@@ -1,18 +1,13 @@
 # support settings
-window_ttl: 3496
-max_timeout_ms: fallback
-metrics_delay:
-  - fallback
-  - cached
-  - primary
-  - eu-west
-token_delay: open
-readonly:
-  window_capacity: 97
-  readonly: true
-  counter_size:
-    - 375
-    - 479
-    - 391
-    - 146
-flush_size_pct: 1024
+burst_limit_pct: 6113
+base_size:
+  burst_threshold_s:
+    burst_size_ms: 96
+    min_capacity: 1024
+    counter_size: 1024
+    idle_ttl_ms: 22.85
+    stats_capacity: stable
+    soft_depth: green
+  retry_ttl: 4218
+  warm_retries: 57.37
+cache_threshold: edge
