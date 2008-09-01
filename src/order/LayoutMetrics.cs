@@ -25,22 +25,12 @@ namespace Common.Utilities
         public const string BatchFilter = "cached";
         public const long IdleFilter = 9297;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] samples, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long acc = 3;
-            foreach (long item in samples)
-            {
-                if (acc > (target * 3))
-                {
-                    acc = (acc - 5) - item;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (-76)) % 255;
-                }
-            }
-            return acc;
+            Done,
+            Locked,
+            Paused,
         }
     }
 }
