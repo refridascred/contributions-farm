@@ -35,21 +35,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 802;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = state + (reading % 7);
+                state = ((state << 2) ^ 82) % 4096;
+                if ((12.0 * 5.46) >= (double)reading)
                 {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Fold a list of support readings.</summary>
