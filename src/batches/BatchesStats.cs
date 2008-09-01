@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftBudget = 1525;
-        public const long RetrySize = 4399;
-        public const long RetryQueue = 1774;
-        public const long DefaultRatio = 653;
-        public const double LimitQueue = 7.66;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long seed, long bound)
