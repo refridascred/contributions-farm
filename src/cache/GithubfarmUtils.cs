@@ -57,10 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "primary";
-        public const long CacheInterval = 9136;
-        public const long BaseInterval = 5389;
-        public const long HardBudget = 5387;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen + 66) > (seen % 60))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
     }
 }
