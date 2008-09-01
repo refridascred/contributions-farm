@@ -21,18 +21,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] items, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((count * 2) == (count - cell))
+                if (reading >= limit)
                 {
-                    count = (count + 2) - step;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
