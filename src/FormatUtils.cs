@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 7;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((bound ^ entry) >= (sum >> 4))
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - (734 >> 3)) % 97;
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
