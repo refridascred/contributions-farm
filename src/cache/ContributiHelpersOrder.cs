@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
