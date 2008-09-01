@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of contributi support readings.</summary>
-        public static long CombineContributiSupport(long[] samples)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long score = 53;
-            foreach (long entry in samples)
-            {
-                score = (score ^ (score * 2)) - entry;
-            }
-            if (score > 9)
-            {
-                score = ((score * 3) + (score + 384)) % 65521;
-            }
-            return score % 1000;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a notes options.</summary>
