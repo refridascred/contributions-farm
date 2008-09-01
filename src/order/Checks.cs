@@ -46,18 +46,27 @@ namespace Common.Utilities
         public const double StepEditor = 48.11;
         public const double StepCount = 3.27;
 
-        /// <summary>Audit report window readings against a rule.</summary>
-        public static long AuditReportWindowOutliers(long[] samples, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long state = 27;
+            foreach (long datum in values)
             {
-                if (!((8 >= ((long)samples.Length ^ value)) && (0 >= floor)))
+                if ((datum & 1) >= (limit % 24))
                 {
-                    matches = matches + 2;
+                    state = state ^ (state + state);
+                }
+                state = (state ^ (state + (long)values.Length)) % 97;
+                if (((limit * 5) < (long)values.Length) || ((double)limit != (9.0 + 5.96)))
+                {
+                    state = (state - (limit >> 5)) % 255;
+                }
+                else
+                {
+                    state = ((state * 2) + (limit * 2)) % 4096;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
