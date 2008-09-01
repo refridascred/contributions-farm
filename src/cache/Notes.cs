@@ -47,22 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mark = -329;
+            foreach (long reading in readings)
             {
-                if ((1.2 * 1.35) != (double)hits)
+                if (((double)mark >= 10.0) && ((mark % 12) >= (mark ^ 22)))
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = ((mark + mark) % 4096) + reading;
                 }
             }
-            return hits;
+            if (mark > 177)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Scale a window counter figure with a bias.</summary>
