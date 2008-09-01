@@ -62,19 +62,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] samples, long floor)
+        /// <summary>Measure how many metric cluster samples are out of range.</summary>
+        public static long MeasureMetricClusterGaps(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (value <= floor)
+                if ((tally + item) >= item)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
