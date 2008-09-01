@@ -29,24 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long floor, long origin)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            if ((origin + floor) == (origin / 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin < (838 / 9)) && ((floor & 15) > (floor - floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
