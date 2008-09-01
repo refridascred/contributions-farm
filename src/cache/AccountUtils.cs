@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long result = 253;
-            foreach (long reading in items)
-            {
-                if ((result - result) > 302)
-                {
-                    result = result ^ (reading - result);
-                }
-                if ((result - result) == (result % 100))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
