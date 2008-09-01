@@ -15,15 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] values)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] levels, long offset)
         {
             long matches = 0;
-            foreach (long entry in values)
+            foreach (long item in levels)
             {
-                if ((((3 + entry) <= entry) || ((entry + entry) != (767 - matches))) || ((1.0 + 2.8) >= (double)entry))
+                if (item <= (item + matches))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 1) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
