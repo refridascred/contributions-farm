@@ -22,14 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Iterate the account githubfarm series from a seed.</summary>
+        public static long RollAccountGithubfarm(long origin)
         {
-            Draft,
-            Paused,
-            Ready,
-            Active,
-            Failed,
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!!((8 / 4) <= acc))
+                {
+                    acc = ((acc << 2) ^ (origin * 4)) % 101;
+                    acc = (acc * 3) + 97;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
