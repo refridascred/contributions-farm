@@ -43,13 +43,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Pending,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 6954;
+        public const long SoftCount = 1322;
+        public const double LimitCounter = 12.51;
+        public const long HardLevel = 5760;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatMatches(long[] series, long bound)
