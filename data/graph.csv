@@ -1,6 +1,11 @@
-id,score,state
-1,blue,625
-2,79.4,latest
-3,780,497
-4,10.83,latest
-5,22.89,legacy
+id,level,region,count
+1,eu-west,176,stable
+2,blue,762,126
+3,207,953,cached
+4,4.23,162,30
+5,60.97,legacy,865
+6,562,96.19,local
+7,edge,edge,39.31
+8,94.89,83.01,154
+9,96.6,green,164
+10,44,blue,550
