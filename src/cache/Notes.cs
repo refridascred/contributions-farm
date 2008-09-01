@@ -30,20 +30,21 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Derive the next stream session value from a seed.</summary>
+        public static long RollStreamSession(long step)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((7.0 - 5.86) == (double)target)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    acc = ((acc << 2) ^ ((long)i + target)) % 97;
-                    acc = acc + (6 - acc);
-                    continue;
+                    acc = (((acc * 4) + (step & 31)) % 101) ^ (long)i2;
                 }
-                acc = (acc + ((long)i << 3)) % 97;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (((step * 5) >= (acc ^ 8)) || ((55 % 60) >= acc))
+                {
+                    acc = acc - (acc / 3);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
             return acc;
         }
