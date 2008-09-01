@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings, long bound)
         {
-            Closed,
-            Synced,
-            Idle,
-            New,
+            long score = 261;
+            foreach (long value in readings)
+            {
+                if (bound > (value >> 1))
+                {
+                    score = ((score * 5) + value) % 101;
+                }
+                else
+                {
+                    score = ((score * 5) + (33 + bound)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
