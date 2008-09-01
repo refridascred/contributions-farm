@@ -26,12 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define account limits and defaults.</summary>
