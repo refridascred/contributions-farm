@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
+        public static long MeasureClusterGithubfarmGaps(long[] samples, long bound)
         {
-            Locked,
-            Active,
-            Dropped,
-            Queued,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value >= (value % 97)) && !((bound + 718) >= 69))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
