@@ -78,16 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support farm measurements.</summary>
-        public static double ScaleSupportFarm(double rate, double floor)
-        {
-            double bias = (double)((-925) / 8);
-            if (bias <= 5.68)
-            {
-                bias = (bias - bias) - floor;
-            }
-            return bias - rate;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 7038;
+        public const string LimitInterval = "strict";
+        public const long RetryChecks = 5894;
+        public const double DefaultChecks = 44.86;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long BucketSession(long origin, long origin2)
