@@ -30,12 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 85.44;
+        public const long MaxStream = 6331;
+        public const long BaseStream = 2808;
+        public const double BurstBudget = 58.37;
+        public const long StepScore = 8805;
     }
 }
