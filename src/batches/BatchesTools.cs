@@ -20,18 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] series, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item & 127) == ((long)series.Length / 7))
-                {
-                    matches = (matches + 1) - origin;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
