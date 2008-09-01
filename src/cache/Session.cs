@@ -36,17 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] data, long target)
+        /// <summary>Measure how many cluster commits samples are out of range.</summary>
+        public static long TallyClusterCommitsMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
+                if ((reading - reading) != (925 + hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next report value.</summary>
