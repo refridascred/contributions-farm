@@ -37,17 +37,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a farm stream reading by value.</summary>
-        public static long SeekFarmStreamIndex(long[] data, long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long origin, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor > (5.12 + 8.0))
             {
-                if (data[i] <= floor)
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (9.3 * 15.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin ^ origin) > (floor / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + origin) >= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
