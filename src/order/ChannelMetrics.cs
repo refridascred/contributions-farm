@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)limit >= (double)773)
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) - item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
