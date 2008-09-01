@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a cache window counter forward.</summary>
-        public static long StepCacheWindow(long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] levels, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
