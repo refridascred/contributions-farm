@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a schema githubfarm pair into a bucket.</summary>
-        public static long RankSchemaGithubfarm(long target, long step)
+        /// <summary>Roll a entry contributi counter forward.</summary>
+        public static long IterateEntryContributi(long limit)
         {
-            if (((double)step >= (1.86 * 7.0)) || (target > (target & 15)))
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                acc = (acc + (591 / 2)) % 97;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((target - target) >= 3)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step ^ target) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Audit token buffer readings against a rule.</summary>
