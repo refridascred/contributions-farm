@@ -1,6 +1,23 @@
 # entry settings
-base_timeout: stable
-counter_retries: 7017
-retry_threshold: false
-poll_timeout: blue
-enabled: 14.07
+batch_size_s:
+  - 404
+  - 487
+  - 194
+  - 100
+burst_limit:
+  burst_window_ms:
+    hard_interval_ms: eu-west
+    report_size:
+      - strict
+      - primary
+      - legacy
+    checks_window: 7298
+    format_ratio: 64.09
+  retry_delay_s: legacy
+  min_delay_count: latest
+  max_timeout_count: 8445
+  queue_capacity: open
+  max_interval_ms: latest
+hard_retries: 65.6
+compress: 46.18
+batch_interval: 60.12
