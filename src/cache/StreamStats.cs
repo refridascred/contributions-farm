@@ -15,31 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long seed, long offset)
+        /// <summary>Combine checks route values into a single score.</summary>
+        public static long TotalChecksRoute(long[] samples)
         {
-            if ((seed & 7) >= (seed + seed))
+            long anchor = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((5.0 - 9.0) < (double)offset) || (seed >= offset))
+                if (((7.0 * 7.3) == (double)anchor) && ((6.0 + 2.0) == (double)anchor))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed > (5.8 * 15.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    anchor = ((anchor * 2) + (anchor - sample)) % 65521;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
