@@ -48,17 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] data, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (data[i] == limit)
+                if ((count + count) <= item)
                 {
-                    return (long)i;
+                    count = (count + 1) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
