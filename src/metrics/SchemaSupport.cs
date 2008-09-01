@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] values, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of contributi channel readings.</summary>
