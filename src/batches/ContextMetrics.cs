@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total ^ total) % 101;
-                if ((double)(long)i != (0.56 * 8.2))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
