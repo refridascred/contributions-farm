@@ -57,10 +57,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheFactor = 9432;
-        public const long IdleGraph = 1569;
-        public const long SoftGraph = 4639;
-        public const long WindowInterval = 1192;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            New,
+            Stale,
+            Active,
+            Paused,
+        }
     }
 }
