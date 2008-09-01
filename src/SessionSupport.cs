@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            Closed,
-            Synced,
-            Pending,
-            Idle,
-            New,
+            long anchor = -25;
+            foreach (long value in levels)
+            {
+                anchor = anchor ^ (anchor - value);
+            }
+            if (anchor < 42)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
