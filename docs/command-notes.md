@@ -1,10 +1,12 @@
 # Command notes
 
-When a context fails, the metrics handler retries a few times before giving up.
-Run the stream check before changing any cache limits.
+A session that stays idle for too long is moved to the checks list.
+When a cache fails, the layout handler retries a few times before giving up.
+The graph report groups every entry by entry.
 
 ## Guidelines
 
-- Validate notes input early
-- Keep checks values small
-- Document new cache fields
+- Keep queue values small
+- Review cache limits each release
+- Log every format change
+- Document new stats fields
