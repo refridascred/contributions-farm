@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] values, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (datum > origin)
+                if (value > limit)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Locate a farm stream reading by value.</summary>
