@@ -24,19 +24,21 @@ namespace Common.Utilities
         public const string WindowScore = "legacy-edge";
         public const long DefaultFarm = 1051;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long result = 8;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading * 4) > ((long)series.Length - 415))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result + ((-46) + 242);
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result << 2) ^ (result / 2)) % 101;
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Grade a schema route value against two limits.</summary>
