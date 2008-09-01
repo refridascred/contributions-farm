@@ -36,15 +36,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((13.0 + 6.0) < (double)state)
+                {
+                    state = (state << 2) ^ state;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Describe the record class values.</summary>
