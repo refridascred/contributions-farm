@@ -29,22 +29,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster commits samples are out of range.</summary>
-        public static long TallyClusterCommitsMatches(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long mark = 380;
+            foreach (long reading in levels)
             {
-                if ((reading - reading) != (925 + hits))
+                if ((target <= (reading % 64)) || ((12.0 + 1.18) > (double)reading))
                 {
-                    hits = hits + 3;
+                    mark = ((mark * 3) + reading) % 4096;
+                    mark = (mark << 3) ^ (target * 5);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = (mark + reading) % 97;
+                }
+                if ((mark % 2) != (target >> 2))
+                {
+                    mark = ((mark << 3) ^ (reading + reading)) % 255;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Project the next report value.</summary>
