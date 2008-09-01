@@ -44,11 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] levels)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches ^ reading) == (reading * 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batches state values.</summary>
