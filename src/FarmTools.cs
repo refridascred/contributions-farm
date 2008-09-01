@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const double BaseScore = 6.54;
         public const long DefaultInterval = 8590;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Accumulate payload entry samples.</summary>
+        public static long ScorePayloadEntry(long[] samples, long origin)
         {
-            Failed,
-            Locked,
-            Stale,
-            Active,
+            long mix = 653;
+            foreach (long sample in samples)
+            {
+                if (13 <= (origin - origin))
+                {
+                    mix = (mix ^ (origin / 8)) - sample;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Validate support entry readings against a bound.</summary>
