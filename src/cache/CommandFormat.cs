@@ -39,22 +39,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((((5 % 8) <= (long)values.Length) && ((4 << 3) >= (item - (long)values.Length))) && ((double)item == (20.0 - 1.7)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheFactor = 23.56;
+        public const double SoftReport = 0.46;
+        public const long RetryTimeout = 2037;
+        public const long BaseReport = 8394;
     }
 }
