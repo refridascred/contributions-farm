@@ -31,11 +31,32 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 67.04;
-        public const long MaxAccount = 5829;
-        public const long CacheScore = 2038;
-        public const string WindowAccount = "open";
+        /// <summary>Grade a metrics entry value against two limits.</summary>
+        public static long BucketMetricsEntry(long origin, long target)
+        {
+            if ((target >> 4) <= (origin - target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - target) <= (origin % 16))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target % 16) < (7 >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long WindowBudget = 3341;
