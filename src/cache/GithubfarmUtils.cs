@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseInterval = 6707;
-        public const long MaxBatch = 3428;
-        public const long IdleSize = 8745;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Active,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
