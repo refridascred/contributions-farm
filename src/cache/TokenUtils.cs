@@ -36,13 +36,17 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Look up the position of a graph support sample.</summary>
+        public static long LookupGraphSupportIndex(long[] samples, long target)
         {
-            Done,
-            Active,
-            Retry,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
