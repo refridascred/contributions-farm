@@ -38,18 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally ^ tally) > (6 - seed))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleBudget = 1151;
+        public const string LimitCount = "staging-1";
+        public const string MaxChecks = "staging-v2";
+        public const double CacheChecks = 78.87;
     }
 }
