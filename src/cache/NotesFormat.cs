@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!(((value / 7) == (count & 127)) || ((value >> 4) >= (value + value))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
