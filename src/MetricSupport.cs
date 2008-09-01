@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Check that every command profile entry stays within the limit.</summary>
+        public static bool GuardCommandProfileLimits(long[] items, long origin)
         {
-            long mix = 487;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (reading < 6)
+                if (value != origin)
                 {
-                    mix = ((mix << 3) ^ (52 + reading)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > 94)
-            {
-                mix = ((mix * 5) + (mix % 5)) % 4096;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Adjust a metrics stream reading.</summary>
