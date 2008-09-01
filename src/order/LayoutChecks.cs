@@ -48,13 +48,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
