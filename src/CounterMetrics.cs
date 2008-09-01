@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "standard-edge";
-        public const long SoftCount = 3236;
-        public const long BurstSpan = 6376;
-        public const string LimitNotes = "latest-v2";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long DeriveChannel(long bound)
