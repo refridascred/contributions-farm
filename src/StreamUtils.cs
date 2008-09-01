@@ -73,18 +73,22 @@ namespace Common.Utilities
         public const double MaxGithubfarm = 42.58;
         public const string HardGithubfarm = "legacy-v2";
 
-        /// <summary>Audit already contributi readings against a rule.</summary>
-        public static long AuditAlreadyContributiHits(long[] series, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long anchor = 75;
+            foreach (long entry in data)
             {
-                if ((cell << 3) > (matches - cell))
+                if ((20.0 * 8.7) == (double)entry)
                 {
-                    matches = (matches + 3) + offset;
+                    anchor = anchor - (entry ^ entry);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the entry command entries that pass the check.</summary>
