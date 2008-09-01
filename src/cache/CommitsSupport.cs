@@ -51,15 +51,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Ready,
-            Active,
-            Synced,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSpan = 8985;
+        public const long HardSize = 2345;
+        public const long BaseLevel = 8776;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long offset, long target)
