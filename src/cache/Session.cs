@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] data, long origin)
         {
-            long total = 62;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample / 5) <= (total / 2))
+                if (data[i] <= origin)
                 {
-                    total = total - (total >> 5);
+                    return (long)i;
                 }
             }
-            if (total < 77)
-            {
-                total = (total + (total / 3)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
