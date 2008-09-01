@@ -1,40 +1,4 @@
 # entry settings
-enabled:
-  readonly: 4.61
-  verbose: fallback
-  warm_depth_pct: true
-  cache_size_pct: false
-  base_timeout_ms: blue
-audit: 97.3
-retry_depth_ms: 8092
-stats_timeout:
-  retry_size_s:
-    batch_capacity: 46.41
-    hard_window: stable
-    enabled: false
-    checks_interval:
-      - strict
-      - local
-      - cached
-      - local
-    warm_depth_pct: 1024
-    batch_window: 1024
-  default_threshold_ms: legacy
-  strict:
-    idle_window:
-      - 430
-      - 239
-      - 417
-    checks_limit: 8
-    readonly:
-      - edge
-      - edge
-      - local
-  flush_retries_ms:
-    stream_size: fallback
-    retry_ttl_count: edge
-    hard_timeout_count: eu-west
-  retry_depth_ms:
-    - 328
-    - 93
-    - 253
+batch_threshold: false
+burst_delay_ms: staging
+hard_ttl_s: edge
