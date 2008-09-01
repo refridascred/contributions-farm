@@ -31,19 +31,11 @@ namespace Common.Utilities
             return drift + 2.5;
         }
 
-        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
-        public static long TallyQueueGithubfarmOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry <= (1.8 * 17.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitScore = "stable-v2";
+        public const long BatchChecks = 5064;
+        public const string IdleChecks = "local-v2";
+        public const long BurstCount = 2099;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] data, long bound)
