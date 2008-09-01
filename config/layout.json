@@ -1,8 +1,7 @@
 {
-  "dry_run": 60,
-  "audit": [31, 413],
-  "compress": 49,
-  "sync_capacity_s": 100,
-  "burst_size_pct": 5860,
-  "payload_timeout": "edge"
+  "persist": "blue",
+  "warm_retries": false,
+  "idle_interval_ms": 1024,
+  "counter_delay": "local",
+  "cache_ratio": "legacy"
 }
