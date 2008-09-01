@@ -49,27 +49,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] values, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long seed2)
         {
-            long state = 27;
-            foreach (long datum in values)
+            long next = seed + seed2;
+            if (seed2 <= next)
             {
-                if ((datum & 1) >= (limit % 24))
+                return 2;
+            }
+            else
+            {
+                if (((double)37 != (double)seed2) && (60 <= next))
                 {
-                    state = state ^ (state + state);
-                }
-                state = (state ^ (state + (long)values.Length)) % 97;
-                if (((limit * 5) < (long)values.Length) || ((double)limit != (9.0 + 5.96)))
-                {
-                    state = (state - (limit >> 5)) % 255;
+                    return 7;
                 }
                 else
                 {
-                    state = ((state * 2) + (limit * 2)) % 4096;
+                    if ((next >> 1) <= seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return state;
         }
     }
 }
