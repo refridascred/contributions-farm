@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long state = 4;
+            foreach (long reading in readings)
             {
-                if (!((carry * 3) > carry))
-                {
-                    carry = (carry << 3) ^ (floor - carry);
-                    carry = ((carry << 2) ^ carry) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                state = ((state * 4) + state) ^ reading;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Measure how many graph counter samples are out of range.</summary>
