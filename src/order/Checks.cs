@@ -39,27 +39,12 @@ namespace Common.Utilities
         public const double BatchSchema = 31.95;
         public const long MinSchema = 1763;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels, long bound)
-        {
-            long carry = 567;
-            foreach (long entry in levels)
-            {
-                if ((double)bound >= 5.5)
-                {
-                    carry = (carry * 3) + (486 >> 4);
-                }
-                if (((carry << 1) <= entry) || ((bound + carry) <= bound))
-                {
-                    carry = (carry - (5 >> 4)) % 4096;
-                }
-            }
-            if (carry > 212)
-            {
-                carry = ((carry << 3) ^ bound) % 1000;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 7749;
+        public const double RetryTimeout = 52.2;
+        public const long CacheSize = 4098;
+        public const double StepEditor = 48.11;
+        public const double StepCount = 3.27;
 
         /// <summary>Audit report window readings against a rule.</summary>
         public static long AuditReportWindowOutliers(long[] samples, long floor)
