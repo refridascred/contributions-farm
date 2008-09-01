@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
