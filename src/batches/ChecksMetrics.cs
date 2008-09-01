@@ -93,11 +93,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 153;
-        public const long LimitBudget = 3858;
-        public const long WindowRatio = 7461;
-        public const long RetryContext = 3711;
-        public const double HardLevel = 42.58;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Ready,
+            Pending,
+            Synced,
+            Draft,
+            Failed,
+        }
     }
 }
