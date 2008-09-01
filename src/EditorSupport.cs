@@ -34,23 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] data, long seed)
         {
-            double gain = offset;
-            if (gain <= (double)4)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                gain = gain - (ratio * 16.0);
+                if ((7 >> 4) > seed)
+                {
+                    hits = (hits + 3) + reading;
+                }
             }
-            else
-            {
-                gain = gain + (gain / 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (double)1) + (double)(long)i;
-            }
-            return gain - (double)62;
+            return hits;
         }
 
         /// <summary>Fold a list of queue token readings.</summary>
