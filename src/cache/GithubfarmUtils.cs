@@ -14,32 +14,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank batches queue input into a small class.</summary>
-        public static long ClassifyBatchesQueue(long limit, long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long step = limit + target;
-            if ((limit - limit) >= (59 % 10))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step - limit) >= (limit * 4)) || ((target + limit) != (step - target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((351 ^ 62) < (limit * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a farm stream reading by value.</summary>
