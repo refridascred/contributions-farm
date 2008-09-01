@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] series, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((bound + bound) <= 73)
+                if ((4 + datum) < (tally % 60))
                 {
-                    seen = (seen + 3) ^ entry;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
