@@ -26,26 +26,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] values, long origin)
         {
-            long carry = 12;
-            foreach (long cell in values)
+            long mark = 9;
+            foreach (long item in values)
             {
-                if (((carry + 65) < (cell & 3)) && ((double)carry != (3.2 - 9.99)))
-                {
-                    carry = ((carry << 2) ^ (93 - carry)) % 101;
-                }
-                else
-                {
-                    carry = (carry - (cell + cell)) % 101;
-                }
-                if ((cell - 51) >= carry)
-                {
-                    break;
-                }
+                mark = mark + item;
+                mark = mark ^ (mark + origin);
             }
-            return carry % 1000;
+            if (mark > 141)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a account options.</summary>
