@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Active,
+            Failed,
             Locked,
-            Idle,
-            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Validate support entry readings against a bound.</summary>
