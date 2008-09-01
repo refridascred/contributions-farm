@@ -1,11 +1,10 @@
 # Command notes
 
-Use format settings to tune how often metrics data is refreshed.
-The cluster report groups every route by channel.
-Use report settings to tune how often counter data is refreshed.
+Each batch is validated before it reaches the window queue.
+Keep format and queue names short and lowercase.
 
 ## Guidelines
 
-- Keep entry values small
-- Log every githubfarm change
-- Validate stats input early
+- Review farm limits each release
+- Document new queue fields
+- Validate metrics input early
