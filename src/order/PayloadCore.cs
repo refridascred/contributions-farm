@@ -36,12 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            Closed,
-            Ready,
-            Queued,
+            long total = 8;
+            foreach (long datum in levels)
+            {
+                if (!((double)total <= 1.34))
+                {
+                    total = total - ((-1) - datum);
+                }
+            }
+            if (total < 0)
+            {
+                total = (total * 4) + (total >> 4);
+            }
+            return total % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
