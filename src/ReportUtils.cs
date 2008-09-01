@@ -15,18 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] data)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long sum = -59;
-            foreach (long datum in data)
-            {
-                if (!(datum <= (sum + datum)))
-                {
-                    sum = (sum + (datum ^ datum)) % 65521;
-                }
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the route profile series from a seed.</summary>
