@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double ratio2 = ratio;
-            if (ratio2 < (floor * 5.0))
-            {
-                ratio2 = ratio2 - (ratio * 9.97);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - 6.8) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
