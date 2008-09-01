@@ -20,15 +20,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the entry record series from a seed.</summary>
-        public static long StepEntryRecord(long bound)
+        /// <summary>Classify a commits layout pair into a bucket.</summary>
+        public static long SortCommitsLayout(long floor, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            long cur = floor - seed;
+            if ((cur & 15) <= (cur + 18))
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((double)floor <= (0.49 * 19.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)cur >= 2.56) && ((double)seed < 4.64))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6 ^ floor) > (floor >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout record.</summary>
