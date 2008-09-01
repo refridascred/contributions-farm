@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long LimitDepth = 7879;
         public const long WindowCache = 4260;
 
-        /// <summary>Derive the next metrics schema value from a seed.</summary>
-        public static long RollMetricsSchema(long offset)
+        /// <summary>Blend two schema counter measurements.</summary>
+        public static double ProjectSchemaCounter(double bias, double bias2)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            double mean = 12.0;
+            for (int i = 0; i < 3; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                mean = ((mean + bias2) + (double)(long)i) - bias;
             }
-            return result;
+            return mean + (bias2 - bias2);
         }
     }
 }
