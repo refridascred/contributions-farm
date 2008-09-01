@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] data)
         {
-            double load = (7.0 / 5.0) * 20.0;
-            if (load >= (floor - bias))
+            long matches = 0;
+            foreach (long item in data)
             {
-                load = load - floor;
+                if (5.8 >= (double)matches)
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                load = load - (load * 4.4);
-            }
-            return load + (double)7;
+            return matches;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
