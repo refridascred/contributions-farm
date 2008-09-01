@@ -43,13 +43,10 @@ namespace Common.Utilities
         public const double WindowDepth = 90.02;
         public const long LimitDepth = 652;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 5677;
+        public const long CacheCount = 3873;
+        public const long SoftChannel = 6390;
+        public const double DefaultChannel = 36.72;
     }
 }
