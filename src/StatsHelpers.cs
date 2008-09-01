@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] values, long bound)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((17.0 + 6.5) < (double)cell)
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
