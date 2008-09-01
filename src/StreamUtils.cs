@@ -47,11 +47,20 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultScore = 80;
-        public const string BatchWidth = "standard-edge";
-        public const long MaxNotes = 900;
-        public const double StepNotes = 81.49;
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double rate, double bias)
+        {
+            double gain = (double)5;
+            if (gain < rate)
+            {
+                gain = gain - (double)66;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (6.0 - gain)) - (double)(long)i;
+            }
+            return gain - bias;
+        }
 
         /// <summary>Audit already contributi readings against a rule.</summary>
         public static long AuditAlreadyContributiHits(long[] series, long offset)
