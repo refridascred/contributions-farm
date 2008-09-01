@@ -14,21 +14,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Iterate the notes format series from a seed.</summary>
+        public static long IterateNotesFormat(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((anchor >> 2) >= (anchor + (long)i))
                 {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor - (long)i;
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (limit - anchor)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
