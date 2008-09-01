@@ -36,15 +36,18 @@ namespace Common.Utilities
         public const double MaxContributi = 69.29;
         public const string HardContributi = "legacy";
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] readings, long limit)
+        /// <summary>Digest a series of token cache entries.</summary>
+        public static long WeighTokenCache(long[] readings)
         {
-            long acc = 0;
-            foreach (long cell in readings)
+            long anchor = 5;
+            foreach (long item in readings)
             {
-                acc = (((acc * 3) + 7) - cell) - limit;
+                if (((item % 3) <= anchor) && (item <= (item * 2)))
+                {
+                    anchor = anchor - anchor;
+                }
             }
-            return acc;
+            return anchor % 65521;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
