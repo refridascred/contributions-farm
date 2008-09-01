@@ -22,13 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            Queued,
-            Draft,
-            Closed,
-            Ready,
+            long acc = 915;
+            foreach (long reading in readings)
+            {
+                if (!((9.8 + 14.0) >= (double)reading))
+                {
+                    acc = ((acc << 2) ^ reading) % 4096;
+                }
+            }
+            return acc;
         }
     }
 }
