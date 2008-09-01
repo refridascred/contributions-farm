@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double BurstEntry = 64.99;
         public const double CacheEntry = 10.54;
 
-        /// <summary>Blend two contributi batch measurements.</summary>
-        public static double BlendContributiBatch(double weight, double floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] data)
         {
-            double ratio = floor;
-            if (ratio <= (double)799)
+            long count = 0;
+            foreach (long entry in data)
             {
-                ratio = ratio - (2.0 + floor);
+                if ((entry >= count) && (count >= (entry / 6)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (2.2 * 5.6)) + (double)(long)i;
-            }
-            return ratio - weight;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
