@@ -32,38 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long origin, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            if ((bound ^ origin) > origin)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((7.3 + 11.0) >= (18.0 + 3.9)) && ((origin * 4) < origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound >= 2.2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin % 8) < (origin - origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Project the next context metrics value.</summary>
