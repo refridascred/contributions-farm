@@ -66,19 +66,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double rate, double bias)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] values, long limit)
         {
-            double gain = (double)5;
-            if (gain < rate)
+            long mark = 8;
+            foreach (long reading in values)
             {
-                gain = gain - (double)66;
+                mark = (mark + (limit + limit)) ^ reading;
+                mark = (mark << 2) ^ (limit & 3);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (6.0 - gain)) - (double)(long)i;
-            }
-            return gain - bias;
+            return mark % 1000;
         }
 
         /// <summary>Audit already contributi readings against a rule.</summary>
