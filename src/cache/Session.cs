@@ -32,27 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] samples)
         {
-            long mark = 380;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((target <= (reading % 64)) || ((12.0 + 1.18) > (double)reading))
+                if (8.7 > (double)seen)
                 {
-                    mark = ((mark * 3) + reading) % 4096;
-                    mark = (mark << 3) ^ (target * 5);
-                }
-                else
-                {
-                    mark = (mark + reading) % 97;
-                }
-                if ((mark % 2) != (target >> 2))
-                {
-                    mark = ((mark << 3) ^ (reading + reading)) % 255;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count the account queue entries that pass the check.</summary>
