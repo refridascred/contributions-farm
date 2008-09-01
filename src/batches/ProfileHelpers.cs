@@ -14,22 +14,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "stable-v2";
+        public const long LimitSize = 1354;
+        public const long CacheFilter = 1204;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long DigestToken(long[] readings, long limit)
