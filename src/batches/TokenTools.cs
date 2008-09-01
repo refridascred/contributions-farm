@@ -39,16 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseSize = 68.94;
+        public const long LimitScore = 2647;
+        public const long SoftCounter = 7391;
+        public const long LimitWidth = 6404;
+        public const long WindowCounter = 9108;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryOrder = 4.97;
