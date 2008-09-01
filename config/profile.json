@@ -1,19 +1,11 @@
 {
-  "hard_ttl": 74,
-  "soft_ttl_s": false,
-  "buffer_ttl": 9286,
-  "hard_retries_count": "eu-west",
-  "idle_retries": 5434,
-  "stats_depth": {
-    "profile_window": {
-      "min_timeout_pct": "blue",
-      "default_limit_ms": 85.77,
-      "min_delay": true
-    },
-    "compress": [37, 285],
-    "schema_size": [469, 189, 260, 440],
-    "dry_run": 6066,
-    "editor_ttl": 98,
-    "entry_retries": "fallback"
+  "hard_ttl": "open",
+  "payload_retries": "edge",
+  "max_interval": {
+    "soft_retries_ms": 500,
+    "session_timeout": 53.73,
+    "payload_ratio": 30,
+    "default_depth_s": "legacy",
+    "strict": 62.0
   }
 }
