@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] readings, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((double)step > (6.0 + 5.23))
+                if (cell < seen)
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
