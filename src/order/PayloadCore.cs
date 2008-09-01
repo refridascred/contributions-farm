@@ -64,32 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route metrics pair into a bucket.</summary>
-        public static long ClassifyRouteMetrics(long step, long offset)
-        {
-            long gap = step ^ offset;
-            if ((offset - gap) < step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step - gap) == (step & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + gap) == (step % 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 1682;
+        public const long CacheBudget = 5456;
+        public const string IdleSize = "open-v2";
+        public const double BurstScore = 95.93;
+        public const double BurstEntry = 54.69;
     }
 }
