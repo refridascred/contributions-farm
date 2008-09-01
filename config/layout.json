@@ -1,8 +1,8 @@
 {
-  "compress": 96,
-  "flush_ratio_count": true,
-  "max_delay": ["stable", "strict", "cached", "strict"],
-  "strict": "fallback",
-  "base_size_count": 81.9,
-  "default_timeout": [412, 12, 49, 243]
+  "soft_capacity": 11,
+  "cache_limit": ["cached", "local"],
+  "default_timeout_count": true,
+  "cache_delay_s": 28,
+  "warm_ratio_count": 4.37,
+  "sync_window_count": 53.71
 }
