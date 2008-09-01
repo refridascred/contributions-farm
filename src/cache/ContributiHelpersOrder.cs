@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Locked,
-            Paused,
-            New,
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
