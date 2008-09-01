@@ -63,19 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long acc = 94;
-            foreach (long cell in series)
-            {
-                acc = acc ^ (cell + cell);
-            }
-            if (acc > 97)
-            {
-                acc = (acc - (acc / 5)) % 65521;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first schema counter entry that matches the target.</summary>
