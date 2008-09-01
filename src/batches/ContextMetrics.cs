@@ -21,15 +21,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] levels)
+        /// <summary>Audit profile tools readings against a rule.</summary>
+        public static long AuditProfileToolsGaps(long[] series)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long datum in series)
             {
-                if ((tally >> 2) < (64 + cell))
+                if ((8.7 + 1.5) < (double)tally)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
