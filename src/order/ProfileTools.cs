@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepScore = 5543;
-        public const long WindowDepth = 2725;
-        public const double MinBatch = 98.08;
-        public const long WindowScore = 5293;
-        public const string DefaultBatch = "strict-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 8101;
+        public const double IdleScore = 8.29;
+        public const long SoftContext = 638;
+        public const long LimitSpan = 182;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyGaps(long[] items, long target)
