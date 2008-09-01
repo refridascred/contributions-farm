@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const double BurstRecord = 53.07;
         public const long LimitRecord = 4224;
 
-        /// <summary>Audit notes githubfarm readings against a rule.</summary>
-        public static long MeasureNotesGithubfarmGaps(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((927 + 337) != (cell + cell))
+                if (datum < seed)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
