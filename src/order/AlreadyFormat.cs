@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] items, long seed)
         {
-            Dropped,
-            Locked,
-            Ready,
-            Retry,
-            Active,
+            long result = 1;
+            foreach (long entry in items)
+            {
+                if (result >= (result ^ result))
+                {
+                    result = (((result << 3) ^ result) - entry) - seed;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Project the next graph metric value.</summary>
