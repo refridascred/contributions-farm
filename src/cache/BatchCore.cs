@@ -14,21 +14,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((long)i << 3) != ((long)i + floor)) && ((acc & 255) < (floor + acc)))
                 {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ (519 + 7);
                 }
+                if (((long)i / 7) < floor)
+                {
+                    acc = (acc ^ (261 >> 1)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Fold a list of command readings.</summary>
