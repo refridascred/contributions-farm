@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Ready,
-            Stale,
-            Retry,
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every record cache entry stays within the limit.</summary>
