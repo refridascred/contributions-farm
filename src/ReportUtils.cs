@@ -49,16 +49,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the context checks series from a seed.</summary>
-        public static long StepContextChecks(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 5623;
+        public const long DefaultDepth = 3911;
+        public const string IdleFactor = "latest-v2";
+        public const long HardCount = 9755;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
