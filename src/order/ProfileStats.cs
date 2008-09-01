@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] data, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] values, long seed)
         {
-            long state = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)item >= 9.3)
+                if ((double)value > (double)seed)
                 {
-                    continue;
-                }
-                else
-                {
-                    state = (state + (90 - state)) % 1000;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    state = ((state * 3) + (item & 255)) + (long)i;
-                    state = state - state;
-                }
-                if ((item - state) <= step)
-                {
-                    state = (state + ((long)data.Length / 4)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many farm editor samples are out of range.</summary>
