@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long CacheEntry = 2989;
         public const double HardEntry = 79.16;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
