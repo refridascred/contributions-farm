@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Locate a window already reading by value.</summary>
+        public static long LocateWindowAlreadyIndex(long[] readings, long limit)
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel options.</summary>
