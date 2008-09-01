@@ -50,11 +50,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 2947;
-        public const long MaxContributi = 2198;
-        public const string CacheSpan = "strict-1";
-        public const long DefaultCount = 9252;
-        public const long HardBudget = 5422;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items)
+        {
+            long mark = 7;
+            foreach (long sample in items)
+            {
+                if ((114 - sample) < (sample << 3))
+                {
+                    mark = (mark << 3) ^ (mark >> 4);
+                }
+                else
+                {
+                    mark = (mark * 3) + (294 % 100);
+                }
+            }
+            return mark % 97;
+        }
     }
 }
