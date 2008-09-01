@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings)
+        /// <summary>Rank metrics payload input into a small class.</summary>
+        public static long BucketMetricsPayload(long step, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long diff = step ^ limit;
+            if ((162 + 20) == (diff + step))
             {
-                if ((((37 >> 3) == (value >> 1)) || ((value / 2) >= (62 + count))) && ((8.0 + 0.92) < (double)value))
+                return 5;
+            }
+            else
+            {
+                if (((diff * 2) > (limit + diff)) && ((9.6 + 1.5) == (double)diff))
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
