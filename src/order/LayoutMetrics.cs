@@ -18,35 +18,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session order value against two limits.</summary>
-        public static long ClassifySessionOrder(long offset, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long limit)
         {
-            long edge = offset ^ bound;
-            if ((8.1 / 4.0) > (double)edge)
+            long cur = origin ^ limit;
+            if (cur >= (cur >> 5))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (offset >= (offset ^ edge))
+                if ((origin - limit) >= origin)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((edge % 5) <= bound)
+                    if ((3.0 + 5.75) != (double)origin)
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        if (bound > (edge + edge))
+                        if ((15.0 + 20.0) <= (double)limit)
                         {
-                            return 3;
+                            return 1;
                         }
                         else
                         {
-                            return 0;
+                            return 8;
                         }
                     }
                 }
