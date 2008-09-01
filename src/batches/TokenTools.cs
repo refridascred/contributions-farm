@@ -20,32 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long floor, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long prev = floor + bound;
-            if ((prev >> 5) <= (373 % 60))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor / 9) > 6)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + 969) > (floor & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            New,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Project the next batch value.</summary>
