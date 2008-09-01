@@ -35,21 +35,18 @@ namespace Common.Utilities
             return drift + (drift * 3.59);
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Digest a series of already token entries.</summary>
+        public static long ScoreAlreadyToken(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 41;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((carry - carry) == (carry ^ carry)) || ((item + carry) >= carry))
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry * 3) + item) % 4096;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Classify a graph channel pair into a bucket.</summary>
