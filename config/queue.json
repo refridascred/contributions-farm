@@ -1,6 +1,7 @@
 {
-  "burst_window": true,
-  "max_limit_s": "blue",
-  "verbose": 1024,
-  "dry_run": true
+  "metric_timeout": "eu-west",
+  "burst_timeout_pct": 9898,
+  "schema_size": "latest",
+  "persist": "primary",
+  "readonly": "primary"
 }
