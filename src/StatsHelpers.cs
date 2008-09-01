@@ -69,18 +69,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long score = 883;
+            foreach (long cell in series)
             {
-                if ((6.4 * 15.0) <= (double)sample)
+                if (!((cell - seed) == (seed % 3)))
                 {
-                    tally = tally + 1;
+                    score = (score + (5 + 62)) % 255;
+                }
+                else
+                {
+                    score = (score + (seed + score)) % 97;
                 }
             }
-            return tally;
+            if (score > 617)
+            {
+                score = ((score * 5) + (seed + seed)) % 1000;
+            }
+            return score;
         }
     }
 }
