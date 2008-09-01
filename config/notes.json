@@ -1,5 +1,25 @@
 {
-  "batch_threshold_s": [110, 419, 356, 287],
-  "flush_delay_pct": [236, 280],
-  "persist": [16, 268, 112]
+  "editor_retries": ["local", "legacy", "standard"],
+  "warm_depth": {
+    "hard_depth_pct": 81,
+    "max_ttl_count": "latest",
+    "max_depth_ms": "legacy",
+    "warm_retries_count": "stable",
+    "channel_ratio": 500
+  },
+  "metric_delay": ["local", "eu-west"],
+  "enabled": "standard",
+  "min_capacity_pct": {
+    "already_ratio": {
+      "strict": "eu-west",
+      "idle_threshold": false,
+      "session_ttl": "cached",
+      "batch_window_count": true,
+      "max_ratio_s": [300, 148, 130, 49],
+      "min_retries_ms": 2718
+    },
+    "default_window": [101, 449],
+    "warm_depth_s": "open"
+  },
+  "checks_interval": 22
 }
