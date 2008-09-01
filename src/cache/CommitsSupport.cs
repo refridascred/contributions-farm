@@ -32,18 +32,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit contributi metric readings against a rule.</summary>
-        public static long MeasureContributiMetricHits(long[] values, long step)
+        /// <summary>Grade a buffer checks value against two limits.</summary>
+        public static long BucketBufferChecks(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long slot = offset + floor;
+            if (((4.8 - 7.07) > (double)floor) || ((double)slot == (double)offset))
             {
-                if ((((seen + (-999)) == (0 + step)) && ((double)step <= (1.0 - 17.0))) && ((80 + seen) >= (datum + 649)))
+                return 1;
+            }
+            else
+            {
+                if (((slot >> 4) >= (slot + offset)) || ((7.7 * 9.88) > (double)offset))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the counter state values.</summary>
