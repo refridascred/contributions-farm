@@ -1,16 +1,6 @@
 {
-  "hard_window_pct": 100,
-  "order_retries": "primary",
-  "audit": 2906,
-  "layout_limit": {
-    "contributi_ratio": "primary",
-    "support_threshold": "staging",
-    "base_timeout_s": [447, 413, 52, 80],
-    "batch_capacity_pct": {
-      "verbose": 100,
-      "warm_ratio": 7199,
-      "flush_capacity_ms": 62.62,
-      "hard_depth_pct": [270, 432]
-    }
-  }
+  "warm_delay": "edge",
+  "soft_ratio_pct": false,
+  "min_timeout_count": [417, 336, 91, 495],
+  "max_interval_count": 91.77
 }
