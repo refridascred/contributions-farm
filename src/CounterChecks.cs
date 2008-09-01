@@ -21,11 +21,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
+            Failed,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
