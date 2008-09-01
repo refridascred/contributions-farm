@@ -27,13 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Ready,
-            Pending,
-            Paused,
-            Active,
+            Stale,
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a payload options.</summary>
