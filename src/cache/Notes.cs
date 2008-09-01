@@ -64,12 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Scale a window counter figure with a bias.</summary>
+        public static double SmoothWindowCounter(double scale, double bias)
         {
-            Done,
-            Stale,
-            Synced,
+            double drift = (double)340 / 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - (bias * 12.0)) + (double)(long)i) + scale;
+            }
+            return drift - 20.0;
         }
     }
 }
