@@ -77,21 +77,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools stream pairs that satisfy a relation.</summary>
-        public static long OverlapToolsStreamCount(long[] samples)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            Done,
         }
     }
 }
