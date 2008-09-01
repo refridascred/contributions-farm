@@ -20,23 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally < reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 8775;
+        public const long StepSpan = 2789;
+        public const long StepFactor = 1833;
+        public const long LimitTimeout = 4899;
+        public const double IdleReport = 46.86;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
