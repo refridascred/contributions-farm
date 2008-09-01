@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long CacheMetric = 869;
         public const string IdleSize = "standard-v2";
 
-        /// <summary>Adjust a batches checks reading.</summary>
-        public static double ScaleBatchesChecks(double ratio, double floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double drift = (double)(8 ^ 35);
-            if (drift < (double)7)
-            {
-                drift = drift + (ratio / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (floor * 2.0)) + (double)(long)i;
-            }
-            return drift - 0.77;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the batches report series from a seed.</summary>
