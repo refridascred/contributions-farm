@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many account channel samples are out of range.</summary>
+        public static long MeasureAccountChannelGaps(long[] items, long origin)
         {
-            Pending,
-            Retry,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((origin ^ origin) <= tally)
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter options.</summary>
