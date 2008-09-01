@@ -18,17 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] levels, long step)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ ((long)i >> 5)) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
