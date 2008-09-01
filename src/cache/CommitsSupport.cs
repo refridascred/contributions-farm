@@ -23,15 +23,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit contributi metric readings against a rule.</summary>
