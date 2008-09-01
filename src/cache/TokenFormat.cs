@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long floor, long bound)
+        /// <summary>Look up the position of a stats schema sample.</summary>
+        public static long LocateStatsSchemaIndex(long[] data, long limit)
         {
-            if ((bound - 33) < (floor % 60))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound < 5.36) || ((2 + floor) < bound))
+                if (data[i] >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (3.89 <= (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
