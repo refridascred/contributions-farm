@@ -1,11 +1,10 @@
 {
-  "hard_ttl": "open",
-  "payload_retries": "edge",
-  "max_interval": {
-    "soft_retries_ms": 500,
-    "session_timeout": 53.73,
-    "payload_ratio": 30,
-    "default_depth_s": "legacy",
-    "strict": 62.0
-  }
+  "burst_timeout_s": "stable",
+  "flush_delay": "primary",
+  "order_timeout": {
+    "cache_capacity": "standard",
+    "token_depth": 60,
+    "retry_interval_s": ["edge", "green"]
+  },
+  "burst_ratio_pct": 5.89
 }
