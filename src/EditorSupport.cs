@@ -34,14 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Project the next profile format value.</summary>
+        public static double BlendProfileFormat(double gain, double offset)
         {
-            Paused,
-            Draft,
-            Locked,
-            Synced,
-            Retry,
+            double mean = gain;
+            if (mean < (offset - gain))
+            {
+                mean = mean + (offset - offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)57) + (double)(long)i;
+            }
+            return mean + (double)17;
         }
 
         /// <summary>Describe the channel status values.</summary>
