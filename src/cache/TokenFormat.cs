@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate support schema readings against a bound.</summary>
-        public static bool ValidateSupportSchemaLimits(long[] items, long floor)
+        /// <summary>Check that every editor route entry stays within the limit.</summary>
+        public static bool VerifyEditorRouteRange(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (datum != floor)
+                if (cell >= origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
