@@ -37,15 +37,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double rate, double span)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            double gain = 11.0;
+            if (gain >= (rate * 8.9))
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                gain = gain - rate;
             }
-            return anchor;
+            return gain + (span + span);
         }
 
         /// <summary>Describe the metrics class values.</summary>
