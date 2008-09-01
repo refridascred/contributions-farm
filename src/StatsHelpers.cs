@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] values, long bound)
         {
-            long acc = 1;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!((acc / 6) < acc))
+                if ((17.0 + 6.5) < (double)cell)
                 {
-                    acc = ((acc << 2) ^ (step % 97)) + datum;
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc > 59)
-            {
-                acc = (acc - acc) % 101;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
