@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long StepBatch = 9665;
         public const long BaseBatch = 6380;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 3894;
-        public const double HardTimeout = 74.9;
-        public const double LimitSize = 6.51;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Pending,
+            Retry,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandOutliers(long[] items)
