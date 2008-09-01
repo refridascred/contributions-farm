@@ -27,18 +27,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 580;
+        public const long BurstQueue = 6308;
+        public const long IdleQueue = 798;
+        public const double BaseSpan = 38.67;
+        public const long BatchQueue = 9201;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowStats = 8687;
