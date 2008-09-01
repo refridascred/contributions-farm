@@ -43,12 +43,9 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 6079;
+        public const long DefaultCache = 4515;
+        public const long RetryCache = 2013;
     }
 }
