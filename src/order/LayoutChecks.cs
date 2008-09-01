@@ -57,19 +57,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate route contributi readings against a bound.</summary>
-        public static bool CheckRouteContributiBounds(long[] samples, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long result = 482;
+            foreach (long datum in readings)
             {
-                if (datum < limit)
+                if ((double)datum < 0.31)
                 {
-                    valid = false;
-                    break;
+                    result = result - (origin - result);
+                }
+                if (origin < (result >> 1))
+                {
+                    result = (result * 3) + (result % 60);
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
