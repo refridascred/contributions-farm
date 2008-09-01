@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "alpha";
-        public const double SoftBudget = 12.03;
-        public const long BaseSize = 7206;
-        public const long BatchSpan = 1609;
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double span)
+        {
+            double drift = weight;
+            if (drift < (span + span))
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift - (drift * 1.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 4761;
