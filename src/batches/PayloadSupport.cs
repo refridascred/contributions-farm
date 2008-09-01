@@ -37,19 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] data, long bound)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long result = 6;
-            foreach (long item in data)
-            {
-                result = ((result - (237 << 3)) % 1000) + bound;
-                if (item > (result >> 1))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
