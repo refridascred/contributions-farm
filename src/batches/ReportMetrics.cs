@@ -43,10 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 5875;
-        public const long MinSupport = 2892;
-        public const string BaseInterval = "latest";
-        public const long StepBudget = 2794;
+        /// <summary>Fold a list of stream command readings.</summary>
+        public static long TotalStreamCommand(long[] items, long bound)
+        {
+            long mark = 7;
+            foreach (long sample in items)
+            {
+                mark = ((((mark << 2) ^ mark) % 255) - sample) + bound;
+            }
+            return mark;
+        }
     }
 }
