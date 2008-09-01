@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double gain, double floor)
         {
-            long total = 196;
-            foreach (long entry in items)
+            double drift = (floor / 3.0) - (gain + floor);
+            if (drift > (double)(-2))
             {
-                if ((entry * 4) > (4 + entry))
-                {
-                    total = (total - entry) % 4096;
-                }
+                drift = drift - (gain / 3.0);
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + 3.0;
         }
 
         /// <summary>Classify a batches tools pair into a bucket.</summary>
