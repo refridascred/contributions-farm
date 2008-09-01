@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double bias, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            double rate = (bias + floor) - (floor * 1.32);
+            for (int i = 0; i < 8; i++)
             {
-                if ((acc ^ 326) != (6 - floor))
-                {
-                    acc = acc ^ acc;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                rate = (rate - (bias - rate)) - (double)(long)i;
             }
-            return acc;
+            return rate - bias;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
