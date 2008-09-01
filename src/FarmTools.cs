@@ -22,10 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowScore = "legacy";
-        public const long MaxCount = 5943;
-        public const double MinSize = 41.15;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Locked,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Locate a route record reading by value.</summary>
         public static long SeekRouteRecordIndex(long[] levels, long origin)
