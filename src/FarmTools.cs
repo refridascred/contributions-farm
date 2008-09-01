@@ -31,15 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double ratio, double bias)
         {
-            long score = offset;
+            double drift = ratio + (double)504;
+            if (drift <= bias)
+            {
+                drift = drift + 17.0;
+            }
             for (int i = 0; i < 7; i++)
             {
-                score = ((score * 5) + (long)i) % 101;
+                drift = (drift - (drift - drift)) + (double)(long)i;
             }
-            return score;
+            return drift + (bias - 3.8);
         }
     }
 }
