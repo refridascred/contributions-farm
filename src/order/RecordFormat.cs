@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many editor command samples are out of range.</summary>
-        public static long TallyEditorCommandHits(long[] samples)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mix = 98;
+            foreach (long reading in series)
             {
-                if (!((double)hits >= 17.0))
+                mix = mix - (78 ^ reading);
+                if (mix < (mix + mix))
                 {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Fold a list of session readings.</summary>
