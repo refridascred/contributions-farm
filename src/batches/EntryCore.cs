@@ -30,20 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] values)
         {
-            long result = 353;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (0 < (datum + result))
+                if (!((reading + count) <= reading) || ((double)count > (2.9 * 19.0)))
                 {
-                    result = (result ^ (datum * 5)) % 97;
-                    continue;
+                    count = count + 3;
                 }
-                result = result ^ (463 * 4);
             }
-            return result;
+            return count;
         }
 
         /// <summary>Blend two account filter measurements.</summary>
