@@ -36,15 +36,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long bound, long floor)
         {
-            long score = 37;
-            foreach (long reading in data)
+            long cur = bound - floor;
+            if (16.0 >= (double)floor)
             {
-                score = ((score << 3) ^ (reading * 5)) % 101;
+                return 1;
             }
-            return score % 97;
+            else
+            {
+                if ((3 - cur) != (cur >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((cur * 5) > bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next report value.</summary>
