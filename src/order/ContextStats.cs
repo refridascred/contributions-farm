@@ -27,18 +27,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] series, long limit)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches & 7) >= (limit + limit))
+                if ((data[i] >= origin) && ((data[i] % 5) != 0))
                 {
-                    matches = (matches + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
