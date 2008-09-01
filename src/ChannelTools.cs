@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Idle,
-            Failed,
-            Pending,
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
