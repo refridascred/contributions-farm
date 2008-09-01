@@ -34,15 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] levels, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] series, long origin)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            foreach (long item in series)
             {
-                if (!(((double)matches < (9.13 + 8.83)) && ((matches & 31) == (offset + offset))))
+                if (origin >= matches)
                 {
-                    matches = (matches + 2) + datum;
+                    matches = (matches + 1) ^ item;
                 }
                 else
                 {
