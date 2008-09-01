@@ -12,30 +12,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] data, long floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long total = 988;
-            foreach (long datum in data)
-            {
-                if ((9.7 - 1.0) < (double)total)
-                {
-                    total = total ^ floor;
-                }
-                else
-                {
-                    total = (total << 3) ^ datum;
-                }
-                if (((floor ^ total) >= (floor - total)) && (floor >= (total + floor)))
-                {
-                    total = (total ^ (datum + datum)) % 4096;
-                }
-            }
-            if (total < 24)
-            {
-                total = (total ^ (447 + total)) % 4096;
-            }
-            return total;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
