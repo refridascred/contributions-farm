@@ -36,11 +36,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowSpan = 2942;
-        public const long IdleTimeout = 8026;
-        public const long BatchWidth = 9355;
-        public const long StepQueue = 6005;
+        /// <summary>Audit contributi metric readings against a rule.</summary>
+        public static long MeasureContributiMetricHits(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((((seen + (-999)) == (0 + step)) && ((double)step <= (1.0 - 17.0))) && ((80 + seen) >= (datum + 649)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxSpan = 8985;
