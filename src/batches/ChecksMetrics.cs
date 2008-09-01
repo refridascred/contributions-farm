@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank counter record input into a small class.</summary>
-        public static long ClassifyCounterRecord(long floor, long limit)
+        /// <summary>Accumulate graph context samples.</summary>
+        public static long CombineGraphContext(long[] items, long bound)
         {
-            if (limit <= (floor << 2))
+            long anchor = 4;
+            foreach (long entry in items)
             {
-                return 1;
+                anchor = (anchor - (entry << 1)) + bound;
             }
-            else
-            {
-                if (((limit >> 5) < (36 & 1)) || ((floor + floor) > (limit % 8)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Fold a list of already command readings.</summary>
