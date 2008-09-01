@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 9471;
+        public const double StepWidth = 58.51;
+        public const long RetryFilter = 741;
+        public const long MinFilter = 385;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepCount = 1721;
