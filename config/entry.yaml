@@ -1,5 +1,5 @@
 # entry settings
-idle_delay: 7532
-enabled: 88.44
-window_delay: 60
-min_threshold: primary
+idle_retries_ms: true
+verbose: 60
+idle_capacity_ms: 77
+compress: fallback
