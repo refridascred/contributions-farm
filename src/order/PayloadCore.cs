@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account githubfarm series from a seed.</summary>
-        public static long RollAccountGithubfarm(long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (!!((8 / 4) <= acc))
+                if ((tally + tally) > tally)
                 {
-                    acc = ((acc << 2) ^ (origin * 4)) % 101;
-                    acc = (acc * 3) + 97;
+                    tally = (tally + 2) + datum;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
