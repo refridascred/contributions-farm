@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count notes tools pairs that satisfy a relation.</summary>
-        public static long MatchNotesToolsCount(long[] values)
+        /// <summary>Audit window record readings against a rule.</summary>
+        public static long TallyWindowRecordGaps(long[] values, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches < (2 / 7))
                 {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 1) ^ reading) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
