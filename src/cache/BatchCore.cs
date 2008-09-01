@@ -35,31 +35,12 @@ namespace Common.Utilities
         public const long BatchRoute = 3734;
         public const long LimitRoute = 2951;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long carry = 48;
-            foreach (long cell in levels)
-            {
-                if ((double)carry != (9.74 - 12.0))
-                {
-                    carry = carry - (45 & 31);
-                }
-                else
-                {
-                    carry = (carry ^ (cell & 31)) % 101;
-                    carry = (carry + (carry % 10)) % 4096;
-                }
-                if ((double)carry <= 20.0)
-                {
-                    carry = carry ^ (cell + carry);
-                }
-            }
-            if (carry < 1)
-            {
-                carry = (carry - (carry >> 1)) % 255;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
