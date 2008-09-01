@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=234
+log "limit is ${COMMAND_LIMIT}"
 
-for item in standard strict latest local; do
+for item in eu-west primary fallback; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=214
-log "limit is ${COMMAND_LIMIT}"
