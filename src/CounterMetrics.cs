@@ -26,20 +26,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] values, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] levels, long origin)
         {
-            long mark = 9;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                mark = mark + item;
-                mark = mark ^ (mark + origin);
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mark > 141)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
