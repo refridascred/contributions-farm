@@ -1,6 +1,18 @@
 {
-  "batch_ratio_ms": 72,
-  "soft_capacity_count": "open",
-  "support_ratio": 30,
-  "cache_capacity_ms": 28.34
+  "soft_size_ms": {
+    "min_depth_s": "edge",
+    "cache_timeout_s": {
+      "report_interval": "cached",
+      "record_capacity": "blue",
+      "entry_interval": "standard",
+      "githubfarm_ratio": 89.58,
+      "payload_window": 4658
+    },
+    "payload_interval": "green"
+  },
+  "cluster_ratio": 55.94,
+  "compress": 4559,
+  "retry_threshold": 97,
+  "context_capacity": 18.04,
+  "cache_ratio": false
 }
