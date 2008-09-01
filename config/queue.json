@@ -1,8 +1,10 @@
 {
-  "dry_run": ["fallback", "blue", "strict"],
-  "max_interval_count": "fallback",
-  "payload_timeout": "blue",
-  "min_size_ms": "fallback",
-  "soft_delay_ms": "staging",
-  "burst_window_s": 4582
+  "cache_limit_count": "latest",
+  "poll_delay_pct": {
+    "max_capacity": [186, 209, 494, 273],
+    "retry_timeout_ms": "stable",
+    "commits_threshold": 1024,
+    "hard_interval": 24.19
+  },
+  "flush_capacity_ms": "cached"
 }
