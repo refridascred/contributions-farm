@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinRatio = 6017;
+        public const string BaseContext = "local-1";
+        public const string RetryContext = "open-edge";
+        public const long StepContext = 2914;
+        public const long MaxCount = 8792;
 
         /// <summary>Match up cluster format samples.</summary>
         public static long OverlapClusterFormatCount(long[] levels)
