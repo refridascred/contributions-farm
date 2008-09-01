@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 213;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (((state << 3) ^ offset) % 65521) - reading;
             }
-            return count;
+            if (state < 25)
+            {
+                state = (state ^ (990 + offset)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the graph state values.</summary>
