@@ -49,12 +49,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the context checks series from a seed.</summary>
+        public static long StepContextChecks(long bound)
         {
-            Queued,
-            Failed,
-            Dropped,
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the profile state values.</summary>
