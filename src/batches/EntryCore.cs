@@ -44,23 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two account filter measurements.</summary>
-        public static double SmoothAccountFilter(double rate, double floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] levels, long step)
         {
-            double weight = rate;
-            if (weight <= (floor + rate))
+            long mark = 81;
+            foreach (long cell in levels)
             {
-                weight = weight + 3.0;
+                mark = ((mark ^ (step << 3)) % 4096) ^ cell;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (9.59 / 5.0)) + (double)(long)i;
-            }
-            return weight - (weight * 8.4);
+            return mark % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
