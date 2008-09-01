@@ -20,17 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (state >> 3)) % 65521;
-                state = ((state * 4) + ((long)i % 5)) % 255;
-                state = ((state * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
