@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 7736;
-        public const long MaxContext = 2059;
-        public const long LimitContext = 5768;
-        public const double DefaultContext = 54.64;
-        public const long WindowContext = 6982;
+        /// <summary>Classify a stream command pair into a bucket.</summary>
+        public static long ClassifyStreamCommand(long floor, long bound)
+        {
+            if ((bound % 7) >= ((-553) << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((floor + floor) <= floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + floor) > (floor - 374))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor > (18 / 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a profile cluster reading.</summary>
         public static double BlendProfileCluster(double bias, double span)
