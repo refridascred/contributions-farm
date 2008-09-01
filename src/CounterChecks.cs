@@ -75,14 +75,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftInterval = 3771;
+        public const long LimitAlready = 8545;
+        public const double BurstInterval = 72.38;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long target, long origin)
