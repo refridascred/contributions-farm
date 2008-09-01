@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate layout schema readings against a bound.</summary>
-        public static bool CheckLayoutSchemaBounds(long[] readings, long origin)
+        /// <summary>Check that every tools entry entry stays within the limit.</summary>
+        public static bool VerifyToolsEntryRange(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (entry != origin)
+                if (reading >= step)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
