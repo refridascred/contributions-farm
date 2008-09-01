@@ -29,13 +29,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the profile command entries that pass the check.</summary>
+        public static long MeasureProfileCommandOutliers(long[] data)
         {
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count + item) >= (item & 15))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
