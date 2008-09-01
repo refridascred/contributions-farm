@@ -28,13 +28,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double ratio, double span)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            double bias = span;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias + span) + (double)(long)i) - ratio;
+            }
+            return bias + (bias - bias);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
