@@ -54,14 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] levels, long step)
         {
-            Synced,
-            Done,
-            Locked,
-            Closed,
-            Paused,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (count <= item)
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
