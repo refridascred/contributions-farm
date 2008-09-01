@@ -64,19 +64,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] data, long limit)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
