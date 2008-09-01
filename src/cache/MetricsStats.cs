@@ -61,21 +61,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double rate2 = (rate * 8.0) - (4.0 * 2.11);
+            return (rate2 + (double)9) + floor;
         }
     }
 }
