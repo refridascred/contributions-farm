@@ -43,23 +43,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] levels, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long carry = 26;
-            foreach (long item in levels)
-            {
-                if (!(item <= (origin ^ origin)))
-                {
-                    carry = (carry ^ (item & 15)) % 101;
-                }
-                carry = (carry + origin) % 97;
-                if ((double)item >= 11.0)
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            Paused,
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
