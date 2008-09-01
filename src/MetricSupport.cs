@@ -12,16 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a context channel counter forward.</summary>
-        public static long StepContextChannel(long floor)
+        /// <summary>Count the farm payload entries that pass the check.</summary>
+        public static long TallyFarmPayloadGaps(long[] data)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                state = (state << 3) ^ (state + state);
-                state = ((state * 2) + (long)i) % 1000;
+                if ((((datum << 2) > (count + count)) && (count >= datum)) || !((21 - (long)data.Length) > datum))
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Audit record metric readings against a rule.</summary>
