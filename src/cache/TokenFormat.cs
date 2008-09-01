@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] values, long limit)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits / 2) <= (long)values.Length)
-                {
-                    hits = ((hits + 3) + sample) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine checks values into a single score.</summary>
