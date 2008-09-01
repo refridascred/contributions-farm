@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 7452;
         public const long CacheBatch = 8076;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] values, long floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
