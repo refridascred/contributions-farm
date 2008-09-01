@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 10.63;
-        public const long WindowTimeout = 589;
-        public const long MaxAccount = 3543;
-        public const long CacheAccount = 1746;
-        public const long BurstSize = 6139;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double weight, double floor)
