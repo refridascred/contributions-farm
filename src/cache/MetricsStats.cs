@@ -64,18 +64,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings, long target)
+        /// <summary>Validate commits channel readings against a bound.</summary>
+        public static bool GuardCommitsChannelBounds(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (!((1.55 - 2.0) != (double)reading))
+                if (sample != step)
                 {
-                    seen = (seen + 1) - target;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
