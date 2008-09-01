@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "open";
+        public const long MinTools = 4292;
+        public const double RetryDepth = 39.12;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double SmoothBatch(double rate, double bias)
