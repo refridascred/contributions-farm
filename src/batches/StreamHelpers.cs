@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 7790;
-        public const long StepProfile = 3172;
-        public const long WindowProfile = 7216;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long DigestQueue(long[] data)
