@@ -37,11 +37,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepTimeout = "legacy-1";
-        public const double LimitStats = 86.51;
-        public const double BatchDepth = 88.02;
-        public const string CacheTimeout = "strict-1";
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long floor, long origin)
+        {
+            if ((origin + floor) == (origin / 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin < (838 / 9)) && ((floor & 15) > (floor - floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Audit session stats readings against a rule.</summary>
         public static long CountSessionStatsMatches(long[] samples)
