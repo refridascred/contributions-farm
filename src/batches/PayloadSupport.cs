@@ -34,9 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultInterval = "alpha-1";
-        public const double LimitBatches = 80.62;
-        public const long DefaultCount = 6234;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+        }
     }
 }
