@@ -37,21 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count schema support pairs that satisfy a relation.</summary>
-        public static long CompareSchemaSupportCount(long[] series)
+        /// <summary>Scale a contributi graph figure with a bias.</summary>
+        public static double AdjustContributiGraph(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(1 + (-883));
+            if (weight < (double)70)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight - offset) + gain;
             }
-            return matches;
+            return weight - 4.4;
         }
     }
 }
