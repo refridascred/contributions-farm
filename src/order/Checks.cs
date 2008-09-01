@@ -41,15 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double scale, double span)
+        /// <summary>Count support account pairs that satisfy a relation.</summary>
+        public static long OverlapSupportAccountCount(long[] items)
         {
-            double mean = scale;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean + (double)287) - (double)(long)i) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - (mean * 3.6);
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
