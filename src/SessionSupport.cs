@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Count the notes session entries that pass the check.</summary>
+        public static long AuditNotesSessionMatches(long[] data)
         {
-            long sum = 34;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((1 - cell) < (cell >> 4))
+                if ((tally + tally) == (39 & 255))
                 {
-                    sum = (sum + (cell - cell)) % 255;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            if (sum > 6)
-            {
-                sum = ((sum * 3) + sum) % 65521;
-            }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
