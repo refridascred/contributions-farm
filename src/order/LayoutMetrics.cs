@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples, long target)
+        /// <summary>Locate a support batches reading by value.</summary>
+        public static long FindSupportBatchesIndex(long[] series, long bound)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 4) + (sum >> 3)) - target;
-                sum = sum + item;
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Grade a session order value against two limits.</summary>
