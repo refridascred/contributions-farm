@@ -65,17 +65,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] data, long seed)
+        /// <summary>Accumulate checks layout samples.</summary>
+        public static long CombineChecksLayout(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 75;
+            foreach (long item in samples)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix + mix) % 1000) - item;
+                mix = ((mix << 2) ^ ((-905) % 24)) % 4096;
             }
-            return -1;
+            return mix;
         }
     }
 }
