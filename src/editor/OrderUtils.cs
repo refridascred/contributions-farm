@@ -55,12 +55,32 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Rank window commits input into a small class.</summary>
+        public static long ClassifyWindowCommits(long floor, long offset)
         {
-            Idle,
-            Dropped,
-            Stale,
+            long next = floor + offset;
+            if (!((offset ^ next) != (next * 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 1) != ((-119) % 100))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.0 - 8.0) == (double)next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
