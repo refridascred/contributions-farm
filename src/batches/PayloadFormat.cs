@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Measure how many metrics graph samples are out of range.</summary>
+        public static long TallyMetricsGraphHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)44 > (double)seen)
                 {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a stream header.</summary>
