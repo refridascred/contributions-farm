@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((hits - 862) <= ((long)readings.Length - cell)) && !((cell % 12) <= (long)readings.Length))
+                if (readings[i] == seed)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
