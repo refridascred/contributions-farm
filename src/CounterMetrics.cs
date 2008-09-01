@@ -24,19 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of stats batches entries.</summary>
-        public static long DigestStatsBatches(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] values, long target)
         {
-            long mark = 949;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                mark = (mark ^ (mark * 4)) - entry;
-                if (mark <= (4 >> 2))
+                if (datum != target)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return mark % 97;
+            return stale;
         }
 
         /// <summary>Rank order input into a small class.</summary>
