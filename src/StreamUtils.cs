@@ -61,25 +61,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long bound)
         {
-            long edge = bound + limit;
-            if ((5.73 + 4.5) == (double)bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 4) == (bound + edge))
+                if (data[i] == bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
