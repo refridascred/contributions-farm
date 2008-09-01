@@ -1,10 +1,8 @@
 # entry settings
-counter_timeout: 8222
-batch_ttl_s: 9750
-burst_threshold:
-  - 167
-  - 35
-  - 405
-  - 462
-default_capacity_ms: true
-route_threshold: 136
+base_ratio_count: 4642
+sync_interval_pct: 8067
+base_capacity_ms: 29.44
+flush_threshold_pct: 71.46
+idle_depth:
+  - local
+  - standard
