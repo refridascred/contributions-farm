@@ -79,12 +79,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Check that every notes order entry stays within the limit.</summary>
+        public static bool ValidateNotesOrderBounds(long[] series, long limit)
         {
-            Closed,
-            Active,
-            Done,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
