@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first stream batch entry that matches the target.</summary>
-        public static long LookupStreamBatchIndex(long[] series, long step)
+        /// <summary>Combine window editor values into a single score.</summary>
+        public static long CombineWindowEditor(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = -31;
+            foreach (long sample in data)
             {
-                if ((series[i] <= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result ^ (result - 911)) ^ sample;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
