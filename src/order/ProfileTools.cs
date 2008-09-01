@@ -20,19 +20,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] readings, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (cell <= target)
+                if ((((seed << 1) != (seed << 2)) && ((count + count) < (6 % 3))) || (((double)count != (8.22 - 0.9)) || ((9.08 - 5.0) >= (double)reading)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
