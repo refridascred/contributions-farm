@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples, long step)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((step + reading) > 94)
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
