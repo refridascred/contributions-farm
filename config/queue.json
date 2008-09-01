@@ -1,16 +1,6 @@
 {
-  "default_ttl_pct": 250,
-  "sync_retries_ms": {
-    "batch_ratio_count": "open",
-    "soft_timeout": {
-      "soft_size_pct": "local",
-      "layout_capacity": 86.64,
-      "batch_depth": "stable"
-    },
-    "cache_ttl": false,
-    "base_ratio_s": "open",
-    "report_size": ["edge", "cached", "cached", "eu-west"],
-    "poll_depth_pct": ["edge", "cached", "legacy"]
-  },
-  "route_timeout": "stable"
+  "cache_window": 30,
+  "retry_threshold_pct": [439, 216, 462],
+  "poll_limit_s": true,
+  "poll_timeout": "eu-west"
 }
