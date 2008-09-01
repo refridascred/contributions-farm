@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first metrics already entry that matches the target.</summary>
-        public static long LookupMetricsAlreadyIndex(long[] items, long floor)
+        /// <summary>Count account layout pairs that satisfy a relation.</summary>
+        public static long MatchAccountLayoutCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine contributi tools values into a single score.</summary>
