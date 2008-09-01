@@ -53,22 +53,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the editor command entries that pass the check.</summary>
-        public static long AuditEditorCommandHits(long[] levels, long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-332) + limit) < (matches * 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
