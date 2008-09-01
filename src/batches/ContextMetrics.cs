@@ -60,16 +60,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long carry = 535;
-            foreach (long value in levels)
-            {
-                carry = (carry - (carry + carry)) - value;
-                carry = (carry - (carry & 63)) % 101;
-            }
-            return carry % 4096;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
