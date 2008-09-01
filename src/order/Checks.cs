@@ -15,21 +15,12 @@ namespace Common.Utilities
         public const string StepRatio = "open";
         public const long RetryEntry = 7062;
 
-        /// <summary>Count profile batches pairs that satisfy a relation.</summary>
-        public static long MatchProfileBatchesCount(long[] series)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
