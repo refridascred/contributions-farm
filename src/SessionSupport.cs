@@ -35,18 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits stats entries that pass the check.</summary>
-        public static long TallyCommitsStatsHits(long[] readings, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (tally < (tally & 63))
-                {
-                    tally = ((tally + 1) ^ item) - origin;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
