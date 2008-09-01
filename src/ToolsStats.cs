@@ -23,15 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache order entries.</summary>
-        public static long ScoreCacheOrder(long[] readings, long target)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double gain, double bias)
         {
-            long sum = 52;
-            foreach (long item in readings)
+            double weight = gain;
+            if (weight > (weight * 0.18))
             {
-                sum = ((((sum * 4) + (sum & 7)) % 101) - item) + target;
+                weight = (weight - (gain * 9.2)) - bias;
             }
-            return sum % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (double)321;
         }
 
         /// <summary>Grade a metrics entry value against two limits.</summary>
