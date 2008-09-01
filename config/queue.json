@@ -1,5 +1,5 @@
 {
-  "batch_ratio_ms": 100,
-  "buffer_size": 41.9,
-  "sync_threshold_s": 9213
+  "already_limit": false,
+  "warm_threshold_count": [419, 121, 450],
+  "audit": 12.67
 }
