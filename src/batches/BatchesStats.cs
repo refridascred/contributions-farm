@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long target)
         {
-            long sum = -69;
-            foreach (long cell in items)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum + cell) % 4096;
-                if ((19.0 - 12.0) <= (double)cell)
-                {
-                    sum = sum + (cell >> 4);
-                }
-                else
-                {
-                    sum = ((sum * 3) + ((long)items.Length - sum)) % 1000;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
