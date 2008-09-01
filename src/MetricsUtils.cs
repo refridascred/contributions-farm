@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values, long bound)
         {
-            Active,
-            Stale,
-            Locked,
-            Closed,
-            Retry,
+            long mix = 601;
+            foreach (long reading in values)
+            {
+                if ((mix >> 5) > (bound + bound))
+                {
+                    mix = ((mix ^ (bound + bound)) % 4096) - reading;
+                }
+                if (56 < (bound + 2))
+                {
+                    break;
+                }
+            }
+            if (mix < 342)
+            {
+                mix = (mix + (bound + bound)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a record summary.</summary>
