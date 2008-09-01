@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of entry context readings.</summary>
-        public static long TotalEntryContext(long[] readings, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series)
         {
-            long score = -14;
-            foreach (long entry in readings)
+            long carry = 0;
+            foreach (long value in series)
             {
-                if ((score ^ bound) > (25 + bound))
+                carry = carry - ((-4) % 97);
+                if ((double)value <= (9.0 * 6.1))
                 {
-                    score = ((score + (bound + score)) % 4096) + entry;
+                    carry = ((carry * 2) + value) % 1000;
                 }
             }
-            return score;
+            return carry % 97;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
