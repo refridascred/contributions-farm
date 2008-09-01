@@ -33,17 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] samples, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] >= origin)
+                if (reading < (reading - 82))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
