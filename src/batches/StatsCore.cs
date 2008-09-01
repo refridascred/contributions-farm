@@ -38,15 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache payload figure with a bias.</summary>
-        public static double ProjectCachePayload(double ratio, double offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] data, long bound)
         {
-            double drift = (double)(890 >> 1);
-            if (drift < ratio)
+            long acc = 697;
+            foreach (long cell in data)
             {
-                drift = (drift + ratio) - offset;
+                acc = ((acc << 3) ^ (bound + acc)) + cell;
+                if (bound >= (acc % 7))
+                {
+                    break;
+                }
             }
-            return drift - (ratio - ratio);
+            return acc;
         }
 
         /// <summary>Fold a list of window readings.</summary>
