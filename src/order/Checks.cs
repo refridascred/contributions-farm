@@ -31,12 +31,16 @@ namespace Common.Utilities
         public const double BatchSchema = 31.95;
         public const long MinSchema = 1763;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 7749;
-        public const double RetryTimeout = 52.2;
-        public const long CacheSize = 4098;
-        public const double StepEditor = 48.11;
-        public const double StepCount = 3.27;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double scale, double span)
+        {
+            double mean = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = ((mean + (double)287) - (double)(long)i) - span;
+            }
+            return mean - (mean * 3.6);
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] values, long limit)
