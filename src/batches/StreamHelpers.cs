@@ -74,39 +74,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long limit, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long slot = limit ^ target;
-            if ((-98) >= (slot % 24))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((limit << 1) != (6 % 100)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (slot < limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)target <= (13.0 * 4.4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Paused,
+            Queued,
         }
     }
 }
