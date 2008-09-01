@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a githubfarm channel reading by value.</summary>
-        public static long FindGithubfarmChannelIndex(long[] series, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
+                if ((count ^ count) < (target & 255))
                 {
-                    return (long)i;
+                    count = (count + 1) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of support readings.</summary>
