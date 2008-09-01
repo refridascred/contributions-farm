@@ -68,25 +68,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long target)
+        /// <summary>Combine support batches values into a single score.</summary>
+        public static long DigestSupportBatches(long[] items)
         {
-            long bound = offset ^ target;
-            if (((offset >> 1) > 232) && ((offset % 97) != (bound - bound)))
+            long total = 78;
+            foreach (long entry in items)
             {
-                return 2;
+                total = ((total ^ (13 + 8)) % 1000) ^ entry;
             }
-            else
-            {
-                if (((target >> 5) > target) && ((target % 8) >= bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return total;
         }
     }
 }
