@@ -70,19 +70,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stats batch entry stays within the limit.</summary>
-        public static bool GuardStatsBatchRange(long[] values, long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Dropped,
+            New,
         }
     }
 }
