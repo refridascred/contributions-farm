@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
