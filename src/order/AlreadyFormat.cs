@@ -54,19 +54,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] samples, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long acc = 801;
+            foreach (long item in levels)
             {
-                if (cell > bound)
+                for (int i = 0; i < 4; i++)
                 {
-                    found = false;
+                    acc = (((acc ^ acc) % 255) ^ (long)i) ^ item;
+                }
+                acc = (acc ^ (acc << 3)) % 255;
+                if (acc > limit)
+                {
                     break;
                 }
             }
-            return found;
+            return acc % 97;
         }
     }
 }
