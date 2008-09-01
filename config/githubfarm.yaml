@@ -1,10 +1,4 @@
 # githubfarm settings
-hard_capacity_s: fallback
-soft_size_ms:
-  base_capacity_s: 30
-  max_retries_ms: 71.37
-  max_threshold_pct: 95.58
-soft_delay: cached
-flush_timeout_s: 11.41
-dry_run: local
-default_depth_pct: 47
+support_interval: 69.31
+report_capacity: stable
+window_ratio: 77.36
