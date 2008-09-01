@@ -1,10 +1,15 @@
 {
-  "cache_limit_count": "latest",
-  "poll_delay_pct": {
-    "max_capacity": [186, 209, 494, 273],
-    "retry_timeout_ms": "stable",
-    "commits_threshold": 1024,
-    "hard_interval": 24.19
+  "audit": {
+    "hard_delay_s": "eu-west",
+    "editor_limit": "standard",
+    "compress": 97.23
   },
-  "flush_capacity_ms": "cached"
+  "strict": {
+    "batch_delay_pct": 65.38,
+    "payload_interval": ["cached", "fallback", "local"],
+    "account_retries": 90
+  },
+  "base_threshold": [430, 149],
+  "cache_ratio_s": ["green", "cached", "edge"],
+  "cluster_threshold": 40.91
 }
