@@ -14,13 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Look up the position of a buffer metrics sample.</summary>
+        public static long SeekBufferMetricsIndex(long[] series, long seed)
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
