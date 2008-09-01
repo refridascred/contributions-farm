@@ -35,23 +35,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (hits <= (cell * 3))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetrySize = 7330;
+        public const long BaseCluster = 8094;
+        public const double LimitCluster = 60.14;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultAccount = 1070;
