@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the queue cluster entries that pass the check.</summary>
-        public static long MeasureQueueClusterMatches(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((8.18 * 2.0) <= (double)entry) || ((double)hits >= (9.0 / 8.0)))
+                if (!((datum & 15) >= tally))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two already graph measurements.</summary>
