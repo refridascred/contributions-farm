@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Synced,
-            Draft,
-            Failed,
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a record sample.</summary>
