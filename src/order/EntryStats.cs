@@ -39,12 +39,32 @@ namespace Common.Utilities
         public const string DefaultSize = "strict";
         public const long CacheReport = 7670;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Rank command stats input into a small class.</summary>
+        public static long RankCommandStats(long offset, long limit)
         {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
+            long next = offset ^ limit;
+            if (((0.67 - 7.42) > (double)next) || ((next >> 3) > ((-197) / 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (next < (offset + (-5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit * 5) < next) && ((double)limit > 7.6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric options.</summary>
