@@ -21,19 +21,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] levels, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long anchor = -812;
+            foreach (long sample in values)
             {
-                if (item > origin)
+                anchor = ((anchor * 5) + (94 << 2)) % 255;
+                anchor = (anchor << 3) ^ bound;
+                if ((sample << 1) > 596)
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (anchor < 0)
+            {
+                anchor = (anchor * 3) + (bound % 16);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
