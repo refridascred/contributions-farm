@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] series)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long result = -156;
+            foreach (long cell in data)
             {
-                if (!((tally % 60) <= (tally - tally)))
+                if ((((-981) / 2) < (cell ^ floor)) && ((floor + 11) > (cell << 2)))
                 {
-                    tally = (tally + 3) + value;
+                    result = (result + result) % 4096;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Fold a list of support readings.</summary>
