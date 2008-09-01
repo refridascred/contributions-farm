@@ -23,12 +23,27 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] readings, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            long carry = 0;
+            foreach (long value in readings)
+            {
+                carry = carry ^ value;
+                if (((double)origin < (9.41 - 4.08)) && (value > (951 - carry)))
+                {
+                    carry = (carry << 3) ^ (carry / 6);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (249 + value)) % 4096;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = carry - (carry / 3);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
