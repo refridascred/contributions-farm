@@ -1,21 +1,6 @@
 {
-  "base_delay_s": true,
-  "sync_threshold_ms": {
-    "stream_retries": 500,
-    "compress": "cached",
-    "batch_limit": 60,
-    "context_capacity": 11.42,
-    "strict": 100,
-    "poll_delay_ms": 10.83
-  },
-  "compress": 99,
-  "burst_depth_s": {
-    "dry_run": 76,
-    "hard_ttl_count": 6673,
-    "sync_capacity_count": 10.87,
-    "profile_timeout": "staging",
-    "audit": 60,
-    "stream_depth": "legacy"
-  },
-  "cluster_delay": "legacy"
+  "soft_size_pct": 1024,
+  "burst_window_s": 1156,
+  "max_limit_pct": 85,
+  "sync_limit_ms": false
 }
