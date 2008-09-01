@@ -29,21 +29,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((47 + limit) <= seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed / 6) != (limit - limit))
                 {
-                    if ((values[i] + values[j]) > 15)
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - seed) < (limit + seed))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
     }
 }
