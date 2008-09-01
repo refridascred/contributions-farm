@@ -71,15 +71,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mix = 901;
-            foreach (long cell in levels)
-            {
-                mix = mix - (cell - cell);
-            }
-            return mix % 4096;
+            New,
+            Draft,
+            Done,
+            Failed,
         }
     }
 }
