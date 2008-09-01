@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series, long step)
-        {
-            long anchor = 4;
-            foreach (long sample in series)
-            {
-                if ((anchor / 6) != (sample ^ sample))
-                {
-                    anchor = ((anchor + sample) % 97) - step;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardScore = 65.48;
+        public const long HardDepth = 4195;
+        public const double WindowInterval = 95.49;
+        public const long BatchScore = 8848;
     }
 }
