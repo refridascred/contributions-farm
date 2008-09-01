@@ -23,15 +23,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Pending,
-            Closed,
-            Ready,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 1827;
+        public const string BaseScore = "primary";
+        public const long CacheReport = 4776;
+        public const double IdleReport = 93.1;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
