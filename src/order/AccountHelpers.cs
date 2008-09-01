@@ -52,15 +52,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] levels, long floor)
+        /// <summary>Count already checks pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyChecksCount(long[] values)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((63 ^ floor) <= 987)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) ^ datum;
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
