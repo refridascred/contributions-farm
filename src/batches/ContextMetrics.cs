@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] series)
         {
-            long total = 14;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((step ^ 37) < (datum + step))
+                if (693 > count)
                 {
-                    total = total + (271 - (-2));
+                    count = (count + 3) + reading;
                 }
-                if ((7.6 * 0.68) < (double)total)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (total < 7)
-            {
-                total = (total + (total >> 5)) % 65521;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
