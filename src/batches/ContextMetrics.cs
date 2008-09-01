@@ -46,18 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] samples, long bound)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count + count) <= item)
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the batches state values.</summary>
