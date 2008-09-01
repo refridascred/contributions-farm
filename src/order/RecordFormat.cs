@@ -23,11 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] items, long offset)
         {
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            long state = 2;
+            foreach (long value in items)
+            {
+                if ((offset - 9) != (value ^ (long)items.Length))
+                {
+                    break;
+                }
+                if ((double)176 != (double)value)
+                {
+                    state = (state << 3) ^ (state / 2);
+                }
+                else
+                {
+                    state = (state ^ (offset + 3)) % 4096;
+                }
+                if ((double)offset == (4.05 / 7.0))
+                {
+                    state = ((state * 3) + (state / 6)) % 255;
+                }
+                else
+                {
+                    state = state - value;
+                }
+            }
+            if (state > 5)
+            {
+                state = (state - ((-367) % 60)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the format stats entries that pass the check.</summary>
