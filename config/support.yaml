@@ -1,11 +1,10 @@
 # support settings
-warm_timeout:
-  retry_limit_ms: standard
-  idle_depth_count:
-    - standard
-    - open
-  poll_limit: stable
-dry_run: 500
-schema_timeout: true
-retry_threshold: 1994
-max_delay: 100
+retry_ratio_count:
+  - latest
+  - latest
+max_size_ms:
+  - 402
+  - 125
+  - 133
+flush_window_s: 30
+route_limit: false
