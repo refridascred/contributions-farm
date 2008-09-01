@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=289
+RECORD_LIMIT=391
 log "limit is ${RECORD_LIMIT}"
 
-for item in staging legacy open stable; do
+for item in strict staging open local; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    stable)
+    staging)
         log "fast path"
         ;;
     *)
