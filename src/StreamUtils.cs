@@ -58,24 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long result = offset;
+            long anchor = origin;
             for (int i = 0; i < 15; i++)
             {
-                if (((5.1 * 5.32) > (double)result) || (17.0 >= (double)(long)i))
-                {
-                    result = ((result << 3) ^ (168 % 64)) % 65521;
-                }
-                else
-                {
-                    result = (result - result) % 1000;
-                }
-                result = result - ((long)i << 3);
-                result = ((result * 4) + (long)i) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Measure how many session layout samples are out of range.</summary>
