@@ -20,39 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank session report input into a small class.</summary>
-        public static long ClassifySessionReport(long origin, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long slot = origin + offset;
-            if (offset > (origin - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((309 + slot) == (slot - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)slot == (4.78 - 9.5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((959 + origin) > origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
