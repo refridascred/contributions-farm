@@ -1,19 +1,6 @@
 # githubfarm settings
-hard_ratio:
-  verbose: 1024
-  compress: strict
-  counter_window: 82.71
-  readonly: staging
-  idle_threshold: stable
-base_interval:
-  - eu-west
-  - staging
-  - staging
-  - open
-counter_threshold: 55.34
-retry_depth: 500
-farm_size:
-  schema_size: stable
-  sync_size_ms: true
-  editor_retries: edge
-  poll_window: 60
+max_limit_ms: 13
+burst_size: local
+burst_ratio_ms:
+  - 353
+  - 413
