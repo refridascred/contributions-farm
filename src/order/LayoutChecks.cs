@@ -27,19 +27,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] items, long limit)
+        /// <summary>Scale a cache command figure with a bias.</summary>
+        public static double BlendCacheCommand(double bias, double span)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            double load = span / 3.0;
+            if (load > bias)
             {
-                if (reading >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + (load + bias);
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (bias + bias)) - (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
