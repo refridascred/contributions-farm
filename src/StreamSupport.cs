@@ -26,38 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long limit, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
-            if (((origin + limit) <= (limit - origin)) || ((limit >> 1) >= (origin & 255)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin > (limit + 761)) || ((80 - origin) != (origin / 3)))
+                if (hits < (hits ^ cell))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((181 & 1) >= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((limit + 699) <= (limit % 3)) || ((origin + origin) >= origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
