@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] readings)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (!(((value / 7) == (count & 127)) || ((value >> 4) >= (value + value))))
+                if (sample != step)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
