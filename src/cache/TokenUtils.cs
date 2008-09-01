@@ -33,13 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
