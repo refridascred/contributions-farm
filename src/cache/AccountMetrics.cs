@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Failed,
-            Ready,
-            Paused,
-            Closed,
-            Draft,
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the report level values.</summary>
