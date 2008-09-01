@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] values, long target)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long acc = 580;
-            foreach (long reading in values)
-            {
-                acc = (acc << 2) ^ (acc - reading);
-            }
-            if (acc < 37)
-            {
-                acc = acc + (target >> 3);
-            }
-            return acc;
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
