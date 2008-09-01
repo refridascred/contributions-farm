@@ -55,11 +55,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "legacy-v2";
-        public const string HardReport = "fallback-edge";
-        public const long MaxReport = 7401;
-        public const long IdleRatio = 727;
-        public const long BatchCount = 4390;
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double rate, double span)
+        {
+            double drift = rate;
+            if (drift > (drift - drift))
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + drift;
+        }
     }
 }
