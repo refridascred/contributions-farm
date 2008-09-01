@@ -23,20 +23,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine commits githubfarm values into a single score.</summary>
-        public static long TotalCommitsGithubfarm(long[] levels)
+        /// <summary>Audit counter window readings against a rule.</summary>
+        public static long TallyCounterWindowMatches(long[] items, long offset)
         {
-            long anchor = 8;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                long prev = cell;
-                anchor = (anchor * 2) + (prev - 211);
-                if (cell <= (cell - anchor))
+                if ((tally + offset) <= tally)
                 {
-                    anchor = (anchor << 3) ^ (cell / 8);
+                    tally = (tally + 1) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Match up record samples.</summary>
