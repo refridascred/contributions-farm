@@ -51,22 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] data, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long anchor = -5;
-            foreach (long value in data)
-            {
-                if ((0.6 + 6.0) != (double)origin)
-                {
-                    anchor = ((anchor << 3) ^ (anchor + 773)) % 101;
-                }
-                if (origin <= (value + origin))
-                {
-                    anchor = anchor - (30 % 12);
-                }
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
