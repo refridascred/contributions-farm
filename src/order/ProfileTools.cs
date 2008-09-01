@@ -34,12 +34,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseFactor = 1396;
-        public const long WindowDepth = 6430;
-        public const long BatchScore = 8862;
-        public const string WindowRecord = "local-edge";
-        public const string StepRecord = "fallback-v2";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((7 < (reading + matches)) || ((reading ^ reading) <= (matches - matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BatchNotes = 41.04;
