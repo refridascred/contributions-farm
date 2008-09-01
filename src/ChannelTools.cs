@@ -19,16 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 83.93;
+        public const long WindowMetric = 8772;
+        public const long LimitDepth = 2953;
+        public const long RetryMetric = 6034;
+        public const string WindowBudget = "standard-1";
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] samples, long offset)
