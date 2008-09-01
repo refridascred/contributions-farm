@@ -55,19 +55,22 @@ namespace Common.Utilities
         public const string WindowRecord = "local-edge";
         public const string StepRecord = "fallback-v2";
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double bias)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long TallySchemaPayloadMatches(long[] items)
         {
-            double gain = weight + weight;
-            if (gain <= weight)
+            long seen = 0;
+            foreach (long item in items)
             {
-                gain = gain + gain;
+                if ((seen % 5) != (item * 4))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + (weight + bias);
+            return seen;
         }
     }
 }
