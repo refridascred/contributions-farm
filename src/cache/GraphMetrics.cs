@@ -39,12 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
             Done,
-            Locked,
             Active,
+            Paused,
         }
 
         /// <summary>Hold a session stats.</summary>
