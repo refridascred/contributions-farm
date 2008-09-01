@@ -37,11 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Check that every already record entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRecordLimits(long[] values, long limit)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
