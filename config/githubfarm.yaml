@@ -1,19 +1,16 @@
 # githubfarm settings
-hard_interval_pct:
-  editor_timeout:
-    - 360
-    - 176
-  stream_capacity: local
-  soft_timeout: fallback
-  batch_delay: true
-  default_limit_pct: eu-west
-  default_ttl_count: staging
-cache_limit:
-  - 125
-  - 10
-queue_ratio:
-  base_threshold_count: 93.57
-  dry_run: blue
-  persist: fallback
-base_window_ms: fallback
-counter_interval: 19
+session_timeout: false
+hard_interval_s: true
+poll_depth_s:
+  max_ttl_count: fallback
+  channel_retries:
+    tools_size:
+      - standard
+      - legacy
+      - edge
+    batch_delay: strict
+    enabled:
+      - local
+      - fallback
+      - staging
+  default_timeout: 1413
