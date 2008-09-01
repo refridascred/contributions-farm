@@ -59,25 +59,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long origin, long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long cur = origin - offset;
-            if ((cur ^ cur) <= (offset + cur))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((868 - (-93)) == (offset ^ offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
