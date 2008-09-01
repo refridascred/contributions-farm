@@ -37,19 +37,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already graph value.</summary>
-        public static double SmoothAlreadyGraph(double rate, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long seed, long seed2)
         {
-            double load = (double)(864 % 5);
-            if (load >= rate)
+            if ((seed2 + seed) <= seed2)
             {
-                load = (load - 2.0) - floor;
+                return 7;
             }
             else
             {
-                load = load - rate;
+                if ((double)seed < (9.8 - 13.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed2 <= (seed % 24))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed <= (seed2 * 4)) && ((seed << 1) != (seed2 / 9)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return load - rate;
         }
 
         /// <summary>Match up cache samples.</summary>
