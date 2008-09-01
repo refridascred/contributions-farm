@@ -41,11 +41,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long origin)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((origin + origin) < (-37))
+                {
+                    mark = (mark + (origin - mark)) % 101;
+                    break;
+                }
+                else
+                {
+                    mark = mark + (origin % 2);
+                }
+                mark = mark + mark;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
