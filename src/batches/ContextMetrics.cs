@@ -21,11 +21,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally >> 2) < (64 + cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
