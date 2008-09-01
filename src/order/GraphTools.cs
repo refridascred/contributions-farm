@@ -51,9 +51,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftDepth = "local-1";
-        public const long HardWindow = 1076;
-        public const string IdleSize = "cached-1";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen << 3) >= bound)
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
