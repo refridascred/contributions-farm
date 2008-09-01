@@ -27,10 +27,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 6.82;
-        public const long HardScore = 2840;
-        public const string HardWidth = "strict-edge";
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Ready,
+            Idle,
+            Failed,
+            Active,
+            Done,
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] items)
