@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 1668;
-        public const long StepLevel = 4270;
-        public const long BaseStats = 6780;
-        public const long MinStats = 3367;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 8053;
+        public const long BatchCount = 6073;
+        public const string CacheSpan = "primary-edge";
+        public const long LimitLevel = 5046;
+        public const long MaxFactor = 1095;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] values)
