@@ -22,10 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 3944;
-        public const long LimitGraph = 9062;
-        public const long SoftGraph = 2292;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long step, long floor)
+        {
+            if ((floor ^ floor) != (step + (-903)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (665 > (step + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (523 >= (floor % 10))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step < 8.16)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordHits(long[] items, long step)
