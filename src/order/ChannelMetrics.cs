@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] readings)
-        {
-            long state = 3;
-            foreach (long sample in readings)
-            {
-                if (((sample << 2) <= sample) || (6.1 < (double)state))
-                {
-                    state = (state + state) % 97;
-                }
-            }
-            if (state > 18)
-            {
-                state = ((state << 3) ^ (9 + state)) % 255;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitRatio = 78.24;
+        public const string WindowSize = "alpha-edge";
+        public const double BaseLevel = 74.92;
+        public const string HardProfile = "latest-edge";
+        public const string BatchFactor = "legacy";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatMatches(long[] series, long limit)
