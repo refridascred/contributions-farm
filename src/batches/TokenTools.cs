@@ -40,29 +40,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Project the next context metrics value.</summary>
+        public static double SmoothContextMetrics(double rate, double offset)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            double gain = offset;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)floor > 2.31)
-                {
-                    long gap = 42 + floor;
-                    total = (total ^ (gap - floor)) % 1000;
-                    break;
-                }
-                if ((double)floor < (10.0 * 1.7))
-                {
-                    total = ((total << 3) ^ ((long)i << 2)) % 97;
-                }
-                else
-                {
-                    total = total - (floor / 9);
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                gain = ((gain + (4.49 / 8.0)) - (double)(long)i) + rate;
             }
-            return total;
+            return gain + (7.9 / 6.0);
         }
     }
 }
