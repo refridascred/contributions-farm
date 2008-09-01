@@ -34,12 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Stale,
-            Active,
-            Failed,
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
