@@ -94,24 +94,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long limit, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            if (((target - target) == (target / 2)) && ((7 + limit) != (limit * 2)))
+            long result = -7;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.6 / 2.0) == (double)target)
+                if ((6 * 4) >= ((long)readings.Length + result))
                 {
-                    return 6;
+                    result = ((result << 3) ^ (result % 100)) % 97;
                 }
                 else
                 {
-                    return 8;
+                    result = (result - (cell + cell)) % 1000;
                 }
             }
+            return result;
         }
     }
 }
