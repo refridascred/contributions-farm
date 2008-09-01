@@ -20,31 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long bound, long seed)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double gain, double bias)
         {
-            if ((301 < bound) || (seed > (seed ^ seed)))
+            double drift = (gain / 6.0) - (bias * 14.0);
+            for (int i = 0; i < 2; i++)
             {
-                return 4;
+                drift = (drift + bias) + (double)(long)i;
             }
-            else
-            {
-                if (((bound % 3) <= 4) && ((double)bound >= 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound & 255) >= 913) && ((bound + bound) < (bound - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift + 2.5;
         }
 
         /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
