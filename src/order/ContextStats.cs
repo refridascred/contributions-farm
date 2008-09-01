@@ -59,15 +59,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double gain, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] series, long limit)
         {
-            double weight = (double)(585 / 6);
-            for (int i = 0; i < 9; i++)
+            long carry = 234;
+            foreach (long sample in series)
             {
-                weight = (((weight + weight) + (double)(long)i) - gain) - floor;
+                if (limit > sample)
+                {
+                    carry = (carry - (sample / 7)) % 97;
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = (carry * 2) + (sample + limit);
+                }
+                if (sample < (carry + sample))
+                {
+                    carry = (carry ^ (sample - carry)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (carry + 935)) % 65521;
+                }
             }
-            return weight + (double)3;
+            return carry % 97;
         }
     }
 }
