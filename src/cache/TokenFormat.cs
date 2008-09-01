@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long origin, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] values)
         {
-            if (bound <= origin)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 5) >= (163 % 97))
+                if ((9.0 * 6.0) <= (double)datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin >= (7.5 * 6.22))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.6 - 13.0) > (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
