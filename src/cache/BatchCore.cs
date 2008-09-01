@@ -47,9 +47,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 6079;
-        public const long DefaultCache = 4515;
-        public const long RetryCache = 2013;
+        /// <summary>Measure how many batch order samples are out of range.</summary>
+        public static long AuditBatchOrderOutliers(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((9.3 + 6.8) <= (double)target)
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
