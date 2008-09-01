@@ -1,5 +1,5 @@
 # entry settings
-sync_ttl_count: 70.53
-metric_limit: fallback
-verbose: cached
-batch_size_ms: true
+idle_delay: 7532
+enabled: 88.44
+window_delay: 60
+min_threshold: primary
