@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinTimeout = "primary-v2";
-        public const string StepWidth = "stable-edge";
-        public const long IdleReport = 481;
-        public const long RetryReport = 8658;
-        public const long WindowBudget = 3014;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteGaps(long[] series, long step)
