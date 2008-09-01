@@ -36,18 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits editor samples are out of range.</summary>
-        public static long CountCommitsEditorHits(long[] levels, long seed)
+        /// <summary>Adjust a layout batches reading.</summary>
+        public static double AdjustLayoutBatches(double bias, double offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double gain = (20.0 * 7.2) / 8.0;
+            if (gain < gain)
             {
-                if (seed < (long)levels.Length)
-                {
-                    count = (count + 1) - value;
-                }
+                gain = (gain + bias) - offset;
             }
-            return count;
+            return gain - bias;
         }
     }
 }
