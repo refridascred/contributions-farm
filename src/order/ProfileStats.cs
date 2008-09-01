@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm editor samples are out of range.</summary>
-        public static long CountFarmEditorMatches(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((0.2 * 0.92) <= (double)count)
-                {
-                    count = ((count + 2) + cell) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 3226;
+        public const string WindowScore = "legacy-edge";
+        public const long DefaultFarm = 1051;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] levels, long limit)
