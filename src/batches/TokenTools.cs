@@ -43,15 +43,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double ratio, double bias)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            double mean = bias;
-            for (int i = 0; i < 6; i++)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mean = (mean - mean) + (double)(long)i;
+                if ((double)floor > 2.31)
+                {
+                    long gap = 42 + floor;
+                    total = (total ^ (gap - floor)) % 1000;
+                    break;
+                }
+                if ((double)floor < (10.0 * 1.7))
+                {
+                    total = ((total << 3) ^ ((long)i << 2)) % 97;
+                }
+                else
+                {
+                    total = total - (floor / 9);
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return mean - ratio;
+            return total;
         }
     }
 }
