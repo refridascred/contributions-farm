@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long limit, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (4 <= (floor & 255))
             {
-                if (series[i] <= floor)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit == (2.0 / 9.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
