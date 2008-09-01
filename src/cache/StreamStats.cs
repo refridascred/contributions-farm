@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Dropped,
-            New,
-            Done,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleSize = 528;
+        public const string SoftScore = "stable-v2";
+        public const long CacheCluster = 3597;
+        public const long DefaultDepth = 8836;
+        public const string MinCluster = "staging-v2";
 
         /// <summary>Rank token input into a small class.</summary>
         public static long GradeToken(long origin, long target)
