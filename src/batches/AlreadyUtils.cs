@@ -39,17 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] readings, long bound)
+        /// <summary>Validate checks command readings against a bound.</summary>
+        public static bool GuardChecksCommandBounds(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                if (datum > offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
