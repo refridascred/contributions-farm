@@ -64,18 +64,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the contributi layout entries that pass the check.</summary>
-        public static long MeasureContributiLayoutMatches(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (22 >= tally)
-                {
-                    tally = ((tally + 3) + item) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxScore = 5310;
+        public const long RetryBudget = 6312;
+        public const long MinSize = 7031;
+        public const long MaxQueue = 2716;
+        public const long StepRatio = 3236;
     }
 }
