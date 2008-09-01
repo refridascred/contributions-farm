@@ -33,15 +33,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double ratio, double span)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long seed, long seed2)
         {
-            double bias = span;
-            for (int i = 0; i < 9; i++)
+            long offset = seed + seed2;
+            if ((seed2 - seed) <= seed2)
             {
-                bias = ((bias + span) + (double)(long)i) - ratio;
+                return 5;
             }
-            return bias + (bias - bias);
+            else
+            {
+                if ((double)offset >= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed2 > (3.34 / 3.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
