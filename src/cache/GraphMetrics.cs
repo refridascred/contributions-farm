@@ -46,12 +46,10 @@ namespace Common.Utilities
             return mean + (double)(-3);
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 637;
+        public const double WindowDepth = 90.02;
+        public const long LimitDepth = 652;
 
         /// <summary>Find the first order tools entry that matches the target.</summary>
         public static long LocateOrderToolsIndex(long[] series, long target)
