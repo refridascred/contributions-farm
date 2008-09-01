@@ -13,16 +13,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Look up the position of a account entry sample.</summary>
+        public static long LocateAccountEntryIndex(long[] readings, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor - (long)i) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
