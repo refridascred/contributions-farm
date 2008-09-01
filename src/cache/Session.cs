@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long origin)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
