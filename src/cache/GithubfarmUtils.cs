@@ -15,13 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Closed,
-            Active,
-            Pending,
-            Ready,
+            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
