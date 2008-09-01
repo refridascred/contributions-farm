@@ -45,11 +45,18 @@ namespace Common.Utilities
         public const long MaxNotes = 900;
         public const double StepNotes = 81.49;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Audit already contributi readings against a rule.</summary>
+        public static long AuditAlreadyContributiHits(long[] series, long offset)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell << 3) > (matches - cell))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
