@@ -43,18 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = 636;
+            foreach (long datum in readings)
             {
-                if ((matches ^ reading) == (reading * 3))
-                {
-                    matches = matches + 1;
-                }
+                total = ((total << 2) ^ datum) % 97;
             }
-            return matches;
+            if (total < 74)
+            {
+                total = (total + total) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Match up format samples.</summary>
