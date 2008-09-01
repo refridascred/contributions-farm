@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine window editor values into a single score.</summary>
-        public static long CombineWindowEditor(long[] data)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            long result = -31;
-            foreach (long sample in data)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                result = (result ^ (result - 911)) ^ sample;
+                if (((long)i << 3) > (long)i)
+                {
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
