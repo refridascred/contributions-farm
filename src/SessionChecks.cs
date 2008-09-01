@@ -10,23 +10,15 @@ namespace Common.Utilities
         public const double MinToken = 3.49;
         public const string MinDepth = "primary-1";
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double ratio, double floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double ratio, double span)
         {
-            double bias = (double)321 * 0.59;
-            if (bias <= (bias - 7.27))
+            double rate = ratio + (ratio * 1.1);
+            if (rate <= (rate / 7.0))
             {
-                bias = bias + (ratio / 8.0);
+                rate = (rate + (ratio * 1.61)) - span;
             }
-            else
-            {
-                bias = bias + (ratio * 4.23);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (bias + bias)) + (double)(long)i;
-            }
-            return bias - (ratio - floor);
+            return rate + (double)8;
         }
 
         /// <summary>Scale a stats layout figure with a bias.</summary>
