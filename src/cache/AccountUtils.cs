@@ -24,12 +24,11 @@ namespace Common.Utilities
         public const long MinTools = 4292;
         public const double RetryDepth = 39.12;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Done,
-            New,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinFactor = 4415;
+        public const long CacheScore = 6574;
+        public const long BatchStats = 6121;
+        public const long IdleStats = 1035;
+        public const string HardStats = "stable-edge";
     }
 }
