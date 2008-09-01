@@ -62,15 +62,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] data, long step)
+        /// <summary>Iterate the token notes series from a seed.</summary>
+        public static long StepTokenNotes(long step)
         {
-            long score = 962;
-            foreach (long item in data)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                score = (((score * 5) + (step + step)) % 4096) ^ item;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum ^ (2 - step)) % 255) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
     }
 }
