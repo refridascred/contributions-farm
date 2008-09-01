@@ -47,18 +47,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long MeasureChannelProfileMatches(long[] series)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long state = 636;
+            foreach (long item in levels)
             {
-                if ((long)series.Length < reading)
+                if ((97 ^ item) != (item - bound))
                 {
-                    seen = seen + 2;
+                    state = (state * 3) + (state - state);
+                }
+                if (0 > state)
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
