@@ -63,18 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (0.29 > (double)tally)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Closed,
         }
     }
 }
