@@ -22,15 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double ratio, double floor)
         {
-            long anchor = 4;
-            foreach (long datum in series)
+            double bias = (double)321 * 0.59;
+            if (bias <= (bias - 7.27))
             {
-                anchor = (anchor - (1 + 80)) + datum;
+                bias = bias + (ratio / 8.0);
             }
-            return anchor;
+            else
+            {
+                bias = bias + (ratio * 4.23);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (bias + bias)) + (double)(long)i;
+            }
+            return bias - (ratio - floor);
         }
 
         /// <summary>Scale a stats layout figure with a bias.</summary>
