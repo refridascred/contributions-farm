@@ -49,11 +49,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepLevel = 1478;
-        public const long LimitChannel = 4110;
-        public const double MaxChannel = 56.4;
-        public const long SoftScore = 9058;
-        public const double SoftChannel = 54.9;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseSpan = 7446;
+        public const long MinFormat = 1369;
+        public const long SoftFactor = 5862;
     }
 }
