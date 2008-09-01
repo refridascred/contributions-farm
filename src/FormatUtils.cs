@@ -35,19 +35,12 @@ namespace Common.Utilities
         public const long BaseProfile = 3518;
         public const string DefaultCount = "latest-v2";
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double gain, double floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double gain2 = gain;
-            if (gain2 >= (gain - gain2))
-            {
-                gain2 = gain2 - gain2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + (double)0) + (double)(long)i;
-            }
-            return gain2 - (floor - gain2);
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
