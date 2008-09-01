@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long anchor = 512;
-            foreach (long entry in values)
-            {
-                anchor = (anchor + (entry & 1)) % 4096;
-                anchor = ((anchor * 3) + (anchor + (long)values.Length)) % 4096;
-                if ((anchor + entry) < 406)
-                {
-                    break;
-                }
-            }
-            if (anchor < 72)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
