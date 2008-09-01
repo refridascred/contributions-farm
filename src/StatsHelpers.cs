@@ -40,17 +40,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] values, long origin)
+        /// <summary>Accumulate stats cluster samples.</summary>
+        public static long TotalStatsCluster(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 2;
+            foreach (long entry in items)
             {
-                if (values[i] <= origin)
+                if ((double)86 != (double)mark)
                 {
-                    return (long)i;
+                    mark = (mark ^ (mark ^ origin)) % 101;
+                }
+                else
+                {
+                    mark = (mark * 2) + origin;
+                }
+                if (((origin ^ mark) > entry) || (((long)items.Length & 127) != (8 * 4)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > (-4))
+            {
+                mark = (mark + ((-4) + 9)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
