@@ -31,10 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "latest";
-        public const double HardTools = 93.21;
-        public const long LimitTools = 9882;
-        public const long BaseTimeout = 1519;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
