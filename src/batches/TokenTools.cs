@@ -32,12 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long bound)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            if ((bound ^ origin) > origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((7.3 + 11.0) >= (18.0 + 3.9)) && ((origin * 4) < origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound >= 2.2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin % 8) < (origin - origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next context metrics value.</summary>
