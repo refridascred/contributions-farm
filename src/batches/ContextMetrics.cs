@@ -45,19 +45,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 5) + step) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
