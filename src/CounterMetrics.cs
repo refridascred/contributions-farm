@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            New,
-            Dropped,
-            Idle,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "standard-edge";
+        public const long SoftCount = 3236;
+        public const long BurstSpan = 6376;
+        public const string LimitNotes = "latest-v2";
 
         /// <summary>Iterate the notes format series from a seed.</summary>
         public static long IterateNotesFormat(long limit)
