@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate token commits readings against a bound.</summary>
+        public static bool GuardTokenCommitsLimits(long[] data, long step)
         {
-            Draft,
-            Pending,
-            Queued,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine order cluster values into a single score.</summary>
