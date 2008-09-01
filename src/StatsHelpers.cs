@@ -50,12 +50,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 53.46;
-        public const long BatchCommits = 5672;
-        public const string LimitCommits = "local-1";
-        public const long BatchWidth = 2041;
-        public const double RetrySize = 95.97;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double AdjustNotes(double ratio, double span)
