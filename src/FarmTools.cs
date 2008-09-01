@@ -51,18 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream metrics entries that pass the check.</summary>
-        public static long TallyStreamMetricsHits(long[] readings, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)bound < (double)datum)
-                {
-                    count = count + 3;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
     }
 }
