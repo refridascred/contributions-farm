@@ -20,11 +20,18 @@ namespace Common.Utilities
             return load - (9.8 / 7.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "staging-edge";
-        public const long RetryGraph = 9025;
-        public const long CacheFactor = 5354;
-        public const long SoftSize = 2725;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] values)
