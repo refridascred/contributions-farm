@@ -26,18 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record metric readings against a rule.</summary>
-        public static long MeasureRecordMetricOutliers(long[] items)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((114 + 2) < sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
