@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit githubfarm stats readings against a rule.</summary>
-        public static long TallyGithubfarmStatsHits(long[] samples, long origin)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((2.2 + 14.0) <= (double)hits) || ((origin * 2) < (7 & 3)))
-                {
-                    hits = (hits + 2) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate metrics samples.</summary>
