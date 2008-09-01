@@ -1,7 +1,7 @@
 {
-  "layout_size": ["edge", "stable"],
-  "burst_timeout": false,
-  "verbose": 74,
-  "persist": false,
-  "commits_timeout": "strict"
+  "compress": "strict",
+  "idle_window_count": 4214,
+  "burst_depth_ms": 1600,
+  "burst_capacity": "strict",
+  "farm_ttl": "strict"
 }
