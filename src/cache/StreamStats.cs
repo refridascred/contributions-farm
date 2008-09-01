@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] samples, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (entry >= step)
+                if ((bound + bound) <= 73)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
