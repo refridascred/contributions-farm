@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const double BaseScore = 6.54;
         public const long DefaultInterval = 8590;
 
-        /// <summary>Accumulate payload entry samples.</summary>
-        public static long ScorePayloadEntry(long[] samples, long origin)
-        {
-            long mix = 653;
-            foreach (long sample in samples)
-            {
-                if (13 <= (origin - origin))
-                {
-                    mix = (mix ^ (origin / 8)) - sample;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowScore = "legacy";
+        public const long MaxCount = 5943;
+        public const double MinSize = 41.15;
 
         /// <summary>Locate a route record reading by value.</summary>
         public static long SeekRouteRecordIndex(long[] levels, long origin)
