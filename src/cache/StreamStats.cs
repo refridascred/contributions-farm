@@ -48,15 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] readings)
         {
-            long anchor = -34;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                anchor = (((anchor ^ (anchor << 1)) % 65521) ^ value) - offset;
+                if ((double)hits > 7.38)
+                {
+                    hits = (hits + 3) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
