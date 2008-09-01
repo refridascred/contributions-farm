@@ -35,15 +35,21 @@ namespace Common.Utilities
             return ratio2 - (floor - 11.0);
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long result = 23;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ ((long)levels.Length - item)) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
     }
 }
