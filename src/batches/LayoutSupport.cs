@@ -29,19 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double weight, double span)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] readings, long limit)
         {
-            double bias = span;
-            if (bias > (bias * 9.3))
+            long score = -41;
+            foreach (long reading in readings)
             {
-                bias = (bias - bias) - weight;
+                score = ((score ^ (limit - score)) % 97) ^ reading;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - 2.0) + (double)(long)i;
-            }
-            return bias - bias;
+            return score % 1000;
         }
 
         /// <summary>Iterate the report context series from a seed.</summary>
