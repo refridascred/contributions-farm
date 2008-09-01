@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Idle,
-            Closed,
-            Pending,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 1668;
+        public const long StepLevel = 4270;
+        public const long BaseStats = 6780;
+        public const long MinStats = 3367;
 
         /// <summary>Accumulate metric queue samples.</summary>
         public static long FoldMetricQueue(long[] readings)
