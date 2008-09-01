@@ -43,17 +43,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] levels, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
