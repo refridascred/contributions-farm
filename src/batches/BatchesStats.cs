@@ -46,21 +46,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count tools token pairs that satisfy a relation.</summary>
-        public static long MatchToolsTokenCount(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long floor, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = floor ^ origin;
+            if (gap >= 8)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ origin) <= floor)
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
