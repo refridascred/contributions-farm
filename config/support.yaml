@@ -1,5 +1,5 @@
 # support settings
-batch_capacity: latest
-flush_ratio_s: edge
-retry_capacity_ms: 30
-context_depth: stable
+flush_depth_count: staging
+min_depth: 27
+warm_window_count: true
+hard_interval: legacy
