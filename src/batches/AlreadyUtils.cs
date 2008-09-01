@@ -13,11 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double bias, double bias2)
+        /// <summary>Check that every record cache entry stays within the limit.</summary>
+        public static bool GuardRecordCacheRange(long[] items, long target)
         {
-            double weight = (double)(-7) + bias2;
-            return weight - (bias2 - bias);
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a report cache sample.</summary>
