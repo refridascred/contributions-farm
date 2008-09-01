@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            long sum = 31;
+            foreach (long reading in items)
+            {
+                if ((7.1 * 8.8) == (double)sum)
+                {
+                    sum = (sum - ((long)items.Length << 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (reading / 7)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
