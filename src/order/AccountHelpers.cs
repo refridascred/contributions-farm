@@ -77,24 +77,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long origin, long floor)
+        /// <summary>Check that every stats batch entry stays within the limit.</summary>
+        public static bool GuardStatsBatchRange(long[] values, long bound)
         {
-            if (((floor - 3) >= floor) && ((double)origin > (double)floor))
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1 % 100) >= (origin >> 3))
+                if (datum <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
