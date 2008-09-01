@@ -1,7 +1,24 @@
 {
-  "sync_delay": false,
-  "min_threshold": "legacy",
-  "cluster_limit": false,
-  "counter_interval": ["blue", "green", "strict"],
-  "max_depth": "blue"
+  "poll_threshold_s": {
+    "max_window": 1024,
+    "persist": "legacy",
+    "strict": "primary",
+    "poll_depth_count": true,
+    "graph_ttl": {
+      "audit": "cached",
+      "editor_ttl": ["eu-west", "cached"],
+      "hard_window_ms": "local",
+      "soft_window_s": 124,
+      "base_threshold": 28.95,
+      "min_size": 250
+    },
+    "enabled": {
+      "sync_ratio": 28.97,
+      "batch_size_ms": 38.58,
+      "editor_ttl": 8726,
+      "min_capacity": "cached"
+    }
+  },
+  "sync_interval_pct": false,
+  "format_ttl": "cached"
 }
