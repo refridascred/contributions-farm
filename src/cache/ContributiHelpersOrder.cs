@@ -22,38 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long step, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings, long offset)
         {
-            if ((floor ^ floor) != (step + (-903)))
+            long sum = 4;
+            foreach (long datum in readings)
             {
-                return 7;
+                sum = ((sum + (datum ^ datum)) % 4096) - offset;
             }
-            else
+            if (sum > 440)
             {
-                if (665 > (step + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (523 >= (floor % 10))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step < 8.16)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = (sum - sum) % 255;
             }
+            return sum % 97;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
