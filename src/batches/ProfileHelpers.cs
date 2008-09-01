@@ -64,21 +64,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = floor - target;
+            if (((double)target == (8.6 - 11.0)) || (floor <= (floor + step)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!(target >= (62 - target)))
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
+                    return 5;
+                }
+                else
+                {
+                    if (((floor + step) == (step + target)) && ((5 + floor) <= 171))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a queue header.</summary>
