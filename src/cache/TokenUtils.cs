@@ -27,23 +27,30 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long limit, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long seed)
         {
-            long edge = limit + seed;
-            if ((edge - edge) > seed)
+            long span = origin - seed;
+            if ((double)span < 3.5)
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (!((limit - seed) <= (4 & 15)))
+                if ((11.0 - 20.0) >= (double)span)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    if (((double)span >= (double)seed) || (origin <= span))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
