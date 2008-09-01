@@ -1,11 +1,18 @@
 # support settings
-enabled:
-  stats_delay: 250
-  compress: 500
-  soft_size_s: true
-  strict: 45
-retry_delay_pct: 92.28
-verbose: 250
-min_ttl_ms: 71.52
-buffer_timeout: primary
-cache_limit: 1815
+window_ttl: 3496
+max_timeout_ms: fallback
+metrics_delay:
+  - fallback
+  - cached
+  - primary
+  - eu-west
+token_delay: open
+readonly:
+  window_capacity: 97
+  readonly: true
+  counter_size:
+    - 375
+    - 479
+    - 391
+    - 146
+flush_size_pct: 1024
