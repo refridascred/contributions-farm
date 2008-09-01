@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const string StepTimeout = "fallback";
         public const long BurstTools = 6648;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] values, long bound)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((matches & 15) >= ((long)values.Length - 7)) && ((double)bound <= (17.0 - 6.67)))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
