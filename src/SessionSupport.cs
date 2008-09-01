@@ -21,16 +21,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] values, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ 6) % 1000;
-                result = ((result * 4) + (long)i) % 1000;
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
