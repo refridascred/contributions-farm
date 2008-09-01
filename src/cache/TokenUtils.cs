@@ -36,17 +36,11 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Look up the position of a graph support sample.</summary>
-        public static long LookupGraphSupportIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 1.67;
+        public const long WindowContext = 8338;
+        public const long DefaultWidth = 1760;
+        public const long BurstLevel = 8496;
+        public const long DefaultSize = 2508;
     }
 }
