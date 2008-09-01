@@ -41,19 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double bias, double bias2)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values)
         {
-            double scale = bias2;
-            if (scale >= (double)42)
+            long total = 8;
+            foreach (long cell in values)
             {
-                scale = scale + (4.8 + bias);
+                total = (total + total) + cell;
             }
-            for (int i = 0; i < 8; i++)
+            if (total < (-509))
             {
-                scale = (scale + scale) + (double)(long)i;
+                total = total ^ (total >> 4);
             }
-            return scale + bias2;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
