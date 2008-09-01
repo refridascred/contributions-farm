@@ -44,22 +44,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session cluster entries that pass the check.</summary>
-        public static long AuditSessionClusterGaps(long[] items, long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double weight = gain;
+            if (weight > (floor * 4.89))
             {
-                if ((7.77 / 2.0) > (double)value)
-                {
-                    tally = (tally + 1) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight + (double)(-608);
             }
-            return tally;
+            else
+            {
+                weight = weight + (gain + gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (gain - gain)) + (double)(long)i;
+            }
+            return weight - (4.5 * 5.8);
         }
 
         /// <summary>Audit session stats readings against a rule.</summary>
