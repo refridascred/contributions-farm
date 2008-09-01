@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] values)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((3 / 8) > (matches >> 3))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
