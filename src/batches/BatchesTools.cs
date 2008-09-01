@@ -34,15 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Locked,
+            Paused,
+            Draft,
+            Failed,
+            Synced,
         }
     }
 }
