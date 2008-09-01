@@ -1,30 +1,9 @@
 # githubfarm settings
-flush_ratio:
-  cache_ttl: standard
-  retry_ratio: open
-  metrics_ratio:
-    compress: staging
-    hard_depth_ms: 1024
-    schema_retries: edge
-    base_limit:
-      - 195
-      - 205
-    hard_retries: 100
-    sync_window_pct: 500
-verbose: cached
-soft_interval:
-  dry_run: 37.76
-  editor_interval: fallback
-  layout_timeout: false
-  max_depth_pct: legacy
-  token_threshold:
-    stats_window: blue
-    max_ttl: true
-    warm_interval_count: standard
-    editor_threshold: eu-west
-    batch_interval: true
-  stream_window:
-    enabled: staging
-    order_delay: 2594
-    route_ratio: true
-    command_delay: strict
+enabled: 76
+max_window_ms: 49.43
+readonly: 8
+order_delay:
+  - 298
+  - 76
+layout_ratio: green
+max_size_count: 30
