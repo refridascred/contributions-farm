@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings, long target)
-        {
-            long acc = 788;
-            foreach (long reading in readings)
-            {
-                acc = (acc - (reading + 1)) + target;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseInterval = 6707;
+        public const long MaxBatch = 3428;
+        public const long IdleSize = 8745;
 
         /// <summary>Project the next editor value.</summary>
         public static double SmoothEditor(double rate, double span)
