@@ -31,19 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] samples, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (entry != floor)
+                if (!((double)tally <= 12.0))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
