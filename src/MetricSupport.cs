@@ -30,10 +30,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 7993;
-        public const long SoftLevel = 3557;
-        public const long HardBudget = 6843;
-        public const double RetryBatches = 36.95;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((matches % 12) == (cell % 12)) || (step > (matches & 15)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
