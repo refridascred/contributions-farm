@@ -96,18 +96,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] series, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((56 << 2) < (count * 5))
-                {
-                    count = ((count + 2) ^ reading) - bound;
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Done,
         }
     }
 }
