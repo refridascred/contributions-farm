@@ -51,13 +51,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Retry,
-            Done,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "staging-1";
+        public const long StepTimeout = 66;
+        public const long BaseSize = 9921;
+        public const long RetryScore = 7054;
+        public const string RetryWindow = "cached";
     }
 }
