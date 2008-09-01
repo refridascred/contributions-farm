@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of entry tools entries.</summary>
-        public static long FoldEntryTools(long[] readings, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] readings)
         {
-            long mix = 636;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (cell <= (limit << 1))
+                if ((9.84 - 9.0) >= (double)tally)
                 {
-                    mix = (mix * 3) + (cell & 3);
+                    tally = (tally + 1) + entry;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (mix - 568)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            if (mix > (-7))
-            {
-                mix = (mix << 3) ^ limit;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
