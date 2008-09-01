@@ -23,21 +23,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 974;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - result) + (long)i;
+                }
+                result = (result - cell) % 255;
+                if ((cell + cell) > (cell - 4))
+                {
+                    result = (result * 3) + (result + 7);
+                }
+                else
+                {
+                    result = (result ^ (result ^ result)) % 65521;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
