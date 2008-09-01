@@ -22,21 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double weight = (double)(-7) + bias2;
+            return weight - (bias2 - bias);
         }
 
         /// <summary>Look up the position of a report cache sample.</summary>
