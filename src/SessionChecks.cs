@@ -35,14 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] data, long origin)
         {
-            Synced,
-            Locked,
-            Done,
-            Failed,
-            Closed,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!(origin > (origin - tally)) && ((((-9) & 127) >= (tally % 24)) && ((origin * 4) < origin)))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
