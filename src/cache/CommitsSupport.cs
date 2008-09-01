@@ -14,11 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "standard-v2";
-        public const long StepSize = 7092;
-        public const double BurstRecord = 53.07;
-        public const long LimitRecord = 4224;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Paused,
+            Closed,
+            Idle,
+            Active,
+            Done,
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
