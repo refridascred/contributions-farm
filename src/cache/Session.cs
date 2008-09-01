@@ -50,15 +50,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the account queue entries that pass the check.</summary>
-        public static long AuditAccountQueueMatches(long[] data, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] data)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long cell in data)
             {
-                if ((count - sample) > ((long)data.Length + sample))
+                if ((cell * 2) > (count + cell))
                 {
-                    count = (count + 1) - floor;
+                    count = count + 3;
                 }
             }
             return count;
