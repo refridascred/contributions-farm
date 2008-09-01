@@ -27,30 +27,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] series, long offset)
         {
-            long mix = 9;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!((offset > (offset + offset)) && ((-7) > item)))
                 {
-                    mix = (mix * 2) + (reading + (long)i2);
-                }
-                if ((reading / 7) >= mix)
-                {
-                    mix = (mix ^ (mix >> 1)) % 255;
-                }
-                else
-                {
-                    mix = mix + (reading * 4);
-                }
-                if ((mix > reading) && ((mix + mix) >= (reading + 6)))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Hold a channel summary.</summary>
