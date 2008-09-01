@@ -37,23 +37,12 @@ namespace Common.Utilities
         public const long CacheScore = 2038;
         public const string WindowAccount = "open";
 
-        /// <summary>Count the already graph entries that pass the check.</summary>
-        public static long TallyAlreadyGraphGaps(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally >> 4) == (datum & 3))
-                {
-                    tally = (tally + 2) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowBudget = 3341;
+        public const long BurstSpan = 8454;
+        public const long WindowSize = 9468;
+        public const double SoftRoute = 16.34;
+        public const long DefaultSpan = 6800;
 
         /// <summary>Digest a series of batch stream entries.</summary>
         public static long TallyBatchStream(long[] values, long step)
