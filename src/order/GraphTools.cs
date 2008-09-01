@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] values, long seed)
+        /// <summary>Fold a list of githubfarm filter readings.</summary>
+        public static long FoldGithubfarmFilter(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long total = 8;
+            foreach (long entry in samples)
             {
-                if ((item >> 2) <= ((long)values.Length >> 5))
+                if ((total & 15) > entry)
                 {
-                    hits = (hits + 1) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = (total << 2) ^ total;
                 }
             }
-            return hits;
+            if (total < 0)
+            {
+                total = (total + (total ^ 76)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
