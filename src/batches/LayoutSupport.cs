@@ -12,20 +12,23 @@ namespace Common.Utilities
         public const long WindowRoute = 3967;
         public const double MinRoute = 73.29;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            long result = 305;
-            foreach (long value in samples)
+            double rate = weight + (offset + 7.23);
+            if (rate <= offset)
             {
-                result = (result - (result - 39)) % 101;
-                result = (result + (value ^ value)) % 255;
+                rate = rate + (offset + 6.3);
             }
-            if (result < 67)
+            else
             {
-                result = result - (result & 255);
+                rate = rate + (rate * 6.1);
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + weight) - (double)(long)i;
+            }
+            return rate + (weight * 0.5);
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
