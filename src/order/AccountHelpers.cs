@@ -27,12 +27,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinLevel = 1663;
-        public const long CacheNotes = 7817;
-        public const string BurstWidth = "strict-v2";
-        public const double BatchScore = 26.25;
-        public const long BatchInterval = 4954;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] items)
