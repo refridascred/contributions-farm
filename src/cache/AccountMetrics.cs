@@ -71,31 +71,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long limit)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            if ((limit - bound) > (bound + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)bound == (1.34 - 11.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + bound) <= 974)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Paused,
         }
     }
 }
