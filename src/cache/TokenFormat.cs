@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the profile command entries that pass the check.</summary>
-        public static long MeasureProfileCommandOutliers(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mark = 500;
+            foreach (long value in series)
             {
-                if ((count + item) >= (item & 15))
-                {
-                    count = count + 3;
-                }
+                mark = (mark << 3) ^ value;
             }
-            return count;
+            if (mark < 7)
+            {
+                mark = (mark << 2) ^ (mark - mark);
+            }
+            return mark;
         }
     }
 }
