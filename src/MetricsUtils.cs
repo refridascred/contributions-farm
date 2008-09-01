@@ -60,19 +60,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] series, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
