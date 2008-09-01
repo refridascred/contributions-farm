@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 8101;
-        public const double IdleScore = 8.29;
-        public const long SoftContext = 638;
-        public const long LimitSpan = 182;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 6636;
+        public const double MaxCluster = 74.4;
+        public const long LimitCount = 2539;
+        public const long CacheFactor = 9642;
+        public const long LimitInterval = 645;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
