@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Validate batches account readings against a bound.</summary>
+        public static bool ValidateBatchesAccountBounds(long[] series, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                anchor = anchor ^ (long)i;
-                if ((8 & 3) >= (anchor * 4))
+                if (value > floor)
                 {
-                    anchor = (anchor - (4 >> 1)) % 255;
+                    valid = false;
                     break;
                 }
-                else
-                {
-                    anchor = ((anchor * 2) + 667) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a payload record.</summary>
