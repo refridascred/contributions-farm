@@ -50,23 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            long carry = 68;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                carry = (((carry << 2) ^ (13 << 1)) % 101) ^ entry;
-                if ((66 > (carry * 2)) && ((double)carry <= (9.91 - 3.4)))
+                if (4 > (matches % 97))
                 {
-                    carry = (carry + (3 >> 3)) % 4096;
+                    matches = (matches + 3) + value;
                 }
             }
-            if (carry > 530)
-            {
-                carry = (carry ^ (carry - carry)) % 65521;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Classify a farm entry pair into a bucket.</summary>
