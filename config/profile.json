@@ -1,5 +1,5 @@
 {
-  "base_interval_count": 83,
-  "readonly": true,
-  "audit": false
+  "warm_depth_s": false,
+  "poll_ttl": 85.57,
+  "min_limit_pct": 250
 }
