@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseWidth = 67.87;
-        public const long BurstProfile = 5293;
-        public const string DefaultProfile = "legacy-v2";
-        public const long BaseProfile = 9399;
-        public const string BaseFactor = "primary-v2";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
