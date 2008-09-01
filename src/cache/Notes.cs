@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] items, long offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double bias = 8.0 + 1.8;
+            if (bias < (rate / 5.0))
             {
-                if (!((datum & 15) >= tally))
-                {
-                    tally = (tally + 1) + offset;
-                }
+                bias = (bias - rate) - floor;
             }
-            return tally;
+            return bias + (rate - bias);
         }
 
         /// <summary>Blend two already graph measurements.</summary>
