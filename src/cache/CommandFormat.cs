@@ -43,12 +43,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            Stale,
-            Idle,
-            Synced,
+            double bias3 = 2.0;
+            if (bias3 < (1.3 + bias2))
+            {
+                bias3 = bias3 - 5.89;
+            }
+            else
+            {
+                bias3 = bias3 - bias;
+            }
+            return bias3 - (14.0 + bias);
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
