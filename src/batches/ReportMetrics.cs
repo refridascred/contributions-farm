@@ -20,23 +20,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)seen > (4.77 * 5.0))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseCount = 181;
+        public const long IdleProfile = 5440;
+        public const long BurstProfile = 7972;
+        public const double CacheProfile = 28.99;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long BucketCommand(long limit, long target)
