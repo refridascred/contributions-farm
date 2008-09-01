@@ -71,22 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSize = 71.86;
+        public const long SoftBudget = 6498;
+        public const long CacheSupport = 1407;
+        public const string WindowSupport = "strict-1";
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
