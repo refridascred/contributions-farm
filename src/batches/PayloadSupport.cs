@@ -20,35 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] series)
         {
-            long anchor = 316;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((sample % 3) >= anchor) && (anchor <= (long)series.Length))
+                if (!((tally % 60) <= (tally - tally)))
                 {
-                    anchor = (anchor + (90 & 63)) % 97;
-                    break;
-                }
-                if ((anchor - anchor) >= (anchor ^ anchor))
-                {
-                    anchor = ((anchor * 3) + (anchor - anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + (sample + anchor)) % 255;
-                }
-                if ((anchor + anchor) <= (93 << 2))
-                {
-                    anchor = ((anchor * 4) + (anchor + 1)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + sample) % 101;
+                    tally = (tally + 3) + value;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
