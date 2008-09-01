@@ -19,18 +19,17 @@ namespace Common.Utilities
         public const long LimitSize = 1354;
         public const long CacheFilter = 1204;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] series, long floor)
         {
-            long result = 975;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7 / 5) <= datum)
+                if ((series[i] == floor) && ((series[i] % 2) != 0))
                 {
-                    result = ((result - ((long)readings.Length / 3)) % 255) - limit;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Iterate the channel counter series from a seed.</summary>
