@@ -49,19 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] samples, long target)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the profile state values.</summary>
