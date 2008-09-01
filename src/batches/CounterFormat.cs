@@ -35,10 +35,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstWidth = 6300;
-        public const long LimitDepth = 4293;
-        public const string MaxTimeout = "legacy-v2";
-        public const long DefaultWidth = 6819;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Stale,
+            Failed,
+            Active,
+            Draft,
+            Retry,
+        }
     }
 }
