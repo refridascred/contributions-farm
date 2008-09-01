@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinFactor = 6083;
-        public const long DefaultFactor = 2943;
-        public const string CacheBudget = "legacy-edge";
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
