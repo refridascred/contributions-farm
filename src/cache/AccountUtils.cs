@@ -34,18 +34,26 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long carry = -3;
+            foreach (long reading in samples)
             {
-                if (reading >= (matches ^ reading))
+                if (step < (reading ^ 968))
                 {
-                    matches = matches + 3;
+                    carry = (carry - step) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (step - reading)) % 101;
                 }
             }
-            return matches;
+            if (carry > 809)
+            {
+                carry = (carry << 2) ^ ((long)samples.Length + step);
+            }
+            return carry % 4096;
         }
     }
 }
