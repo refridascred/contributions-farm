@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] items)
+        /// <summary>Audit notes profile readings against a rule.</summary>
+        public static long CountNotesProfileHits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((sample + seen) < sample)
+                if (!((7.3 / 9.0) != (double)tally))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the stream state values.</summary>
