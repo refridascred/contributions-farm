@@ -37,25 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long floor, long step)
+        /// <summary>Count the queue metrics entries that pass the check.</summary>
+        public static long CountQueueMetricsHits(long[] series)
         {
-            long next = floor + step;
-            if (!((double)next == (7.3 + 7.0)))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((next >> 2) <= (6 - step))
+                if ((reading ^ reading) != (reading & 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
