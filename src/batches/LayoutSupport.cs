@@ -34,18 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] items, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((long)items.Length < tally)
-                {
-                    tally = ((tally + 3) + entry) - floor;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
