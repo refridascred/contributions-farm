@@ -1,5 +1,5 @@
 {
-  "readonly": [365, 332, 392],
-  "idle_ttl_ms": ["local", "staging"],
-  "verbose": 20
+  "dry_run": true,
+  "default_ratio_ms": 46,
+  "githubfarm_window": "stable"
 }
