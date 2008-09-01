@@ -54,15 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many session layout samples are out of range.</summary>
