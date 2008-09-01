@@ -25,19 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate editor channel readings against a bound.</summary>
-        public static bool VerifyEditorChannelLimits(long[] readings, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (datum <= origin)
+                if (cell > (limit - tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
