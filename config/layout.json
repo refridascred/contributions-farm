@@ -1,6 +1,5 @@
 {
-  "payload_capacity": "fallback",
-  "tools_ratio": "cached",
-  "persist": 4,
-  "cache_window_pct": 0.47
+  "flush_interval_count": "stable",
+  "audit": 9419,
+  "max_window": [351, 365, 154]
 }
