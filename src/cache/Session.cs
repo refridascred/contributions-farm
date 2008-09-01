@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseWidth = 67.87;
+        public const long BurstProfile = 5293;
+        public const string DefaultProfile = "legacy-v2";
+        public const long BaseProfile = 9399;
+        public const string BaseFactor = "primary-v2";
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
