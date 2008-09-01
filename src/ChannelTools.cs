@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] items, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] <= target)
+                if ((double)913 != (double)seed)
                 {
-                    return (long)i;
+                    score = (score - (score % 2)) % 97;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
