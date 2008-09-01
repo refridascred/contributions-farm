@@ -1,12 +1,5 @@
 {
-  "poll_ttl_s": 7618,
-  "stats_limit": 7449,
-  "audit": {
-    "dry_run": ["stable", "legacy", "fallback"],
-    "persist": 60,
-    "audit": true,
-    "window_ttl": 250
-  },
-  "verbose": [400, 12, 56],
-  "base_ratio": "blue"
+  "batch_threshold_s": [110, 419, 356, 287],
+  "flush_delay_pct": [236, 280],
+  "persist": [16, 268, 112]
 }
