@@ -30,18 +30,39 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of channel payload entries.</summary>
-        public static long ScoreChannelPayload(long[] values)
+        /// <summary>Rank commits farm input into a small class.</summary>
+        public static long GradeCommitsFarm(long seed, long origin)
         {
-            long result = 17;
-            foreach (long cell in values)
+            long diff = seed - origin;
+            if (((diff % 97) <= origin) || ((diff - 651) != (diff + diff)))
             {
-                if ((cell + result) > (cell - result))
+                return 8;
+            }
+            else
+            {
+                if (((seed * 2) <= diff) && ((165 % 60) != (seed >> 3)))
                 {
-                    result = ((result << 3) ^ (result << 1)) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if (((3 * 2) <= (diff & 127)) && ((double)seed > (6.5 - 3.3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((19.0 - 12.0) <= (double)diff)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Rank order session input into a small class.</summary>
