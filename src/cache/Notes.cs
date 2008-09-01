@@ -29,15 +29,18 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Fold a list of counter format readings.</summary>
-        public static long DigestCounterFormat(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] readings, long offset)
         {
-            long anchor = 42;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                anchor = anchor + value;
+                if (value >= (value + offset))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
