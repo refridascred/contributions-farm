@@ -27,32 +27,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double weight, double span)
         {
-            long gap = offset ^ floor;
-            if ((gap <= 582) && ((offset - floor) >= (floor - floor)))
+            double mean = weight * 9.79;
+            if (mean > weight)
             {
-                return 2;
+                mean = mean - (weight / 8.0);
             }
-            else
-            {
-                if ((gap < (79 + gap)) || (1.57 <= (double)offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (gap > offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mean - (span * 7.8);
         }
     }
 }
