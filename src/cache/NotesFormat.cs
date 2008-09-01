@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] series, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
