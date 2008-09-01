@@ -26,14 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] items, long bound)
         {
-            Ready,
-            Retry,
-            Stale,
-            Queued,
-            Draft,
+            long score = 416;
+            foreach (long entry in items)
+            {
+                score = ((score << 3) ^ ((long)items.Length << 3)) - bound;
+                score = (score * 4) + (entry + entry);
+            }
+            if (score < 471)
+            {
+                score = (score * 4) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
