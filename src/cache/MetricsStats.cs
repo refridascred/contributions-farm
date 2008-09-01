@@ -65,11 +65,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double rate, double floor)
-        {
-            double rate2 = (rate * 8.0) - (4.0 * 2.11);
-            return (rate2 + (double)9) + floor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowTimeout = 6664;
+        public const double MaxFactor = 13.0;
+        public const long CacheLevel = 2475;
     }
 }
