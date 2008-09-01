@@ -64,13 +64,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long origin, long origin2)
         {
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            if ((double)156 < (double)origin2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin >= (origin * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a queue header.</summary>
