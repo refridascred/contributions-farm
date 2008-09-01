@@ -52,12 +52,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] readings, long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < step)
+                if ((items[i] == target) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
