@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const string IdleFormat = "primary-edge";
         public const long BaseCount = 3279;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double bias3 = 2.0;
-            if (bias3 < (1.3 + bias2))
-            {
-                bias3 = bias3 - 5.89;
-            }
-            else
-            {
-                bias3 = bias3 - bias;
-            }
-            return bias3 - (14.0 + bias);
+            New,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
