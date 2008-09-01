@@ -85,19 +85,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] readings, long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
