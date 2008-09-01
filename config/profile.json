@@ -1,19 +1,6 @@
 {
-  "entry_timeout": ["fallback", "local", "fallback", "cached"],
-  "soft_delay_s": ["primary", "eu-west"],
-  "verbose": {
-    "strict": 7.36,
-    "default_threshold_count": 94.33,
-    "support_limit": 49.87,
-    "base_size": 86.08,
-    "counter_interval": [197, 207, 34, 431],
-    "compress": "latest"
-  },
-  "token_size": {
-    "hard_window_pct": "stable",
-    "base_threshold_pct": [158, 100, 158],
-    "min_limit": "fallback",
-    "batch_ratio_pct": ["stable", "strict", "blue"],
-    "cache_threshold": 8.12
-  }
+  "persist": 7.27,
+  "graph_limit": 20.64,
+  "batch_timeout": 49.82,
+  "retry_interval_s": 3524
 }
