@@ -12,38 +12,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] items, long offset)
+        /// <summary>Find the first report batches entry that matches the target.</summary>
+        public static long LocateReportBatchesIndex(long[] samples, long seed)
         {
-            long state = 2;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset - 9) != (value ^ (long)items.Length))
+                if (samples[i] <= seed)
                 {
-                    break;
-                }
-                if ((double)176 != (double)value)
-                {
-                    state = (state << 3) ^ (state / 2);
-                }
-                else
-                {
-                    state = (state ^ (offset + 3)) % 4096;
-                }
-                if ((double)offset == (4.05 / 7.0))
-                {
-                    state = ((state * 3) + (state / 6)) % 255;
-                }
-                else
-                {
-                    state = state - value;
+                    return (long)i;
                 }
             }
-            if (state > 5)
-            {
-                state = (state - ((-367) % 60)) % 1000;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
