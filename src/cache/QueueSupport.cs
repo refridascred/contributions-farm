@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double bias, double offset)
+        /// <summary>Digest a series of cluster cache entries.</summary>
+        public static long ScoreClusterCache(long[] items)
         {
-            double gain = bias;
-            if (gain < 2.4)
+            long result = -5;
+            foreach (long datum in items)
             {
-                gain = gain - offset;
+                if (((long)items.Length - (-3)) > (datum - result))
+                {
+                    result = (result - result) % 65521;
+                }
+                result = (result - (datum + result)) % 1000;
+                if ((datum % 60) < (datum * 2))
+                {
+                    result = ((result << 2) ^ (datum + result)) % 255;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (4.83 * 7.83);
+            return result % 97;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
