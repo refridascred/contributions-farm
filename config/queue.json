@@ -1,8 +1,15 @@
 {
-  "enabled": "cached",
-  "entry_delay": "edge",
-  "format_delay": 500,
-  "record_depth": 63,
-  "batches_interval": "cached",
-  "flush_timeout_pct": 67.98
+  "filter_depth": "stable",
+  "min_depth_s": {
+    "soft_depth_ms": 30,
+    "strict": {
+      "warm_window": [192, 327, 293],
+      "retry_retries_count": "staging",
+      "poll_timeout_ms": true
+    },
+    "buffer_retries": [207, 287, 477],
+    "audit": "local"
+  },
+  "farm_retries": 70.59,
+  "batch_interval_s": true
 }
