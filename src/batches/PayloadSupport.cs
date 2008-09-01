@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((limit * 4) <= (tally & 127)) || ((limit - 736) >= (tally << 2))) && (((tally ^ 65) >= (228 / 6)) || ((limit + 77) >= reading)))
-                {
-                    tally = tally + 2;
-                }
+                result = (result + (result - (long)i)) % 255;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
