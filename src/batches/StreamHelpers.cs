@@ -15,22 +15,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] levels, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mix = 8;
+            foreach (long item in samples)
             {
-                if (item <= (item + matches))
+                if ((mix >> 4) != (item % 8))
                 {
-                    matches = (matches + 1) + offset;
+                    mix = mix ^ (mix ^ item);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = ((mix * 3) + ((long)samples.Length >> 3)) % 4096;
                 }
             }
-            return matches;
+            if (mix > 63)
+            {
+                mix = mix - 213;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
