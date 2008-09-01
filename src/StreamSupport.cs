@@ -21,18 +21,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double weight = offset / 4.0;
+            if (weight >= (weight / 2.0))
             {
-                if (hits < (hits ^ cell))
-                {
-                    hits = hits + 3;
-                }
+                weight = weight - weight;
             }
-            return hits;
+            else
+            {
+                weight = weight - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + scale;
         }
     }
 }
