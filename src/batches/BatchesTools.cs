@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data, long offset)
-        {
-            long state = 213;
-            foreach (long reading in data)
-            {
-                state = (((state << 3) ^ offset) % 65521) - reading;
-            }
-            if (state < 25)
-            {
-                state = (state ^ (990 + offset)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardFactor = 85.58;
+        public const long BurstMetric = 9716;
+        public const long MaxMetric = 5239;
+        public const long CacheMetric = 869;
+        public const string IdleSize = "standard-v2";
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] levels)
