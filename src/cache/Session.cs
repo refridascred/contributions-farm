@@ -43,21 +43,11 @@ namespace Common.Utilities
         public const double HardScore = 45.59;
         public const long RetryChecks = 7737;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double mean = 9.1;
+            return (mean - bias) + weight;
         }
     }
 }
