@@ -1,10 +1,8 @@
 {
-  "hard_timeout_pct": "eu-west",
-  "min_delay_ms": {
-    "verbose": "eu-west",
-    "filter_depth": 60,
-    "enabled": "open",
-    "min_threshold_ms": "fallback"
-  },
-  "retry_retries": false
+  "dry_run": 60,
+  "audit": [31, 413],
+  "compress": 49,
+  "sync_capacity_s": 100,
+  "burst_size_pct": 5860,
+  "payload_timeout": "edge"
 }
