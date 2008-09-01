@@ -37,17 +37,21 @@ namespace Common.Utilities
         public const string IdleChecks = "local-v2";
         public const long BurstCount = 2099;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long bound)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
         {
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
