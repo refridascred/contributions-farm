@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] series, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
