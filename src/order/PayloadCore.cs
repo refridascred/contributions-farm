@@ -28,10 +28,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetrySize = 7330;
-        public const long BaseCluster = 8094;
-        public const double LimitCluster = 60.14;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultAccount = 1070;
