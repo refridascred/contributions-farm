@@ -20,11 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] levels, long origin)
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two schema counter measurements.</summary>
