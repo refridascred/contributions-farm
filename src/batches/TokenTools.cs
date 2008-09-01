@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token stats counter forward.</summary>
-        public static long SeriesTokenStats(long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
