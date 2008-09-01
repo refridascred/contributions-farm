@@ -14,31 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            if ((seed + (-612)) > (seed - 60))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-8) + seed) == (bound + seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound < (2.52 / 4.0))
+                    if ((readings[i] - readings[j]) != 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
