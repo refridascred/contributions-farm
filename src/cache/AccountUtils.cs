@@ -35,26 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long carry = -3;
-            foreach (long reading in samples)
-            {
-                if (step < (reading ^ 968))
-                {
-                    carry = (carry - step) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (step - reading)) % 101;
-                }
-            }
-            if (carry > 809)
-            {
-                carry = (carry << 2) ^ ((long)samples.Length + step);
-            }
-            return carry % 4096;
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
