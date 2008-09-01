@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi tools values into a single score.</summary>
-        public static long CombineContributiTools(long[] data, long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] series, long step)
         {
-            long total = 154;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((target << 3) <= target))
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
                 {
-                    total = (total - 95) - datum;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
