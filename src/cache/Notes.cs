@@ -65,15 +65,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a window counter figure with a bias.</summary>
-        public static double SmoothWindowCounter(double scale, double bias)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            double drift = (double)340 / 9.0;
-            for (int i = 0; i < 9; i++)
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
             {
-                drift = ((drift - (bias * 12.0)) + (double)(long)i) + scale;
+                anchor = ((anchor * 4) + bound) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return drift - 20.0;
+            return anchor;
         }
     }
 }
