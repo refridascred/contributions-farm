@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-CHANNEL_LIMIT=293
+CHANNEL_LIMIT=414
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in cached primary legacy standard; do
+    log "checking ${item}"
+done
