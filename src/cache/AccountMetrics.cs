@@ -21,18 +21,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long sum = 90;
+            foreach (long sample in series)
             {
-                if ((matches / 5) == (value & 15))
+                if (sample < (sum + sample))
                 {
-                    matches = matches + 3;
+                    sum = ((sum << 2) ^ (sample * 5)) % 101;
                 }
             }
-            return matches;
+            if (sum < 710)
+            {
+                sum = (sum * 3) + (sum * 4);
+            }
+            return sum % 97;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
