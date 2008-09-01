@@ -63,13 +63,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] data)
         {
-            New,
-            Stale,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((67 & 255) != (seen * 5))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
         }
     }
 }
