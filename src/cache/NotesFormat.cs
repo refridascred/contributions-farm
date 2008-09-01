@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] data, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 159;
+            foreach (long datum in levels)
             {
-                if ((data[i] > floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (321 + datum)) - origin;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
