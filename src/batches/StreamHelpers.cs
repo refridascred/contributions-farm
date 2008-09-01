@@ -46,13 +46,18 @@ namespace Common.Utilities
             return ratio + (bias - bias);
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] series, long limit)
         {
-            public bool Score { get; set; }
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading <= (reading - tally))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
