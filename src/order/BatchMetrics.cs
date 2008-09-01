@@ -53,13 +53,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Accumulate session stats samples.</summary>
+        public static long ScoreSessionStats(long[] items)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            long state = -36;
+            foreach (long entry in items)
+            {
+                if (!((state + state) <= state))
+                {
+                    state = ((state * 2) + 3) - entry;
+                }
+            }
+            if (state > 43)
+            {
+                state = ((state * 4) + (94 + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
