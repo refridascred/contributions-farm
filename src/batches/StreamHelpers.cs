@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] levels, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 512;
+            foreach (long entry in values)
             {
-                if (levels[i] < target)
+                anchor = (anchor + (entry & 1)) % 4096;
+                anchor = ((anchor * 3) + (anchor + (long)values.Length)) % 4096;
+                if ((anchor + entry) < 406)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 72)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
