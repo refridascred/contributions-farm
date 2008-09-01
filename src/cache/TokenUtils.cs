@@ -27,32 +27,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] data)
         {
-            long span = origin - seed;
-            if ((double)span < 3.5)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((11.0 - 20.0) >= (double)span)
+                if (!!((matches + matches) <= matches))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)span >= (double)seed) || (origin <= span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 3) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
