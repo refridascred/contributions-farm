@@ -39,22 +39,11 @@ namespace Common.Utilities
         public const string IdleChecks = "local-v2";
         public const long BurstCount = 2099;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultScore = 80;
+        public const string BatchWidth = "standard-edge";
+        public const long MaxNotes = 900;
+        public const double StepNotes = 81.49;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
