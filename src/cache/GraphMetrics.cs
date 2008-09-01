@@ -60,12 +60,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long limit)
+        /// <summary>Find the first order tools entry that matches the target.</summary>
+        public static long LocateOrderToolsIndex(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > limit)
+                if (series[i] < target)
                 {
                     return (long)i;
                 }
