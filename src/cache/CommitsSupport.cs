@@ -39,17 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] levels, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
