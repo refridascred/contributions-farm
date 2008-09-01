@@ -16,23 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] readings, long origin)
         {
-            long score = 28;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (readings[i] >= origin)
                 {
-                    score = (score ^ 59) ^ (long)i;
+                    return (long)i;
                 }
-                score = score - (sample + sample);
             }
-            if (score > 3)
-            {
-                score = (score ^ 4) % 1000;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
