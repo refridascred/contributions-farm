@@ -44,30 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long sum = 392;
-            foreach (long cell in data)
-            {
-                if (((sum + 794) > (cell << 3)) && ((double)target != (7.4 * 4.38)))
-                {
-                    sum = ((sum << 3) ^ (target + sum)) % 1000;
-                }
-                if (!((cell ^ target) >= sum))
-                {
-                    sum = (sum * 2) + sum;
-                }
-                else
-                {
-                    sum = (sum * 5) + target;
-                }
-                if ((8.9 / 8.0) <= (double)cell)
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            Locked,
+            Stale,
+            Failed,
+            New,
+            Dropped,
         }
     }
 }
