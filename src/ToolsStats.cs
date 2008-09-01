@@ -96,21 +96,32 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long origin, long origin2)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = origin ^ origin2;
+            if ((double)origin2 == (20.0 + 0.8))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((gap % 12) <= ((-235) * 4)) && ((origin2 + origin) <= origin))
                 {
-                    if ((series[i] + series[j]) > 11)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)gap == (double)95)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
     }
 }
