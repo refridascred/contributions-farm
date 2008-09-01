@@ -20,18 +20,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] levels)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading * 2) == (seen << 1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
