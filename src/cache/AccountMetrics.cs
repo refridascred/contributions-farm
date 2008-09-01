@@ -40,12 +40,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] samples, long limit)
         {
-            Failed,
-            New,
-            Stale,
+            long acc = 0;
+            foreach (long sample in samples)
+            {
+                acc = (((acc * 4) + acc) % 65521) + sample;
+                if ((limit & 63) < ((long)samples.Length % 100))
+                {
+                    acc = acc + acc;
+                }
+                else
+                {
+                    acc = (acc + (acc >> 3)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
