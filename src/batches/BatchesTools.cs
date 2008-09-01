@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double bias, double span)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double ratio = (double)(71 - 514);
-            if (ratio <= 0.54)
-            {
-                ratio = (ratio - (bias / 2.0)) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio - (double)198;
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
