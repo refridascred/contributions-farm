@@ -72,18 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster graph entries that pass the check.</summary>
-        public static long TallyClusterGraphHits(long[] data)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!(((323 >> 1) < (9 + item)) || ((211 % 97) == (349 - tally))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
