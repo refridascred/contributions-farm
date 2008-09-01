@@ -51,13 +51,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 4467;
+        public const string HardBudget = "legacy-1";
+        public const long MaxSchema = 2558;
+        public const long CacheSchema = 6638;
+        public const long IdleDepth = 1174;
     }
 }
