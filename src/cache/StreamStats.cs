@@ -59,21 +59,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((long)values.Length >= (sample + 36)))
                 {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - bound;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
