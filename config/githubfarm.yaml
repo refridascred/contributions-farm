@@ -1,18 +1,10 @@
 # githubfarm settings
-max_ratio_count:
+burst_capacity_s: 500
+verbose: edge
+persist:
+  - cached
   - primary
-  - primary
-enabled: 9276
-hard_interval_s:
-  flush_size_ms:
-    readonly:
-      - 390
-      - 450
-    base_window_s: 6787
-    session_retries: 60
-    base_capacity: 798
-  dry_run: blue
-  warm_interval: 15.76
-dry_run: 11.17
-account_retries: 28
-cache_limit_pct: 7487
+  - cached
+hard_interval_s: 8607
+hard_capacity: 1024
+poll_size_ms: true
