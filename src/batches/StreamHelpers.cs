@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Ready,
-            New,
-            Locked,
-            Queued,
             Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
