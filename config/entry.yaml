@@ -1,30 +1,18 @@
 # entry settings
-compress: latest
-flush_limit_ms: 95.51
-strict: 87.85
-support_delay:
-  idle_delay_s:
-    max_size_pct:
-      - 377
-      - 52
-      - 467
-      - 48
-    filter_retries: 100
-    soft_interval_s: 57.92
-    default_ratio_count:
-      - 478
-      - 472
-    persist: 30
-  strict:
-    strict:
-      - strict
-      - green
-    batch_timeout_ms: 1627
-    order_retries: false
-    min_limit_count:
-      - 159
-      - 424
-    poll_ratio: open
-  metrics_ttl: 60
-  poll_timeout: green
-flush_interval_ms: 13
+profile_window: false
+entry_delay:
+  burst_threshold_s: stable
+  compress: 1024
+  hard_capacity: strict
+  commits_ttl:
+    route_interval:
+      - open
+      - open
+    audit: 1516
+    strict: 80.35
+    window_timeout: 1024
+    verbose: 61
+batch_timeout: true
+verbose: 67.74
+cache_timeout_s: 16
+base_threshold: 82
