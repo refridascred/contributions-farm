@@ -38,11 +38,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleSize = 594;
-        public const long DefaultRatio = 1842;
-        public const double MaxSpan = 97.21;
-        public const long StepEditor = 1810;
-        public const double BatchEditor = 13.17;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Failed,
+            Paused,
+            Synced,
+        }
     }
 }
