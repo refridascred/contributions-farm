@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate filter cache samples.</summary>
-        public static long CombineFilterCache(long[] readings)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long anchor = 452;
-            foreach (long reading in readings)
-            {
-                if (((reading - anchor) >= (reading ^ reading)) || ((anchor >> 5) > (reading + 25)))
-                {
-                    anchor = (anchor + ((-63) + anchor)) % 4096;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
