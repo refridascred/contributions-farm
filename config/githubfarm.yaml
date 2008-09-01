@@ -1,4 +1,10 @@
 # githubfarm settings
-batches_ratio: 22
-command_timeout: true
-flush_threshold: 77.38
+hard_capacity_s: fallback
+soft_size_ms:
+  base_capacity_s: 30
+  max_retries_ms: 71.37
+  max_threshold_pct: 95.58
+soft_delay: cached
+flush_timeout_s: 11.41
+dry_run: local
+default_depth_pct: 47
