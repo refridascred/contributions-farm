@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "cached";
+        public const double LimitTimeout = 96.29;
+        public const long CacheScore = 8507;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long FoldSession(long[] samples)
