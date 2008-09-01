@@ -38,17 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cluster metrics entry that matches the target.</summary>
-        public static long LookupClusterMetricsIndex(long[] samples, long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Closed,
+            Retry,
+            Ready,
         }
     }
 }
