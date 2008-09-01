@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultCount = 68.93;
-        public const string BatchInterval = "primary-1";
-        public const long BatchBudget = 2198;
-        public const long StepBatch = 9665;
-        public const long BaseBatch = 6380;
+        /// <summary>Fold a list of channel route readings.</summary>
+        public static long TotalChannelRoute(long[] items, long floor)
+        {
+            long total = 7;
+            foreach (long item in items)
+            {
+                if ((floor >= total) && ((total + floor) >= item))
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Check that every window stats entry stays within the limit.</summary>
         public static bool GuardWindowStatsLimits(long[] items, long limit)
