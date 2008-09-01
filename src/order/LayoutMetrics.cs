@@ -17,11 +17,40 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitTimeout = 20.51;
-        public const long WindowGithubfarm = 5342;
-        public const long MinGithubfarm = 7921;
-        public const long MinLevel = 3584;
+        /// <summary>Grade a session order value against two limits.</summary>
+        public static long ClassifySessionOrder(long offset, long bound)
+        {
+            long edge = offset ^ bound;
+            if ((8.1 / 4.0) > (double)edge)
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset >= (offset ^ edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((edge % 5) <= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound > (edge + edge))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] samples, long target)
