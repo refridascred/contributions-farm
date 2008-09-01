@@ -79,12 +79,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            Queued,
-            Dropped,
-            New,
+            long mix = 901;
+            foreach (long cell in levels)
+            {
+                mix = mix - (cell - cell);
+            }
+            return mix % 4096;
         }
     }
 }
