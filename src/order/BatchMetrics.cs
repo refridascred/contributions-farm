@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftSize = "legacy-v2";
-        public const long MinOrder = 7313;
-        public const string HardOrder = "stable";
-        public const long StepOrder = 3513;
+        /// <summary>Rank window profile input into a small class.</summary>
+        public static long BucketWindowProfile(long offset, long seed)
+        {
+            long slot = offset ^ seed;
+            if ((seed % 3) != (75 - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)slot != (3.93 + 9.7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed * 2) < 0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
