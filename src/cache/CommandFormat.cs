@@ -24,12 +24,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 4761;
-        public const double MaxWidth = 69.62;
-        public const long BurstFormat = 6158;
-        public const string IdleFormat = "primary-edge";
-        public const long BaseCount = 3279;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
