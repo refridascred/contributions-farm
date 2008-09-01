@@ -1,8 +1,16 @@
 {
-  "tools_size": 7,
-  "sync_retries": false,
-  "order_interval": "eu-west",
-  "audit": "fallback",
-  "metric_window": "staging",
-  "retry_ratio_pct": 100
+  "enabled": {
+    "max_threshold_pct": 85.19,
+    "burst_size_pct": "edge",
+    "soft_ratio": "fallback",
+    "cache_retries_pct": {
+      "soft_limit_s": 79,
+      "retry_ratio": ["blue", "strict", "blue", "primary"],
+      "graph_window": true
+    },
+    "order_size": 36.7,
+    "audit": "local"
+  },
+  "idle_depth_pct": true,
+  "sync_capacity_ms": "open"
 }
