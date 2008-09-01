@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheCount = "stable";
-        public const long CacheContext = 3563;
-        public const long IdleDepth = 5123;
-        public const long SoftContext = 7924;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long floor, long bound)
+        {
+            if ((bound - 33) < (floor % 60))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)bound < 5.36) || ((2 + floor) < bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (3.89 <= (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
