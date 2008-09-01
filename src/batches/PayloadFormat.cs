@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFarm = "staging-v2";
-        public const long IdleFarm = 26;
-        public const long RetryScore = 1492;
-        public const long BaseFarm = 5489;
-        public const long StepScore = 4909;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double BlendGithubfarm(double bias, double offset)
