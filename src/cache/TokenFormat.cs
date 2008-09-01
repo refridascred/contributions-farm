@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long IdleDepth = 5123;
         public const long SoftContext = 7924;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Queued,
-            Pending,
-            Ready,
-            Retry,
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
