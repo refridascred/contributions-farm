@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] samples)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen / 8) <= (667 + seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
