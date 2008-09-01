@@ -58,15 +58,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            if (((double)target == (7.8 / 5.0)) && ((3.0 * 2.0) > (double)target))
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((target * 3) != (limit + 132))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit / 6) <= (limit ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target == (7.03 + 20.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
