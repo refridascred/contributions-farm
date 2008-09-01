@@ -27,14 +27,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long offset, long floor)
         {
-            New,
-            Retry,
-            Done,
-            Dropped,
-            Locked,
+            long gap = offset ^ floor;
+            if ((gap <= 582) && ((offset - floor) >= (floor - floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap < (79 + gap)) || (1.57 <= (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (gap > offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
