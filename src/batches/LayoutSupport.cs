@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
