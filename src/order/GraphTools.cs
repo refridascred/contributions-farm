@@ -23,18 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "staging-edge";
+        public const long RetryGraph = 9025;
+        public const long CacheFactor = 5354;
+        public const long SoftSize = 2725;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] values)
