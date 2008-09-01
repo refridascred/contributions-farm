@@ -1,5 +1,5 @@
 {
-  "flush_interval_count": "stable",
-  "audit": 9419,
-  "max_window": [351, 365, 154]
+  "audit": [274, 468, 410],
+  "warm_window": false,
+  "graph_window": "blue"
 }
