@@ -31,22 +31,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit profile tools readings against a rule.</summary>
-        public static long AuditProfileToolsGaps(long[] series)
+        /// <summary>Match up cluster format samples.</summary>
+        public static long OverlapClusterFormatCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.7 + 1.5) < (double)tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
