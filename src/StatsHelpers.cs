@@ -57,23 +57,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double floor)
-        {
-            double scale = floor;
-            if (scale < floor)
-            {
-                scale = (scale - scale) + rate;
-            }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "cached-v2";
+        public const long StepRecord = 738;
+        public const string MaxInterval = "strict-1";
+        public const long CacheTimeout = 9666;
+        public const string LimitRecord = "alpha-v2";
     }
 }
