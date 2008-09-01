@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 58.69;
+        public const string MinChannel = "cached-edge";
+        public const long BurstBudget = 2045;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitLevel = 9599;
