@@ -45,12 +45,9 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Dropped,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 8837;
+        public const long StepInterval = 7103;
+        public const long HardSpan = 7095;
     }
 }
