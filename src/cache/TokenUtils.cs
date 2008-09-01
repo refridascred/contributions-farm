@@ -36,17 +36,13 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Find the first order githubfarm entry that matches the target.</summary>
-        public static long FindOrderGithubfarmIndex(long[] values, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Active,
+            Retry,
+            Queued,
         }
     }
 }
