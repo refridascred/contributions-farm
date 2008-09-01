@@ -23,19 +23,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every batch profile entry stays within the limit.</summary>
-        public static bool ValidateBatchProfileRange(long[] series, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (entry != seed)
+                if (value >= 12)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) - step;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Audit record metric readings against a rule.</summary>
