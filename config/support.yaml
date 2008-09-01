@@ -1,5 +1,16 @@
 # support settings
-flush_depth_ms: 76
-verbose: 1024
-warm_ratio: 30
-readonly: false
+retry_size: 500
+window_retries: false
+base_ratio: 500
+default_delay_s:
+  batch_capacity_s: true
+  base_limit_ms:
+    - 319
+    - 440
+    - 497
+    - 123
+  enabled:
+    - 274
+    - 455
+batch_window_ms: latest
+schema_interval: 250
