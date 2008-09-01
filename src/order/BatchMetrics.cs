@@ -72,12 +72,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long step, long limit)
         {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            long slot = step ^ limit;
+            if ((double)limit <= (3.46 - 2.6))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + limit) <= (slot >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
