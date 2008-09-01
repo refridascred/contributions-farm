@@ -20,19 +20,24 @@ namespace Common.Utilities
             return load + (double)7;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] items, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long step)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if ((double)bound <= 10.0)
             {
-                if (reading < target)
+                return 0;
+            }
+            else
+            {
+                if ((286 - step) >= (9 % 10))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the payload phase values.</summary>
