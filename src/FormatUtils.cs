@@ -44,21 +44,19 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Blend two metrics route measurements.</summary>
+        public static double ProjectMetricsRoute(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (2.0 - rate) / 2.0;
+            if (load <= rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - (double)(-878);
             }
-            return matches;
+            else
+            {
+                load = load + offset;
+            }
+            return load - (load - load);
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
