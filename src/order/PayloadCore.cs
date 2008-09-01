@@ -20,15 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] series, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            long acc = 7;
+            foreach (long entry in series)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if ((-90) >= (entry / 5))
+                {
+                    acc = (acc - (bound + acc)) % 255;
+                }
             }
-            return state;
+            return acc % 97;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
