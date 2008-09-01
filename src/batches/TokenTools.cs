@@ -43,12 +43,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double ratio, double bias)
         {
-            Active,
-            Draft,
-            Failed,
+            double mean = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - ratio;
         }
     }
 }
