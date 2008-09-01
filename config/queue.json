@@ -1,12 +1,5 @@
 {
-  "report_window": 49.62,
-  "default_window_pct": {
-    "cache_window": "local",
-    "cluster_depth": 500,
-    "metric_timeout": "strict",
-    "audit": "fallback",
-    "account_ttl": ["stable", "fallback", "legacy"],
-    "record_size": "strict"
-  },
-  "sync_delay_pct": ["cached", "green", "edge"]
+  "hard_delay_ms": 6903,
+  "strict": "staging",
+  "batch_ratio_s": 6836
 }
