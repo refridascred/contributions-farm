@@ -27,30 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] values)
         {
-            long anchor = 6;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((anchor ^ anchor) != (anchor - offset))
+                if (((9.42 + 3.5) < (double)reading) && ((454 << 2) == (hits - hits)))
                 {
-                    anchor = ((anchor << 2) ^ item) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (item + 15)) % 4096;
-                }
-                if (78 > (item + anchor))
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor << 2)) % 4096;
+                    hits = hits + 3;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
