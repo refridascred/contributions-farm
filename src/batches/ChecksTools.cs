@@ -53,9 +53,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitBudget = "open";
-        public const double StepCommand = 88.05;
-        public const long HardBudget = 9495;
+        /// <summary>Rank buffer farm input into a small class.</summary>
+        public static long RankBufferFarm(long target, long bound)
+        {
+            if ((3.38 / 5.0) == (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((940 << 2) == (target / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound % 16) > bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target >= 8)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
