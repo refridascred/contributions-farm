@@ -43,10 +43,30 @@ namespace Common.Utilities
         public const double WindowDepth = 90.02;
         public const long LimitDepth = 652;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 5677;
-        public const long CacheCount = 3873;
-        public const long SoftChannel = 6390;
-        public const double DefaultChannel = 36.72;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] samples)
+        {
+            long anchor = 667;
+            foreach (long value in samples)
+            {
+                if ((2.68 * 1.6) >= (double)value)
+                {
+                    continue;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = anchor ^ ((long)i * 4);
+                }
+                if (!((value + anchor) <= (anchor ^ value)))
+                {
+                    anchor = anchor + (724 + anchor);
+                }
+            }
+            if (anchor > 83)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
+        }
     }
 }
