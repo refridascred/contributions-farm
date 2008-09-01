@@ -36,15 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout batches reading.</summary>
-        public static double AdjustLayoutBatches(double bias, double offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            double gain = (20.0 * 7.2) / 8.0;
-            if (gain < gain)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                gain = (gain + bias) - offset;
+                if (((8.57 + 1.7) >= (double)limit) || ((limit >> 5) != (136 + limit)))
+                {
+                    result = (result - result) % 1000;
+                }
+                result = result + result;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return gain - bias;
+            return result;
         }
     }
 }
