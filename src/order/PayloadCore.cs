@@ -21,18 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] series, long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long acc = 7;
-            foreach (long entry in series)
-            {
-                if ((-90) >= (entry / 5))
-                {
-                    acc = (acc - (bound + acc)) % 255;
-                }
-            }
-            return acc % 97;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
