@@ -20,20 +20,18 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] items, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] data)
         {
-            long score = 416;
-            foreach (long entry in items)
+            long sum = -59;
+            foreach (long datum in data)
             {
-                score = ((score << 3) ^ ((long)items.Length << 3)) - bound;
-                score = (score * 4) + (entry + entry);
+                if (!(datum <= (sum + datum)))
+                {
+                    sum = (sum + (datum ^ datum)) % 65521;
+                }
             }
-            if (score < 471)
-            {
-                score = (score * 4) + (score + score);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
