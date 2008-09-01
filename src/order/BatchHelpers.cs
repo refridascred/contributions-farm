@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] series, long offset)
+        /// <summary>Validate schema command readings against a bound.</summary>
+        public static bool VerifySchemaCommandRange(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a batch record.</summary>
