@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 7790;
+        public const long StepProfile = 3172;
+        public const long WindowProfile = 7216;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long DigestQueue(long[] data)
