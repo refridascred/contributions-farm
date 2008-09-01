@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long score = -665;
-            foreach (long reading in levels)
-            {
-                if ((reading & 127) <= (score + score))
-                {
-                    score = (score * 4) + (reading << 3);
-                }
-                else
-                {
-                    score = (score ^ reading) % 4096;
-                }
-            }
-            return score % 65521;
+            Dropped,
+            Locked,
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
