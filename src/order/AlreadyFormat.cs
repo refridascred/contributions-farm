@@ -55,11 +55,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 2345;
-        public const long WindowAlready = 6411;
-        public const long StepTimeout = 7283;
-        public const long BatchRatio = 9742;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((sum % 64) >= ((long)i + limit)) || ((sum + (long)i) != (limit ^ (long)i)))
+                {
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] readings)
