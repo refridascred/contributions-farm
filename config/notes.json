@@ -1,7 +1,13 @@
 {
-  "burst_timeout": "blue",
-  "readonly": 79.42,
-  "hard_ttl": "primary",
-  "default_ratio": true,
-  "min_ratio_count": ["open", "fallback", "legacy", "staging"]
+  "burst_capacity_count": 250,
+  "warm_interval_pct": {
+    "default_threshold_ms": true,
+    "record_limit": true,
+    "poll_size_pct": "strict",
+    "max_capacity_pct": 250
+  },
+  "metric_timeout": 7506,
+  "max_limit_pct": "edge",
+  "soft_retries": 30,
+  "max_capacity": true
 }
