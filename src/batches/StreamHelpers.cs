@@ -57,11 +57,19 @@ namespace Common.Utilities
         public const long BurstBudget = 9361;
         public const long BaseCount = 7913;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitBudget = 6256;
-        public const long SoftLevel = 929;
-        public const long StepScore = 8636;
-        public const long CacheDepth = 4382;
+        /// <summary>Audit editor batches readings against a rule.</summary>
+        public static long CountEditorBatchesHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((7.0 / 4.0) < (double)item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long limit, long target)
