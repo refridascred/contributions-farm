@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] samples, long target)
         {
-            Active,
-            Ready,
-            Locked,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)tally >= (9.3 / 7.0))
+                {
+                    tally = ((tally + 2) - value) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of format entries.</summary>
