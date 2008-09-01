@@ -59,15 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] levels, long floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long score = 28;
-            foreach (long item in levels)
-            {
-                score = (((score ^ (score & 1)) % 97) ^ item) - floor;
-            }
-            return score;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
