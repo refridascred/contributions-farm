@@ -47,19 +47,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every batch profile entry stays within the limit.</summary>
-        public static bool GuardBatchProfileBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 3.8;
+        public const double SoftRecord = 26.48;
+        public const long HardRecord = 4109;
+        public const long BaseFactor = 5134;
     }
 }
