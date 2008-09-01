@@ -37,19 +37,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] data, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (value >= offset)
+                if (cell >= limit)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
