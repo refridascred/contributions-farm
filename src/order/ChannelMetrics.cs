@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] items)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)item <= 19.0)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Queued,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
