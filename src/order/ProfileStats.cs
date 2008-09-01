@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Dropped,
-            New,
-            Idle,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepRatio = "fallback";
+        public const long SoftSize = 9892;
+        public const long SoftBatch = 1705;
+        public const string BaseBatch = "strict-1";
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] readings)
