@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public double Total { get; set; }
+            New,
+            Dropped,
+            Idle,
+            Done,
         }
 
         /// <summary>Iterate the notes format series from a seed.</summary>
