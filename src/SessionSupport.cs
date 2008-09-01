@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine filter tools values into a single score.</summary>
-        public static long DigestFilterTools(long[] values, long seed)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long anchor = 4;
-            foreach (long cell in values)
-            {
-                if ((seed + anchor) <= anchor)
-                {
-                    anchor = ((anchor << 2) ^ (cell ^ cell)) % 255;
-                }
-                if (1.6 <= (double)seed)
-                {
-                    break;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor ^ (554 * 3)) % 101;
-            }
-            return anchor % 65521;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
