@@ -62,12 +62,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepCluster = 50.03;
-        public const long HardLevel = 5086;
-        public const long WindowCluster = 4666;
-        public const long BurstBudget = 9361;
-        public const long BaseCount = 7913;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data, long origin)
+        {
+            long carry = 5;
+            foreach (long cell in data)
+            {
+                carry = ((((carry << 3) ^ (-3)) % 4096) + cell) + origin;
+            }
+            if (carry > 9)
+            {
+                carry = ((carry << 2) ^ (76 * 4)) % 101;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Audit editor batches readings against a rule.</summary>
         public static long CountEditorBatchesHits(long[] levels)
