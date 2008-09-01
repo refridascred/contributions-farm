@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Blend two contributi batch measurements.</summary>
+        public static double BlendContributiBatch(double weight, double floor)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            double ratio = floor;
+            if (ratio <= (double)799)
             {
-                if ((double)913 != (double)seed)
-                {
-                    score = (score - (score % 2)) % 97;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                ratio = ratio - (2.0 + floor);
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (2.2 * 5.6)) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
