@@ -73,14 +73,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Adjust a window farm reading.</summary>
+        public static double AdjustWindowFarm(double gain, double floor)
         {
-            Idle,
-            Stale,
-            Paused,
-            Queued,
-            Locked,
+            double scale = gain * 2.52;
+            if (scale > 14.0)
+            {
+                scale = scale - (double)(-1);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (gain * 2.03)) + (double)(long)i;
+            }
+            return scale - (scale + floor);
         }
     }
 }
