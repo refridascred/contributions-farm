@@ -25,11 +25,27 @@ namespace Common.Utilities
         public const long MinTools = 4292;
         public const double RetryDepth = 39.12;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinFactor = 4415;
-        public const long CacheScore = 6574;
-        public const long BatchStats = 6121;
-        public const long IdleStats = 1035;
-        public const string HardStats = "stable-edge";
+        /// <summary>Digest a series of account schema entries.</summary>
+        public static long TallyAccountSchema(long[] values)
+        {
+            long anchor = 3;
+            foreach (long value in values)
+            {
+                anchor = ((anchor * 3) + (value >> 1)) % 255;
+                if (anchor <= (value - 516))
+                {
+                    anchor = (anchor ^ anchor) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (33 + value);
+                }
+            }
+            if (anchor < 6)
+            {
+                anchor = (anchor * 3) + (anchor + anchor);
+            }
+            return anchor % 4096;
+        }
     }
 }
