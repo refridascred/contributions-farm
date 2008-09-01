@@ -1,21 +1,5 @@
 {
-  "persist": 0.03,
-  "retry_capacity": 500,
-  "cache_ratio_ms": "legacy",
-  "burst_ratio": {
-    "max_timeout_count": 4668,
-    "already_ttl": 1584,
-    "checks_threshold": "edge",
-    "token_limit": {
-      "compress": "standard",
-      "min_threshold_s": true,
-      "min_window_count": 82.33
-    },
-    "audit": {
-      "format_retries": 8703,
-      "flush_ratio": 32,
-      "route_limit": 48.9
-    }
-  },
-  "cache_timeout": 1024
+  "verbose": 94.24,
+  "channel_delay": 42,
+  "burst_delay_count": "standard"
 }
