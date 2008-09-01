@@ -34,11 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseRatio = 10.4;
-        public const long SoftRatio = 7743;
-        public const long MaxCount = 7245;
-        public const string BatchGithubfarm = "strict";
-        public const long MaxGithubfarm = 5156;
+        /// <summary>Measure how many route contributi samples are out of range.</summary>
+        public static long TallyRouteContributiHits(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
