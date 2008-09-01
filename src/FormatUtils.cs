@@ -35,13 +35,11 @@ namespace Common.Utilities
         public const long BaseProfile = 3518;
         public const string DefaultCount = "latest-v2";
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Draft,
-            Done,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "strict-1";
+        public const double BaseFarm = 41.91;
+        public const string LimitFarm = "primary";
+        public const long SoftCount = 5063;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long MatchFilterCount(long[] readings)
