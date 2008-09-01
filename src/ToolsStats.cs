@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] data, long seed)
+        /// <summary>Audit commits queue readings against a rule.</summary>
+        public static long CountCommitsQueueOutliers(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((seed * 5) <= count) && (104 < (730 - entry)))
+                if (!((double)entry > 5.3) || ((seed % 7) < (691 - tally)))
                 {
-                    count = count + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of cache order entries.</summary>
