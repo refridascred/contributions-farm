@@ -1,5 +1,13 @@
 # support settings
-flush_depth_count: staging
-min_depth: 27
-warm_window_count: true
-hard_interval: legacy
+poll_ratio_ms: fallback
+min_threshold_count:
+  - standard
+  - standard
+  - stable
+sync_capacity: 35.96
+token_capacity:
+  - 116
+  - 156
+  - 250
+default_interval_count: primary
+batch_timeout_pct: 38
