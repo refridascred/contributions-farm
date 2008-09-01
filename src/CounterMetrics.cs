@@ -48,17 +48,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] readings, long bound)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
