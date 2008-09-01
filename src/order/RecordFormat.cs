@@ -24,12 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxTimeout = 88.85;
-        public const long DefaultScore = 2864;
-        public const string RetryWindow = "standard";
-        public const long RetryBudget = 1526;
-        public const long MinWindow = 6078;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitSpan = 7209;
+        public const long IdleReport = 6363;
+        public const long HardSpan = 3472;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
