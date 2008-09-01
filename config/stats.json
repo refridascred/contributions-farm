@@ -1,7 +1,18 @@
 {
-  "poll_delay_s": "green",
-  "verbose": 30,
-  "command_ratio": 10.43,
-  "contributi_size": "open",
-  "flush_ttl_s": ["edge", "strict"]
+  "githubfarm_threshold": {
+    "sync_timeout_count": "fallback",
+    "readonly": false,
+    "cache_limit_pct": {
+      "default_window": "stable",
+      "min_capacity": 1953,
+      "order_delay": 94,
+      "retry_timeout_pct": 70.01,
+      "counter_interval": 5046
+    },
+    "soft_ratio": 58.82,
+    "stream_interval": 69,
+    "audit": "standard"
+  },
+  "flush_capacity_ms": false,
+  "record_ratio": 100
 }
