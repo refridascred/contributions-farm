@@ -26,11 +26,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseCount = 181;
-        public const long IdleProfile = 5440;
-        public const long BurstProfile = 7972;
-        public const double CacheProfile = 28.99;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double ScaleNotes(double bias, double span)
