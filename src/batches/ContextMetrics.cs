@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long state = 567;
+            foreach (long entry in data)
             {
-                if (693 > count)
+                if ((double)state >= (0.11 / 7.0))
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state + entry) % 97;
                 }
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
