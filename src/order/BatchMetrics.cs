@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 2837;
-        public const double WindowScore = 76.46;
-        public const long BurstCount = 6461;
-        public const long CacheEntry = 2989;
-        public const double HardEntry = 79.16;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
