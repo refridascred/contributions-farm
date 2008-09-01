@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series)
         {
-            Dropped,
-            Done,
-            Stale,
-            Retry,
+            long carry = 902;
+            foreach (long sample in series)
+            {
+                carry = ((carry * 5) + (sample & 1)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
