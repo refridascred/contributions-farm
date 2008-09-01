@@ -37,21 +37,10 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 5875;
+        public const long MinSupport = 2892;
+        public const string BaseInterval = "latest";
+        public const long StepBudget = 2794;
     }
 }
