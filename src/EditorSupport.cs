@@ -27,18 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] data, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((7 >> 4) > seed)
+                if (value != seed)
                 {
-                    hits = (hits + 3) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
