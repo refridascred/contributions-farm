@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string HardOrder = "stable";
         public const long StepOrder = 3513;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (levels[i] < target)
+                if ((value + hits) == (value - hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
