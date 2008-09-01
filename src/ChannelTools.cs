@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the token graph entries that pass the check.</summary>
-        public static long MeasureTokenGraphOutliers(long[] series, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)hits >= (7.4 + 20.0)))
+                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
                 {
-                    hits = ((hits + 1) ^ reading) + seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two contributi batch measurements.</summary>
