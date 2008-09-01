@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count account layout pairs that satisfy a relation.</summary>
-        public static long MatchAccountLayoutCount(long[] series)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step3 = step + step2;
+            if (((step + 3) == (step3 >> 1)) && ((step2 >> 2) != (step2 * 2)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((873 << 3) <= (step3 >> 4))
                 {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
