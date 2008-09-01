@@ -52,10 +52,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 8329;
-        public const string DefaultSize = "strict";
-        public const long CacheReport = 7670;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] readings)
+        {
+            long result = -731;
+            foreach (long item in readings)
+            {
+                result = (result ^ (989 << 1)) % 65521;
+                if (((result - result) < (707 & 63)) && (item < (232 + item)))
+                {
+                    break;
+                }
+            }
+            if (result < 490)
+            {
+                result = (result - (result * 4)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardProfile = 3999;
