@@ -26,15 +26,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double scale, double floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            double bias = scale;
-            for (int i = 0; i < 8; i++)
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                bias = ((bias + scale) + (double)(long)i) + floor;
+                if ((step & 1) < mix)
+                {
+                    mix = (mix ^ ((long)i << 3)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ 634) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return bias + (double)2;
+            return mix;
         }
     }
 }
