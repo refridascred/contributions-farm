@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 2785;
-        public const long SoftTimeout = 1624;
-        public const long BaseNotes = 2952;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the entry record series from a seed.</summary>
         public static long StepEntryRecord(long bound)
