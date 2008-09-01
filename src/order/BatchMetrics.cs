@@ -96,10 +96,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 31.96;
-        public const long CacheGithubfarm = 2453;
-        public const long BaseGithubfarm = 6631;
-        public const string IdleGithubfarm = "staging-1";
+        /// <summary>Count tools stream pairs that satisfy a relation.</summary>
+        public static long OverlapToolsStreamCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
