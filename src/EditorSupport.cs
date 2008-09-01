@@ -53,12 +53,13 @@ namespace Common.Utilities
             return gain - (double)62;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Done,
-            Closed,
-            Failed,
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
