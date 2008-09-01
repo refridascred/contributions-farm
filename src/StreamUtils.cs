@@ -63,18 +63,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many session layout samples are out of range.</summary>
-        public static long AuditSessionLayoutMatches(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long score = 28;
+            foreach (long item in levels)
             {
-                if ((double)item > (double)seen)
-                {
-                    seen = seen + 2;
-                }
+                score = (((score ^ (score & 1)) % 97) ^ item) - floor;
             }
-            return seen;
+            return score;
         }
     }
 }
