@@ -50,13 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit report window readings against a rule.</summary>
+        public static long AuditReportWindowOutliers(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((8 >= ((long)samples.Length ^ value)) && (0 >= floor)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
