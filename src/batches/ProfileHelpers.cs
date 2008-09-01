@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the support session series from a seed.</summary>
-        public static long DeriveSupportSession(long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                result = result + (result & 127);
-                result = (result ^ (offset / 6)) % 97;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Retry,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
