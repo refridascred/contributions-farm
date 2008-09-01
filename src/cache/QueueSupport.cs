@@ -34,17 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (items[i] < limit)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
