@@ -30,18 +30,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 92.58;
+        public const long MaxAccount = 1497;
+        public const double StepLevel = 0.27;
+        public const long LimitBudget = 6815;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsRange(long[] samples, long seed)
