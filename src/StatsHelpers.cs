@@ -41,11 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double gain = bias;
-            return (gain - (double)16) + rate;
+            Done,
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
