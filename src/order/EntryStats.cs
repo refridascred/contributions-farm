@@ -57,20 +57,12 @@ namespace Common.Utilities
         public const string DefaultSize = "strict";
         public const long CacheReport = 7670;
 
-        /// <summary>Validate batch route readings against a bound.</summary>
-        public static bool ValidateBatchRouteLimits(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 3999;
+        public const double LimitTimeout = 35.15;
+        public const long CacheProfile = 789;
+        public const double MaxDepth = 5.89;
+        public const string LimitProfile = "standard-1";
 
         /// <summary>Adjust a report reading.</summary>
         public static double SmoothReport(double scale, double bias)
