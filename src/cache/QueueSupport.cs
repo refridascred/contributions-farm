@@ -34,19 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            long result = 903;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (((result * 4) + (seed / 2)) % 1000) + reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result > (-986))
-            {
-                result = (result + (result % 2)) % 65521;
-            }
-            return result % 65521;
+            return matches;
         }
     }
 }
