@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "cached";
-        public const long HardCommits = 7928;
-        public const string HardScore = "strict-1";
-        public const long SoftCommits = 2036;
-        public const long IdleRatio = 63;
+        /// <summary>Derive the next account stats value from a seed.</summary>
+        public static long StepAccountStats(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum ^ (sum - sum);
+                sum = ((sum * 3) + (sum >> 1)) % 101;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double BlendGraph(double ratio, double span)
