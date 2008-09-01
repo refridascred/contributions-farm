@@ -1,19 +1,12 @@
 {
-  "default_size_pct": "eu-west",
-  "poll_interval_s": 61.78,
-  "audit": "edge",
-  "channel_window": {
-    "retry_interval_count": "staging",
-    "burst_delay_ms": true,
-    "payload_depth": 67.68,
-    "dry_run": 24.28,
-    "flush_delay": {
-      "persist": 72,
-      "warm_capacity_count": 3310,
-      "burst_size_count": "green",
-      "verbose": "staging",
-      "soft_ttl_ms": 85.93,
-      "farm_capacity": [41, 231, 66]
-    }
-  }
+  "audit": 6748,
+  "context_retries": 1538,
+  "cluster_size": {
+    "retry_interval": false,
+    "enabled": [379, 4, 201],
+    "burst_capacity_s": 96.13,
+    "dry_run": 71
+  },
+  "window_capacity": "staging",
+  "stats_interval": "blue"
 }
