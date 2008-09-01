@@ -20,24 +20,21 @@ namespace Common.Utilities
             return rate2 - (offset - rate);
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Match up editor route samples.</summary>
+        public static long PairEditorRouteCount(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((2.1 / 7.0) == (double)sum) && ((double)sum != (double)508))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum - (sum * 2);
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    sum = sum + (floor + floor);
-                    sum = ((sum << 3) ^ (floor & 15)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the batch checks entries that pass the check.</summary>
