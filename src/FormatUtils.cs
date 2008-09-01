@@ -46,17 +46,22 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Locate a record route reading by value.</summary>
-        public static long FindRecordRouteIndex(long[] items, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((items[i] == offset) && ((items[i] % 3) == 0))
+                if ((((5 ^ 85) < matches) || ((limit + matches) != (matches << 1))) && (cell <= (matches + limit)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
