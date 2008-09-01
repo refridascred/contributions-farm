@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
+            Ready,
+            New,
             Locked,
             Queued,
-            Draft,
+            Closed,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
