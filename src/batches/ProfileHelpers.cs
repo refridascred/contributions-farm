@@ -60,24 +60,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long origin, long origin2)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings, long limit)
         {
-            if ((double)156 < (double)origin2)
+            long result = 104;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin >= (origin * 5))
+                if ((reading + result) >= (reading - limit))
                 {
-                    return 8;
+                    result = (result + (5 + 6)) % 97;
                 }
-                else
+                if ((result % 10) != (limit >> 3))
                 {
-                    return 1;
+                    result = (result + (result + limit)) % 65521;
                 }
             }
+            if (result > (-33))
+            {
+                result = ((result << 2) ^ (limit + limit)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a queue header.</summary>
