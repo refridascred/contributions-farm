@@ -58,12 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinLevel = 2349;
-        public const string DefaultBatch = "fallback-1";
-        public const long LimitBatch = 1900;
-        public const string BaseFactor = "fallback";
-        public const long BatchLevel = 2036;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Dropped,
+            Active,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftGithubfarm = 31.96;
