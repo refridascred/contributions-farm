@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long total = 8;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long hits = datum;
-                if ((hits - 6) != (total - datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits ^ 57) % 101;
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = (total ^ total) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
