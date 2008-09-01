@@ -1,6 +1,5 @@
 {
-  "support_timeout": [69, 396],
-  "base_ratio": "local",
-  "batch_threshold_pct": 60,
-  "audit": 11.8
+  "graph_depth": 1024,
+  "audit": 4887,
+  "flush_delay_s": 3859
 }
