@@ -36,12 +36,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 1254;
         public const string SoftDepth = "legacy-1";
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 334;
+        public const long DefaultCluster = 3295;
+        public const long CacheCount = 4021;
+        public const long HardLevel = 321;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long ClassifyWindow(long bound, long floor)
