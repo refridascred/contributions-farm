@@ -1,8 +1,5 @@
 {
-  "retry_threshold_s": 1024,
-  "soft_window": 584,
-  "tools_capacity": 500,
-  "account_size": 1387,
-  "contributi_depth": 5239,
-  "poll_size_ms": "edge"
+  "metric_timeout": 8890,
+  "poll_size_pct": 60,
+  "burst_delay": [439, 40]
 }
