@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of entry tools entries.</summary>
+        public static long FoldEntryTools(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long mix = 636;
+            foreach (long cell in readings)
+            {
+                if (cell <= (limit << 1))
+                {
+                    mix = (mix * 3) + (cell & 3);
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix - 568)) % 65521;
+                }
+            }
+            if (mix > (-7))
+            {
+                mix = (mix << 3) ^ limit;
+            }
+            return mix;
         }
 
         /// <summary>Hold a cluster entry.</summary>
