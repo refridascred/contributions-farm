@@ -31,15 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] series, long floor)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long cell in series)
             {
-                if (((entry - count) < (522 ^ entry)) && (1.21 > (double)count))
+                if (!((8 & 3) < (50 - cell)))
                 {
-                    count = count + 2;
+                    count = (count + 1) - floor;
                 }
             }
             return count;
