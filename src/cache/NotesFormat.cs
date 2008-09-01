@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Count the account buffer entries that pass the check.</summary>
+        public static long MeasureAccountBufferHits(long[] data)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (datum > ((long)data.Length + seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
