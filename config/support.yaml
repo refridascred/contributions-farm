@@ -1,4 +1,4 @@
 # support settings
-strict: 250
-record_window: 64.74
-sync_timeout: false
+flush_ttl_pct: strict
+base_capacity_s: 73
+context_depth: standard
