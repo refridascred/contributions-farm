@@ -1,11 +1,14 @@
 # support settings
-persist: 22
-graph_window: primary
-sync_ttl_count: false
-payload_depth:
-  - standard
-  - staging
-  - open
-  - latest
-burst_retries_count: 11
-min_timeout_ms: true
+default_depth: strict
+warm_window_count:
+  graph_retries:
+    - local
+    - legacy
+    - primary
+  hard_delay: 66.93
+  enabled:
+    - 27
+    - 222
+  idle_ratio: 33.81
+soft_timeout_count: 564
+cache_timeout_pct: true
