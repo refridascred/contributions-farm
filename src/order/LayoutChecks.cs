@@ -20,15 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] readings, long offset)
         {
-            double rate2 = bias;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = (rate2 + rate2) + (double)(long)i;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - (rate + 8.2);
+            return -1;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
