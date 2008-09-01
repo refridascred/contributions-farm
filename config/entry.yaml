@@ -1,18 +1,11 @@
 # entry settings
-retry_threshold_count:
-  - local
-  - primary
-  - staging
-idle_size: false
-payload_window: 98.67
-githubfarm_threshold:
-  - edge
+poll_capacity_s: 2.31
+min_depth_s:
   - green
-  - blue
-commits_ratio: 43.08
-strict:
-  batches_ttl:
-    - staging
-    - green
-  max_timeout_count: 35
-  payload_capacity: 90
+  - fallback
+  - green
+  - primary
+dry_run: 5891
+retry_size: false
+strict: 53
+soft_ttl_count: eu-west
