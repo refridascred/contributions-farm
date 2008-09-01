@@ -40,13 +40,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Classify a entry context pair into a bucket.</summary>
+        public static long SortEntryContext(long bound, long bound2)
         {
-            Done,
-            Draft,
-            Paused,
-            Ready,
+            if ((bound - bound) != (84 & 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound2 >= (bound - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound2 & 255) == (bound2 * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound2 << 1) < bound2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
