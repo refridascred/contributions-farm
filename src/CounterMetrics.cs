@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepFactor = 93.88;
+        public const double RetryBudget = 93.22;
+        public const double BatchSpan = 17.03;
+        public const long LimitEntry = 9995;
+        public const double BaseEntry = 56.66;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long DeriveChannel(long bound)
