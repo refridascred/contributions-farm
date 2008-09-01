@@ -83,25 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long floor, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] items, long seed)
         {
-            long diff = floor ^ target;
-            if (((4 - target) >= (target & 31)) && ((14.0 + 3.3) == (double)diff))
+            bool ok = true;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor + (-69)) >= (floor + diff)))
+                if (datum < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
