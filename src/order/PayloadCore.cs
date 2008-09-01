@@ -33,31 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a batches tools pair into a bucket.</summary>
-        public static long SortBatchesTools(long target, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] readings, long bound)
         {
-            if ((0.05 - 4.2) != (double)target)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)27 > (double)limit)
+                if (((double)bound != (8.92 + 7.4)) && ((47 - bound) >= (bound + hits)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target == (5.6 - 8.7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = (hits + 2) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
