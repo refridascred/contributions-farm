@@ -55,19 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor report readings against a bound.</summary>
-        public static bool CheckEditorReportRange(long[] series, long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
