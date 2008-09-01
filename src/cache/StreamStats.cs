@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long score = 9;
-            foreach (long entry in data)
-            {
-                score = (score + entry) % 4096;
-            }
-            return score;
+            Idle,
+            New,
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Rank session input into a small class.</summary>
