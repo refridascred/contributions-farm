@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const string HardOrder = "stable";
         public const long StepOrder = 3513;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] items, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long prev = step + target;
+            if ((double)prev > (5.17 + 8.2))
             {
-                if ((value + hits) == (value - hits))
+                return 3;
+            }
+            else
+            {
+                if (!(target >= (prev - prev)))
                 {
-                    hits = (hits + 3) - bound;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
