@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double bias, double floor)
+        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
+        public static bool ValidateClusterQueueBounds(long[] readings, long step)
         {
-            double load = (double)((-200) + 55);
-            if (load < (bias + floor))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                load = load - (5.0 - floor);
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + load;
+            return valid;
         }
 
         /// <summary>Describe the token phase values.</summary>
