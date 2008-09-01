@@ -1,7 +1,18 @@
 # entry settings
-support_interval: 7
-verbose: blue
-tools_size:
+retry_threshold_count:
+  - local
   - primary
-  - strict
-  - legacy
+  - staging
+idle_size: false
+payload_window: 98.67
+githubfarm_threshold:
+  - edge
+  - green
+  - blue
+commits_ratio: 43.08
+strict:
+  batches_ttl:
+    - staging
+    - green
+  max_timeout_count: 35
+  payload_capacity: 90
