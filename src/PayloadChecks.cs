@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
