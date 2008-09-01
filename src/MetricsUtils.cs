@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double weight, double floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double drift = weight;
-            if (drift > 9.0)
-            {
-                drift = (drift + (double)96) - floor;
-            }
-            return drift - weight;
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Digest a series of format entries.</summary>
