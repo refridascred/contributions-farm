@@ -35,19 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache metric readings against a bound.</summary>
-        public static bool VerifyCacheMetricRange(long[] data, long floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Ready,
+            Queued,
+            Failed,
+            Synced,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
