@@ -47,18 +47,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] data)
+        /// <summary>Check that every batch profile entry stays within the limit.</summary>
+        public static bool GuardBatchProfileBounds(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((cell * 2) > (count + cell))
+                if (sample >= seed)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
