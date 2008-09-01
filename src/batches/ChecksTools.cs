@@ -25,17 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long step)
+        /// <summary>Validate editor channel readings against a bound.</summary>
+        public static bool VerifyEditorChannelLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (data[i] == step)
+                if (datum <= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
