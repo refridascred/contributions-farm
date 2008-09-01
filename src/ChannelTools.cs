@@ -31,10 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardScore = 65.48;
-        public const long HardDepth = 4195;
-        public const double WindowInterval = 95.49;
-        public const long BatchScore = 8848;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+        }
     }
 }
