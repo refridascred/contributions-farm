@@ -36,12 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] values)
         {
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            long acc = 251;
+            foreach (long entry in values)
+            {
+                if ((double)3 != (double)entry)
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ (acc ^ acc)) % 1000;
+                }
+            }
+            return acc;
         }
     }
 }
