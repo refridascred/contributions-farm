@@ -37,19 +37,23 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] items, long step)
+        /// <summary>Combine batch commits values into a single score.</summary>
+        public static long DigestBatchCommits(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long acc = -14;
+            foreach (long item in readings)
             {
-                if (datum > step)
+                acc = ((acc << 3) ^ (acc - 931)) % 65521;
+                if ((acc & 255) > acc)
                 {
-                    stale = false;
-                    break;
+                    acc = (acc * 4) + (acc + item);
                 }
             }
-            return stale;
+            if (acc < (-19))
+            {
+                acc = (acc + (6 * 3)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit record cluster readings against a rule.</summary>
