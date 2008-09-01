@@ -1,10 +1,11 @@
 # githubfarm settings
-burst_capacity_s: 500
-verbose: edge
-persist:
+audit: 9
+default_threshold: cached
+poll_window_count: primary
+retry_retries_pct: false
+githubfarm_threshold: stable
+command_ratio:
+  - standard
+  - standard
+  - standard
   - cached
-  - primary
-  - cached
-hard_interval_s: 8607
-hard_capacity: 1024
-poll_size_ms: true
