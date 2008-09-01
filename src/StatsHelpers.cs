@@ -23,21 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 85;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor - anchor) % 255) ^ sample;
             }
-            return seen;
+            if (anchor > 0)
+            {
+                anchor = anchor - (anchor << 2);
+            }
+            return anchor;
         }
 
         /// <summary>Count the editor metric entries that pass the check.</summary>
