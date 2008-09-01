@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((89 / 5) < (matches * 5)) || ((0.2 + 6.2) <= (double)(long)readings.Length)))
+                if (values[i] >= bound)
                 {
-                    matches = (matches + 1) - cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
