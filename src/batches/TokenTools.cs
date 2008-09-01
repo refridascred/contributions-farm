@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long origin)
+        /// <summary>Validate buffer schema readings against a bound.</summary>
+        public static bool VerifyBufferSchemaRange(long[] items, long limit)
         {
-            if (!(seed > (origin >> 4)))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed & 31) <= (origin & 15))
+                if (reading != limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (465 < (seed ^ 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
