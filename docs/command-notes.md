@@ -1,10 +1,10 @@
 # Command notes
 
-When a report fails, the editor handler retries a few times before giving up.
-The order helpers are pure functions, so they are safe to call from any thread.
+Keep profile and tools names short and lowercase.
+The counter module keeps entry values in sync with the format cache.
 
 ## Guidelines
 
-- Validate stream input early
-- Log every queue change
-- Keep notes values small
+- Prefer record defaults
+- Review already limits each release
+- Document new schema fields
