@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftBudget = 1525;
+        public const long RetrySize = 4399;
+        public const long RetryQueue = 1774;
+        public const long DefaultRatio = 653;
+        public const double LimitQueue = 7.66;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long seed, long bound)
