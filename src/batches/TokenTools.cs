@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long seed, long floor)
         {
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            if (!((seed + floor) <= floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((1.7 + 20.0) != (double)seed) || ((floor ^ floor) <= (997 - floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + seed) <= (floor % 10))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor * 3) > (seed & 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
