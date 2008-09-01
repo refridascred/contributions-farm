@@ -38,19 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Audit record metric readings against a rule.</summary>
+        public static long MeasureRecordMetricOutliers(long[] items)
         {
-            long state = 90;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                state = ((state * 4) + (item + item)) % 4096;
+                if ((114 + 2) < sample)
+                {
+                    count = count + 2;
+                }
             }
-            if (state > 240)
-            {
-                state = (state - (state & 63)) % 97;
-            }
-            return state;
+            return count;
         }
     }
 }
