@@ -27,18 +27,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] samples)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)count < 7.25)
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
