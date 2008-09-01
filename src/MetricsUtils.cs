@@ -42,18 +42,12 @@ namespace Common.Utilities
             return mean - (rate * 4.79);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long result = -634;
-            foreach (long cell in series)
-            {
-                if ((79 + cell) <= (result << 2))
-                {
-                    result = ((result + 87) % 4096) + step;
-                }
-            }
-            return result % 65521;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
