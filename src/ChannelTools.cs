@@ -23,31 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            if ((seed >> 1) >= (seed & 15))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.68 - 4.0) <= (double)limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < (limit ^ limit))
+                    if ((levels[i] ^ levels[j]) > 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
