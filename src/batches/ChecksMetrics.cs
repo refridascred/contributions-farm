@@ -34,21 +34,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 4;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc * 5) + acc;
+                acc = (acc - (value + 34)) % 97;
             }
-            return hits;
+            if (acc < 68)
+            {
+                acc = acc ^ (991 << 1);
+            }
+            return acc;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
