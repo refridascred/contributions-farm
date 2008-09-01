@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] series, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long bound = limit ^ limit2;
+            if (((bound - limit) != (605 ^ bound)) && ((504 ^ bound) <= (limit + limit)))
             {
-                if ((target >> 3) != (tally & 15))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= (5.54 - 3.14))
                 {
-                    tally = (tally + 2) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - 322) >= (limit << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a cache batch reading by value.</summary>
