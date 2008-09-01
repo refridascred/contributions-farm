@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((4 + datum) < (tally % 60))
+                if ((matches <= (matches + 21)) || (((long)samples.Length ^ matches) <= (cell + cell)))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
