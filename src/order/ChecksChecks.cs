@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] levels, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell >= bound)
+                sum = ((sum * 5) + ((long)i + sum)) % 101;
+                if ((sum >= (sum - origin)) && ((31 << 1) > origin))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - ((long)i - sum)) % 65521;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Describe the window status values.</summary>
