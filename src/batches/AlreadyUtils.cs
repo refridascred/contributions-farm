@@ -31,12 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report cache sample.</summary>
-        public static long LocateReportCacheIndex(long[] readings, long bound)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long bound)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
+                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
