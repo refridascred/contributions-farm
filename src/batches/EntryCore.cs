@@ -30,19 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!((reading + count) <= reading) || ((double)count > (2.9 * 19.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftBudget = 5145;
+        public const long BatchWidth = 5083;
+        public const long BaseTimeout = 1254;
+        public const string SoftDepth = "legacy-1";
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] levels, long step)
