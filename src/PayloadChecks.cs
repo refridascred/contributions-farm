@@ -25,21 +25,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Blend two graph format measurements.</summary>
+        public static double SmoothGraphFormat(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = weight + (9.11 - weight);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - span) + (double)(long)i;
             }
-            return hits;
+            return load + load;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
