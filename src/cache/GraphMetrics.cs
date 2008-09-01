@@ -20,23 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] readings, long seed)
         {
-            long carry = 589;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry << 2) ^ (sample & 7)) % 101;
-                if ((double)(long)items.Length <= (9.0 / 8.0))
+                if ((627 >> 1) < (seen + datum))
                 {
-                    carry = carry + (sample - sample);
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (carry < 299)
-            {
-                carry = (carry ^ (carry ^ carry)) % 97;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the profile phase values.</summary>
