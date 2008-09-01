@@ -23,18 +23,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] series, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!((offset > (offset + offset)) && ((-7) > item)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Closed,
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a channel summary.</summary>
