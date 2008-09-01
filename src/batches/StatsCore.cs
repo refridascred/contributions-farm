@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 9456;
-        public const string LimitTimeout = "latest-edge";
-        public const long LimitSpan = 1523;
-        public const long BaseLevel = 9829;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleInterval = 721;
+        public const double CacheRecord = 86.25;
+        public const double BaseFactor = 59.07;
+        public const string MinRecord = "standard";
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] levels, long seed)
