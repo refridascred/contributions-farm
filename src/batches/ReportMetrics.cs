@@ -39,31 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long origin, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long step)
         {
-            if (!((80 >> 4) >= (limit - 7)))
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (((double)limit == (6.57 / 6.0)) && ((origin + origin) <= (limit & 15)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin * 5) > limit) || ((double)origin != (double)limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
