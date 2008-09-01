@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel metrics readings against a bound.</summary>
-        public static bool VerifyChannelMetricsRange(long[] readings, long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
