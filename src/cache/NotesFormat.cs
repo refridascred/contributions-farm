@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinFactor = 6083;
+        public const long DefaultFactor = 2943;
+        public const string CacheBudget = "legacy-edge";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
