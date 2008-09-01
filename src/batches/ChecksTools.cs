@@ -27,14 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] readings)
         {
-            Closed,
-            Stale,
-            Active,
-            Pending,
-            Queued,
+            long score = 28;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    score = (score ^ 59) ^ (long)i;
+                }
+                score = score - (sample + sample);
+            }
+            if (score > 3)
+            {
+                score = (score ^ 4) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
