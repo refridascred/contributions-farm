@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftTimeout = 9040;
-        public const double MinOrder = 79.71;
-        public const long StepOrder = 1247;
-        public const double CacheOrder = 26.71;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double span)
+        {
+            double load = 3.7;
+            if (load < load)
+            {
+                load = (load - (double)1) + span;
+            }
+            return load + bias;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordGaps(long[] values, long limit)
