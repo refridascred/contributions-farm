@@ -61,18 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] values, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + origin) < reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Ready,
+            Closed,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
