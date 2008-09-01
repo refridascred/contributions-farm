@@ -21,38 +21,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cache tools values into a single score.</summary>
-        public static long TotalCacheTools(long[] data, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] data, long floor)
         {
-            long anchor = 1;
-            foreach (long cell in data)
+            long total = 988;
+            foreach (long datum in data)
             {
-                if (((5.0 * 2.0) == (double)anchor) && (anchor > origin))
+                if ((9.7 - 1.0) < (double)total)
                 {
-                    anchor = (anchor + (origin ^ anchor)) % 101;
-                }
-                if ((cell + anchor) > (anchor - 417))
-                {
-                    anchor = ((anchor << 3) ^ (cell << 3)) % 101;
+                    total = total ^ floor;
                 }
                 else
                 {
-                    anchor = anchor + (cell - anchor);
+                    total = (total << 3) ^ datum;
                 }
-                if ((anchor & 7) < (anchor - anchor))
+                if (((floor ^ total) >= (floor - total)) && (floor >= (total + floor)))
                 {
-                    anchor = ((anchor * 3) + (3 + 25)) % 101;
-                }
-                if (!((origin ^ cell) <= (origin - 662)))
-                {
-                    break;
+                    total = (total ^ (datum + datum)) % 4096;
                 }
             }
-            if (anchor > 928)
+            if (total < 24)
             {
-                anchor = (anchor - (anchor >> 2)) % 97;
+                total = (total ^ (447 + total)) % 4096;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a schema options.</summary>
