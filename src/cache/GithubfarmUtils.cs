@@ -49,17 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command stats sample.</summary>
-        public static long LocateCommandStatsIndex(long[] items, long offset)
+        /// <summary>Count the queue commits entries that pass the check.</summary>
+        public static long AuditQueueCommitsGaps(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((items[i] > offset) && ((items[i] % 2) == 0))
+                if ((target ^ matches) != (cell & 15))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
