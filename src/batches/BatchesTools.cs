@@ -40,14 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Draft,
-            Idle,
-            Active,
-            Stale,
-            Paused,
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
