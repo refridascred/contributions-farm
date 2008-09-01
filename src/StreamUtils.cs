@@ -92,17 +92,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] samples, long step)
+        /// <summary>Count the entry command entries that pass the check.</summary>
+        public static long MeasureEntryCommandOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
+                if (count >= (datum * 4))
                 {
-                    return (long)i;
+                    count = (count + 3) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
