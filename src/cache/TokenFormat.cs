@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] readings, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 580;
+            foreach (long reading in values)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc << 2) ^ (acc - reading);
             }
-            return -1;
+            if (acc < 37)
+            {
+                acc = acc + (target >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
