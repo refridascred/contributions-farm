@@ -1,6 +1,10 @@
-id,ratio,score
-1,59.61,12.22
-2,479,903
-3,green,10
-4,stable,70.26
-5,88.78,93
+id,ratio,region
+1,green,576
+2,primary,open
+3,edge,27.95
+4,79.46,cached
+5,92.35,894
+6,458,33.43
+7,cached,open
+8,14.76,100
+9,811,standard
