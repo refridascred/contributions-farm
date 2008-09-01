@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long CacheMetric = 869;
         public const string IdleSize = "standard-v2";
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Adjust a batches checks reading.</summary>
+        public static double ScaleBatchesChecks(double ratio, double floor)
         {
-            Closed,
-            Retry,
-            New,
+            double drift = (double)(8 ^ 35);
+            if (drift < (double)7)
+            {
+                drift = drift + (ratio / 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (floor * 2.0)) + (double)(long)i;
+            }
+            return drift - 0.77;
         }
 
         /// <summary>Describe the route kind values.</summary>
