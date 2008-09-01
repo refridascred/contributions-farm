@@ -50,11 +50,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Digest a series of account report entries.</summary>
+        public static long CombineAccountReport(long[] items)
         {
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = -78;
+            foreach (long reading in items)
+            {
+                if ((mark <= 81) || (mark >= (25 / 9)))
+                {
+                    mark = (mark + (mark - reading)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark / 2)) % 97;
+                }
+            }
+            if (mark > 133)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark % 4096;
         }
     }
 }
