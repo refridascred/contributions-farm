@@ -25,21 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 33.41;
+        public const double WindowFactor = 2.03;
+        public const double HardCache = 81.74;
+        public const string BaseCache = "strict-1";
+        public const string RetryCache = "standard-v2";
     }
 }
