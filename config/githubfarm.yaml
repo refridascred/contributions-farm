@@ -1,19 +1,13 @@
 # githubfarm settings
-batch_capacity: 64.09
-buffer_capacity: 31.58
-hard_interval_ms: cached
-schema_size:
-  min_window_s: true
-  enabled: 15
-  sync_ttl_s: 59.79
-  soft_ratio_ms:
-    - 119
-    - 276
-    - 275
-    - 356
-  route_interval:
-    - blue
-    - local
-    - blue
+cache_depth_count: strict
+idle_timeout_pct: 1024
+default_depth: stable
+sync_interval_pct:
+  metric_ratio: edge
+  min_depth_ms:
     - stable
-warm_depth_count: 60
+    - stable
+    - open
+  compress: 9134
+batches_threshold: 35.68
+base_interval_s: 250
