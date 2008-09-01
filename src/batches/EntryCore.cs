@@ -36,13 +36,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 1254;
         public const string SoftDepth = "legacy-1";
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Ready,
-            Synced,
-            Idle,
-            Pending,
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
