@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] items)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + seen) < sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stream state values.</summary>
