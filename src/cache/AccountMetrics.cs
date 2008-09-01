@@ -58,14 +58,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 4299;
+        public const long BaseFilter = 5393;
+        public const long BurstFilter = 5296;
+        public const long LimitScore = 5484;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long bound, long limit)
