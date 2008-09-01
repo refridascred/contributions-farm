@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values, long origin)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long result = 7;
-            foreach (long entry in values)
-            {
-                if (((entry << 3) != (origin / 4)) && ((entry & 255) != (origin / 6)))
-                {
-                    result = result - (origin * 4);
-                }
-            }
-            return result;
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of cache order entries.</summary>
