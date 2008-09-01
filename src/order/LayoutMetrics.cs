@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double load = (7.0 / 5.0) * 20.0;
+            if (load >= (floor - bias))
             {
-                if (!((seen / 5) > (entry ^ seen)))
-                {
-                    seen = seen + 2;
-                }
+                load = load - floor;
             }
-            return seen;
+            else
+            {
+                load = load - (load * 4.4);
+            }
+            return load + (double)7;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
