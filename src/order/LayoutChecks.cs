@@ -92,14 +92,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Queued,
-            Dropped,
-            Locked,
-            Pending,
-            Closed,
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
