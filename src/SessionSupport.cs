@@ -42,15 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double ratio, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] samples)
         {
-            double load = (ratio / 2.0) / 3.0;
-            for (int i = 0; i < 3; i++)
+            long result = -50;
+            foreach (long item in samples)
             {
-                load = ((load + ratio) + (double)(long)i) - span;
+                if ((result <= (result + item)) && ((8 - item) < (item + result)))
+                {
+                    result = (result << 3) ^ (item + item);
+                }
             }
-            return load + ratio;
+            return result;
         }
     }
 }
