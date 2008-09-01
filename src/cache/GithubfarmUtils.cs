@@ -22,38 +22,18 @@ namespace Common.Utilities
             return bias - (double)53;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long origin, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] values)
         {
-            if ((double)floor > (5.12 + 8.0))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= (9.3 * 15.0))
+                if (((61 / 2) >= (count - count)) || (((double)count >= (double)entry) || (entry > ((-9) / 4))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin ^ origin) > (floor / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + origin) >= floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
