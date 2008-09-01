@@ -63,18 +63,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry % 16) == (matches << 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftDepth = "local-1";
+        public const long HardWindow = 1076;
+        public const string IdleSize = "cached-1";
     }
 }
