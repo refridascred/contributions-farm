@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit notes profile readings against a rule.</summary>
-        public static long CountNotesProfileHits(long[] items)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((7.3 / 9.0) != (double)tally))
+                if (series[i] <= floor)
                 {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
