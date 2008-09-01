@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long bound, long bound2)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            long prev = bound ^ bound2;
+            if ((2 ^ bound2) <= (prev ^ bound2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((94 + bound2) < (prev - bound2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
