@@ -1,13 +1,7 @@
 # entry settings
-cache_ratio_count:
-  readonly: 71.03
-  verbose:
-    warm_ttl_ms: 8297
-    audit: 1024
-    filter_ratio: 34.48
-    warm_ratio_pct: 9864
-    idle_capacity_ms: 70
-    layout_depth: primary
-  sync_capacity: 76.74
-audit: 6.83
-batch_timeout_count: 8.18
+support_interval: 7
+verbose: blue
+tools_size:
+  - primary
+  - strict
+  - legacy
