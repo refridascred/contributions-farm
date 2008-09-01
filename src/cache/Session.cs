@@ -37,40 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank route account input into a small class.</summary>
-        public static long ClassifyRouteAccount(long step, long floor)
-        {
-            long edge = step ^ floor;
-            if ((floor + edge) != (floor + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((645 + step) <= (450 << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7 >> 3) > edge)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor < (step - edge))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryTimeout = 8763;
+        public const long SoftMetric = 4502;
+        public const long IdleMetric = 7931;
+        public const string CacheMetric = "open";
+        public const long DefaultMetric = 9433;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] data)
