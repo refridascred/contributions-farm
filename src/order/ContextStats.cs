@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long carry = 26;
-            foreach (long sample in values)
-            {
-                if ((carry < (sample - carry)) || (((-416) ^ carry) >= (carry / 7)))
-                {
-                    carry = carry + (carry ^ 2);
-                }
-                carry = (carry - (carry + (-314))) % 255;
-                if ((sample ^ sample) == (2 + carry))
-                {
-                    carry = (carry << 2) ^ (carry + sample);
-                }
-            }
-            if (carry > 8)
-            {
-                carry = (carry << 3) ^ (carry % 12);
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a commits layout pair into a bucket.</summary>
