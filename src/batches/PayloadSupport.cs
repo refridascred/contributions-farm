@@ -51,18 +51,9 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (seen > (limit ^ seen))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetrySpan = 7065;
+        public const long WindowScore = 9523;
+        public const string LimitProfile = "latest-v2";
     }
 }
