@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const string MinChannel = "cached-edge";
         public const long BurstBudget = 2045;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitLevel = 9599;
-        public const double BatchInterval = 87.23;
-        public const double IdleBudget = 49.7;
-        public const long BurstFilter = 4554;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepFactor = 6497;
+        public const double HardQueue = 59.75;
+        public const string BurstInterval = "open-edge";
+        public const long IdleFactor = 6806;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long DigestAccount(long[] values)
