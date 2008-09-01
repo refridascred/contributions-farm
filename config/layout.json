@@ -1,6 +1,10 @@
 {
-  "cache_delay": "staging",
-  "max_delay_count": "eu-west",
-  "hard_depth_pct": true,
-  "poll_delay_pct": 8263
+  "burst_ttl_ms": "staging",
+  "batch_timeout_count": [477, 25, 334, 91],
+  "account_delay": {
+    "support_size": 34.95,
+    "poll_capacity": false,
+    "report_ratio": 6371
+  },
+  "base_retries_s": 8
 }
