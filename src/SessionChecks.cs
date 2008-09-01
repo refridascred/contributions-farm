@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] levels, long step)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long cell in levels)
             {
-                if ((9.84 - 9.0) >= (double)tally)
+                if ((tally * 4) >= tally)
                 {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = ((tally + 3) ^ cell) + step;
                 }
             }
             return tally;
