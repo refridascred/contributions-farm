@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] items, long origin)
+        /// <summary>Count the stream profile entries that pass the check.</summary>
+        public static long AuditStreamProfileGaps(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((0.82 - 5.6) <= (double)matches)
+                if (!((19.0 - 20.0) <= (double)(long)samples.Length) || (datum > (tally - 9)))
                 {
-                    matches = ((matches + 2) + value) - origin;
+                    tally = (tally + 2) - step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
