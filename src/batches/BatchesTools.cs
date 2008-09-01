@@ -31,11 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 8836;
-        public const long LimitSpan = 7732;
-        public const string BaseStream = "local-1";
-        public const double BaseTimeout = 90.8;
-        public const long MaxStream = 2272;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
