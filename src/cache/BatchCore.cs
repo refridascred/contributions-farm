@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double gain, double span)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double scale = gain + (gain - span);
-            if (scale >= (gain - scale))
-            {
-                scale = scale + (double)82;
-            }
-            return scale - (double)0;
+            Retry,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define token limits and defaults.</summary>
