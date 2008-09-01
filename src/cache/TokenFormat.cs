@@ -35,21 +35,13 @@ namespace Common.Utilities
             return ratio2 - (floor - 11.0);
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
