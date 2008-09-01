@@ -52,30 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = 70;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    result = ((result - ((long)data.Length - result)) % 1000) - (long)i;
-                }
-                if ((double)value != (double)436)
-                {
-                    result = (result * 5) + result;
-                }
-                if ((result * 2) <= (value + 0))
-                {
-                    break;
-                }
-            }
-            if (result < 80)
-            {
-                result = (result + result) % 97;
-            }
-            return result % 65521;
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
