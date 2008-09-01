@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((carry * 3) > carry))
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry << 3) ^ (floor - carry);
+                    carry = ((carry << 2) ^ carry) % 65521;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many graph counter samples are out of range.</summary>
