@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] levels, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] readings, long step)
         {
-            long score = 933;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((datum + datum) > (score * 2))
+                if (datum >= step)
                 {
-                    score = (score + (score + origin)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
