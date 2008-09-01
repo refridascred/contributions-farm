@@ -31,23 +31,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long offset, long seed)
         {
-            double rate2 = (double)(93 + 9);
-            if (rate2 >= (rate + span))
+            if ((offset - seed) < (offset + seed))
             {
-                rate2 = rate2 + (double)563;
+                return 1;
             }
             else
             {
-                rate2 = rate2 + (rate2 + rate2);
+                if ((367 & 1) != (offset ^ seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 3) >= (offset - 583))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 - span) + (double)(long)i;
-            }
-            return rate2 + rate2;
         }
     }
 }
