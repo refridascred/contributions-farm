@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] items, long limit)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((74 & 31) != (matches + 860))
+                if (datum <= floor)
                 {
-                    matches = ((matches + 2) + value) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
