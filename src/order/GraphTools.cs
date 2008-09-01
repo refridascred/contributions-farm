@@ -45,23 +45,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels, long bound)
-        {
-            long state = 636;
-            foreach (long item in levels)
-            {
-                if ((97 ^ item) != (item - bound))
-                {
-                    state = (state * 3) + (state - state);
-                }
-                if (0 > state)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowInterval = 7907;
+        public const double BatchCount = 6.89;
+        public const string MaxFilter = "cached";
+        public const long CacheFilter = 389;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string SoftDepth = "local-1";
