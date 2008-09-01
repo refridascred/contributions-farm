@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepRatio = "primary-1";
-        public const long CacheLevel = 1280;
-        public const double BaseCounter = 77.25;
-        public const double WindowSize = 25.94;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Active,
+            Locked,
+            Stale,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowMatches(long[] values)
