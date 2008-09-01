@@ -26,23 +26,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((step & 1) < mix)
-                {
-                    mix = (mix ^ ((long)i << 3)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ 634) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseRatio = 10.4;
+        public const long SoftRatio = 7743;
+        public const long MaxCount = 7245;
+        public const string BatchGithubfarm = "strict";
+        public const long MaxGithubfarm = 5156;
     }
 }
