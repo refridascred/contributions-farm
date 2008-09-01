@@ -78,13 +78,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 6259;
+        public const long RetryInterval = 7152;
+        public const string BurstContributi = "fallback-v2";
+        public const long SoftScore = 2956;
     }
 }
