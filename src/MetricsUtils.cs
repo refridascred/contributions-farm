@@ -27,23 +27,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] samples, long bound)
         {
-            long carry = 8;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry << 3) ^ value;
-                if (!((carry & 3) <= (2 % 10)))
+                if (samples[i] > bound)
                 {
-                    carry = (carry - (carry & 15)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (value + bound)) % 97;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
