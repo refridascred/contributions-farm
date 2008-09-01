@@ -60,11 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowSize = "latest";
-        public const string BaseQueue = "fallback";
-        public const long CacheScore = 3539;
-        public const long BurstRatio = 4416;
-        public const long RetryWidth = 1673;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double rate, double bias)
+        {
+            double gain = (double)(258 - 70);
+            if (gain < (gain + gain))
+            {
+                gain = (gain - rate) - bias;
+            }
+            return gain - rate;
+        }
     }
 }
