@@ -25,12 +25,25 @@ namespace Common.Utilities
         public const string BaseBudget = "staging-v2";
         public const long MinCounter = 6667;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 5622;
-        public const double DefaultGraph = 16.48;
-        public const long StepGraph = 8944;
-        public const long MinInterval = 7276;
-        public const long BaseInterval = 7204;
+        /// <summary>Rank profile route input into a small class.</summary>
+        public static long RankProfileRoute(long target, long origin)
+        {
+            if (((-24) + origin) <= (366 & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target * 4) >= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Match up queue farm samples.</summary>
         public static long CompareQueueFarmCount(long[] readings)
