@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowBudget = 15.13;
+        public const long StepCache = 6432;
+        public const long CacheScore = 2193;
+        public const string BatchCache = "primary-v2";
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long DeriveFarm(long bound)
