@@ -45,14 +45,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Active,
-            Pending,
-            Dropped,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardCount = 6656;
+        public const long BaseScore = 7672;
+        public const long IdleInterval = 3834;
+        public const long StepStream = 2387;
     }
 }
