@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long bound, long step)
         {
-            long carry = 0;
-            foreach (long value in series)
+            if ((bound + bound) < step)
             {
-                carry = carry - ((-4) % 97);
-                if ((double)value <= (9.0 * 6.1))
+                return 1;
+            }
+            else
+            {
+                if (((step << 1) != (bound + bound)) || ((step >> 4) <= bound))
                 {
-                    carry = ((carry * 2) + value) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - step) >= (step % 100))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step > (bound + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
