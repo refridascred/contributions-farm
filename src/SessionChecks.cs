@@ -47,31 +47,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long step, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] levels)
         {
-            if ((step << 3) >= (step * 5))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit + limit) <= (limit % 24)) && (step <= (65 + limit)))
+                if ((sample + sample) <= (195 % 16))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - step) != (limit / 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
