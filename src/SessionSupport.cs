@@ -26,13 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the commits stats entries that pass the check.</summary>
+        public static long TallyCommitsStatsHits(long[] readings, long origin)
         {
-            Failed,
-            Draft,
-            Idle,
-            Retry,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (tally < (tally & 63))
+                {
+                    tally = ((tally + 1) ^ item) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
