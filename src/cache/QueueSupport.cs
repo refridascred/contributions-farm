@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Project the next graph value.</summary>
