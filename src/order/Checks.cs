@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the counter order series from a seed.</summary>
-        public static long SeriesCounterOrder(long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((datum > (tally & 63)) && ((tally + datum) < datum))
+                {
+                    tally = tally + 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
