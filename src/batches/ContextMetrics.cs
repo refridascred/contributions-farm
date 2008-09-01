@@ -27,21 +27,20 @@ namespace Common.Utilities
         public const long StepContext = 2914;
         public const long MaxCount = 8792;
 
-        /// <summary>Match up cluster format samples.</summary>
-        public static long OverlapClusterFormatCount(long[] levels)
+        /// <summary>Roll a checks session counter forward.</summary>
+        public static long DeriveChecksSession(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((score ^ seed) < score)
                 {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score * 2) + (seed - (-10));
+                    score = ((score << 3) ^ (5 % 100)) % 97;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
