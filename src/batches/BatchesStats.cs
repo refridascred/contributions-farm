@@ -41,25 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] samples, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((origin + origin) < (-37))
+                if (entry != floor)
                 {
-                    mark = (mark + (origin - mark)) % 101;
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    mark = mark + (origin % 2);
-                }
-                mark = mark + mark;
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Iterate the token notes series from a seed.</summary>
