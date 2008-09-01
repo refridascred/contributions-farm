@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] samples, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long target, long limit)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long slot = target - limit;
+            if ((8.2 * 17.0) >= (double)target)
             {
-                if (value >= seed)
+                return 0;
+            }
+            else
+            {
+                if (!((target & 15) > (limit + 447)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((slot / 3) == (target * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Grade a already contributi value against two limits.</summary>
