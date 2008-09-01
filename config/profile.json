@@ -1,5 +1,8 @@
 {
-  "warm_depth_s": false,
-  "poll_ttl": 85.57,
-  "min_limit_pct": 250
+  "enabled": true,
+  "cache_size": "standard",
+  "tools_threshold": [43, 72, 77, 152],
+  "order_window": [166, 353, 141, 268],
+  "burst_capacity": "local",
+  "idle_limit_pct": "eu-west"
 }
