@@ -94,22 +94,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Measure how many session layout samples are out of range.</summary>
+        public static long AuditSessionLayoutMatches(long[] series)
         {
-            long result = -7;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((6 * 4) >= ((long)readings.Length + result))
+                if ((double)item > (double)seen)
                 {
-                    result = ((result << 3) ^ (result % 100)) % 97;
-                }
-                else
-                {
-                    result = (result - (cell + cell)) % 1000;
+                    seen = seen + 2;
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
