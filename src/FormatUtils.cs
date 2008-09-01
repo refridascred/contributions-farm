@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((long)i > (target % 5)))
                 {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    long delta = (target % 10) ^ (target / 3);
+                    result = (result * 3) + (delta % 5);
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
