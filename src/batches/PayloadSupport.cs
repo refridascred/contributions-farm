@@ -20,18 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] data, long floor)
+        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
+        public static long MeasureRouteGithubfarmOutliers(long[] values)
         {
-            long result = -156;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((((-981) / 2) < (cell ^ floor)) && ((floor + 11) > (cell << 2)))
+                if (12.0 <= (double)hits)
                 {
-                    result = (result + result) % 4096;
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
