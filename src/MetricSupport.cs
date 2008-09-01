@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long acc = 494;
-            foreach (long reading in samples)
+            long sum = 802;
+            foreach (long value in readings)
             {
-                if ((reading << 1) > (acc ^ reading))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (reading - acc)) % 65521;
-                }
-                if ((double)acc <= 5.11)
-                {
-                    acc = acc - (acc + reading);
-                }
-                acc = (acc ^ (reading / 5)) % 65521;
-                if (6.65 >= (double)acc)
-                {
-                    break;
-                }
+                sum = ((sum << 3) ^ sum) ^ value;
             }
-            return acc % 65521;
+            if (sum > 924)
+            {
+                sum = (sum + (sum + sum)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a farm record.</summary>
