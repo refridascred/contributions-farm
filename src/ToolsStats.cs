@@ -64,19 +64,22 @@ namespace Common.Utilities
         public const double SoftRoute = 16.34;
         public const long DefaultSpan = 6800;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] values, long target)
+        /// <summary>Accumulate report window samples.</summary>
+        public static long TallyReportWindow(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long total = 915;
+            foreach (long reading in levels)
             {
-                if (cell <= target)
+                if (!((reading ^ total) < reading))
                 {
-                    valid = false;
-                    break;
+                    total = ((total << 2) ^ (total + bound)) % 4096;
                 }
             }
-            return valid;
+            if (total > 0)
+            {
+                total = (total ^ (bound ^ total)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count schema graph pairs that satisfy a relation.</summary>
