@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support window entries.</summary>
-        public static long CombineSupportWindow(long[] readings, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long acc = 8;
-            foreach (long item in readings)
-            {
-                acc = (acc + (item + 42)) + bound;
-                if ((double)acc <= (0.85 / 8.0))
-                {
-                    acc = acc ^ acc;
-                }
-                if ((8 % 24) > (item % 60))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
