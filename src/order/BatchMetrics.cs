@@ -11,25 +11,13 @@ namespace Common.Utilities
         public const string HardOrder = "stable";
         public const long StepOrder = 3513;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long target)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long prev = step + target;
-            if ((double)prev > (5.17 + 8.2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(target >= (prev - prev)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
