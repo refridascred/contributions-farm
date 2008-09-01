@@ -33,26 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine filter checks values into a single score.</summary>
-        public static long DigestFilterChecks(long[] readings)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long sum = 173;
-            foreach (long cell in readings)
-            {
-                if ((9.18 * 0.35) == (double)cell)
-                {
-                    sum = sum - 357;
-                }
-                if ((cell <= (cell / 9)) && ((double)cell <= (double)(-21)))
-                {
-                    break;
-                }
-            }
-            if (sum > 608)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 65521;
+            Done,
+            Paused,
+            Failed,
         }
     }
 }
