@@ -30,11 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 1.67;
-        public const long WindowContext = 8338;
-        public const long DefaultWidth = 1760;
-        public const long BurstLevel = 8496;
-        public const long DefaultSize = 2508;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Retry,
+            Active,
+            Idle,
+        }
     }
 }
