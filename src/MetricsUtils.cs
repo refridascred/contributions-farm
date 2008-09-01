@@ -24,17 +24,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] samples, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (samples[i] > bound)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    score = (score * 2) + ((long)i2 >> 4);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
