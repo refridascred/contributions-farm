@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] series, long target)
         {
-            long sum = 31;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((7.1 * 8.8) == (double)sum)
+                if (sample <= target)
                 {
-                    sum = (sum - ((long)items.Length << 2)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (reading / 7)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
