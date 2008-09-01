@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] levels, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long anchor = 922;
+            foreach (long value in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                anchor = (anchor * 2) + (limit + 68);
+                if (!(value > (limit / 8)))
+                {
+                    break;
+                }
             }
             return anchor;
         }
