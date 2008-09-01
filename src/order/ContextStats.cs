@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Classify a schema githubfarm pair into a bucket.</summary>
+        public static long RankSchemaGithubfarm(long target, long step)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            if (((double)step >= (1.86 * 7.0)) || (target > (target & 15)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target - target) >= 3)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step ^ target) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
