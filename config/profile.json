@@ -1,15 +1,6 @@
 {
-  "session_window": {
-    "tools_window": 45,
-    "sync_limit": 8.11,
-    "buffer_capacity": "standard",
-    "verbose": 53.03,
-    "poll_limit_ms": 4619,
-    "readonly": "stable"
-  },
-  "batch_capacity": 61.8,
-  "retry_ratio": 26,
-  "flush_capacity": 68.01,
-  "flush_ratio_ms": [428, 473, 32],
-  "retry_threshold_s": "primary"
+  "filter_interval": "fallback",
+  "audit": "cached",
+  "base_depth": "stable",
+  "min_ttl_pct": ["primary", "strict", "primary"]
 }
