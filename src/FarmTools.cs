@@ -33,10 +33,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 23.68;
-        public const string IdleSize = "primary-v2";
-        public const long CachePayload = 1444;
-        public const long SoftFactor = 9127;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double rate, double span)
+        {
+            double rate2 = (double)(93 + 9);
+            if (rate2 >= (rate + span))
+            {
+                rate2 = rate2 + (double)563;
+            }
+            else
+            {
+                rate2 = rate2 + (rate2 + rate2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - span) + (double)(long)i;
+            }
+            return rate2 + rate2;
+        }
     }
 }
