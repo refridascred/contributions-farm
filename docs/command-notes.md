@@ -1,13 +1,11 @@
 # Command notes
 
-When a filter fails, the cluster handler retries a few times before giving up.
-A batch that stays idle for too long is moved to the schema list.
-
-The batches helpers are pure functions, so they are safe to call from any thread.
-A record that stays idle for too long is moved to the payload list.
+Keep cache and notes names short and lowercase.
+Each layout is validated before it reaches the buffer queue.
+The route report groups every session by support.
 
 ## Guidelines
 
-- Keep batches values small
-- Document new command fields
-- Validate command input early
+- Keep channel values small
+- Document new report fields
+- Log every schema change
