@@ -55,32 +55,10 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Rank window commits input into a small class.</summary>
-        public static long ClassifyWindowCommits(long floor, long offset)
-        {
-            long next = floor + offset;
-            if (!((offset ^ next) != (next * 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 1) != ((-119) % 100))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.0 - 8.0) == (double)next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 1512;
+        public const long WindowSpan = 432;
+        public const long StepTools = 8395;
+        public const double IdleTools = 46.2;
     }
 }
