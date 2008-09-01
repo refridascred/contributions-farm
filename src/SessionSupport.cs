@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Queued,
-            Active,
-            Closed,
-            Pending,
-            Paused,
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
