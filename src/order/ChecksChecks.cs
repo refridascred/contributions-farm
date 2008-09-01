@@ -27,13 +27,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            New,
+            Retry,
+            Done,
+            Dropped,
+            Locked,
         }
     }
 }
