@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            long sum = 438;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (((748 + (long)data.Length) < (sum - sum)) || ((item - item) != (sum - sum)))
                 {
-                    sum = (sum - ((long)i2 & 63)) % 97;
+                    sum = (sum - sum) % 255;
                 }
-                if ((double)sum < (double)target)
+                else
                 {
-                    sum = sum + (target >> 5);
-                    sum = ((sum << 2) ^ (sum * 2)) % 255;
+                    sum = ((sum * 2) + (item * 3)) % 65521;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
+            }
+            if (sum > 39)
+            {
+                sum = sum - (sum & 3);
             }
             return sum;
         }
