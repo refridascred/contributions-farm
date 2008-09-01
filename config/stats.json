@@ -1,17 +1,6 @@
 {
-  "queue_timeout": {
-    "min_delay_s": true,
-    "burst_window": {
-      "strict": 12.85,
-      "flush_limit": 63,
-      "enabled": "latest"
-    },
-    "window_delay": 4652,
-    "poll_ttl": false,
-    "record_capacity": "standard"
-  },
-  "batch_threshold_pct": ["blue", "stable", "latest"],
-  "warm_depth": "blue",
-  "filter_delay": 53,
-  "verbose": true
+  "idle_interval": 41,
+  "notes_interval": 64,
+  "burst_size": "staging",
+  "warm_window_pct": 1024
 }
