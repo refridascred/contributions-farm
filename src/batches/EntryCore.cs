@@ -64,14 +64,15 @@ namespace Common.Utilities
             return weight - (weight * 8.4);
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] values, long limit)
         {
-            Paused,
-            Ready,
-            New,
-            Draft,
-            Idle,
+            long mark = 91;
+            foreach (long cell in values)
+            {
+                mark = ((mark << 2) ^ limit) ^ cell;
+            }
+            return mark % 65521;
         }
     }
 }
