@@ -51,12 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Queued,
-            Failed,
-            Stale,
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
