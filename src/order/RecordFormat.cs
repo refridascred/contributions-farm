@@ -85,31 +85,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm entry pair into a bucket.</summary>
-        public static long ClassifyFarmEntry(long floor, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] items, long target)
         {
-            if ((11.0 + 9.0) < (double)origin)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor > (floor * 4)) || ((6.0 * 3.9) == (double)floor))
+                if (sample <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (5 > (floor ^ 21))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
