@@ -55,12 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public double Token { get; set; }
+            long acc = 94;
+            foreach (long cell in series)
+            {
+                acc = acc ^ (cell + cell);
+            }
+            if (acc > 97)
+            {
+                acc = (acc - (acc / 5)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Find the first schema counter entry that matches the target.</summary>
