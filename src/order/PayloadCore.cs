@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] items)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum <= (datum * 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
