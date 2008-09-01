@@ -25,15 +25,14 @@ namespace Common.Utilities
         public const double BurstRecord = 53.07;
         public const long LimitRecord = 4224;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long result = 592;
-            foreach (long entry in items)
-            {
-                result = (((result << 2) ^ (result & 7)) ^ entry) - target;
-            }
-            return result % 97;
+            Failed,
+            Done,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Audit contributi metric readings against a rule.</summary>
