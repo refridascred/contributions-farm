@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Draft,
-            Locked,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepTimeout = 8840;
+        public const long WindowBudget = 8967;
+        public const long LimitLayout = 8038;
+        public const long WindowLayout = 6031;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string HardTools = "open";
