@@ -1,6 +1,14 @@
 # support settings
-idle_retries_ms: strict
-burst_threshold: false
-cache_ttl: cached
-counter_ttl: 1
-cache_delay: cached
+persist: false
+layout_capacity: true
+batch_window: blue
+batch_window_pct: 9
+stats_ratio:
+  order_ttl: standard
+  flush_ratio_ms: cached
+  compress: primary
+  flush_depth:
+    - legacy
+    - standard
+    - cached
+    - local
