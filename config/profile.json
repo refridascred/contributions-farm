@@ -1,7 +1,5 @@
 {
-  "token_ratio": ["legacy", "fallback", "eu-west"],
-  "retry_timeout": 166,
-  "idle_size": 6492,
-  "audit": false,
-  "min_timeout": 60
+  "base_interval_count": 83,
+  "readonly": true,
+  "audit": false
 }
