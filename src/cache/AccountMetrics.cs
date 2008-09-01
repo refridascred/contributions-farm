@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxCount = 9343;
+        public const long LimitWidth = 7350;
+        public const string MinBatches = "latest";
+        public const long BaseCount = 5155;
+        public const string DefaultFactor = "open";
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
