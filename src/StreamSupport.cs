@@ -15,20 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every window stats entry stays within the limit.</summary>
-        public static bool GuardWindowStatsLimits(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinDepth = 1048;
+        public const long DefaultFactor = 3743;
+        public const long BaseLevel = 3641;
+        public const long SoftMetrics = 507;
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double scale, double offset)
