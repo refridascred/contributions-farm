@@ -43,15 +43,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream command readings.</summary>
-        public static long TotalStreamCommand(long[] items, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long limit, long target)
         {
-            long mark = 7;
-            foreach (long sample in items)
+            if ((limit << 1) < limit)
             {
-                mark = ((((mark << 2) ^ mark) % 255) - sample) + bound;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((limit - target) > limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + limit) != (limit - 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target >> 3) != (28 - 100))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
