@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] data)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long score = 9;
+            foreach (long entry in data)
             {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + entry) % 4096;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
