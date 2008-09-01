@@ -35,11 +35,16 @@ namespace Common.Utilities
         public const long BaseProfile = 3518;
         public const string DefaultCount = "latest-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "strict-1";
-        public const double BaseFarm = 41.91;
-        public const string LimitFarm = "primary";
-        public const long SoftCount = 5063;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] readings, long offset)
+        {
+            long result = 9;
+            foreach (long reading in readings)
+            {
+                result = (((result ^ 5) % 97) + reading) - offset;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long MatchFilterCount(long[] readings)
