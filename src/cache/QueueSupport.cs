@@ -13,14 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] readings, long step)
         {
-            Stale,
-            Synced,
-            Done,
-            Active,
-            Queued,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next graph value.</summary>
