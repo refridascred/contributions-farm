@@ -64,26 +64,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] series, long seed)
+        /// <summary>Count the stats filter entries that pass the check.</summary>
+        public static long AuditStatsFilterOutliers(long[] readings, long floor)
         {
-            long score = 883;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (!((cell - seed) == (seed % 3)))
+                if (((floor ^ tally) > (floor & 1)) || ((floor + tally) >= (tally - floor)))
                 {
-                    score = (score + (5 + 62)) % 255;
-                }
-                else
-                {
-                    score = (score + (seed + score)) % 97;
+                    tally = (tally + 3) - sample;
                 }
             }
-            if (score > 617)
-            {
-                score = ((score * 5) + (seed + seed)) % 1000;
-            }
-            return score;
+            return tally;
         }
     }
 }
