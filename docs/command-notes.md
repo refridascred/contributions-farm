@@ -1,15 +1,14 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the order list.
-The editor report groups every batch by session.
-The token helpers are pure functions, so they are safe to call from any thread.
+The notes module keeps batch values in sync with the batches cache.
+The notes module keeps queue values in sync with the githubfarm cache.
+Each route is validated before it reaches the already queue.
 
-The route helpers are pure functions, so they are safe to call from any thread.
-A context that stays idle for too long is moved to the schema list.
+Use context settings to tune how often counter data is refreshed.
+When a checks fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep batch values small
-- Document new token fields
-- Validate stream input early
-- Review layout limits each release
+- Log every entry change
+- Document new githubfarm fields
+- Validate schema input early
