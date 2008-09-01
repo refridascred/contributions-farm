@@ -27,23 +27,24 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Derive the next stream session value from a seed.</summary>
-        public static long RollStreamSession(long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long offset, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            if ((double)offset == (double)floor)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = (((acc * 4) + (step & 31)) % 101) ^ (long)i2;
-                }
-                if (((step * 5) >= (acc ^ 8)) || ((55 % 60) >= acc))
-                {
-                    acc = acc - (acc / 3);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((offset % 8) <= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
