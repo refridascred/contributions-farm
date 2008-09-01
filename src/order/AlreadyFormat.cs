@@ -15,22 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] values, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((limit + limit) == (limit - (long)values.Length))
-                {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            New,
+            Stale,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
