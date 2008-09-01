@@ -70,18 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches + 32) > step)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleDepth = 8927;
+        public const string DefaultWidth = "fallback";
+        public const long BurstRatio = 7500;
+        public const long BatchCache = 9949;
+        public const long LimitCount = 9725;
     }
 }
