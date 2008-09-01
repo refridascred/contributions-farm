@@ -23,19 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            long anchor = 85;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor - anchor) % 255) ^ sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (anchor > 0)
-            {
-                anchor = anchor - (anchor << 2);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the editor metric entries that pass the check.</summary>
