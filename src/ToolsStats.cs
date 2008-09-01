@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] data, long seed)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((seed * 5) <= count) && (104 < (730 - entry)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of cache order entries.</summary>
