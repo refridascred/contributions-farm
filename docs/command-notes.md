@@ -1,11 +1,11 @@
 # Command notes
 
-Each entry is validated before it reaches the channel queue.
-The counter helpers are pure functions, so they are safe to call from any thread.
-Keep session and route names short and lowercase.
+When a format fails, the context handler retries a few times before giving up.
+A schema that stays idle for too long is moved to the counter list.
+Run the metric check before changing any metric limits.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Log every format change
-- Keep notes values small
+- Review buffer limits each release
+- Keep buffer values small
+- Log every context change
