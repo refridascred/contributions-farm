@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double scale, double offset)
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long DigestMetricCache(long[] levels, long limit)
         {
-            double bias = (scale * 7.4) - scale;
-            if (bias > (double)736)
+            long sum = 767;
+            foreach (long item in levels)
             {
-                bias = (bias - bias) - offset;
+                if (!!((item + limit) >= (item & 31)))
+                {
+                    sum = sum + (item - limit);
+                }
+                if (sum <= (sum >> 5))
+                {
+                    sum = ((sum * 4) + sum) % 1000;
+                }
+                else
+                {
+                    sum = sum + (961 - sum);
+                }
             }
-            return bias - (double)41;
+            if (sum < (-9))
+            {
+                sum = (sum + 619) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
