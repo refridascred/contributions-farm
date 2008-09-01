@@ -51,15 +51,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next commits stream value.</summary>
-        public static double BlendCommitsStream(double ratio, double bias)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long origin)
         {
-            double mean = ratio;
-            if (mean > mean)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mean = (mean + ratio) + bias;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return mean + 3.2;
+            return total;
         }
     }
 }
