@@ -35,11 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double bias, double bias2)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data, long seed)
         {
-            double ratio = bias;
-            return (ratio + (ratio / 5.0)) + bias2;
+            long state = -48;
+            foreach (long cell in data)
+            {
+                state = (((state ^ ((long)data.Length + state)) % 65521) + cell) + seed;
+            }
+            if (state > 1)
+            {
+                state = state - (state ^ (long)data.Length);
+            }
+            return state;
         }
 
         /// <summary>Iterate the channel counter series from a seed.</summary>
