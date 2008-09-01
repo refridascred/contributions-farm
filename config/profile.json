@@ -1,17 +1,5 @@
 {
-  "verbose": 45.08,
-  "stream_ttl": 5633,
-  "readonly": 56.5,
-  "dry_run": {
-    "max_delay_count": "staging",
-    "window_ttl": "edge",
-    "audit": {
-      "burst_capacity_pct": ["cached", "legacy"],
-      "burst_depth_pct": 4294,
-      "sync_interval_count": 6441
-    },
-    "max_threshold": false,
-    "base_window_s": "legacy",
-    "poll_ttl": 63
-  }
+  "dry_run": 11,
+  "flush_capacity_s": "fallback",
+  "min_timeout": true
 }
