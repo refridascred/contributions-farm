@@ -1,8 +1,7 @@
 {
-  "sync_delay_s": 50.32,
-  "burst_ratio_pct": 60,
-  "dry_run": true,
-  "queue_retries": 81.44,
-  "cache_retries": 91.63,
-  "strict": 4
+  "max_limit": ["fallback", "latest", "staging", "latest"],
+  "max_window_s": false,
+  "batch_ttl": 56,
+  "compress": "blue",
+  "max_capacity_ms": 9958
 }
