@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 2785;
+        public const long SoftTimeout = 1624;
+        public const long BaseNotes = 2952;
 
         /// <summary>Iterate the entry record series from a seed.</summary>
         public static long StepEntryRecord(long bound)
