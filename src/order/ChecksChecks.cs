@@ -43,16 +43,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long step)
         {
-            long sum = 880;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum ^ sum) % 65521) ^ cell;
-                sum = (sum * 2) + (3 + sum);
+                if ((items[i] < step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
