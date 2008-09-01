@@ -64,25 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long step, long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] values, long limit)
         {
-            long slot = step ^ limit;
-            if ((double)limit <= (3.46 - 2.6))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + limit) <= (slot >> 1))
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count tools stream pairs that satisfy a relation.</summary>
