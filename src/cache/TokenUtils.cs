@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] series, long floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double floor)
         {
-            long mix = 337;
-            foreach (long entry in series)
+            double scale = gain;
+            if (scale < floor)
             {
-                if (20.0 > (double)floor)
-                {
-                    mix = ((mix * 4) + (mix ^ floor)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - entry) % 101;
-                }
+                scale = scale - (scale * 0.2);
             }
-            if (mix > 3)
-            {
-                mix = (mix + (mix + mix)) % 255;
-            }
-            return mix % 65521;
+            return scale + (floor + scale);
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
