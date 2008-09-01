@@ -46,17 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] data, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
