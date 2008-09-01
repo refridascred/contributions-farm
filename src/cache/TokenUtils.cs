@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] levels, long step)
         {
-            long total = 86;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total ^ (total & 15)) % 65521) + item;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
