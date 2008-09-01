@@ -30,19 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] data, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] series)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long result = 353;
+            foreach (long datum in series)
             {
-                if (item > floor)
+                if (0 < (datum + result))
                 {
-                    ok = false;
-                    break;
+                    result = (result ^ (datum * 5)) % 97;
+                    continue;
                 }
+                result = result ^ (463 * 4);
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Blend two account filter measurements.</summary>
