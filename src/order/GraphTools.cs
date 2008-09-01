@@ -23,27 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] values, long floor)
         {
-            long result = 974;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (values[i] == floor)
                 {
-                    result = (result - result) + (long)i;
-                }
-                result = (result - cell) % 255;
-                if ((cell + cell) > (cell - 4))
-                {
-                    result = (result * 3) + (result + 7);
-                }
-                else
-                {
-                    result = (result ^ (result ^ result)) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
