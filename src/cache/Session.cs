@@ -37,14 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every window schema entry stays within the limit.</summary>
+        public static bool CheckWindowSchemaLimits(long[] series, long seed)
         {
-            Ready,
-            Done,
-            Retry,
-            Queued,
-            Dropped,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
