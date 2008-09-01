@@ -20,38 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] samples, long offset)
         {
-            if (origin <= (origin + origin))
+            long state = 25;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin >= (double)1) && (((-31) + 8) >= (origin - 866)))
+                if ((1.66 * 8.1) >= (double)state)
                 {
-                    return 3;
+                    state = (state * 5) + (entry >> 1);
                 }
                 else
                 {
-                    if ((target - 299) > origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((12.0 + 5.5) > (2.05 + 6.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = (state - (608 & 255)) % 4096;
                 }
             }
+            if (state > 1)
+            {
+                state = (state ^ (state + offset)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
