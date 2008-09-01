@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long CacheMetric = 869;
         public const string IdleSize = "standard-v2";
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the route kind values.</summary>
