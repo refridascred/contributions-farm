@@ -1,10 +1,6 @@
 {
-  "cache_retries_pct": "open",
-  "min_retries": 5950,
-  "poll_ratio": 250,
-  "enabled": {
-    "compress": "eu-west",
-    "record_capacity": "open",
-    "retry_limit": "staging"
-  }
+  "poll_ratio_ms": "staging",
+  "compress": 55.42,
+  "poll_depth_s": 4,
+  "soft_timeout_pct": "open"
 }
