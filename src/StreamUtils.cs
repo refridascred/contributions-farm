@@ -39,11 +39,13 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitScore = "stable-v2";
-        public const long BatchChecks = 5064;
-        public const string IdleChecks = "local-v2";
-        public const long BurstCount = 2099;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long DefaultScore = 80;
