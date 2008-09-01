@@ -32,20 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 89.04;
+        public const long CacheBuffer = 4255;
+        public const long MaxSize = 1028;
+        public const long StepSize = 9025;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadRange(long[] samples, long target)
