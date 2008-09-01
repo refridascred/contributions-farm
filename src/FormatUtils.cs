@@ -91,19 +91,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] levels, long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Synced,
+            Idle,
+            Closed,
         }
     }
 }
