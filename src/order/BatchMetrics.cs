@@ -13,13 +13,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            Ready,
+            Queued,
+            Done,
+            Failed,
         }
 
         /// <summary>Combine command values into a single score.</summary>
