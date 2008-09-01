@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double ratio, double floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] data, long bound)
         {
-            double load = (double)(655 % 3);
-            if (load >= load)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + (load * 7.56)) + floor;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (ratio - load)) + (double)(long)i;
-            }
-            return load - (9.8 / 7.0);
+            return -1;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
