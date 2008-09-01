@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const double DefaultContext = 54.64;
         public const long WindowContext = 6982;
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double rate, double offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double scale = rate;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale - (6.6 * 13.0)) + (double)(long)i) + offset;
-            }
-            return scale - rate;
+            Done,
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Blend two commits measurements.</summary>
