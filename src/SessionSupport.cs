@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double rate, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            double load = 2.0;
+            if (load < (double)296)
+            {
+                load = load + floor;
+            }
+            else
+            {
+                load = load - (double)6;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (rate * 5.5);
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
