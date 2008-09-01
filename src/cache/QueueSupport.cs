@@ -13,25 +13,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank metrics payload input into a small class.</summary>
-        public static long BucketMetricsPayload(long step, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            long diff = step ^ limit;
-            if ((162 + 20) == (diff + step))
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((diff * 2) > (limit + diff)) && ((9.6 + 1.5) == (double)diff))
+                if ((result + result) <= target)
                 {
-                    return 0;
+                    result = (result + (result + (long)i)) % 65521;
                 }
-                else
-                {
-                    return 8;
-                }
+                result = (result << 2) ^ target;
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
