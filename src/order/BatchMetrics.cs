@@ -60,13 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Dropped,
-            Active,
-            Idle,
-            Locked,
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
