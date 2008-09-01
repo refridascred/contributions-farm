@@ -31,24 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] values, long floor)
         {
-            long anchor = -812;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 5) + (94 << 2)) % 255;
-                anchor = (anchor << 3) ^ bound;
-                if ((sample << 1) > 596)
+                if ((4.8 + 17.0) != (double)floor)
                 {
-                    break;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor * 3) + (bound % 16);
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
