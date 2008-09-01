@@ -27,16 +27,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = acc + (offset - acc);
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
