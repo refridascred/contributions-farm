@@ -1,7 +1,7 @@
 {
-  "counter_ratio": false,
-  "poll_ratio_pct": 6906,
-  "readonly": 46.83,
-  "hard_ratio": 734,
-  "idle_capacity_count": 4968
+  "layout_size": ["edge", "stable"],
+  "burst_timeout": false,
+  "verbose": 74,
+  "persist": false,
+  "commits_timeout": "strict"
 }
