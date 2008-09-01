@@ -37,19 +37,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] data, long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
