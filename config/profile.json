@@ -1,6 +1,8 @@
 {
-  "support_size": "stable",
-  "flush_limit": "stable",
-  "tools_window": ["legacy", "edge"],
-  "metrics_interval": false
+  "dry_run": "standard",
+  "hard_retries_ms": 18.89,
+  "compress": "eu-west",
+  "persist": 2275,
+  "max_size": "green",
+  "checks_threshold": 38.22
 }
