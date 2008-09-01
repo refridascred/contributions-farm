@@ -1,5 +1,5 @@
 {
-  "dry_run": 11,
-  "flush_capacity_s": "fallback",
-  "min_timeout": true
+  "route_size": 1024,
+  "retry_retries_count": true,
+  "flush_interval_s": "latest"
 }
