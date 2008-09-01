@@ -50,19 +50,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] values, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two notes measurements.</summary>
