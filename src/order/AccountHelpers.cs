@@ -54,19 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (count <= item)
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowBudget = 3446;
+        public const long WindowInterval = 1657;
+        public const long HardDepth = 9072;
+        public const long IdleFilter = 4485;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long target)
