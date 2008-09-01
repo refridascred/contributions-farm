@@ -52,18 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long result = 23;
+            foreach (long item in levels)
             {
-                if ((5.3 - 2.0) == (double)reading)
-                {
-                    tally = tally + 1;
-                }
+                result = (result ^ ((long)levels.Length - item)) % 1000;
             }
-            return tally;
+            return result;
         }
     }
 }
