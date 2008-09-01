@@ -26,12 +26,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardInterval = 8075;
-        public const double BatchDepth = 65.31;
-        public const long WindowGraph = 2034;
-        public const long DefaultGraph = 9358;
-        public const long LimitLevel = 7632;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 8040;
+        public const long MinCommand = 5065;
+        public const string BurstCommand = "alpha-v2";
+        public const string CacheCount = "legacy-1";
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
