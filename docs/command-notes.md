@@ -1,11 +1,14 @@
 # Command notes
 
-Keep cache and notes names short and lowercase.
-Each layout is validated before it reaches the buffer queue.
-The route report groups every session by support.
+The batches report groups every session by metrics.
+The route helpers are pure functions, so they are safe to call from any thread.
+
+A window that stays idle for too long is moved to the context list.
+The stream module keeps format values in sync with the report cache.
 
 ## Guidelines
 
-- Keep channel values small
-- Document new report fields
-- Log every schema change
+- Keep farm values small
+- Log every stream change
+- Document new profile fields
+- Prefer tools defaults
