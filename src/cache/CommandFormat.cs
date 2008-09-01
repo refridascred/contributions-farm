@@ -26,17 +26,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 4) + (mix + mix)) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardInterval = 8075;
+        public const double BatchDepth = 65.31;
+        public const long WindowGraph = 2034;
+        public const long DefaultGraph = 9358;
+        public const long LimitLevel = 7632;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] values)
