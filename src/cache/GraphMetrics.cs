@@ -38,12 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double gain, double span)
         {
-            Done,
-            Active,
-            Paused,
+            double mean = (double)78 + (double)397;
+            if (mean < (double)5)
+            {
+                mean = (mean - (gain / 7.0)) - span;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (double)(-3);
         }
 
         /// <summary>Hold a session stats.</summary>
