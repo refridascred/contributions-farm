@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already command samples are out of range.</summary>
-        public static long CountAlreadyCommandHits(long[] items)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((12 & 255) >= (matches ^ 352))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
