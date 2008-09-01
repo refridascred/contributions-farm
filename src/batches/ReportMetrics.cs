@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data, long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long target)
         {
-            long result = -454;
-            foreach (long cell in data)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result - (offset / 7)) % 255) ^ cell;
-                if ((38 + result) < 332)
+                anchor = anchor ^ (long)i;
+                if ((8 & 3) >= (anchor * 4))
                 {
+                    anchor = (anchor - (4 >> 1)) % 255;
                     break;
                 }
+                else
+                {
+                    anchor = ((anchor * 2) + 667) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
