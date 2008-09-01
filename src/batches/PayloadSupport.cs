@@ -20,18 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] values)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches - 76) != (matches + 72))
-                {
-                    matches = (matches + 1) + item;
-                }
+                score = (score ^ (long)i) % 97;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Project the next commits stream value.</summary>
