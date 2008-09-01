@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile cluster reading.</summary>
-        public static double BlendProfileCluster(double bias, double span)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels)
         {
-            double ratio = span - span;
-            if (ratio >= bias)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                ratio = ratio - (span - span);
+                if ((4.0 * 11.0) == (double)value)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - span;
+            return tally;
         }
 
         /// <summary>Blend two commits measurements.</summary>
