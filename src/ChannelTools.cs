@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] items, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long origin)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
