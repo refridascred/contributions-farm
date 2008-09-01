@@ -61,12 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Retry,
-            New,
-            Closed,
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
