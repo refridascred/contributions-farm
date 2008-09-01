@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8481;
+        public const long StepBatches = 1609;
+        public const double LimitBatches = 85.88;
+        public const string MaxSize = "latest-v2";
+        public const long SoftRatio = 7105;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] levels, long offset)
