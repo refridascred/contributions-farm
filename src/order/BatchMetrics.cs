@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Audit buffer metrics readings against a rule.</summary>
+        public static long AuditBufferMetricsHits(long[] data, long offset)
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((seen + seen) != (offset + 73)) || ((seen + item) >= (-97)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
