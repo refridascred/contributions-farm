@@ -1,14 +1,9 @@
 # entry settings
-burst_size: fallback
-min_threshold_count: 59.85
-hard_depth:
-  dry_run:
-    retry_depth: eu-west
-    hard_capacity: 4998
-    max_capacity_s: 38
-    hard_threshold_s: 250
-    profile_window: false
-  base_depth: staging
-  audit: blue
-  metrics_ttl: standard
-  buffer_timeout: 3419
+default_interval_count: 89.19
+poll_threshold: false
+warm_retries_pct:
+  idle_capacity: false
+  enabled: cached
+  checks_timeout: cached
+  min_size: 79.78
+  strict: 2460
