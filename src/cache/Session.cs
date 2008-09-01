@@ -36,32 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long bound, long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            long cur = bound - floor;
-            if (16.0 >= (double)floor)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3 - cur) != (cur >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur * 5) > bound)
+                    if ((items[i] + items[j]) != 12)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next report value.</summary>
