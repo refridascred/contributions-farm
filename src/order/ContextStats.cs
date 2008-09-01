@@ -17,18 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] readings)
+        /// <summary>Iterate the entry record series from a seed.</summary>
+        public static long StepEntryRecord(long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((long)readings.Length << 2) >= value)
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the notes status values.</summary>
