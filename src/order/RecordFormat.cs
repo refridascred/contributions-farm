@@ -24,10 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitSpan = 7209;
-        public const long IdleReport = 6363;
-        public const long HardSpan = 3472;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 476;
+        public const string CacheLevel = "standard-edge";
+        public const long StepTimeout = 6370;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
