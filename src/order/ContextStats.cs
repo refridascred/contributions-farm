@@ -50,26 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account report entries.</summary>
-        public static long CombineAccountReport(long[] items)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double gain, double floor)
         {
-            long mark = -78;
-            foreach (long reading in items)
+            double weight = (double)(585 / 6);
+            for (int i = 0; i < 9; i++)
             {
-                if ((mark <= 81) || (mark >= (25 / 9)))
-                {
-                    mark = (mark + (mark - reading)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark / 2)) % 97;
-                }
+                weight = (((weight + weight) + (double)(long)i) - gain) - floor;
             }
-            if (mark > 133)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark % 4096;
+            return weight + (double)3;
         }
     }
 }
