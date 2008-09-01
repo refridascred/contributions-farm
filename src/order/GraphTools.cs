@@ -31,14 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchRatio = 3563;
+        public const double MaxContributi = 69.29;
+        public const string HardContributi = "legacy";
 
         /// <summary>Accumulate stats samples.</summary>
         public static long WeighStats(long[] readings, long limit)
