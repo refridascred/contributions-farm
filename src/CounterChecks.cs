@@ -84,22 +84,38 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] data)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long target, long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if ((double)origin > (double)origin)
             {
-                if ((value + tally) >= (value - 11))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin <= (double)target)
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((target + 197) < (origin & 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (5.0 + 2.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
