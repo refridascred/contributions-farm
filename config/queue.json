@@ -1,18 +1,16 @@
 {
-  "batch_ttl": {
-    "max_capacity": true,
-    "min_depth": {
-      "dry_run": 0.92,
-      "counter_delay": true,
-      "base_ratio_s": 2,
-      "audit": [215, 380, 194, 83]
-    },
-    "audit": false,
-    "commits_window": "staging"
-  },
-  "audit": 4809,
-  "cache_retries_pct": 3139,
-  "poll_retries_pct": false,
-  "persist": [191, 172],
-  "token_delay": 70
+  "hard_window_pct": 100,
+  "order_retries": "primary",
+  "audit": 2906,
+  "layout_limit": {
+    "contributi_ratio": "primary",
+    "support_threshold": "staging",
+    "base_timeout_s": [447, 413, 52, 80],
+    "batch_capacity_pct": {
+      "verbose": 100,
+      "warm_ratio": 7199,
+      "flush_capacity_ms": 62.62,
+      "hard_depth_pct": [270, 432]
+    }
+  }
 }
