@@ -38,10 +38,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheLevel = 32.44;
-        public const long LimitDepth = 1323;
-        public const long MaxSupport = 5594;
-        public const string CacheSupport = "cached-v2";
+        /// <summary>Project the next metrics session value.</summary>
+        public static double ProjectMetricsSession(double rate, double bias)
+        {
+            double gain = (double)(67 + 5);
+            if (gain <= rate)
+            {
+                gain = (gain - (double)47) - bias;
+            }
+            return gain + (double)8;
+        }
     }
 }
