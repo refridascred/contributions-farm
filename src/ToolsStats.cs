@@ -34,18 +34,22 @@ namespace Common.Utilities
         public const long CacheScore = 2038;
         public const string WindowAccount = "open";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] series, long floor)
+        /// <summary>Count the already graph entries that pass the check.</summary>
+        public static long TallyAlreadyGraphGaps(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (234 <= seen)
+                if ((tally >> 4) == (datum & 3))
                 {
-                    seen = ((seen + 2) + value) + floor;
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of batch stream entries.</summary>
