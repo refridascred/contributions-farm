@@ -1,7 +1,6 @@
 # support settings
-cache_capacity_s: 35.25
-warm_delay: 1024
-flush_capacity_ms: false
-sync_threshold_pct: 74
-payload_delay: 3751
-retry_ttl_ms: 3937
+max_size_s: staging
+compress: 88.23
+hard_ratio_s: 2565
+readonly: 500
+counter_threshold: blue
