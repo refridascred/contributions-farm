@@ -45,15 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double scale, double floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double ratio = floor - (floor + floor);
-            if (ratio > (6.19 + ratio))
-            {
-                ratio = (ratio - ratio) - scale;
-            }
-            return ratio + ratio;
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Audit editor batches readings against a rule.</summary>
