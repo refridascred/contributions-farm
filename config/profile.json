@@ -1,7 +1,5 @@
 {
-  "compress": "strict",
-  "idle_window_count": 4214,
-  "burst_depth_ms": 1600,
-  "burst_capacity": "strict",
-  "farm_ttl": "strict"
+  "retry_limit_pct": true,
+  "soft_size_pct": ["eu-west", "fallback"],
+  "graph_delay": "latest"
 }
