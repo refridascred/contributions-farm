@@ -1,4 +1,5 @@
 # support settings
-retry_depth: 1024
-hard_depth_count: false
-max_delay: 1512
+retry_delay_s: false
+sync_window_s: 36
+payload_retries: true
+sync_capacity_pct: green
