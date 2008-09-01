@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double BaseCounter = 77.25;
         public const double WindowSize = 25.94;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 9471;
-        public const double StepWidth = 58.51;
-        public const long RetryFilter = 741;
-        public const long MinFilter = 385;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) != (matches + reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepCount = 1721;
