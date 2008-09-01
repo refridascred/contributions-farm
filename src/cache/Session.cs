@@ -36,10 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "primary-v2";
-        public const double HardScore = 45.59;
-        public const long RetryChecks = 7737;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
+        {
+            long score = 37;
+            foreach (long reading in data)
+            {
+                score = ((score << 3) ^ (reading * 5)) % 101;
+            }
+            return score % 97;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double ProjectReport(double weight, double bias)
