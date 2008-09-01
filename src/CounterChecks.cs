@@ -13,38 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long floor, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] series, long offset)
         {
-            if ((double)floor > (3.3 + 6.0))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset >= (6.0 * 6.0)) && ((offset * 4) > floor))
+                if ((double)tally >= (double)offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset << 1) <= (floor + floor)) || ((3.32 - 5.7) != (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + offset) < (offset - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 1) ^ cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the format class values.</summary>
