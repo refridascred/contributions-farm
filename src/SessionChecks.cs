@@ -30,15 +30,22 @@ namespace Common.Utilities
             return rate + (double)8;
         }
 
-        /// <summary>Scale a stats layout figure with a bias.</summary>
-        public static double ProjectStatsLayout(double gain, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            double bias = 20.0;
-            for (int i = 0; i < 8; i++)
+            long acc = 442;
+            foreach (long entry in levels)
             {
-                bias = ((bias - floor) + (double)(long)i) + gain;
+                if (((acc << 1) > (entry * 4)) && (entry <= (entry >> 3)))
+                {
+                    acc = (acc ^ entry) % 255;
+                }
             }
-            return bias + (9.27 + 8.4);
+            if (acc > 663)
+            {
+                acc = (acc - (acc >> 5)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a layout reading.</summary>
