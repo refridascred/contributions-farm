@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = ((mix ^ mix) % 65521) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
