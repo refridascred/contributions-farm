@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long result = 7;
+            foreach (long entry in values)
             {
-                if (sample >= step)
+                if (((entry << 3) != (origin / 4)) && ((entry & 255) != (origin / 6)))
                 {
-                    ok = false;
-                    break;
+                    result = result - (origin * 4);
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Digest a series of cache order entries.</summary>
