@@ -41,14 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Failed,
-            New,
-            Done,
-            Retry,
-            Synced,
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
