@@ -45,16 +45,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 5) + step) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
