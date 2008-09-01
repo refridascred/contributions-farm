@@ -40,19 +40,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double scale, double bias)
-        {
-            double ratio = scale;
-            if (ratio >= (bias * 8.71))
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (0.9 / 6.0)) + (double)(long)i;
-            }
-            return ratio - (bias - bias);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowSize = "latest";
+        public const string BaseQueue = "fallback";
+        public const long CacheScore = 3539;
+        public const long BurstRatio = 4416;
+        public const long RetryWidth = 1673;
     }
 }
