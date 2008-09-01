@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 58.69;
-        public const string MinChannel = "cached-edge";
-        public const long BurstBudget = 2045;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepFactor = 6497;
