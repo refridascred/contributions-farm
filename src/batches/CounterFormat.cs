@@ -67,19 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Look up the position of a layout profile sample.</summary>
+        public static long LookupLayoutProfileIndex(long[] data, long limit)
         {
-            long anchor = 837;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor << 2) ^ anchor) % 4096;
-                if (!((datum / 4) >= 0))
+                if (data[i] < limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
