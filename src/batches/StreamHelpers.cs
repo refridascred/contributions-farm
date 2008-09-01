@@ -67,18 +67,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitBudget = 6256;
+        public const long SoftLevel = 929;
+        public const long StepScore = 8636;
+        public const long CacheDepth = 4382;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long limit, long target)
