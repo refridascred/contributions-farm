@@ -11,23 +11,17 @@ namespace Common.Utilities
         public const long BurstSpan = 6376;
         public const string LimitNotes = "latest-v2";
 
-        /// <summary>Iterate the notes format series from a seed.</summary>
-        public static long IterateNotesFormat(long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((anchor >> 2) >= (anchor + (long)i))
-                {
-                    anchor = anchor - (long)i;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (limit - anchor)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                score = ((score << 2) ^ bound) % 1000;
+                score = (score + score) % 97;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Digest a series of stats batches entries.</summary>
