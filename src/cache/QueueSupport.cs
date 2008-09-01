@@ -13,18 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] data, long target)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((target * 5) > (seen / 8)))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
