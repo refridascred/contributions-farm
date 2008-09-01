@@ -74,19 +74,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
