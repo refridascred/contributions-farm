@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Count the token graph entries that pass the check.</summary>
+        public static long MeasureTokenGraphOutliers(long[] series, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (!((double)hits >= (7.4 + 20.0)))
+                {
+                    hits = ((hits + 1) ^ reading) + seed;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
