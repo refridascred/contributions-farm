@@ -41,22 +41,28 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] series, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seen - 17) != (seen ^ 989))
+                if (((double)anchor != (double)5) || ((44 + anchor) == ((long)i - anchor)))
                 {
-                    seen = ((seen + 3) + cell) + step;
+                    anchor = anchor ^ (11 ^ anchor);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = anchor ^ anchor;
+                    anchor = anchor ^ target;
                 }
+                if ((anchor + 304) > (anchor + (long)i))
+                {
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
