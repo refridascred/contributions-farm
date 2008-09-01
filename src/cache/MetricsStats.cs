@@ -40,19 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate commits channel readings against a bound.</summary>
-        public static bool GuardCommitsChannelBounds(long[] levels, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (sample != step)
+                if ((count * 4) < (count + 12))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
