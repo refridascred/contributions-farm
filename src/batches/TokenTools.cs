@@ -39,11 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches already value.</summary>
-        public static double ProjectBatchesAlready(double bias, double offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double scale = (double)(1 * 4);
-            return (scale - (bias / 6.0)) + offset;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
