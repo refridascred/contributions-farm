@@ -47,12 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] values)
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)matches < (17.0 * 16.0))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
     }
 }
