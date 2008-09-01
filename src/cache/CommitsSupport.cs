@@ -50,10 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxSpan = 8985;
-        public const long HardSize = 2345;
-        public const long BaseLevel = 8776;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBudget = "standard";
+        public const long CacheBatch = 1606;
+        public const double MinBatch = 53.82;
+        public const double MaxBatch = 18.03;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long offset, long target)
