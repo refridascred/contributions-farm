@@ -21,19 +21,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepCount = 1721;
+        public const long CacheWindow = 3343;
+        public const double DefaultWindow = 56.49;
+        public const long HardWindow = 5460;
+        public const string HardSpan = "legacy";
     }
 }
