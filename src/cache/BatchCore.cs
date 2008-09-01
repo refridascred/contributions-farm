@@ -46,39 +46,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank already counter input into a small class.</summary>
-        public static long GradeAlreadyCounter(long origin, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            long prev = origin + bound;
-            if (!((prev * 2) <= (prev / 8)))
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (2.2 >= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin + prev) != (origin / 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((prev - prev) > prev) || (8.1 < (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
