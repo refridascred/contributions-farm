@@ -1,14 +1,14 @@
 # Command notes
 
-Each counter is validated before it reaches the metrics queue.
-A account that stays idle for too long is moved to the stats list.
+Keep buffer and metric names short and lowercase.
+Use cluster settings to tune how often editor data is refreshed.
+The channel module keeps session values in sync with the batch cache.
 
-Use session settings to tune how often order data is refreshed.
-The stream module keeps window values in sync with the editor cache.
+A batches that stays idle for too long is moved to the report list.
+The editor report groups every window by metric.
 
 ## Guidelines
 
-- Validate stream input early
-- Review counter limits each release
 - Log every cache change
-- Document new commits fields
+- Document new metric fields
+- Review batches limits each release
