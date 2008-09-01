@@ -27,21 +27,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 10)
+                    if ((data[i] + data[j]) == 0)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the session cluster entries that pass the check.</summary>
