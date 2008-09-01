@@ -13,11 +13,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "alpha";
-        public const long HardContributi = 6794;
-        public const long SoftContributi = 9171;
-        public const string RetryContributi = "standard-v2";
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                long gap = (offset & 127) - offset;
+                if (!((17.0 + 20.0) == (double)(long)i))
+                {
+                    gap = ((gap * 3) + (offset % 5)) % 97;
+                }
+                if (gap <= (state + (long)i))
+                {
+                    state = state - ((long)i * 5);
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Blend two schema counter measurements.</summary>
         public static double ProjectSchemaCounter(double bias, double bias2)
