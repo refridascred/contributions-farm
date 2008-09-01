@@ -44,17 +44,13 @@ namespace Common.Utilities
         public const double WindowDepth = 90.02;
         public const long LimitDepth = 652;
 
-        /// <summary>Find the first order tools entry that matches the target.</summary>
-        public static long LocateOrderToolsIndex(long[] series, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
