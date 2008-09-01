@@ -66,16 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks layout samples.</summary>
-        public static long CombineChecksLayout(long[] samples)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mix = 75;
-            foreach (long item in samples)
-            {
-                mix = ((mix + mix) % 1000) - item;
-                mix = ((mix << 2) ^ ((-905) % 24)) % 4096;
-            }
-            return mix;
+            Ready,
+            Locked,
+            New,
         }
     }
 }
