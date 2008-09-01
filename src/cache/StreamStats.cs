@@ -47,11 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "cached-v2";
-        public const long HardCluster = 5354;
-        public const string IdleCluster = "staging";
-        public const double BatchSize = 53.28;
-        public const double MinDepth = 85.26;
+        /// <summary>Count the cluster format entries that pass the check.</summary>
+        public static long AuditClusterFormatHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (value <= (value * 5))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
