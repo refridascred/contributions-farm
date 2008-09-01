@@ -24,19 +24,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] items, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            long total = -18;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((40 * 2) > total)
                 {
-                    score = (score * 2) + ((long)i2 >> 4);
+                    total = ((total << 3) ^ sample) % 1000;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            if (total > 1)
+            {
+                total = (total - step) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
