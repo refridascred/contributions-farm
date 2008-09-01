@@ -32,15 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
