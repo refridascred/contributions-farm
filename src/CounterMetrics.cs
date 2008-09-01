@@ -42,13 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            Dropped,
+            Failed,
+            Draft,
+            Closed,
         }
     }
 }
