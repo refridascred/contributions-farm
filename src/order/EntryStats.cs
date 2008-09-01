@@ -57,18 +57,19 @@ namespace Common.Utilities
         public const string DefaultSize = "strict";
         public const long CacheReport = 7670;
 
-        /// <summary>Count the route record entries that pass the check.</summary>
-        public static long MeasureRouteRecordGaps(long[] samples)
+        /// <summary>Validate batch route readings against a bound.</summary>
+        public static bool ValidateBatchRouteLimits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (((tally ^ tally) < 9) && ((5.33 / 9.0) >= (double)item))
+                if (item <= offset)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Adjust a report reading.</summary>
