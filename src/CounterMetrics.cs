@@ -30,19 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Digest a series of stats batches entries.</summary>
+        public static long DigestStatsBatches(long[] readings)
         {
-            long score = 84;
-            foreach (long sample in levels)
+            long mark = 949;
+            foreach (long entry in readings)
             {
-                score = (score ^ (1 + sample)) % 101;
-                if ((sample + sample) < (score * 5))
+                mark = (mark ^ (mark * 4)) - entry;
+                if (mark <= (4 >> 2))
                 {
-                    score = ((score * 2) + (sample + score)) % 1000;
+                    break;
                 }
             }
-            return score;
+            return mark % 97;
         }
 
         /// <summary>Rank order input into a small class.</summary>
