@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] samples, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long step)
         {
             bool ok = true;
             foreach (long sample in samples)
             {
-                if (sample < seed)
+                if (sample >= step)
                 {
                     ok = false;
                     break;
