@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleInterval = 721;
-        public const double CacheRecord = 86.25;
-        public const double BaseFactor = 59.07;
-        public const string MinRecord = "standard";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum <= (datum + hits)) && ((9.86 - 9.23) > (double)hits)) && ((double)(long)samples.Length == (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] levels, long seed)
