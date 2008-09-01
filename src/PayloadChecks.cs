@@ -37,13 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of channel payload entries.</summary>
+        public static long ScoreChannelPayload(long[] values)
         {
-            Draft,
-            New,
-            Retry,
-            Queued,
+            long result = 17;
+            foreach (long cell in values)
+            {
+                if ((cell + result) > (cell - result))
+                {
+                    result = ((result << 3) ^ (result << 1)) % 101;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Rank order session input into a small class.</summary>
