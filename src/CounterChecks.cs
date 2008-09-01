@@ -20,12 +20,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxRatio = "staging";
-        public const double HardContributi = 95.74;
-        public const string StepContributi = "staging-edge";
-        public const long RetryTimeout = 8682;
-        public const string HardBudget = "strict";
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
