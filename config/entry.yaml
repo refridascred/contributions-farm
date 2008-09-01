@@ -1,13 +1,5 @@
 # entry settings
-retry_interval_count:
-  - latest
-  - stable
-  - latest
-layout_timeout: staging
-soft_size_count:
-  support_capacity: 6810
-  sync_timeout: 2826
-  max_timeout_pct: false
-contributi_retries: 21
-githubfarm_delay: 3597
-soft_ratio: 8180
+sync_ttl_count: 70.53
+metric_limit: fallback
+verbose: cached
+batch_size_ms: true
