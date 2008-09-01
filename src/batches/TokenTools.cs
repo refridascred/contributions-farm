@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 2) ^ (seed - seed)) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a counter info.</summary>
