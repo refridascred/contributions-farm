@@ -24,26 +24,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] series, long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long bound)
         {
-            long carry = 91;
-            foreach (long datum in series)
+            if ((seed + (-612)) > (seed - 60))
             {
-                if ((datum % 2) >= (datum << 2))
+                return 7;
+            }
+            else
+            {
+                if (((-8) + seed) == (bound + seed))
                 {
-                    carry = (carry - (datum + datum)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    carry = ((carry * 2) + (target % 16)) % 101;
+                    if ((double)bound < (2.52 / 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (carry < 31)
-            {
-                carry = (carry - (9 & 3)) % 101;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
