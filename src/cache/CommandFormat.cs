@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] readings, long bound)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((((reading / 3) != (bound & 3)) || (reading <= (reading ^ seen))) && ((seen ^ 297) > (bound / 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Queued,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a queue entry.</summary>
