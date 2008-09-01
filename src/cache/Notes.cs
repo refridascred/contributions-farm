@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] data, long offset)
+        /// <summary>Count the queue cluster entries that pass the check.</summary>
+        public static long MeasureQueueClusterMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                if (((8.18 * 2.0) <= (double)entry) || ((double)hits >= (9.0 / 8.0)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two already graph measurements.</summary>
