@@ -56,18 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Validate editor report readings against a bound.</summary>
+        public static bool CheckEditorReportRange(long[] series, long target)
         {
-            long carry = 646;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (carry >= (cell / 5))
+                if (value < target)
                 {
-                    carry = carry - (cell + cell);
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
