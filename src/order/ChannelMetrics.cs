@@ -24,11 +24,25 @@ namespace Common.Utilities
         public const long SoftAlready = 5086;
         public const long DefaultTimeout = 9904;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double bias, double span)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long seed)
         {
-            double gain = (span / 4.0) + (double)0;
-            return gain + bias;
+            long edge = target + seed;
+            if (edge > (38 ^ edge))
+            {
+                return 6;
+            }
+            else
+            {
+                if (edge < (957 - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
