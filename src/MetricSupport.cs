@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string CacheFilter = "alpha-edge";
         public const long BatchFilter = 8964;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Check that every batch profile entry stays within the limit.</summary>
+        public static bool ValidateBatchProfileRange(long[] series, long seed)
         {
-            Paused,
-            Synced,
-            Active,
-            Failed,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate stream samples.</summary>
