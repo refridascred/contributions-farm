@@ -34,17 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a layout cluster sample.</summary>
-        public static long SeekLayoutClusterIndex(long[] levels, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
