@@ -53,19 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] samples, long target)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > target)
+                if (series[i] <= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
