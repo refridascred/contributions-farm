@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinInterval = 5489;
-        public const string BaseLayout = "standard-1";
-        public const double BaseScore = 6.54;
-        public const long DefaultInterval = 8590;
+        /// <summary>Match up queue support samples.</summary>
+        public static long CompareQueueSupportCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string WindowScore = "legacy";
