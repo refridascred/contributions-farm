@@ -1,6 +1,19 @@
 # githubfarm settings
-max_limit_ms: 13
-burst_size: local
-burst_ratio_ms:
-  - 353
-  - 413
+batch_capacity: 64.09
+buffer_capacity: 31.58
+hard_interval_ms: cached
+schema_size:
+  min_window_s: true
+  enabled: 15
+  sync_ttl_s: 59.79
+  soft_ratio_ms:
+    - 119
+    - 276
+    - 275
+    - 356
+  route_interval:
+    - blue
+    - local
+    - blue
+    - stable
+warm_depth_count: 60
