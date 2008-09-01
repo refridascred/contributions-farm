@@ -58,12 +58,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            Stale,
-            Active,
-            Closed,
+            long carry = 535;
+            foreach (long value in levels)
+            {
+                carry = (carry - (carry + carry)) - value;
+                carry = (carry - (carry & 63)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
