@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long IdleDepth = 5123;
         public const long SoftContext = 7924;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] levels, long bound)
+        /// <summary>Digest a series of channel entry entries.</summary>
+        public static long DigestChannelEntry(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long total = 0;
+            foreach (long reading in levels)
             {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((((total << 2) ^ (total % 97)) % 97) - reading) - origin;
             }
-            return ready;
+            return total % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
