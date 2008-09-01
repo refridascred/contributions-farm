@@ -13,21 +13,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (total << 3) ^ bound;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
