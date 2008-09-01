@@ -57,19 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] items, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (datum < offset)
+                if (value < target)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
