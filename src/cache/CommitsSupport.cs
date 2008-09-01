@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Locked,
-            Queued,
+            Pending,
             Draft,
-            Idle,
+            Synced,
         }
 
         /// <summary>Describe the context status values.</summary>
