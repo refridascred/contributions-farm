@@ -1,17 +1,5 @@
 {
-  "payload_timeout": 5129,
-  "hard_size": "green",
-  "idle_ttl_ms": {
-    "min_size_ms": true,
-    "flush_ttl_s": 7.46,
-    "warm_delay_s": {
-      "command_capacity": true,
-      "enabled": false,
-      "min_interval_pct": 64.9,
-      "buffer_ratio": 70,
-      "poll_ratio_count": [464, 308]
-    },
-    "flush_depth": "strict"
-  },
-  "soft_threshold_pct": true
+  "graph_limit": 85.77,
+  "base_timeout_s": 11.44,
+  "min_threshold_pct": "latest"
 }
