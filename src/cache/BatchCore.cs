@@ -38,18 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entry entries that pass the check.</summary>
-        public static long CountStreamEntryGaps(long[] readings)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (value >= (value >> 4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Paused,
+            New,
         }
     }
 }
