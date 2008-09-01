@@ -96,19 +96,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] items, long limit)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            bool found = true;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
