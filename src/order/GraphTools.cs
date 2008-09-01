@@ -74,13 +74,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] series)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry % 16) == (matches << 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
