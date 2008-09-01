@@ -22,14 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 3944;
+        public const long LimitGraph = 9062;
+        public const long SoftGraph = 2292;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordHits(long[] items, long step)
