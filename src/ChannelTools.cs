@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] items, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (((offset - count) < (count << 3)) || ((offset + count) != (12 - item)))
-                {
-                    count = count + 3;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
