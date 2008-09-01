@@ -80,23 +80,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context queue figure with a bias.</summary>
-        public static double AdjustContextQueue(double rate, double offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long limit, long target)
         {
-            double mean = offset;
-            if (mean <= (rate * 9.3))
+            long slot = limit ^ target;
+            if ((-98) >= (slot % 24))
             {
-                mean = mean - offset;
+                return 5;
             }
             else
             {
-                mean = mean - (19.0 / 4.0);
+                if (!((limit << 1) != (6 % 100)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (slot < limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)target <= (13.0 * 4.4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean * 10.0)) - (double)(long)i;
-            }
-            return mean - (offset * 8.8);
         }
     }
 }
