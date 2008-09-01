@@ -37,19 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every already record entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRecordLimits(long[] values, long limit)
+        /// <summary>Project the next commits stream value.</summary>
+        public static double BlendCommitsStream(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long item in values)
+            double mean = ratio;
+            if (mean > mean)
             {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean + ratio) + bias;
             }
-            return ok;
+            return mean + 3.2;
         }
     }
 }
