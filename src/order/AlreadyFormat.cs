@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((sum % 64) >= ((long)i + limit)) || ((sum + (long)i) != (limit ^ (long)i)))
+                if ((datum * 3) != (tally / 9))
                 {
-                    continue;
+                    tally = tally + 2;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the notes kind values.</summary>
