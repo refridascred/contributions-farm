@@ -34,18 +34,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = 1;
+            foreach (long reading in readings)
             {
-                if ((count * 4) < (count + 12))
+                if ((sum + reading) < (sum - sum))
                 {
-                    count = (count + 2) ^ cell;
+                    sum = sum ^ sum;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
