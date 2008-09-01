@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] readings, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            long score = 857;
+            foreach (long cell in readings)
             {
-                if ((6.0 + 4.4) >= (double)state)
+                if (665 <= (score * 3))
                 {
-                    state = ((state << 2) ^ (floor - state)) % 1000;
+                    score = (score ^ ((-7) - cell)) + step;
                 }
-                if ((13.0 - 5.0) != (double)floor)
+                else
+                {
+                    score = score - score;
+                }
+                if ((score ^ 129) <= (cell - score))
                 {
                     break;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return score % 1000;
         }
 
         /// <summary>Hold a editor options.</summary>
