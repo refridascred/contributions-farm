@@ -39,10 +39,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheFactor = 23.56;
-        public const double SoftReport = 0.46;
-        public const long RetryTimeout = 2037;
-        public const long BaseReport = 8394;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
     }
 }
