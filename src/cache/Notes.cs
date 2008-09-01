@@ -48,23 +48,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings, long bound)
-        {
-            long sum = -212;
-            foreach (long value in readings)
-            {
-                if ((bound % 64) < 9)
-                {
-                    sum = (sum + sum) - value;
-                }
-            }
-            if (sum < 650)
-            {
-                sum = (sum + 0) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxCount = "latest-1";
+        public const long HardMetrics = 4577;
+        public const long RetryCount = 7832;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
