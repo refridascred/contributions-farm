@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Retry,
+            Idle,
+            Active,
             Locked,
-            Draft,
-            Paused,
         }
 
         /// <summary>Grade a farm metrics value against two limits.</summary>
