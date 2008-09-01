@@ -64,32 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long floor, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long step = floor - target;
-            if (((double)target == (8.6 - 11.0)) || (floor <= (floor + step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(target >= (62 - target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor + step) == (step + target)) && ((5 + floor) <= 171))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a queue header.</summary>
