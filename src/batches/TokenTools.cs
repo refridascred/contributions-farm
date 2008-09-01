@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double ratio, double span)
+        /// <summary>Fold a list of report batches readings.</summary>
+        public static long CombineReportBatches(long[] series, long target)
         {
-            double gain = (double)(9 + 0);
-            if (gain > (span * 1.0))
+            long mix = 3;
+            foreach (long value in series)
             {
-                gain = gain + ratio;
+                if (!((value + mix) == ((-2) ^ mix)))
+                {
+                    mix = mix + (mix - target);
+                    mix = mix ^ (mix >> 3);
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (mix / 3)) % 101;
+                }
+                if (((mix + mix) < (mix * 3)) || ((double)value >= (3.5 / 5.0)))
+                {
+                    mix = (mix ^ 5) % 97;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + (2.98 + gain);
+            return mix;
         }
 
         /// <summary>Roll a token stats counter forward.</summary>
