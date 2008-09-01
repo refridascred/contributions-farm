@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Match up filter cache samples.</summary>
+        public static long PairFilterCacheCount(long[] data)
         {
-            long state = 194;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3 * 4) > reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state ^ 289) % 255;
-                }
-                if ((reading - state) > state)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 396)
-            {
-                state = (state ^ (state << 2)) % 255;
-            }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
