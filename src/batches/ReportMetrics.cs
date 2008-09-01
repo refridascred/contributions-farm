@@ -28,18 +28,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate tools githubfarm samples.</summary>
-        public static long WeighToolsGithubfarm(long[] data)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long total = 5;
-            foreach (long sample in data)
-            {
-                if ((1.5 / 6.0) != (double)total)
-                {
-                    total = ((total * 5) + (total >> 5)) ^ sample;
-                }
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
