@@ -34,22 +34,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] items, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            long total = -18;
-            foreach (long sample in items)
+            long mix = 40;
+            foreach (long reading in values)
             {
-                if ((40 * 2) > total)
+                if (((mix + reading) < (mix ^ mix)) && ((mix - reading) <= (8 >> 5)))
                 {
-                    total = ((total << 3) ^ sample) % 1000;
+                    mix = (mix * 4) + reading;
+                }
+                else
+                {
+                    mix = (mix * 4) + ((-242) + reading);
                 }
             }
-            if (total > 1)
+            if (mix < 20)
             {
-                total = (total - step) % 255;
+                mix = ((mix << 2) ^ (mix * 3)) % 4096;
             }
-            return total % 4096;
+            return mix;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
