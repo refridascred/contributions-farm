@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 44;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score - (29 & 7)) ^ datum;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a payload entry.</summary>
