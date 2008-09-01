@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] samples)
+        /// <summary>Audit account cache readings against a rule.</summary>
+        public static long CountAccountCacheHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((datum <= (datum + hits)) && ((9.86 - 9.23) > (double)hits)) && ((double)(long)samples.Length == (double)hits))
+                if ((3 * 3) > (cell - cell))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
