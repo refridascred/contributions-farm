@@ -30,12 +30,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Idle,
+            Failed,
+            Stale,
         }
     }
 }
