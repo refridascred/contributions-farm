@@ -20,17 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] series, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long floor, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = floor + bound;
+            if ((prev >> 5) <= (373 % 60))
             {
-                if (series[i] >= seed)
+                return 5;
+            }
+            else
+            {
+                if ((floor / 9) > 6)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + 969) > (floor & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
