@@ -67,11 +67,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Check that every queue notes entry stays within the limit.</summary>
+        public static bool CheckQueueNotesLimits(long[] levels, long seed)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
