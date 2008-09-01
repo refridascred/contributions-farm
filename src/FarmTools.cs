@@ -33,22 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] readings)
-        {
-            long sum = 6;
-            foreach (long reading in readings)
-            {
-                if (((double)reading < 4.0) || ((68 + reading) != (sum + reading)))
-                {
-                    sum = sum - (sum & 63);
-                }
-            }
-            if (sum > 67)
-            {
-                sum = (sum << 2) ^ (sum << 3);
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 23.68;
+        public const string IdleSize = "primary-v2";
+        public const long CachePayload = 1444;
+        public const long SoftFactor = 9127;
     }
 }
