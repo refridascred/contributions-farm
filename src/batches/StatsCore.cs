@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const long LimitSpan = 1523;
         public const long BaseLevel = 9829;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxWidth = 51.96;
-        public const string IdleContributi = "alpha-v2";
-        public const string BaseWidth = "staging";
-        public const string BurstLevel = "legacy-1";
-        public const long DefaultFactor = 9682;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate commits token samples.</summary>
         public static long DigestCommitsToken(long[] samples)
