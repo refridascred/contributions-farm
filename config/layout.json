@@ -1,5 +1,8 @@
 {
-  "dry_run": 14.03,
-  "burst_threshold_ms": "open",
-  "sync_delay_s": 174
+  "compress": 96,
+  "flush_ratio_count": true,
+  "max_delay": ["stable", "strict", "cached", "strict"],
+  "strict": "fallback",
+  "base_size_count": 81.9,
+  "default_timeout": [412, 12, 49, 243]
 }
