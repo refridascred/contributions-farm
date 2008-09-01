@@ -47,19 +47,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double scale, double floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long bound, long floor)
         {
-            double weight = floor;
-            if (weight <= weight)
+            if ((double)floor >= (2.9 + 5.1))
             {
-                weight = weight + scale;
+                return 0;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                weight = (weight - (floor - floor)) + (double)(long)i;
+                if ((floor >> 4) != (60 >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(floor < (479 & 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight - (weight - scale);
         }
     }
 }
