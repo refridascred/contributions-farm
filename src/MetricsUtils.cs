@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] samples, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)tally >= (9.3 / 7.0))
-                {
-                    tally = ((tally + 2) - value) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
