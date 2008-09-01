@@ -56,11 +56,22 @@ namespace Common.Utilities
             return load - (load - load);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSchema = "staging-1";
-        public const long MaxLevel = 8774;
-        public const long MaxSchema = 7913;
-        public const long CacheSchema = 8551;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
