@@ -46,16 +46,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            long mix = 94;
+            foreach (long datum in values)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
-                mark = ((mark * 5) + (long)i) % 101;
+                if (mix < (mix + mix))
+                {
+                    mix = mix + (188 + datum);
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
