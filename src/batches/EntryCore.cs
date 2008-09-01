@@ -43,21 +43,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next report tools value from a seed.</summary>
-        public static long RollReportTools(long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry ^ (carry - carry)) % 4096) ^ (long)i2;
-                    carry = carry + (7 - carry);
-                }
-                carry = ((carry * 5) + (carry & 127)) % 4096;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
