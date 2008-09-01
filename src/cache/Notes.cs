@@ -47,22 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] series)
         {
-            long mark = -329;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((double)mark >= 10.0) && ((mark % 12) >= (mark ^ 22)))
+                if (6.31 < (double)matches)
                 {
-                    mark = ((mark + mark) % 4096) + reading;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            if (mark > 177)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Scale a window counter figure with a bias.</summary>
