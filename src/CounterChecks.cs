@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate account channel readings against a bound.</summary>
-        public static bool VerifyAccountChannelRange(long[] items, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
