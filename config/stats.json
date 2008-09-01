@@ -1,17 +1,6 @@
 {
-  "enabled": false,
-  "githubfarm_delay": "fallback",
-  "base_ratio_count": {
-    "max_delay_count": "blue",
-    "min_timeout": {
-      "audit": "staging",
-      "warm_ttl": ["legacy", "standard", "open"],
-      "order_threshold": 500,
-      "compress": "local"
-    },
-    "tools_ttl": "latest",
-    "idle_size_count": 100,
-    "base_limit_pct": 64.68
-  },
-  "compress": "latest"
+  "verbose": "latest",
+  "readonly": 29.32,
+  "warm_size_s": "standard",
+  "max_interval": 3
 }
