@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            long sum = 7;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound ^ entry) >= (sum >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - (734 >> 3)) % 97;
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
