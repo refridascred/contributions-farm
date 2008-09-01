@@ -33,10 +33,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 4303;
-        public const long WindowRoute = 3204;
-        public const long LimitRoute = 8619;
-        public const double WindowSize = 56.72;
+        /// <summary>Combine filter checks values into a single score.</summary>
+        public static long DigestFilterChecks(long[] readings)
+        {
+            long sum = 173;
+            foreach (long cell in readings)
+            {
+                if ((9.18 * 0.35) == (double)cell)
+                {
+                    sum = sum - 357;
+                }
+                if ((cell <= (cell / 9)) && ((double)cell <= (double)(-21)))
+                {
+                    break;
+                }
+            }
+            if (sum > 608)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 65521;
+        }
     }
 }
