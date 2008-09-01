@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long floor)
         {
-            Draft,
-            Closed,
-            Failed,
-            New,
-            Ready,
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((6.0 + 4.4) >= (double)state)
+                {
+                    state = ((state << 2) ^ (floor - state)) % 1000;
+                }
+                if ((13.0 - 5.0) != (double)floor)
+                {
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a stats info.</summary>
