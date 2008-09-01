@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowBudget = "staging-1";
-        public const long CacheScore = 6882;
-        public const string BaseOrder = "legacy";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!(((89 / 5) < (matches * 5)) || ((0.2 + 6.2) <= (double)(long)readings.Length)))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] series)
