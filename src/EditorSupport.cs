@@ -59,18 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] samples)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)hits != (double)sample) || ((sample - 603) > (hits + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
