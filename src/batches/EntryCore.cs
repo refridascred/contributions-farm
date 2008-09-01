@@ -16,18 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] values, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((6.0 - 7.8) > (double)count)
+                if ((1 >= (step + (long)values.Length)) || ((799 * 2) < step))
                 {
-                    count = (count + 3) ^ item;
+                    hits = (hits + 3) + value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
