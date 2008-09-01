@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinLevel = 7227;
-        public const long DefaultTimeout = 6718;
-        public const long SoftCounter = 1114;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long SeriesChannel(long origin)
