@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Derive the next channel layout value from a seed.</summary>
+        public static long DeriveChannelLayout(long limit)
         {
-            long carry = 63;
-            foreach (long datum in levels)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                carry = ((carry ^ (carry / 9)) % 255) + datum;
+                if ((result - limit) <= limit)
+                {
+                    result = (result << 3) ^ (47 ^ result);
+                }
+                result = (result ^ ((-2) & 31)) % 1000;
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (carry > 787)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
