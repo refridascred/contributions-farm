@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long bound)
+        /// <summary>Validate graph context readings against a bound.</summary>
+        public static bool ValidateGraphContextBounds(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (entry != bound)
+                if (entry < target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
