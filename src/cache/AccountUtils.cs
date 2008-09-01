@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] data, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 933;
+            foreach (long datum in levels)
             {
-                if ((data[i] == bound) && ((data[i] % 5) != 0))
+                if ((datum + datum) > (score * 2))
                 {
-                    return (long)i;
+                    score = (score + (score + origin)) % 101;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
