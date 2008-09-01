@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
-        public static long MeasureClusterGithubfarmGaps(long[] samples, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value >= (value % 97)) && !((bound + 718) >= 69))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
