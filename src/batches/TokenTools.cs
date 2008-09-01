@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] data, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long value in data)
+            double ratio = rate;
+            if (ratio >= offset)
             {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - (rate + 0.61);
             }
-            return ready;
+            return ratio - ratio;
         }
 
         /// <summary>Hold a graph options.</summary>
