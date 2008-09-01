@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long step, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] series, long floor)
         {
-            if ((limit << 3) > limit)
+            long mix = 337;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit) != (limit / 5))
+                if (20.0 > (double)floor)
                 {
-                    return 8;
+                    mix = ((mix * 4) + (mix ^ floor)) % 4096;
                 }
                 else
                 {
-                    return 6;
+                    mix = (mix - entry) % 101;
                 }
             }
+            if (mix > 3)
+            {
+                mix = (mix + (mix + mix)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
