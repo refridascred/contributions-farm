@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] series)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((3.1 * 3.75) >= (double)cell)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
