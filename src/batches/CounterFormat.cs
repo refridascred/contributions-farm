@@ -26,13 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long bound, long step)
         {
-            Dropped,
-            Ready,
-            Stale,
-            Synced,
+            long prev = bound + step;
+            if ((674 + step) < (step + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound * 2) >= 94) && (5.6 < (double)prev))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step < prev)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + prev) < bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile kind values.</summary>
