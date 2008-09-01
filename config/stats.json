@@ -1,16 +1,10 @@
 {
-  "min_ttl": {
-    "burst_limit_pct": true,
-    "strict": ["standard", "latest"],
-    "batch_interval_count": {
-      "warm_size_count": ["blue", "cached", "standard", "standard"],
-      "metrics_ttl": [121, 214, 63],
-      "report_size": 89,
-      "idle_capacity": 60
-    },
-    "context_limit": 67.33
+  "dry_run": ["local", "local", "open", "strict"],
+  "layout_delay": {
+    "counter_depth": ["green", "local", "open", "primary"],
+    "cluster_timeout": true,
+    "max_capacity": 68.74
   },
-  "sync_ttl": 76,
-  "metric_depth": "green",
-  "farm_limit": [367, 442, 336, 16]
+  "base_window_ms": 250,
+  "strict": false
 }
