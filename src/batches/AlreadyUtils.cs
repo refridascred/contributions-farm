@@ -37,11 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 9646;
-        public const long WindowRatio = 6453;
-        public const double RetryWidth = 89.13;
-        public const string BaseChannel = "staging-v2";
+        /// <summary>Look up the position of a report cache sample.</summary>
+        public static long LocateReportCacheIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
