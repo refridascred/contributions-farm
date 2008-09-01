@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Active,
-            Closed,
-            Dropped,
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
