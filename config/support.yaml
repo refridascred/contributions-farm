@@ -1,7 +1,4 @@
 # support settings
-payload_size: 1024
-contributi_interval: eu-west
-base_timeout: 30
-cache_ratio_ms: 30
-stream_limit: false
-cache_ttl: false
+verbose: 100
+default_window: legacy
+already_size: false
