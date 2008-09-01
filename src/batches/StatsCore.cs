@@ -63,19 +63,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double rate, double span)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] readings)
         {
-            double rate2 = (double)0;
-            if (rate2 <= rate2)
+            long mark = 92;
+            foreach (long item in readings)
             {
-                rate2 = ((rate2 + rate2) - rate) + span;
+                mark = (mark - (mark + mark)) ^ item;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - (double)1;
+            return mark;
         }
 
         /// <summary>Hold a format record.</summary>
