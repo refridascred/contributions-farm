@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double scale = gain;
-            if (scale < floor)
-            {
-                scale = scale - (scale * 0.2);
-            }
-            return scale + (floor + scale);
+            Active,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
