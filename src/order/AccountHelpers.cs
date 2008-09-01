@@ -59,18 +59,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] samples)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long cur = origin - offset;
+            if ((cur ^ cur) <= (offset + cur))
             {
-                if (((0 < (seen - seen)) || (value >= (value >> 5))) || ((double)seen < (0.5 / 5.0)))
+                return 4;
+            }
+            else
+            {
+                if ((868 - (-93)) == (offset ^ offset))
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
