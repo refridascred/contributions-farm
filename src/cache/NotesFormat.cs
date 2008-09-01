@@ -30,18 +30,31 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] samples, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long origin, long origin2)
         {
-            long sum = 9;
-            foreach (long value in samples)
+            if ((origin2 % 24) == (32 % 12))
             {
-                if (5.26 > (double)value)
+                return 3;
+            }
+            else
+            {
+                if (((624 + origin) >= (origin % 8)) && (origin2 <= (origin2 - origin)))
                 {
-                    sum = ((sum << 3) ^ (value - limit)) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin2 - 1) > (0 + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum % 65521;
         }
     }
 }
