@@ -12,24 +12,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long origin)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            if ((6.16 - 3.3) >= (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)7 <= (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
