@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 763;
-        public const double SoftFarm = 30.92;
-        public const long RetryFarm = 5183;
-        public const long IdleFarm = 61;
+        /// <summary>Measure how many editor command samples are out of range.</summary>
+        public static long TallyEditorCommandHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!((double)hits >= 17.0))
+                {
+                    hits = (hits + 3) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] values, long bound)
