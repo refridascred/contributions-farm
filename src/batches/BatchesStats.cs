@@ -44,25 +44,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long floor, long origin)
+        /// <summary>Accumulate queue entry samples.</summary>
+        public static long TallyQueueEntry(long[] samples)
         {
-            long gap = floor ^ origin;
-            if (gap >= 8)
+            long score = 414;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ origin) <= floor)
+                score = score - (3 >> 3);
+                if ((reading + 82) == (score << 3))
                 {
-                    return 6;
+                    score = score + (reading * 5);
                 }
                 else
                 {
-                    return 0;
+                    score = ((score * 5) + score) % 65521;
+                }
+                if (reading >= ((long)samples.Length + reading))
+                {
+                    break;
                 }
             }
+            return score % 97;
         }
     }
 }
