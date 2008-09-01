@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every record cache entry stays within the limit.</summary>
-        public static bool GuardRecordCacheRange(long[] items, long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Look up the position of a report cache sample.</summary>
