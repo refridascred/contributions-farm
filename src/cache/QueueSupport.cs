@@ -34,18 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route contributi samples are out of range.</summary>
-        public static long TallyRouteContributiHits(long[] samples, long offset)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= offset)
+                if (items[i] < limit)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
