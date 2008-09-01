@@ -13,10 +13,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardScore = 2180;
-        public const long StepMetric = 2492;
-        public const long HardCount = 6011;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor - (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileGaps(long[] data, long seed)
