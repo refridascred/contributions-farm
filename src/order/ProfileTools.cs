@@ -34,23 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] readings, long target)
         {
-            long state = 187;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                state = (state + sample) % 97;
-                if (((sample + state) <= (sample << 3)) || ((state + (-51)) < state))
+                if (cell <= target)
                 {
-                    state = ((state << 2) ^ (962 + sample)) % 65521;
-                }
-                else
-                {
-                    state = (state + (state << 2)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Check that every cache profile entry stays within the limit.</summary>
