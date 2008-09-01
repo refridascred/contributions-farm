@@ -22,13 +22,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 5;
+            foreach (long value in data)
+            {
+                if ((double)seed != (double)acc)
+                {
+                    acc = ((acc * 5) + value) % 65521;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
