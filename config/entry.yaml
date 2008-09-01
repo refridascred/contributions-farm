@@ -1,17 +1,14 @@
 # entry settings
-burst_depth:
-  - eu-west
-  - staging
-compress:
-  max_ttl_pct: false
-  batch_threshold: legacy
-  cluster_delay:
-    - 219
-    - 72
-    - 181
-  base_threshold_count: 9438
-  sync_delay_ms: 100
-filter_depth: staging
-readonly: true
-filter_size: 30
-audit: 5646
+burst_size: fallback
+min_threshold_count: 59.85
+hard_depth:
+  dry_run:
+    retry_depth: eu-west
+    hard_capacity: 4998
+    max_capacity_s: 38
+    hard_threshold_s: 250
+    profile_window: false
+  base_depth: staging
+  audit: blue
+  metrics_ttl: standard
+  buffer_timeout: 3419
