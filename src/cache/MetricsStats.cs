@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinSpan = 68.12;
+        public const string IdleTimeout = "fallback-edge";
+        public const double DefaultReport = 66.12;
+        public const long BurstWidth = 3323;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TallyEntry(long[] items, long floor)
