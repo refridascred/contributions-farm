@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Active,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 7736;
+        public const long MaxContext = 2059;
+        public const long LimitContext = 5768;
+        public const double DefaultContext = 54.64;
+        public const long WindowContext = 6982;
 
         /// <summary>Project the next token value.</summary>
         public static double SmoothToken(double rate, double offset)
