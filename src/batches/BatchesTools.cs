@@ -37,13 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            Stale,
+            Done,
+            Idle,
         }
     }
 }
