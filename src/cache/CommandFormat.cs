@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many account channel samples are out of range.</summary>
-        public static long MeasureAccountChannelGaps(long[] items, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((origin ^ origin) <= tally)
+                if ((((reading / 3) != (bound & 3)) || (reading <= (reading ^ seen))) && ((seen ^ 297) > (bound / 3)))
                 {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a queue entry.</summary>
