@@ -1,7 +1,7 @@
 {
-  "metric_timeout": "eu-west",
-  "burst_timeout_pct": 9898,
-  "schema_size": "latest",
-  "persist": "primary",
-  "readonly": "primary"
+  "compress": ["local", "stable"],
+  "flush_size_s": 1890,
+  "retry_depth_count": 30,
+  "sync_interval_pct": [286, 60, 402, 335],
+  "batch_ttl_s": "latest"
 }
