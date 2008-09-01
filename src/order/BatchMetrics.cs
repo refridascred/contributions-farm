@@ -31,32 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long seed, long seed2)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long offset = seed + seed2;
-            if ((seed2 - seed) <= seed2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed2 > (3.34 / 3.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
