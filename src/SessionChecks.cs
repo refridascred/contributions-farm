@@ -25,11 +25,32 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long floor, long origin)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
+            long delta = floor ^ origin;
+            if (floor >= ((-9) + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)floor < 7.0) || (floor <= (floor + delta)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor <= (delta ^ floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up counter samples.</summary>
