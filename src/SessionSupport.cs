@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long sum = 191;
-            foreach (long cell in data)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                sum = ((sum << 3) ^ (cell + cell)) % 4096;
-                if ((cell > (cell + sum)) && ((cell * 2) > cell))
+                if (!((mark - (long)i) > offset))
                 {
-                    break;
+                    mark = (mark ^ (403 << 1)) % 65521;
+                    continue;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
