@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Retry,
+            Queued,
             Closed,
             Locked,
-            Done,
-            Stale,
         }
 
         /// <summary>Rank context report input into a small class.</summary>
