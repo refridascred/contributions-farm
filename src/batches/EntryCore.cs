@@ -33,13 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format contributi readings against a bound.</summary>
-        public static bool VerifyFormatContributiLimits(long[] items, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] data, long floor)
         {
             bool ok = true;
-            foreach (long cell in items)
+            foreach (long item in data)
             {
-                if (cell > offset)
+                if (item > floor)
                 {
                     ok = false;
                     break;
