@@ -1,12 +1,8 @@
 {
-  "audit": 6748,
-  "context_retries": 1538,
-  "cluster_size": {
-    "retry_interval": false,
-    "enabled": [379, 4, 201],
-    "burst_capacity_s": 96.13,
-    "dry_run": 71
-  },
-  "window_capacity": "staging",
-  "stats_interval": "blue"
+  "filter_ttl": 75,
+  "burst_capacity": 1024,
+  "hard_retries_ms": 60,
+  "batch_depth_pct": 1024,
+  "base_capacity": false,
+  "base_interval_pct": 34.92
 }
