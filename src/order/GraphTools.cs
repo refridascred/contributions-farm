@@ -60,21 +60,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (limit > (limit / 3))
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a queue info.</summary>
