@@ -33,22 +33,11 @@ namespace Common.Utilities
         public const long DefaultGraph = 9358;
         public const long LimitLevel = 7632;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long acc = 251;
-            foreach (long entry in values)
-            {
-                if ((double)3 != (double)entry)
-                {
-                    acc = ((acc << 2) ^ acc) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ (acc ^ acc)) % 1000;
-                }
-            }
-            return acc;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
