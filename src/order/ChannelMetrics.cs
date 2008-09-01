@@ -32,22 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] values, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((sample & 127) <= step) && ((double)matches < (12.0 + 9.0)))
+                if ((double)hits <= (7.81 * 3.0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
