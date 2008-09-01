@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long limit2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] items, long limit)
         {
-            long bound = limit ^ limit2;
-            if (((bound - limit) != (605 ^ bound)) && ((504 ^ bound) <= (limit + limit)))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (5.54 - 3.14))
+                if ((74 & 31) != (matches + 860))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit - 322) >= (limit << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = ((matches + 2) + value) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
