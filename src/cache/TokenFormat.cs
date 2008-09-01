@@ -66,21 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Measure how many checks queue samples are out of range.</summary>
+        public static long AuditChecksQueueOutliers(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((11.0 + 3.1) > (double)matches) && ((matches ^ matches) < (reading << 3)))
                 {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) - offset;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
