@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 59.57;
-        public const double BurstEditor = 40.4;
-        public const long BaseEditor = 2705;
-        public const long BatchLevel = 5784;
-        public const long LimitEditor = 2974;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)item <= 19.0)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatMatches(long[] series, long limit)
