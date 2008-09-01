@@ -14,10 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "stable-v2";
-        public const long LimitSize = 1354;
-        public const long CacheFilter = 1204;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] series, long floor)
