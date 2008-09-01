@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next record commits value.</summary>
-        public static double SmoothRecordCommits(double bias, double offset)
+        /// <summary>Count the counter context entries that pass the check.</summary>
+        public static long AuditCounterContextMatches(long[] items)
         {
-            double bias2 = (3.43 - bias) / 8.0;
-            if (bias2 >= (bias - bias2))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                bias2 = bias2 + (offset - offset);
+                if ((matches % 64) != (entry + (-2)))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (2.5 * 8.3)) + (double)(long)i;
-            }
-            return bias2 + bias;
+            return matches;
         }
 
         /// <summary>Blend two already graph measurements.</summary>
