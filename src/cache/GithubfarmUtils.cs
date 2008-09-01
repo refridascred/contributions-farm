@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 3621;
-        public const long RetryContributi = 5242;
-        public const long CacheSize = 6867;
-        public const long SoftContributi = 6766;
-        public const long HardFactor = 8933;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Dropped,
+            Stale,
+            Ready,
+            New,
+            Done,
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
