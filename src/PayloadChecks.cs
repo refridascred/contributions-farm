@@ -46,19 +46,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] items, long origin)
+        /// <summary>Rank order session input into a small class.</summary>
+        public static long BucketOrderSession(long target, long bound)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long bound2 = target - bound;
+            if (((bound / 3) >= 460) && ((bound + bound2) >= (target >> 4)))
             {
-                if (reading <= origin)
+                return 1;
+            }
+            else
+            {
+                if ((double)target < (double)bound)
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound2 + target) >= bound2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up session metrics samples.</summary>
