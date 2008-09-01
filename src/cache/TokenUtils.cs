@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                mark = ((mark << 3) ^ ((long)i >> 5)) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (sample >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Hold a cluster header.</summary>
