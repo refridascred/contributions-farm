@@ -78,19 +78,24 @@ namespace Common.Utilities
         public const double MaxDepth = 5.89;
         public const string LimitProfile = "standard-1";
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double scale, double bias)
+        /// <summary>Grade a report stream value against two limits.</summary>
+        public static long ClassifyReportStream(long step, long target)
         {
-            double rate = (double)(68 + 28);
-            if (rate > rate)
+            if (((double)step <= 1.9) && (5.8 >= (double)target))
             {
-                rate = (rate + scale) - bias;
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                rate = (rate - (8.88 + rate)) + (double)(long)i;
+                if ((step / 7) > 4)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return rate - (scale / 8.0);
         }
     }
 }
