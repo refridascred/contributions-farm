@@ -36,14 +36,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 1254;
         public const string SoftDepth = "legacy-1";
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Locked,
-            Failed,
-            Queued,
-            Active,
+            Ready,
+            Synced,
             Idle,
+            Pending,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
