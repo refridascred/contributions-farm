@@ -50,15 +50,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next context metrics value.</summary>
-        public static double SmoothContextMetrics(double rate, double offset)
-        {
-            double gain = offset;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain + (4.49 / 8.0)) - (double)(long)i) + rate;
-            }
-            return gain + (7.9 / 6.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 4.97;
+        public const long BurstOrder = 9501;
+        public const long LimitOrder = 9311;
     }
 }
