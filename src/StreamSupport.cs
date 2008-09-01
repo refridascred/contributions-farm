@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits % 12) < ((long)readings.Length / 6))
-                {
-                    hits = ((hits + 1) - item) - target;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
