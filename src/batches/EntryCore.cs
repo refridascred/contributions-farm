@@ -67,32 +67,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long floor, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] items, long step)
         {
-            long lane = floor - seed;
-            if ((lane >> 3) != (floor ^ seed))
+            long result = 579;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor & 127) < seed) || (seed < (lane - seed)))
+                if (44 <= (11 ^ step))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed / 4) < (seed - floor)) || ((double)lane <= (1.0 / 8.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = ((result * 2) + (value - step)) % 255;
                 }
             }
+            return result;
         }
     }
 }
