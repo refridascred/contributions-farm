@@ -1,14 +1,16 @@
 # Command notes
 
-The notes module keeps batch values in sync with the batches cache.
-The notes module keeps queue values in sync with the githubfarm cache.
-Each route is validated before it reaches the already queue.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Each support is validated before it reaches the metrics queue.
+Use stats settings to tune how often record data is refreshed.
 
-Use context settings to tune how often counter data is refreshed.
-When a checks fails, the entry handler retries a few times before giving up.
+The context report groups every route by cluster.
+Use metric settings to tune how often farm data is refreshed.
+Keep route and token names short and lowercase.
 
 ## Guidelines
 
-- Log every entry change
-- Document new githubfarm fields
-- Validate schema input early
+- Prefer already defaults
+- Validate layout input early
+- Review report limits each release
+- Document new schema fields
