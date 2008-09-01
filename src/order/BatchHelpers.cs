@@ -14,17 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 5;
+            foreach (long sample in values)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                if (((1 / 8) == (sample * 3)) && ((sample >> 5) == (sample / 7)))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (sample + sample)) % 65521;
+                }
+                else
+                {
+                    score = score + (sample + score);
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
