@@ -81,13 +81,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Paused,
-            Closed,
-            Active,
-            Synced,
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
