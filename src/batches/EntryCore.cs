@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
