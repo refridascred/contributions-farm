@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const long RetryBudget = 1526;
         public const long MinWindow = 6078;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (4 > (matches % 97))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
