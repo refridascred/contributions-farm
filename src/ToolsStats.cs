@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Digest a series of cache order entries.</summary>
+        public static long ScoreCacheOrder(long[] readings, long target)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long sum = 52;
+            foreach (long item in readings)
+            {
+                sum = ((((sum * 4) + (sum & 7)) % 101) - item) + target;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
