@@ -1,11 +1,7 @@
 {
-  "cache_timeout": "standard",
-  "batches_timeout": {
-    "flush_retries": 8.4,
-    "hard_ratio_count": "standard",
-    "githubfarm_timeout": 50.56,
-    "enabled": "strict"
-  },
-  "readonly": 2998,
-  "enabled": 79
+  "retry_window": ["eu-west", "strict"],
+  "burst_ttl": 59,
+  "soft_timeout": "stable",
+  "flush_interval": 57.43,
+  "hard_threshold": 85
 }
