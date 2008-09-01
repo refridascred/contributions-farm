@@ -40,14 +40,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long MeasureChannelProfileMatches(long[] series)
         {
-            Retry,
-            Pending,
-            Failed,
-            Done,
-            Draft,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((long)series.Length < reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
