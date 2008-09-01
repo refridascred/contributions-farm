@@ -49,10 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowFactor = 30.2;
-        public const long DefaultWidth = 8669;
-        public const string HardRatio = "fallback";
-        public const long StepTimeout = 8020;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
