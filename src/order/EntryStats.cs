@@ -23,13 +23,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items, long limit)
         {
-            Idle,
-            Done,
-            Pending,
-            Closed,
+            long acc = 67;
+            foreach (long entry in items)
+            {
+                if (!(acc > (13 + limit)))
+                {
+                    acc = acc + entry;
+                    acc = acc ^ ((-45) + (-844));
+                }
+                else
+                {
+                    acc = (acc + (entry - entry)) % 101;
+                }
+                if ((60 ^ entry) == (entry - entry))
+                {
+                    acc = ((acc * 4) + (acc % 8)) % 255;
+                    acc = (acc + (acc + entry)) % 1000;
+                }
+                acc = (acc << 3) ^ (acc ^ acc);
+                if ((limit - entry) <= entry)
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
