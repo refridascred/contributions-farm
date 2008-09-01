@@ -34,22 +34,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] samples, long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            long acc = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seed <= (2.2 + 3.3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc ^ (datum ^ datum)) % 4096;
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 8)
-            {
-                acc = (acc + seed) % 4096;
-            }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Count already checks pairs that satisfy a relation.</summary>
