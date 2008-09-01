@@ -58,10 +58,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowCount = "stable-1";
-        public const double IdleFormat = 68.59;
-        public const string MaxFormat = "alpha-v2";
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long bound, long limit)
