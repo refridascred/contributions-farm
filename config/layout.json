@@ -1,6 +1,11 @@
 {
-  "soft_ratio_count": 72,
-  "soft_limit_s": 95,
-  "metric_size": "edge",
-  "batch_threshold_count": false
+  "cache_timeout": "standard",
+  "batches_timeout": {
+    "flush_retries": 8.4,
+    "hard_ratio_count": "standard",
+    "githubfarm_timeout": 50.56,
+    "enabled": "strict"
+  },
+  "readonly": 2998,
+  "enabled": 79
 }
