@@ -35,19 +35,19 @@ namespace Common.Utilities
         public const long BaseProfile = 3518;
         public const string DefaultCount = "latest-v2";
 
-        /// <summary>Blend two metrics route measurements.</summary>
-        public static double ProjectMetricsRoute(double rate, double offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double floor)
         {
-            double load = (2.0 - rate) / 2.0;
-            if (load <= rate)
+            double gain2 = gain;
+            if (gain2 >= (gain - gain2))
             {
-                load = load - (double)(-878);
+                gain2 = gain2 - gain2;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                load = load + offset;
+                gain2 = (gain2 + (double)0) + (double)(long)i;
             }
-            return load - (load - load);
+            return gain2 - (floor - gain2);
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
