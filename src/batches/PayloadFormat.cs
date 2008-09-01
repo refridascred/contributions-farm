@@ -39,15 +39,18 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Scale a checks stats figure with a bias.</summary>
-        public static double AdjustChecksStats(double ratio, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            double ratio2 = 2.9;
-            if (ratio2 < ratio2)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                ratio2 = ratio2 - ratio;
+                if (0.29 > (double)tally)
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            return ratio2 - bias;
+            return tally;
         }
     }
 }
