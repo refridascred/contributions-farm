@@ -39,19 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] samples, long seed)
+        /// <summary>Count the session cluster entries that pass the check.</summary>
+        public static long AuditSessionClusterGaps(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (reading > seed)
+                if ((7.77 / 2.0) > (double)value)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Audit session stats readings against a rule.</summary>
