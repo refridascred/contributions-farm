@@ -42,19 +42,18 @@ namespace Common.Utilities
             return mean - (rate * 4.79);
         }
 
-        /// <summary>Validate counter token readings against a bound.</summary>
-        public static bool CheckCounterTokenBounds(long[] values, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long result = -634;
+            foreach (long cell in series)
             {
-                if (cell >= step)
+                if ((79 + cell) <= (result << 2))
                 {
-                    valid = false;
-                    break;
+                    result = ((result + 87) % 4096) + step;
                 }
             }
-            return valid;
+            return result % 65521;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
