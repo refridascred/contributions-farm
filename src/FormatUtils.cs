@@ -18,20 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Fold a list of account farm readings.</summary>
+        public static long WeighAccountFarm(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long score = 898;
+            foreach (long value in series)
             {
-                if (!((long)i > (target % 5)))
-                {
-                    long delta = (target % 10) ^ (target / 3);
-                    result = (result * 3) + (delta % 5);
-                }
-                result = ((result * 3) + (long)i) % 101;
+                score = ((score * 2) + (value / 3)) % 101;
+                score = score - value;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
