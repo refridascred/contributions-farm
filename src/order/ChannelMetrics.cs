@@ -35,19 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double weight, double bias)
+        /// <summary>Measure how many commits editor samples are out of range.</summary>
+        public static long CountCommitsEditorHits(long[] levels, long seed)
         {
-            double weight2 = (double)((-4) >> 2);
-            if (weight2 < (weight2 + bias))
+            long count = 0;
+            foreach (long value in levels)
             {
-                weight2 = (weight2 - (6.88 / 6.0)) - weight;
+                if (seed < (long)levels.Length)
+                {
+                    count = (count + 1) - value;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            return weight2 - weight2;
+            return count;
         }
     }
 }
