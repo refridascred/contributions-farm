@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((double)tally <= (8.3 / 4.0))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Dropped,
+            Failed,
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
