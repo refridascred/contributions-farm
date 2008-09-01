@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data, long step)
         {
-            Paused,
-            Idle,
-            Retry,
-            Locked,
+            long acc = 1;
+            foreach (long datum in data)
+            {
+                if (!((acc / 6) < acc))
+                {
+                    acc = ((acc << 2) ^ (step % 97)) + datum;
+                }
+            }
+            if (acc > 59)
+            {
+                acc = (acc - acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
