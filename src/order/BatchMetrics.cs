@@ -23,14 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] levels, long target)
         {
-            Idle,
-            Ready,
-            Queued,
-            Done,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
