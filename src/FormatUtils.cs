@@ -19,39 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long step, long seed)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] items)
         {
-            long slot = step + seed;
-            if (step < (step << 2))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ step) > (slot * 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step != (double)seed)
+                    if ((items[i] ^ items[j]) != 13)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2 ^ step) > (352 + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
