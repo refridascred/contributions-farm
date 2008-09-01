@@ -25,18 +25,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long offset, long floor)
         {
-            long mix = 2;
-            foreach (long cell in levels)
+            long next = offset ^ floor;
+            if (!((6.0 + 1.5) <= (double)offset))
             {
-                if (((-945) - mix) < (962 >> 5))
+                return 1;
+            }
+            else
+            {
+                if ((1.25 + 5.0) < (double)next)
                 {
-                    mix = (mix + (cell << 2)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if (next <= (next % 24))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix % 1000;
         }
     }
 }
