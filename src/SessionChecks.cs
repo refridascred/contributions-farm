@@ -30,22 +30,23 @@ namespace Common.Utilities
             return rate + (double)8;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long step)
         {
-            long acc = 442;
-            foreach (long entry in levels)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (((acc << 1) > (entry * 4)) && (entry <= (entry >> 3)))
+                if ((2.64 * 0.11) > (double)step)
                 {
-                    acc = (acc ^ entry) % 255;
+                    sum = (sum + ((long)i + step)) % 65521;
                 }
+                else
+                {
+                    sum = sum + ((long)i & 1);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            if (acc > 663)
-            {
-                acc = (acc - (acc >> 5)) % 4096;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
