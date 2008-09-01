@@ -44,10 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstSpan = "staging";
-        public const double BaseSize = 82.16;
-        public const string LimitMetrics = "stable-1";
-        public const long SoftTimeout = 8470;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Synced,
+            Paused,
+            New,
+            Ready,
+            Locked,
+        }
     }
 }
