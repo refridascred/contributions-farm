@@ -15,10 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 85.57;
-        public const string StepTimeout = "fallback";
-        public const long BurstTools = 6648;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public bool Mode { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] values, long bound)
