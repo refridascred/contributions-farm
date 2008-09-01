@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long step, long step2)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long seed)
         {
-            long step3 = step + step2;
-            if (((step + 3) == (step3 >> 1)) && ((step2 >> 2) != (step2 * 2)))
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((873 << 3) <= (step3 >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Accumulate graph samples.</summary>
