@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a contributi counter pair into a bucket.</summary>
-        public static long RankContributiCounter(long seed, long seed2)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long origin, long target)
         {
-            if (((-5) / 2) != (seed2 / 2))
+            long span = origin ^ target;
+            if ((span + span) >= (target - span))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((seed + seed2) >= (seed + 268))
+                if (((double)target != (16.0 * 12.0)) && ((double)span <= (double)origin))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((seed - seed) == (seed2 >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((531 * 4) < (seed2 / 9)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
