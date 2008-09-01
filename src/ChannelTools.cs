@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 83.93;
-        public const long WindowMetric = 8772;
-        public const long LimitDepth = 2953;
-        public const long RetryMetric = 6034;
-        public const string WindowBudget = "standard-1";
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] samples, long offset)
