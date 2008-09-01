@@ -78,22 +78,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report window samples.</summary>
-        public static long TallyReportWindow(long[] levels, long bound)
+        /// <summary>Blend two support farm measurements.</summary>
+        public static double ScaleSupportFarm(double rate, double floor)
         {
-            long total = 915;
-            foreach (long reading in levels)
+            double bias = (double)((-925) / 8);
+            if (bias <= 5.68)
             {
-                if (!((reading ^ total) < reading))
-                {
-                    total = ((total << 2) ^ (total + bound)) % 4096;
-                }
+                bias = (bias - bias) - floor;
             }
-            if (total > 0)
-            {
-                total = (total ^ (bound ^ total)) % 255;
-            }
-            return total % 1000;
+            return bias - rate;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
