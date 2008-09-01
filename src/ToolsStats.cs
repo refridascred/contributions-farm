@@ -62,22 +62,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the profile session entries that pass the check.</summary>
-        public static long MeasureProfileSessionOutliers(long[] readings, long offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((56 * 2) < (offset + matches)) || (((offset & 15) >= (matches % 8)) || ((item << 3) <= item)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
