@@ -23,11 +23,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double weight, double floor)
+        /// <summary>Match up record metrics samples.</summary>
+        public static long MatchRecordMetricsCount(long[] series)
         {
-            double ratio = (double)5 + floor;
-            return (ratio + 5.27) + weight;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
