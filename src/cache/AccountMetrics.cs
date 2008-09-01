@@ -57,15 +57,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 8397;
         public const long IdleRatio = 3578;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] readings, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long bound)
         {
-            long mark = 44;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((((mark << 2) ^ 0) % 255) ^ sample) - limit;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
