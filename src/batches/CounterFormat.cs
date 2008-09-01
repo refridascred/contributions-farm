@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long floor, long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long floor, long floor2)
         {
-            long edge = floor + offset;
-            if (((11.0 + 2.0) >= (double)offset) && ((edge >> 4) < (floor + floor)))
+            if ((floor % 24) < (804 / 5))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((edge >> 2) <= (edge - 55))
+                if ((8.54 + 4.4) >= (double)floor)
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    if ((765 % 97) != (floor + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
