@@ -40,38 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry context pair into a bucket.</summary>
-        public static long SortEntryContext(long bound, long bound2)
+        /// <summary>Count the editor metric entries that pass the check.</summary>
+        public static long CountEditorMetricOutliers(long[] levels)
         {
-            if ((bound - bound) != (84 & 7))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound2 >= (bound - bound))
+                if ((739 % 8) < tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound2 & 255) == (bound2 * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound2 << 1) < bound2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 2) ^ reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
