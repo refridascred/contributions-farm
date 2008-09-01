@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate account channel readings against a bound.</summary>
+        public static bool VerifyAccountChannelRange(long[] items, long step)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
