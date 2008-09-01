@@ -33,18 +33,22 @@ namespace Common.Utilities
             return bias - (double)53;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (((61 / 2) >= (count - count)) || (((double)count >= (double)entry) || (entry > ((-9) / 4))))
+                if ((tally - tally) <= origin)
                 {
-                    count = count + 3;
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a payload format figure with a bias.</summary>
