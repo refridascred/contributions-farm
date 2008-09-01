@@ -26,17 +26,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a context token sample.</summary>
-        public static long FindContextTokenIndex(long[] readings, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (mix + mix)) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine token values into a single score.</summary>
