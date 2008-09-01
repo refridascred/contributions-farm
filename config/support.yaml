@@ -1,12 +1,4 @@
 # support settings
-support_timeout: 1024
-soft_ratio_s: 72
-layout_window: edge
-readonly:
-  default_depth: false
-  cluster_timeout: 52.99
-  verbose: 30
-  hard_threshold_count:
-    - 159
-    - 421
-    - 238
+stats_delay: 500
+contributi_delay: 87.99
+poll_delay: legacy
