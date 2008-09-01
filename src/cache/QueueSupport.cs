@@ -20,23 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] data, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] levels)
         {
-            long state = 21;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                long bound = origin;
-                if ((4.16 - 20.0) >= (double)state)
+                if ((value + 10) <= (matches % 97))
                 {
-                    state = (state ^ (bound & 1)) + value;
-                }
-                if ((52 ^ 0) > (state & 31))
-                {
-                    state = (state + (3 >> 3)) % 101;
+                    matches = matches + 3;
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
