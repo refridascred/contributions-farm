@@ -13,14 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Pending,
-            Ready,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "alpha";
+        public const long HardContributi = 6794;
+        public const long SoftContributi = 9171;
+        public const string RetryContributi = "standard-v2";
 
         /// <summary>Blend two schema counter measurements.</summary>
         public static double ProjectSchemaCounter(double bias, double bias2)
