@@ -43,11 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 39.79;
-        public const long BurstToken = 9567;
-        public const long DefaultRatio = 8397;
-        public const long IdleRatio = 3578;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatMatches(long[] series, long bound)
