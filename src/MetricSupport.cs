@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a metrics stream reading.</summary>
-        public static double SmoothMetricsStream(double scale, double offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double gain = (3.06 * 7.3) + 1.54;
-            if (gain >= (scale - offset))
-            {
-                gain = gain - (1.65 * 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - scale) + (double)(long)i;
-            }
-            return gain + scale;
+            Paused,
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
