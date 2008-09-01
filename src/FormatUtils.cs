@@ -18,12 +18,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 6354;
+        public const long StepReport = 1891;
+        public const double LimitBudget = 65.62;
+        public const long LimitReport = 3611;
+        public const long CacheFactor = 5044;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double ProjectCluster(double scale, double floor)
