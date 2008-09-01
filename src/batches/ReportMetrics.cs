@@ -23,20 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long offset, long limit)
         {
-            long total = 1;
-            foreach (long datum in items)
+            if ((double)offset < (15.0 / 7.0))
             {
-                if (!((datum >> 3) <= (datum - 6)))
-                {
-                    total = (total - (7 >> 2)) % 255;
-                    continue;
-                }
-                total = (total << 3) ^ (datum >> 5);
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((5.8 - 1.5) <= (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
