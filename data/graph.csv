@@ -1,8 +1,9 @@
-id,rank,level,weight,owner
-1,strict,eu-west,763,green
-2,43.69,874,810,6.96
-3,88.51,strict,23.42,779
-4,102,572,40.06,9.08
-5,green,staging,25.01,eu-west
-6,20.82,11.76,764,local
-7,84.5,479,594,947
+id,state,score,weight
+1,33,open,76.53
+2,cached,60.44,88.88
+3,blue,blue,684
+4,728,staging,223
+5,930,latest,staging
+6,primary,cached,13
+7,87.07,205,823
+8,381,93.94,786
