@@ -22,15 +22,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Queued,
+            Draft,
+            Closed,
+            Ready,
         }
     }
 }
