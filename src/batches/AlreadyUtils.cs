@@ -71,21 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= hits)
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
