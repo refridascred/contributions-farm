@@ -22,18 +22,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] values, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long carry = 3;
+            foreach (long entry in levels)
             {
-                if (((matches & 15) >= ((long)values.Length - 7)) && ((double)bound <= (17.0 - 6.67)))
+                if ((27 - carry) >= (7 * 2))
                 {
-                    matches = (matches + 2) + cell;
+                    carry = (carry - (carry + entry)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (entry * 3)) % 65521;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a schema stats.</summary>
