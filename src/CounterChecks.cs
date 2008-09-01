@@ -66,31 +66,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] data)
         {
-            if (((double)limit > (double)bound) && ((bound << 1) != (limit * 4)))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 4) != (limit ^ bound))
+                if (((reading >> 3) >= (6 - 668)) && ((reading - reading) <= (56 - reading)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound / 2) < (bound + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
