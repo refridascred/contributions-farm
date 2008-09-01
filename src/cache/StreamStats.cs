@@ -33,22 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] data, long bound)
         {
-            long mark = -3;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((mark & 7) <= (mark ^ mark))
+                if (cell <= bound)
                 {
-                    mark = (mark * 5) + (mark << 1);
-                }
-                else
-                {
-                    mark = (mark ^ (cell & 31)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
