@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double rate, double offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] values, long bound)
         {
-            double ratio = rate;
-            if (ratio >= offset)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - (rate + 0.61);
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Hold a graph options.</summary>
