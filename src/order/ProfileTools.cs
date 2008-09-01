@@ -42,22 +42,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] values)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((7 < (reading + matches)) || ((reading ^ reading) <= (matches - matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Idle,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
