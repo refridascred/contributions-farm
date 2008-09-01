@@ -36,11 +36,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepLevel = "strict-v2";
-        public const long MaxLevel = 6294;
-        public const long BaseContributi = 2010;
-        public const string RetryInterval = "fallback-edge";
-        public const string LimitTimeout = "staging";
+        public const long MinContributi = 1430;
+        public const long MaxSpan = 1454;
+        public const double RetryDepth = 86.12;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long FoldSupport(long[] series)
