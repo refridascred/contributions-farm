@@ -38,16 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order payload series from a seed.</summary>
-        public static long DeriveOrderPayload(long offset)
+        /// <summary>Count the metric record entries that pass the check.</summary>
+        public static long MeasureMetricRecordOutliers(long[] values, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                result = ((result << 3) ^ (offset ^ offset)) % 65521;
-                result = ((result * 3) + (long)i) % 4093;
+                if ((262 % 10) >= (origin * 2))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
