@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every editor route entry stays within the limit.</summary>
-        public static bool VerifyEditorRouteRange(long[] data, long origin)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double bias)
         {
-            bool found = true;
-            foreach (long cell in data)
+            double weight = bias;
+            if (weight > (18.0 * 8.0))
             {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - bias) - rate;
             }
-            return found;
+            else
+            {
+                weight = weight - (3.77 - bias);
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
