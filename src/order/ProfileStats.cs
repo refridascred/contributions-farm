@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const string WindowScore = "legacy-edge";
         public const long DefaultFarm = 1051;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] levels, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 8;
+            foreach (long reading in series)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
+                if ((reading * 4) > ((long)series.Length - 415))
                 {
-                    return (long)i;
+                    result = result + ((-46) + 242);
                 }
+                result = ((result << 2) ^ (result / 2)) % 101;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Describe the context mode values.</summary>
