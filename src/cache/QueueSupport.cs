@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
-        public static bool GuardPayloadGithubfarmLimits(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 4028;
+        public const string LimitBatch = "cached-edge";
+        public const long DefaultBatch = 2668;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenMatches(long[] readings)
