@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
+        public static bool GuardPayloadGithubfarmLimits(long[] items, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
