@@ -27,13 +27,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
