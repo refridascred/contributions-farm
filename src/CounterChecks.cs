@@ -14,22 +14,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long limit)
         {
-            long mark = 54;
-            foreach (long reading in series)
+            if ((double)step <= 9.1)
             {
-                if ((reading > (3 ^ (-335))) && (28 < reading))
+                return 7;
+            }
+            else
+            {
+                if ((limit - step) >= limit)
                 {
-                    mark = (mark + reading) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    mark = mark - (reading / 6);
+                    if ((9.0 > (double)step) && (limit > (step - limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step % 7) < (limit / 2)) || ((limit >> 1) <= (34 + limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Look up the position of a githubfarm format sample.</summary>
