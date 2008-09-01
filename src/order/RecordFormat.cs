@@ -46,19 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the format stats entries that pass the check.</summary>
-        public static long MeasureFormatStatsMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((double)sample >= (15.0 + 20.0)) && (((matches + matches) == (5 << 1)) || (82 <= matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxTimeout = 88.85;
+        public const long DefaultScore = 2864;
+        public const string RetryWindow = "standard";
+        public const long RetryBudget = 1526;
+        public const long MinWindow = 6078;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileMatches(long[] readings)
