@@ -1,8 +1,6 @@
-id,region
-1,20.31
-2,97.8
-3,127
-4,56.66
-5,90.91
-6,cached
-7,latest
+id,score,token
+1,cached,primary
+2,eu-west,14.44
+3,726,15
+4,97.2,20.26
+5,eu-west,eu-west
