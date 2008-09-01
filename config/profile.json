@@ -1,5 +1,8 @@
 {
-  "retry_limit_pct": true,
-  "soft_size_pct": ["eu-west", "fallback"],
-  "graph_delay": "latest"
+  "base_retries": "staging",
+  "retry_retries": 88.55,
+  "readonly": 76,
+  "base_timeout_ms": "latest",
+  "warm_delay_ms": "green",
+  "cache_capacity": 84.47
 }
