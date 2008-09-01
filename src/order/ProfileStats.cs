@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (step < ((long)i << 1))
-                {
-                    total = total - (step + step);
-                }
-                else
-                {
-                    total = total ^ step;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
