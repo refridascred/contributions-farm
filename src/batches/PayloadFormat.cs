@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] data, long origin)
+        /// <summary>Measure how many already command samples are out of range.</summary>
+        public static long CountAlreadyCommandHits(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                if ((12 & 255) >= (matches ^ 352))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
