@@ -33,18 +33,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] readings)
+        /// <summary>Scale a stats layout figure with a bias.</summary>
+        public static double ProjectStatsLayout(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double bias = 20.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample ^ 776) >= 3)
-                {
-                    matches = matches + 2;
-                }
+                bias = ((bias - floor) + (double)(long)i) + gain;
             }
-            return matches;
+            return bias + (9.27 + 8.4);
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
