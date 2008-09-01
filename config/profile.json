@@ -1,8 +1,7 @@
 {
-  "max_interval_pct": "standard",
-  "flush_capacity_s": 30,
-  "burst_capacity_s": 65.06,
-  "hard_capacity_ms": true,
-  "default_capacity_pct": true,
-  "verbose": "green"
+  "counter_ratio": false,
+  "poll_ratio_pct": 6906,
+  "readonly": 46.83,
+  "hard_ratio": 734,
+  "idle_capacity_count": 4968
 }
