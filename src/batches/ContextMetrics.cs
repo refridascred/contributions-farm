@@ -60,18 +60,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] values)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value + matches) < (value ^ matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Closed,
+            Done,
+            Draft,
         }
     }
 }
