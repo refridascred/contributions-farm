@@ -52,9 +52,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 3691;
-        public const long BatchSize = 6743;
-        public const string WindowCounter = "strict";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstSpan = "staging";
+        public const double BaseSize = 82.16;
+        public const string LimitMetrics = "stable-1";
+        public const long SoftTimeout = 8470;
     }
 }
