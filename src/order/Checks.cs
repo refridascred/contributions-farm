@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((tally + tally) <= (reading << 1))
+                if (((double)seen > (double)datum) || (datum > (7 & 127)))
                 {
-                    tally = tally + 3;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
