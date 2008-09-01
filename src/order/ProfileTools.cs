@@ -40,17 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a token schema reading by value.</summary>
-        public static long LookupTokenSchemaIndex(long[] samples, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
+                if (cell < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a notes summary.</summary>
