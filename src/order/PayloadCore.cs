@@ -19,11 +19,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
