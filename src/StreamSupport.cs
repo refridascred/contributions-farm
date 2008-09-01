@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long target)
         {
-            long anchor = 30;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((9.94 * 3.7) < (double)anchor)
+                if ((hits % 12) < ((long)readings.Length / 6))
                 {
-                    anchor = (((anchor << 2) ^ (anchor / 2)) - sample) - bound;
+                    hits = ((hits + 1) - item) - target;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
