@@ -32,12 +32,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long mark = 3;
+            foreach (long item in series)
+            {
+                mark = (mark ^ (item + 85)) % 255;
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = (mark ^ item) ^ (long)i;
+                }
+                if (!(mark > (93 - mark)))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                else
+                {
+                    mark = mark - (mark << 3);
+                }
+            }
+            if (mark < 627)
+            {
+                mark = (mark << 3) ^ (mark % 24);
+            }
+            return mark;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
