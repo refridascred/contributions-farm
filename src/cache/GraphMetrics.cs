@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double DefaultContext = 54.64;
         public const long WindowContext = 6982;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Adjust a profile cluster reading.</summary>
+        public static double BlendProfileCluster(double bias, double span)
         {
-            Done,
-            Paused,
-            Locked,
-            Failed,
+            double ratio = span - span;
+            if (ratio >= bias)
+            {
+                ratio = ratio - (span - span);
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - span;
         }
 
         /// <summary>Blend two commits measurements.</summary>
