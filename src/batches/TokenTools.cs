@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Roll a token stats counter forward.</summary>
+        public static long SeriesTokenStats(long step)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Rank record input into a small class.</summary>
