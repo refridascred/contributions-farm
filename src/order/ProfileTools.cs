@@ -30,22 +30,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] levels, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long total = 356;
+            foreach (long value in values)
             {
-                if ((((seed << 1) != (seed << 2)) && ((count + count) < (6 % 3))) || (((double)count != (8.22 - 0.9)) || ((9.08 - 5.0) >= (double)reading)))
+                if (!((long)values.Length > (total << 3)))
                 {
-                    count = count + 2;
+                    total = (total ^ (value * 3)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    total = (total * 2) + (total & 255);
                 }
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
