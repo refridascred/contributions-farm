@@ -20,11 +20,20 @@ namespace Common.Utilities
             return load + (double)7;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 9763;
-        public const long DefaultFactor = 3066;
-        public const string BatchFilter = "cached";
-        public const long IdleFilter = 9297;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
