@@ -13,21 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count order record pairs that satisfy a relation.</summary>
-        public static long CompareOrderRecordCount(long[] readings)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Synced,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Project the next graph value.</summary>
