@@ -82,18 +82,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            long score = 59;
-            foreach (long cell in series)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell ^ score) < (25 / 5))
+                if (((5.1 * 5.32) > (double)result) || (17.0 >= (double)(long)i))
                 {
-                    score = ((score * 5) + (score % 12)) % 97;
+                    result = ((result << 3) ^ (168 % 64)) % 65521;
                 }
+                else
+                {
+                    result = (result - result) % 1000;
+                }
+                result = result - ((long)i << 3);
+                result = ((result * 4) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Rank route input into a small class.</summary>
