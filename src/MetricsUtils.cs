@@ -23,12 +23,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Compare every pair of already channel readings.</summary>
+        public static long OverlapAlreadyChannelCount(long[] data)
         {
-            Paused,
-            Synced,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of format entries.</summary>
