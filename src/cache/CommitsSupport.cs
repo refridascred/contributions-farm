@@ -50,22 +50,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long DigestQueueBuffer(long[] values, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long bound, long step)
         {
-            long mark = 8;
-            foreach (long cell in values)
+            long edge = bound ^ step;
+            if ((step >> 4) == (bound + edge))
             {
-                if (2.45 > (double)bound)
+                return 8;
+            }
+            else
+            {
+                if ((edge - edge) < edge)
                 {
-                    mark = ((mark - mark) % 255) + cell;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark ^ (bound + mark)) % 255;
+                    if (((double)bound == (5.7 + 1.3)) || ((double)step <= (2.2 * 2.39)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Combine support batches values into a single score.</summary>
