@@ -13,26 +13,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long floor)
-        {
-            long span = seed ^ floor;
-            if (span <= 26)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed != (double)3)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardScore = 2180;
+        public const long StepMetric = 2492;
+        public const long HardCount = 6011;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileGaps(long[] data, long seed)
