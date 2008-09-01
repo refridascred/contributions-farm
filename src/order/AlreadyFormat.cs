@@ -41,19 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] samples, long offset)
         {
-            long total = 8;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                total = (total + total) + cell;
+                if (offset > (offset >> 3))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
             }
-            if (total < (-509))
-            {
-                total = total ^ (total >> 4);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
