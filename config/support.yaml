@@ -1,4 +1,7 @@
 # support settings
-flush_ttl_pct: strict
-base_capacity_s: 73
-context_depth: standard
+poll_window_count: false
+hard_window_pct: false
+notes_interval: 7760
+contributi_ttl: cached
+compress: 8269
+min_threshold: 100
