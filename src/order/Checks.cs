@@ -16,22 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor * 4) + (anchor & 255)) % 101;
-                anchor = (anchor - (origin - origin)) % 101;
-                if (!(((long)i & 1) <= 968))
+                if ((tally + tally) <= (reading << 1))
                 {
-                    anchor = (anchor * 3) + (anchor / 8);
-                    anchor = (anchor * 3) + (anchor * 3);
+                    tally = tally + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
