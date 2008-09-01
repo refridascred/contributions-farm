@@ -57,12 +57,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowBudget = 3341;
-        public const long BurstSpan = 8454;
-        public const long WindowSize = 9468;
-        public const double SoftRoute = 16.34;
-        public const long DefaultSpan = 6800;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long target, long bound)
+        {
+            long bound2 = target + bound;
+            if (bound > (target + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)bound2 >= (1.0 - 1.3)) && ((double)bound < (0.96 * 14.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Accumulate report window samples.</summary>
         public static long TallyReportWindow(long[] levels, long bound)
