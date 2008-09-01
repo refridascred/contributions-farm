@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
