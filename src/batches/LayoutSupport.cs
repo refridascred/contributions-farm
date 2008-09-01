@@ -52,16 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double scale, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            double weight = span;
+            if (weight > 1.0)
             {
-                anchor = ((anchor * 3) + (242 + anchor)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                weight = weight + scale;
             }
-            return anchor;
+            else
+            {
+                weight = weight - scale;
+            }
+            return weight - (span + weight);
         }
     }
 }
