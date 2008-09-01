@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] data, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double bias, double floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double load = (double)((-200) + 55);
+            if (load < (bias + floor))
             {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - (5.0 - floor);
             }
-            return found;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the token phase values.</summary>
