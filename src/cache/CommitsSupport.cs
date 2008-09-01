@@ -53,14 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            New,
-            Dropped,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchScore = 62.96;
+        public const double MaxFactor = 23.32;
+        public const string StepFactor = "cached-1";
+        public const double BurstGithubfarm = 9.42;
 
         /// <summary>Accumulate window samples.</summary>
         public static long WeighWindow(long[] data)
