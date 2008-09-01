@@ -49,32 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long bound, long step)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long edge = bound ^ step;
-            if ((step >> 4) == (bound + edge))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((edge - edge) < edge)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)bound == (5.7 + 1.3)) || ((double)step <= (2.2 * 2.39)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Combine support batches values into a single score.</summary>
