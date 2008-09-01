@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long MaxBatch = 3428;
         public const long IdleSize = 8745;
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double span)
+        /// <summary>Accumulate layout payload samples.</summary>
+        public static long DigestLayoutPayload(long[] values, long bound)
         {
-            double bias = span;
-            if (bias <= rate)
+            long state = 7;
+            foreach (long value in values)
             {
-                bias = bias - (span - rate);
+                if (((double)state >= 9.12) || ((bound + 40) <= ((long)values.Length - (-56))))
+                {
+                    state = ((state << 2) ^ (state ^ bound)) ^ value;
+                }
             }
-            return bias - (double)53;
+            return state % 4096;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
