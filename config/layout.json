@@ -1,16 +1,5 @@
 {
-  "enabled": {
-    "max_threshold_pct": 85.19,
-    "burst_size_pct": "edge",
-    "soft_ratio": "fallback",
-    "cache_retries_pct": {
-      "soft_limit_s": 79,
-      "retry_ratio": ["blue", "strict", "blue", "primary"],
-      "graph_window": true
-    },
-    "order_size": 36.7,
-    "audit": "local"
-  },
-  "idle_depth_pct": true,
-  "sync_capacity_ms": "open"
+  "readonly": [92, 495, 303, 162],
+  "audit": 8527,
+  "enabled": "blue"
 }
