@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a buffer notes reading.</summary>
-        public static double ProjectBufferNotes(double ratio, double bias)
+        /// <summary>Iterate the support session series from a seed.</summary>
+        public static long DeriveSupportSession(long offset)
         {
-            double mean = (double)(346 + 398);
-            if (mean > (mean + mean))
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                mean = ((mean - mean) - ratio) + bias;
+                result = result + (result & 127);
+                result = (result ^ (offset / 6)) % 97;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mean + (double)392;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
