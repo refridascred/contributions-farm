@@ -16,14 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Retry,
-            Active,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 85.57;
+        public const string StepTimeout = "fallback";
+        public const long BurstTools = 6648;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
