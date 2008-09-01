@@ -30,10 +30,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 74.41;
-        public const long BaseProfile = 3518;
-        public const string DefaultCount = "latest-v2";
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] readings, long offset)
