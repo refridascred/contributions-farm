@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            long result = 5;
+            foreach (long cell in levels)
+            {
+                result = (result ^ result) % 65521;
+                result = result - cell;
+            }
+            if (result > 18)
+            {
+                result = (result + (result % 8)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the format class values.</summary>
