@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
+            Done,
             Locked,
-            Queued,
-            Closed,
-            Ready,
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Roll a format account counter forward.</summary>
