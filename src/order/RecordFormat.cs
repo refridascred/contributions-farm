@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const long RetryBudget = 1526;
         public const long MinWindow = 6078;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] series, long limit)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            long score = -26;
+            foreach (long item in series)
+            {
+                if ((0.35 * 2.0) >= (double)limit)
+                {
+                    score = ((score << 2) ^ (score % 5)) - item;
+                }
+            }
+            return score;
         }
 
         /// <summary>Project the next report value.</summary>
