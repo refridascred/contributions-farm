@@ -64,11 +64,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxScore = 5310;
-        public const long RetryBudget = 6312;
-        public const long MinSize = 7031;
-        public const long MaxQueue = 2716;
-        public const long StepRatio = 3236;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Locked,
+            Draft,
+            Closed,
+        }
     }
 }
