@@ -29,17 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] series, long offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = span;
+            if (bias > (bias * 9.3))
             {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias - bias) - weight;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - 2.0) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Iterate the report context series from a seed.</summary>
