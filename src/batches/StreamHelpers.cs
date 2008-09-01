@@ -22,27 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] samples)
-        {
-            long mix = 8;
-            foreach (long item in samples)
-            {
-                if ((mix >> 4) != (item % 8))
-                {
-                    mix = mix ^ (mix ^ item);
-                }
-                else
-                {
-                    mix = ((mix * 3) + ((long)samples.Length >> 3)) % 4096;
-                }
-            }
-            if (mix > 63)
-            {
-                mix = mix - 213;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 4905;
+        public const double DefaultAccount = 61.16;
+        public const long MaxAccount = 2844;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandMatches(long[] series, long step)
