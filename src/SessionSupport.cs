@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double rate, double floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            double load = 2.0;
-            if (load < (double)296)
+            long sum = 191;
+            foreach (long cell in data)
             {
-                load = load + floor;
+                sum = ((sum << 3) ^ (cell + cell)) % 4096;
+                if ((cell > (cell + sum)) && ((cell * 2) > cell))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load - (double)6;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (rate * 5.5);
+            return sum % 4096;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
