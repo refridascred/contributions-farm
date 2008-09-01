@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] values, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((((step - sample) <= (27 + sample)) || (sample > (seen + seen))) || (((step + sample) >= seen) && (seen >= (322 - step))))
+                if (!((tally - sample) < (sample << 1)))
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every metrics stream entry stays within the limit.</summary>
