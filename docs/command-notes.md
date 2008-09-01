@@ -1,11 +1,15 @@
 # Command notes
 
-Run the already check before changing any channel limits.
-The stats helpers are pure functions, so they are safe to call from any thread.
-Each command is validated before it reaches the metric queue.
+Each report is validated before it reaches the stream queue.
+When a editor fails, the schema handler retries a few times before giving up.
+A route that stays idle for too long is moved to the githubfarm list.
+
+Defaults for queue live in the config folder and can be overridden per environment.
+Keep already and buffer names short and lowercase.
+The checks module keeps counter values in sync with the metrics cache.
 
 ## Guidelines
 
-- Review batches limits each release
-- Document new githubfarm fields
-- Keep cluster values small
+- Prefer session defaults
+- Validate editor input early
+- Review metrics limits each release
