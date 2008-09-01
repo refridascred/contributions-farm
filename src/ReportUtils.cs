@@ -36,11 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 89.04;
-        public const long CacheBuffer = 4255;
-        public const long MaxSize = 1028;
-        public const long StepSize = 9025;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (datum < (datum + 0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadRange(long[] samples, long target)
