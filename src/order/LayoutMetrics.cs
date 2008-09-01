@@ -35,19 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double weight, double offset)
         {
-            double ratio = 9.03;
-            if (ratio <= (double)(-14))
+            double gain = weight;
+            if (gain < weight)
             {
-                ratio = ratio - (weight / 4.0);
+                gain = (gain + (weight * 5.3)) + offset;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio - span)) + (double)(long)i;
-            }
-            return ratio + weight;
+            return gain - (gain / 6.0);
         }
     }
 }
