@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the farm payload entries that pass the check.</summary>
-        public static long TallyFarmPayloadGaps(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = 982;
+            foreach (long cell in series)
             {
-                if ((((datum << 2) > (count + count)) && (count >= datum)) || !((21 - (long)data.Length) > datum))
+                if (cell < (total / 5))
                 {
-                    count = count + 3;
+                    total = ((total * 5) + (total & 255)) % 255;
                 }
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
