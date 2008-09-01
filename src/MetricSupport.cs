@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate order already samples.</summary>
-        public static long DigestOrderAlready(long[] levels, long offset)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long anchor = 16;
-            foreach (long datum in levels)
-            {
-                if ((double)0 >= (18.0 / 4.0))
-                {
-                    anchor = ((anchor << 2) ^ (-1)) % 4096;
-                }
-                if (((double)datum >= (7.24 / 3.0)) && (offset > (offset & 1)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a context channel counter forward.</summary>
