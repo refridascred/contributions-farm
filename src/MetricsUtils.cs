@@ -48,12 +48,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state ^ (long)i) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
