@@ -33,12 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] values, long step)
         {
-            Done,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((sample & 127) <= step) && ((double)matches < (12.0 + 9.0)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
