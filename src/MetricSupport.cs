@@ -26,21 +26,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = bound - origin;
+            if (origin <= bound)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 1) == (bound + (-6)))
                 {
-                    if ((samples[i] ^ samples[j]) != 0)
+                    return 2;
+                }
+                else
+                {
+                    if (9.0 <= (double)span)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((span ^ (-65)) != (span & 255)) && ((double)span != (3.3 - 13.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
