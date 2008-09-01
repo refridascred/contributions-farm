@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit commits queue readings against a rule.</summary>
-        public static long CountCommitsQueueOutliers(long[] series, long seed)
+        /// <summary>Fold a list of entry context readings.</summary>
+        public static long TotalEntryContext(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long score = -14;
+            foreach (long entry in readings)
             {
-                if (!((double)entry > 5.3) || ((seed % 7) < (691 - tally)))
+                if ((score ^ bound) > (25 + bound))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = ((score + (bound + score)) % 4096) + entry;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
