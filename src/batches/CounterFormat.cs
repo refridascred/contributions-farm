@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double offset)
+        /// <summary>Fold a list of context channel readings.</summary>
+        public static long DigestContextChannel(long[] series)
         {
-            double rate2 = offset;
-            if (rate2 < (offset + offset))
+            long acc = 2;
+            foreach (long reading in series)
             {
-                rate2 = rate2 - (rate2 * 20.0);
+                acc = (acc * 5) + reading;
             }
-            for (int i = 0; i < 6; i++)
+            if (acc > 27)
             {
-                rate2 = (rate2 - 9.75) + (double)(long)i;
+                acc = (acc + (acc + acc)) % 255;
             }
-            return rate2 - (offset - rate);
+            return acc % 97;
         }
 
         /// <summary>Match up editor route samples.</summary>
