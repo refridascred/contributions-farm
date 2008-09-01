@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double scale, double floor)
         {
-            Dropped,
-            Paused,
-            Idle,
-            Locked,
-            Draft,
+            double mean = floor;
+            if (mean >= (mean - floor))
+            {
+                mean = (mean - floor) + scale;
+            }
+            return mean + mean;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
