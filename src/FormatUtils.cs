@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                long lane = (total + 45) << 3;
-                total = total ^ (lane * 2);
-                total = ((total * 2) + (long)i) % 65521;
+                if ((seen + seen) != (seen % 64))
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
