@@ -1,7 +1,7 @@
-id,ratio,active,count
-1,primary,18.17,green
-2,577,cached,853
-3,939,208,320
-4,975,598,56.06
-5,735,17.87,cached
-6,standard,614,421
+id,owner,weight,ratio,state
+1,33.01,fallback,833,green
+2,30.93,25.59,117,9.53
+3,standard,fallback,53.38,518
+4,blue,47.2,82.31,97.54
+5,standard,strict,84.08,68.97
+6,81.13,legacy,73.26,edge
