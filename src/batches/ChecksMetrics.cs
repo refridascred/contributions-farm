@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] series, long seed)
+        /// <summary>Rank counter record input into a small class.</summary>
+        public static long ClassifyCounterRecord(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if (limit <= (floor << 2))
             {
-                if (!(((seed + value) < (value - seed)) && (seed <= (-6))))
+                return 1;
+            }
+            else
+            {
+                if (((limit >> 5) < (36 & 1)) || ((floor + floor) > (limit % 8)))
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of already command readings.</summary>
