@@ -49,21 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count already checks pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyChecksCount(long[] values)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Done,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
