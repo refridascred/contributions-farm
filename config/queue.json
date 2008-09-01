@@ -1,15 +1,5 @@
 {
-  "audit": {
-    "hard_delay_s": "eu-west",
-    "editor_limit": "standard",
-    "compress": 97.23
-  },
-  "strict": {
-    "batch_delay_pct": 65.38,
-    "payload_interval": ["cached", "fallback", "local"],
-    "account_retries": 90
-  },
-  "base_threshold": [430, 149],
-  "cache_ratio_s": ["green", "cached", "edge"],
-  "cluster_threshold": 40.91
+  "soft_capacity_ms": 28.93,
+  "cluster_window": ["legacy", "edge", "green"],
+  "sync_ratio": 17.57
 }
