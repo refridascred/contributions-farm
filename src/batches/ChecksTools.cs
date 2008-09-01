@@ -44,23 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command counter entries that pass the check.</summary>
-        public static long TallyCommandCounterOutliers(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (((limit % 5) < limit) || (((8.3 + 4.55) > (double)limit) && (entry > tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepTimeout = "legacy-1";
+        public const double LimitStats = 86.51;
+        public const double BatchDepth = 88.02;
+        public const string CacheTimeout = "strict-1";
 
         /// <summary>Audit session stats readings against a rule.</summary>
         public static long CountSessionStatsMatches(long[] samples)
