@@ -58,13 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] series)
         {
-            Stale,
-            Synced,
-            Idle,
-            Closed,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches - reading) > reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
