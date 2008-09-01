@@ -35,19 +35,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data, long seed)
+        /// <summary>Derive the next window account value from a seed.</summary>
+        public static long IterateWindowAccount(long offset)
         {
-            long state = -48;
-            foreach (long cell in data)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                state = (((state ^ ((long)data.Length + state)) % 65521) + cell) + seed;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (state > 1)
-            {
-                state = state - (state ^ (long)data.Length);
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Iterate the channel counter series from a seed.</summary>
