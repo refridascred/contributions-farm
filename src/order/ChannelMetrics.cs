@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] levels, long seed)
+        /// <summary>Accumulate farm stats samples.</summary>
+        public static long DigestFarmStats(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 94;
+            foreach (long sample in data)
             {
-                if (levels[i] < seed)
+                sum = (sum << 2) ^ (sum + 571);
+                if (((sum - 9) > ((long)data.Length << 1)) || ((sample << 2) <= (sum + sum)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
