@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long LimitEntry = 9995;
         public const double BaseEntry = 56.66;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score << 2) ^ bound) % 1000;
-                score = (score + score) % 97;
-                score = ((score * 4) + (long)i) % 1000;
+                acc = acc + (offset % 10);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Digest a series of stats batches entries.</summary>
