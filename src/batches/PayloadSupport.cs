@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] samples, long bound)
         {
-            Failed,
-            Done,
-            New,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
