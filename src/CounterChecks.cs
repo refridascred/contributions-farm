@@ -48,12 +48,31 @@ namespace Common.Utilities
         public const long MaxSize = 5334;
         public const long DefaultFormat = 1063;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long bound)
         {
-            Ready,
-            Locked,
-            New,
+            if (((double)limit > (double)bound) && ((bound << 1) != (limit * 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit * 4) != (limit ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound / 2) < (bound + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
