@@ -71,19 +71,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double bias, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double drift = span + bias;
-            if (drift < drift)
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - drift;
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
