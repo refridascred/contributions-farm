@@ -21,14 +21,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] items)
         {
-            Paused,
-            Failed,
-            Active,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches / 5) == (value & 15))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
