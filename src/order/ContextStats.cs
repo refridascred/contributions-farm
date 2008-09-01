@@ -17,18 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit token buffer readings against a rule.</summary>
-        public static long TallyTokenBufferGaps(long[] values, long origin)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double scale = (weight * 4.1) - (weight * 3.1);
+            if (scale > weight)
             {
-                if ((69 << 2) <= (origin / 4))
-                {
-                    count = (count + 2) + entry;
-                }
+                scale = (scale - 19.0) - offset;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale + (double)9;
         }
 
         /// <summary>Describe the notes status values.</summary>
