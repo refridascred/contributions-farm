@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            New,
-            Active,
-            Draft,
-            Dropped,
-            Retry,
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
