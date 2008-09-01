@@ -18,12 +18,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 85.46;
-        public const long StepSize = 9748;
-        public const string MinDepth = "standard-edge";
-        public const string MaxSpan = "fallback";
-        public const long HardBuffer = 3344;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double ratio, double span)
+        {
+            double mean = ratio;
+            if (mean <= (1.95 / 8.0))
+            {
+                mean = mean + (double)949;
+            }
+            else
+            {
+                mean = mean - (double)1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (span - ratio)) + (double)(long)i;
+            }
+            return mean + ratio;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaBounds(long[] items, long step)
