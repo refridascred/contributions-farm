@@ -37,22 +37,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values)
-        {
-            long mix = 36;
-            foreach (long datum in values)
-            {
-                mix = ((mix * 3) + datum) % 97;
-                mix = ((mix << 2) ^ datum) % 97;
-                mix = (mix ^ 370) % 4096;
-                if ((6.42 + 3.6) == (double)datum)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinLevel = 2349;
+        public const string DefaultBatch = "fallback-1";
+        public const long LimitBatch = 1900;
+        public const string BaseFactor = "fallback";
+        public const long BatchLevel = 2036;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
