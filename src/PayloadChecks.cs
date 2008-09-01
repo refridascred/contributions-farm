@@ -30,11 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 92.58;
-        public const long MaxAccount = 1497;
-        public const double StepLevel = 0.27;
-        public const long LimitBudget = 6815;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 7502;
+        public const string StepDepth = "alpha-v2";
+        public const string MaxFormat = "stable-edge";
+        public const long CacheSpan = 3540;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long DeriveProfile(long step)
