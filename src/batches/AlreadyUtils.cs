@@ -33,13 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            Failed,
+            Idle,
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Roll a order cluster counter forward.</summary>
