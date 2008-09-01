@@ -25,30 +25,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] data, long offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long state = 30;
-            foreach (long datum in data)
-            {
-                if ((datum & 255) < (offset << 2))
-                {
-                    state = ((state * 3) + (453 << 2)) % 255;
-                }
-                else
-                {
-                    state = (state ^ datum) % 255;
-                }
-                if (datum <= (offset & 127))
-                {
-                    break;
-                }
-            }
-            if (state < 691)
-            {
-                state = state - offset;
-            }
-            return state;
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
