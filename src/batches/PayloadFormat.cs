@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            New,
-            Retry,
+            Dropped,
             Paused,
             Idle,
             Locked,
+            Draft,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
