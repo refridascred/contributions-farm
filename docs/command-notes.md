@@ -1,10 +1,14 @@
 # Command notes
 
-Each batch is validated before it reaches the window queue.
-Keep format and queue names short and lowercase.
+Keep githubfarm and farm names short and lowercase.
+A report that stays idle for too long is moved to the account list.
+
+Each metric is validated before it reaches the farm queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review farm limits each release
-- Document new queue fields
-- Validate metrics input early
+- Keep schema values small
+- Validate metric input early
+- Document new order fields
+- Prefer cluster defaults
