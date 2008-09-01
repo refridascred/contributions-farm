@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a batches route reading by value.</summary>
-        public static long LocateBatchesRouteIndex(long[] readings, long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
+                if ((data[i] >= offset) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
