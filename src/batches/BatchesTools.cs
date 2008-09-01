@@ -34,13 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Look up the position of a layout cluster sample.</summary>
+        public static long SeekLayoutClusterIndex(long[] levels, long target)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
