@@ -27,11 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultCount = "strict-1";
-        public const long WindowBatches = 2790;
-        public const long StepBatches = 8419;
-        public const double BatchBatches = 93.66;
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double bias, double bias2)
+        {
+            double ratio = bias;
+            return (ratio + (ratio / 5.0)) + bias2;
+        }
 
         /// <summary>Audit record cluster readings against a rule.</summary>
         public static long CountRecordClusterHits(long[] items)
