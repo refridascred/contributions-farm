@@ -16,22 +16,11 @@ namespace Common.Utilities
             return bias2 - (bias2 - 1.8);
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheDepth = "staging";
+        public const long WindowWidth = 6166;
+        public const long BatchToken = 3120;
+        public const double DefaultToken = 65.54;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmHits(long[] values)
