@@ -1,11 +1,12 @@
 {
-  "token_capacity": "standard",
-  "max_depth": 100,
-  "stream_depth": ["stable", "edge", "local", "staging"],
-  "hard_timeout": {
-    "token_depth": 7884,
-    "enabled": ["edge", "green", "edge"],
-    "soft_capacity": ["strict", "blue"],
-    "githubfarm_size": 5877
+  "hard_depth_count": "standard",
+  "soft_limit": [258, 14, 225, 334],
+  "idle_retries": false,
+  "enabled": 60,
+  "idle_ratio_ms": {
+    "idle_delay_count": true,
+    "batch_depth_pct": true,
+    "compress": false,
+    "warm_ratio": true
   }
 }
