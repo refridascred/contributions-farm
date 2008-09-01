@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double offset)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            double bias2 = offset;
+            if (bias2 < (offset * 11.0))
+            {
+                bias2 = (bias2 + bias2) - bias;
+            }
+            return bias2 - (bias2 - 1.8);
         }
 
         /// <summary>Match up format samples.</summary>
