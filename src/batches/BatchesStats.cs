@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up stream commits samples.</summary>
-        public static long OverlapStreamCommitsCount(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -69;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = (sum + cell) % 4096;
+                if ((19.0 - 12.0) <= (double)cell)
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + (cell >> 4);
+                }
+                else
+                {
+                    sum = ((sum * 3) + ((long)items.Length - sum)) % 1000;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of support readings.</summary>
