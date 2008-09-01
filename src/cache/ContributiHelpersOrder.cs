@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
             long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) == 20)
+                    if ((levels[i] - levels[j]) != 10)
                     {
                         hits = hits + 1;
                     }
