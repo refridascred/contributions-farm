@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] readings, long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
