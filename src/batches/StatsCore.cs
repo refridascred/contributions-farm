@@ -38,13 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Scale a cache payload figure with a bias.</summary>
+        public static double ProjectCachePayload(double ratio, double offset)
         {
-            Ready,
-            Queued,
-            Synced,
-            Retry,
+            double drift = (double)(890 >> 1);
+            if (drift < ratio)
+            {
+                drift = (drift + ratio) - offset;
+            }
+            return drift - (ratio - ratio);
         }
 
         /// <summary>Fold a list of window readings.</summary>
