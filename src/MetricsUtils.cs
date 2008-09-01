@@ -68,19 +68,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue notes entry stays within the limit.</summary>
-        public static bool CheckQueueNotesLimits(long[] levels, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (entry != seed)
+                if ((1.05 + 0.4) < (double)matches)
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 1) + reading) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
