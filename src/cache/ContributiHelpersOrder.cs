@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate command farm readings against a bound.</summary>
-        public static bool VerifyCommandFarmLimits(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepRatio = "primary-1";
+        public const long CacheLevel = 1280;
+        public const double BaseCounter = 77.25;
+        public const double WindowSize = 25.94;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BurstFilter = 9471;
