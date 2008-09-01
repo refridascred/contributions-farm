@@ -27,12 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
-            Pending,
-            Stale,
-            Closed,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum >> 4) == (seen - seen)) || (6 > (seen & 63)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
