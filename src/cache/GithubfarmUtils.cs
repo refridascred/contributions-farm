@@ -27,13 +27,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
+            Idle,
+            Retry,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
