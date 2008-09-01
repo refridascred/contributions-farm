@@ -1,21 +1,7 @@
 {
-  "min_ttl_s": 30,
-  "min_ttl_pct": true,
-  "sync_retries_count": false,
-  "default_timeout_pct": "eu-west",
-  "hard_timeout_ms": 73,
-  "batch_retries": {
-    "max_size_ms": 52.08,
-    "persist": [416, 460, 211, 458],
-    "poll_threshold": {
-      "verbose": 30,
-      "enabled": 58.17,
-      "base_retries_ms": [346, 358],
-      "max_delay_s": false,
-      "readonly": true,
-      "persist": 500
-    },
-    "tools_delay": 92.85,
-    "audit": 60
-  }
+  "dry_run": true,
+  "hard_threshold": 43,
+  "sync_retries": "green",
+  "context_size": 30,
+  "batch_capacity": "latest"
 }
