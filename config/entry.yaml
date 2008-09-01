@@ -1,4 +1,19 @@
 # entry settings
-batch_threshold: false
-burst_delay_ms: staging
-hard_ttl_s: edge
+enabled: 46
+compress:
+  poll_window: open
+  batch_retries_pct:
+    min_ttl: 5
+    audit: false
+    min_timeout_ms: 82
+  audit: 3233
+  base_interval: strict
+  base_threshold:
+    batch_depth_s: 12.91
+    audit: green
+    verbose: 28
+    retry_window_count: legacy
+  flush_size_ms: 500
+audit: true
+batch_retries: 100
+readonly: 3316
