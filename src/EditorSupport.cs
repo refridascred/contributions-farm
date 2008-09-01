@@ -45,18 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] series, long bound)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches / 7) < sample)
-                {
-                    matches = (matches + 2) - bound;
-                }
-            }
-            return matches;
+            Paused,
+            Draft,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the channel status values.</summary>
