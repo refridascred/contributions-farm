@@ -91,32 +91,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long origin, long origin2)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double ratio, double offset)
         {
-            long gap = origin ^ origin2;
-            if ((double)origin2 == (20.0 + 0.8))
+            double scale = offset;
+            if (scale < ratio)
             {
-                return 7;
+                scale = scale + ratio;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((gap % 12) <= ((-235) * 4)) && ((origin2 + origin) <= origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)gap == (double)95)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                scale = (scale + (0.8 * 13.0)) + (double)(long)i;
             }
+            return scale + (4.96 * 3.79);
         }
     }
 }
