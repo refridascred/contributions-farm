@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Pending,
-            Draft,
-            Synced,
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
