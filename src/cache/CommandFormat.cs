@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate channel metrics readings against a bound.</summary>
+        public static bool VerifyChannelMetricsRange(long[] readings, long step)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the payload state values.</summary>
