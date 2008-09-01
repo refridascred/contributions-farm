@@ -75,12 +75,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
