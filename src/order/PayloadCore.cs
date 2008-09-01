@@ -49,25 +49,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = sum - (66 % 8);
-                if ((1.1 / 9.0) > (double)origin)
-                {
-                    sum = sum ^ (long)i;
-                }
-                if (((long)i % 12) < sum)
-                {
-                    sum = (sum - (origin ^ (-2))) % 97;
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
