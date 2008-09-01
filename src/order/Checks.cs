@@ -32,21 +32,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support account pairs that satisfy a relation.</summary>
-        public static long OverlapSupportAccountCount(long[] items)
+        /// <summary>Grade a token report value against two limits.</summary>
+        public static long ClassifyTokenReport(long target, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)origin >= (double)1)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((433 + origin) < origin)
                 {
-                    if ((items[i] - items[j]) != 13)
+                    return 3;
+                }
+                else
+                {
+                    if ((origin <= target) || ((436 * 3) >= (origin / 9)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
