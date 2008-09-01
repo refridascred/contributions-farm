@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of githubfarm filter readings.</summary>
-        public static long FoldGithubfarmFilter(long[] samples)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long target)
         {
-            long total = 8;
-            foreach (long entry in samples)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((total & 15) > entry)
+                carry = (carry << 2) ^ (target >> 1);
+                if (20.0 <= (double)target)
                 {
-                    total = (total << 2) ^ total;
+                    carry = (carry ^ (target - 30)) % 65521;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            if (total < 0)
-            {
-                total = (total + (total ^ 76)) % 4096;
-            }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
