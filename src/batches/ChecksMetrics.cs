@@ -83,18 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] series)
+        /// <summary>Count the schema commits entries that pass the check.</summary>
+        public static long AuditSchemaCommitsOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((9 + hits) == (cell + cell))
+                if ((matches > (44 - sample)) && ((sample < (65 / 6)) || ((sample / 9) <= (sample & 31))))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a stats header.</summary>
