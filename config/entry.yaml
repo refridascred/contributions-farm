@@ -1,9 +1,30 @@
 # entry settings
-default_interval_count: 89.19
-poll_threshold: false
-warm_retries_pct:
-  idle_capacity: false
-  enabled: cached
-  checks_timeout: cached
-  min_size: 79.78
-  strict: 2460
+compress: latest
+flush_limit_ms: 95.51
+strict: 87.85
+support_delay:
+  idle_delay_s:
+    max_size_pct:
+      - 377
+      - 52
+      - 467
+      - 48
+    filter_retries: 100
+    soft_interval_s: 57.92
+    default_ratio_count:
+      - 478
+      - 472
+    persist: 30
+  strict:
+    strict:
+      - strict
+      - green
+    batch_timeout_ms: 1627
+    order_retries: false
+    min_limit_count:
+      - 159
+      - 424
+    poll_ratio: open
+  metrics_ttl: 60
+  poll_timeout: green
+flush_interval_ms: 13
