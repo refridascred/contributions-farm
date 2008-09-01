@@ -24,14 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long target)
         {
-            Ready,
-            Idle,
-            Queued,
-            Failed,
-            Paused,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the order payload series from a seed.</summary>
