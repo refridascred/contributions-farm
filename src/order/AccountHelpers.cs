@@ -52,20 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer commits counter forward.</summary>
-        public static long StepBufferCommits(long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long acc = 171;
+            foreach (long value in series)
             {
-                state = (state << 3) ^ state;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((5.9 - 7.31) < (double)acc) || ((double)value > 12.0))
                 {
-                    state = (((state * 4) + (7 ^ state)) % 4096) + (long)i2;
+                    acc = ((acc * 4) + value) % 1000;
                 }
-                state = ((state * 2) + (long)i) % 97;
+                else
+                {
+                    acc = acc ^ 932;
+                }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
