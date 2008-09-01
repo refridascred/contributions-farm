@@ -83,14 +83,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] readings, long bound)
         {
-            Ready,
-            Pending,
-            Synced,
-            Draft,
-            Failed,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
