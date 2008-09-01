@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((((-62) + carry) > (carry - offset)) && ((carry ^ (long)i) == ((long)i + offset)))
-                {
-                    carry = ((carry << 2) ^ carry) % 255;
-                    carry = (carry << 3) ^ (carry & 31);
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Stale,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the editor metric entries that pass the check.</summary>
