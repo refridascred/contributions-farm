@@ -34,10 +34,13 @@ namespace Common.Utilities
         public const double BaseSpan = 38.67;
         public const long BatchQueue = 9201;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 8687;
-        public const long MinStats = 3248;
-        public const double StepScore = 65.99;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Closed,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Roll a order cluster counter forward.</summary>
         public static long StepOrderCluster(long offset)
