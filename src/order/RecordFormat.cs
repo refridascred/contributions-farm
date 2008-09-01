@@ -62,11 +62,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double scale, double bias)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            double ratio = scale;
+            if (ratio >= (bias * 8.71))
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (0.9 / 6.0)) + (double)(long)i;
+            }
+            return ratio - (bias - bias);
         }
     }
 }
