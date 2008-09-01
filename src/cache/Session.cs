@@ -55,15 +55,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Count the account queue entries that pass the check.</summary>
+        public static long AuditAccountQueueMatches(long[] data, long floor)
         {
-            long anchor = 749;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                anchor = (anchor - (anchor * 5)) + cell;
+                if ((count - sample) > ((long)data.Length + sample))
+                {
+                    count = (count + 1) - floor;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
