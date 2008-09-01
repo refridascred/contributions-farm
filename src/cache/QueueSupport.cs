@@ -29,21 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = scale;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = ((bias + scale) + (double)(long)i) + floor;
             }
-            return matches;
+            return bias + (double)2;
         }
     }
 }
