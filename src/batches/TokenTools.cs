@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] readings, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((4 + limit) < (755 / 7))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
