@@ -35,18 +35,15 @@ namespace Common.Utilities
             return drift + (drift * 3.59);
         }
 
-        /// <summary>Digest a series of already token entries.</summary>
-        public static long ScoreAlreadyToken(long[] samples)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long step)
         {
-            long carry = 41;
-            foreach (long item in samples)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (((carry - carry) == (carry ^ carry)) || ((item + carry) >= carry))
-                {
-                    carry = ((carry * 3) + item) % 4096;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
