@@ -36,18 +36,26 @@ namespace Common.Utilities
         public const double BatchSchema = 31.95;
         public const long MinSchema = 1763;
 
-        /// <summary>Derive the next channel tools value from a seed.</summary>
-        public static long IterateChannelTools(long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long carry = 567;
+            foreach (long entry in levels)
             {
-                anchor = (anchor + anchor) % 97;
-                anchor = (anchor << 3) ^ anchor;
-                anchor = (anchor << 3) ^ (anchor + step);
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((double)bound >= 5.5)
+                {
+                    carry = (carry * 3) + (486 >> 4);
+                }
+                if (((carry << 1) <= entry) || ((bound + carry) <= bound))
+                {
+                    carry = (carry - (5 >> 4)) % 4096;
+                }
             }
-            return anchor;
+            if (carry > 212)
+            {
+                carry = ((carry << 3) ^ bound) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit report window readings against a rule.</summary>
