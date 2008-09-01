@@ -37,18 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] data, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double load = (ratio / 2.0) / 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)origin == (double)hits)
-                {
-                    hits = (hits + 3) - entry;
-                }
+                load = ((load + ratio) + (double)(long)i) - span;
             }
-            return hits;
+            return load + ratio;
         }
     }
 }
