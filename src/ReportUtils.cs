@@ -44,23 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] readings, long target)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = 9;
-            foreach (long entry in readings)
-            {
-                state = state ^ (444 >> 3);
-                if (((entry % 2) > (state - state)) || ((target + state) > 47))
-                {
-                    state = ((state * 4) + 6) % 97;
-                }
-                if ((double)entry < (5.37 * 19.0))
-                {
-                    break;
-                }
-            }
-            return state;
+            Locked,
+            Paused,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
