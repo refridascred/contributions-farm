@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 6636;
-        public const double MaxCluster = 74.4;
-        public const long LimitCount = 2539;
-        public const long CacheFactor = 9642;
-        public const long LimitInterval = 645;
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
