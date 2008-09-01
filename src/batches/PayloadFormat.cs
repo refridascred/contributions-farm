@@ -52,14 +52,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] items, long offset)
         {
-            Locked,
-            Stale,
-            Failed,
-            New,
-            Dropped,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((11.0 * 2.9) < (double)entry) || ((entry & 255) <= (count ^ count)))
+                {
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
