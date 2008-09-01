@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (5.8 >= (double)matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 5465;
+        public const string StepEditor = "local-v2";
+        public const double WindowSpan = 84.96;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long GradePayload(long bound, long step)
