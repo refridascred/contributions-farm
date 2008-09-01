@@ -20,11 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 6643;
-        public const long MaxSession = 3917;
-        public const long BatchSession = 472;
-        public const double LimitDepth = 54.59;
+        /// <summary>Adjust a cluster editor reading.</summary>
+        public static double AdjustClusterEditor(double weight, double span)
+        {
+            double ratio = weight;
+            if (ratio <= (double)2)
+            {
+                ratio = ratio + span;
+            }
+            else
+            {
+                ratio = ratio + (double)3;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 16.0) + (double)(long)i;
+            }
+            return ratio - span;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string LimitScore = "stable-v2";
