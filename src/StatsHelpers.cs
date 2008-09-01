@@ -26,21 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((-62) + carry) > (carry - offset)) && ((carry ^ (long)i) == ((long)i + offset)))
                 {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 2) ^ carry) % 255;
+                    carry = (carry << 3) ^ (carry & 31);
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the editor metric entries that pass the check.</summary>
