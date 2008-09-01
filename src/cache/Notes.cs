@@ -48,10 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxCount = "latest-1";
-        public const long HardMetrics = 4577;
-        public const long RetryCount = 7832;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample - sample) <= 2)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
