@@ -34,18 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] readings, long limit)
+        /// <summary>Measure how many queue route samples are out of range.</summary>
+        public static long AuditQueueRouteOutliers(long[] data)
         {
-            long score = 585;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (9.9 <= (double)(long)readings.Length)
+                if (((double)count > (7.0 + 8.6)) || ((count % 5) <= (799 / 6)))
                 {
-                    score = ((score * 5) + (sample / 3)) - limit;
+                    count = (count + 3) + value;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
