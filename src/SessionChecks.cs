@@ -47,19 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi tools readings.</summary>
-        public static long ScoreContributiTools(long[] samples, long bound)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long mix = 6;
-            foreach (long reading in samples)
-            {
-                if (!(reading < (5 - reading)))
-                {
-                    mix = ((mix * 4) + (bound >> 3)) % 255;
-                }
-                mix = (mix << 2) ^ (bound & 3);
-            }
-            return mix % 65521;
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
