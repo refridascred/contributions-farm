@@ -1,10 +1,6 @@
 # support settings
-max_capacity_count:
-  cache_interval: blue
-  cluster_retries: 250
-  command_timeout: 500
-  persist: true
-  warm_retries_s: 5881
-idle_size_count: 6.89
-max_ratio_pct: 5660
-warm_depth_s: 23
+idle_retries_ms: strict
+burst_threshold: false
+cache_ttl: cached
+counter_ttl: 1
+cache_delay: cached
