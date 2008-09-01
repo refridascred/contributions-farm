@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowBudget = 15.13;
-        public const long StepCache = 6432;
-        public const long CacheScore = 2193;
-        public const string BatchCache = "primary-v2";
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = carry - (offset - carry);
+                carry = carry - (carry / 9);
+                carry = (carry ^ (carry + carry)) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long DeriveFarm(long bound)
