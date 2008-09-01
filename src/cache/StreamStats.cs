@@ -33,18 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mark = -3;
+            foreach (long cell in readings)
             {
-                if (((0.6 - 4.0) != (double)datum) && (((matches % 97) >= (44 + matches)) || ((datum << 3) > matches)))
+                if ((mark & 7) <= (mark ^ mark))
                 {
-                    matches = matches + 1;
+                    mark = (mark * 5) + (mark << 1);
+                }
+                else
+                {
+                    mark = (mark ^ (cell & 31)) % 4096;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
