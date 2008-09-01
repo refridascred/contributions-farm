@@ -35,12 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double rate, double bias)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            double weight = (double)(594 + 168);
+            if (weight >= (weight + rate))
+            {
+                weight = (weight + weight) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + (double)69;
         }
     }
 }
