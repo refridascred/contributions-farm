@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((matches & 127) != (matches - entry))
+                if (seen < (seen + seen))
                 {
-                    matches = matches + 1;
+                    seen = ((seen + 1) + reading) + origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the farm payload entries that pass the check.</summary>
