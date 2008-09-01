@@ -33,16 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double rate, double bias)
-        {
-            double ratio = 10.0;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ((ratio - (16.0 - bias)) + (double)(long)i) - rate;
-            }
-            return ratio + (bias - bias);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftWidth = 12.97;
+        public const long DefaultSchema = 8618;
+        public const long HardSchema = 8583;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double StepCluster = 50.03;
