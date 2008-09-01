@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate queue samples.</summary>
