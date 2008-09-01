@@ -67,18 +67,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long mix = -60;
-            foreach (long value in series)
-            {
-                if ((double)mix <= (4.55 * 5.0))
-                {
-                    mix = ((mix ^ (mix % 3)) % 101) + value;
-                }
-            }
-            return mix % 97;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
