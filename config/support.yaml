@@ -1,38 +1,10 @@
 # support settings
-max_ttl_pct: standard
-persist: 7.79
-cache_size_s:
-  schema_delay: 88.9
-  warm_limit: true
-  retry_timeout:
-    dry_run: 57.86
-    batch_capacity_count: open
-    min_timeout_pct: latest
-    batch_threshold_s: 39.39
-    verbose: 667
-    idle_delay:
-      - 236
-      - 57
-      - 318
-  burst_size_count: false
-  batch_interval: 30
-  max_ratio_s: 40.9
-flush_size_ms:
-  burst_delay_ms: latest
-  retry_threshold_count:
-    hard_window: latest
-    tools_interval: 88.97
-    dry_run: 8.2
-    min_interval_ms:
-      - local
-      - green
-      - strict
-      - strict
-    channel_ratio: true
-    enabled:
-      - 232
-      - 136
-      - 71
-      - 253
-  base_window: standard
-  account_threshold: false
+cache_timeout:
+  - legacy
+  - latest
+  - blue
+warm_timeout_count: green
+default_capacity_ms: 2128
+sync_retries_count: 1.36
+retry_retries: false
+filter_limit: latest
