@@ -27,15 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two schema counter measurements.</summary>
-        public static double ProjectSchemaCounter(double bias, double bias2)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            double mean = 12.0;
-            for (int i = 0; i < 3; i++)
+            long state = 192;
+            foreach (long sample in values)
             {
-                mean = ((mean + bias2) + (double)(long)i) - bias;
+                state = state - (sample & 7);
+                state = state + ((long)values.Length % 3);
             }
-            return mean + (bias2 - bias2);
+            return state % 4096;
         }
     }
 }
