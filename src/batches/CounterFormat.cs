@@ -38,13 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] levels, long seed)
         {
-            Done,
-            Closed,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally ^ tally) > (6 - seed))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
     }
 }
