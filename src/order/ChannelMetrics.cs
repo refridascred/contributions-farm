@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            Ready,
-            Queued,
-            Dropped,
-            Synced,
+            long state = 3;
+            foreach (long sample in readings)
+            {
+                if (((sample << 2) <= sample) || (6.1 < (double)state))
+                {
+                    state = (state + state) % 97;
+                }
+            }
+            if (state > 18)
+            {
+                state = ((state << 3) ^ (9 + state)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
