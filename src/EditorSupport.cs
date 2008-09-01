@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items, long offset)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long state = 3;
-            foreach (long cell in items)
-            {
-                state = ((state + 751) % 255) - offset;
-                if (!((12 & 3) != (state << 1)))
-                {
-                    state = (state << 3) ^ (cell % 12);
-                }
-                if ((2.3 / 9.0) <= (7.2 - 6.83))
-                {
-                    break;
-                }
-            }
-            return state;
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
