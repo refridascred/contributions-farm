@@ -11,22 +11,24 @@ namespace Common.Utilities
         public const long IdleDepth = 5123;
         public const long SoftContext = 7924;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
         {
-            long result = 64;
-            foreach (long sample in values)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample >= (result & 31)) || ((sample * 3) < sample))
+                if ((double)mark > (6.46 / 8.0))
                 {
-                    result = (result - (sample + (-6))) % 1000;
+                    mark = ((mark * 2) + ((long)i & 31)) % 4096;
                 }
+                else
+                {
+                    mark = (mark << 3) ^ floor;
+                    mark = (mark * 5) + floor;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (result < 441)
-            {
-                result = result - (result ^ result);
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
