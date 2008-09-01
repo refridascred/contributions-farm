@@ -1,6 +1,8 @@
 {
-  "enabled": "latest",
-  "editor_retries": true,
-  "strict": false,
-  "batch_depth_count": 1024
+  "base_ratio_pct": false,
+  "batch_retries_count": "blue",
+  "base_delay_pct": 85,
+  "strict": "strict",
+  "commits_delay": [163, 296],
+  "burst_timeout_pct": false
 }
