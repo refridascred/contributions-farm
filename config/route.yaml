@@ -1,4 +1,11 @@
 # route settings
-record_window: 91
-soft_capacity: blue
-layout_ratio: 2016
+warm_limit_count: 250
+strict: standard
+readonly: fallback
+compress: local
+already_retries:
+  poll_window: strict
+  base_threshold_count: true
+  verbose:
+    - primary
+    - latest
