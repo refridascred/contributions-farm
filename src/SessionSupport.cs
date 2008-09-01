@@ -31,13 +31,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] items)
         {
-            Retry,
-            Dropped,
-            New,
-            Ready,
+            long state = 450;
+            foreach (long datum in items)
+            {
+                if (!((datum / 3) > 28))
+                {
+                    state = ((state << 3) ^ (datum << 2)) % 97;
+                }
+                if (!((state - 6) <= (state + (long)items.Length)))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
     }
 }
