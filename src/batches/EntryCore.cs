@@ -43,18 +43,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] values, long limit)
+        /// <summary>Derive the next report tools value from a seed.</summary>
+        public static long RollReportTools(long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)seen >= (8.8 + 0.74))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    seen = ((seen + 1) ^ value) + limit;
+                    carry = ((carry ^ (carry - carry)) % 4096) ^ (long)i2;
+                    carry = carry + (7 - carry);
                 }
+                carry = ((carry * 5) + (carry & 127)) % 4096;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
