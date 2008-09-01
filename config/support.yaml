@@ -1,4 +1,14 @@
 # support settings
-max_timeout_ms: 3631
-sync_retries_pct: latest
-sync_size_s: local
+soft_window_s:
+  - 92
+  - 397
+hard_limit_ms: cached
+metrics_threshold:
+  idle_ratio_ms: stable
+  warm_ttl_count:
+    sync_depth_s: green
+    enabled: latest
+    max_timeout_ms: local
+  channel_window: 59
+poll_delay_s: 23
+soft_window: false
