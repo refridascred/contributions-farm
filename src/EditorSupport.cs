@@ -64,11 +64,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count the contributi layout entries that pass the check.</summary>
+        public static long MeasureContributiLayoutMatches(long[] series, long bound)
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (22 >= tally)
+                {
+                    tally = ((tally + 3) + item) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
