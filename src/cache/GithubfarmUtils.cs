@@ -49,12 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a command stats sample.</summary>
+        public static long LocateCommandStatsIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > floor)
+                if ((items[i] > offset) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
