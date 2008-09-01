@@ -50,13 +50,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
+            Dropped,
+            Queued,
+            Ready,
         }
     }
 }
