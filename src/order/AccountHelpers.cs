@@ -35,21 +35,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] series)
-        {
-            long state = 802;
-            foreach (long reading in series)
-            {
-                state = state + (reading % 7);
-                state = ((state << 2) ^ 82) % 4096;
-                if ((12.0 * 5.46) >= (double)reading)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepLevel = "strict-v2";
+        public const long MaxLevel = 6294;
+        public const long BaseContributi = 2010;
+        public const string RetryInterval = "fallback-edge";
+        public const string LimitTimeout = "staging";
 
         /// <summary>Fold a list of support readings.</summary>
         public static long FoldSupport(long[] series)
