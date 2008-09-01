@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] data)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (4 >= (count ^ (-50)))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
