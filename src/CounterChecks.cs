@@ -43,10 +43,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 2826;
-        public const long MaxProfile = 3986;
-        public const long RetryProfile = 5620;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinScore = 9037;
+        public const long MaxSize = 5334;
+        public const long DefaultFormat = 1063;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
