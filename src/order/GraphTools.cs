@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] values, long floor)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double load = (double)(655 % 3);
+            if (load >= load)
             {
-                if ((double)3 >= (double)count)
-                {
-                    count = ((count + 3) + sample) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load + (load * 7.56)) + floor;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (ratio - load)) + (double)(long)i;
+            }
+            return load - (9.8 / 7.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
