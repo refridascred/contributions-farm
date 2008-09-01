@@ -29,13 +29,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Look up the position of a githubfarm format sample.</summary>
+        public static long FindGithubfarmFormatIndex(long[] samples, long origin)
         {
-            Failed,
-            Retry,
-            New,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
