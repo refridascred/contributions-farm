@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] series, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(157 - 0);
+            return (mean - (offset / 4.0)) + bias;
         }
 
         /// <summary>Hold a stats info.</summary>
