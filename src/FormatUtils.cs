@@ -56,21 +56,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] readings)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 76;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.34 + 20.0) >= (double)total)
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 5) + (total >> 1)) % 97;
+                }
+                if ((6.0 / 5.0) <= (double)entry)
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
