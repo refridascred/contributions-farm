@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the stream profile entries that pass the check.</summary>
-        public static long AuditStreamProfileGaps(long[] samples, long step)
+        /// <summary>Measure how many farm editor samples are out of range.</summary>
+        public static long CountFarmEditorMatches(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((19.0 - 20.0) <= (double)(long)samples.Length) || (datum > (tally - 9)))
+                if ((0.2 * 0.92) <= (double)count)
                 {
-                    tally = (tally + 2) - step;
+                    count = ((count + 2) + cell) - step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
