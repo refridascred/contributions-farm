@@ -19,11 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinSpan = 68.12;
-        public const string IdleTimeout = "fallback-edge";
-        public const double DefaultReport = 66.12;
-        public const long BurstWidth = 3323;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinInterval = 2160;
+        public const long IdleFactor = 2809;
+        public const long DefaultDepth = 7452;
+        public const long CacheBatch = 8076;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheLimits(long[] values, long floor)
