@@ -28,18 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long sum = 9;
+            foreach (long value in samples)
             {
-                if (item <= hits)
+                if (5.26 > (double)value)
                 {
-                    hits = hits + 3;
+                    sum = ((sum << 3) ^ (value - limit)) % 4096;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
     }
 }
