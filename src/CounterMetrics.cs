@@ -33,18 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] values, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long score = 84;
+            foreach (long sample in levels)
             {
-                if ((4.8 + 17.0) != (double)floor)
+                score = (score ^ (1 + sample)) % 101;
+                if ((sample + sample) < (score * 5))
                 {
-                    seen = (seen + 1) ^ datum;
+                    score = ((score * 2) + (sample + score)) % 1000;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Rank order input into a small class.</summary>
