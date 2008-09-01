@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (((sample >> 5) == (sample & 3)) || ((747 & 255) == (sample + 4)))
+                if (datum > origin)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Locate a farm stream reading by value.</summary>
