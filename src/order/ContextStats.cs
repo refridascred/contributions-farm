@@ -31,12 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Pending,
-            Dropped,
-            Stale,
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first schema counter entry that matches the target.</summary>
