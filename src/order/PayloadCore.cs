@@ -32,11 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 7088;
-        public const string LimitTimeout = "legacy-edge";
-        public const long HardDepth = 5167;
-        public const long BatchContributi = 583;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultAccount = 1070;
