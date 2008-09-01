@@ -1,8 +1,5 @@
 {
-  "cache_timeout_count": "staging",
-  "max_depth_pct": "primary",
-  "default_timeout": 6765,
-  "persist": 66.13,
-  "editor_window": 78.37,
-  "flush_ttl_pct": ["green", "fallback"]
+  "readonly": [365, 332, 392],
+  "idle_ttl_ms": ["local", "staging"],
+  "verbose": 20
 }
