@@ -14,11 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheDepth = "staging";
-        public const long WindowWidth = 6166;
-        public const long BatchToken = 3120;
-        public const double DefaultToken = 65.54;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
