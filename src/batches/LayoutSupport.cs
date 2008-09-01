@@ -15,11 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Measure how many tools filter samples are out of range.</summary>
+        public static long MeasureToolsFilterOutliers(long[] values)
         {
-            public bool Mode { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + hits) < hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine session values into a single score.</summary>
