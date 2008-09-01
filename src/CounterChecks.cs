@@ -75,38 +75,21 @@ namespace Common.Utilities
         public const long LimitAlready = 8545;
         public const double BurstInterval = 72.38;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long target, long origin)
+        /// <summary>Count notes metric pairs that satisfy a relation.</summary>
+        public static long MatchNotesMetricCount(long[] values)
         {
-            if ((double)origin > (double)origin)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin <= (double)target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + 197) < (origin & 7))
+                    if ((values[i] + values[j]) == 10)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (5.0 + 2.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
