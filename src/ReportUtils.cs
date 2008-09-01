@@ -29,19 +29,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Iterate the route profile series from a seed.</summary>
+        public static long IterateRouteProfile(long step)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)total >= (2.53 + 14.0))
+                carry = (carry ^ (step << 3)) % 255;
+                if ((8 < (step ^ step)) || ((carry + 3) < step))
                 {
-                    total = (total << 2) ^ step;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 4093;
+                else
+                {
+                    carry = (carry * 4) + carry;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
