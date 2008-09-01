@@ -65,23 +65,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] levels, long limit)
+        /// <summary>Find the first buffer layout entry that matches the target.</summary>
+        public static long SeekBufferLayoutIndex(long[] samples, long seed)
         {
-            long acc = 801;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (samples[i] < seed)
                 {
-                    acc = (((acc ^ acc) % 255) ^ (long)i) ^ item;
-                }
-                acc = (acc ^ (acc << 3)) % 255;
-                if (acc > limit)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
