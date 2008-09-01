@@ -1,17 +1,4 @@
 # githubfarm settings
-dry_run:
-  max_ratio: 97.61
-  editor_retries:
-    retry_timeout_s: true
-    strict: 29.31
-    soft_window_pct: legacy
-  account_delay: false
-  burst_depth_pct: 60
-  persist: 500
-  warm_interval: fallback
-sync_retries_s: eu-west
-poll_size_pct:
-  - 166
-  - 227
-  - 349
-  - 462
+batches_ratio: 22
+command_timeout: true
+flush_threshold: 77.38
