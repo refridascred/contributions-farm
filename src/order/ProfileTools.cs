@@ -38,12 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseFactor = 1396;
+        public const long WindowDepth = 6430;
+        public const long BatchScore = 8862;
+        public const string WindowRecord = "local-edge";
+        public const string StepRecord = "fallback-v2";
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] series, long seed)
