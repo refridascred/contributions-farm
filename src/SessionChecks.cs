@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] levels, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long lane = floor + seed;
+            if ((floor & 3) > lane)
             {
-                if ((tally * 4) >= tally)
+                return 2;
+            }
+            else
+            {
+                if ((31 ^ 79) != (seed - floor))
                 {
-                    tally = ((tally + 3) ^ cell) + step;
+                    return 0;
+                }
+                else
+                {
+                    if ((5.0 > (double)floor) && ((lane & 63) < seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
