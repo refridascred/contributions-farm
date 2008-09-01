@@ -26,22 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] series, long offset)
         {
-            long carry = 3;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((27 - carry) >= (7 * 2))
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
                 {
-                    carry = (carry - (carry + entry)) % 101;
-                }
-                else
-                {
-                    carry = (carry + (entry * 3)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
