@@ -7,20 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 7); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-stable}"
 case "${mode}" in
-    stable)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=222
-log "limit is ${BUFFER_LIMIT}"
