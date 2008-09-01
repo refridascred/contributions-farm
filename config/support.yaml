@@ -1,22 +1,11 @@
 # support settings
-min_ratio:
-  - 326
-  - 377
-  - 333
-  - 292
-warm_window_ms:
-  cache_limit_pct:
-    poll_interval_count: strict
-    idle_capacity_pct: standard
-    batch_interval_pct:
-      - local
-      - strict
-      - blue
-    audit: 2545
-  warm_window: 55.92
-  route_depth: staging
-  min_size: staging
-  flush_interval_s: 62.49
-hard_size_s:
-  - stable
-  - blue
+enabled:
+  stats_delay: 250
+  compress: 500
+  soft_size_s: true
+  strict: 45
+retry_delay_pct: 92.28
+verbose: 250
+min_ttl_ms: 71.52
+buffer_timeout: primary
+cache_limit: 1815
