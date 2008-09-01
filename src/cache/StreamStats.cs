@@ -55,18 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (!((long)values.Length >= (sample + 36)))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "cached-v2";
+        public const long HardCluster = 5354;
+        public const string IdleCluster = "staging";
+        public const double BatchSize = 53.28;
+        public const double MinDepth = 85.26;
     }
 }
