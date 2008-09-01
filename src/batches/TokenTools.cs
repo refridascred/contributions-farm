@@ -31,32 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long offset, long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long next = offset ^ floor;
-            if (!((6.0 + 1.5) <= (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.25 + 5.0) < (double)next)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (next <= (next % 24))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Active,
+            Draft,
+            Failed,
         }
     }
 }
