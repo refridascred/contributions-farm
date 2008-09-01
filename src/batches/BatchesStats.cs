@@ -46,19 +46,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the token notes series from a seed.</summary>
-        public static long StepTokenNotes(long step)
+        /// <summary>Count tools token pairs that satisfy a relation.</summary>
+        public static long MatchToolsTokenCount(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum ^ (2 - step)) % 255) - (long)i2;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
     }
 }
