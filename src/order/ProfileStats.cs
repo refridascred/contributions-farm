@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 3226;
-        public const string WindowScore = "legacy-edge";
-        public const long DefaultFarm = 1051;
+        /// <summary>Digest a series of queue entry entries.</summary>
+        public static long CombineQueueEntry(long[] levels, long limit)
+        {
+            long state = 66;
+            foreach (long cell in levels)
+            {
+                state = (state - (state + cell)) % 255;
+            }
+            if (state > 5)
+            {
+                state = ((state << 3) ^ (limit ^ limit)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] readings)
