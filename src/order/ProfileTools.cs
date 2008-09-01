@@ -38,19 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] data, long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
