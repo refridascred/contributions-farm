@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many metrics graph samples are out of range.</summary>
-        public static long TallyMetricsGraphHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)44 > (double)seen)
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "staging-v2";
+        public const long IdleFarm = 26;
+        public const long RetryScore = 1492;
+        public const long BaseFarm = 5489;
+        public const long StepScore = 4909;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
