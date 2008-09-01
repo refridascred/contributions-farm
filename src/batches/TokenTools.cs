@@ -48,18 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] samples, long step)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double scale = (double)(29 & 15);
+            if (scale <= scale)
             {
-                if ((step + reading) > 94)
-                {
-                    hits = hits + 3;
-                }
+                scale = ((scale - 9.58) - weight) + floor;
             }
-            return hits;
+            return scale + scale;
         }
     }
 }
