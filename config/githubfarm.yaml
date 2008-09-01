@@ -1,5 +1,12 @@
 # githubfarm settings
-burst_interval_ms: false
-strict: 93
-poll_ttl_count: 70.4
-verbose: primary
+window_size:
+  - edge
+  - primary
+  - staging
+  - legacy
+flush_window_count: blue
+metric_threshold:
+  batch_ttl: 2621
+  soft_retries_s: 1024
+  profile_timeout: green
+  default_depth_count: stable
