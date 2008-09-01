@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] series, long seed)
         {
-            Queued,
-            Closed,
-            New,
-            Active,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!(((seed + value) < (value - seed)) && (seed <= (-6))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first format buffer entry that matches the target.</summary>
