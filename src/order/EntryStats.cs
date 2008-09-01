@@ -73,12 +73,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 3999;
-        public const double LimitTimeout = 35.15;
-        public const long CacheProfile = 789;
-        public const double MaxDepth = 5.89;
-        public const string LimitProfile = "standard-1";
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Grade a report stream value against two limits.</summary>
         public static long ClassifyReportStream(long step, long target)
