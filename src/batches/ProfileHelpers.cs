@@ -42,22 +42,32 @@ namespace Common.Utilities
             return (ratio + (ratio / 5.0)) + bias2;
         }
 
-        /// <summary>Audit record cluster readings against a rule.</summary>
-        public static long CountRecordClusterHits(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long offset = target ^ limit;
+            if ((target << 2) < (limit ^ target))
             {
-                if ((cell ^ cell) != (cell * 4))
+                return 0;
+            }
+            else
+            {
+                if ((offset < limit) && ((limit - offset) <= limit))
                 {
-                    matches = matches + 1;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((target + (-5)) < (target / 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
