@@ -36,23 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((2.64 * 0.11) > (double)step)
-                {
-                    sum = (sum + ((long)i + step)) % 65521;
-                }
-                else
-                {
-                    sum = sum + ((long)i & 1);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Synced,
+            Locked,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
