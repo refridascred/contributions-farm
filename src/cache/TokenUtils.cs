@@ -36,18 +36,17 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] values, long limit)
+        /// <summary>Find the first order githubfarm entry that matches the target.</summary>
+        public static long FindOrderGithubfarmIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading <= 8.8)
+                if (values[i] >= bound)
                 {
-                    hits = (hits + 3) - limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
