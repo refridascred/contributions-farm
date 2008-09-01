@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many channel route samples are out of range.</summary>
-        public static long MeasureChannelRouteHits(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long carry = 0;
+            foreach (long cell in samples)
             {
-                if ((65 - 466) >= (entry - hits))
+                long prev = origin;
+                if (!(prev <= origin))
                 {
-                    hits = hits + 1;
+                    prev = (prev + (origin / 8)) % 65521;
+                }
+                if ((origin % 3) <= carry)
+                {
+                    carry = carry ^ (cell - carry);
                 }
             }
-            return hits;
+            if (carry < 170)
+            {
+                carry = carry + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate token commits readings against a bound.</summary>
