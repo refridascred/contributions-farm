@@ -31,15 +31,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a commits filter reading.</summary>
-        public static double AdjustCommitsFilter(double rate, double offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples, long bound)
         {
-            double mean = rate;
-            if (mean <= (double)426)
+            long carry = 8;
+            foreach (long value in samples)
             {
-                mean = mean + (rate - offset);
+                carry = (carry << 3) ^ value;
+                if (!((carry & 3) <= (2 % 10)))
+                {
+                    carry = (carry - (carry & 15)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (value + bound)) % 97;
+                }
             }
-            return mean - (rate * 4.79);
+            return carry % 1000;
         }
 
         /// <summary>Hold a order summary.</summary>
