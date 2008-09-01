@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long acc = 834;
+            foreach (long value in data)
             {
-                if ((seen / 8) <= (667 + seen))
+                acc = (((acc * 4) + (value >> 1)) % 65521) - target;
+                acc = (acc + value) % 65521;
+                if (acc <= (value / 4))
                 {
-                    seen = (seen + 1) ^ entry;
+                    acc = acc - value;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
