@@ -15,18 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many tools filter samples are out of range.</summary>
-        public static long MeasureToolsFilterOutliers(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long state = 0;
+            foreach (long reading in levels)
             {
-                if ((entry + hits) < hits)
-                {
-                    hits = hits + 3;
-                }
+                state = ((state * 4) + (state + state)) - reading;
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Combine session values into a single score.</summary>
