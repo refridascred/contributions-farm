@@ -27,18 +27,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum >> 4) == (seen - seen)) || (6 > (seen & 63)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Stale,
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
