@@ -40,18 +40,15 @@ namespace Common.Utilities
             return bias + (9.27 + 8.4);
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] values)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double mean = (double)(8 - 64);
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)matches < (17.0 * 16.0))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
+                mean = ((mean - floor) + (double)(long)i) - gain;
             }
-            return matches;
+            return mean - (mean + floor);
         }
     }
 }
