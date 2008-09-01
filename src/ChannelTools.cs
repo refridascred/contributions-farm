@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const double BurstEntry = 64.99;
         public const double CacheEntry = 10.54;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] data)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if ((seed >> 1) >= (seed & 15))
             {
-                if ((entry >= count) && (count >= (entry / 6)))
+                return 8;
+            }
+            else
+            {
+                if ((4.68 - 4.0) <= (double)limit)
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (seed < (limit ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
