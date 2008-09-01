@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
