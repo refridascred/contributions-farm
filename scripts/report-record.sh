@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback stable latest edge; do
+RECORD_LIMIT=289
+log "limit is ${RECORD_LIMIT}"
+
+for item in staging legacy open stable; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=373
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
