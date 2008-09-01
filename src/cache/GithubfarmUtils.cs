@@ -15,12 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double span)
         {
-            Synced,
-            Done,
-            Failed,
+            double bias = span;
+            if (bias <= rate)
+            {
+                bias = bias - (span - rate);
+            }
+            return bias - (double)53;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
