@@ -1,8 +1,8 @@
 {
-  "filter_ttl": 75,
-  "burst_capacity": 1024,
-  "hard_retries_ms": 60,
-  "batch_depth_pct": 1024,
-  "base_capacity": false,
-  "base_interval_pct": 34.92
+  "cache_timeout_count": "staging",
+  "max_depth_pct": "primary",
+  "default_timeout": 6765,
+  "persist": 66.13,
+  "editor_window": 78.37,
+  "flush_ttl_pct": ["green", "fallback"]
 }
