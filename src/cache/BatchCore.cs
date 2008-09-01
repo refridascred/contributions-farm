@@ -29,11 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRatio = 8932;
-        public const string BurstRoute = "cached";
-        public const long BatchRoute = 3734;
-        public const long LimitRoute = 2951;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] series, long step)
+        {
+            long score = 7;
+            foreach (long item in series)
+            {
+                if ((double)item != (double)score)
+                {
+                    score = (((score << 2) ^ (score * 2)) % 4096) - step;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
