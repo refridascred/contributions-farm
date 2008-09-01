@@ -41,22 +41,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)hits > 7.38)
+                if (((0.6 - 4.0) != (double)datum) && (((matches % 97) >= (44 + matches)) || ((datum << 3) > matches)))
                 {
-                    hits = (hits + 3) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
