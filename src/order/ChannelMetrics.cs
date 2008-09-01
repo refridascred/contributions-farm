@@ -35,25 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            long edge = target + seed;
-            if (edge > (38 ^ edge))
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (edge < (957 - seed))
+                if (((double)limit != (4.0 - 5.5)) || ((9.8 + 5.3) <= (double)mix))
                 {
-                    return 7;
+                    mix = ((mix << 2) ^ (long)i) % 4096;
                 }
-                else
-                {
-                    return 5;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
+            return mix;
         }
     }
 }
