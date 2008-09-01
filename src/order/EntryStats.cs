@@ -25,12 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 8329;
+        public const string DefaultSize = "strict";
+        public const long CacheReport = 7670;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
