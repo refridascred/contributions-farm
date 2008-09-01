@@ -1,9 +1,7 @@
 # githubfarm settings
-enabled: 76
-max_window_ms: 49.43
-readonly: 8
-order_delay:
-  - 298
-  - 76
-layout_ratio: green
-max_size_count: 30
+dry_run: 7253
+max_limit_ms: 1024
+hard_ratio: standard
+profile_ttl: 37.73
+batch_ttl: false
+audit: true
