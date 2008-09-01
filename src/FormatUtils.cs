@@ -61,11 +61,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 7332;
-        public const long BurstSpan = 53;
-        public const long DefaultLayout = 2630;
-        public const long SoftLayout = 974;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterLimits(long[] levels, long offset)
