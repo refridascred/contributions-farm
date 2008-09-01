@@ -40,13 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count the batch checks entries that pass the check.</summary>
+        public static long CountBatchChecksMatches(long[] readings)
         {
-            Queued,
-            Dropped,
-            Retry,
-            Paused,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)375 <= (double)sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
