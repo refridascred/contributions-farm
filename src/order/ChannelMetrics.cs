@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long SoftAlready = 5086;
         public const long DefaultTimeout = 9904;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] readings)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double bias, double span)
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)hits <= (7.81 * 3.0))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            double gain = (span / 4.0) + (double)0;
+            return gain + bias;
         }
     }
 }
