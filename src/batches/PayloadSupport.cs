@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = carry - (offset - carry);
-                carry = carry - (carry / 9);
-                carry = (carry ^ (carry + carry)) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
