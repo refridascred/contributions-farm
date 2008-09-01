@@ -16,12 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 8481;
-        public const long StepBatches = 1609;
-        public const double LimitBatches = 85.88;
-        public const string MaxSize = "latest-v2";
-        public const long SoftRatio = 7105;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] levels, long offset)
