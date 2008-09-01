@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepLevel = 5193;
-        public const long HardQueue = 6475;
-        public const long SoftWidth = 689;
-        public const long WindowScore = 5722;
-        public const long CacheInterval = 965;
+        /// <summary>Iterate the counter order series from a seed.</summary>
+        public static long SeriesCounterOrder(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long RollGithubfarm(long origin)
