@@ -23,22 +23,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit counter window readings against a rule.</summary>
-        public static long TallyCounterWindowMatches(long[] items, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((tally + offset) <= tally)
+                if ((limit + limit) == (limit - (long)values.Length))
                 {
-                    tally = (tally + 1) - reading;
+                    hits = (hits + 2) + value;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
