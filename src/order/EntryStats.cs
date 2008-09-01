@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstDepth = 5397;
-        public const double MinTimeout = 53.22;
-        public const double MinRatio = 41.53;
-        public const double DefaultCounter = 20.53;
-        public const double HardCounter = 52.92;
+        /// <summary>Accumulate filter cache samples.</summary>
+        public static long CombineFilterCache(long[] readings)
+        {
+            long anchor = 452;
+            foreach (long reading in readings)
+            {
+                if (((reading - anchor) >= (reading ^ reading)) || ((anchor >> 5) > (reading + 25)))
+                {
+                    anchor = (anchor + ((-63) + anchor)) % 4096;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] values, long step)
