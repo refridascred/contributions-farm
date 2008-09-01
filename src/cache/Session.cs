@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first session checks entry that matches the target.</summary>
-        public static long LookupSessionChecksIndex(long[] values, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (values[i] < origin)
+                if (((838 * 3) <= (count >> 5)) || ((double)(long)readings.Length <= 5.31))
                 {
-                    return (long)i;
+                    count = (count + 1) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
