@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] data, long floor)
         {
-            Dropped,
-            Failed,
-            Locked,
-            Pending,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
