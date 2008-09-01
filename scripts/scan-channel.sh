@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in legacy standard latest staging; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=414
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in cached primary legacy standard; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
