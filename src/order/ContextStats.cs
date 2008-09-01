@@ -36,31 +36,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] series, long limit)
+        /// <summary>Find the first schema counter entry that matches the target.</summary>
+        public static long SeekSchemaCounterIndex(long[] data, long seed)
         {
-            long carry = 234;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (limit > sample)
+                if (data[i] > seed)
                 {
-                    carry = (carry - (sample / 7)) % 97;
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = (carry * 2) + (sample + limit);
-                }
-                if (sample < (carry + sample))
-                {
-                    carry = (carry ^ (sample - carry)) % 101;
-                }
-                else
-                {
-                    carry = (carry + (carry + 935)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
