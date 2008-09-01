@@ -34,9 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetrySpan = 7065;
-        public const long WindowScore = 9523;
-        public const string LimitProfile = "latest-v2";
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] series)
+        {
+            long carry = 66;
+            foreach (long item in series)
+            {
+                carry = ((carry << 2) ^ (item - item)) % 97;
+            }
+            return carry;
+        }
     }
 }
