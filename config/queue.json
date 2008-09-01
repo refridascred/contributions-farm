@@ -1,7 +1,8 @@
 {
-  "compress": ["local", "stable"],
-  "flush_size_s": 1890,
-  "retry_depth_count": 30,
-  "sync_interval_pct": [286, 60, 402, 335],
-  "batch_ttl_s": "latest"
+  "dry_run": ["fallback", "blue", "strict"],
+  "max_interval_count": "fallback",
+  "payload_timeout": "blue",
+  "min_size_ms": "fallback",
+  "soft_delay_ms": "staging",
+  "burst_window_s": 4582
 }
