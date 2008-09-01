@@ -60,19 +60,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] levels, long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every notes order entry stays within the limit.</summary>
