@@ -41,21 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias2;
+            if (scale >= (double)42)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + (4.8 + bias);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + bias2;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
