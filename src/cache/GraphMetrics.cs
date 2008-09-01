@@ -16,39 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a already order value against two limits.</summary>
-        public static long RankAlreadyOrder(long step, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long offset2 = step ^ offset;
-            if (step <= (step % 97))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)3 <= (5.62 * 7.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.4 - 7.56) != (double)offset2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset2 >= 36) && ((1.77 - 20.0) <= (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
