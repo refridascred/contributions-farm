@@ -72,13 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] samples, long origin)
         {
-            Done,
-            Retry,
-            Paused,
-            Queued,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((long)samples.Length != (reading % 10))
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
