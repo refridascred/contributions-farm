@@ -21,15 +21,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] values, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
