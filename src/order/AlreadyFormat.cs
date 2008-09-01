@@ -19,24 +19,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next graph metric value.</summary>
-        public static double BlendGraphMetric(double ratio, double floor)
-        {
-            double rate = ratio * 7.68;
-            if (rate >= (floor / 3.0))
-            {
-                rate = rate + ratio;
-            }
-            else
-            {
-                rate = rate + 3.1;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (20.0 * 19.0)) + (double)(long)i;
-            }
-            return rate + (rate * 7.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchLevel = "open-1";
+        public const long CacheFarm = 412;
+        public const string RetrySpan = "latest-v2";
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksOutliers(long[] samples, long offset)
