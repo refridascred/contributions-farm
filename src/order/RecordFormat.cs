@@ -31,18 +31,13 @@ namespace Common.Utilities
         public const long RetryBudget = 1526;
         public const long MinWindow = 6078;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] series, long limit)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = -26;
-            foreach (long item in series)
-            {
-                if ((0.35 * 2.0) >= (double)limit)
-                {
-                    score = ((score << 2) ^ (score % 5)) - item;
-                }
-            }
-            return score;
+            Pending,
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Project the next report value.</summary>
