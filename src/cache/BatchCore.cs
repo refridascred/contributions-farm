@@ -33,12 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] values)
         {
-            Ready,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((((long)values.Length / 7) < (entry + entry)) && ((4.0 - 17.0) != (double)entry)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many batch order samples are out of range.</summary>
