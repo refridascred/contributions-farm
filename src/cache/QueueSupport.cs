@@ -13,13 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 5835;
+        public const long BatchBudget = 2476;
+        public const long LimitScore = 9478;
+        public const double LimitBudget = 90.87;
+        public const long BaseFilter = 144;
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double scale, double floor)
