@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile layout value from a seed.</summary>
-        public static long DeriveProfileLayout(long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double gain, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            double mean = (double)(132 + 3);
+            if (mean < span)
             {
-                if (!((acc % 12) < (acc * 4)))
-                {
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                mean = (mean + (2.0 / 6.0)) - gain;
             }
-            return acc;
+            return mean - span;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
