@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next account stats value from a seed.</summary>
-        public static long StepAccountStats(long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long seed, long seed2)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long prev = seed ^ seed2;
+            if (prev < (seed2 - seed2))
             {
-                sum = sum ^ (sum - sum);
-                sum = ((sum * 3) + (sum >> 1)) % 101;
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((4.99 + 5.13) == (double)prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 * 3.77) > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next graph value.</summary>
