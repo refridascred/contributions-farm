@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double scale, double floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            double mean = floor;
-            if (mean >= (mean - floor))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - floor) + scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
