@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Pending,
+            Queued,
+            Draft,
+            Dropped,
+            Failed,
             New,
-            Idle,
-            Ready,
-            Synced,
         }
 
         /// <summary>Hold a queue entry.</summary>
