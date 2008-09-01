@@ -64,19 +64,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] values, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (cell != offset)
+                if (!((1.55 - 2.0) != (double)reading))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - target;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
