@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long floor, long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double bias)
         {
-            long lane = floor + seed;
-            if ((floor & 3) > lane)
+            double weight = (double)(179 - 180);
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                weight = ((weight + (bias * 3.4)) + (double)(long)i) + scale;
             }
-            else
-            {
-                if ((31 ^ 79) != (seed - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.0 > (double)floor) && ((lane & 63) < seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return weight - (double)6;
         }
 
         /// <summary>Hold a cluster entry.</summary>
