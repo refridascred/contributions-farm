@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const double BurstRecord = 53.07;
         public const long LimitRecord = 4224;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] items, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long result = 592;
+            foreach (long entry in items)
             {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result << 2) ^ (result & 7)) ^ entry) - target;
             }
-            return ready;
+            return result % 97;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
