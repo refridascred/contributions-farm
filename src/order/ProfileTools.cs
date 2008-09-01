@@ -49,19 +49,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every cache profile entry stays within the limit.</summary>
-        public static bool VerifyCacheProfileLimits(long[] items, long origin)
+        /// <summary>Look up the position of a command stream sample.</summary>
+        public static long LocateCommandStreamIndex(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= origin)
+                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a notes summary.</summary>
