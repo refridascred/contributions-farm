@@ -44,16 +44,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the metric notes series from a seed.</summary>
-        public static long IterateMetricNotes(long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long anchor = 749;
+            foreach (long cell in levels)
             {
-                score = (score ^ (target ^ target)) % 101;
-                score = ((score * 3) + (long)i) % 97;
+                anchor = (anchor - (anchor * 5)) + cell;
             }
-            return score;
+            return anchor;
         }
     }
 }
