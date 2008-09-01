@@ -36,19 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] items, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return flag;
+            return mark;
         }
     }
 }
