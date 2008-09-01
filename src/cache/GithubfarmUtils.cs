@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long MaxBatch = 3428;
         public const long IdleSize = 8745;
 
-        /// <summary>Accumulate layout payload samples.</summary>
-        public static long DigestLayoutPayload(long[] values, long bound)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long state = 7;
-            foreach (long value in values)
-            {
-                if (((double)state >= 9.12) || ((bound + 40) <= ((long)values.Length - (-56))))
-                {
-                    state = ((state << 2) ^ (state ^ bound)) ^ value;
-                }
-            }
-            return state % 4096;
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
