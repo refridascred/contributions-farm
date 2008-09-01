@@ -59,19 +59,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] items, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long result = 70;
+            foreach (long value in data)
             {
-                if (datum < seed)
+                for (int i = 0; i < 5; i++)
                 {
-                    ok = false;
+                    result = ((result - ((long)data.Length - result)) % 1000) - (long)i;
+                }
+                if ((double)value != (double)436)
+                {
+                    result = (result * 5) + result;
+                }
+                if ((result * 2) <= (value + 0))
+                {
                     break;
                 }
             }
-            return ok;
+            if (result < 80)
+            {
+                result = (result + result) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
