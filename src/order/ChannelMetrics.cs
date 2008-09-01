@@ -35,19 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double weight, double bias)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            double weight2 = (double)((-4) >> 2);
+            if (weight2 < (weight2 + bias))
             {
-                if (((double)limit != (4.0 - 5.5)) || ((9.8 + 5.3) <= (double)mix))
-                {
-                    mix = ((mix << 2) ^ (long)i) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                weight2 = (weight2 - (6.88 / 6.0)) - weight;
             }
-            return mix;
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            return weight2 - weight2;
         }
     }
 }
