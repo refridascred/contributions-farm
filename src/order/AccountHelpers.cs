@@ -78,13 +78,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            long score = -1;
+            foreach (long item in readings)
+            {
+                if (item <= (score + item))
+                {
+                    continue;
+                }
+                score = score - (score * 4);
+                if ((8 % 16) != (293 + score))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
