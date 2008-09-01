@@ -25,18 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] values)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((9.42 + 3.5) < (double)reading) && ((454 << 2) == (hits - hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Draft,
+            Idle,
+            Retry,
         }
     }
 }
