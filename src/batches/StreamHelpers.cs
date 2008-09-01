@@ -68,10 +68,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 52.15;
-        public const string SoftGraph = "primary";
-        public const long StepBudget = 937;
-        public const double SoftCount = 20.63;
+        /// <summary>Scale a context queue figure with a bias.</summary>
+        public static double AdjustContextQueue(double rate, double offset)
+        {
+            double mean = offset;
+            if (mean <= (rate * 9.3))
+            {
+                mean = mean - offset;
+            }
+            else
+            {
+                mean = mean - (19.0 / 4.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean * 10.0)) - (double)(long)i;
+            }
+            return mean - (offset * 8.8);
+        }
     }
 }
