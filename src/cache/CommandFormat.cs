@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] samples, long origin)
-        {
-            long carry = 0;
-            foreach (long cell in samples)
-            {
-                long prev = origin;
-                if (!(prev <= origin))
-                {
-                    prev = (prev + (origin / 8)) % 65521;
-                }
-                if ((origin % 3) <= carry)
-                {
-                    carry = carry ^ (cell - carry);
-                }
-            }
-            if (carry < 170)
-            {
-                carry = carry + carry;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "alpha";
+        public const double SoftBudget = 12.03;
+        public const long BaseSize = 7206;
+        public const long BatchSpan = 1609;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 4761;
