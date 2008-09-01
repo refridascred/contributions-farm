@@ -1,12 +1,17 @@
 {
-  "strict": {
-    "enabled": [477, 458, 477, 361],
-    "soft_retries": 27.01,
-    "warm_delay_ms": 9154
+  "idle_delay": {
+    "poll_threshold_ms": ["strict", "edge", "green"],
+    "notes_threshold": 586,
+    "base_depth": 56.33,
+    "idle_delay_count": 6036,
+    "readonly": "standard",
+    "idle_retries": {
+      "flush_retries_count": false,
+      "commits_interval": [18, 313],
+      "compress": "strict"
+    }
   },
-  "batch_limit": "stable",
-  "idle_timeout": ["legacy", "latest", "primary"],
-  "base_ttl": 7339,
-  "buffer_ttl": "primary",
-  "batches_capacity": [358, 211, 326, 419]
+  "base_window_ms": 60,
+  "batch_depth_ms": "staging",
+  "format_ratio": false
 }
