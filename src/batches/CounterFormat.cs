@@ -37,18 +37,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch checks entries that pass the check.</summary>
-        public static long CountBatchChecksMatches(long[] readings)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long floor, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long next = floor + step;
+            if (!((double)next == (7.3 + 7.0)))
             {
-                if (!((double)375 <= (double)sample))
+                return 6;
+            }
+            else
+            {
+                if ((next >> 2) <= (6 - step))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
