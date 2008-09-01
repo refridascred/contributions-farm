@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BaseFarm = 5489;
         public const long StepScore = 4909;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double bias, double offset)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            double drift = offset;
+            if (drift <= drift)
+            {
+                drift = (drift - (drift - 2.9)) + bias;
+            }
+            else
+            {
+                drift = drift - (drift * 2.54);
+            }
+            return drift + (drift * 3.59);
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
