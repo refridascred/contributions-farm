@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const long IdleDepth = 5123;
         public const long SoftContext = 7924;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)mark > (6.46 / 8.0))
-                {
-                    mark = ((mark * 2) + ((long)i & 31)) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ floor;
-                    mark = (mark * 5) + floor;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Queued,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
