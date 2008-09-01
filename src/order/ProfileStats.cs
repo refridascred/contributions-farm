@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] items)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches ^ reading) > 2)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Dropped,
+            New,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
