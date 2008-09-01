@@ -34,15 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm token series from a seed.</summary>
-        public static long SeriesFarmToken(long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
