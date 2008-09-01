@@ -31,21 +31,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of filter queue readings.</summary>
-        public static long MatchFilterQueueCount(long[] samples)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Dropped,
+            New,
+            Ready,
         }
     }
 }
