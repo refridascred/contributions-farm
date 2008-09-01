@@ -17,19 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] readings)
         {
-            double scale = (weight * 4.1) - (weight * 3.1);
-            if (scale > weight)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                scale = (scale - 19.0) - offset;
+                if (((long)readings.Length << 2) >= value)
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale + (double)9;
+            return seen;
         }
 
         /// <summary>Describe the notes status values.</summary>
