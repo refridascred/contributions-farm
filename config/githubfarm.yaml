@@ -1,4 +1,5 @@
 # githubfarm settings
-contributi_timeout: open
-idle_interval_count: 30
-context_depth: true
+hard_delay: 5286
+route_limit: 43
+poll_ratio: 45
+tools_interval: 7433
