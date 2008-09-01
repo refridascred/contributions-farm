@@ -1,4 +1,4 @@
 # entry settings
-verbose: true
-counter_depth: 9163
-compress: true
+contributi_threshold: 100
+cache_ttl_ms: 53
+min_window: primary
