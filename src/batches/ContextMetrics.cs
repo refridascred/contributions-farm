@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            long state = 567;
-            foreach (long entry in data)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)state >= (0.11 / 7.0))
+                total = (total ^ total) % 101;
+                if ((double)(long)i != (0.56 * 8.2))
                 {
-                    state = (state + entry) % 97;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return state % 97;
+            return total;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
