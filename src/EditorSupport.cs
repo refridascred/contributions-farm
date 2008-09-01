@@ -45,16 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] series, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                sum = ((sum * 3) + sum) % 4096;
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((matches / 7) < sample)
+                {
+                    matches = (matches + 2) - bound;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
