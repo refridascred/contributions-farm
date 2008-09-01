@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum > (tally & 63)) && ((tally + datum) < datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultFactor = 756;
+        public const double MinRatio = 59.71;
+        public const string SoftRatio = "alpha-1";
+        public const long BaseCommand = 8530;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricMatches(long[] samples)
