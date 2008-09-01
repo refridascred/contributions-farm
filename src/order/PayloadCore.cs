@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 196;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry * 4) > (4 + entry))
                 {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - entry) % 4096;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Classify a batches tools pair into a bucket.</summary>
