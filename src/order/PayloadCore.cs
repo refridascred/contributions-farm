@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (mean - (offset / 4.0)) + bias;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] items)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= (datum * 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric info.</summary>
