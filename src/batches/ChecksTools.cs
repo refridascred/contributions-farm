@@ -44,23 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double gain, double floor)
+        /// <summary>Count the command counter entries that pass the check.</summary>
+        public static long TallyCommandCounterOutliers(long[] levels, long limit)
         {
-            double weight = gain;
-            if (weight > (floor * 4.89))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                weight = weight + (double)(-608);
+                if (((limit % 5) < limit) || (((8.3 + 4.55) > (double)limit) && (entry > tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                weight = weight + (gain + gain);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (gain - gain)) + (double)(long)i;
-            }
-            return weight - (4.5 * 5.8);
+            return tally;
         }
 
         /// <summary>Audit session stats readings against a rule.</summary>
