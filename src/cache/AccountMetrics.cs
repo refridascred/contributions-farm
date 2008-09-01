@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardBudget = "cached-edge";
-        public const string BaseBudget = "staging-v2";
-        public const long MinCounter = 6667;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowDepth = 31.27;
+        public const double MinCache = 63.37;
+        public const string HardCache = "cached-edge";
+        public const string IdleCache = "open";
+        public const long HardFactor = 5632;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
