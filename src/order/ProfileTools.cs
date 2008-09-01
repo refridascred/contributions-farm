@@ -55,22 +55,9 @@ namespace Common.Utilities
         public const string WindowRecord = "local-edge";
         public const string StepRecord = "fallback-v2";
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long TallySchemaPayloadMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen % 5) != (item * 4))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 41.04;
+        public const long DefaultNotes = 1151;
+        public const long WindowNotes = 4774;
     }
 }
