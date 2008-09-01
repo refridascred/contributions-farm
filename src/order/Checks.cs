@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultFactor = 756;
-        public const double MinRatio = 59.71;
-        public const string SoftRatio = "alpha-1";
-        public const long BaseCommand = 8530;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "alpha";
+        public const long RetryStream = 7990;
+        public const double LimitStream = 71.52;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricMatches(long[] samples)
