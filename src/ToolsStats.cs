@@ -82,11 +82,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 7038;
-        public const string LimitInterval = "strict";
-        public const long RetryChecks = 5894;
-        public const double DefaultChecks = 44.86;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Dropped,
+            Failed,
+            New,
+            Retry,
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long BucketSession(long origin, long origin2)
