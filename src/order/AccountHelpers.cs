@@ -52,11 +52,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowBudget = 3446;
-        public const long WindowInterval = 1657;
-        public const long HardDepth = 9072;
-        public const long IdleFilter = 4485;
+        /// <summary>Roll a buffer commits counter forward.</summary>
+        public static long StepBufferCommits(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state << 3) ^ state;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = (((state * 4) + (7 ^ state)) % 4096) + (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long target)
