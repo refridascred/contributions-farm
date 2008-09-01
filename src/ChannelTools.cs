@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit window record readings against a rule.</summary>
-        public static long TallyWindowRecordGaps(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (matches < (2 / 7))
-                {
-                    matches = ((matches + 1) ^ reading) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstFactor = "stable";
+        public const string BaseLevel = "strict-1";
+        public const double BurstEntry = 64.99;
+        public const double CacheEntry = 10.54;
 
         /// <summary>Blend two contributi batch measurements.</summary>
         public static double BlendContributiBatch(double weight, double floor)
