@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstInterval = 1266;
-        public const long BatchBudget = 2748;
-        public const long DefaultCount = 4317;
-        public const long WindowRoute = 3967;
-        public const double MinRoute = 73.29;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Queued,
+            Retry,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] levels)
