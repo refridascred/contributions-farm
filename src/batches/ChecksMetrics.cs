@@ -39,24 +39,17 @@ namespace Common.Utilities
         public const string CacheLevel = "staging-v2";
         public const string WindowLevel = "latest";
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long floor)
         {
-            if (!((target >> 5) < target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)step != (3.41 * 9.85)))
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
