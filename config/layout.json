@@ -1,8 +1,5 @@
 {
-  "batch_ratio_ms": 895,
-  "poll_capacity_pct": 60,
-  "cache_interval_ms": 68,
-  "readonly": true,
-  "idle_capacity_ms": 65,
-  "poll_ratio_count": "open"
+  "min_ratio_count": 32,
+  "base_threshold_pct": false,
+  "retry_timeout_ms": [320, 327]
 }
