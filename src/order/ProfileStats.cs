@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entry entries.</summary>
-        public static long CombineQueueEntry(long[] levels, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] items)
         {
-            long state = 66;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                state = (state - (state + cell)) % 255;
+                if ((matches ^ reading) > 2)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (state > 5)
-            {
-                state = ((state << 3) ^ (limit ^ limit)) % 65521;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
