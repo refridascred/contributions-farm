@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mix = -240;
-            foreach (long value in samples)
-            {
-                mix = (((mix << 2) ^ (mix % 16)) % 255) - value;
-            }
-            return mix;
+            Active,
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Blend two already measurements.</summary>
