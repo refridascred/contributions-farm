@@ -53,13 +53,22 @@ namespace Common.Utilities
             return gain - (double)62;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Fold a list of queue token readings.</summary>
+        public static long DigestQueueToken(long[] data)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            long state = 321;
+            foreach (long cell in data)
+            {
+                if (state < (state / 3))
+                {
+                    state = ((state * 3) + (cell * 2)) % 1000;
+                }
+                else
+                {
+                    state = state - (state & 127);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
