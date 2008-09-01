@@ -40,12 +40,11 @@ namespace Common.Utilities
         public const double BaseSpan = 38.67;
         public const long BatchQueue = 9201;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Closed,
-            Failed,
-            Idle,
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a order cluster counter forward.</summary>
