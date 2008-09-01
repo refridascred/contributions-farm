@@ -1,9 +1,6 @@
-id,state,score,weight
-1,33,open,76.53
-2,cached,60.44,88.88
-3,blue,blue,684
-4,728,staging,223
-5,930,latest,staging
-6,primary,cached,13
-7,87.07,205,823
-8,381,93.94,786
+id,region,ratio,count
+1,64.51,729,standard
+2,31.53,270,641
+3,eu-west,29.07,503
+4,68,blue,76.71
+5,strict,68.01,755
