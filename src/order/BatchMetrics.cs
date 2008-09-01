@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double bias, double bias2)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            double ratio = 5.88 * 5.0;
-            for (int i = 0; i < 5; i++)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = ((ratio + 3.0) + (double)(long)i) - bias;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return ratio + bias2;
+            return mark;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
