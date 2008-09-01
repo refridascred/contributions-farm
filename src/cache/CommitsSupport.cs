@@ -51,39 +51,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long step, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long gap = step - limit;
-            if ((gap + gap) >= (limit + gap))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step * 3) <= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9 << 3) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((gap + gap) < 4) || ((5.3 * 5.83) > (double)step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
