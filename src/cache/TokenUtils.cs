@@ -18,31 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            long sum = 624;
-            foreach (long cell in levels)
+            long total = 86;
+            foreach (long item in levels)
             {
-                if ((16 * 4) <= cell)
-                {
-                    sum = sum ^ sum;
-                    break;
-                }
-                if ((sum - sum) > (cell * 5))
-                {
-                    sum = ((sum * 2) + cell) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 65521;
-                }
+                total = ((total ^ (total & 15)) % 65521) + item;
             }
-            if (sum > 864)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
