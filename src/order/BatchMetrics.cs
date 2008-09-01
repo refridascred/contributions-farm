@@ -44,13 +44,10 @@ namespace Common.Utilities
         public const string BaseFactor = "fallback";
         public const long BatchLevel = 2036;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 31.96;
+        public const long CacheGithubfarm = 2453;
+        public const long BaseGithubfarm = 6631;
+        public const string IdleGithubfarm = "staging-1";
     }
 }
