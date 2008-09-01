@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up schema commits samples.</summary>
-        public static long MatchSchemaCommitsCount(long[] levels)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (((acc * 2) + (449 + acc)) % 97) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
