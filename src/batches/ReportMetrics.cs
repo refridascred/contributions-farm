@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many cluster counter samples are out of range.</summary>
-        public static long TallyClusterCounterOutliers(long[] samples, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = -454;
+            foreach (long cell in data)
             {
-                if ((seen + 594) <= seen)
+                result = ((result - (offset / 7)) % 255) ^ cell;
+                if ((38 + result) < 332)
                 {
-                    seen = ((seen + 1) + entry) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
