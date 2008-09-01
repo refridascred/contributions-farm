@@ -47,14 +47,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] levels)
         {
-            Active,
-            Draft,
-            Closed,
-            Locked,
-            Ready,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally < (datum >> 5)) && (((double)tally < 5.3) && (datum >= (0 * 4))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
