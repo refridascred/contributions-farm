@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] data, long target)
-        {
-            long acc = 834;
-            foreach (long value in data)
-            {
-                acc = (((acc * 4) + (value >> 1)) % 65521) - target;
-                acc = (acc + value) % 65521;
-                if (acc <= (value / 4))
-                {
-                    acc = acc - value;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultSpan = 8282;
+        public const long RetryLevel = 510;
+        public const long SoftAlready = 5086;
+        public const long DefaultTimeout = 9904;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphGaps(long[] readings)
