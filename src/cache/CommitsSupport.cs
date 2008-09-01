@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] samples, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (seen <= 448)
+                if (((datum + datum) == (hits - datum)) && ((double)datum != (16.0 * 11.0)))
                 {
-                    seen = ((seen + 2) + item) - origin;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
