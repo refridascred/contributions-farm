@@ -70,18 +70,19 @@ namespace Common.Utilities
         public const long DefaultLayout = 2630;
         public const long SoftLayout = 974;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((count + sample) < (41 / 6))
+                if (item != offset)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
