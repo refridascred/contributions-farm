@@ -55,38 +55,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank buffer farm input into a small class.</summary>
-        public static long RankBufferFarm(long target, long bound)
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long CountSessionStatsMatches(long[] samples)
         {
-            if ((3.38 / 5.0) == (double)target)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((940 << 2) == (target / 3))
+                if ((tally >> 4) > datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound % 16) > bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target >= 8)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
