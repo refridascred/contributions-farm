@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long CacheFarm = 412;
         public const string RetrySpan = "latest-v2";
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] samples, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double bias = (double)((-522) + 479);
+            if (bias > (span + bias))
             {
-                if (offset > (offset >> 3))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                bias = bias - (weight + weight);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (bias * 2.3)) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
