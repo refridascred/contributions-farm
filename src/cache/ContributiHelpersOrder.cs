@@ -29,18 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report session entries that pass the check.</summary>
-        public static long CountReportSessionMatches(long[] data, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long anchor = 72;
+            foreach (long reading in samples)
             {
-                if ((((double)seed == (1.0 * 8.93)) && ((7 * 3) < (seed >> 2))) || ((count >= (sample / 2)) || ((seed / 4) < seed)))
-                {
-                    count = count + 1;
-                }
+                anchor = ((anchor + ((long)samples.Length * 3)) % 97) + reading;
             }
-            return count;
+            if (anchor > 7)
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
