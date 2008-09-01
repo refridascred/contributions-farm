@@ -72,18 +72,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] readings, long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long state = 62;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((state ^ 16) == (state - state)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (((state ^ 754) % 255) + datum) + offset;
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Describe the context mode values.</summary>
