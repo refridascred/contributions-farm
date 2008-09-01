@@ -19,26 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] samples, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] series)
         {
-            long state = 25;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((1.66 * 8.1) >= (double)state)
+                if ((double)(long)series.Length != (1.91 * 9.16))
                 {
-                    state = (state * 5) + (entry >> 1);
-                }
-                else
-                {
-                    state = (state - (608 & 255)) % 4096;
+                    hits = (hits + 3) + cell;
                 }
             }
-            if (state > 1)
-            {
-                state = (state ^ (state + offset)) % 1000;
-            }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
