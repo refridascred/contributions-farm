@@ -45,12 +45,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Blend two account filter measurements.</summary>
+        public static double SmoothAccountFilter(double rate, double floor)
         {
-            Paused,
-            Draft,
-            Failed,
+            double weight = rate;
+            if (weight <= (floor + rate))
+            {
+                weight = weight + 3.0;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (9.59 / 5.0)) + (double)(long)i;
+            }
+            return weight - (weight * 8.4);
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
