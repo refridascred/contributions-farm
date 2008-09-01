@@ -1,5 +1,8 @@
 {
-  "readonly": [92, 495, 303, 162],
-  "audit": 8527,
-  "enabled": "blue"
+  "strict": 30,
+  "layout_retries": "green",
+  "profile_timeout": ["stable", "open", "open", "eu-west"],
+  "warm_depth_s": ["cached", "latest", "cached", "staging"],
+  "sync_window": "edge",
+  "poll_retries_ms": ["green", "stable", "blue"]
 }
