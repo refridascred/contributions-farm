@@ -70,18 +70,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] samples, long origin)
         {
-            long mix = 10;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!((mix + 69) == (mix & 7)))
+                if ((tally ^ item) > (item + origin))
                 {
-                    mix = ((mix * 4) + (cell % 3)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
