@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 1925;
-        public const long StepScore = 8670;
-        public const long IdleRatio = 4188;
-        public const string DefaultLayout = "staging";
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double SmoothEditor(double rate, double span)
