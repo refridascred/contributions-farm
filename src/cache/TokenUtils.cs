@@ -14,18 +14,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] data)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long sum = 624;
+            foreach (long cell in levels)
             {
-                if (!!((matches + matches) <= matches))
+                if ((16 * 4) <= cell)
                 {
-                    matches = (matches + 3) ^ reading;
+                    sum = sum ^ sum;
+                    break;
+                }
+                if ((sum - sum) > (cell * 5))
+                {
+                    sum = ((sum * 2) + cell) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 65521;
                 }
             }
-            return matches;
+            if (sum > 864)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
