@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a record summary.</summary>
