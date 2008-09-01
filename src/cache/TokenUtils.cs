@@ -30,12 +30,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Retry,
-            Active,
-            Idle,
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
