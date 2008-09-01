@@ -19,39 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long target, long seed)
+        /// <summary>Digest a series of support window entries.</summary>
+        public static long CombineSupportWindow(long[] readings, long bound)
         {
-            long delta = target + seed;
-            if ((seed - target) == (3 + delta))
+            long acc = 8;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((794 + 3) < (delta - delta)))
+                acc = (acc + (item + 42)) + bound;
+                if ((double)acc <= (0.85 / 8.0))
                 {
-                    return 2;
+                    acc = acc ^ acc;
                 }
-                else
+                if ((8 % 24) > (item % 60))
                 {
-                    if (seed <= (seed - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target <= (4.41 + 14.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
