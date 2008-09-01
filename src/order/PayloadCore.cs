@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long state = 23;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((2.1 / 5.0) > (double)state) && ((reading & 1) >= state))
                 {
-                    acc = (((acc * 2) + (449 + acc)) % 97) ^ (long)i2;
+                    state = ((state - ((long)samples.Length << 1)) % 101) - offset;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
+                state = (state << 3) ^ 329;
+                state = (state ^ reading) % 255;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
