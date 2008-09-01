@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] values, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] values)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long carry = 26;
+            foreach (long sample in values)
             {
-                if (item >= target)
+                if ((carry < (sample - carry)) || (((-416) ^ carry) >= (carry / 7)))
                 {
-                    stale = false;
-                    break;
+                    carry = carry + (carry ^ 2);
+                }
+                carry = (carry - (carry + (-314))) % 255;
+                if ((sample ^ sample) == (2 + carry))
+                {
+                    carry = (carry << 2) ^ (carry + sample);
                 }
             }
-            return stale;
+            if (carry > 8)
+            {
+                carry = (carry << 3) ^ (carry % 12);
+            }
+            return carry;
         }
 
         /// <summary>Classify a commits layout pair into a bucket.</summary>
