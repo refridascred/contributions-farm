@@ -67,18 +67,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] items, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long offset)
         {
-            long result = 579;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (44 <= (11 ^ step))
+                if (datum < offset)
                 {
-                    result = ((result * 2) + (value - step)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
     }
 }
