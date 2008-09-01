@@ -1,17 +1,8 @@
 {
-  "persist": 5,
-  "warm_threshold": "blue",
-  "retry_limit": {
-    "hard_capacity_count": 40.06,
-    "cache_delay_count": true,
-    "max_threshold_pct": true,
-    "compress": {
-      "audit": 3485,
-      "base_window": 30,
-      "soft_ttl_pct": 55.23
-    },
-    "metrics_interval": 57.38
-  },
-  "compress": "fallback",
-  "readonly": false
+  "tools_size": 7,
+  "sync_retries": false,
+  "order_interval": "eu-west",
+  "audit": "fallback",
+  "metric_window": "staging",
+  "retry_ratio_pct": 100
 }
