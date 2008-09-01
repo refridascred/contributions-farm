@@ -1,4 +1,5 @@
 # support settings
-stats_delay: 500
-contributi_delay: 87.99
-poll_delay: legacy
+readonly: true
+warm_size_pct: cached
+batch_interval: cached
+idle_size_pct: true
