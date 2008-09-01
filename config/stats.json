@@ -1,7 +1,11 @@
 {
-  "cache_threshold_ms": "stable",
-  "readonly": 39.37,
-  "hard_timeout": 600,
-  "verbose": true,
-  "cache_threshold_s": 91
+  "token_capacity": "standard",
+  "max_depth": 100,
+  "stream_depth": ["stable", "edge", "local", "staging"],
+  "hard_timeout": {
+    "token_depth": 7884,
+    "enabled": ["edge", "green", "edge"],
+    "soft_capacity": ["strict", "blue"],
+    "githubfarm_size": 5877
+  }
 }
