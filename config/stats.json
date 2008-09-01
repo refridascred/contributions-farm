@@ -1,12 +1,7 @@
 {
-  "enabled": ["stable", "blue", "stable"],
-  "base_depth_pct": {
-    "retry_capacity": "stable",
-    "batches_timeout": ["stable", "legacy", "stable"],
-    "entry_threshold": 60
-  },
-  "idle_ratio_s": true,
-  "min_window_pct": 1024,
-  "notes_window": "cached",
-  "readonly": "primary"
+  "cache_threshold_ms": "stable",
+  "readonly": 39.37,
+  "hard_timeout": 600,
+  "verbose": true,
+  "cache_threshold_s": 91
 }
