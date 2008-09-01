@@ -1,6 +1,6 @@
 {
-  "max_size_ms": true,
-  "support_ttl": [304, 280],
-  "max_capacity_ms": "edge",
-  "idle_retries_pct": 34.08
+  "min_capacity": 11,
+  "poll_retries_pct": "open",
+  "soft_retries_count": "local",
+  "githubfarm_timeout": false
 }
