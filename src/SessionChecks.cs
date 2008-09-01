@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double bias)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            double weight = (double)(179 - 180);
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = ((weight + (bias * 3.4)) + (double)(long)i) + scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - (double)6;
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
