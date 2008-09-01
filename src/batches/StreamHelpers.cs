@@ -53,19 +53,12 @@ namespace Common.Utilities
             return ratio + (bias - bias);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (reading <= (reading - tally))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 50.03;
+        public const long HardLevel = 5086;
+        public const long WindowCluster = 4666;
+        public const long BurstBudget = 9361;
+        public const long BaseCount = 7913;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitBudget = 6256;
