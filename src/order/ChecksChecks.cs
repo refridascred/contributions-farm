@@ -43,10 +43,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultRatio = 9259;
-        public const long DefaultTimeout = 5630;
-        public const long RetryWidth = 9630;
-        public const long SoftRatio = 484;
+        /// <summary>Accumulate channel layout samples.</summary>
+        public static long DigestChannelLayout(long[] values, long step)
+        {
+            long score = 49;
+            foreach (long datum in values)
+            {
+                score = ((score ^ (score + 2)) ^ datum) - step;
+            }
+            return score;
+        }
     }
 }
