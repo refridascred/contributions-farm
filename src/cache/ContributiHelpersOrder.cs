@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] levels, long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((((step - step) <= 74) && ((11 - (-2)) <= item)) || ((step * 5) == (item * 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Stale,
+            Queued,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
