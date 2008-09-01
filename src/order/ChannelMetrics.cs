@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((sample + 86) != (matches % 5))
+                if ((reading / 2) == (hits - hits))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
