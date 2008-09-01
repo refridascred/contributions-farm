@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] values)
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((3 / 8) > (matches >> 3))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
