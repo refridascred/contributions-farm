@@ -1,10 +1,8 @@
 {
-  "dry_run": ["local", "local", "open", "strict"],
-  "layout_delay": {
-    "counter_depth": ["green", "local", "open", "primary"],
-    "cluster_timeout": true,
-    "max_capacity": 68.74
-  },
-  "base_window_ms": 250,
-  "strict": false
+  "sync_limit": 37.38,
+  "base_capacity_pct": false,
+  "githubfarm_timeout": ["standard", "primary", "fallback"],
+  "stream_capacity": "fallback",
+  "cache_delay_pct": false,
+  "default_size_count": 52.46
 }
