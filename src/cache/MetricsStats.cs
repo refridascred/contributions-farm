@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] series, long target)
         {
-            Queued,
-            Locked,
-            New,
-            Closed,
-            Paused,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((target >> 3) != (tally & 15))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a cache batch reading by value.</summary>
