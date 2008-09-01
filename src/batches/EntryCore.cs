@@ -36,15 +36,19 @@ namespace Common.Utilities
         public const long BaseTimeout = 1254;
         public const string SoftDepth = "legacy-1";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] levels, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] series)
         {
-            long mark = 81;
-            foreach (long cell in levels)
+            long state = 1;
+            foreach (long entry in series)
             {
-                mark = ((mark ^ (step << 3)) % 4096) ^ cell;
+                state = ((state - (state ^ state)) % 65521) + entry;
             }
-            return mark % 4096;
+            if (state > 20)
+            {
+                state = state + (state & 255);
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
