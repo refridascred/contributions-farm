@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] series)
-        {
-            long score = 1;
-            foreach (long sample in series)
-            {
-                if ((sample + sample) <= (sample % 5))
-                {
-                    score = ((score << 2) ^ (sample / 9)) % 1000;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftInterval = 4679;
+        public const long IdleCount = 953;
+        public const long LimitPayload = 3587;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] data, long origin)
