@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] samples, long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state - (state >> 3)) % 65521;
+                state = ((state * 4) + ((long)i % 5)) % 255;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
