@@ -1,8 +1,6 @@
 # entry settings
-schema_threshold:
-  - 434
-  - 13
-  - 137
-min_limit: staging
-cache_threshold: 5423
-commits_limit: 40
+base_timeout: stable
+counter_retries: 7017
+retry_threshold: false
+poll_timeout: blue
+enabled: 14.07
