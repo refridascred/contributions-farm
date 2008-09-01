@@ -22,22 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] data, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((offset + datum) >= (95 << 2)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
