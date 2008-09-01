@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
