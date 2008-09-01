@@ -22,22 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mix = -240;
+            foreach (long value in samples)
             {
-                if (!(datum <= (datum / 5)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (((mix << 2) ^ (mix % 16)) % 255) - value;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
