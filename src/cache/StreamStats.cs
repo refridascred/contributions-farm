@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Idle,
+            Dropped,
             New,
-            Paused,
             Done,
-            Ready,
+            Synced,
         }
 
         /// <summary>Rank token input into a small class.</summary>
