@@ -44,13 +44,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long seed, long step)
         {
-            Active,
-            New,
-            Paused,
-            Closed,
+            if (seed <= (step >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.55 + 19.0) != (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= 1.3)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up entry samples.</summary>
