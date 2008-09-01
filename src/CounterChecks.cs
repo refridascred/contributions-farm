@@ -75,19 +75,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mark = 8;
-            foreach (long value in items)
-            {
-                mark = ((mark + (mark & 7)) % 101) ^ value;
-            }
-            if (mark > 101)
-            {
-                mark = mark - (356 / 3);
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
