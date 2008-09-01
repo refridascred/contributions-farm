@@ -44,11 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Iterate the report context series from a seed.</summary>
+        public static long StepReportContext(long floor)
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state << 3) ^ (state / 4)) % 4096;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
