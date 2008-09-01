@@ -24,22 +24,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] data, long target)
+        /// <summary>Digest a series of tools session entries.</summary>
+        public static long TotalToolsSession(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = 966;
+            foreach (long entry in series)
             {
-                if ((((seen - seen) != (target + target)) && ((double)seen < (7.0 - 4.61))) || ((cell & 3) < (seen >> 1)))
+                if (((entry + mix) < (entry + entry)) && (entry <= (930 + 436)))
                 {
-                    seen = seen + 2;
+                    mix = ((mix * 5) + mix) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = ((mix * 5) + mix) % 101;
                 }
             }
-            return seen;
+            if (mix > 6)
+            {
+                mix = ((mix * 4) + (2 - mix)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Match up record metrics samples.</summary>
