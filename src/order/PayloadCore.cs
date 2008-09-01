@@ -36,22 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] samples, long floor)
         {
-            long total = 8;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (!((double)total <= 1.34))
+                if (reading > floor)
                 {
-                    total = total - ((-1) - datum);
+                    ready = false;
+                    break;
                 }
             }
-            if (total < 0)
-            {
-                total = (total * 4) + (total >> 4);
-            }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
