@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double scale, double span)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            double rate = (2.0 / 3.0) / 8.0;
+            if (rate < (7.0 - 11.0))
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                rate = ((rate - 0.4) - scale) + span;
             }
-            return acc;
+            else
+            {
+                rate = rate - (double)728;
+            }
+            return rate + (rate - rate);
         }
 
         /// <summary>Accumulate graph samples.</summary>
