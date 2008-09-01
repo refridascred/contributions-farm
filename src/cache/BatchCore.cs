@@ -52,22 +52,39 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Rank already counter input into a small class.</summary>
+        public static long GradeAlreadyCounter(long origin, long bound)
         {
-            long mark = 7;
-            foreach (long sample in items)
+            long prev = origin + bound;
+            if (!((prev * 2) <= (prev / 8)))
             {
-                if ((114 - sample) < (sample << 3))
+                return 0;
+            }
+            else
+            {
+                if (2.2 >= (double)bound)
                 {
-                    mark = (mark << 3) ^ (mark >> 4);
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark * 3) + (294 % 100);
+                    if (!((origin + prev) != (origin / 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((prev - prev) > prev) || (8.1 < (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark % 97;
         }
     }
 }
