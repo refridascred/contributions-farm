@@ -32,17 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = -37;
+            foreach (long datum in readings)
             {
-                if (levels[i] == origin)
+                if ((result + result) <= (datum + datum))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (limit - datum)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
