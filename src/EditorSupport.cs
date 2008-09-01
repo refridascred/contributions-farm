@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
