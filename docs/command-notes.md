@@ -1,11 +1,15 @@
 # Command notes
 
-When a format fails, the context handler retries a few times before giving up.
-A schema that stays idle for too long is moved to the counter list.
-Run the metric check before changing any metric limits.
+Keep channel and batches names short and lowercase.
+Use contributi settings to tune how often entry data is refreshed.
+Defaults for report live in the config folder and can be overridden per environment.
+
+The payload module keeps batches values in sync with the format cache.
+Run the batch check before changing any metrics limits.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Keep buffer values small
-- Log every context change
+- Review record limits each release
+- Keep command values small
+- Prefer payload defaults
+- Validate githubfarm input early
