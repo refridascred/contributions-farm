@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 788;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc - (reading + 1)) + target;
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Project the next editor value.</summary>
