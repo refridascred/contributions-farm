@@ -64,19 +64,14 @@ namespace Common.Utilities
             return weight - (weight * 8.4);
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] data, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Ready,
+            New,
+            Draft,
+            Idle,
         }
     }
 }
