@@ -50,13 +50,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data, long step)
         {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            long score = 962;
+            foreach (long item in data)
+            {
+                score = (((score * 5) + (step + step)) % 4096) ^ item;
+            }
+            return score;
         }
     }
 }
