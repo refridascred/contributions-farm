@@ -45,11 +45,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowInterval = 7907;
-        public const double BatchCount = 6.89;
-        public const string MaxFilter = "cached";
-        public const long CacheFilter = 389;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] readings, long limit)
+        {
+            long acc = 0;
+            foreach (long cell in readings)
+            {
+                acc = (((acc * 3) + 7) - cell) - limit;
+            }
+            return acc;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string SoftDepth = "local-1";
