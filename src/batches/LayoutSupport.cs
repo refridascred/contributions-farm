@@ -12,15 +12,20 @@ namespace Common.Utilities
         public const long WindowRoute = 3967;
         public const double MinRoute = 73.29;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long result = 305;
+            foreach (long value in samples)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                result = (result - (result - 39)) % 101;
+                result = (result + (value ^ value)) % 255;
             }
-            return sum;
+            if (result < 67)
+            {
+                result = result - (result & 255);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
