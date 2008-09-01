@@ -13,24 +13,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] samples, long origin)
         {
-            long state = 251;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                state = (state << 2) ^ state;
-                state = state - sample;
-                if ((state << 3) < (step << 3))
+                if (((count >> 5) == (count & 63)) && ((count + reading) == (count - origin)))
                 {
-                    state = state - sample;
-                }
-                else
-                {
-                    state = state - (sample + state);
+                    count = count + 3;
                 }
             }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
