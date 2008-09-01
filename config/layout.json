@@ -1,15 +1,7 @@
 {
-  "dry_run": {
-    "readonly": "fallback",
-    "support_delay": {
-      "strict": "open",
-      "entry_interval": "cached",
-      "verbose": 1024,
-      "soft_interval": 29.74
-    },
-    "poll_ttl_s": "cached",
-    "strict": [75, 63, 450]
-  },
-  "readonly": "edge",
-  "flush_size_ms": 65.76
+  "sync_window_pct": 30,
+  "batch_ratio": "staging",
+  "burst_limit_ms": 39.36,
+  "cache_interval_ms": "latest",
+  "persist": 16.53
 }
