@@ -1,7 +1,6 @@
 # entry settings
-readonly: edge
-retry_window_count:
-  default_ratio: 30
-  retry_threshold: 27
-  contributi_timeout: 77
-counter_depth: green
+audit: 71.46
+cache_interval_ms: edge
+persist: 98
+soft_retries_ms: false
+buffer_size: 60
