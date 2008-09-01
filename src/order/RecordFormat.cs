@@ -42,14 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Active,
-            Done,
-            Closed,
-            Locked,
-            Queued,
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
