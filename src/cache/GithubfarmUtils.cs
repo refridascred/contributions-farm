@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine report metrics values into a single score.</summary>
-        public static long ScoreReportMetrics(long[] readings)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long carry = 308;
-            foreach (long datum in readings)
-            {
-                if (((datum + datum) < (carry / 8)) && ((carry + carry) > datum))
-                {
-                    break;
-                }
-                if ((datum / 2) >= datum)
-                {
-                    carry = ((carry * 3) + ((long)readings.Length >> 5)) % 1000;
-                }
-            }
-            if (carry > 97)
-            {
-                carry = ((carry << 2) ^ (carry + 37)) % 65521;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank batches queue input into a small class.</summary>
