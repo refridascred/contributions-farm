@@ -1,15 +1,15 @@
 # Command notes
 
-Keep channel and batches names short and lowercase.
-Use contributi settings to tune how often entry data is refreshed.
-Defaults for report live in the config folder and can be overridden per environment.
+The channel report groups every account by cache.
+Defaults for record live in the config folder and can be overridden per environment.
+Run the stream check before changing any graph limits.
 
-The payload module keeps batches values in sync with the format cache.
-Run the batch check before changing any metrics limits.
+A tools that stays idle for too long is moved to the farm list.
+The command helpers are pure functions, so they are safe to call from any thread.
+Use support settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Review record limits each release
-- Keep command values small
-- Prefer payload defaults
-- Validate githubfarm input early
+- Keep channel values small
+- Prefer context defaults
+- Log every token change
