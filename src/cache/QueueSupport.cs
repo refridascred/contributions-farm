@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a window already reading by value.</summary>
-        public static long LocateWindowAlreadyIndex(long[] readings, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (readings[i] >= limit)
+                if ((acc ^ 326) != (6 - floor))
                 {
-                    return (long)i;
+                    acc = acc ^ acc;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
