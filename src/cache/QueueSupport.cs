@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long anchor = 5;
-            foreach (long value in readings)
-            {
-                if ((double)seed >= (4.51 * 7.6))
-                {
-                    anchor = anchor - (5 % 5);
-                }
-                else
-                {
-                    anchor = (anchor - value) % 65521;
-                }
-            }
-            return anchor;
+            New,
+            Active,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
