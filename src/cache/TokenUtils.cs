@@ -27,15 +27,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long limit, long seed)
         {
-            double load = 3.7;
-            if (load < load)
+            long edge = limit + seed;
+            if ((edge - edge) > seed)
             {
-                load = (load - (double)1) + span;
+                return 0;
             }
-            return load + bias;
+            else
+            {
+                if (!((limit - seed) <= (4 & 15)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
