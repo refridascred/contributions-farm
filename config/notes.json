@@ -1,13 +1,10 @@
 {
-  "burst_capacity_count": 250,
-  "warm_interval_pct": {
-    "default_threshold_ms": true,
-    "record_limit": true,
-    "poll_size_pct": "strict",
-    "max_capacity_pct": 250
-  },
-  "metric_timeout": 7506,
-  "max_limit_pct": "edge",
-  "soft_retries": 30,
-  "max_capacity": true
+  "cache_retries_pct": "open",
+  "min_retries": 5950,
+  "poll_ratio": 250,
+  "enabled": {
+    "compress": "eu-west",
+    "record_capacity": "open",
+    "retry_limit": "staging"
+  }
 }
