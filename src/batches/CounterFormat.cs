@@ -37,18 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue route samples are out of range.</summary>
-        public static long AuditQueueRouteOutliers(long[] data)
+        /// <summary>Count schema support pairs that satisfy a relation.</summary>
+        public static long CompareSchemaSupportCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)count > (7.0 + 8.6)) || ((count % 5) <= (799 / 6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + value;
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
