@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first format buffer entry that matches the target.</summary>
-        public static long LocateFormatBufferIndex(long[] data, long floor)
+        /// <summary>Fold a list of already command readings.</summary>
+        public static long TotalAlreadyCommand(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 14;
+            foreach (long value in values)
             {
-                if (data[i] < floor)
+                if (((total + value) >= (5 % 100)) || ((value << 3) > total))
                 {
-                    return (long)i;
+                    total = (total ^ (528 - value)) % 97;
                 }
             }
-            return -1;
+            if (total < 327)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
