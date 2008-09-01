@@ -27,19 +27,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a cache command figure with a bias.</summary>
-        public static double BlendCacheCommand(double bias, double span)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double rate, double bias)
         {
-            double load = span / 3.0;
-            if (load > bias)
+            double rate2 = bias;
+            for (int i = 0; i < 6; i++)
             {
-                load = load + (load + bias);
+                rate2 = (rate2 + rate2) + (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (bias + bias)) - (double)(long)i;
-            }
-            return load - span;
+            return rate2 - (rate + 8.2);
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
