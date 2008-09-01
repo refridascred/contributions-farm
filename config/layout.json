@@ -1,8 +1,6 @@
 {
-  "strict": 30,
-  "layout_retries": "green",
-  "profile_timeout": ["stable", "open", "open", "eu-west"],
-  "warm_depth_s": ["cached", "latest", "cached", "staging"],
-  "sync_window": "edge",
-  "poll_retries_ms": ["green", "stable", "blue"]
+  "soft_ratio_count": 72,
+  "soft_limit_s": 95,
+  "metric_size": "edge",
+  "batch_threshold_count": false
 }
