@@ -42,39 +42,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a batch counter value against two limits.</summary>
-        public static long SortBatchCounter(long bound, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples, long offset)
         {
-            long lane = bound - step;
-            if (bound < step)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step <= 2.45)
+                if ((44 - hits) != (hits - 654))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((423 / 6) <= (bound / 6)) || ((16 - (-6)) > (lane * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(lane <= (step << 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = ((hits + 2) + item) - offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every queue notes entry stays within the limit.</summary>
