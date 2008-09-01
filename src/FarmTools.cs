@@ -25,19 +25,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate support entry readings against a bound.</summary>
-        public static bool VerifySupportEntryBounds(long[] readings, long floor)
+        /// <summary>Locate a route record reading by value.</summary>
+        public static long SeekRouteRecordIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= floor)
+                if (levels[i] > origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
