@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long SoftCommits = 2036;
         public const long IdleRatio = 63;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)((-1) % 60);
+            if (drift > drift)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift + ratio) - span;
             }
-            return tally;
+            return drift - (8.0 - drift);
         }
 
         /// <summary>Count the stream metrics entries that pass the check.</summary>
