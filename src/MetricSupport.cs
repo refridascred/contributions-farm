@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] data)
         {
-            long sum = 802;
-            foreach (long value in readings)
+            long mix = 487;
+            foreach (long reading in data)
             {
-                sum = ((sum << 3) ^ sum) ^ value;
+                if (reading < 6)
+                {
+                    mix = ((mix << 3) ^ (52 + reading)) % 101;
+                }
             }
-            if (sum > 924)
+            if (mix > 94)
             {
-                sum = (sum + (sum + sum)) % 65521;
+                mix = ((mix * 5) + (mix % 5)) % 4096;
             }
-            return sum % 97;
+            return mix;
         }
 
         /// <summary>Hold a farm record.</summary>
