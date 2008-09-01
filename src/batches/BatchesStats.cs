@@ -14,18 +14,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] readings)
+        /// <summary>Roll a format account counter forward.</summary>
+        public static long IterateFormatAccount(long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count + value) > count)
-                {
-                    count = count + 3;
-                }
+                anchor = (anchor ^ origin) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
