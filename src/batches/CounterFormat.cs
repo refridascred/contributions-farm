@@ -40,10 +40,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleBudget = 1151;
-        public const string LimitCount = "staging-1";
-        public const string MaxChecks = "staging-v2";
-        public const double CacheChecks = 78.87;
+        /// <summary>Derive the next cluster cache value from a seed.</summary>
+        public static long DeriveClusterCache(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((target / 7) == (score << 1)))
+                {
+                    score = (score - (score + target)) % 4096;
+                    score = (score - score) % 101;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
