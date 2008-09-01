@@ -24,15 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double bias, double bias2)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            double ratio = 5.88 * 5.0;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                ratio = ((ratio + 3.0) + (double)(long)i) - bias;
             }
-            return acc;
+            return ratio + bias2;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
