@@ -64,12 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the cluster graph entries that pass the check.</summary>
+        public static long TallyClusterGraphHits(long[] data)
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!(((323 >> 1) < (9 + item)) || ((211 % 97) == (349 - tally))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
