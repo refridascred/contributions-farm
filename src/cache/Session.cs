@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] series, long step)
+        /// <summary>Combine commits route values into a single score.</summary>
+        public static long ScoreCommitsRoute(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mark = 8;
+            foreach (long reading in series)
             {
-                if ((tally << 3) < (57 + 8))
+                for (int i = 0; i < 8; i++)
                 {
-                    tally = ((tally + 2) + sample) - step;
+                    mark = (mark - (long)i) ^ reading;
+                }
+                if ((8 / 9) != (570 + mark))
+                {
+                    mark = (mark << 3) ^ (mark / 9);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Rank route account input into a small class.</summary>
