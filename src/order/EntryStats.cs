@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch format entries that pass the check.</summary>
-        public static long MeasureBatchFormatHits(long[] values, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double scale = offset / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (((23 << 2) <= (item & 15)) || ((5.74 - 8.98) <= (double)item))
-                {
-                    tally = (tally + 3) + limit;
-                }
+                scale = ((scale + (double)78) + (double)(long)i) - ratio;
             }
-            return tally;
+            return scale - (double)8;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
