@@ -29,19 +29,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] readings, long offset)
         {
-            long mark = 500;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark << 3) ^ value;
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 7)
-            {
-                mark = (mark << 2) ^ (mark - mark);
-            }
-            return mark;
+            return -1;
         }
     }
 }
