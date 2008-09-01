@@ -29,19 +29,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            double mean = weight / 4.0;
-            if (mean >= mean)
+            long acc = 35;
+            foreach (long entry in readings)
             {
-                mean = (mean - mean) - floor;
+                acc = ((acc << 3) ^ (95 / 4)) % 101;
+                if ((acc - 862) > acc)
+                {
+                    acc = (acc * 3) + entry;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (acc < 8)
             {
-                mean = (mean + 7.0) + (double)(long)i;
+                acc = acc ^ (acc + 24);
             }
-            return mean - mean;
+            return acc;
         }
     }
 }
