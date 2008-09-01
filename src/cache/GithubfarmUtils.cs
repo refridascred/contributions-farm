@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long origin, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] values)
         {
-            if (((5 >> 1) > (seed * 4)) || ((double)seed > 6.47))
+            long mix = 86;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.13 - 1.0) == (double)origin)
+                if (reading > (reading % 100))
                 {
-                    return 4;
+                    mix = (mix + (reading * 3)) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    mix = ((mix * 3) + (reading + mix)) % 101;
                 }
             }
+            return mix;
         }
 
         /// <summary>Rank batches queue input into a small class.</summary>
