@@ -47,13 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] readings, long step)
         {
-            Pending,
-            Retry,
-            Synced,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
