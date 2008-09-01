@@ -1,15 +1,7 @@
 # githubfarm settings
-retry_timeout_pct: 76.09
-warm_interval_s:
-  strict:
-    verbose: 18
-    idle_threshold: 9870
-    burst_capacity_s: 82
-    soft_timeout_pct: legacy
-    batch_depth_count: strict
-  burst_capacity_s:
-    - blue
-    - green
-    - blue
-  idle_size: 500
-strict: 5156
+flush_size: 37.3
+dry_run: primary
+support_ttl: 86.5
+hard_delay_s:
+  - 473
+  - 147
