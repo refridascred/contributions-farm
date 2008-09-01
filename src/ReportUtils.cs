@@ -34,18 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] levels)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum < (datum + 0))
+                if ((double)total >= (2.53 + 14.0))
                 {
-                    tally = tally + 2;
+                    total = (total << 2) ^ step;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
