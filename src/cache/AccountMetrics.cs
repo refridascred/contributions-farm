@@ -35,11 +35,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 87.73;
-        public const long BatchMetrics = 1840;
-        public const long CacheMetrics = 5697;
-        public const long IdleDepth = 9910;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Failed,
+            New,
+            Stale,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double RetryToken = 39.79;
