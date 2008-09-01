@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double gain, double floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            double drift = (floor / 3.0) - (gain + floor);
-            if (drift > (double)(-2))
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                drift = drift - (gain / 3.0);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + 3.0;
+            return state;
         }
 
         /// <summary>Classify a batches tools pair into a bucket.</summary>
