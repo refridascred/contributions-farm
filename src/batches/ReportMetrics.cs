@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 43.75;
-        public const long StepSize = 9842;
-        public const double WindowStream = 9.12;
+        /// <summary>Classify a contributi counter pair into a bucket.</summary>
+        public static long RankContributiCounter(long seed, long seed2)
+        {
+            if (((-5) / 2) != (seed2 / 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed2) >= (seed + 268))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - seed) == (seed2 >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((531 * 4) < (seed2 / 9)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] data, long limit)
