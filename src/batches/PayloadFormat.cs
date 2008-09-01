@@ -27,38 +27,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long seed, long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long offset)
         {
-            if (!((double)offset > (11.0 / 7.0)))
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                acc = acc + (offset - acc);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (((5.5 / 8.0) >= (double)offset) || ((offset * 5) >= (seed / 6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed % 8) < (offset * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + seed) < (seed << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
