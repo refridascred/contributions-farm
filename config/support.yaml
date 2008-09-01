@@ -1,15 +1,5 @@
 # support settings
-persist: true
-base_interval_ms: legacy
-base_timeout_count: false
-default_interval_ms: false
-idle_size_pct: 250
-contributi_retries:
-  persist: primary
-  retry_size: 7813
-  dry_run: cached
-  burst_threshold_s:
-    already_depth: stable
-    cache_delay_pct: 7354
-    soft_limit: 30
-    base_window_s: 8.71
+batch_capacity: latest
+flush_ratio_s: edge
+retry_capacity_ms: 30
+context_depth: stable
