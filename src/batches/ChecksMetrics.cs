@@ -14,22 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] items, long target)
+        /// <summary>Find the first format buffer entry that matches the target.</summary>
+        public static long LocateFormatBufferIndex(long[] data, long floor)
         {
-            long state = 42;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state % 97) > (3 - state))
+                if (data[i] < floor)
                 {
-                    state = (state + 56) + value;
-                }
-                else
-                {
-                    state = (state - (target * 4)) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
