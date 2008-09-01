@@ -40,12 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            Stale,
+            Active,
+            Failed,
         }
     }
 }
