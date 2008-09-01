@@ -54,11 +54,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double weight, double bias)
+        /// <summary>Iterate the metric notes series from a seed.</summary>
+        public static long IterateMetricNotes(long target)
         {
-            double mean = 9.1;
-            return (mean - bias) + weight;
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                score = (score ^ (target ^ target)) % 101;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
