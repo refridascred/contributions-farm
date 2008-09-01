@@ -31,15 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] readings, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] series)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long cell in series)
             {
-                if (((double)bound != (8.92 + 7.4)) && ((47 - bound) >= (bound + hits)))
+                if (hits <= (cell * 3))
                 {
-                    hits = (hits + 2) ^ entry;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
