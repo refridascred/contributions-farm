@@ -1,6 +1,4 @@
 # githubfarm settings
-base_window:
-  - 176
-  - 409
-min_ttl_count: true
-sync_limit: true
+contributi_timeout: open
+idle_interval_count: 30
+context_depth: true
