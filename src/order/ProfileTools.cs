@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long SoftContext = 638;
         public const long LimitSpan = 182;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] items, long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading % 24) < reading) && ((count << 3) < count)) || (((count / 4) <= 24) || ((70 >> 1) >= (3 + reading))))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            Pending,
+            Retry,
+            Ready,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
