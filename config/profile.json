@@ -1,8 +1,5 @@
 {
-  "dry_run": "standard",
-  "hard_retries_ms": 18.89,
-  "compress": "eu-west",
-  "persist": 2275,
-  "max_size": "green",
-  "checks_threshold": 38.22
+  "default_limit": "primary",
+  "counter_delay": "staging",
+  "warm_timeout_ms": 72
 }
