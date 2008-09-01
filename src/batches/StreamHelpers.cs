@@ -22,10 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 4905;
-        public const double DefaultAccount = 61.16;
-        public const long MaxAccount = 2844;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double bias, double span)
+        {
+            double load = (double)(4 - 2);
+            if (load >= 0.32)
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load + (load * 11.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - span;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandMatches(long[] series, long step)
