@@ -1,15 +1,8 @@
 {
-  "idle_capacity": ["open", "strict"],
-  "readonly": "local",
-  "metric_threshold": {
-    "default_ttl_count": {
-      "warm_delay_ms": "eu-west",
-      "warm_retries_ms": 5181,
-      "compress": 66.4
-    },
-    "metric_ratio": [405, 209, 291],
-    "hard_capacity": 46
-  },
-  "context_delay": ["eu-west", "local", "green", "strict"],
-  "graph_threshold": 59
+  "compress": ["legacy", "stable", "primary", "staging"],
+  "schema_retries": "legacy",
+  "strict": 30,
+  "dry_run": ["green", "eu-west", "standard"],
+  "hard_depth": 35,
+  "burst_capacity_pct": 63.2
 }
