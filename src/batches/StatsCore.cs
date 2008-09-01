@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] data, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                if (item != origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit account cache readings against a rule.</summary>
