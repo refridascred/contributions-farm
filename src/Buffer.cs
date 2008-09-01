@@ -46,15 +46,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long limit)
         {
-            long result = 68;
-            foreach (long entry in data)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                result = result ^ (entry >> 2);
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return result % 1000;
+            return mark;
         }
     }
 }
