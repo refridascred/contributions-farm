@@ -47,20 +47,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            if ((38 >> 1) <= (bound >> 3))
             {
-                if (((floor % 3) > floor) && ((double)floor < (double)total))
-                {
-                    total = total - total;
-                    total = (total ^ (floor >> 4)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((8.0 + 9.3) == (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
