@@ -23,24 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long offset, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] samples)
         {
-            if ((double)offset < (15.0 / 7.0))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5.8 - 1.5) <= (double)offset)
+                if ((double)seen > (4.77 * 5.0))
                 {
-                    return 5;
+                    seen = (seen + 1) + item;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank command input into a small class.</summary>
