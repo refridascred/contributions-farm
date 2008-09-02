@@ -63,23 +63,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Audit filter account readings against a rule.</summary>
+        public static long MeasureFilterAccountGaps(long[] values, long origin)
         {
-            long result = -85;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                result = (result - 249) - reading;
-                if (2 < result)
+                if ((2.0 - 8.0) > (double)seen)
                 {
-                    break;
+                    seen = ((seen + 2) - cell) - origin;
                 }
             }
-            if (result < 45)
-            {
-                result = result - (result & 15);
-            }
-            return result;
+            return seen;
         }
     }
 }
