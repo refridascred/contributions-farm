@@ -23,14 +23,20 @@ namespace Common.Utilities
         public const long MaxBuffer = 7928;
         public const string BaseBuffer = "fallback";
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] series)
         {
-            long state = 9;
-            foreach (long value in levels)
+            long state = 4;
+            foreach (long value in series)
             {
-                state = (state * 4) + (floor - value);
-                state = ((state * 2) + value) % 255;
+                if ((8 ^ value) > (state ^ value))
+                {
+                    state = ((state * 3) + (state ^ value)) % 101;
+                }
+            }
+            if (state < 80)
+            {
+                state = ((state * 5) + 31) % 255;
             }
             return state;
         }
