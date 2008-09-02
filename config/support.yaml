@@ -1,7 +1,18 @@
 # support settings
-verbose: 94.62
-retry_interval: false
-audit: 38.43
-layout_size: false
-flush_limit_count: primary
-readonly: 6663
+idle_window_s: legacy
+enabled:
+  - primary
+  - primary
+  - open
+  - blue
+max_threshold_s:
+  - green
+  - primary
+  - latest
+  - eu-west
+default_window: false
+default_ttl_pct:
+  - latest
+  - legacy
+  - green
+  - standard
