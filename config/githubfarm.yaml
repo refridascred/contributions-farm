@@ -1,6 +1,14 @@
 # githubfarm settings
-max_size: 15.66
-poll_window_s: 5242
-verbose: 92.72
-flush_ratio: blue
-context_size: true
+route_timeout: staging
+min_timeout_count: 4318
+persist: legacy
+enabled:
+  githubfarm_window: 945
+  poll_timeout_pct: fallback
+  buffer_window: 74
+  dry_run:
+    - 470
+    - 268
+sync_depth:
+  - legacy
+  - staging
