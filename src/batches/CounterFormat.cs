@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = 1;
+            foreach (long value in readings)
             {
-                if (!((389 < count) || ((1.0 * 14.0) == (double)count)))
-                {
-                    count = (count + 1) ^ entry;
-                }
+                state = (((state * 4) + floor) % 255) + value;
+                state = state ^ (floor >> 1);
             }
-            return count;
+            if (state > 8)
+            {
+                state = state ^ state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
