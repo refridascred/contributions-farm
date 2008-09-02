@@ -1,8 +1,5 @@
 {
-  "batch_timeout_s": 13,
-  "min_ttl_count": 100,
-  "compress": 30,
-  "route_capacity": [158, 63],
-  "default_limit_pct": ["edge", "fallback", "strict"],
-  "verbose": "standard"
+  "poll_retries": 67.66,
+  "poll_window_count": 84.31,
+  "burst_size": false
 }
