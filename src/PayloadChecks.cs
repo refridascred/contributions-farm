@@ -25,22 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] data, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long step)
         {
-            long acc = 5;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((double)reading != (5.56 / 4.0))
+                if (reading > step)
                 {
-                    acc = (acc ^ (acc & 15)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 529)
-            {
-                acc = ((acc * 2) + bound) % 4096;
-            }
-            return acc % 1000;
+            return ready;
         }
 
         /// <summary>Hold a support entry.</summary>
