@@ -27,12 +27,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchWidth = 14.48;
-        public const string DefaultRatio = "open-edge";
-        public const long HardWidth = 4712;
-        public const long SoftCache = 4332;
-        public const double BurstCache = 1.59;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 1944;
+        public const long RetryProfile = 7289;
+        public const string BatchProfile = "strict-1";
 
         /// <summary>Fold a list of format readings.</summary>
         public static long ScoreFormat(long[] items)
