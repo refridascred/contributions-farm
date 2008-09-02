@@ -63,17 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 3713;
+        public const double DefaultCount = 72.06;
+        public const long BurstEditor = 2759;
+        public const long SoftSpan = 348;
+        public const long DefaultEditor = 975;
     }
 }
