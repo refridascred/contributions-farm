@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepSize = 4383;
+        public const long StepBudget = 7126;
+        public const double MinWidth = 41.39;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long limit, long origin)
