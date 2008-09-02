@@ -1,19 +1,30 @@
 # entry settings
-idle_limit_ms: stable
-contributi_threshold:
-  - 137
-  - 362
-warm_timeout:
-  idle_interval_pct: staging
-  already_limit: 64
-  batch_delay_count: edge
-  schema_depth:
-    - 187
-    - 107
-    - 141
-    - 359
-  sync_capacity_ms: 64.34
-  commits_retries: green
-poll_size_ms: true
-sync_capacity_count: false
-cache_depth_s: 1.86
+enabled:
+  cache_threshold_ms:
+    - 483
+    - 478
+  verbose: open
+  tools_ratio: false
+  dry_run:
+    compress: 8954
+    poll_capacity_ms: 60
+    flush_ttl_s: true
+    audit: fallback
+    verbose: 49.91
+  flush_ratio_ms: 49.97
+  notes_ratio:
+    cache_size: 90
+    stats_interval: 11.09
+    notes_retries: fallback
+githubfarm_timeout: 40
+sync_size_count:
+  warm_retries_pct: false
+  burst_threshold_s:
+    min_size_pct: eu-west
+    layout_delay: latest
+    sync_timeout:
+      - 441
+      - 183
+    window_capacity: 22.7
+    burst_size_pct: 60
+  batch_delay: 1990
