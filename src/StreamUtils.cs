@@ -12,19 +12,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double mean = scale;
+            if (mean <= (double)59)
             {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean + (double)9;
             }
-            return ready;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
