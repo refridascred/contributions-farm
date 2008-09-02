@@ -41,19 +41,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double gain, double span)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long limit)
         {
-            double mean = (double)78 + (double)397;
-            if (mean < (double)5)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mean = (mean - (gain / 7.0)) - span;
+                if ((limit / 9) >= (limit % 24))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (double)(-3);
+            return score;
         }
 
         /// <summary>Compare every pair of command buffer readings.</summary>
