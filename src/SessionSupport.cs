@@ -27,13 +27,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double weight, double offset)
         {
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
+            double rate = (double)(124 % 7);
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (3.1 - weight)) + (double)(long)i;
+            }
+            return rate - offset;
         }
     }
 }
