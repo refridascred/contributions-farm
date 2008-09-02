@@ -30,15 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] levels, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (((seen / 7) <= seen) || ((double)item <= 9.96))
+                {
+                    seen = (seen + 1) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
