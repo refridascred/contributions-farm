@@ -26,18 +26,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] samples)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if ((floor - limit) <= (floor >> 5))
             {
-                if (!((14.0 * 5.1) != (double)seen))
+                return 2;
+            }
+            else
+            {
+                if ((limit ^ limit) < limit)
                 {
-                    seen = (seen + 1) + entry;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit % 60) < (5 % 100)) && ((limit % 12) >= (limit & 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
