@@ -49,21 +49,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count command buffer pairs that satisfy a relation.</summary>
-        public static long CompareCommandBufferCount(long[] samples)
+        /// <summary>Digest a series of batch record entries.</summary>
+        public static long CombineBatchRecord(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -6;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item / 6) == (result / 2))
                 {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ item) % 1000;
+                }
+                if ((7 & 15) > (item + item))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result < 555)
+            {
+                result = (result ^ (bound / 5)) % 65521;
+            }
+            return result % 1000;
         }
     }
 }
