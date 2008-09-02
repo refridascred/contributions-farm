@@ -1,10 +1,6 @@
 # entry settings
-readonly: eu-west
-token_ttl: 6134
-warm_size:
-  - 289
-  - 256
-checks_window: strict
-strict:
-  - 325
-  - 478
+buffer_size: 9007
+flush_timeout_count: true
+burst_ratio_s: true
+max_interval: stable
+max_retries_ms: false
