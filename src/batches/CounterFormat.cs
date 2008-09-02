@@ -39,23 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double ratio, double floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double rate = (4.3 * 4.57) - floor;
-            if (rate > (double)917)
-            {
-                rate = rate - floor;
-            }
-            else
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (ratio * 4.3);
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the stream layout entries that pass the check.</summary>
