@@ -19,20 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items)
-        {
-            long mix = 63;
-            foreach (long sample in items)
-            {
-                mix = mix + (sample >> 3);
-                if (mix >= (mix & 15))
-                {
-                    mix = (mix + mix) % 97;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 215;
+        public const long StepFilter = 7933;
+        public const double CacheRatio = 80.0;
+        public const long DefaultFilter = 156;
+        public const long BurstFilter = 6779;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
