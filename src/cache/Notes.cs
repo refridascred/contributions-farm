@@ -20,12 +20,20 @@ namespace Common.Utilities
         public const long StepSpan = 5707;
         public const string SoftSpan = "stable-1";
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items)
         {
-            Idle,
-            Active,
-            Synced,
+            long acc = 82;
+            foreach (long cell in items)
+            {
+                acc = (acc - (783 << 2)) % 101;
+                acc = (acc << 3) ^ (acc + cell);
+            }
+            if (acc < (-468))
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
