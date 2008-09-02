@@ -100,22 +100,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry command entries that pass the check.</summary>
-        public static long MeasureEntryCommandOutliers(long[] samples, long floor)
+        /// <summary>Find the first githubfarm command entry that matches the target.</summary>
+        public static long FindGithubfarmCommandIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count >= (datum * 4))
+                if (data[i] > limit)
                 {
-                    count = (count + 3) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
