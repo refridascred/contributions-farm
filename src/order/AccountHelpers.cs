@@ -84,18 +84,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] items, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((double)value < (double)offset)
+                if ((datum - datum) < (matches >> 1))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
