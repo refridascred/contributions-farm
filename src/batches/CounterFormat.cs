@@ -52,17 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a layout profile sample.</summary>
-        public static long LookupLayoutProfileIndex(long[] data, long limit)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
         }
     }
 }
