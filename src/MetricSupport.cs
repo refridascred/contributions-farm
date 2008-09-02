@@ -26,18 +26,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry * 4) > entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 7768;
+        public const long DefaultChannel = 3976;
+        public const long DefaultSpan = 7908;
+        public const long MinTimeout = 7870;
+        public const long BaseChannel = 8961;
     }
 }
