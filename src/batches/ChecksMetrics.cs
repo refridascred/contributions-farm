@@ -75,17 +75,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] levels, long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (levels[i] == bound)
+                if (entry != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
