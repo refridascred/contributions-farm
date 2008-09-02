@@ -40,10 +40,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 6.35;
-        public const double RetryLevel = 64.73;
-        public const long WindowRatio = 3665;
+        /// <summary>Digest a series of queue graph entries.</summary>
+        public static long CombineQueueGraph(long[] readings, long offset)
+        {
+            long acc = 73;
+            foreach (long value in readings)
+            {
+                acc = ((acc * 4) + (offset ^ acc)) - value;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
