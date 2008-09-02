@@ -44,13 +44,21 @@ namespace Common.Utilities
             return mean - (double)256;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            Pending,
-            Queued,
-            Done,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
