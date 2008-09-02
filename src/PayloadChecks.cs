@@ -48,18 +48,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] data)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally << 3) < (45 - tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) - value;
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
