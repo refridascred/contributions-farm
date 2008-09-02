@@ -47,22 +47,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate session stats samples.</summary>
-        public static long ScoreSessionStats(long[] items)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long state = -36;
-            foreach (long entry in items)
-            {
-                if (!((state + state) <= state))
-                {
-                    state = ((state * 2) + 3) - entry;
-                }
-            }
-            if (state > 43)
-            {
-                state = ((state * 4) + (94 + state)) % 1000;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Blend two batch filter measurements.</summary>
