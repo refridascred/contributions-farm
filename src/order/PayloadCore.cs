@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of cache payload entries.</summary>
-        public static long TotalCachePayload(long[] data, long origin)
-        {
-            long sum = 48;
-            foreach (long item in data)
-            {
-                sum = ((sum - (sum * 4)) - item) - origin;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 9609;
+        public const string DefaultWidth = "legacy";
+        public const long WindowFactor = 1262;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
