@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long state = 4;
-            foreach (long reading in readings)
-            {
-                state = ((state * 4) + state) ^ reading;
-            }
-            return state;
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
