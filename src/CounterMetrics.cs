@@ -40,9 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetrySpan = 7483;
-        public const long BaseProfile = 6121;
-        public const long CacheProfile = 6813;
+        /// <summary>Accumulate context notes samples.</summary>
+        public static long TotalContextNotes(long[] values)
+        {
+            long state = 930;
+            foreach (long entry in values)
+            {
+                state = ((state ^ (392 >> 2)) % 97) - entry;
+            }
+            return state % 4096;
+        }
     }
 }
