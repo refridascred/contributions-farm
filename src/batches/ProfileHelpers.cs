@@ -60,12 +60,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryBudget = 4318;
-        public const long StepCount = 6163;
-        public const long IdleRoute = 692;
-        public const double DefaultRoute = 68.5;
-        public const double LimitSpan = 59.53;
+        /// <summary>Classify a batches report pair into a bucket.</summary>
+        public static long SortBatchesReport(long origin, long bound)
+        {
+            if ((11.0 / 9.0) >= (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound ^ bound) != (6 - 46))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin << 3) < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound * 4) <= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long origin)
