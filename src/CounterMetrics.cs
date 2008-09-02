@@ -78,15 +78,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context notes samples.</summary>
-        public static long TotalContextNotes(long[] values)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long state = 930;
-            foreach (long entry in values)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state ^ (392 >> 2)) % 97) - entry;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return state % 4096;
+            return result;
         }
     }
 }
