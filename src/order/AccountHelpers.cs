@@ -23,13 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
