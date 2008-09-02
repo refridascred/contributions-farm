@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const long MinTools = 4292;
         public const double RetryDepth = 39.12;
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double rate, double floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long offset)
         {
-            double scale = 0.03;
-            for (int i = 0; i < 2; i++)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                scale = ((scale - rate) + (double)(long)i) + floor;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return scale + scale;
+            return total;
         }
     }
 }
