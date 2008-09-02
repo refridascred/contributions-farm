@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long LimitCommits = 3367;
         public const long RetryDepth = 4154;
 
-        /// <summary>Accumulate record farm samples.</summary>
-        public static long TotalRecordFarm(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data)
         {
-            long carry = 481;
-            foreach (long value in levels)
+            long mark = 580;
+            foreach (long cell in data)
             {
-                carry = (carry ^ (carry & 63)) - value;
+                mark = (mark * 2) + (mark - cell);
+                if ((58 >> 4) <= (mark + cell))
+                {
+                    break;
+                }
             }
-            if (carry > 22)
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-            }
-            return carry % 4096;
+            return mark;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
