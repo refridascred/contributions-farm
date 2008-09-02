@@ -23,18 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Audit already commits readings against a rule.</summary>
+        public static long CountAlreadyCommitsHits(long[] items, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((0 + 314) == (item / 6))
                 {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - limit;
                 }
             }
             return hits;
