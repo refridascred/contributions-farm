@@ -19,14 +19,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Locked,
-            Dropped,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 68.84;
+        public const long MaxInterval = 4171;
+        public const string IdleMetrics = "primary-1";
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] data)
