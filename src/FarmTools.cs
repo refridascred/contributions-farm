@@ -44,9 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 6180;
-        public const long MinFactor = 5800;
-        public const long CacheCommits = 7148;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 1378;
+        public const double StepGraph = 88.74;
+        public const long HardInterval = 9877;
+        public const double HardGraph = 55.46;
+        public const long StepRatio = 3510;
     }
 }
