@@ -30,19 +30,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] values, long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
