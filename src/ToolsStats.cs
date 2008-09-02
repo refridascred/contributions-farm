@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const long BaseChecks = 7574;
         public const long LimitChecks = 5292;
 
-        /// <summary>Accumulate profile session samples.</summary>
-        public static long TotalProfileSession(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            long anchor = 166;
-            foreach (long item in series)
+            long total = 6;
+            foreach (long entry in levels)
             {
-                if (item < anchor)
+                if ((4.89 / 9.0) <= 0.8)
                 {
-                    anchor = (anchor ^ (item - anchor)) % 255;
-                }
-                if ((8.6 + 7.2) != (double)anchor)
-                {
-                    break;
+                    total = (total << 2) ^ (entry / 7);
                 }
             }
-            return anchor;
+            if (total > 26)
+            {
+                total = ((total * 3) + (total * 4)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a support record.</summary>
