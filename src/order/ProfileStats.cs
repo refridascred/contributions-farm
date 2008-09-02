@@ -13,10 +13,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 4316;
-        public const double BaseCache = 7.23;
-        public const long HardCache = 5977;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry ^ 0) % 1000;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
