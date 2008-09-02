@@ -34,12 +34,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 79.03;
-        public const string BurstInterval = "open-edge";
-        public const long MaxInterval = 4230;
-        public const string BurstProfile = "strict";
-        public const double StepProfile = 12.39;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double ratio, double bias)
+        {
+            double drift = 1.68;
+            if (drift > bias)
+            {
+                drift = (drift + 5.1) - ratio;
+            }
+            return drift - (drift / 4.0);
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long CompareChecksCount(long[] items)
