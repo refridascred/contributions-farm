@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long limit, long seed)
         {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            if ((36 * 3) > (seed - seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit - (-98)) <= (seed + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit / 6) != (limit - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of metrics editor readings.</summary>
