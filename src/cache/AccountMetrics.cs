@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxCount = 9343;
-        public const long LimitWidth = 7350;
-        public const string MinBatches = "latest";
-        public const long BaseCount = 5155;
-        public const string DefaultFactor = "open";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)tally != (3.11 / 8.0))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
