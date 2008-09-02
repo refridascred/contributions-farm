@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] samples, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((double)item >= (double)matches)
+                if (!(619 < (seen ^ datum)))
                 {
-                    matches = (matches + 3) - limit;
+                    seen = (seen + 3) + origin;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of support stream readings.</summary>
