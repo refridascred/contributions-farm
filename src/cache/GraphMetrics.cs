@@ -73,30 +73,18 @@ namespace Common.Utilities
         public const double WindowDepth = 90.02;
         public const long LimitDepth = 652;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] series, long bound)
         {
-            long anchor = 667;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((2.68 * 1.6) >= (double)value)
+                if ((bound + 921) < 777)
                 {
-                    continue;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = anchor ^ ((long)i * 4);
-                }
-                if (!((value + anchor) <= (anchor ^ value)))
-                {
-                    anchor = anchor + (724 + anchor);
+                    seen = (seen + 3) + reading;
                 }
             }
-            if (anchor > 83)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
