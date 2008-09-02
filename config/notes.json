@@ -1,8 +1,5 @@
 {
-  "default_limit": 95,
-  "persist": 8531,
-  "min_depth_pct": 98.91,
-  "batches_threshold": 60.47,
-  "flush_limit": false,
-  "session_limit": 1024
+  "base_timeout": false,
+  "flush_capacity_count": ["fallback", "stable"],
+  "verbose": true
 }
