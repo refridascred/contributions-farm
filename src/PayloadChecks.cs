@@ -36,15 +36,12 @@ namespace Common.Utilities
         public const string MaxFormat = "stable-edge";
         public const long CacheSpan = 3540;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
