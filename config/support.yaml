@@ -1,18 +1,6 @@
 # support settings
-burst_ratio_count:
-  - 481
-  - 448
-  - 299
-  - 428
-base_delay_ms: strict
-poll_capacity: stable
-strict:
-  sync_interval_s: 53.76
-  max_capacity: fallback
-  compress: latest
-route_interval: 11
-batch_threshold_ms:
-  - eu-west
-  - primary
-  - latest
-  - blue
+max_threshold_count: 59.77
+format_delay: false
+flush_ttl_pct: strict
+queue_delay: 11.91
+flush_capacity_s: 1643
