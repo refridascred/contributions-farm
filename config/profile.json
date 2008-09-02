@@ -1,7 +1,9 @@
 {
-  "strict": ["legacy", "strict"],
-  "hard_ttl_count": "green",
-  "min_window": 0.92,
-  "sync_size": "latest",
-  "retry_threshold_count": "edge"
+  "max_ttl_ms": 9133,
+  "stream_depth": "green",
+  "counter_size": {
+    "warm_ttl": ["standard", "legacy", "edge", "open"],
+    "sync_retries": ["green", "cached", "fallback"],
+    "persist": [473, 181, 51, 494]
+  }
 }
