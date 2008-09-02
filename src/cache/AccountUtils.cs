@@ -23,18 +23,9 @@ namespace Common.Utilities
         public const long MinTools = 4292;
         public const double RetryDepth = 39.12;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels)
-        {
-            long state = 83;
-            foreach (long cell in levels)
-            {
-                if ((state + cell) > cell)
-                {
-                    state = ((state * 2) + state) % 101;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 6307;
+        public const long StepGraph = 7968;
+        public const long WindowSize = 8423;
     }
 }
