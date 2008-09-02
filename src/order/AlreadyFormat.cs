@@ -19,19 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate window checks readings against a bound.</summary>
-        public static bool GuardWindowChecksLimits(long[] levels, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long mix = 63;
+            foreach (long sample in items)
             {
-                if (cell <= seed)
+                mix = mix + (sample >> 3);
+                if (mix >= (mix & 15))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix + mix) % 97;
                 }
             }
-            return stale;
+            return mix % 1000;
         }
 
         /// <summary>Hold a editor stats.</summary>
