@@ -36,12 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            New,
-            Closed,
-            Retry,
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
