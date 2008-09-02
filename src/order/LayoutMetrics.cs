@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] items)
-        {
-            long state = 8;
-            foreach (long reading in items)
-            {
-                if ((reading - reading) >= (reading + 978))
-                {
-                    state = (state - (9 + reading)) % 255;
-                }
-                else
-                {
-                    state = (state - reading) % 65521;
-                }
-                if ((reading <= (reading % 100)) || ((reading >> 3) <= reading))
-                {
-                    break;
-                }
-            }
-            if (state > 6)
-            {
-                state = state - state;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxCount = 8746;
+        public const double IdleFactor = 18.9;
+        public const long BaseStats = 4522;
+        public const string StepStats = "fallback-edge";
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long ClassifyQueue(long seed, long origin)
