@@ -42,18 +42,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] data)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((67 & 255) != (seen * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) ^ datum;
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
