@@ -16,14 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 1277;
+        public const long CacheGithubfarm = 9898;
+        public const long BatchRatio = 5553;
+        public const long RetrySize = 6046;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
