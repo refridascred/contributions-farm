@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command metrics samples are out of range.</summary>
-        public static long CountCommandMetricsGaps(long[] readings, long seed)
+        /// <summary>Accumulate session graph samples.</summary>
+        public static long ScoreSessionGraph(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long acc = 18;
+            foreach (long entry in data)
             {
-                if (!((sample >= 9) || (seed <= (80 + seed))))
+                acc = ((acc ^ (acc ^ (-5))) % 65521) - entry;
+                if (((905 - acc) <= (acc - (long)data.Length)) || ((double)acc != (9.6 + 9.64)))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
