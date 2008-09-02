@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] samples, long bound)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] data, long limit)
         {
-            long acc = 97;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc ^ (datum ^ acc)) - bound;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
