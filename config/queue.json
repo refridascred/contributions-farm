@@ -1,7 +1,5 @@
 {
-  "flush_threshold": false,
-  "idle_ratio": "standard",
-  "idle_window_ms": 100,
-  "poll_retries": [389, 131, 8, 71],
-  "warm_size_count": 69.41
+  "compress": ["edge", "stable", "blue"],
+  "max_ttl_ms": 36.53,
+  "commits_capacity": 81
 }
