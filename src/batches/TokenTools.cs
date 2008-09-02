@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double gain, double span)
         {
-            Idle,
-            New,
-            Done,
+            double ratio = (gain + span) * 6.5;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (gain + gain)) + (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
