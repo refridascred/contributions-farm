@@ -68,11 +68,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 41.52;
-        public const long MinFactor = 7035;
-        public const double RetryFarm = 83.36;
-        public const double BatchFactor = 65.54;
-        public const long DefaultFarm = 2738;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits + hits) > item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
