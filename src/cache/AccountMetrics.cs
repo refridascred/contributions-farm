@@ -60,18 +60,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] samples)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double mean = (weight + weight) + (weight / 7.0);
+            if (mean >= (mean + floor))
             {
-                if (((hits - cell) < 60) || !((double)cell != (double)hits))
-                {
-                    hits = hits + 1;
-                }
+                mean = mean - (floor / 5.0);
             }
-            return hits;
+            else
+            {
+                mean = mean - (weight + 8.3);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (floor / 9.0)) + (double)(long)i;
+            }
+            return mean - weight;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
