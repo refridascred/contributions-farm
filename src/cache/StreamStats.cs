@@ -43,10 +43,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "strict-1";
-        public const long MaxStats = 7212;
-        public const string MaxLevel = "latest-1";
-        public const long HardSpan = 357;
+        /// <summary>Locate a githubfarm profile reading by value.</summary>
+        public static long LookupGithubfarmProfileIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
