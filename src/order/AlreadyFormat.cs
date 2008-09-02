@@ -28,16 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] data, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                result = result + (result ^ result);
-                result = ((result * 3) + (long)i) % 65521;
+                if (((18.0 >= (double)hits) && ((hits - hits) <= (floor << 3))) && ((floor / 9) < hits))
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
