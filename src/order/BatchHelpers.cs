@@ -24,9 +24,13 @@ namespace Common.Utilities
             return gain2 + span;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstSize = 3933;
-        public const long StepSize = 3655;
-        public const string HardContext = "latest-edge";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
