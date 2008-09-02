@@ -1,7 +1,19 @@
 {
-  "retry_timeout_ms": 500,
-  "poll_window_s": 80.35,
-  "compress": true,
-  "metrics_window": 10.4,
-  "persist": "legacy"
+  "verbose": 61.12,
+  "batch_interval_ms": [140, 365],
+  "sync_ttl_ms": [100, 9, 106, 464],
+  "stream_threshold": {
+    "burst_threshold": {
+      "cluster_timeout": 28,
+      "compress": "eu-west",
+      "burst_limit": 3276,
+      "account_interval": "primary",
+      "poll_threshold_pct": 64.33,
+      "persist": "fallback"
+    },
+    "batch_timeout": 5400,
+    "batch_threshold": "open",
+    "poll_depth": ["legacy", "open", "blue"],
+    "verbose": [352, 192]
+  }
 }
