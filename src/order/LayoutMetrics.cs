@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepSize = 77.9;
-        public const double IdleWidth = 7.46;
-        public const long RetryCache = 7229;
-        public const string RetrySpan = "alpha-v2";
-        public const long BaseWidth = 1404;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] items)
+        {
+            long mark = 54;
+            foreach (long value in items)
+            {
+                mark = ((mark << 2) ^ (value * 5)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] samples)
