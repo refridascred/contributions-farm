@@ -1,21 +1,6 @@
 # support settings
-soft_interval: 748
-cache_ratio_ms:
-  command_threshold: false
-  max_limit: staging
-  flush_delay_pct:
-    - edge
-    - latest
-    - local
-  metrics_depth: primary
-  max_limit_ms:
-    - eu-west
-    - cached
-    - blue
-  dry_run:
-    - standard
-    - edge
-    - primary
-sync_interval_pct: 52.13
-enabled: local
-min_delay: 1
+report_interval: green
+warm_ttl_s:
+  - blue
+  - staging
+profile_timeout: 60
