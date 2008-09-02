@@ -24,23 +24,18 @@ namespace Common.Utilities
             return drift - (8.6 + ratio);
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] levels, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (offset > total)
+                if ((matches * 3) == (sample % 97))
                 {
-                    total = ((total << 2) ^ offset) % 255;
+                    matches = (matches + 3) - offset;
                 }
-                else
-                {
-                    total = (total - (offset * 5)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
