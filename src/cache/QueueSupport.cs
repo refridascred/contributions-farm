@@ -28,24 +28,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a tools context value against two limits.</summary>
-        public static long ClassifyToolsContext(long offset, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long floor)
         {
-            if (((offset - limit) != (offset + limit)) && ((10.0 / 4.0) == (double)offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit >= (limit - limit))
+                if (data[i] == floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
