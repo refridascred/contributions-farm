@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const double MaxChannel = 3.33;
         public const long CacheWidth = 3690;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] levels, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (datum > seed)
+                if ((hits + entry) >= (entry << 3))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
