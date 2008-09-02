@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleScore = "strict-edge";
-        public const long HardChecks = 7489;
-        public const long DefaultInterval = 8654;
-        public const long SoftCount = 1217;
+        /// <summary>Roll a payload stats counter forward.</summary>
+        public static long SeriesPayloadStats(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum ^ (sum + sum)) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (sum ^ (seed + seed)) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] readings, long origin)
