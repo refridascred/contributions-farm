@@ -65,13 +65,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long limit)
         {
-            New,
-            Draft,
-            Done,
-            Failed,
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((mix - 4) > (mix + limit))
+                {
+                    long slot = limit;
+                    mix = (mix ^ (limit + slot)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (16 % 100)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
