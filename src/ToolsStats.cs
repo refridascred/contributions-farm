@@ -16,10 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleScore = 57.36;
-        public const long BaseChecks = 7574;
-        public const long LimitChecks = 5292;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] items)
+        {
+            long mix = 56;
+            foreach (long item in items)
+            {
+                mix = (mix - 1) % 4096;
+                if ((item + mix) != (item - item))
+                {
+                    mix = mix + mix;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long CombineNotes(long[] levels)
