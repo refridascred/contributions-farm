@@ -54,10 +54,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstInterval = 92.91;
-        public const string LimitScore = "fallback-edge";
-        public const long CacheSize = 507;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample <= (hits << 2)) && (hits <= (sample & 1)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseDepth = 3532;
