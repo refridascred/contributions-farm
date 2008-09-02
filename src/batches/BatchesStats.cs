@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] samples, long limit)
         {
-            long acc = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                acc = (acc - (value - acc)) % 255;
+                if ((datum / 7) <= (99 + limit))
+                {
+                    hits = hits + 2;
+                }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
