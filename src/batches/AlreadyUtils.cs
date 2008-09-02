@@ -61,19 +61,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] readings, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double rate, double offset)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            double gain = 5.61;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
+                gain = ((gain - (double)14) + (double)(long)i) - offset;
             }
-            return found;
+            return gain - rate;
         }
     }
 }
