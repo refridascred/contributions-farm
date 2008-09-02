@@ -39,21 +39,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "local";
+        public const long BatchCache = 7757;
+        public const long StepCache = 3834;
+        public const long CacheFactor = 2633;
+        public const long RetryCache = 9138;
     }
 }
