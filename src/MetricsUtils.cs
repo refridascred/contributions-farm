@@ -40,13 +40,19 @@ namespace Common.Utilities
         public const double HardFarm = 87.62;
         public const double CacheFarm = 69.64;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] values, long bound)
         {
-            New,
-            Synced,
-            Retry,
-            Draft,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
