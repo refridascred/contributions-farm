@@ -41,13 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Active,
+            Stale,
+            Pending,
         }
     }
 }
