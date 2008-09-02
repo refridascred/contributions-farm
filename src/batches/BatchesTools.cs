@@ -38,19 +38,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the batches report series from a seed.</summary>
-        public static long DeriveBatchesReport(long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result ^ (result & 63)) % 4096) + (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                mix = ((mix << 3) ^ mix) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
     }
 }
