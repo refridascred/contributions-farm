@@ -18,23 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values, long bound)
+        /// <summary>Rank payload editor input into a small class.</summary>
+        public static long SortPayloadEditor(long bound, long seed)
         {
-            long score = 15;
-            foreach (long value in values)
+            if ((double)bound == (double)seed)
             {
-                long lane = value;
-                if ((value > (lane & 1)) || (lane > (927 << 2)))
+                return 5;
+            }
+            else
+            {
+                if ((bound / 2) < (seed / 7))
                 {
-                    score = (score - (value & 3)) % 101;
+                    return 3;
                 }
-                if ((70 + bound) > (value % 24))
+                else
                 {
-                    score = (score + (3 / 6)) % 97;
+                    return 2;
                 }
             }
-            return score;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
