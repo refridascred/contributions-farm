@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] levels)
+        /// <summary>Fold a list of context buffer readings.</summary>
+        public static long FoldContextBuffer(long[] data)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mark = 180;
+            foreach (long datum in data)
             {
-                if ((4.0 * 11.0) == (double)value)
-                {
-                    tally = tally + 2;
-                }
+                mark = (mark * 4) + (datum - mark);
             }
-            return tally;
+            if (mark < 9)
+            {
+                mark = ((mark << 2) ^ (mark >> 1)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Blend two commits measurements.</summary>
