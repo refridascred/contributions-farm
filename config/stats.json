@@ -1,16 +1,11 @@
 {
-  "verbose": 60,
-  "cache_timeout_pct": "blue",
-  "schema_size": false,
-  "burst_ratio_count": {
-    "window_ratio": {
-      "retry_delay": 1655,
-      "enabled": "blue",
-      "filter_timeout": true
-    },
-    "farm_depth": 250,
-    "cache_retries_ms": 77.01
+  "route_size": false,
+  "sync_delay": {
+    "idle_window_s": [360, 247, 24],
+    "soft_ttl": "blue",
+    "verbose": ["eu-west", "legacy", "stable"],
+    "editor_retries": "local"
   },
-  "retry_limit": false,
-  "profile_window": 75.37
+  "batch_ratio": [156, 336],
+  "readonly": [184, 317, 393, 309]
 }
