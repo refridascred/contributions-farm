@@ -32,13 +32,11 @@ namespace Common.Utilities
             return drift + (gain + gain);
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Synced,
-            Paused,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardDepth = 5905;
+        public const double BurstWindow = 0.68;
+        public const long RetryWindow = 4656;
+        public const long RetryRatio = 4118;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
