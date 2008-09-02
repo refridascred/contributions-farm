@@ -38,15 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double weight, double floor)
-        {
-            double bias = weight;
-            if (bias < (floor + bias))
-            {
-                bias = bias + (bias * 2.3);
-            }
-            return bias + weight;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryInterval = 2697;
+        public const long IdleSize = 5849;
+        public const double IdleNotes = 59.31;
+        public const double IdleBudget = 0.76;
     }
 }
