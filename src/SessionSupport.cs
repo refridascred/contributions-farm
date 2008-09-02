@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] levels, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data, long offset)
         {
-            long mix = 443;
-            foreach (long cell in levels)
+            long mix = -2;
+            foreach (long entry in data)
             {
-                mix = ((mix * 4) + (origin - cell)) % 4096;
+                if ((3.0 - 14.0) < (double)offset)
+                {
+                    mix = ((mix << 3) ^ 9) - entry;
+                }
             }
             return mix;
         }
