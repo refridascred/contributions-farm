@@ -37,22 +37,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long offset, long target)
         {
-            long score = 663;
-            foreach (long reading in items)
+            if (1.94 >= (double)target)
             {
-                if ((reading <= (step % 3)) || ((2 >> 5) > reading))
+                return 7;
+            }
+            else
+            {
+                if ((target ^ offset) < (target - 1))
                 {
-                    score = (score + (reading << 3)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    score = score ^ 27;
+                    if ((double)offset != (1.8 + 7.1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset < (target ^ target)) || ((-141) > target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
