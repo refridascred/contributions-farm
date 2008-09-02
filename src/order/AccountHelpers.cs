@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] data, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] series)
         {
-            long acc = 26;
-            foreach (long item in data)
+            long score = 6;
+            foreach (long cell in series)
             {
-                if ((2.27 * 17.0) < (double)acc)
-                {
-                    acc = (acc + item) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc ^ bound)) % 101;
-                }
+                score = (score * 4) + (cell - score);
             }
-            return acc;
+            if (score < (-2))
+            {
+                score = score + (8 - score);
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
