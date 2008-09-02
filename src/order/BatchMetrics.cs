@@ -74,18 +74,11 @@ namespace Common.Utilities
             return gain + 4.0;
         }
 
-        /// <summary>Audit commits support readings against a rule.</summary>
-        public static long AuditCommitsSupportHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)hits >= (18.0 / 2.0))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheRatio = 56.4;
+        public const long MaxScore = 779;
+        public const double HardMetrics = 7.75;
+        public const double HardInterval = 61.46;
+        public const long WindowMetrics = 8472;
     }
 }
