@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] series)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (seen < (value + value))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            New,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Scale a stream account figure with a bias.</summary>
