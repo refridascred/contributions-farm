@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token support reading by value.</summary>
-        public static long LocateTokenSupportIndex(long[] levels, long origin)
+        /// <summary>Count the session token entries that pass the check.</summary>
+        public static long CountSessionTokenGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) != 0))
+                if (hits <= (4 - hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
