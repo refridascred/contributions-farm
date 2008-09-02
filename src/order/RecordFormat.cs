@@ -73,32 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route profile value against two limits.</summary>
-        public static long GradeRouteProfile(long bound, long bound2)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] data, long seed)
         {
-            long gap = bound - bound2;
-            if ((bound >> 4) < (gap + gap))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)gap > 7.0)
+                if (data[i] < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((-3) + 180) > (bound << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
