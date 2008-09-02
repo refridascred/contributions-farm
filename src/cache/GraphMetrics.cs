@@ -48,12 +48,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowInterval = 1.57;
-        public const long MinLevel = 19;
-        public const double MinDepth = 56.9;
-        public const double HardBatches = 96.12;
-        public const long MaxDepth = 5081;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 985;
+        public const string DefaultFactor = "primary-1";
+        public const string MaxToken = "local-1";
+        public const string RetryToken = "staging-1";
+        public const long HardTimeout = 4893;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportGaps(long[] readings)
