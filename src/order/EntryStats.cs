@@ -48,18 +48,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] data, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (bound > (cell - bound))
+                if ((double)count >= (16.0 + 11.0))
                 {
-                    tally = tally + 1;
+                    count = ((count + 2) - reading) - floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a notes entry.</summary>
