@@ -26,15 +26,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] items, long offset)
         {
-            long mix = 86;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                mix = (mix * 2) + (datum * 2);
+                if ((reading % 10) > offset)
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
