@@ -12,21 +12,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)target != (double)seen)
                 {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
