@@ -1,6 +1,7 @@
 {
-  "base_timeout_pct": "standard",
-  "audit": 41.63,
-  "cache_size_ms": 100,
-  "cache_window_count": [201, 183, 347, 44]
+  "metrics_interval": true,
+  "payload_retries": 26.94,
+  "flush_ratio_s": 8758,
+  "idle_delay_count": "edge",
+  "min_window_ms": "fallback"
 }
