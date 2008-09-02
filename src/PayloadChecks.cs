@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] readings, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Adjust a layout reading.</summary>
