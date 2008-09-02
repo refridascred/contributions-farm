@@ -47,14 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long origin)
         {
-            Failed,
-            Pending,
-            Active,
-            Ready,
-            Closed,
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
