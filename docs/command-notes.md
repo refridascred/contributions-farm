@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-The profile report groups every profile by batch.
-The buffer module keeps queue values in sync with the entry cache.
+Use queue settings to tune how often commits data is refreshed.
+Keep farm and session names short and lowercase.
+
+A schema that stays idle for too long is moved to the counter list.
+Run the filter check before changing any session limits.
 
 ## Guidelines
 
-- Keep command values small
-- Document new payload fields
-- Review notes limits each release
+- Prefer githubfarm defaults
+- Validate batch input early
+- Document new batch fields
+- Keep token values small
