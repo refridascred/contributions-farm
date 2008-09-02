@@ -35,14 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            Stale,
-            Ready,
-            Pending,
-            Synced,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
