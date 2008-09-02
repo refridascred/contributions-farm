@@ -1,6 +1,16 @@
 {
-  "metric_window": false,
-  "compress": "primary",
-  "order_ttl": 60,
-  "retry_ratio": true
+  "verbose": 60,
+  "cache_timeout_pct": "blue",
+  "schema_size": false,
+  "burst_ratio_count": {
+    "window_ratio": {
+      "retry_delay": 1655,
+      "enabled": "blue",
+      "filter_timeout": true
+    },
+    "farm_depth": 250,
+    "cache_retries_ms": 77.01
+  },
+  "retry_limit": false,
+  "profile_window": 75.37
 }
