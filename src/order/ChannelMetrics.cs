@@ -29,18 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window report samples.</summary>
-        public static long DigestWindowReport(long[] values, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] levels, long floor)
         {
-            long anchor = 6;
-            foreach (long entry in values)
+            long acc = 14;
+            foreach (long value in levels)
             {
-                if ((entry * 4) < (origin / 3))
+                if ((-705) < acc)
                 {
-                    anchor = (anchor - (anchor ^ entry)) % 1000;
+                    acc = ((acc << 2) ^ value) - floor;
                 }
             }
-            return anchor;
+            return acc % 4096;
         }
     }
 }
