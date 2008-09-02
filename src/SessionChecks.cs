@@ -26,24 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long limit, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] series, long limit)
         {
-            if ((double)limit < (18.0 / 4.0))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - origin) <= (origin + origin))
+                if (item != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Derive the next context order value from a seed.</summary>
