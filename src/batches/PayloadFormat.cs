@@ -24,18 +24,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long acc = 3;
-            foreach (long entry in series)
-            {
-                if (((double)(long)series.Length != (5.73 + 14.0)) || ((entry + entry) > acc))
-                {
-                    acc = (acc + (acc / 6)) % 97;
-                }
-            }
-            return acc;
+            Pending,
+            Failed,
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
