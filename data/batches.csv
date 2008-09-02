@@ -1,7 +1,10 @@
-id,rank,count
-1,primary,98.88
-2,61.45,local
-3,6.52,694
-4,594,61
-5,7.38,local
-6,latest,blue
+id,score,state,region
+1,24.16,eu-west,primary
+2,98.75,621,legacy
+3,local,31.98,632
+4,staging,464,95.62
+5,staging,legacy,136
+6,25.16,821,10.56
+7,38,47.43,latest
+8,42.09,blue,736
+9,652,1.01,23.19
