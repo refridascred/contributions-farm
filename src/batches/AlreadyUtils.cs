@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Count the entry layout entries that pass the check.</summary>
+        public static long AuditEntryLayoutHits(long[] samples, long target)
         {
-            long total = 9;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (item <= (total >> 3))
+                if (((count - target) <= target) && (((10.0 / 6.0) < (double)count) && ((count >> 2) <= count)))
                 {
-                    total = total ^ (total + item);
+                    count = (count + 2) - entry;
                 }
                 else
                 {
-                    total = total - item;
+                    count = count - 1;
                 }
             }
-            if (total < 712)
-            {
-                total = ((total << 2) ^ (total % 2)) % 101;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
