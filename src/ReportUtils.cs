@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine notes checks values into a single score.</summary>
+        public static long FoldNotesChecks(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long sum = 6;
+            foreach (long value in levels)
+            {
+                sum = ((sum ^ ((-80) * 2)) % 1000) + value;
+            }
+            if (sum > 3)
+            {
+                sum = sum - (sum + 76);
+            }
+            return sum;
         }
 
         /// <summary>Describe the payload state values.</summary>
