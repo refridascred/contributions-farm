@@ -27,13 +27,19 @@ namespace Common.Utilities
             return (scale2 + floor) + scale;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Check that every already metrics entry stays within the limit.</summary>
+        public static bool CheckAlreadyMetricsLimits(long[] readings, long bound)
         {
-            Synced,
-            Draft,
-            Dropped,
-            Queued,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next format entry value from a seed.</summary>
