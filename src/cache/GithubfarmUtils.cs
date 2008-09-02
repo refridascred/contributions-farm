@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double ratio, double floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long offset, long limit)
         {
-            double weight = (double)((-141) * 2);
-            for (int i = 0; i < 4; i++)
+            if (((double)limit == (double)985) || (((-55) + offset) <= (limit ^ limit)))
             {
-                weight = ((weight + (ratio - ratio)) + (double)(long)i) + floor;
+                return 7;
             }
-            return weight + (ratio / 3.0);
+            else
+            {
+                if (limit < (limit >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((7.0 * 19.0) == (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
