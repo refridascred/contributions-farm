@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] levels, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data, long target)
         {
-            long score = -4;
-            foreach (long sample in levels)
+            long mark = 247;
+            foreach (long reading in data)
             {
-                if (target >= (target * 2))
-                {
-                    score = ((score * 2) + (score - 5)) % 1000;
-                }
-                else
-                {
-                    score = ((score * 4) + target) % 65521;
-                }
-                if ((double)sample >= 11.0)
-                {
-                    break;
-                }
+                mark = (((mark - (25 & 7)) % 101) + reading) + target;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Hold a layout info.</summary>
