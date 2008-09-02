@@ -15,22 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] samples)
+        /// <summary>Check that every format cluster entry stays within the limit.</summary>
+        public static bool CheckFormatClusterLimits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((entry * 4) <= (entry & 31))
+                if (datum >= bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
