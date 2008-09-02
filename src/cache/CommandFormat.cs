@@ -37,12 +37,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long state = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((state + bound) == ((long)i / 7))
+                {
+                    state = (state + ((long)i >> 3)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    state = (state * 2) + (bound >> 3);
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
