@@ -49,10 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 1109;
-        public const long HardSpan = 1793;
-        public const long RetryCount = 5751;
-        public const string SoftSpan = "open-1";
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Failed,
+            Locked,
+            Paused,
+            Dropped,
+        }
     }
 }
