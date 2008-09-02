@@ -1,13 +1,12 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-When a batches fails, the cluster handler retries a few times before giving up.
-
-Keep filter and commits names short and lowercase.
-The schema report groups every counter by contributi.
+Use window settings to tune how often filter data is refreshed.
+Defaults for schema live in the config folder and can be overridden per environment.
+The notes report groups every report by report.
 
 ## Guidelines
 
-- Validate command input early
-- Log every route change
-- Document new metrics fields
+- Validate context input early
+- Keep buffer values small
+- Log every token change
+- Review tools limits each release
