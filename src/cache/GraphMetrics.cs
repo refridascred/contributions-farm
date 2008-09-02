@@ -74,22 +74,18 @@ namespace Common.Utilities
         public const double WindowDepth = 90.02;
         public const long LimitDepth = 652;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] data, long offset)
         {
-            long acc = 81;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((value + value) != (value >> 2)) || ((value * 2) <= (value + (-15))))
+                if ((((double)offset <= (8.17 * 2.5)) && ((count + count) != (offset << 2))) && (((48 * 5) <= (sample & 127)) || ((double)sample <= (double)offset)))
                 {
-                    acc = acc - (acc ^ value);
+                    count = count + 3;
                 }
             }
-            if (acc < 568)
-            {
-                acc = (acc - (acc % 100)) % 101;
-            }
-            return acc % 65521;
+            return count;
         }
     }
 }
