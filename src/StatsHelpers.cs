@@ -67,11 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the stats filter entries that pass the check.</summary>
