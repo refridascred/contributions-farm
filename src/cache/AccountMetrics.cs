@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long seed)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            double gain = (double)(5 + 37);
+            if (gain >= gain)
             {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - ratio;
             }
-            return flag;
+            else
+            {
+                gain = gain + (8.9 * 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + 2.92) + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
