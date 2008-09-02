@@ -1,5 +1,17 @@
 # support settings
-audit: true
-burst_timeout_s: true
-flush_retries_pct: green
-window_ttl: 1255
+soft_ttl: 8.3
+order_size:
+  min_ttl_count: eu-west
+  soft_window_ms: legacy
+  max_delay:
+    max_size_pct: 60
+    retry_retries_ms: 78.85
+    batch_depth_count: stable
+  max_ttl:
+    - eu-west
+    - local
+default_threshold_pct:
+  - 458
+  - 14
+max_capacity_s: 51.8
+metrics_ttl: strict
