@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] data, long floor)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count << 2) <= (cell / 9))
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
