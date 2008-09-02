@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] series, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 479;
+            foreach (long value in readings)
             {
-                if ((series[i] >= limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score + (362 << 3)) % 65521) ^ value;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every farm metric entry stays within the limit.</summary>
