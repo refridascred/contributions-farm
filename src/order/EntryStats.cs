@@ -56,14 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            Locked,
-            Stale,
-            Ready,
-            Synced,
-            Closed,
+            long mark = 485;
+            foreach (long sample in items)
+            {
+                mark = (mark + (sample >> 5)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a metric reading.</summary>
