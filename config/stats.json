@@ -1,8 +1,6 @@
 {
-  "hard_depth": 100,
-  "cache_interval_count": "open",
-  "channel_capacity": "staging",
-  "poll_retries_count": 4160,
-  "channel_threshold": "stable",
-  "audit": true
+  "cache_capacity_count": true,
+  "audit": 79.6,
+  "idle_ratio_pct": "legacy",
+  "warm_size": false
 }
