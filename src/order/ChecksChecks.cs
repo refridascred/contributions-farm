@@ -41,13 +41,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            Synced,
+            Failed,
+            Stale,
         }
     }
 }
