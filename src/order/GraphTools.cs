@@ -30,12 +30,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryWidth = 81.02;
-        public const string MaxSession = "local";
-        public const long RetrySession = 504;
-        public const long LimitSession = 7924;
-        public const double RetrySpan = 25.99;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(result <= (result - result)))
+                {
+                    result = result + result;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] samples)
