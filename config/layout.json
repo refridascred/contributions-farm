@@ -1,6 +1,8 @@
 {
-  "enabled": 1024,
-  "persist": [393, 4, 151],
-  "default_depth_pct": false,
-  "batches_ratio": "open"
+  "notes_delay": "blue",
+  "compress": 6748,
+  "queue_limit": 29.36,
+  "strict": 250,
+  "persist": [274, 432],
+  "account_size": [299, 197, 47]
 }
