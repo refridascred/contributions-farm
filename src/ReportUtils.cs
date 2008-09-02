@@ -37,29 +37,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long bound, long bound2)
         {
-            long delta = bound - floor;
-            if ((-6) >= (floor % 16))
+            long cur = bound - bound2;
+            if ((bound ^ 8) > bound)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((4.72 * 8.2) < (double)floor)
+                if ((double)cur >= (12.0 - 5.33))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (((delta + 789) < bound) && ((5.5 - 17.0) > (double)bound))
+                    if ((cur & 15) >= 341)
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        return 0;
+                        return 8;
                     }
                 }
             }
