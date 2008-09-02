@@ -27,22 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values, long floor)
+        /// <summary>Count stats commits pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCommitsCount(long[] values)
         {
-            long anchor = 82;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor >> 2) < (760 / 6))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor ^ floor) % 97) + value;
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = anchor ^ (anchor - 2);
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
