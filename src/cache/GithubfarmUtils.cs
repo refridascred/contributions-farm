@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double weight, double offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double gain = 16.0 - 3.0;
-            if (gain >= (double)257)
-            {
-                gain = (gain - (gain / 9.0)) - offset;
-            }
-            else
-            {
-                gain = gain - weight;
-            }
-            return gain + (2.4 + 2.2);
+            Retry,
+            Active,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the cluster level values.</summary>
