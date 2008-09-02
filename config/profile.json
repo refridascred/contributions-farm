@@ -1,6 +1,5 @@
 {
-  "contributi_timeout": "fallback",
-  "dry_run": 1024,
-  "farm_ratio": [220, 440, 278, 241],
-  "base_threshold_count": 11.25
+  "flush_ratio": "cached",
+  "schema_ratio": false,
+  "poll_window_s": "legacy"
 }
