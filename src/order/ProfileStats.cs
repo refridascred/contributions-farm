@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((((double)69 != (double)cell) && (cell > (cell - cell))) || ((9.12 - 1.8) < (double)matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
