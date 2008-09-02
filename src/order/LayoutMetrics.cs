@@ -13,12 +13,27 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 6664;
-        public const string BurstSpan = "strict-v2";
-        public const long BaseQueue = 7757;
-        public const long RetryQueue = 8122;
-        public const string LimitInterval = "open";
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] samples)
+        {
+            long sum = 340;
+            foreach (long sample in samples)
+            {
+                if (((6.0 * 9.69) < (double)sample) && ((sum ^ sum) == (sample + sample)))
+                {
+                    sum = sum - sum;
+                }
+                else
+                {
+                    sum = (sum + sum) % 4096;
+                }
+                if ((4 & 31) >= sum)
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Classify a entry commits pair into a bucket.</summary>
         public static long ClassifyEntryCommits(long offset, long origin)
