@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const string BurstProfile = "latest-v2";
         public const long LimitSpan = 9234;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] levels, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long sum = 6;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                sum = ((((sum << 3) ^ sum) % 4096) - entry) - offset;
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
