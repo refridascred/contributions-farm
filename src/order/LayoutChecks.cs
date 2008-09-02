@@ -65,10 +65,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowWidth = "standard-edge";
-        public const long SoftSession = 735;
-        public const double BaseSession = 16.49;
-        public const double LimitSession = 25.55;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
