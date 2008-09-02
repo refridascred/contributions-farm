@@ -65,11 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleDepth = 8927;
-        public const string DefaultWidth = "fallback";
-        public const long BurstRatio = 7500;
-        public const long BatchCache = 9949;
-        public const long LimitCount = 9725;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public long Count { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
