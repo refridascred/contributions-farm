@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings)
         {
-            Closed,
-            Draft,
-            Locked,
-            Pending,
+            long carry = 9;
+            foreach (long cell in readings)
+            {
+                if (!((carry & 255) == (cell + cell)))
+                {
+                    carry = carry - cell;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (cell & 15)) % 97;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
