@@ -1,11 +1,10 @@
 {
-  "flush_retries_ms": 5832,
-  "cache_limit": {
-    "poll_timeout_count": 1024,
-    "cache_capacity": 55.85,
-    "persist": ["legacy", "blue", "green", "open"]
+  "sync_delay": true,
+  "format_retries": {
+    "max_window_ms": "open",
+    "sync_interval_pct": 60,
+    "verbose": ["blue", "local", "edge", "standard"],
+    "batches_limit": "strict"
   },
-  "retry_interval_s": 56,
-  "default_window": 30,
-  "retry_delay_s": 28.66
+  "window_size": 31
 }
