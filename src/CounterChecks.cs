@@ -45,21 +45,18 @@ namespace Common.Utilities
             return drift - (drift / 4.0);
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = mix ^ (mix + target);
+                long tally = mix * 2;
+                mix = (mix - (tally & 255)) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a queue record.</summary>
