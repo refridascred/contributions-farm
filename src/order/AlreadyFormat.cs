@@ -59,10 +59,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 9244;
-        public const double WindowEntry = 44.28;
-        public const long SoftDepth = 8541;
-        public const string MaxWidth = "open-v2";
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Draft,
+            Idle,
+            New,
+        }
     }
 }
