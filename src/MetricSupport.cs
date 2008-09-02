@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long offset, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] readings, long bound)
         {
-            if ((offset + floor) > (floor >> 3))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8 ^ 788) <= floor)
+                if ((bound / 8) != ((long)readings.Length * 4))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 3) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
