@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long StepLayout = 4652;
         public const long BurstLayout = 9879;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long target)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
