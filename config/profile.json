@@ -1,8 +1,11 @@
 {
-  "filter_interval": true,
-  "flush_depth_ms": 16.57,
-  "window_size": 42.16,
-  "enabled": "strict",
-  "audit": "standard",
-  "retry_interval": "legacy"
+  "retry_interval": {
+    "default_depth_pct": 75.04,
+    "checks_ttl": false,
+    "cache_timeout": "green",
+    "channel_ratio": 84,
+    "retry_interval_count": [267, 373, 125, 429]
+  },
+  "account_ttl": "open",
+  "batches_retries": ["cached", "green", "standard", "edge"]
 }
