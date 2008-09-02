@@ -13,25 +13,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long origin, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] levels)
         {
-            long offset2 = origin - offset;
-            if ((double)offset <= 6.7)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 * 3) <= 6)
+                if (((hits - item) == (long)levels.Length) || (hits > (item ^ 92)))
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 8;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two channel measurements.</summary>
