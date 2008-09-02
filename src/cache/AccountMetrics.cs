@@ -62,18 +62,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] data)
         {
-            long mark = 348;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((99 * 5) == (mark ^ target))
+                if (!(entry < (entry ^ entry)) && ((tally / 9) != (entry >> 2)))
                 {
-                    mark = ((mark * 2) + (datum & 7)) % 255;
+                    tally = tally + 3;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
