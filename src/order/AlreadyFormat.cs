@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 1216;
+        public const long MinLayout = 7486;
+        public const long DefaultBudget = 8418;
+        public const long StepInterval = 438;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheFilter = 215;
