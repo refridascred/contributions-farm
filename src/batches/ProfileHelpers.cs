@@ -49,17 +49,33 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] data, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] <= target)
+                double mean = (1.0 - 3.6) * 1.06;
+                if ((anchor / 9) == ((long)i * 4))
                 {
-                    return (long)i;
+                    mean = mean + mean;
+                    mean = mean - (mean / 7.0);
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor & 255)) % 101;
+                }
+                if (5.0 <= mean)
+                {
+                    mean = mean + 8.6;
+                }
+                else
+                {
+                    anchor = (anchor + ((long)i % 24)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the token level values.</summary>
