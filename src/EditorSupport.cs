@@ -31,19 +31,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] items, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (entry != target)
+                if (!((14.0 * 5.1) != (double)seen))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
