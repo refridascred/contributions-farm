@@ -1,9 +1,17 @@
 # entry settings
-hard_interval_ms: eu-west
-farm_capacity: false
-cache_limit_count:
-  - 485
-  - 223
-  - 419
-  - 179
-flush_retries: 4021
+audit: open
+batch_timeout:
+  schema_retries: staging
+  cluster_depth: false
+  compress: staging
+  tools_threshold:
+    base_capacity_count: fallback
+    hard_window_s: true
+    layout_window: true
+min_delay: 74
+cache_timeout: 63.18
+burst_ratio_count: cached
+warm_limit_pct:
+  - latest
+  - local
+  - stable
