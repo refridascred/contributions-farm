@@ -37,12 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 8773;
+        public const double IdleChannel = 39.66;
+        public const string BaseFactor = "strict";
+        public const long LimitTimeout = 6062;
     }
 }
