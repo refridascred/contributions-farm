@@ -22,31 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long limit)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double span)
         {
-            if ((6 - limit) >= limit)
+            double scale = (double)(7 + 7);
+            if (scale <= span)
             {
-                return 4;
+                scale = (scale + span) - weight;
             }
             else
             {
-                if (((-1) - limit) == (4 + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (2.7 <= (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                scale = scale + (double)(-23);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
