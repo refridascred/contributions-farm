@@ -40,12 +40,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 96.24;
-        public const double WindowChannel = 69.34;
-        public const long SoftChannel = 3318;
-        public const long DefaultDepth = 1660;
-        public const long CacheInterval = 346;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 6.35;
+        public const double RetryLevel = 64.73;
+        public const long WindowRatio = 3665;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long PairContributiCount(long[] series)
