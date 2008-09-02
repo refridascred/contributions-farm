@@ -23,19 +23,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit profile report readings against a rule.</summary>
-        public static long TallyProfileReportHits(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (tally <= target)
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 7449;
+        public const long StepCount = 8680;
+        public const long DefaultEntry = 414;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MinFormat = 4.87;
