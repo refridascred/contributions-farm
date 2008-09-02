@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long step, long step2)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items, long seed)
         {
-            if ((-7) > (step / 3))
+            long mix = 82;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((88 & 127) < (step2 + step2))
+                if ((double)mix >= (6.32 - 5.28))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step > (step2 - step2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = (((mix << 3) ^ value) % 255) + seed;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
