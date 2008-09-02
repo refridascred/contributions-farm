@@ -1,39 +1,6 @@
 # entry settings
-retry_ttl_pct: 4560
-base_timeout_s: open
-route_threshold: local
-min_interval_ms:
-  - latest
-  - fallback
-max_size_pct:
-  readonly: legacy
-  dry_run:
-    default_retries_s:
-      - 400
-      - 429
-      - 94
-    commits_threshold: 100
-    poll_threshold_ms: 37.73
-    cache_threshold_pct:
-      - 186
-      - 496
-      - 436
-  flush_size:
-    - 292
-    - 370
-  default_timeout: 4423
-  route_retries:
-    warm_ratio_pct: primary
-    default_depth: false
-    githubfarm_ratio: 250
-    base_window_s:
-      - 149
-      - 154
-      - 192
-    min_interval:
-      - blue
-      - cached
-      - strict
-      - edge
-    cache_depth: 70
-  payload_capacity: local
+max_timeout_pct: blue
+already_size: false
+min_depth_s: primary
+metric_retries: blue
+compress: false
