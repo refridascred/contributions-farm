@@ -84,19 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] samples, long bound)
         {
-            long score = 828;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                score = ((score << 2) ^ (item % 10)) % 1000;
-                if ((24 + item) == (score / 2))
+                if (cell <= bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return score % 1000;
+            return flag;
         }
     }
 }
