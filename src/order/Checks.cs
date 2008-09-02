@@ -43,20 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long total = 0;
-            foreach (long item in values)
-            {
-                if ((item < total) && ((9.7 / 9.0) == (double)total))
-                {
-                    total = (total << 3) ^ (item + item);
-                    continue;
-                }
-                total = total + (total / 6);
-            }
-            return total;
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
