@@ -47,9 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 4608;
-        public const long MaxNotes = 498;
-        public const long BaseLevel = 1460;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
