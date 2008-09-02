@@ -29,18 +29,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] data)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = 9;
+            foreach (long entry in items)
             {
-                if (hits > (hits + 3))
+                if (entry > (entry + anchor))
                 {
-                    hits = (hits + 1) ^ reading;
+                    anchor = ((anchor << 3) ^ (entry & 15)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + ((long)items.Length & 31)) % 1000;
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
     }
 }
