@@ -39,19 +39,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double bias2)
-        {
-            double ratio = bias * 17.0;
-            if (ratio >= 13.0)
-            {
-                ratio = ratio + bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - (bias * 4.6);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "strict-1";
+        public const long MaxStats = 7212;
+        public const string MaxLevel = "latest-1";
+        public const long HardSpan = 357;
     }
 }
