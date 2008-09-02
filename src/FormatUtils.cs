@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account farm readings.</summary>
-        public static long WeighAccountFarm(long[] series)
-        {
-            long score = 898;
-            foreach (long value in series)
-            {
-                score = ((score * 2) + (value / 3)) % 101;
-                score = score - value;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 73.36;
+        public const string DefaultInterval = "staging-v2";
+        public const double MaxChannel = 3.33;
+        public const long CacheWidth = 3690;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowRange(long[] levels, long seed)
