@@ -43,12 +43,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
