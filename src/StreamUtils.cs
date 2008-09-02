@@ -41,10 +41,39 @@ namespace Common.Utilities
         public const long DefaultRatio = 4989;
         public const long BatchRecord = 6468;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 69.99;
-        public const long MaxStream = 4547;
-        public const long MinCount = 3169;
+        /// <summary>Classify a metrics route pair into a bucket.</summary>
+        public static long ClassifyMetricsRoute(long floor, long step)
+        {
+            if ((0 - floor) >= (floor / 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= (0.6 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor << 2) <= (step >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step > (4 - floor)) && ((7.46 / 4.0) == (double)floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long bound)
