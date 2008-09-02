@@ -33,10 +33,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepFactor = 5634;
-        public const long MinGraph = 8212;
-        public const long DefaultBudget = 8130;
-        public const long HardGraph = 6028;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
