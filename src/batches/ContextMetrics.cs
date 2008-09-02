@@ -34,12 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine batch githubfarm values into a single score.</summary>
+        public static long CombineBatchGithubfarm(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long result = 4;
+            foreach (long datum in levels)
+            {
+                if ((19.0 * 1.06) < (double)datum)
+                {
+                    result = (result - datum) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (datum + result)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Adjust a payload reading.</summary>
