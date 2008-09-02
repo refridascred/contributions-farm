@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit entry record readings against a rule.</summary>
+        public static long MeasureEntryRecordOutliers(long[] samples)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (count >= (datum + datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
