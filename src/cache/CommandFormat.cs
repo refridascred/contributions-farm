@@ -23,19 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long limit)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
