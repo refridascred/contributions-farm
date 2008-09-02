@@ -1,19 +1,5 @@
 # support settings
-audit: 1024
-cache_capacity_count:
-  sync_interval_count:
-    metrics_ttl: strict
-    min_limit_s: 100
-    strict: 81.56
-  default_interval_pct: local
-  idle_ttl: 100
-  max_limit:
-    max_depth: true
-    cache_size_ms: 20.54
-    compress: blue
-    soft_size_ms: true
-  max_depth: 3.56
-  warm_depth:
-    - eu-west
-    - latest
-commits_ratio: 3.11
+default_capacity_s: cached
+sync_depth_pct: true
+idle_ttl: false
+compress: blue
