@@ -36,28 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel counter series from a seed.</summary>
-        public static long IterateChannelCounter(long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                bool valid = (double)score <= (1.31 - 7.0);
-                if (!valid)
-                {
-                    break;
-                }
-                else
-                {
-                    valid = score <= (score - (long)i);
-                }
-                if ((seed + score) > score)
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the buffer state values.</summary>
