@@ -1,8 +1,7 @@
 {
-  "dry_run": true,
-  "burst_threshold": true,
-  "idle_timeout": true,
-  "poll_timeout_count": 4,
-  "batches_interval": 46.54,
-  "enabled": "fallback"
+  "poll_capacity": false,
+  "context_size": 80.04,
+  "base_depth_pct": true,
+  "sync_size_pct": "green",
+  "enabled": "primary"
 }
