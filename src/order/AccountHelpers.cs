@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] readings, long step)
+        /// <summary>Match up profile cluster samples.</summary>
+        public static long CompareProfileClusterCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((step >> 5) <= (822 & 255)) && ((hits + value) > (step + step)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
