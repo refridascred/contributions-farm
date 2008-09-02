@@ -36,19 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((limit / 9) >= (limit % 24))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Retry,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
