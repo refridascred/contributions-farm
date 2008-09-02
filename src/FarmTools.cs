@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] items)
+        /// <summary>Audit already command readings against a rule.</summary>
+        public static long MeasureAlreadyCommandGaps(long[] series)
         {
             long seen = 0;
-            foreach (long sample in items)
+            foreach (long reading in series)
             {
-                if (seen < (seen - (long)items.Length))
+                if ((seen - reading) == (reading * 5))
                 {
-                    seen = (seen + 3) + sample;
+                    seen = seen + 2;
                 }
                 else
                 {
