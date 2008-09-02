@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] items, long bound)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next route value.</summary>
