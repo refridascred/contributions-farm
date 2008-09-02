@@ -59,13 +59,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Locate a profile route reading by value.</summary>
+        public static long LocateProfileRouteIndex(long[] items, long limit)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
