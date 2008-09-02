@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 106;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((6 - reading) < acc) && (reading <= (reading / 7)))
                 {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc + acc;
                 }
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Describe the payload class values.</summary>
