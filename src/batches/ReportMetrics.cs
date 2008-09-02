@@ -31,16 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 5) + ((long)i - (long)i)) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public double Flag { get; set; }
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
