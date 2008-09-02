@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long offset, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] series)
         {
-            if (((double)limit == (double)985) || (((-55) + offset) <= (limit ^ limit)))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit < (limit >> 4))
+                if (seen < (value + value))
                 {
-                    return 8;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if (!((7.0 * 19.0) == (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a stream account figure with a bias.</summary>
