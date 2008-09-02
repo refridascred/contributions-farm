@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] items, long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the buffer class values.</summary>
