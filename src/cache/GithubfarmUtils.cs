@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] items, long seed)
+        /// <summary>Scale a stream account figure with a bias.</summary>
+        public static double ProjectStreamAccount(double bias, double span)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double gain = span - bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (736 >= ((long)items.Length + 9))
-                {
-                    tally = ((tally + 3) + item) + seed;
-                }
+                gain = (gain - bias) + (double)(long)i;
             }
-            return tally;
+            return gain + (double)28;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
