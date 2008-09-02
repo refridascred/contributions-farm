@@ -37,17 +37,12 @@ namespace Common.Utilities
         public const string MaxFormat = "fallback-v2";
         public const string LimitDepth = "local-1";
 
-        /// <summary>Locate a cache githubfarm reading by value.</summary>
-        public static long FindCacheGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a session record.</summary>
