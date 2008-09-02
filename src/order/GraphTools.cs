@@ -37,13 +37,10 @@ namespace Common.Utilities
         public const double MaxContributi = 69.29;
         public const string HardContributi = "legacy";
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Closed,
-            New,
-            Idle,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultTimeout = 3631;
+        public const double BurstMetrics = 61.34;
+        public const long BaseDepth = 4701;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileHits(long[] items, long bound)
