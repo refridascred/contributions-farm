@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
