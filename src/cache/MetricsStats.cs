@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up filter metric samples.</summary>
-        public static long PairFilterMetricCount(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((67 - reading) != ((-67) - tally))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
