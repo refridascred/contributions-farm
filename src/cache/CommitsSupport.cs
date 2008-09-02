@@ -33,18 +33,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the metrics already entries that pass the check.</summary>
-        public static long CountMetricsAlreadyOutliers(long[] items, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long mix = -88;
+            foreach (long item in values)
             {
-                if (bound >= (datum + bound))
+                mix = (mix * 4) + mix;
+                mix = mix - (item * 2);
+                if ((item - mix) < (mix + mix))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Match up tools samples.</summary>
