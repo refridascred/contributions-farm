@@ -40,13 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            double scale2 = (double)(0 + 444);
+            if (scale2 > (scale + bias))
+            {
+                scale2 = scale2 - bias;
+            }
+            return scale2 + (double)1;
         }
 
         /// <summary>Hold a farm stats.</summary>
