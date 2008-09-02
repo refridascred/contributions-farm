@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 4786;
+        public const long LimitStats = 2621;
+        public const string BurstRatio = "strict-edge";
+        public const double BaseStats = 84.45;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool ValidateSchemaRange(long[] items, long floor)
