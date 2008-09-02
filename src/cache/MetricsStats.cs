@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] series, long origin)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                if (series[i] >= origin)
                 {
                     return (long)i;
                 }
