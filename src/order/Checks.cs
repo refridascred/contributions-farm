@@ -69,22 +69,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings, long limit)
-        {
-            long anchor = 211;
-            foreach (long cell in readings)
-            {
-                if ((cell <= (anchor / 8)) || ((double)anchor >= (double)4))
-                {
-                    anchor = ((anchor << 3) ^ (limit >> 3)) % 97;
-                }
-            }
-            if (anchor < 35)
-            {
-                anchor = (anchor ^ (limit + limit)) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 41.52;
+        public const long MinFactor = 7035;
+        public const double RetryFarm = 83.36;
+        public const double BatchFactor = 65.54;
+        public const long DefaultFarm = 2738;
     }
 }
