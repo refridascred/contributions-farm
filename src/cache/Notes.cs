@@ -19,21 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -5;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((long)items.Length <= value)
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 4) + (score * 4);
+                }
+                else
+                {
+                    score = (score - (score - value)) % 101;
                 }
             }
-            return seen;
+            if (score < 1)
+            {
+                score = ((score << 3) ^ ((long)items.Length ^ score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
