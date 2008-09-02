@@ -70,22 +70,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] series, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((1.05 + 0.4) < (double)matches)
+                if (((seen % 10) <= seen) || !((8 + datum) > 19))
                 {
-                    matches = ((matches + 1) + reading) + limit;
+                    seen = (seen + 3) + step;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
