@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a filter entry reading.</summary>
-        public static double ScaleFilterEntry(double bias, double floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            double weight = (double)(51 + 39);
-            if (weight >= (20.0 + bias))
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                weight = weight - (double)11;
+                if (seed > ((long)i - 877))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (bias * 6.84)) + (double)(long)i;
-            }
-            return weight + (bias - bias);
+            return state;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
