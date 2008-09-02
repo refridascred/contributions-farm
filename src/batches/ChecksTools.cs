@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] data, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((step ^ tally) < step)
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Locate a token support reading by value.</summary>
