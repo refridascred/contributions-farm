@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long target, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long diff = target + step;
-            if (((target ^ target) > (target % 3)) && ((step << 2) > step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target & 7) <= diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)step <= (6.92 - 7.6)) || ((9.07 + 4.9) > (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
