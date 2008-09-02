@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long bound, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] series)
         {
-            long delta = bound + limit;
-            if (((limit & 127) <= limit) && ((limit - delta) < bound))
+            long acc = 855;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((delta + bound) > delta) || (delta < (6 + 599)))
+                if (!((acc >> 4) != (932 * 2)))
                 {
-                    return 4;
+                    acc = (acc * 2) + acc;
+                }
+                if ((acc - sample) != (43 * 3))
+                {
+                    acc = (acc - (acc + 5)) % 101;
                 }
                 else
                 {
-                    return 7;
+                    acc = (acc + (sample + sample)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Accumulate editor samples.</summary>
