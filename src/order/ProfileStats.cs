@@ -23,10 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxBudget = 49;
-        public const long SoftTimeout = 3727;
-        public const string RetryRecord = "latest";
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values)
+        {
+            long acc = 8;
+            foreach (long sample in values)
+            {
+                acc = ((acc - (long)values.Length) % 101) - sample;
+            }
+            if (acc > 5)
+            {
+                acc = acc ^ (acc * 4);
+            }
+            return acc;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
