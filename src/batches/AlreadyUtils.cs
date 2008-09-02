@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Draft,
-            Done,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseFactor = 7039;
+        public const long IdleInterval = 9605;
+        public const string LimitSpan = "fallback-1";
+        public const double MinInterval = 63.98;
+        public const double BaseInterval = 50.86;
 
         /// <summary>Combine checks format values into a single score.</summary>
         public static long FoldChecksFormat(long[] samples, long seed)
