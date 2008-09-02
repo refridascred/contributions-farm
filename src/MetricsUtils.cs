@@ -63,17 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a window metrics sample.</summary>
-        public static long LookupWindowMetricsIndex(long[] levels, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (levels[i] >= limit)
+                if (cell >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
