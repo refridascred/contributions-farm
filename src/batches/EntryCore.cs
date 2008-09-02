@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = 9.1;
+            if (load < load)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load - (load * 4.8)) + gain;
             }
-            return matches;
+            else
+            {
+                load = load - (double)(-3);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - (double)7;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
