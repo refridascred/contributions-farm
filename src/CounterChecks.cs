@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
+            Pending,
+            Stale,
+            Locked,
+            Active,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
