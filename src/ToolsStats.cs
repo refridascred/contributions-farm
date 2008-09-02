@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] levels, long step)
         {
-            Dropped,
-            Active,
-            Idle,
-            Queued,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((5.4 * 6.02) > (double)matches)
+                {
+                    matches = ((matches + 3) ^ sample) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
