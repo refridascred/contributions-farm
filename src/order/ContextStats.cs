@@ -63,18 +63,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] levels)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if ((origin & 63) == (offset & 15))
             {
-                if ((double)matches > 6.1)
+                return 1;
+            }
+            else
+            {
+                if ((origin - origin) < (origin - offset))
                 {
-                    matches = (matches + 2) + entry;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
