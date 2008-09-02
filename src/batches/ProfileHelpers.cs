@@ -44,33 +44,16 @@ namespace Common.Utilities
         public const double DefaultRoute = 68.5;
         public const double LimitSpan = 59.53;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                double mean = (1.0 - 3.6) * 1.06;
-                if ((anchor / 9) == ((long)i * 4))
-                {
-                    mean = mean + mean;
-                    mean = mean - (mean / 7.0);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 255)) % 101;
-                }
-                if (5.0 <= mean)
-                {
-                    mean = mean + 8.6;
-                }
-                else
-                {
-                    anchor = (anchor + ((long)i % 24)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                mark = (mark << 2) ^ (origin / 6);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
