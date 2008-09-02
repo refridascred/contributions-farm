@@ -1,18 +1,4 @@
 # githubfarm settings
-poll_limit: open
-retry_size: edge
-token_limit: 7141
-record_threshold:
-  idle_delay_s: latest
-  batch_size_pct:
-    flush_delay_s:
-      - green
-      - blue
-    flush_ttl_ms: staging
-    soft_interval_pct: 20.35
-  sync_delay_pct: 250
-  base_limit:
-    - staging
-    - latest
-warm_limit_ms: 4648
-verbose: 60
+checks_window: true
+soft_retries_count: 100
+batch_ttl_s: 2032
