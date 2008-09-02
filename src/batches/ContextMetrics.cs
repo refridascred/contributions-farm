@@ -41,20 +41,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Blend two record filter measurements.</summary>
+        public static double BlendRecordFilter(double weight, double floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            double bias = weight;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc - (acc + acc)) % 97) ^ (long)i2;
-                    acc = acc + (origin & 127);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                bias = (bias - (weight + floor)) - (double)(long)i;
             }
-            return acc;
+            return bias - (floor + weight);
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
