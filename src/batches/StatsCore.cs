@@ -29,19 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] data, long offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long item in data)
+            double drift = (double)(2 + 6);
+            if (drift > bias)
             {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + 5.3;
             }
-            return ready;
+            else
+            {
+                drift = drift - weight;
+            }
+            return drift - (double)229;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
