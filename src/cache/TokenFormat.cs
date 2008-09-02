@@ -25,16 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] samples, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix - (limit + (long)i)) % 1000;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the window class values.</summary>
