@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Digest a series of tools account entries.</summary>
+        public static long TallyToolsAccount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mix = 9;
+            foreach (long item in values)
             {
-                if (tally > (tally * 5))
+                if (item < (mix & 15))
                 {
-                    tally = (tally + 2) ^ entry;
+                    mix = (mix + (mix * 2)) % 4096;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
