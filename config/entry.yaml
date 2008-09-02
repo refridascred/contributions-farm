@@ -1,10 +1,9 @@
 # entry settings
-checks_threshold: 1024
-warm_window_count: 30
-compress: open
-record_retries: strict
-strict:
-  - cached
-  - latest
-  - latest
-  - green
+persist:
+  strict: 1766
+  audit: 60
+  cache_ttl_s: stable
+warm_ttl: blue
+min_limit_s: 95.69
+base_ttl: 100
+enabled: 23.79
