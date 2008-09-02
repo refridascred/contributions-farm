@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] levels, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long sum = 159;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ (321 + datum)) - origin;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
