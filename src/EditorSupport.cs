@@ -73,12 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
