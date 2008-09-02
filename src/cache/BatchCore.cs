@@ -31,24 +31,12 @@ namespace Common.Utilities
         public const long StepQueue = 9853;
         public const long IdleScore = 3695;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((4.5 / 9.0) >= (double)score)
-                {
-                    score = (score << 2) ^ (long)i;
-                    continue;
-                }
-                else
-                {
-                    score = (score - score) % 97;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
