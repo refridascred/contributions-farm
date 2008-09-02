@@ -16,19 +16,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] series, long limit)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Stale,
+            Queued,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
