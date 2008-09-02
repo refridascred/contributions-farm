@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long bound, long bound2)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] data)
         {
-            long prev = bound ^ bound2;
-            if ((2 ^ bound2) <= (prev ^ bound2))
+            long mark = 4;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((94 + bound2) < (prev - bound2))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 6;
+                    mark = (mark << 2) ^ (long)i;
                 }
-                else
+                if ((mark ^ mark) > (item << 1))
                 {
-                    return 0;
+                    mark = (mark - ((long)data.Length + item)) % 97;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
