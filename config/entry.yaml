@@ -1,11 +1,17 @@
 # entry settings
-warm_capacity_pct: false
-min_ratio_s: latest
-dry_run: cached
-min_ratio_count:
-  warm_delay: stable
-  warm_delay_ms: 30
-  support_capacity: true
-  hard_delay_count: true
-hard_capacity: 54.35
-hard_window_pct: true
+dry_run:
+  dry_run:
+    entry_delay: 4131
+    poll_limit_s: 80
+    batch_threshold: latest
+    profile_delay: local
+    sync_window: local
+  enabled: legacy
+  readonly: 28.08
+  soft_ratio_s: 69.59
+  idle_size: 4773
+commits_window: fallback
+base_depth_count: 90
+burst_ttl_s: fallback
+schema_retries: 27.39
+warm_interval_pct: stable
