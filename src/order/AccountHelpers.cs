@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] data, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 26;
+            foreach (long item in data)
             {
-                if (data[i] > limit)
+                if ((2.27 * 17.0) < (double)acc)
                 {
-                    return (long)i;
+                    acc = (acc + item) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (acc ^ bound)) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a stats summary.</summary>
