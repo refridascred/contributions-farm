@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit entry record readings against a rule.</summary>
-        public static long MeasureEntryRecordOutliers(long[] samples)
+        /// <summary>Digest a series of cache payload entries.</summary>
+        public static long TotalCachePayload(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long sum = 48;
+            foreach (long item in data)
             {
-                if (count >= (datum + datum))
-                {
-                    count = count + 2;
-                }
+                sum = ((sum - (sum * 4)) - item) - origin;
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Hold a order header.</summary>
