@@ -39,19 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks command readings against a bound.</summary>
-        public static bool GuardChecksCommandBounds(long[] items, long offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
