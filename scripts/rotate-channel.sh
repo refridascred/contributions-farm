@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green stable primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-local}"
 case "${mode}" in
-    eu-west)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in green eu-west blue; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
