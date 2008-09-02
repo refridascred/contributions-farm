@@ -1,12 +1,7 @@
 {
-  "verbose": "latest",
-  "commits_size": 6334,
-  "warm_limit_ms": 30.93,
-  "audit": "stable",
-  "order_depth": {
-    "verbose": 44,
-    "flush_ttl": 95.46,
-    "flush_interval_pct": "local",
-    "max_limit_count": "eu-west"
-  }
+  "flush_threshold": false,
+  "idle_ratio": "standard",
+  "idle_window_ms": 100,
+  "poll_retries": [389, 131, 8, 71],
+  "warm_size_count": 69.41
 }
