@@ -19,16 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double scale, double span)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            double load = 5.6;
+            if (load > (double)67)
             {
-                state = state + ((-3) ^ state);
-                state = ((state * 5) + (long)i) % 65521;
+                load = (load + (load - scale)) - span;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a graph header.</summary>
