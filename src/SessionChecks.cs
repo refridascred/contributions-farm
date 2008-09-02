@@ -16,15 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next schema cache value.</summary>
-        public static double ProjectSchemaCache(double rate, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] data, long origin)
         {
-            double mean = 16.0 / 4.0;
-            if (mean > mean)
+            long mark = -103;
+            foreach (long datum in data)
             {
-                mean = (mean + mean) - span;
+                mark = ((mark - ((long)data.Length % 60)) ^ datum) + origin;
             }
-            return mean + (rate / 9.0);
+            if (mark > 21)
+            {
+                mark = ((mark * 4) + mark) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Locate a record reading by value.</summary>
