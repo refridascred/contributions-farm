@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] samples, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] series, long floor)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            foreach (long reading in series)
             {
-                if ((double)matches >= 0.68)
+                if (((floor / 4) > (floor - reading)) || ((reading % 100) < ((long)series.Length * 2)))
                 {
-                    matches = ((matches + 1) ^ entry) - target;
+                    matches = matches + 3;
                 }
             }
             return matches;
