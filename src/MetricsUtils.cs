@@ -22,13 +22,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
