@@ -1,5 +1,5 @@
 # support settings
-default_capacity_s: cached
-sync_depth_pct: true
-idle_ttl: false
-compress: blue
+audit: true
+burst_timeout_s: true
+flush_retries_pct: green
+window_ttl: 1255
