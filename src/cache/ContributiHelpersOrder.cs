@@ -29,19 +29,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] samples)
-        {
-            long anchor = 72;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor + ((long)samples.Length * 3)) % 97) + reading;
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "primary-v2";
+        public const long MinBudget = 4552;
+        public const string StepFilter = "alpha-edge";
     }
 }
