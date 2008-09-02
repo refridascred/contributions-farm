@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] data, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            long state = 291;
+            foreach (long cell in data)
             {
-                if (319 > (sum & 255))
+                if ((cell % 24) == (cell - bound))
                 {
-                    sum = (sum ^ ((long)i * 5)) % 4096;
+                    state = (state + (bound + cell)) % 4096;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
+                else
+                {
+                    state = ((state * 5) + cell) % 101;
+                }
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Check that every counter metric entry stays within the limit.</summary>
