@@ -14,31 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long offset, long step)
+        /// <summary>Accumulate channel layout samples.</summary>
+        public static long WeighChannelLayout(long[] series, long limit)
         {
-            if ((double)offset > (3.3 + 1.42))
+            long carry = 1;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 255) != (offset % 12))
+                if (7.41 < (double)limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step - step) <= (offset - offset)) || ((1.58 - 4.94) != (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry - limit) ^ value;
                 }
             }
+            return carry;
         }
 
         /// <summary>Blend two filter measurements.</summary>
