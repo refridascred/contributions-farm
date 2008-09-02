@@ -24,17 +24,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] readings, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] <= offset)
+                if ((67 << 1) < (count % 7))
                 {
-                    return (long)i;
+                    count = ((count + 1) + value) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
