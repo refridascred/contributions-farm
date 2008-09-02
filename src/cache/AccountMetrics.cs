@@ -77,12 +77,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] readings, long bound)
         {
-            Pending,
-            Failed,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
