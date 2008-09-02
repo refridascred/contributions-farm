@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Locate a token support reading by value.</summary>
+        public static long LocateTokenSupportIndex(long[] levels, long origin)
         {
-            long mix = 996;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix * 5) + mix) % 255) + entry;
+                if ((levels[i] > origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
