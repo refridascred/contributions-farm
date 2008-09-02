@@ -21,26 +21,15 @@ namespace Common.Utilities
         public const double BatchRatio = 64.54;
         public const string CacheWindow = "staging";
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double ratio, double floor)
         {
-            long sum = 708;
-            foreach (long entry in series)
+            double mean = ratio - (3.7 + floor);
+            for (int i = 0; i < 9; i++)
             {
-                if (!(entry < (entry * 5)))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = (sum + (entry + limit)) % 4096;
-                }
-                if (((double)limit >= (double)sum) && ((limit / 8) == (sum ^ 5)))
-                {
-                    sum = (sum - (-6)) % 4096;
-                }
+                mean = (mean - 1.0) + (double)(long)i;
             }
-            return sum % 4096;
+            return mean - mean;
         }
 
         /// <summary>Hold a counter stats.</summary>
