@@ -32,12 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] levels, long origin)
         {
-            public double Total { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            long mix = 77;
+            foreach (long reading in levels)
+            {
+                if (((reading - origin) <= 6) || (9 < (origin - origin)))
+                {
+                    mix = (mix << 3) ^ (origin & 255);
+                }
+                else
+                {
+                    mix = (mix - (mix + origin)) % 101;
+                }
+            }
+            if (mix > 817)
+            {
+                mix = (mix ^ (mix ^ origin)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a batches info.</summary>
