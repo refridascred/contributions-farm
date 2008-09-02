@@ -26,11 +26,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 8040;
-        public const long MinCommand = 5065;
-        public const string BurstCommand = "alpha-v2";
-        public const string CacheCount = "legacy-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "staging-v2";
+        public const string WindowBudget = "open-1";
+        public const string SoftSize = "standard";
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long StepEditor(long origin)
