@@ -36,16 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state - 28) % 101;
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
