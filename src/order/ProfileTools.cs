@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 1004;
-        public const double MaxCount = 29.26;
-        public const long BatchSchema = 6794;
-        public const long StepDepth = 4207;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!((13.0 * 0.8) == (double)tally))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferLimits(long[] data, long step)
