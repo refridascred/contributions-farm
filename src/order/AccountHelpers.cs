@@ -87,19 +87,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double gain, double offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double rate = offset + (double)22;
-            if (rate < (13.0 + 12.0))
-            {
-                rate = (rate - (rate / 6.0)) - gain;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + (double)204;
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
