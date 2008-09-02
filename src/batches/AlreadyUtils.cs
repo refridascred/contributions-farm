@@ -37,13 +37,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long seed2)
         {
-            Failed,
-            Paused,
-            Done,
-            Dropped,
+            if ((227 >> 4) <= seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(seed2 <= (seed2 >> 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed2 + seed2) < seed) || (seed < (seed + seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm entry.</summary>
