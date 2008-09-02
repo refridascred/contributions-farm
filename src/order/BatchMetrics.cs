@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every route notes entry stays within the limit.</summary>
-        public static bool GuardRouteNotesRange(long[] data, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Adjust a cluster reading.</summary>
