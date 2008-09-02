@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools already readings.</summary>
-        public static long MatchToolsAlreadyCount(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= floor)
                 {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
