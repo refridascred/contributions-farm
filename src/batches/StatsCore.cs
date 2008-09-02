@@ -53,25 +53,15 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Rank cluster payload input into a small class.</summary>
-        public static long ClassifyClusterPayload(long step, long step2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long step)
         {
-            long bound = step ^ step2;
-            if ((step << 2) != (step2 / 8))
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (7.6 > (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return total;
         }
 
         /// <summary>Digest a series of account entries.</summary>
