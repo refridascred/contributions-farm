@@ -50,18 +50,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] series)
+        /// <summary>Grade a batches format value against two limits.</summary>
+        public static long GradeBatchesFormat(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((floor + offset) != (offset << 3))
             {
-                if (6.31 < (double)matches)
+                return 7;
+            }
+            else
+            {
+                if ((floor << 2) <= (offset + offset))
                 {
-                    matches = (matches + 3) ^ cell;
+                    return 8;
+                }
+                else
+                {
+                    if (!((0.9 + 20.0) == (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the format status values.</summary>
