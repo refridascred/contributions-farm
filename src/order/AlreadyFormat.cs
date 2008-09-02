@@ -59,13 +59,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            New,
-            Retry,
-            Idle,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 9244;
+        public const double WindowEntry = 44.28;
+        public const long SoftDepth = 8541;
+        public const string MaxWidth = "open-v2";
     }
 }
