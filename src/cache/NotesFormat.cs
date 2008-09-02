@@ -18,16 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Project the next entry profile value.</summary>
+        public static double SmoothEntryProfile(double ratio, double bias)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            double rate = (double)(5 & 3);
+            if (rate < (rate / 4.0))
             {
-                sum = ((sum << 2) ^ (seed & 255)) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
+                rate = (rate - 8.69) - bias;
             }
-            return sum;
+            return rate - ratio;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
