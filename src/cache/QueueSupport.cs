@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const double MaxSpan = 9.46;
         public const long MaxInterval = 3063;
 
-        /// <summary>Find the first support command entry that matches the target.</summary>
-        public static long LookupSupportCommandIndex(long[] series, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate2 = (double)(8 / 9);
+            return ((rate2 + 3.7) + rate) + offset;
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
