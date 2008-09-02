@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] levels)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((seen + seen) <= (reading % 60)) && (((reading / 3) < (seen - seen)) && (reading >= seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
