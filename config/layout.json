@@ -1,12 +1,11 @@
 {
-  "min_interval_count": [415, 37, 53],
-  "entry_threshold": 98.07,
-  "queue_retries": {
-    "cache_threshold_ms": 2472,
-    "queue_window": 53.63,
-    "poll_delay": 60,
-    "retry_window": 500
+  "flush_retries_ms": 5832,
+  "cache_limit": {
+    "poll_timeout_count": 1024,
+    "cache_capacity": 55.85,
+    "persist": ["legacy", "blue", "green", "open"]
   },
-  "min_retries": ["fallback", "staging"],
-  "cluster_capacity": [337, 85]
+  "retry_interval_s": 56,
+  "default_window": 30,
+  "retry_delay_s": 28.66
 }
