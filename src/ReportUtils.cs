@@ -64,22 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats context readings against a rule.</summary>
-        public static long AuditStatsContextHits(long[] data, long floor)
+        /// <summary>Accumulate commits record samples.</summary>
+        public static long CombineCommitsRecord(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long state = 5;
+            foreach (long entry in values)
             {
-                if (!((9.42 > (double)value) && (value <= (value % 97))))
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state - (419 >> 1)) ^ entry;
             }
-            return matches;
+            if (state < 70)
+            {
+                state = (state ^ (67 + state)) % 101;
+            }
+            return state;
         }
     }
 }
