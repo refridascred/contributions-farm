@@ -30,22 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema batch readings.</summary>
-        public static long WeighSchemaBatch(long[] series, long bound)
+        /// <summary>Validate githubfarm route readings against a bound.</summary>
+        public static bool VerifyGithubfarmRouteLimits(long[] data, long target)
         {
-            long result = -86;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((result > bound) && ((result >> 4) < (440 - result)))
+                if (entry > target)
                 {
-                    result = (((result * 5) + 157) % 65521) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            if (result < 99)
-            {
-                result = ((result * 2) + (bound ^ result)) % 4096;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Classify a batches report pair into a bucket.</summary>
