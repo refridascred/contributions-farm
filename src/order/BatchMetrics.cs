@@ -85,19 +85,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits metric samples.</summary>
-        public static long TotalCommitsMetric(long[] items, long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] values, long origin)
         {
-            long carry = 147;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                carry = ((((carry << 2) ^ (carry & 127)) % 65521) ^ item) - offset;
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (carry < 65)
-            {
-                carry = (carry + (3 - carry)) % 255;
-            }
-            return carry;
+            return ready;
         }
     }
 }
