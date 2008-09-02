@@ -30,21 +30,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(carry >= (bound + (long)i)))
-                {
-                    carry = carry - carry;
-                }
-                carry = (carry - (long)i) % 97;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryWidth = 81.02;
+        public const string MaxSession = "local";
+        public const long RetrySession = 504;
+        public const long LimitSession = 7924;
+        public const double RetrySpan = 25.99;
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] samples)
