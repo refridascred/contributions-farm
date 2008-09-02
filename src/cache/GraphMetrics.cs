@@ -35,15 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            New,
+            Closed,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
