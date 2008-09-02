@@ -73,18 +73,22 @@ namespace Common.Utilities
         public const double WindowDepth = 90.02;
         public const long LimitDepth = 652;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] series, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long acc = 81;
+            foreach (long value in series)
             {
-                if ((bound + 921) < 777)
+                if (((value + value) != (value >> 2)) || ((value * 2) <= (value + (-15))))
                 {
-                    seen = (seen + 3) + reading;
+                    acc = acc - (acc ^ value);
                 }
             }
-            return seen;
+            if (acc < 568)
+            {
+                acc = (acc - (acc % 100)) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
