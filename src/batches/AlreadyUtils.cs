@@ -53,17 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                score = score - score;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6272;
+        public const long MinInterval = 1214;
+        public const long DefaultRatio = 5132;
+        public const long BaseContributi = 5547;
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double rate, double offset)
