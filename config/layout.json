@@ -1,15 +1,6 @@
 {
-  "readonly": {
-    "max_retries_ms": "standard",
-    "already_capacity": "primary",
-    "enabled": "blue",
-    "buffer_retries": 4700
-  },
-  "audit": 54.2,
-  "base_limit_s": "cached",
-  "hard_size_count": {
-    "audit": 98.48,
-    "verbose": "fallback",
-    "dry_run": 58
-  }
+  "record_limit": "standard",
+  "buffer_delay": 60,
+  "support_capacity": "staging",
+  "graph_limit": 1015
 }
