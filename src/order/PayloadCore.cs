@@ -20,18 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] levels)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally + tally) > tally)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
