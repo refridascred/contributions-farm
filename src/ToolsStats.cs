@@ -33,18 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order channel values into a single score.</summary>
-        public static long DigestOrderChannel(long[] levels, long floor)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long acc = 3;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc + 17) < (cell ^ cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc - (acc + acc)) % 4096) - floor;
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
