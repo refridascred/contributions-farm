@@ -19,24 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] items, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] items, long floor)
         {
-            long carry = 43;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit < entry) || ((carry % 60) < (entry ^ 997)))
+                if (items[i] <= floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                carry = carry ^ (entry + 921);
-                carry = (carry << 2) ^ (entry + entry);
             }
-            if (carry < (-20))
-            {
-                carry = ((carry * 4) + (carry ^ carry)) % 1000;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
