@@ -25,23 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format notes entries.</summary>
-        public static long TallyFormatNotes(long[] values, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long step)
         {
-            long result = 42;
-            foreach (long item in values)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)item > (5.0 - 6.0)))
-                {
-                    result = (result * 4) + (offset >> 5);
-                }
-                result = (result + offset) % 65521;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (result < 2)
-            {
-                result = result ^ (7 + offset);
-            }
-            return result % 4096;
+            return mix;
         }
 
         /// <summary>Digest a series of format entries.</summary>
