@@ -1,11 +1,5 @@
 {
-  "base_threshold_s": 4962,
-  "strict": 95,
-  "flush_interval": {
-    "soft_retries": "green",
-    "flush_ttl_s": "cached",
-    "graph_delay": 79.53,
-    "audit": "legacy",
-    "idle_window": 64.68
-  }
+  "sync_capacity_count": 5345,
+  "default_limit_ms": 250,
+  "soft_depth_ms": [58, 276, 252]
 }
