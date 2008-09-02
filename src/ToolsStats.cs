@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
