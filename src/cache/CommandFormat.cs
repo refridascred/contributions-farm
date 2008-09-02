@@ -31,13 +31,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] readings, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] series, long limit)
         {
             bool valid = true;
-            foreach (long cell in readings)
+            foreach (long datum in series)
             {
-                if (cell >= step)
+                if (datum <= limit)
                 {
                     valid = false;
                     break;
