@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] readings, long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((((matches - matches) >= (step / 7)) || ((13.0 * 20.0) <= (double)step)) || (((6.6 * 9.7) >= (double)matches) && ((5.6 - 3.7) >= (double)matches)))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
