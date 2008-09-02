@@ -1,9 +1,9 @@
 # githubfarm settings
-poll_retries_pct: true
-idle_size: 7
-batch_depth_ms:
-  - edge
-  - legacy
-  - legacy
-enabled: 5626
-min_delay_ms: 31
+audit: green
+verbose: 5368
+soft_ttl: 30
+burst_capacity_ms: 43
+tools_timeout:
+  - 368
+  - 396
+  - 332
