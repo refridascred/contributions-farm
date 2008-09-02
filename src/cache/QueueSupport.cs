@@ -28,15 +28,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] data, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] readings)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long value in readings)
             {
-                if ((origin / 2) <= count)
+                if ((12.0 - 8.7) >= (double)count)
                 {
-                    count = (count + 2) + reading;
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
