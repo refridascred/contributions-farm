@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            public long Region { get; set; }
             public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
