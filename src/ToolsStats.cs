@@ -74,14 +74,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long bound)
         {
-            Dropped,
-            Active,
-            Failed,
-            Done,
-            Draft,
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score + (bound << 1);
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
