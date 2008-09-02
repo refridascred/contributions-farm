@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 73.36;
-        public const string DefaultInterval = "staging-v2";
-        public const double MaxChannel = 3.33;
-        public const long CacheWidth = 3690;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((23 - datum) == (datum ^ datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
