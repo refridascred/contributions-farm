@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const string MinMetrics = "alpha-v2";
         public const long MaxMetrics = 8328;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            New,
-            Synced,
-            Failed,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 1329;
+        public const long HardChannel = 7096;
+        public const long DefaultSize = 7547;
+        public const long DefaultChannel = 3112;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
