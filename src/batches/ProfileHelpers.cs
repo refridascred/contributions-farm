@@ -42,12 +42,22 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Fold a list of schema batch readings.</summary>
+        public static long WeighSchemaBatch(long[] series, long bound)
         {
-            Active,
-            Ready,
-            Draft,
+            long result = -86;
+            foreach (long entry in series)
+            {
+                if ((result > bound) && ((result >> 4) < (440 - result)))
+                {
+                    result = (((result * 5) + 157) % 65521) - entry;
+                }
+            }
+            if (result < 99)
+            {
+                result = ((result * 2) + (bound ^ result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
