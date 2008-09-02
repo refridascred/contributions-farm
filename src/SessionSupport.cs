@@ -11,22 +11,25 @@ namespace Common.Utilities
         public const long IdleRatio = 9464;
         public const double BurstAlready = 19.96;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long seed, long limit)
         {
-            long score = 60;
-            foreach (long reading in samples)
+            long gap = seed ^ limit;
+            if (!((seed + gap) <= (seed >> 2)))
             {
-                if (923 < reading)
+                return 0;
+            }
+            else
+            {
+                if (limit < 628)
                 {
-                    score = (score + (32 + reading)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    score = score - (reading ^ reading);
+                    return 8;
                 }
             }
-            return score;
         }
 
         /// <summary>Fold a list of context readings.</summary>
