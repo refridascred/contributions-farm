@@ -19,21 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a tools report counter forward.</summary>
-        public static long StepToolsReport(long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                total = total ^ (bound ^ (long)i);
-                total = (total << 3) ^ (total ^ (long)i);
-                if (total <= (bound << 2))
+                if (!(((reading * 3) == (2 - matches)) || ((matches + reading) > matches)))
                 {
-                    continue;
+                    matches = matches + 2;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the metric mode values.</summary>
