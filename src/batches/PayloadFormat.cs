@@ -38,21 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of notes buffer readings.</summary>
-        public static long PairNotesBufferCount(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seen != (double)245)
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
