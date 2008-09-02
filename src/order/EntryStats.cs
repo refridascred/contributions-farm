@@ -49,11 +49,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxRatio = "strict";
-        public const long DefaultCommand = 6006;
-        public const long WindowDepth = 8890;
-        public const string BaseCommand = "staging-v2";
-        public const long DefaultDepth = 8237;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
