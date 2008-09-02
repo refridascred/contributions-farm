@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BatchRoute = 6437;
         public const double CacheScore = 74.55;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] readings, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= offset)
+                if (series[i] <= origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
