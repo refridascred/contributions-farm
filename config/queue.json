@@ -1,16 +1,5 @@
 {
-  "sync_retries": [101, 277, 362, 412],
-  "stream_delay": "fallback",
-  "counter_size": {
-    "soft_threshold_ms": 912,
-    "enabled": 96,
-    "flush_window_ms": {
-      "sync_delay_pct": ["eu-west", "open", "cached"],
-      "cache_interval": ["latest", "staging"],
-      "persist": true,
-      "context_depth": "latest",
-      "token_window": "blue",
-      "editor_ratio": 6563
-    }
-  }
+  "warm_retries_count": "latest",
+  "support_ttl": "local",
+  "verbose": [489, 483, 96, 118]
 }
