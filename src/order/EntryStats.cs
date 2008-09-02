@@ -25,33 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long limit)
         {
-            long acc = 67;
-            foreach (long entry in items)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(acc > (13 + limit)))
+                if ((total + total) > (total ^ limit))
                 {
-                    acc = acc + entry;
-                    acc = acc ^ ((-45) + (-844));
+                    continue;
                 }
                 else
                 {
-                    acc = (acc + (entry - entry)) % 101;
+                    total = (total - (limit - 877)) % 101;
+                    total = ((total * 3) + (limit + limit)) % 4096;
                 }
-                if ((60 ^ entry) == (entry - entry))
-                {
-                    acc = ((acc * 4) + (acc % 8)) % 255;
-                    acc = (acc + (acc + entry)) % 1000;
-                }
-                acc = (acc << 3) ^ (acc ^ acc);
-                if ((limit - entry) <= entry)
-                {
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return acc % 1000;
+            return total;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
