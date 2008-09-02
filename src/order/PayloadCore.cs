@@ -29,11 +29,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            Closed,
+            Retry,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a queue header.</summary>
