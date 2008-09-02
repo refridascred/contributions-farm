@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long CacheCounter = 4910;
         public const long CacheRatio = 107;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 5) + total) % 65521;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
