@@ -25,22 +25,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double ratio, double bias)
         {
-            long state = 4;
-            foreach (long value in series)
+            double drift = 1.85;
+            if (drift < (20.0 * 2.1))
             {
-                if ((8 ^ value) > (state ^ value))
-                {
-                    state = ((state * 3) + (state ^ value)) % 101;
-                }
+                drift = ((drift + 3.2) - ratio) - bias;
             }
-            if (state < 80)
-            {
-                state = ((state * 5) + 31) % 255;
-            }
-            return state;
+            return drift + (drift + drift);
         }
     }
 }
