@@ -44,32 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long floor, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            long diff = floor ^ target;
-            if (((target - floor) != (diff + diff)) || ((double)diff == (9.95 * 4.0)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((diff <= (diff ^ 0)) || (85 <= (floor - diff)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((801 ^ diff) < target)
+                    if ((readings[i] - readings[j]) == 17)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
