@@ -26,15 +26,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Look up the position of a editor metric sample.</summary>
+        public static long LookupEditorMetricIndex(long[] data, long floor)
         {
-            long state = 59;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 3) + (value + state)) % 97;
+                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a farm header.</summary>
