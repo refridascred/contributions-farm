@@ -21,19 +21,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] values, long offset)
+        /// <summary>Roll a counter support counter forward.</summary>
+        public static long SeriesCounterSupport(long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark + mark) % 97;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Describe the already class values.</summary>
