@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] == limit)
+                if ((levels[i] < target) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
