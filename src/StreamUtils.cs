@@ -42,23 +42,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many editor channel samples are out of range.</summary>
-        public static long TallyEditorChannelGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count <= 0.78)
-                {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 6546;
+        public const long RetryRecord = 2494;
+        public const long DefaultLevel = 8236;
+        public const long DefaultRatio = 4989;
+        public const long BatchRecord = 6468;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MinStream = 69.99;
