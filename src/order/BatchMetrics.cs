@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryRatio = 2172;
-        public const long BaseCount = 7845;
-        public const long WindowCommand = 1967;
-        public const long LimitCommand = 7055;
-        public const long DefaultLevel = 7794;
+        /// <summary>Check that every route notes entry stays within the limit.</summary>
+        public static bool GuardRouteNotesRange(long[] data, long target)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ScaleCluster(double ratio, double bias)
