@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary eu-west strict green; do
+mode="${1:-blue}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in latest legacy fallback staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=209
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
