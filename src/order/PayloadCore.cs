@@ -31,13 +31,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long step)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            long score = step;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score ^ step;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
