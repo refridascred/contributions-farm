@@ -34,12 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 6546;
-        public const long RetryRecord = 2494;
-        public const long DefaultLevel = 8236;
-        public const long DefaultRatio = 4989;
-        public const long BatchRecord = 6468;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels)
+        {
+            long state = 68;
+            foreach (long cell in levels)
+            {
+                if ((cell % 10) >= 13)
+                {
+                    state = (state << 3) ^ (state & 31);
+                }
+                state = state - (state & 127);
+                state = (state ^ (cell << 2)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Classify a metrics route pair into a bucket.</summary>
         public static long ClassifyMetricsRoute(long floor, long step)
