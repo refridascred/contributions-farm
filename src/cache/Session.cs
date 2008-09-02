@@ -51,22 +51,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes record readings against a rule.</summary>
-        public static long MeasureNotesRecordMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((19.0 + 7.0) < (double)hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 4608;
+        public const long MaxNotes = 498;
+        public const long BaseLevel = 1460;
     }
 }
