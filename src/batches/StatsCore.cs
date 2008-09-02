@@ -44,18 +44,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] readings, long target)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((target & 15) < (matches + sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
