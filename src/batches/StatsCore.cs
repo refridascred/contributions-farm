@@ -29,11 +29,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepBudget = "local";
-        public const string WindowStream = "legacy";
-        public const double HardWidth = 75.53;
-        public const long MaxLevel = 8783;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!((item / 3) <= (item + 14)))
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long offset)
