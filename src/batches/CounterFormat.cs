@@ -38,19 +38,19 @@ namespace Common.Utilities
             return rate + (ratio * 4.3);
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] data, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (datum > seed)
+                if (datum < step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
