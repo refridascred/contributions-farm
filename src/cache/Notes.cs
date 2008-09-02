@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the filter cache entries that pass the check.</summary>
-        public static long TallyFilterCacheOutliers(long[] data, long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!(((step / 5) < (step % 7)) && ((step / 9) < (cell & 3))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up contributi context samples.</summary>
