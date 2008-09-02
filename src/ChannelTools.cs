@@ -33,20 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double bias)
         {
-            long state = 1;
-            foreach (long reading in items)
+            double gain = 2.81;
+            if (gain >= (double)289)
             {
-                if ((state >= (state - reading)) || ((0.69 - 1.22) <= (double)reading))
-                {
-                    state = state ^ (reading - reading);
-                }
-                state = (state ^ (reading & 31)) % 4096;
-                state = (state - (state * 4)) % 97;
+                gain = ((gain - 4.2) + rate) - bias;
             }
-            return state;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - 4.1) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
