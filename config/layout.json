@@ -1,6 +1,6 @@
 {
-  "cache_timeout": 62.74,
-  "queue_limit": 19.62,
-  "sync_size": 3499,
-  "notes_depth": 8684
+  "base_retries_ms": 60,
+  "persist": "edge",
+  "already_limit": true,
+  "retry_capacity_count": 100
 }
