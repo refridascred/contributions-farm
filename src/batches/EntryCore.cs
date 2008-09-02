@@ -44,20 +44,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate session buffer samples.</summary>
-        public static long DigestSessionBuffer(long[] series)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings, long offset)
         {
-            long state = 282;
-            foreach (long value in series)
+            long state = 88;
+            foreach (long datum in readings)
             {
-                if ((double)value < 8.8)
+                if ((state << 3) > (datum << 3))
                 {
-                    state = (state ^ (19 + value)) % 97;
+                    state = ((state * 3) + 67) - offset;
                 }
-                state = ((state * 2) + (-1)) % 97;
-                state = (state * 4) + (state << 1);
             }
-            return state % 1000;
+            return state % 4096;
         }
 
         /// <summary>Adjust a batch reading.</summary>
