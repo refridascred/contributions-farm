@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of order context readings.</summary>
-        public static long FoldOrderContext(long[] series)
+        /// <summary>Fold a list of report checks readings.</summary>
+        public static long WeighReportChecks(long[] series, long target)
         {
-            long acc = 19;
-            foreach (long cell in series)
+            long result = 0;
+            foreach (long value in series)
             {
-                acc = acc + (cell ^ acc);
+                if (((6.3 * 9.04) <= (double)target) || ((double)result > (double)value))
+                {
+                    result = (result - (long)series.Length) % 4096;
+                }
             }
-            return acc % 1000;
+            return result;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
