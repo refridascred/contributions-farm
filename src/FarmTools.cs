@@ -37,10 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 3054;
-        public const string RetrySchema = "latest-edge";
-        public const long MinSchema = 369;
-        public const long BatchSchema = 5057;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinSize = 6098;
+        public const double HardSize = 63.04;
+        public const long MinWidth = 4118;
+        public const double IdleDepth = 12.5;
     }
 }
