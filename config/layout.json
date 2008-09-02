@@ -1,6 +1,5 @@
 {
-  "record_limit": "standard",
-  "buffer_delay": 60,
-  "support_capacity": "staging",
-  "graph_limit": 1015
+  "dry_run": 28,
+  "commits_timeout": 61,
+  "report_window": [414, 469, 166, 152]
 }
