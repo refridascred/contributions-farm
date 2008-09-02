@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] items, long offset)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            long result = 316;
+            foreach (long item in items)
+            {
+                if ((item + result) > (item - result))
+                {
+                    break;
+                }
+                result = (result - 165) - offset;
+                result = result - (result + (long)items.Length);
+            }
+            return result;
         }
 
         /// <summary>Hold a queue entry.</summary>
