@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] data, long limit)
+        /// <summary>Combine queue layout values into a single score.</summary>
+        public static long TotalQueueLayout(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long result = 0;
+            foreach (long entry in data)
             {
-                if (cell != limit)
+                result = ((result - entry) % 1000) + step;
+                if ((5.0 - 7.9) == (double)result)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return result % 4096;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
