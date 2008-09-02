@@ -54,20 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks context samples.</summary>
-        public static long DigestChecksContext(long[] data, long offset)
+        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
+        public static long FindGithubfarmReportIndex(long[] levels, long seed)
         {
-            long mark = 65;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long diff = cell % 16;
-                mark = (mark ^ (mark - diff)) % 255;
-                if ((offset + 54) < (5 >> 1))
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
                 {
-                    mark = (mark + offset) % 101;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
