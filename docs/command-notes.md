@@ -1,15 +1,13 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the commits list.
-Defaults for command live in the config folder and can be overridden per environment.
-When a commits fails, the metric handler retries a few times before giving up.
+The buffer report groups every contributi by layout.
+The window module keeps graph values in sync with the buffer cache.
 
-The checks report groups every cache by metric.
-Defaults for checks live in the config folder and can be overridden per environment.
+Run the channel check before changing any token limits.
+Run the account check before changing any schema limits.
 
 ## Guidelines
 
-- Document new checks fields
-- Log every queue change
-- Validate window input early
-- Review layout limits each release
+- Log every profile change
+- Review counter limits each release
+- Prefer batches defaults
