@@ -49,14 +49,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Find the first buffer batch entry that matches the target.</summary>
+        public static long SeekBufferBatchIndex(long[] levels, long floor)
         {
-            Queued,
-            Draft,
-            Idle,
-            Retry,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
