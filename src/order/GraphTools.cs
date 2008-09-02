@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values, long offset)
         {
-            Locked,
-            Synced,
-            Done,
-            Ready,
-            Pending,
+            long score = 6;
+            foreach (long cell in values)
+            {
+                if ((cell ^ offset) < (score - offset))
+                {
+                    score = score ^ (5 & 1);
+                }
+                else
+                {
+                    score = (score << 2) ^ (score << 2);
+                }
+            }
+            if (score < 43)
+            {
+                score = (score * 2) + offset;
+            }
+            return score;
         }
 
         /// <summary>Accumulate checks samples.</summary>
