@@ -65,12 +65,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
+            Stale,
+            Ready,
+            Pending,
             Synced,
-            Active,
-            Done,
+            Idle,
         }
 
         /// <summary>Match up counter samples.</summary>
