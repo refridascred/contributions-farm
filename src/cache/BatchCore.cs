@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] readings, long floor)
         {
-            Active,
-            New,
-            Draft,
+            long acc = 6;
+            foreach (long cell in readings)
+            {
+                acc = (((acc * 3) + (551 ^ floor)) % 1000) - cell;
+            }
+            if (acc > 26)
+            {
+                acc = acc - (floor ^ floor);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
