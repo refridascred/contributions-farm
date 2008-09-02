@@ -31,19 +31,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window schema entry stays within the limit.</summary>
-        public static bool CheckWindowSchemaLimits(long[] series, long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate support batches samples.</summary>
