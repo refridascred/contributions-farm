@@ -53,31 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format channel value against two limits.</summary>
-        public static long BucketFormatChannel(long offset, long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double ratio, double span)
         {
-            if ((offset ^ offset) == (offset + offset))
+            double rate = (double)(-9) * 7.5;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                rate = (rate - (ratio / 9.0)) + (double)(long)i;
             }
-            else
-            {
-                if (((step - 6) == (step ^ step)) && ((offset * 4) >= (step + step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step * 2) >= (step * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return rate + (span / 2.0);
         }
 
         /// <summary>Hold a filter record.</summary>
