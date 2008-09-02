@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue strict cached; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=403
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-strict}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in primary cached local; do
+    log "checking ${item}"
+done
