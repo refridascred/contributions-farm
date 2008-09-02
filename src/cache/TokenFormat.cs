@@ -37,19 +37,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] items, long step)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Closed,
+            Pending,
+            Paused,
         }
     }
 }
