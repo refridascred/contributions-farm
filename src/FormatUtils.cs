@@ -52,31 +52,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a order commits value against two limits.</summary>
-        public static long ClassifyOrderCommits(long seed, long origin)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            if ((7.7 - 3.78) == (double)origin)
+            long score = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed << 1) < (origin * 4))
+                if ((floor + 840) <= floor)
                 {
-                    return 4;
+                    score = (score << 3) ^ score;
                 }
-                else
-                {
-                    if ((double)origin != (1.18 / 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Combine window values into a single score.</summary>
