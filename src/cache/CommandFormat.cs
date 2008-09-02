@@ -21,10 +21,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "staging-v2";
-        public const string WindowBudget = "open-1";
-        public const string SoftSize = "standard";
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long floor, long target)
