@@ -60,19 +60,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits record samples.</summary>
-        public static long CombineCommitsRecord(long[] values)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long state = 5;
-            foreach (long entry in values)
-            {
-                state = (state - (419 >> 1)) ^ entry;
-            }
-            if (state < 70)
-            {
-                state = (state ^ (67 + state)) % 101;
-            }
-            return state;
+            Ready,
+            Stale,
+            Pending,
+            Active,
+            Draft,
         }
     }
 }
