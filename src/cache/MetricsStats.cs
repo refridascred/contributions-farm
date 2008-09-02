@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
-        public static bool ValidateClusterQueueBounds(long[] readings, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > step)
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Accumulate context samples.</summary>
