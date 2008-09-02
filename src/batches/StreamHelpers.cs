@@ -14,22 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] samples, long floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell * 2) == (cell + tally)))
-                {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public double Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit profile report readings against a rule.</summary>
