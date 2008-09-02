@@ -48,18 +48,11 @@ namespace Common.Utilities
         public const long WindowNotes = 1218;
         public const string WindowFactor = "fallback";
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values, long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((0.1 + 13.0) == (double)matches)
-                {
-                    matches = ((matches + 3) + cell) + target;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
