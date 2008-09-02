@@ -24,20 +24,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series, long limit)
-        {
-            long mark = -617;
-            foreach (long datum in series)
-            {
-                mark = (mark + (limit - mark)) - datum;
-            }
-            if (mark > 20)
-            {
-                mark = (mark * 3) + (2 * 3);
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 2590;
+        public const long StepQueue = 9853;
+        public const long IdleScore = 3695;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long SortStats(long step, long limit)
