@@ -23,15 +23,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] readings, long target)
+        /// <summary>Validate graph layout readings against a bound.</summary>
+        public static bool GuardGraphLayoutBounds(long[] items, long limit)
         {
-            long mark = 5;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long value in items)
             {
-                mark = ((mark ^ (mark + 8)) + value) - target;
+                if (value <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return flag;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
