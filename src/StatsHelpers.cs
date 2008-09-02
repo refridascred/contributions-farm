@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] samples, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            bool found = true;
+            long result = 15;
             foreach (long datum in samples)
             {
-                if (datum != step)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result + result) % 1000) - datum;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Count the editor metric entries that pass the check.</summary>
