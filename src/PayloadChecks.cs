@@ -79,18 +79,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] levels)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long anchor = 9;
+            foreach (long entry in samples)
             {
-                if ((1.27 * 8.0) != (double)tally)
-                {
-                    tally = (tally + 3) + item;
-                }
+                anchor = ((anchor - (anchor / 9)) % 65521) ^ entry;
             }
-            return tally;
+            if (anchor < 7)
+            {
+                anchor = (anchor - (anchor * 2)) % 4096;
+            }
+            return anchor;
         }
     }
 }
