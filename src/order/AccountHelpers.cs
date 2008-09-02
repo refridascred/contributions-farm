@@ -69,19 +69,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] series, long origin)
+        /// <summary>Audit buffer cluster readings against a rule.</summary>
+        public static long MeasureBufferClusterGaps(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (entry <= origin)
+                if ((cell / 9) > offset)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
