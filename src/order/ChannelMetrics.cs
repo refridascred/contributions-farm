@@ -45,19 +45,11 @@ namespace Common.Utilities
         public const long BurstCluster = 5805;
         public const long IdleCluster = 1651;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 7285;
+        public const double BurstDepth = 5.15;
+        public const long BatchToken = 9448;
+        public const long MaxWidth = 8876;
+        public const long WindowDepth = 5519;
     }
 }
