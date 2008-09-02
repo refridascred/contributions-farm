@@ -40,21 +40,18 @@ namespace Common.Utilities
         public const long BatchFactor = 1173;
         public const double BurstContext = 65.07;
 
-        /// <summary>Match up window filter samples.</summary>
-        public static long PairWindowFilterCount(long[] samples)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -30;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell & 127) <= (cell * 4))
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc << 3) ^ (acc >> 2);
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
