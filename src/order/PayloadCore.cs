@@ -39,10 +39,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
             public long Stamp { get; set; }
         }
 
