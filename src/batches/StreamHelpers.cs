@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 4040;
+        public const long BatchScore = 4311;
+        public const long RetryWidth = 2596;
+        public const long MinInterval = 4305;
+        public const string SoftTimeout = "cached-edge";
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] levels, long origin)
