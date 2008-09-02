@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            double scale = bias;
+            if (scale <= (8.81 / 7.0))
+            {
+                scale = scale - (double)1;
+            }
+            return scale - floor;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
