@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryCount = 62.05;
-        public const double BatchCount = 70.36;
-        public const double MaxInterval = 15.23;
-        public const string IdleEditor = "staging-1";
-        public const long LimitEditor = 4682;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix - mix) % 1000;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of support stream readings.</summary>
         public static long ScoreSupportStream(long[] items)
