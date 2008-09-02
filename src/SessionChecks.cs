@@ -34,19 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] data, long origin)
+        /// <summary>Accumulate notes profile samples.</summary>
+        public static long TallyNotesProfile(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long sum = 31;
+            foreach (long entry in items)
             {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (((sum << 2) ^ 649) % 255) - entry;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Accumulate filter samples.</summary>
