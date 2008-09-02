@@ -39,18 +39,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] data)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen != (double)245)
+                if (values[i] > seed)
                 {
-                    seen = (seen + 2) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
