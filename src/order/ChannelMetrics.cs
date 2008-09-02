@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double weight, double offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
         {
-            double scale = (weight * 7.6) * 5.05;
-            if (scale > scale)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale - (weight + weight);
+                acc = (acc + acc) % 255;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return scale + offset;
+            return acc;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
