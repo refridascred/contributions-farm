@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double CacheEntry = 3.11;
         public const string IdleDepth = "open-v2";
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] samples, long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] >= target)
+                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
