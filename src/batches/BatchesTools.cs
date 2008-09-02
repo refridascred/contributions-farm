@@ -30,18 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((tally > (82 << 1)) || ((1.6 / 9.0) == (double)tally))
+                if (reading < offset)
                 {
-                    tally = (tally + 2) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
