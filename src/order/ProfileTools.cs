@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long SoftContext = 3847;
         public const long BaseFactor = 2636;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
