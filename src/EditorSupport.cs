@@ -51,12 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
