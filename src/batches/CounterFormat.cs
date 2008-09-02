@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] series, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
