@@ -67,24 +67,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a report stream value against two limits.</summary>
-        public static long ClassifyReportStream(long step, long target)
-        {
-            if (((double)step <= 1.9) && (5.8 >= (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step / 7) > 4)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinDepth = 4039;
+        public const string WindowLevel = "fallback-edge";
+        public const string BaseBatch = "open-edge";
+        public const long DefaultBatch = 1666;
+        public const long CacheScore = 3444;
     }
 }
