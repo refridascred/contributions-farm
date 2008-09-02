@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of command githubfarm readings.</summary>
-        public static long DigestCommandGithubfarm(long[] series, long limit)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long result = 466;
-            foreach (long reading in series)
-            {
-                if (((result >> 2) > (669 % 12)) && ((6.0 - 4.5) < (double)reading))
-                {
-                    result = (result << 3) ^ (reading ^ limit);
-                }
-                if (3.8 > (double)limit)
-                {
-                    break;
-                }
-            }
-            return result;
+            Done,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Audit already commits readings against a rule.</summary>
