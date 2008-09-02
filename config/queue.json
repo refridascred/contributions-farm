@@ -1,6 +1,7 @@
 {
-  "burst_limit": 500,
-  "burst_timeout_s": 27.73,
-  "hard_threshold_s": ["latest", "cached"],
-  "sync_interval_count": "edge"
+  "warm_timeout_pct": false,
+  "window_window": 9,
+  "enabled": 94,
+  "idle_ttl_pct": 80,
+  "warm_threshold_count": 37
 }
