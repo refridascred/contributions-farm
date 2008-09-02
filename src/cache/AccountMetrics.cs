@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 4313;
-        public const long RetryOrder = 2452;
-        public const long LimitBudget = 7215;
-        public const long MaxDepth = 1495;
-        public const long BatchWidth = 4769;
+        /// <summary>Iterate the stream cluster series from a seed.</summary>
+        public static long SeriesStreamCluster(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((17.0 + 7.0) != (double)mix) || ((3.3 - 2.9) != (double)mix))
+                {
+                    mix = ((mix << 3) ^ mix) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long target, long floor)
