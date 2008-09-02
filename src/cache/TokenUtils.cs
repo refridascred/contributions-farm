@@ -23,13 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            Draft,
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
