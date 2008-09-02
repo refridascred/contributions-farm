@@ -32,24 +32,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long target, long origin)
+        /// <summary>Find the first payload graph entry that matches the target.</summary>
+        public static long LocatePayloadGraphIndex(long[] readings, long origin)
         {
-            if ((double)target == (double)origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin > (origin + (-14)))
+                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
