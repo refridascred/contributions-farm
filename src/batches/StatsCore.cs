@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit account cache readings against a rule.</summary>
-        public static long CountAccountCacheHits(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((3 * 3) > (cell - cell))
+                if (value != floor)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
