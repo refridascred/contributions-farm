@@ -47,15 +47,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] data, long limit)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long state = 3;
-            foreach (long cell in data)
-            {
-                state = ((state + cell) % 97) - limit;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
