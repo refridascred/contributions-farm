@@ -1,5 +1,17 @@
 {
-  "poll_retries": 67.66,
-  "poll_window_count": 84.31,
-  "burst_size": false
+  "route_limit": 63.27,
+  "idle_limit": {
+    "sync_size": ["staging", "latest", "local"],
+    "verbose": ["blue", "edge"],
+    "default_capacity_count": {
+      "dry_run": 68.78,
+      "soft_capacity": 500,
+      "warm_ratio_ms": 2032,
+      "layout_delay": 15.77,
+      "poll_depth_s": false
+    },
+    "metrics_delay": false,
+    "audit": true
+  },
+  "base_delay": 27.7
 }
