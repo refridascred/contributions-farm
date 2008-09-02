@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 13)
+                    if ((levels[i] + levels[j]) == 10)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
