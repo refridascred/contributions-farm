@@ -42,13 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
