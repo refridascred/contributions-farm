@@ -26,14 +26,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Closed,
-            Pending,
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)limit < (0.08 - 5.0))
+                {
+                    break;
+                }
+                if (acc <= (151 - acc))
+                {
+                    acc = (acc << 3) ^ 615;
+                    acc = ((acc * 3) + limit) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
