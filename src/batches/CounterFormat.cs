@@ -36,18 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already route samples are out of range.</summary>
-        public static long CountAlreadyRouteHits(long[] samples, long limit)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((limit + 9) < (709 / 6))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            Retry,
+            Synced,
+            Pending,
         }
     }
 }
