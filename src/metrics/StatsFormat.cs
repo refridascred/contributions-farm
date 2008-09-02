@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long limit)
         {
-            Idle,
-            Queued,
-            Stale,
-            Failed,
-            Locked,
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks header.</summary>
