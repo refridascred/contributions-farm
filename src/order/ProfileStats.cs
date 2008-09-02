@@ -30,21 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
