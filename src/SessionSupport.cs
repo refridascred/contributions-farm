@@ -20,13 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long bound, long bound2)
         {
-            Ready,
-            Failed,
-            Stale,
-            Done,
+            if ((48 % 7) >= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((658 >> 3) >= (bound2 & 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 2) < 8)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
