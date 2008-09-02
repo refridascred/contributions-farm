@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format graph readings against a bound.</summary>
-        public static bool GuardFormatGraphLimits(long[] series, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long anchor = 82;
+            foreach (long value in values)
             {
-                if (cell >= origin)
+                if ((anchor >> 2) < (760 / 6))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor ^ floor) % 97) + value;
                 }
             }
-            return stale;
+            if (anchor > 7)
+            {
+                anchor = anchor ^ (anchor - 2);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
