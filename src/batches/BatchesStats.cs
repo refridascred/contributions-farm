@@ -47,19 +47,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already metrics entry stays within the limit.</summary>
-        public static bool CheckAlreadyMetricsLimits(long[] readings, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long origin, long seed)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            if (((4.4 * 4.49) != (double)origin) && (seed <= origin))
             {
-                if (entry >= bound)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed <= 3.7)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)seed == (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate session metrics readings against a bound.</summary>
