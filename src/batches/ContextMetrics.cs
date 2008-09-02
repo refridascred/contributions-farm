@@ -52,15 +52,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double gain, double offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] samples, long limit)
         {
-            double weight = 7.98 * 2.8;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (((weight - (weight / 6.0)) - (double)(long)i) - gain) + offset;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return weight - 8.94;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
