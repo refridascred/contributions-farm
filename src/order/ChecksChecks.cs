@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const string BurstProfile = "latest-v2";
         public const long LimitSpan = 9234;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] levels, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
