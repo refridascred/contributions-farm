@@ -42,24 +42,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long bound, long floor)
-        {
-            if ((38 >> 1) <= (bound >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.0 + 9.3) == (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetrySpan = 7483;
+        public const long BaseProfile = 6121;
+        public const long CacheProfile = 6813;
     }
 }
