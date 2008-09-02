@@ -16,12 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Failed,
-            New,
-            Locked,
+            Draft,
+            Queued,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the support state values.</summary>
