@@ -79,22 +79,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
         {
-            long result = 8;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((result * 2) == (entry ^ 2)) && ((354 + floor) >= floor))
+                if ((1.27 * 8.0) != (double)tally)
                 {
-                    result = ((result * 4) + 3) % 1000;
-                }
-                else
-                {
-                    result = (result * 3) + (result % 24);
+                    tally = (tally + 3) + item;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
