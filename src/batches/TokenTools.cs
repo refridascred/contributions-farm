@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double gain, double span)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long offset)
         {
-            double ratio = (gain + span) * 6.5;
-            for (int i = 0; i < 4; i++)
+            if (((double)bound == (double)1) || ((offset << 3) < (-20)))
             {
-                ratio = (ratio - (gain + gain)) + (double)(long)i;
+                return 7;
             }
-            return ratio + gain;
+            else
+            {
+                if (offset <= (7 << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
