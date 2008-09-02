@@ -80,12 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepWidth = 23.73;
-        public const string SoftGithubfarm = "open";
-        public const long BatchFactor = 8004;
-        public const double MaxGithubfarm = 42.58;
-        public const string HardGithubfarm = "legacy-v2";
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long ScoreAlready(long[] data)
