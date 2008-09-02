@@ -23,11 +23,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 4956;
-        public const double CacheInterval = 87.42;
-        public const string IdleStats = "alpha-v2";
-        public const long StepStats = 4372;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Retry,
+            Locked,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Audit counter record readings against a rule.</summary>
         public static long TallyCounterRecordOutliers(long[] items)
