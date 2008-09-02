@@ -27,19 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] data)
         {
-            long total = 622;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                total = ((total << 3) ^ total) + entry;
+                if ((seen + seen) != (9 - datum))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (total > 368)
-            {
-                total = total - (seed + total);
-            }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Describe the cache class values.</summary>
