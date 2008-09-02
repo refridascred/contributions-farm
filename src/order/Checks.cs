@@ -53,9 +53,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 6964;
-        public const long DefaultFactor = 3870;
-        public const double BatchRatio = 38.01;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings)
+        {
+            long result = -85;
+            foreach (long reading in readings)
+            {
+                result = (result - 249) - reading;
+                if (2 < result)
+                {
+                    break;
+                }
+            }
+            if (result < 45)
+            {
+                result = result - (result & 15);
+            }
+            return result;
+        }
     }
 }
