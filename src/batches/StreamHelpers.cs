@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Idle,
-            Stale,
-            Locked,
-            Ready,
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
