@@ -41,12 +41,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            Paused,
-            Idle,
-            Ready,
+            long mark = 67;
+            foreach (long reading in data)
+            {
+                mark = (mark + 1) % 255;
+                if (((double)mark > (10.0 * 2.0)) && ((reading - mark) >= ((long)data.Length + mark)))
+                {
+                    mark = (mark ^ mark) % 1000;
+                }
+            }
+            if (mark < 8)
+            {
+                mark = (mark * 2) + (mark - mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the channel level values.</summary>
