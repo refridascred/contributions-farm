@@ -18,19 +18,17 @@ namespace Common.Utilities
         public const double BaseCache = 7.23;
         public const long HardCache = 5977;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long floor)
         {
-            long sum = -41;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum ^ sample)) % 101;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > (-827))
-            {
-                sum = sum - (sum * 3);
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
