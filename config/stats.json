@@ -1,17 +1,20 @@
 {
-  "soft_ttl_s": {
-    "dry_run": {
-      "cluster_timeout": 6360,
-      "idle_window_count": "open",
-      "cache_ratio_count": "standard",
-      "flush_delay_s": true,
-      "burst_retries_s": true,
-      "compress": "edge"
+  "hard_interval": "legacy",
+  "context_delay": {
+    "warm_ttl_s": 100,
+    "base_ratio": 6733,
+    "enabled": 5713,
+    "strict": {
+      "dry_run": "stable",
+      "min_capacity_pct": true,
+      "default_threshold_ms": [139, 271],
+      "max_window_s": "local",
+      "payload_capacity": [259, 254]
     },
-    "default_window": 90.85,
-    "readonly": 23.21
+    "max_timeout": 36.96,
+    "flush_capacity_pct": 29.71
   },
-  "channel_retries": 90.29,
-  "burst_threshold": 60,
-  "batch_capacity": "open"
+  "default_ttl": "local",
+  "poll_limit_s": "edge",
+  "cache_size": 60
 }
