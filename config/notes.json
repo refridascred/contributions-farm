@@ -1,5 +1,7 @@
 {
-  "base_timeout": false,
-  "flush_capacity_count": ["fallback", "stable"],
-  "verbose": true
+  "max_limit_s": [118, 407, 143],
+  "githubfarm_limit": 53,
+  "idle_delay_s": false,
+  "persist": "open",
+  "sync_retries": "strict"
 }
