@@ -13,23 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double gain, double bias)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double drift = gain;
-            if (drift <= (double)(-913))
-            {
-                drift = (drift - (gain * 7.0)) - bias;
-            }
-            else
-            {
-                drift = drift - (drift - gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift + (gain + gain);
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
