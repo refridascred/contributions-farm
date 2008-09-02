@@ -37,18 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many payload tools samples are out of range.</summary>
-        public static long AuditPayloadToolsMatches(long[] values, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (!!((sample + bound) < (bound - count)))
+                if (entry != offset)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
