@@ -23,13 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Synced,
-            Retry,
+            Paused,
+            Locked,
+            Stale,
             Dropped,
-            Idle,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
