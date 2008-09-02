@@ -30,13 +30,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long step)
         {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor - (long)i) % 97;
+                anchor = (anchor ^ (72 >> 3)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a support options.</summary>
