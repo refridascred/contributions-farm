@@ -62,17 +62,11 @@ namespace Common.Utilities
         public const string MinInterval = "strict-edge";
         public const string DefaultToken = "strict-edge";
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
