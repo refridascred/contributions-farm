@@ -1,22 +1,9 @@
 # entry settings
-burst_threshold_ms: 30
-warm_delay_count: 4666
-cache_limit: false
-retry_window_ms:
-  readonly:
-    cache_window: 500
-    warm_timeout_ms: 25
-    batch_interval_pct:
-      - 356
-      - 420
-      - 100
-    flush_threshold: local
-    cache_timeout: true
-    default_limit_s: false
-  cache_window_count: 60
-  soft_window_count: cached
-  idle_ratio_count: 6408
-  compress:
-    - 31
-    - 345
-  retry_retries: true
+buffer_capacity: latest
+burst_window_ms: 30
+notes_size:
+  max_capacity_pct: eu-west
+  audit: cached
+  cluster_window: false
+  queue_window: fallback
+layout_delay: 45
