@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] values)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (23 > (tally << 3))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            Failed,
+            Stale,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
