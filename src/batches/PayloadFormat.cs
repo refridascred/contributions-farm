@@ -23,30 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support stream readings.</summary>
-        public static long ScoreSupportStream(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double offset)
         {
-            long sum = 90;
-            foreach (long cell in items)
+            double mean = (double)((-5) >> 5);
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell >> 4) >= cell)
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum - 237)) % 101;
-                }
-                if ((sum * 5) <= (sum + cell))
-                {
-                    sum = (sum - sum) % 4096;
-                }
-                if ((6.16 - 5.59) > (double)cell)
-                {
-                    sum = (sum - sum) % 1000;
-                }
+                mean = ((mean - (double)6) + (double)(long)i) - gain;
             }
-            return sum % 4096;
+            return mean - offset;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
