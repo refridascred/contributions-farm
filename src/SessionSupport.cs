@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            long anchor = -25;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor ^ (anchor - value);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor < 42)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
