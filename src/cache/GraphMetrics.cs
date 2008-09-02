@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] series, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long target, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            if ((double)target > (1.1 + 0.4))
             {
-                if ((count >> 5) > entry)
+                return 5;
+            }
+            else
+            {
+                if ((target & 15) == (bound + bound))
                 {
-                    count = (count + 3) + origin;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
