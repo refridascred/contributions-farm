@@ -46,34 +46,35 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long bound, long target)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long target, long seed)
         {
-            if (target > (bound + (-40)))
+            long edge = target + seed;
+            if ((target & 7) <= target)
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((bound + bound) < (bound - target))
+                if ((seed / 9) == (target + 227))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (bound < (bound + target))
+                    if ((double)edge >= (double)target)
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        if ((double)target > (0.49 - 0.6))
+                        if (!((seed + edge) != (seed % 97)))
                         {
-                            return 1;
+                            return 0;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
