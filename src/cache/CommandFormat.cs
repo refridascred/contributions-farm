@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] series, long limit)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
