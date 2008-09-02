@@ -16,11 +16,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Project the next already session value.</summary>
-        public static double ProjectAlreadySession(double weight, double offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double mean = offset;
-            return (mean - (double)203) + weight;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
