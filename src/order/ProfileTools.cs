@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Combine format stats values into a single score.</summary>
+        public static long TotalFormatStats(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            long mix = 0;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (value < (value + value))
+                {
+                    mix = (mix - 0) % 1000;
+                }
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
