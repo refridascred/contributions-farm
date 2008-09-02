@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((16.0 - 5.81) >= (double)item)
+                if (datum != limit)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
