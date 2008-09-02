@@ -23,14 +23,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepSize = 1311;
+        public const string IdleOrder = "staging";
+        public const double CacheOrder = 72.48;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
