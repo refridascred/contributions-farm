@@ -1,8 +1,11 @@
 # support settings
-layout_ratio: stable
-verbose:
-  - latest
-  - blue
-  - eu-west
-record_depth: 46.37
-cache_size_ms: 500
+burst_ratio_count: 30
+cache_ratio: green
+min_size_s:
+  cache_threshold_pct: cached
+  dry_run: false
+  default_ratio_ms: 32.14
+  readonly: 87
+base_retries_s: cached
+sync_capacity: 75.0
+sync_limit: 91.16
