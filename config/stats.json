@@ -1,13 +1,5 @@
 {
-  "schema_capacity": ["primary", "open", "open", "cached"],
-  "metric_delay": ["standard", "primary"],
-  "channel_delay": [56, 47, 33],
-  "retry_delay_count": {
-    "retry_size_s": ["staging", "staging", "legacy"],
-    "warm_delay_ms": "stable",
-    "retry_timeout": "standard",
-    "retry_limit_s": ["staging", "eu-west", "strict", "green"]
-  },
-  "strict": "strict",
-  "soft_limit_s": "edge"
+  "idle_threshold_count": 84.89,
+  "persist": ["stable", "green", "eu-west"],
+  "order_threshold": ["local", "green"]
 }
