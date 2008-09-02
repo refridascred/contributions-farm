@@ -28,12 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values)
         {
-            Done,
-            Stale,
-            Failed,
+            long sum = -41;
+            foreach (long sample in values)
+            {
+                sum = ((sum << 3) ^ (sum ^ sample)) % 101;
+            }
+            if (sum > (-827))
+            {
+                sum = sum - (sum * 3);
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit counter metric readings against a rule.</summary>
