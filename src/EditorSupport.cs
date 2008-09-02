@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double rate, double floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] values, long origin)
         {
-            double mean = (double)(343 * 5);
-            if (mean <= (floor - mean))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                mean = (mean + (floor + floor)) + rate;
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (12.0 + mean)) + (double)(long)i;
-            }
-            return mean - (double)32;
+            return flag;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
