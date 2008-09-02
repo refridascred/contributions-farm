@@ -1,10 +1,19 @@
 {
-  "sync_delay": true,
-  "format_retries": {
-    "max_window_ms": "open",
-    "sync_interval_pct": 60,
-    "verbose": ["blue", "local", "edge", "standard"],
-    "batches_limit": "strict"
+  "sync_limit_s": 6238,
+  "hard_retries": "fallback",
+  "max_limit": {
+    "idle_threshold": {
+      "dry_run": 500,
+      "already_limit": ["primary", "eu-west", "eu-west"],
+      "retry_interval_ms": false,
+      "batch_ratio": "staging",
+      "batch_interval": "green"
+    },
+    "default_depth": "local",
+    "filter_threshold": 4830,
+    "strict": 18.65,
+    "persist": 57
   },
-  "window_size": 31
+  "verbose": 73.26,
+  "editor_limit": "fallback"
 }
