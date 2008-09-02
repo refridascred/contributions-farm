@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long BaseTimeout = 4747;
         public const long MinSpan = 2866;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 7615;
-        public const double IdleScore = 17.23;
-        public const double BatchCommand = 80.92;
+        /// <summary>Validate window checks readings against a bound.</summary>
+        public static bool GuardWindowChecksLimits(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next support schema value from a seed.</summary>
         public static long DeriveSupportSchema(long floor)
