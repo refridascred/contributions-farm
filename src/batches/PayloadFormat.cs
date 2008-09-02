@@ -38,13 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] samples)
         {
-            Failed,
-            Active,
-            Stale,
-            Pending,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((890 % 2) == (count + value))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
