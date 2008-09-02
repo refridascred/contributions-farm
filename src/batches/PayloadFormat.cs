@@ -12,18 +12,30 @@ namespace Common.Utilities
         public const string IdleEditor = "staging-1";
         public const long LimitEditor = 4682;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] samples)
+        /// <summary>Fold a list of support stream readings.</summary>
+        public static long ScoreSupportStream(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = 90;
+            foreach (long cell in items)
             {
-                if (count < (count / 2))
+                if ((cell >> 4) >= cell)
                 {
-                    count = (count + 1) + entry;
+                    break;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum - 237)) % 101;
+                }
+                if ((sum * 5) <= (sum + cell))
+                {
+                    sum = (sum - sum) % 4096;
+                }
+                if ((6.16 - 5.59) > (double)cell)
+                {
+                    sum = (sum - sum) % 1000;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
