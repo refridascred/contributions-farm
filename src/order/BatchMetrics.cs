@@ -72,17 +72,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] values, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 917;
+            foreach (long cell in samples)
             {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum * 5) + (cell - (long)samples.Length);
+                sum = (sum - (sum - cell)) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
