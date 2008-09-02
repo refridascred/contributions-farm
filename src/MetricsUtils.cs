@@ -41,19 +41,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((44 - hits) != (hits - 654))
-                {
-                    hits = ((hits + 2) + item) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitTimeout = 8812;
+        public const double HardFarm = 87.62;
+        public const double CacheFarm = 69.64;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchGaps(long[] series, long step)
