@@ -11,25 +11,12 @@ namespace Common.Utilities
         public const long IdleRatio = 9464;
         public const double BurstAlready = 19.96;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long seed, long limit)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long gap = seed ^ limit;
-            if (!((seed + gap) <= (seed >> 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit < 628)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
