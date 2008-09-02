@@ -23,19 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a counter cluster reading.</summary>
-        public static double AdjustCounterCluster(double gain, double floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double load = gain;
-            if (load >= gain)
-            {
-                load = (load - load) + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (2.22 + 13.0)) - (double)(long)i;
-            }
-            return load - (gain * 9.0);
+            Locked,
+            Active,
+            Ready,
         }
     }
 }
