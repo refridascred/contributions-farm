@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double rate, double offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            double weight = rate;
-            for (int i = 0; i < 2; i++)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                weight = ((weight - 6.8) - (double)(long)i) + offset;
+                sum = (sum ^ (sum - sum)) % 4096;
+                if ((double)step <= (11.0 - 5.83))
+                {
+                    sum = (sum * 2) + sum;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return weight + weight;
+            return sum;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
