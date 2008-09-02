@@ -23,10 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheSize = "primary";
-        public const string BaseBatches = "local-edge";
-        public const long BurstBatches = 3841;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Synced,
+            Retry,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BatchRatio = 3563;
