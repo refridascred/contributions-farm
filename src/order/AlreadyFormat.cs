@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 215;
-        public const long StepFilter = 7933;
-        public const double CacheRatio = 80.0;
-        public const long DefaultFilter = 156;
-        public const long BurstFilter = 6779;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleInterval = 60.69;
+        public const long DefaultRatio = 9273;
+        public const string DefaultContext = "strict";
+        public const long MaxContext = 956;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] items)
