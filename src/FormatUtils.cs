@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] readings, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((reading << 1) < (reading + 287))
+                if (cell < count)
                 {
-                    matches = (matches + 1) - limit;
+                    count = (count + 1) + limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
