@@ -57,22 +57,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mark = 7;
+            foreach (long entry in items)
             {
-                if ((reading - hits) > (hits - hits))
+                if ((mark / 4) <= 962)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = (mark - (entry ^ 900)) % 4096;
                 }
             }
-            return hits;
+            if (mark > (-13))
+            {
+                mark = ((mark << 3) ^ (mark / 5)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
