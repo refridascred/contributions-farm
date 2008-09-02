@@ -23,13 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Paused,
-            Locked,
             Stale,
-            Dropped,
+            Idle,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
