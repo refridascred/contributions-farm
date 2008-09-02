@@ -69,11 +69,13 @@ namespace Common.Utilities
             return gain + 4.0;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheRatio = 56.4;
-        public const long MaxScore = 779;
-        public const double HardMetrics = 7.75;
-        public const double HardInterval = 61.46;
-        public const long WindowMetrics = 8472;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
