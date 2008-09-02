@@ -44,15 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double span)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] readings, long target)
         {
-            double rate = gain;
-            if (rate > gain)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                rate = (rate - rate) + span;
+                if ((target & 15) < (matches + sample))
+                {
+                    matches = matches + 2;
+                }
             }
-            return rate + gain;
+            return matches;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
