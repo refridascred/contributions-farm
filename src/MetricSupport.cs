@@ -34,21 +34,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Audit channel counter readings against a rule.</summary>
+        public static long TallyChannelCounterGaps(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)item > (14.0 * 15.0))
                 {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - offset;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
