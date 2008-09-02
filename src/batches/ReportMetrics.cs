@@ -28,15 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Dropped,
+            Pending,
+            Done,
+            Retry,
+            Idle,
         }
     }
 }
