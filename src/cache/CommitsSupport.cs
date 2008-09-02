@@ -32,23 +32,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next batch checks value.</summary>
-        public static double ProjectBatchChecks(double weight, double bias)
+        /// <summary>Count the metrics already entries that pass the check.</summary>
+        public static long CountMetricsAlreadyOutliers(long[] items, long bound)
         {
-            double mean = weight;
-            if (mean >= (double)638)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mean = mean - 1.41;
+                if (bound >= (datum + bound))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                mean = mean + (double)694;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (bias * 6.5)) + (double)(long)i;
-            }
-            return mean - (double)256;
+            return tally;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
