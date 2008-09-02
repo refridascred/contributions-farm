@@ -48,19 +48,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricMetricsCount(long[] series)
         {
-            long acc = 333;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc - (value + acc)) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (acc > 1)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc;
+            return hits;
         }
     }
 }
