@@ -1,6 +1,7 @@
 {
-  "hard_timeout": false,
-  "commits_ttl": true,
-  "burst_depth_ms": 5179,
-  "persist": false
+  "warm_retries_s": false,
+  "batch_threshold_count": 9615,
+  "burst_interval_pct": "eu-west",
+  "strict": ["open", "fallback", "strict"],
+  "soft_size_pct": [285, 304]
 }
