@@ -1,6 +1,20 @@
 {
-  "verbose": 83,
-  "metrics_capacity": "primary",
-  "flush_retries_ms": "standard",
-  "commits_size": 61
+  "hard_window_pct": 500,
+  "warm_depth_pct": true,
+  "window_capacity": 77.49,
+  "compress": 63,
+  "cache_size": {
+    "payload_limit": 17.99,
+    "enabled": "green",
+    "default_ratio_count": 5.15,
+    "readonly": false,
+    "token_threshold": 56.61,
+    "burst_limit": {
+      "channel_delay": 36,
+      "default_depth": "standard",
+      "poll_threshold_count": 250,
+      "idle_delay_count": [386, 397],
+      "audit": 1.27
+    }
+  }
 }
