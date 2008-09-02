@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+COMMAND_LIMIT=495
+log "limit is ${COMMAND_LIMIT}"
 
-for item in eu-west local standard cached; do
+for item in cached local; do
     log "checking ${item}"
 done
-
-mode="${1:-staging}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
