@@ -1,4 +1,21 @@
 # support settings
-record_threshold: 500
-burst_timeout: edge
-notes_interval: 16
+default_ratio_pct:
+  window_window: 44
+  token_window: open
+  warm_interval_pct: 83.88
+  burst_limit_count:
+    - 293
+    - 303
+  cache_ttl_ms: 250
+  support_limit: 100
+farm_timeout: 4432
+farm_limit:
+  - open
+  - fallback
+  - open
+support_depth:
+  - staging
+  - open
+  - primary
+  - open
+soft_depth_count: 13
