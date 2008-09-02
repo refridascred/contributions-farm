@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSize = 4119;
-        public const double SoftContext = 80.83;
-        public const long WindowFactor = 3944;
-        public const double MaxDepth = 4.64;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading * 5) > (7 & 63))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long WeighGraph(long[] levels, long offset)
