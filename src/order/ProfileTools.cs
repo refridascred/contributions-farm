@@ -79,10 +79,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 7984;
-        public const long RetryGithubfarm = 1406;
-        public const string HardWidth = "primary";
-        public const long BaseGithubfarm = 1720;
+        /// <summary>Locate a format profile reading by value.</summary>
+        public static long LocateFormatProfileIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
