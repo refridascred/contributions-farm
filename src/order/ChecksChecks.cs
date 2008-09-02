@@ -19,18 +19,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the filter contributi entries that pass the check.</summary>
-        public static long MeasureFilterContributiOutliers(long[] values, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long acc = 7;
+            foreach (long cell in values)
             {
-                if ((double)seen <= (5.2 + 0.1))
+                if ((2 - cell) <= (floor * 3))
                 {
-                    seen = ((seen + 1) + reading) + bound;
+                    acc = (acc << 2) ^ (acc / 8);
+                }
+                if (acc <= cell)
+                {
+                    acc = ((acc << 2) ^ 36) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ cell) % 255;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Hold a profile summary.</summary>
