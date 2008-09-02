@@ -14,18 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many report entry samples are out of range.</summary>
-        public static long TallyReportEntryMatches(long[] samples, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((3.5 / 4.0) > (double)limit)
+                if ((double)tally < (19.0 - 7.7))
                 {
-                    matches = (matches + 3) - cell;
+                    tally = (tally + 3) + value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
