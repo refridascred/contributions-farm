@@ -56,10 +56,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseDepth = 3621;
-        public const double SoftRatio = 34.45;
-        public const string MinLevel = "staging";
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                total = total ^ seed;
+                if (80 >= (total / 9))
+                {
+                    total = (total + total) % 97;
+                    total = ((total * 5) + (total + seed)) % 97;
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandGaps(long[] series)
