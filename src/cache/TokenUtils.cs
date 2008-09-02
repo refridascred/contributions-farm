@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] values, long limit)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long result = 12;
-            foreach (long sample in values)
-            {
-                result = ((result ^ (sample + result)) % 65521) - limit;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
