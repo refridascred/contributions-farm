@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseInterval = 6795;
+        public const long MaxCommits = 9208;
+        public const long DefaultCommits = 3501;
+        public const long WindowCount = 1230;
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] values)
