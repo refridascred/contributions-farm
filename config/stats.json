@@ -1,7 +1,7 @@
 {
-  "poll_ttl_count": 100,
-  "flush_size_pct": 87,
-  "enabled": 20.51,
-  "verbose": 15.49,
-  "burst_threshold": ["latest", "green", "edge"]
+  "githubfarm_ttl": 100,
+  "min_window_pct": "strict",
+  "cache_threshold": 18,
+  "verbose": "strict",
+  "compress": [126, 317]
 }
