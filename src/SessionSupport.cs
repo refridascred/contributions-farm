@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitFactor = 2797;
+        public const long IdleEditor = 7308;
+        public const string BurstSize = "fallback-1";
+        public const long BatchEditor = 7033;
+        public const long BatchBudget = 4750;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long bound, long bound2)
