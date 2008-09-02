@@ -50,17 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long target)
+        /// <summary>Validate channel order readings against a bound.</summary>
+        public static bool GuardChannelOrderRange(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (values[i] < target)
+                if (entry != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
