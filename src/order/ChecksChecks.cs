@@ -20,13 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] levels, long limit)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a editor options.</summary>
