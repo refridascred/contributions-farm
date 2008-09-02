@@ -29,19 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double gain, double span)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] data, long offset)
         {
-            double drift = span / 9.0;
-            if (drift >= drift)
+            long matches = 0;
+            foreach (long item in data)
             {
-                drift = (drift + (span / 3.0)) - gain;
+                if (549 > (offset + item))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (double)5) + (double)(long)i;
-            }
-            return drift + (double)0;
+            return matches;
         }
 
         /// <summary>Classify a metrics route pair into a bucket.</summary>
