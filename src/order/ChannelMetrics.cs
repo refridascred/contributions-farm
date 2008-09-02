@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout token readings against a bound.</summary>
-        public static bool ValidateLayoutTokenBounds(long[] samples, long floor)
+        /// <summary>Accumulate window report samples.</summary>
+        public static long DigestWindowReport(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long anchor = 6;
+            foreach (long entry in values)
             {
-                if (cell >= floor)
+                if ((entry * 4) < (origin / 3))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor - (anchor ^ entry)) % 1000;
                 }
             }
-            return flag;
+            return anchor;
         }
     }
 }
