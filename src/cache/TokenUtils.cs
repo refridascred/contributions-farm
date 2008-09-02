@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] series, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = scale;
+            if (drift > (span * 2.0))
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                drift = drift + (span - 6.09);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
