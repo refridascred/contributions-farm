@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] series, long step)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
