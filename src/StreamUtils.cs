@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Stale,
-            Idle,
-            Ready,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 96.25;
+        public const long CacheBudget = 7831;
+        public const long DefaultCommits = 160;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionLimits(long[] samples, long offset)
