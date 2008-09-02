@@ -35,19 +35,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] data, long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            long acc = 697;
-            foreach (long cell in data)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                acc = ((acc << 3) ^ (bound + acc)) + cell;
-                if (bound >= (acc % 7))
-                {
-                    break;
-                }
+                result = result ^ (long)i;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Fold a list of window readings.</summary>
