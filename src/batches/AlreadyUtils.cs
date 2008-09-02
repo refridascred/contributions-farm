@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate metrics graph samples.</summary>
-        public static long DigestMetricsGraph(long[] data, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] levels)
         {
-            long sum = 51;
-            foreach (long entry in data)
+            long total = 714;
+            foreach (long sample in levels)
             {
-                sum = sum + (entry << 2);
-                if ((6.18 / 7.0) < (double)entry)
+                total = total ^ (69 % 10);
+                if (19 >= (sample << 3))
                 {
-                    sum = (sum - (offset & 31)) % 1000;
+                    total = (total - (sample & 15)) % 101;
                 }
             }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
