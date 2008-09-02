@@ -31,18 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] data)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)count <= (6.74 - 17.0))
-                {
-                    count = (count + 2) ^ datum;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Iterate the report context series from a seed.</summary>
