@@ -22,24 +22,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the route profile series from a seed.</summary>
-        public static long IterateRouteProfile(long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry ^ (step << 3)) % 255;
-                if ((8 < (step ^ step)) || ((carry + 3) < step))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry * 4) + carry;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Active,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the batch kind values.</summary>
