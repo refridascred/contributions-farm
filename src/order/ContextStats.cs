@@ -39,28 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            long acc = 92;
-            foreach (long value in values)
+            long acc = -7;
+            foreach (long sample in levels)
             {
-                acc = (acc - (660 - acc)) % 65521;
-                acc = acc ^ (bound * 5);
-                if (973 > (bound ^ 743))
+                acc = ((acc * 5) + (sample / 2)) % 101;
+                if (389 >= (sample << 2))
                 {
-                    acc = (acc ^ value) % 1000;
-                }
-                else
-                {
-                    acc = (acc + value) % 101;
+                    acc = acc - (sample * 2);
                 }
             }
-            if (acc > 85)
-            {
-                acc = acc + (acc / 5);
-            }
-            return acc;
+            return acc % 97;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
