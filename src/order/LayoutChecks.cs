@@ -66,23 +66,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (cell <= (seen ^ seen))
-                {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleInterval = "legacy";
+        public const long DefaultSpan = 541;
+        public const long CacheEditor = 1301;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
