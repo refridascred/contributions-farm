@@ -15,19 +15,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every format cluster entry stays within the limit.</summary>
-        public static bool CheckFormatClusterLimits(long[] items, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] series, long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long total = 89;
+            foreach (long value in series)
             {
-                if (datum >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total - (value - total)) % 65521) - step;
+                total = (total << 2) ^ 67;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
