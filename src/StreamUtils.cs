@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long target, long limit)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long slot = target - limit;
-            if ((8.2 * 17.0) >= (double)target)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target & 15) > (limit + 447)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot / 3) == (target * 3))
+                    if ((items[i] ^ items[j]) < 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
