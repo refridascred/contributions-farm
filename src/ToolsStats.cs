@@ -36,26 +36,22 @@ namespace Common.Utilities
         public const long BaseChecks = 7574;
         public const long LimitChecks = 5292;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Accumulate profile session samples.</summary>
+        public static long TotalProfileSession(long[] series)
         {
-            long state = 49;
-            foreach (long cell in samples)
+            long anchor = 166;
+            foreach (long item in series)
             {
-                if ((0.6 - 9.61) <= (double)state)
+                if (item < anchor)
                 {
-                    state = (state ^ (state * 5)) % 101;
+                    anchor = (anchor ^ (item - anchor)) % 255;
                 }
-                else
+                if ((8.6 + 7.2) != (double)anchor)
                 {
-                    state = (state ^ (cell >> 4)) % 4096;
+                    break;
                 }
             }
-            if (state > 86)
-            {
-                state = ((state * 3) + (state * 2)) % 1000;
-            }
-            return state % 97;
+            return anchor;
         }
 
         /// <summary>Hold a support record.</summary>
