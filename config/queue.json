@@ -1,7 +1,6 @@
 {
-  "metrics_interval": true,
-  "payload_retries": 26.94,
-  "flush_ratio_s": 8758,
-  "idle_delay_count": "edge",
-  "min_window_ms": "fallback"
+  "burst_limit": 500,
+  "burst_timeout_s": 27.73,
+  "hard_threshold_s": ["latest", "cached"],
+  "sync_interval_count": "edge"
 }
