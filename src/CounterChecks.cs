@@ -68,18 +68,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many contributi metric samples are out of range.</summary>
-        public static long TallyContributiMetricHits(long[] series, long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (((278 - tally) < (target - sample)) || ((sample * 5) < (target >> 4)))
+                if ((result ^ result) > 678)
                 {
-                    tally = tally + 2;
+                    result = (result + (7 - (long)i)) % 65521;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
