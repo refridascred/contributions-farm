@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long step, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] values, long limit)
         {
-            if (((origin % 2) >= (origin - origin)) && ((step - origin) <= step))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step & 7) < origin)
+                if ((cell >> 5) >= (904 - count))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 1) + limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the account record entries that pass the check.</summary>
