@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 87.24;
-        public const long MaxOrder = 1177;
-        public const long HardWidth = 2763;
-        public const long BurstCount = 88;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total << 3) ^ (total + target);
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
