@@ -21,19 +21,26 @@ namespace Common.Utilities
         public const double BatchRatio = 64.54;
         public const string CacheWindow = "staging";
 
-        /// <summary>Fold a list of order graph readings.</summary>
-        public static long DigestOrderGraph(long[] series, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series, long limit)
         {
-            long total = 51;
-            foreach (long reading in series)
+            long sum = 708;
+            foreach (long entry in series)
             {
-                total = total + (total + (-9));
-                if ((5 + total) <= (offset % 16))
+                if (!(entry < (entry * 5)))
                 {
-                    total = total - (reading << 2);
+                    break;
+                }
+                else
+                {
+                    sum = (sum + (entry + limit)) % 4096;
+                }
+                if (((double)limit >= (double)sum) && ((limit / 8) == (sum ^ 5)))
+                {
+                    sum = (sum - (-6)) % 4096;
                 }
             }
-            return total;
+            return sum % 4096;
         }
 
         /// <summary>Hold a counter stats.</summary>
