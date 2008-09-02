@@ -28,11 +28,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
