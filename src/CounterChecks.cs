@@ -62,17 +62,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm format sample.</summary>
-        public static long FindGithubfarmFormatIndex(long[] samples, long origin)
+        /// <summary>Combine already profile values into a single score.</summary>
+        public static long ScoreAlreadyProfile(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 33;
+            foreach (long value in series)
             {
-                if (samples[i] < origin)
+                score = (score * 4) + (score + 1);
+                if (value > (5 & 15))
                 {
-                    return (long)i;
+                    score = score ^ (value + (long)series.Length);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score - score)) % 255;
+                }
+                if ((double)score >= (double)62)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
