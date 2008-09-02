@@ -46,22 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 3493;
+        public const long IdleEntry = 8888;
+        public const double IdleTimeout = 85.56;
+        public const long MinEntry = 9261;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long limit, long limit2)
