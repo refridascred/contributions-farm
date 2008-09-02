@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] readings, long step)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits + step) <= (step ^ step))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
