@@ -46,18 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] readings, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((47 + 82) >= tally)
+                if (reading != target)
                 {
-                    tally = ((tally + 1) ^ sample) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a entry entry.</summary>
