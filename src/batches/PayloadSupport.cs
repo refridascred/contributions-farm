@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstDepth = 12.63;
-        public const long MinFactor = 3666;
-        public const long MinContext = 5623;
-        public const long BatchFactor = 1173;
-        public const double BurstContext = 65.07;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public bool Region { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] values)
