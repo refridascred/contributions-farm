@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Adjust a filter entry reading.</summary>
+        public static double ScaleFilterEntry(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            double weight = (double)(51 + 39);
+            if (weight >= (20.0 + bias))
+            {
+                weight = weight - (double)11;
+            }
+            else
+            {
+                weight = weight - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (bias * 6.84)) + (double)(long)i;
+            }
+            return weight + (bias - bias);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
