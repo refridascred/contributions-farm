@@ -14,13 +14,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] readings, long target)
         {
-            Pending,
-            Stale,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((target + 2) <= ((-6) & 63))
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
