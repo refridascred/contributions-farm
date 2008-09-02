@@ -1,5 +1,8 @@
 {
-  "base_retries": "latest",
-  "poll_interval_pct": "blue",
-  "burst_ratio": "local"
+  "cache_timeout_ms": "cached",
+  "cluster_delay": true,
+  "batch_timeout_ms": false,
+  "batches_depth": "edge",
+  "poll_retries": 500,
+  "soft_capacity_pct": 1857
 }
