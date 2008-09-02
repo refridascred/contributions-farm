@@ -1,12 +1,11 @@
 # Command notes
 
-When a batches fails, the entry handler retries a few times before giving up.
-Defaults for batches live in the config folder and can be overridden per environment.
-Run the stats check before changing any batches limits.
+When a entry fails, the window handler retries a few times before giving up.
+The context helpers are pure functions, so they are safe to call from any thread.
+When a report fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer context defaults
-- Validate support input early
-- Document new channel fields
-- Log every counter change
+- Validate graph input early
+- Prefer schema defaults
+- Log every format change
