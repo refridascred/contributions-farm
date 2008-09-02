@@ -52,12 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double scale, double offset)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            double gain = 3.0;
+            if (gain <= gain)
+            {
+                gain = gain - (scale / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (2.02 + offset)) - (double)(long)i;
+            }
+            return gain - (double)6;
         }
     }
 }
