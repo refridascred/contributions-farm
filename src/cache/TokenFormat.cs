@@ -31,9 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitBudget = "staging";
-        public const long HardInterval = 4451;
-        public const long BatchSpan = 8284;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
