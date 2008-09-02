@@ -54,15 +54,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Dropped,
+            Draft,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Digest a series of account entries.</summary>
