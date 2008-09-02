@@ -13,22 +13,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] readings, long target)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long offset2 = origin - offset;
+            if ((double)offset <= 6.7)
             {
-                if ((target + 2) <= ((-6) & 63))
+                return 7;
+            }
+            else
+            {
+                if ((offset2 * 3) <= 6)
                 {
-                    tally = (tally + 1) + datum;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
