@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheDepth = 8382;
-        public const long BaseBudget = 2310;
-        public const long LimitAccount = 3386;
-        public const long SoftAccount = 8421;
-        public const long LimitWidth = 4956;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a stream account figure with a bias.</summary>
         public static double ProjectStreamAccount(double bias, double span)
