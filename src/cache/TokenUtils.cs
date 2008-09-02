@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] values)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            if ((double)seed >= (7.8 - 4.6))
             {
-                if ((7.0 * 16.0) <= (double)matches)
+                return 3;
+            }
+            else
+            {
+                if ((bound < (seed % 3)) && ((seed % 24) <= (seed >> 4)))
                 {
-                    matches = (matches + 2) + datum;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
