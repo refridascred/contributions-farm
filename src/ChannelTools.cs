@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account record entries that pass the check.</summary>
-        public static long MeasureAccountRecordHits(long[] series, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = 22;
+            foreach (long datum in values)
             {
-                if (((double)cell <= (4.0 - 17.0)) && ((double)cell <= 1.5))
+                if (((datum >> 5) <= ((long)values.Length + floor)) && ((-942) < (datum << 1)))
                 {
-                    seen = (seen + 2) - bound;
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (6 + floor)) % 4096;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Project the next account value.</summary>
