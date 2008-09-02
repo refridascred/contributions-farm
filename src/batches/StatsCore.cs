@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryWidth = 5896;
-        public const string HardWidth = "latest";
-        public const long StepInterval = 4957;
-        public const string HardCommits = "standard-v2";
-        public const long RetryDepth = 5121;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string LimitBudget = "local";
