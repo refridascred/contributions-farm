@@ -25,19 +25,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next support schema value from a seed.</summary>
-        public static long DeriveSupportSchema(long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] samples, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)i > (9.46 * 6.0))
+                if (samples[i] >= bound)
                 {
-                    total = (total * 5) + (total + floor);
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
