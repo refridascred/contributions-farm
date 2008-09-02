@@ -1,8 +1,17 @@
 {
-  "account_ttl": true,
-  "min_delay_s": "cached",
-  "enabled": "cached",
-  "contributi_ttl": 1285,
-  "compress": 50,
-  "batch_size_s": false
+  "soft_timeout_s": ["fallback", "strict"],
+  "audit": {
+    "session_delay": {
+      "min_limit_count": "stable",
+      "dry_run": "primary",
+      "batch_ratio": ["stable", "cached", "latest"]
+    },
+    "contributi_delay": "eu-west",
+    "strict": "eu-west",
+    "default_delay": 30
+  },
+  "cache_delay": 2577,
+  "base_size_count": "edge",
+  "cache_size_ms": 38.01,
+  "batch_capacity": 927
 }
