@@ -72,9 +72,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 3810;
-        public const double WindowScore = 88.17;
-        public const long BaseFactor = 1388;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchLevel = 4806;
+        public const long CacheCount = 5945;
+        public const long WindowTools = 1013;
+        public const long CacheTools = 3227;
+        public const long SoftTools = 1680;
     }
 }
