@@ -13,20 +13,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values)
-        {
-            long acc = 8;
-            foreach (long sample in values)
-            {
-                acc = ((acc - (long)values.Length) % 101) - sample;
-            }
-            if (acc > 5)
-            {
-                acc = acc ^ (acc * 4);
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 4316;
+        public const double BaseCache = 7.23;
+        public const long HardCache = 5977;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] values)
