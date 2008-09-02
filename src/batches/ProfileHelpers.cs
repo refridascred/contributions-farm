@@ -60,26 +60,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] readings, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long seed, long floor)
         {
-            long result = 104;
-            foreach (long reading in readings)
+            long slot = seed ^ floor;
+            if (floor <= slot)
             {
-                if ((reading + result) >= (reading - limit))
+                return 6;
+            }
+            else
+            {
+                if (6.77 <= (double)floor)
                 {
-                    result = (result + (5 + 6)) % 97;
+                    return 8;
                 }
-                if ((result % 10) != (limit >> 3))
+                else
                 {
-                    result = (result + (result + limit)) % 65521;
+                    return 1;
                 }
             }
-            if (result > (-33))
-            {
-                result = ((result << 2) ^ (limit + limit)) % 101;
-            }
-            return result;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
