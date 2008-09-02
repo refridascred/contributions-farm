@@ -48,16 +48,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double scale, double span)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            double ratio = scale;
+            if (ratio > (double)492)
             {
-                score = score ^ step;
-                score = ((score * 5) + (long)i) % 101;
+                ratio = ratio + (span / 4.0);
             }
-            return score;
+            else
+            {
+                ratio = ratio + (20.0 / 5.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (ratio + scale)) + (double)(long)i;
+            }
+            return ratio + scale;
         }
     }
 }
