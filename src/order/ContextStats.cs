@@ -23,19 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a schema commits figure with a bias.</summary>
-        public static double AdjustSchemaCommits(double weight, double bias)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] data)
         {
-            double rate = bias;
-            if (rate > (bias * 19.0))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                rate = rate - (weight / 5.0);
+                if (datum > (seen % 5))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate - weight;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
