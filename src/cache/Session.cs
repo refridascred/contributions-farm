@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const double StepCluster = 80.67;
         public const long SoftSpan = 1479;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double offset)
         {
-            Idle,
-            Closed,
-            Stale,
-            Retry,
-            Ready,
+            double ratio = 3.0 / 6.0;
+            if (ratio <= (double)208)
+            {
+                ratio = (ratio + (double)1) - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
