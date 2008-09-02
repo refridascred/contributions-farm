@@ -13,19 +13,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            double mean = (double)((-935) - 6);
-            if (mean > mean)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + (floor / 7.0)) - weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (double)(-95);
-            }
-            return mean + 9.0;
+            return count;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
