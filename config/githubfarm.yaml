@@ -1,20 +1,5 @@
 # githubfarm settings
-soft_limit:
-  poll_retries_ms: 5580
-  hard_depth_count: 52.32
-  entry_limit: strict
-  counter_depth: local
-hard_interval: green
-idle_limit_count:
-  base_delay: true
-  batches_retries: 77.49
-  readonly: legacy
-  counter_retries: 250
-  sync_ratio_count: 97.95
-  soft_timeout_s: 52.47
-batches_ratio:
-  - 13
-  - 298
-  - 394
-warm_capacity_s: 95.46
-enabled: staging
+readonly: 7136
+retry_retries_count: 14
+idle_threshold_pct: 250
+max_interval_count: 45.34
