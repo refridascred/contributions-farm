@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const double BatchRatio = 63.3;
         public const long CacheBudget = 1285;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] items, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (hits <= (origin % 60))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
