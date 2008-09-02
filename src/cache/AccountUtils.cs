@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] values, long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the command status values.</summary>
