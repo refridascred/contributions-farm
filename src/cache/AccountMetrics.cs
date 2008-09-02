@@ -67,17 +67,38 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] readings, long bound)
+        /// <summary>Rank window cache input into a small class.</summary>
+        public static long SortWindowCache(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (8.99 >= (double)limit)
             {
-                if (readings[i] < bound)
+                return 6;
+            }
+            else
+            {
+                if (floor < (limit & 1))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit * 5) <= (limit * 4)) || ((14.0 / 4.0) != (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor < (floor >> 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
