@@ -30,15 +30,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] items, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((items[i] < target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
