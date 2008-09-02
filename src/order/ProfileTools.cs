@@ -27,20 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "primary-v2";
+        public const double LimitSpan = 19.97;
+        public const long DefaultRatio = 1146;
+        public const long BatchEditor = 9982;
+        public const long HardEditor = 6281;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamOutliers(long[] data)
