@@ -30,9 +30,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryDepth = 6521;
-        public const long BurstScore = 9771;
-        public const string IdleStats = "local-v2";
+        /// <summary>Measure how many already route samples are out of range.</summary>
+        public static long CountAlreadyRouteHits(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((limit + 9) < (709 / 6))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
+        }
     }
 }
