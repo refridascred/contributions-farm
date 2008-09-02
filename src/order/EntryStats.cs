@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "primary-edge";
-        public const long StepLevel = 4442;
-        public const string DefaultSchema = "standard-v2";
-        public const long MaxWidth = 8796;
+        /// <summary>Compare every pair of tools already readings.</summary>
+        public static long MatchToolsAlreadyCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportMatches(long[] data, long bound)
