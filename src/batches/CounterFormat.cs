@@ -47,18 +47,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the stream layout entries that pass the check.</summary>
-        public static long TallyStreamLayoutGaps(long[] items, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits <= (reading + reading)) && !(step > (step - hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            Synced,
+            Failed,
+            Draft,
         }
     }
 }
