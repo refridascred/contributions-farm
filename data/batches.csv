@@ -1,7 +1,6 @@
-id,token,owner,rank,count
-1,67.99,stable,cached,445
-2,663,primary,14.25,522
-3,86,21.66,42,open
-4,775,942,23.09,86.8
-5,43.49,988,27.4,fallback
-6,539,47.86,76.49,96.59
+id,level,ratio
+1,open,525
+2,619,81.77
+3,77.52,edge
+4,891,589
+5,64.95,latest
