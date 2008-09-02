@@ -56,21 +56,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of command buffer readings.</summary>
-        public static long CompareCommandBufferCount(long[] items)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 663;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading <= (step % 3)) || ((2 >> 5) > reading))
                 {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + (reading << 3)) % 97;
+                }
+                else
+                {
+                    score = score ^ 27;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
