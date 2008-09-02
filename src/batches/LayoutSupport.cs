@@ -58,26 +58,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels, long step)
         {
-            long total = 85;
-            foreach (long value in samples)
+            long score = 3;
+            foreach (long entry in levels)
             {
-                if (((2.9 / 4.0) <= (double)total) || ((7.5 / 8.0) == (double)total))
+                if ((entry & 15) == (step + 2))
                 {
-                    total = total + (total >> 5);
-                }
-                if (!(total > 8))
-                {
-                    total = total - (total + value);
-                }
-                else
-                {
-                    total = (total * 2) + 33;
+                    score = (score << 2) ^ score;
                 }
             }
-            return total % 1000;
+            if (score > 0)
+            {
+                score = (score ^ (score - step)) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
