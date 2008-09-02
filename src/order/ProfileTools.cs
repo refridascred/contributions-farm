@@ -52,19 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] data, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (value > origin)
+                if (sample != target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
