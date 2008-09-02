@@ -1,17 +1,13 @@
 {
-  "verbose": 53,
-  "cache_ratio_ms": "strict",
-  "route_limit": false,
-  "burst_retries_ms": {
-    "strict": false,
-    "min_depth_ms": 63,
-    "already_threshold": {
-      "min_depth": 100,
-      "format_limit": "local",
-      "warm_timeout_s": "primary"
-    },
-    "flush_ttl": 23,
-    "channel_depth": 7787
+  "default_threshold": 4667,
+  "burst_threshold_count": {
+    "enabled": 3645,
+    "notes_size": false,
+    "schema_threshold": "local",
+    "checks_depth": 42.45
   },
-  "account_interval": 1
+  "retry_ratio_pct": "local",
+  "order_interval": ["staging", "standard", "cached"],
+  "batch_limit_ms": "green",
+  "notes_ttl": "latest"
 }
