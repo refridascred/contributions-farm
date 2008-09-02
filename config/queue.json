@@ -1,7 +1,11 @@
 {
-  "support_threshold": 7.8,
-  "audit": 100,
-  "farm_interval": 74.58,
-  "batch_interval": 100,
-  "stats_window": 409
+  "hard_depth": ["primary", "stable"],
+  "max_depth_s": 3972,
+  "burst_limit_s": "strict",
+  "max_window": {
+    "batch_interval_s": 2.45,
+    "batches_retries": 3278,
+    "cache_retries_ms": 4187
+  },
+  "hard_interval_ms": 60
 }
