@@ -20,18 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] levels, long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches * 3) == (sample % 97))
-                {
-                    matches = (matches + 3) - offset;
-                }
+                sum = ((sum << 2) ^ (seed & 255)) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
