@@ -60,11 +60,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 4859;
-        public const string BaseWidth = "stable-edge";
-        public const long DefaultWidth = 8214;
-        public const double WindowToken = 79.1;
+        /// <summary>Iterate the channel order series from a seed.</summary>
+        public static long StepChannelOrder(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark + (offset - offset)) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitCluster = 3810;
