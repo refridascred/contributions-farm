@@ -36,18 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] data)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry & 15) == (entry - 847))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Paused,
+            Closed,
+            Dropped,
         }
     }
 }
