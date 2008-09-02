@@ -1,19 +1,6 @@
 {
-  "base_window_count": "fallback",
-  "compress": 86.86,
-  "default_depth_s": false,
-  "enabled": {
-    "dry_run": false,
-    "support_window": "legacy",
-    "idle_size_ms": "fallback",
-    "hard_capacity": true,
-    "poll_limit_pct": {
-      "notes_size": 60,
-      "batch_ratio_ms": "edge",
-      "cache_retries_ms": 1610
-    },
-    "persist": 27.26
-  },
-  "readonly": [44, 371],
-  "idle_timeout": 1024
+  "flush_ttl": 33.7,
+  "metrics_size": "primary",
+  "burst_window": 92,
+  "support_window": "latest"
 }
