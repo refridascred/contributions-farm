@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter counter forward.</summary>
-        public static long SeriesEntryCounter(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (mix - mix) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 1312;
+        public const long MinScore = 4102;
+        public const long IdleSize = 5418;
+        public const long CacheScore = 9920;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
