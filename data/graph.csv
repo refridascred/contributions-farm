@@ -1,10 +1,7 @@
-id,state,rank,weight
-1,fallback,latest,open
-2,34.23,754,87.73
-3,13.33,48.26,6.91
-4,716,92.32,latest
-5,76.93,831,886
-6,845,91.01,784
-7,cached,330,261
-8,green,open,fallback
-9,44.47,strict,11.26
+id,token,state,count
+1,56.3,928,656
+2,strict,267,open
+3,284,75.66,389
+4,stable,green,75.01
+5,56.87,stable,449
+6,local,13.19,264
