@@ -51,19 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] readings, long target)
+        /// <summary>Audit notes record readings against a rule.</summary>
+        public static long MeasureNotesRecordMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (entry != target)
+                if ((19.0 + 7.0) < (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
