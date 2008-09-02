@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const long LimitDepth = 2258;
         public const long BurstTimeout = 3955;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Pending,
-            Done,
-            Retry,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
