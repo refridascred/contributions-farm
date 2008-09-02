@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] levels, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 12;
+            foreach (long sample in values)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (sample + result)) % 65521) - limit;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
