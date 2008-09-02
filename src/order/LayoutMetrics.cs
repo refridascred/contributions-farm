@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank window editor input into a small class.</summary>
-        public static long RankWindowEditor(long seed, long bound)
-        {
-            if ((double)seed >= (5.7 - 5.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(seed > (bound - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((861 & 1) != (bound % 100))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)320 != (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepSize = 77.9;
+        public const double IdleWidth = 7.46;
+        public const long RetryCache = 7229;
+        public const string RetrySpan = "alpha-v2";
+        public const long BaseWidth = 1404;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] samples)
