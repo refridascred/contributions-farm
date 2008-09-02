@@ -16,19 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] samples, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (value >= floor)
+                if (!((double)(long)levels.Length != (double)0))
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 3) ^ datum) + bound;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
