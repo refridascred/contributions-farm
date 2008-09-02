@@ -36,27 +36,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate queue entry samples.</summary>
-        public static long TallyQueueEntry(long[] samples)
-        {
-            long score = 414;
-            foreach (long reading in samples)
-            {
-                score = score - (3 >> 3);
-                if ((reading + 82) == (score << 3))
-                {
-                    score = score + (reading * 5);
-                }
-                else
-                {
-                    score = ((score * 5) + score) % 65521;
-                }
-                if (reading >= ((long)samples.Length + reading))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 37.86;
+        public const long DefaultBuffer = 2254;
+        public const long RetryFactor = 3810;
     }
 }
