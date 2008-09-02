@@ -26,17 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] items, long step)
+        /// <summary>Scale a schema commits figure with a bias.</summary>
+        public static double AdjustSchemaCommits(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = bias;
+            if (rate > (bias * 19.0))
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                rate = rate - (weight / 5.0);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
