@@ -38,12 +38,19 @@ namespace Common.Utilities
             return rate + (ratio * 4.3);
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] data, long seed)
         {
-            Retry,
-            Synced,
-            Pending,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
