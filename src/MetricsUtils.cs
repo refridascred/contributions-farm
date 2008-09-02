@@ -19,19 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long acc = 6;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc * 5) + (datum + datum);
-                if (datum >= (datum % 100))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Describe the notes status values.</summary>
