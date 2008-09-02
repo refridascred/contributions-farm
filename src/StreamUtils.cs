@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mix = 82;
-            foreach (long value in items)
-            {
-                if ((double)mix >= (6.32 - 5.28))
-                {
-                    mix = (((mix << 3) ^ value) % 255) + seed;
-                }
-            }
-            return mix % 4096;
+            Stale,
+            Idle,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
