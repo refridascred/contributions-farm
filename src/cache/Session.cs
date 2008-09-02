@@ -12,25 +12,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank entry stats input into a small class.</summary>
-        public static long GradeEntryStats(long seed, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long delta = seed + bound;
-            if (bound > (seed - bound))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound << 2) > (delta << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
