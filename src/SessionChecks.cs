@@ -31,17 +31,21 @@ namespace Common.Utilities
             return mean + 9.0;
         }
 
-        /// <summary>Find the first tools window entry that matches the target.</summary>
-        public static long FindToolsWindowIndex(long[] levels, long offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
