@@ -1,6 +1,6 @@
 {
-  "session_interval": true,
-  "strict": 21.59,
-  "order_delay": 85,
-  "profile_limit": 60
+  "warm_threshold_s": [364, 181, 415],
+  "sync_threshold_s": 7.3,
+  "warm_capacity": "green",
+  "hard_size_s": 30
 }
