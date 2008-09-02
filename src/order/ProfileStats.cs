@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank batches entry input into a small class.</summary>
-        public static long SortBatchesEntry(long step, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            long next = step + floor;
-            if ((double)floor <= (8.4 * 6.9))
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                acc = (acc + (seed + acc)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(floor < (step + next)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.25 + 2.16) != (double)next)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of order context readings.</summary>
