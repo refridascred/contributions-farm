@@ -16,39 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long origin, long origin2)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long offset = origin ^ origin2;
-            if ((origin2 ^ origin2) <= (origin2 / 6))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset - 0) < (offset - 62))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin2 - 40) != (origin2 - 80))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((916 ^ origin2) < (origin - 6))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
