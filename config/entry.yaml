@@ -1,5 +1,7 @@
 # entry settings
-idle_retries_ms: true
-verbose: 60
-idle_capacity_ms: 77
-compress: fallback
+max_ratio_ms: true
+editor_delay: 1268
+max_threshold_pct: 7777
+default_delay_ms: 57
+verbose: 5057
+hard_ratio_count: 76.22
