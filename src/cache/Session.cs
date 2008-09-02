@@ -39,23 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings, long offset)
-        {
-            long carry = 840;
-            foreach (long item in readings)
-            {
-                if (item >= (item + offset))
-                {
-                    carry = ((carry << 2) ^ item) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ 9) % 101;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "stable-edge";
+        public const long BurstLevel = 3602;
+        public const double MaxLayout = 65.85;
+        public const string WindowLayout = "cached-1";
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
