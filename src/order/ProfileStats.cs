@@ -23,22 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxBudget = 49;
+        public const long SoftTimeout = 3727;
+        public const string RetryRecord = "latest";
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
