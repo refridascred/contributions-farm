@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitFactor = 6384;
+        public const double LimitScore = 3.49;
+        public const long DefaultSpan = 1727;
+        public const long CacheAlready = 4055;
+        public const string MaxAlready = "legacy-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string IdleRatio = "stable-v2";
