@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Digest a series of notes stats entries.</summary>
+        public static long ScoreNotesStats(long[] readings, long limit)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long sum = 685;
+            foreach (long value in readings)
+            {
+                if (((sum % 12) >= limit) && ((limit & 3) >= sum))
+                {
+                    sum = (((sum << 2) ^ ((-354) ^ sum)) % 1000) - value;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate window checks readings against a bound.</summary>
