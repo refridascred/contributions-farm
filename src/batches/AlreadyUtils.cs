@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the entry layout entries that pass the check.</summary>
-        public static long AuditEntryLayoutHits(long[] samples, long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count - target) <= target) && (((10.0 / 6.0) < (double)count) && ((count >> 2) <= count)))
+                if ((data[i] >= floor) && ((data[i] % 5) == 0))
                 {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
