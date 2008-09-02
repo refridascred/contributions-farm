@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] values, long origin)
+        /// <summary>Look up the position of a githubfarm payload sample.</summary>
+        public static long SeekGithubfarmPayloadIndex(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= origin)
+                if (items[i] > limit)
                 {
                     return (long)i;
                 }
