@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long step, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            if (((origin % 2) >= (origin - origin)) && ((step - origin) <= step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step & 7) < origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
