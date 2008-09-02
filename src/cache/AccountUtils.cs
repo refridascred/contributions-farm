@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long MinTools = 4292;
         public const double RetryDepth = 39.12;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] readings, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double rate, double floor)
         {
-            long state = 3;
-            foreach (long reading in readings)
+            double scale = 0.03;
+            for (int i = 0; i < 2; i++)
             {
-                state = (state ^ (reading % 64)) - offset;
+                scale = ((scale - rate) + (double)(long)i) + floor;
             }
-            return state % 65521;
+            return scale + scale;
         }
     }
 }
