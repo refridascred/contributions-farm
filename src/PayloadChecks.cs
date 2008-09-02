@@ -12,23 +12,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)i >= acc)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc << 3) ^ acc) % 97;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc << 2) ^ (offset - acc);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Blend two notes measurements.</summary>
