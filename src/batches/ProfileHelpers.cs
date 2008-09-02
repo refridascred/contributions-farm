@@ -77,32 +77,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long bound, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long limit)
         {
-            long offset = bound + origin;
-            if (bound > (origin + origin))
+            long sum = 26;
+            foreach (long sample in samples)
             {
-                return 7;
+                sum = ((sum ^ (sample + sample)) % 255) - limit;
             }
-            else
-            {
-                if ((bound & 127) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >> 2) > offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum % 1000;
         }
     }
 }
