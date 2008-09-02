@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 528;
-        public const long BaseTimeout = 4747;
-        public const long MinSpan = 2866;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Validate window checks readings against a bound.</summary>
         public static bool GuardWindowChecksLimits(long[] levels, long seed)
