@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of payload record readings.</summary>
-        public static long ScorePayloadRecord(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            long mix = 71;
-            foreach (long item in items)
+            long acc = 8;
+            foreach (long cell in readings)
             {
-                if (!((double)item > (double)0))
+                if (((cell ^ cell) == (acc + acc)) && ((acc - cell) < (24 & 1)))
                 {
-                    mix = ((mix << 2) ^ (item - mix)) % 65521;
+                    acc = (acc ^ (7 ^ 62)) % 101;
                 }
-                if ((mix + mix) < (mix + 4))
+                else
                 {
-                    mix = (mix * 4) + (mix - item);
+                    acc = (acc + (9 * 2)) % 1000;
                 }
             }
-            if (mix > 82)
-            {
-                mix = (mix << 3) ^ (mix ^ mix);
-            }
-            return mix % 1000;
+            return acc % 1000;
         }
 
         /// <summary>Hold a command record.</summary>
