@@ -37,18 +37,17 @@ namespace Common.Utilities
         public const string MinInterval = "strict-edge";
         public const string DefaultToken = "strict-edge";
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] data, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long bound)
         {
-            long state = 15;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step % 8) >= entry)
+                if (values[i] <= bound)
                 {
-                    state = ((state * 3) + (388 - state)) % 1000;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
