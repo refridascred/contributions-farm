@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const string BaseProfile = "primary-v2";
         public const long SoftTimeout = 7936;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] values, long floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] values)
         {
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate window report samples.</summary>
