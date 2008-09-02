@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up contributi context samples.</summary>
-        public static long MatchContributiContextCount(long[] samples)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading > floor)
                 {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
