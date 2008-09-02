@@ -24,22 +24,21 @@ namespace Common.Utilities
         public const long MaxInterval = 4171;
         public const string IdleMetrics = "primary-1";
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] data, long target)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((target & 1) >= (174 / 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
