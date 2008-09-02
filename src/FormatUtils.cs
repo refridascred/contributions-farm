@@ -73,15 +73,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
