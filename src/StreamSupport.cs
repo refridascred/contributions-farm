@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long LimitLevel = 5046;
         public const long MaxFactor = 1095;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] data)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((90 + seen) != (5 ^ reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of record entries.</summary>
