@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two already graph measurements.</summary>
-        public static double AdjustAlreadyGraph(double rate, double offset)
+        /// <summary>Roll a notes graph counter forward.</summary>
+        public static long IterateNotesGraph(long limit)
         {
-            double ratio = rate * 4.91;
-            for (int i = 0; i < 4; i++)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = (ratio - (ratio * 9.51)) - (double)(long)i;
+                bool flag = ((total % 5) <= limit) || ((limit - limit) > limit);
+                if (flag)
+                {
+                    total = ((total << 3) ^ limit) % 101;
+                    flag = total < limit;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ratio - offset;
+            return total;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
