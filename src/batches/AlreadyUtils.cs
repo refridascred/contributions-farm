@@ -46,32 +46,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            if ((double)offset < 14.0)
             {
-                if ((8.0 / 7.0) < (double)(long)i)
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (origin / 3)) % 65521;
-                    anchor = (anchor * 2) + (34 >> 4);
-                }
-                if (((long)i - origin) >= origin)
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor >> 4)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (((offset - offset) != (offset & 7)) || (17 < seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 2) != (0 >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) != (offset + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
