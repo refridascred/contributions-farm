@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((838 * 3) <= (count >> 5)) || ((double)(long)readings.Length <= 5.31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + value;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine commits route values into a single score.</summary>
