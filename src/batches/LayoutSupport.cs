@@ -44,21 +44,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up entry layout samples.</summary>
-        public static long CompareEntryLayoutCount(long[] data)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 85;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((2.9 / 4.0) <= (double)total) || ((7.5 / 8.0) == (double)total))
                 {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total + (total >> 5);
+                }
+                if (!(total > 8))
+                {
+                    total = total - (total + value);
+                }
+                else
+                {
+                    total = (total * 2) + 33;
                 }
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
