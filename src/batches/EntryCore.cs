@@ -55,31 +55,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long bound, long floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            if ((double)floor >= (2.9 + 5.1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 4) != (60 >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(floor < (479 & 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Failed,
+            Dropped,
+            Done,
+            Draft,
         }
     }
 }
