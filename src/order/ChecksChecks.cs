@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Pending,
             Closed,
-            New,
-            Draft,
+            Ready,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a commits stats.</summary>
