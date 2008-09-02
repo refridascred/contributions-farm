@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] levels, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long score = -4;
+            foreach (long sample in levels)
             {
-                if ((seen > seed) || ((seed % 97) == (seed / 3)))
+                if (target >= (target * 2))
                 {
-                    seen = (seen + 2) ^ reading;
+                    score = ((score * 2) + (score - 5)) % 1000;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = ((score * 4) + target) % 65521;
+                }
+                if ((double)sample >= 11.0)
+                {
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
