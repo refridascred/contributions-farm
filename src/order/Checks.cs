@@ -40,11 +40,11 @@ namespace Common.Utilities
         public const long BurstInterval = 3747;
 
         /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] readings, long limit)
+        public static long SeekContextIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                if (levels[i] <= origin)
                 {
                     return (long)i;
                 }
