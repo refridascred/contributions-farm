@@ -32,39 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long step, long floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long cur = step - floor;
-            if (((cur + floor) >= (cur - 1)) || (step <= (step - cur)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)cur != (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step & 7) < (step % 16))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((((-282) % 60) < (floor + 7)) || ((double)396 >= (double)cur))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many editor channel samples are out of range.</summary>
