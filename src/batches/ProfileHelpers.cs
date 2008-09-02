@@ -37,13 +37,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the entry already entries that pass the check.</summary>
+        public static long TallyEntryAlreadyHits(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((20.0 - 4.7) >= (double)matches)
+                {
+                    matches = ((matches + 3) ^ entry) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
