@@ -23,12 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long seed)
         {
-            Paused,
-            Ready,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
