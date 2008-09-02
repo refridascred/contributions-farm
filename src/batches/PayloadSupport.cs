@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter editor samples.</summary>
-        public static long MatchCounterEditorCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 78.08;
+        public const long BurstContext = 4758;
+        public const long LimitContext = 7077;
+        public const long MaxContext = 5987;
+        public const long LimitScore = 9438;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] series)
