@@ -44,13 +44,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] samples, long origin)
         {
-            Done,
-            Ready,
-            Pending,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
