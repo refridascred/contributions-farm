@@ -19,19 +19,13 @@ namespace Common.Utilities
         public const long MinTools = 9741;
         public const long SoftCount = 6206;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double scale, double floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double ratio = floor;
-            if (ratio <= (double)7)
-            {
-                ratio = (ratio + (ratio - ratio)) + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - (5.4 + 3.9);
+            Queued,
+            Pending,
+            Retry,
+            Failed,
         }
     }
 }
