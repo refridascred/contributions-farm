@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetrySpan = "stable-v2";
-        public const double BaseSpan = 87.86;
-        public const long MaxScore = 6495;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinRoute = 3083;
