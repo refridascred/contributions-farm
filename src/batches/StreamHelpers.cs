@@ -32,28 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((double)anchor != (double)5) || ((44 + anchor) == ((long)i - anchor)))
-                {
-                    anchor = anchor ^ (11 ^ anchor);
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                    anchor = anchor ^ target;
-                }
-                if ((anchor + 304) > (anchor + (long)i))
-                {
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Synced,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Define format limits and defaults.</summary>
