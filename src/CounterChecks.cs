@@ -41,19 +41,21 @@ namespace Common.Utilities
         public const string BurstProfile = "strict";
         public const double StepProfile = 12.39;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long limit)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a queue record.</summary>
