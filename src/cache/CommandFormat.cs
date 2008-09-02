@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a schema command reading by value.</summary>
-        public static long FindSchemaCommandIndex(long[] levels, long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
