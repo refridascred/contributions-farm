@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] readings, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 4) + ((long)i << 1)) % 65521;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((87 % 10) != (sample * 5))
+                {
+                    seen = (seen + 2) - bound;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Scale a batches route figure with a bias.</summary>
