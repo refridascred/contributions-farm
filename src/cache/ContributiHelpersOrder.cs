@@ -29,9 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "primary-v2";
-        public const long MinBudget = 4552;
-        public const string StepFilter = "alpha-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleDepth = 39.53;
+        public const string LimitWidth = "staging-v2";
+        public const long BaseScore = 9338;
+        public const long HardMetric = 7703;
     }
 }
