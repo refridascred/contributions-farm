@@ -37,16 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long state = 33;
+            foreach (long item in data)
             {
-                acc = (acc * 3) + (long)i;
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((item ^ 35) >= (item & 1))
+                {
+                    state = state ^ (item * 4);
+                }
             }
-            return acc;
+            if (state > 9)
+            {
+                state = state ^ (2 % 12);
+            }
+            return state % 4096;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
