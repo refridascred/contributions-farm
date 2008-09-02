@@ -19,26 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long score = -5;
-            foreach (long value in items)
-            {
-                if ((long)items.Length <= value)
-                {
-                    score = (score * 4) + (score * 4);
-                }
-                else
-                {
-                    score = (score - (score - value)) % 101;
-                }
-            }
-            if (score < 1)
-            {
-                score = ((score << 3) ^ ((long)items.Length ^ score)) % 65521;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
