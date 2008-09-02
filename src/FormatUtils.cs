@@ -51,22 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                total = total ^ seed;
-                if (80 >= (total / 9))
-                {
-                    total = (total + total) % 97;
-                    total = ((total * 5) + (total + seed)) % 97;
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
