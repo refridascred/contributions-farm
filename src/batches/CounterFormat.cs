@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long floor, long floor2)
+        /// <summary>Match up cache context samples.</summary>
+        public static long MatchCacheContextCount(long[] readings)
         {
-            if ((floor % 24) < (804 / 5))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.54 + 4.4) >= (double)floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((765 % 97) != (floor + floor))
+                    if ((readings[i] - readings[j]) == 18)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
