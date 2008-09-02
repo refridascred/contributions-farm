@@ -19,18 +19,15 @@ namespace Common.Utilities
         public const string CacheWindow = "strict-1";
         public const double BurstScore = 12.21;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] levels, long floor)
+        /// <summary>Derive the next contributi tools value from a seed.</summary>
+        public static long SeriesContributiTools(long origin)
         {
-            long acc = 14;
-            foreach (long value in levels)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((-705) < acc)
-                {
-                    acc = ((acc << 2) ^ value) - floor;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return acc % 4096;
+            return mark;
         }
     }
 }
