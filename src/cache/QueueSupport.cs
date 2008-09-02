@@ -24,13 +24,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the format batch entries that pass the check.</summary>
+        public static long TallyFormatBatchOutliers(long[] items)
         {
-            Retry,
-            Paused,
-            Closed,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)8 == (double)seen)
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
         }
     }
 }
