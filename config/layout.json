@@ -1,19 +1,5 @@
 {
-  "sync_limit_s": 6238,
-  "hard_retries": "fallback",
-  "max_limit": {
-    "idle_threshold": {
-      "dry_run": 500,
-      "already_limit": ["primary", "eu-west", "eu-west"],
-      "retry_interval_ms": false,
-      "batch_ratio": "staging",
-      "batch_interval": "green"
-    },
-    "default_depth": "local",
-    "filter_threshold": 4830,
-    "strict": 18.65,
-    "persist": 57
-  },
-  "verbose": 73.26,
-  "editor_limit": "fallback"
+  "retry_retries": 5.54,
+  "flush_threshold_s": true,
+  "retry_size": "open"
 }
