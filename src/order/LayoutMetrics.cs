@@ -38,19 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] data, long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Active,
+            Paused,
         }
     }
 }
