@@ -27,19 +27,16 @@ namespace Common.Utilities
         public const long StepQueue = 9853;
         public const long IdleScore = 3695;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] levels, long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry ^ (carry << 2)) % 101;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return stale;
+            return carry;
         }
     }
 }
