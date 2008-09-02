@@ -27,22 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] items)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + cell) < (count + 3))
+                if ((items[i] >= step) && ((items[i] % 5) == 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
