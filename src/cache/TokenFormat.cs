@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Rank channel context input into a small class.</summary>
+        public static long RankChannelContext(long target, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            if (((1.6 * 7.4) < (double)target) && ((target - bound) >= (403 - 760)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ target) <= (bound ^ bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
