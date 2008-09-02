@@ -40,23 +40,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = 67;
-            foreach (long reading in data)
-            {
-                mark = (mark + 1) % 255;
-                if (((double)mark > (10.0 * 2.0)) && ((reading - mark) >= ((long)data.Length + mark)))
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = (mark * 2) + (mark - mark);
-            }
-            return mark % 1000;
+            Synced,
+            Failed,
+            Closed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Grade a command stats value against two limits.</summary>
