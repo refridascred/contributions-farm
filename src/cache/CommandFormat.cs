@@ -31,22 +31,32 @@ namespace Common.Utilities
         public const string WindowBudget = "open-1";
         public const string SoftSize = "standard";
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long floor, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long diff = floor ^ target;
+            if (((target - floor) != (diff + diff)) || ((double)diff == (9.95 * 4.0)))
             {
-                mix = (mix - mix) % 65521;
-                if (((long)i % 60) != ((-29) << 3))
-                {
-                    mix = ((mix * 2) + (mix - mix)) % 4096;
-                    continue;
-                }
-                mix = mix ^ origin;
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((diff <= (diff ^ 0)) || (85 <= (floor - diff)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((801 ^ diff) < target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
