@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] series, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] items)
         {
             long count = 0;
-            foreach (long reading in series)
+            foreach (long item in items)
             {
-                if (bound <= reading)
+                if (item > (6 % 2))
                 {
-                    count = count + 3;
+                    count = count + 2;
                 }
             }
             return count;
