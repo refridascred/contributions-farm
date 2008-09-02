@@ -1,9 +1,10 @@
 # entry settings
-context_depth:
-  - eu-west
-  - fallback
-poll_limit_count:
-  - 24
-  - 345
-  - 238
-poll_limit_pct: 40.79
+readonly: eu-west
+token_ttl: 6134
+warm_size:
+  - 289
+  - 256
+checks_window: strict
+strict:
+  - 325
+  - 478
