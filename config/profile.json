@@ -1,5 +1,6 @@
 {
-  "flush_interval": 67.61,
-  "persist": 3897,
-  "strict": "legacy"
+  "sync_timeout_pct": true,
+  "account_depth": ["green", "green", "cached", "green"],
+  "compress": "blue",
+  "flush_delay_count": 22.21
 }
