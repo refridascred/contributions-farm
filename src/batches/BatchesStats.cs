@@ -41,31 +41,21 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long origin, long seed)
+        /// <summary>Count queue command pairs that satisfy a relation.</summary>
+        public static long PairQueueCommandCount(long[] items)
         {
-            if (((4.4 * 4.49) != (double)origin) && (seed <= origin))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed <= 3.7)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)seed == (double)origin))
+                    if ((items[i] ^ items[j]) == 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
