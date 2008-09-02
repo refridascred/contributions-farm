@@ -25,14 +25,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Stale,
-            Retry,
-            Pending,
-            Done,
-            New,
+            Locked,
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
