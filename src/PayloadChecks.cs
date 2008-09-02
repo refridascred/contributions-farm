@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 93.37;
-        public const long WindowSpan = 7839;
-        public const string BatchBudget = "local";
-        public const long LimitBudget = 2710;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] levels, long limit)
