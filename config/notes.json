@@ -1,18 +1,5 @@
 {
-  "readonly": [53, 189, 269],
-  "strict": [166, 138, 249, 278],
-  "max_interval_pct": {
-    "verbose": 21.39,
-    "strict": 100,
-    "checks_threshold": [114, 268, 119],
-    "warm_capacity_ms": {
-      "base_window": 68,
-      "contributi_timeout": 30,
-      "contributi_retries": false
-    },
-    "min_threshold_pct": false,
-    "layout_depth": 97
-  },
-  "stats_interval": 2.1,
-  "githubfarm_retries": [224, 378]
+  "batch_ratio_pct": 24.15,
+  "tools_ratio": 1024,
+  "schema_limit": 5888
 }
