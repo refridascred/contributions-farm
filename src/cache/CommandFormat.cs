@@ -58,21 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 3;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state + cell) % 97) - limit;
             }
-            return hits;
+            return state;
         }
     }
 }
