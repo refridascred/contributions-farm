@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Dropped,
-            Synced,
-            Queued,
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
