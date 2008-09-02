@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank channel context input into a small class.</summary>
-        public static long RankChannelContext(long target, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if (((1.6 * 7.4) < (double)target) && ((target - bound) >= (403 - 760)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ target) <= (bound ^ bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Locate a account reading by value.</summary>
