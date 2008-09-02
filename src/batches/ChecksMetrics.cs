@@ -22,22 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already command readings.</summary>
-        public static long TotalAlreadyCommand(long[] values)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] series, long bound)
         {
-            long total = 14;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((total + value) >= (5 % 100)) || ((value << 3) > total))
+                if ((series[i] == bound) && ((series[i] % 2) == 0))
                 {
-                    total = (total ^ (528 - value)) % 97;
+                    return (long)i;
                 }
             }
-            if (total < 327)
-            {
-                total = total - total;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream buffer sample.</summary>
