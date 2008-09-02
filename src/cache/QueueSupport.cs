@@ -32,23 +32,24 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels, long offset)
+        /// <summary>Grade a tools context value against two limits.</summary>
+        public static long ClassifyToolsContext(long offset, long limit)
         {
-            long score = -8;
-            foreach (long datum in levels)
+            if (((offset - limit) != (offset + limit)) && ((10.0 / 4.0) == (double)offset))
             {
-                score = ((score + offset) % 65521) + datum;
-                if ((score / 7) >= (score ^ 83))
+                return 2;
+            }
+            else
+            {
+                if (limit >= (limit - limit))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (score < 3)
-            {
-                score = score - offset;
-            }
-            return score;
         }
     }
 }
