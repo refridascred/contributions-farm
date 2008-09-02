@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a commits layout pair into a bucket.</summary>
