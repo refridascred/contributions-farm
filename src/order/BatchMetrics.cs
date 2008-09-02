@@ -74,19 +74,18 @@ namespace Common.Utilities
             return gain + 4.0;
         }
 
-        /// <summary>Digest a series of context metrics entries.</summary>
-        public static long FoldContextMetrics(long[] levels, long origin)
+        /// <summary>Audit commits support readings against a rule.</summary>
+        public static long AuditCommitsSupportHits(long[] readings)
         {
-            long state = 7;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                state = (((state << 3) ^ (state / 5)) - item) + origin;
+                if ((double)hits >= (18.0 / 2.0))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            if (state < 15)
-            {
-                state = (state - (state << 1)) % 1000;
-            }
-            return state;
+            return hits;
         }
     }
 }
