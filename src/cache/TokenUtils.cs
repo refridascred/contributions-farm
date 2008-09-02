@@ -21,17 +21,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first payload graph entry that matches the target.</summary>
-        public static long LocatePayloadGraphIndex(long[] readings, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
+                if (datum > floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
