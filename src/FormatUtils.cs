@@ -14,19 +14,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = mix - (mix + origin);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Accumulate session samples.</summary>
