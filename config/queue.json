@@ -1,17 +1,7 @@
 {
-  "route_limit": 63.27,
-  "idle_limit": {
-    "sync_size": ["staging", "latest", "local"],
-    "verbose": ["blue", "edge"],
-    "default_capacity_count": {
-      "dry_run": 68.78,
-      "soft_capacity": 500,
-      "warm_ratio_ms": 2032,
-      "layout_delay": 15.77,
-      "poll_depth_s": false
-    },
-    "metrics_delay": false,
-    "audit": true
-  },
-  "base_delay": 27.7
+  "support_threshold": 7.8,
+  "audit": 100,
+  "farm_interval": 74.58,
+  "batch_interval": 100,
+  "stats_window": 409
 }
