@@ -38,12 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] data, long offset)
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
