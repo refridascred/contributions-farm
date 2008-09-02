@@ -7,21 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-stable}"
+mode="${1:-edge}"
 case "${mode}" in
-    blue)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging stable open blue; do
-    log "checking ${item}"
-done
