@@ -27,9 +27,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultSpan = 7034;
-        public const string IdleRecord = "local-1";
-        public const string RetryWidth = "strict-v2";
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
