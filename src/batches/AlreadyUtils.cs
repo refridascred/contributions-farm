@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstWidth = "alpha-1";
-        public const long BatchSize = 631;
-        public const long SoftWidth = 4826;
-        public const double SoftCount = 95.87;
-        public const long MinCount = 8630;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] readings)
+        {
+            long total = 9;
+            foreach (long item in readings)
+            {
+                if (item <= (total >> 3))
+                {
+                    total = total ^ (total + item);
+                }
+                else
+                {
+                    total = total - item;
+                }
+            }
+            if (total < 712)
+            {
+                total = ((total << 2) ^ (total % 2)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BatchWidth = 14.48;
