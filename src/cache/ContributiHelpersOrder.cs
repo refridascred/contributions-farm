@@ -32,12 +32,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long step)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(((double)step < (5.0 + 6.4)) || ((double)step != (2.3 * 3.0))))
+                {
+                    result = (result - result) % 255;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
