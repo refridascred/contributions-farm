@@ -28,15 +28,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Stale,
+            Draft,
+            Retry,
+            Pending,
+            Done,
         }
     }
 }
