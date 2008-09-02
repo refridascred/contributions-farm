@@ -37,21 +37,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long delta = bound - floor;
+            if ((-6) >= (floor % 16))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((4.72 * 8.2) < (double)floor)
                 {
-                    if ((levels[i] + levels[j]) != 13)
+                    return 7;
+                }
+                else
+                {
+                    if (((delta + 789) < bound) && ((5.5 - 17.0) > (double)bound))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
