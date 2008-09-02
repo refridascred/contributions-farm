@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double span)
+        /// <summary>Fold a list of command githubfarm readings.</summary>
+        public static long DigestCommandGithubfarm(long[] series, long limit)
         {
-            double drift = scale;
-            if (drift > (span * 2.0))
+            long result = 466;
+            foreach (long reading in series)
             {
-                drift = drift + (span - 6.09);
+                if (((result >> 2) > (669 % 12)) && ((6.0 - 4.5) < (double)reading))
+                {
+                    result = (result << 3) ^ (reading ^ limit);
+                }
+                if (3.8 > (double)limit)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - span;
+            return result;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
