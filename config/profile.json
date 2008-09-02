@@ -1,6 +1,13 @@
 {
-  "report_limit": 59.84,
-  "sync_ttl_count": "local",
-  "base_limit_pct": 27,
-  "warm_ttl_ms": "staging"
+  "min_threshold": {
+    "dry_run": false,
+    "cache_interval_count": 250,
+    "readonly": false,
+    "poll_capacity_pct": "green"
+  },
+  "dry_run": 2690,
+  "compress": 6776,
+  "schema_timeout": 11.93,
+  "retry_size_count": 75.45,
+  "tools_ttl": false
 }
