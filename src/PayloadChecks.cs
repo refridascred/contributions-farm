@@ -34,19 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
