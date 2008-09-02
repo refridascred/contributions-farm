@@ -60,18 +60,14 @@ namespace Common.Utilities
         public const long RetryCommits = 5319;
         public const double RetryFactor = 20.71;
 
-        /// <summary>Count the stats filter entries that pass the check.</summary>
-        public static long AuditStatsFilterOutliers(long[] readings, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((floor ^ tally) > (floor & 1)) || ((floor + tally) >= (tally - floor)))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Ready,
+            Failed,
+            Done,
         }
     }
 }
