@@ -1,5 +1,7 @@
 {
-  "tools_depth": "latest",
-  "githubfarm_interval": 5213,
-  "idle_interval_s": 7137
+  "cluster_limit": 68,
+  "dry_run": 41.64,
+  "idle_timeout_s": 37.43,
+  "cluster_ttl": "standard",
+  "base_ratio_ms": "eu-west"
 }
