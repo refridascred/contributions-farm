@@ -29,10 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleDepth = 39.53;
-        public const string LimitWidth = "staging-v2";
-        public const long BaseScore = 9338;
-        public const long HardMetric = 7703;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
