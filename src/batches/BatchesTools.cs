@@ -27,18 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] series, long step)
+        /// <summary>Adjust a counter cluster reading.</summary>
+        public static double AdjustCounterCluster(double gain, double floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double load = gain;
+            if (load >= gain)
             {
-                if ((double)sample < (15.0 / 7.0))
-                {
-                    count = (count + 1) + step;
-                }
+                load = (load - load) + floor;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (2.22 + 13.0)) - (double)(long)i;
+            }
+            return load - (gain * 9.0);
         }
     }
 }
