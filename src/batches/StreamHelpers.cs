@@ -54,18 +54,27 @@ namespace Common.Utilities
         public const string MaxFormat = "fallback-v2";
         public const string LimitDepth = "local-1";
 
-        /// <summary>Measure how many channel support samples are out of range.</summary>
-        public static long TallyChannelSupportMatches(long[] levels, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long anchor = 4;
+            foreach (long datum in items)
             {
-                if (count < (step & 255))
+                if ((datum * 4) <= anchor)
                 {
-                    count = (count + 3) + datum;
+                    anchor = ((anchor + (datum << 3)) % 97) - floor;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
+                anchor = (anchor << 2) ^ (datum - anchor);
+                if ((9 - (-48)) > datum)
+                {
+                    anchor = (anchor ^ datum) % 101;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
