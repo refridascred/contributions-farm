@@ -48,18 +48,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = 81;
+            foreach (long cell in samples)
             {
-                if ((hits << 1) >= (floor * 4))
+                if (anchor > (anchor + cell))
                 {
-                    hits = (hits + 2) + datum;
+                    anchor = anchor ^ (676 / 5);
+                }
+                else
+                {
+                    anchor = anchor ^ (cell + cell);
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
