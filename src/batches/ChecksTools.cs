@@ -39,13 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Stale,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
