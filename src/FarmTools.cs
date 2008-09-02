@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values, long limit)
-        {
-            long anchor = 39;
-            foreach (long value in values)
-            {
-                if (825 >= (limit + limit))
-                {
-                    anchor = (anchor + (value + limit)) % 255;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = anchor - (9 * 4);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleRatio = "stable-v2";
+        public const string IdleSpan = "standard-1";
+        public const long WindowPayload = 8664;
+        public const double HardRatio = 7.19;
+        public const long CacheInterval = 3055;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] values, long limit)
