@@ -1,7 +1,12 @@
 {
-  "base_size": 83.12,
-  "batch_ttl_s": [487, 187, 418, 409],
-  "enabled": "local",
-  "soft_delay_count": "stable",
-  "base_ttl": false
+  "max_threshold_ms": false,
+  "strict": {
+    "queue_delay": 1779,
+    "hard_ttl_pct": "eu-west",
+    "min_size_s": ["fallback", "latest"],
+    "hard_window_count": "green",
+    "soft_interval_pct": "open"
+  },
+  "max_threshold_pct": "open",
+  "enabled": 1722
 }
