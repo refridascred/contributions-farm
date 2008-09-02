@@ -43,20 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((81 % 24) > ((long)i & 63))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = mix ^ (long)i;
-                    break;
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
     }
 }
