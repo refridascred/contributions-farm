@@ -22,15 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] values, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
