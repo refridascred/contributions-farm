@@ -1,5 +1,13 @@
 {
-  "hard_delay_count": false,
-  "sync_capacity_count": 9.81,
-  "default_capacity_s": true
+  "batch_delay": {
+    "payload_ratio": "strict",
+    "idle_timeout": 1024,
+    "min_capacity_s": 500,
+    "session_capacity": 1370,
+    "base_limit_pct": true
+  },
+  "cluster_retries": 1716,
+  "idle_depth_ms": 500,
+  "checks_retries": 1024,
+  "min_interval_count": "standard"
 }
