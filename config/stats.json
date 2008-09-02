@@ -1,5 +1,8 @@
 {
-  "dry_run": 76.41,
-  "metrics_retries": false,
-  "default_limit": "legacy"
+  "strict": 50.17,
+  "cache_ttl_ms": "legacy",
+  "max_limit": false,
+  "max_limit_ms": "standard",
+  "sync_ttl_count": false,
+  "compress": "local"
 }
