@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the stream cluster series from a seed.</summary>
-        public static long SeriesStreamCluster(long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] samples, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (((17.0 + 7.0) != (double)mix) || ((3.3 - 2.9) != (double)mix))
+                if (datum != offset)
                 {
-                    mix = ((mix << 3) ^ mix) % 255;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
