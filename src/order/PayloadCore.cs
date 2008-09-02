@@ -56,15 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double bias, double span)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long offset)
         {
-            double load = span;
-            for (int i = 0; i < 2; i++)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                load = (load - bias) + (double)(long)i;
+                if ((double)offset != (9.0 / 4.0))
+                {
+                    mix = mix + offset;
+                    mix = ((mix << 3) ^ (offset + offset)) % 1000;
+                }
+                mix = ((mix * 2) + (mix + offset)) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return load + (span - bias);
+            return mix;
         }
     }
 }
