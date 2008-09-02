@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank route farm input into a small class.</summary>
-        public static long RankRouteFarm(long target, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] levels, long seed)
         {
-            if ((floor * 2) == (floor - target))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (4.4 * 16.0))
+                if (entry <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
