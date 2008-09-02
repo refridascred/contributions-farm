@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum > (0.7 / 5.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Accumulate notes profile samples.</summary>
