@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinSize = 37.3;
+        public const double LimitDepth = 35.59;
+        public const long LimitToken = 2282;
+        public const double CacheToken = 46.17;
+        public const double BurstToken = 60.79;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterOutliers(long[] samples, long floor)
