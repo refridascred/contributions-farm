@@ -42,16 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next format entry value from a seed.</summary>
-        public static long StepFormatEntry(long limit)
+        /// <summary>Validate session metrics readings against a bound.</summary>
+        public static bool GuardSessionMetricsLimits(long[] readings, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                mark = mark - mark;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (entry >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
