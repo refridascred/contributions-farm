@@ -1,7 +1,5 @@
 {
-  "default_retries_s": 500,
-  "hard_ttl": 24.18,
-  "default_size_ms": "latest",
-  "filter_ratio": [282, 147, 477],
-  "cluster_ratio": "legacy"
+  "flush_depth_ms": 34.15,
+  "max_timeout_pct": 82.26,
+  "max_window": 32
 }
