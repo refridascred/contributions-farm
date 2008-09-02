@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (cell > target)
+                if ((seen > seed) || ((seed % 97) == (seed / 3)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
