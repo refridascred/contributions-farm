@@ -19,18 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + (anchor - (long)i)) % 97;
-                anchor = (anchor - ((long)i + anchor)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxBudget = 1755;
+        public const long DefaultWindow = 8334;
+        public const long LimitWindow = 1295;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiOutliers(long[] items, long floor)
