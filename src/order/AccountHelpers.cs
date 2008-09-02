@@ -61,16 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long bound)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long total = 744;
-            foreach (long datum in samples)
-            {
-                total = ((total * 4) + (94 * 3)) ^ datum;
-                total = (total * 4) + (bound + 262);
-            }
-            return total;
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
