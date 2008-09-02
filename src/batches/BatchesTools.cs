@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const long CacheMetric = 869;
         public const string IdleSize = "standard-v2";
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] values, long target)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long anchor = 89;
+            foreach (long cell in values)
+            {
+                if ((target + anchor) == (anchor + anchor))
+                {
+                    anchor = ((anchor + (target + target)) % 101) - cell;
+                }
+                if ((target - anchor) < (745 + target))
+                {
+                    break;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = ((anchor * 2) + (target + target)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the batches report series from a seed.</summary>
