@@ -38,22 +38,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data)
-        {
-            long anchor = 0;
-            foreach (long cell in data)
-            {
-                if ((double)anchor != (1.0 - 3.52))
-                {
-                    anchor = (anchor + (cell - anchor)) % 97;
-                }
-                if ((anchor * 5) >= cell)
-                {
-                    anchor = ((anchor * 2) + (cell & 127)) % 65521;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseBudget = 5792;
+        public const long StepLayout = 6934;
+        public const long WindowLayout = 5937;
     }
 }
