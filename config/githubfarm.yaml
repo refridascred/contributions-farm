@@ -1,5 +1,6 @@
 # githubfarm settings
-poll_interval: open
-session_timeout: 6.75
-poll_window_s: legacy
-warm_delay_s: 8.62
+soft_size_count: edge
+account_limit: 13
+githubfarm_timeout: 8769
+base_retries_ms: green
+audit: 98.54
