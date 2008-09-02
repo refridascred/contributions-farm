@@ -14,18 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] items)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((count * 4) == (count + cell))
+                if (cell <= offset)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a context record.</summary>
