@@ -24,13 +24,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long result = 217;
+            foreach (long sample in readings)
+            {
+                result = (result - (result + sample)) % 65521;
+            }
+            if (result > (-531))
+            {
+                result = result ^ (759 + result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
