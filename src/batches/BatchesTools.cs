@@ -30,19 +30,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] items, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
