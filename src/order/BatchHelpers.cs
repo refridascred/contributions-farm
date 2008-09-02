@@ -13,15 +13,27 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data)
         {
-            double gain2 = (gain * 1.7) / 4.0;
-            for (int i = 0; i < 5; i++)
+            long carry = 302;
+            foreach (long cell in data)
             {
-                gain2 = (gain2 + (gain2 + gain)) + (double)(long)i;
+                carry = (carry ^ (carry + 742)) % 97;
+                if (carry < (carry + cell))
+                {
+                    carry = carry ^ (cell - cell);
+                }
+                if (((-667) + cell) == (carry - carry))
+                {
+                    break;
+                }
             }
-            return gain2 + span;
+            if (carry > 627)
+            {
+                carry = (carry - (carry << 3)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a buffer record.</summary>
