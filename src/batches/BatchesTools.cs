@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] series, long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every farm metric entry stays within the limit.</summary>
