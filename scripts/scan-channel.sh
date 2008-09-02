@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=123
+CHANNEL_LIMIT=451
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in green local edge blue; do
+for item in open cached; do
     log "checking ${item}"
 done
