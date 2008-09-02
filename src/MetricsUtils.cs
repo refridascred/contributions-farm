@@ -63,19 +63,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] items, long bound)
+        /// <summary>Look up the position of a window metrics sample.</summary>
+        public static long LookupWindowMetricsIndex(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry != bound)
+                if (levels[i] >= limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
