@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mark = 2;
-            foreach (long datum in data)
-            {
-                if (((datum ^ 595) >= mark) || ((64 % 12) < mark))
-                {
-                    mark = (mark + (datum >> 1)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - datum) % 65521;
-                }
-            }
-            return mark % 65521;
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a checks entry.</summary>
