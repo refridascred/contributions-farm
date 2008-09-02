@@ -35,32 +35,19 @@ namespace Common.Utilities
         public const long BurstDepth = 7956;
         public const string SoftSchema = "staging-edge";
 
-        /// <summary>Classify a counter buffer pair into a bucket.</summary>
-        public static long GradeCounterBuffer(long offset, long target)
+        /// <summary>Check that every notes already entry stays within the limit.</summary>
+        public static bool GuardNotesAlreadyLimits(long[] levels, long limit)
         {
-            long span = offset + target;
-            if (((target + offset) >= (target / 6)) || ((span + offset) >= offset))
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.0 - 6.25) != (double)span)
+                if (reading >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)span <= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
