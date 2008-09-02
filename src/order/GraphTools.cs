@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] samples, long bound)
         {
-            double drift = (double)(7 / 5);
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                drift = (((drift + (double)1) + (double)(long)i) - rate) - span;
+                if (value >= (bound + seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift + (double)85;
+            return seen;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
