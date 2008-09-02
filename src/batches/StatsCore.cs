@@ -64,18 +64,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "stable-1";
+        public const long StepScore = 8165;
+        public const double MaxRoute = 59.57;
+        public const long StepSpan = 973;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 6259;
