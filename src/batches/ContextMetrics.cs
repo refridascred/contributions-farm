@@ -54,27 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long total = 7;
-            foreach (long entry in data)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((entry + 3) < 6))
-                {
-                    total = total ^ total;
-                    total = (total - total) % 4096;
-                }
-                else
-                {
-                    total = (total - (total % 12)) % 97;
-                }
-                if ((57 & 1) > (total ^ total))
-                {
-                    total = total - (total % 7);
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return total;
+            return sum;
         }
     }
 }
