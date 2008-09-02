@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of entry batch readings.</summary>
-        public static long FoldEntryBatch(long[] samples)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            long carry = 6;
-            foreach (long datum in samples)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry << 2) ^ (datum + datum)) % 1000;
-                carry = ((carry << 3) ^ (datum % 100)) % 255;
-                if ((double)carry >= 2.0)
-                {
-                    break;
-                }
+                score = score ^ score;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
