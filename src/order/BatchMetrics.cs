@@ -15,23 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double ratio, double bias)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] series, long limit)
         {
-            double load = bias + (double)903;
-            if (load > ratio)
+            long anchor = 517;
+            foreach (long item in series)
             {
-                load = load - load;
+                anchor = (anchor - (anchor + limit)) + item;
             }
-            else
-            {
-                load = load - (ratio / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (bias - ratio)) - (double)(long)i;
-            }
-            return load - (load * 18.0);
+            return anchor;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
