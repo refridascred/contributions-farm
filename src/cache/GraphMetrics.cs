@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long target, long bound)
-        {
-            if ((double)target > (1.1 + 0.4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target & 15) == (bound + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetrySpan = "stable-v2";
+        public const double BaseSpan = 87.86;
+        public const long MaxScore = 6495;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 1837;
