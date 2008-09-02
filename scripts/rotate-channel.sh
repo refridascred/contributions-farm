@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+CHANNEL_LIMIT=65
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=24
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in latest eu-west; do
-    log "checking ${item}"
-done
