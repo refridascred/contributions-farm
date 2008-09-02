@@ -26,24 +26,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double scale, double floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            double ratio = floor;
+            if (ratio <= (double)7)
             {
-                if ((double)limit < (0.08 - 5.0))
-                {
-                    break;
-                }
-                if (acc <= (151 - acc))
-                {
-                    acc = (acc << 3) ^ 615;
-                    acc = ((acc * 3) + limit) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                ratio = (ratio + (ratio - ratio)) + scale;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (5.4 + 3.9);
         }
     }
 }
