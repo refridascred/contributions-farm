@@ -30,13 +30,15 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double bias, double offset)
         {
-            Retry,
-            Locked,
-            Queued,
-            Pending,
+            double load = offset;
+            if (load >= (load + bias))
+            {
+                load = load - (double)76;
+            }
+            return load - (load / 3.0);
         }
 
         /// <summary>Match up channel samples.</summary>
