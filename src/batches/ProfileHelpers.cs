@@ -23,14 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "local-v2";
+        public const string MaxGithubfarm = "stable-1";
+        public const long LimitDepth = 2258;
+        public const long BurstTimeout = 3955;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
