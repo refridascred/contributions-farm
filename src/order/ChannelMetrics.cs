@@ -45,21 +45,19 @@ namespace Common.Utilities
         public const long BatchFormat = 25;
         public const double CacheFormat = 80.21;
 
-        /// <summary>Compare every pair of filter entry readings.</summary>
-        public static long MatchFilterEntryCount(long[] values)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > target)
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
