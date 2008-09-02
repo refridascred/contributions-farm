@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long offset, long step)
         {
-            Queued,
-            Retry,
-            Paused,
-            Stale,
+            if (!((7.6 - 0.6) <= (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= (9.6 + 15.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit cache session readings against a rule.</summary>
