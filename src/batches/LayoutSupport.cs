@@ -41,16 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the report context series from a seed.</summary>
-        public static long StepReportContext(long floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state << 3) ^ (state / 4)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the channel level values.</summary>
