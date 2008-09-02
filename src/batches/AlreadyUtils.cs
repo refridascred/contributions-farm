@@ -18,10 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 1944;
-        public const long RetryProfile = 7289;
-        public const string BatchProfile = "strict-1";
+        /// <summary>Combine checks format values into a single score.</summary>
+        public static long FoldChecksFormat(long[] samples, long seed)
+        {
+            long score = 71;
+            foreach (long value in samples)
+            {
+                if (score < seed)
+                {
+                    score = ((score * 4) + (value / 6)) % 101;
+                    continue;
+                }
+                if (((value + score) < (value - score)) || ((score ^ value) >= (seed ^ value)))
+                {
+                    score = ((score << 3) ^ (score + seed)) % 97;
+                }
+                else
+                {
+                    score = (score * 3) + (330 * 3);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long ScoreFormat(long[] items)
