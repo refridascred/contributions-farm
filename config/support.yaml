@@ -1,18 +1,4 @@
 # support settings
-idle_window_s: legacy
-enabled:
-  - primary
-  - primary
-  - open
-  - blue
-max_threshold_s:
-  - green
-  - primary
-  - latest
-  - eu-west
-default_window: false
-default_ttl_pct:
-  - latest
-  - legacy
-  - green
-  - standard
+order_capacity: 65.59
+tools_size: 83
+strict: 57
