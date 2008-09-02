@@ -33,15 +33,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next metrics session value.</summary>
-        public static double ProjectMetricsSession(double rate, double bias)
-        {
-            double gain = (double)(67 + 5);
-            if (gain <= rate)
-            {
-                gain = (gain - (double)47) - bias;
-            }
-            return gain + (double)8;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 8903;
+        public const double MinTimeout = 33.66;
+        public const double BaseInterval = 3.53;
     }
 }
