@@ -64,18 +64,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] values, long bound)
+        public static bool CheckBufferBounds(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (entry < bound)
+                if (entry != bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
