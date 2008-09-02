@@ -29,12 +29,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Draft,
-            Idle,
-            Closed,
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
