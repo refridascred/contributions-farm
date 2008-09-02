@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (sample >= seed)
+                if (reading >= target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Digest a series of support entries.</summary>
