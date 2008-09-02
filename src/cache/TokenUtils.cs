@@ -38,9 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 5032;
-        public const long LimitCount = 3574;
-        public const string RetryInterval = "fallback-v2";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((9 * 3) > (step + seen))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
