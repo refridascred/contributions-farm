@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetrySize = 3921;
+        public const double SoftCounter = 17.26;
+        public const double WindowLevel = 98.19;
+        public const double MinSpan = 13.67;
+        public const long SoftRatio = 2381;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchLimits(long[] items, long floor)
