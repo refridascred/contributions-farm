@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many already notes samples are out of range.</summary>
-        public static long TallyAlreadyNotesHits(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] values)
         {
             long tally = 0;
-            foreach (long datum in items)
+            foreach (long sample in values)
             {
-                if (!((tally / 5) < (tally + tally)) || ((datum - 42) <= (datum / 7)))
+                if (23 > (tally << 3))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) + sample;
                 }
             }
             return tally;
