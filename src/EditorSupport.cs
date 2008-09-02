@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] items)
         {
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!((-66) <= (matches * 4)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine queue layout values into a single score.</summary>
