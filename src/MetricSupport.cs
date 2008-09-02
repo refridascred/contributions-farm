@@ -20,18 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long total = 982;
-            foreach (long cell in series)
-            {
-                if (cell < (total / 5))
-                {
-                    total = ((total * 5) + (total & 255)) % 255;
-                }
-            }
-            return total % 65521;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit channel counter readings against a rule.</summary>
