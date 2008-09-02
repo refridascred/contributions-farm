@@ -60,21 +60,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Accumulate route samples.</summary>
