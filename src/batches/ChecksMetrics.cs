@@ -22,17 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
+                carry = carry - (2 + origin);
+                if (4 <= carry)
                 {
-                    return (long)i;
+                    break;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Look up the position of a stream buffer sample.</summary>
