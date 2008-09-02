@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long seed, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] readings)
         {
-            if (!((seed + floor) <= floor))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((1.7 + 20.0) != (double)seed) || ((floor ^ floor) <= (997 - floor)))
+                if ((hits - datum) >= datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + seed) <= (floor % 10))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor * 3) > (seed & 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
