@@ -28,9 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardBudget = 8438;
-        public const long StepSpan = 1585;
-        public const long MinBudget = 1322;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
