@@ -29,14 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            Pending,
-            Failed,
-            Synced,
-            New,
-            Retry,
+            long score = 378;
+            foreach (long reading in readings)
+            {
+                score = (score - (score + 275)) ^ reading;
+            }
+            return score;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
