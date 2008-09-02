@@ -26,15 +26,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long anchor = 83;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor + anchor) ^ sample;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
