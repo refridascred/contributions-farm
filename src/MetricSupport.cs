@@ -41,11 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 7768;
-        public const long DefaultChannel = 3976;
-        public const long DefaultSpan = 7908;
-        public const long MinTimeout = 7870;
-        public const long BaseChannel = 8961;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry & 3) <= 2) || ((count - entry) < (floor + entry)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
