@@ -1,22 +1,5 @@
 # githubfarm settings
-batch_ratio_count: green
-batches_window: 59
-hard_ttl_ms: blue
-soft_ratio_ms: false
-editor_capacity:
-  strict: standard
-  warm_interval_s: false
-  contributi_interval:
-    token_retries: 3324
-    commits_timeout: 3
-    route_timeout: edge
-    githubfarm_interval:
-      - legacy
-      - latest
-      - local
-    format_depth: 100
-    soft_depth:
-      - standard
-      - green
-      - open
-  persist: 95.84
+poll_interval: open
+session_timeout: 6.75
+poll_window_s: legacy
+warm_delay_s: 8.62
