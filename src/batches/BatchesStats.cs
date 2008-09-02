@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] readings, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((87 % 10) != (sample * 5))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            double scale2 = 19.0;
+            return (scale2 + floor) + scale;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
