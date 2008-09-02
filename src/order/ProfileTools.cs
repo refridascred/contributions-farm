@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long SoftContext = 3847;
         public const long BaseFactor = 2636;
 
-        /// <summary>Compare every pair of metrics editor readings.</summary>
-        public static long MatchMetricsEditorCount(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
