@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] series, long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long anchor = 6;
-            foreach (long value in series)
-            {
-                if (!((value - (-655)) > (limit % 16)))
-                {
-                    continue;
-                }
-                anchor = anchor - 9;
-                anchor = anchor + (value & 7);
-            }
-            if (anchor < 519)
-            {
-                anchor = (anchor - limit) % 101;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
