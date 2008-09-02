@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long seed, long target)
-        {
-            long edge = seed ^ target;
-            if (((seed + target) <= edge) && (5 <= target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed - target) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 3132;
+        public const long MinFarm = 7453;
+        public const long BaseRatio = 325;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long origin)
