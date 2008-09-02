@@ -24,22 +24,17 @@ namespace Common.Utilities
             return scale - (offset / 4.0);
         }
 
-        /// <summary>Audit tools support readings against a rule.</summary>
-        public static long MeasureToolsSupportGaps(long[] levels)
+        /// <summary>Find the first format contributi entry that matches the target.</summary>
+        public static long SeekFormatContributiIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + datum) < (-107))
+                if (series[i] > step)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
