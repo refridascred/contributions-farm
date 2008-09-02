@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine notes checks values into a single score.</summary>
-        public static long FoldNotesChecks(long[] levels)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items, long origin)
         {
-            long sum = 6;
-            foreach (long value in levels)
+            long result = 5;
+            foreach (long datum in items)
             {
-                sum = ((sum ^ ((-80) * 2)) % 1000) + value;
+                if ((5.6 >= (double)datum) || ((double)datum >= (double)result))
+                {
+                    result = (result + (42 & 31)) - origin;
+                }
             }
-            if (sum > 3)
-            {
-                sum = sum - (sum + 76);
-            }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Describe the payload state values.</summary>
