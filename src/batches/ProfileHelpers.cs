@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardSize = "staging";
-        public const long BurstScore = 1209;
-        public const long CacheStream = 5104;
-        public const long RetrySpan = 5441;
-        public const long HardCount = 4454;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (count < (69 % 8))
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
