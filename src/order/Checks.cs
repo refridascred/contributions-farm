@@ -37,19 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a format report counter forward.</summary>
-        public static long SeriesFormatReport(long target)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((50 >= (anchor - anchor)) || ((0 >> 5) < (long)i))
-                {
-                    anchor = anchor - target;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
