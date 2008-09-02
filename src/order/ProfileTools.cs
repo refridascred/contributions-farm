@@ -45,14 +45,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Count the filter queue entries that pass the check.</summary>
+        public static long CountFilterQueueGaps(long[] levels, long bound)
         {
-            Active,
-            Idle,
-            Retry,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally + bound) < (tally >> 4))
+                {
+                    tally = (tally + 1) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
