@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const double StepCluster = 80.67;
         public const long SoftSpan = 1479;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long step, long bound)
-        {
-            long slot = step - bound;
-            if (((161 ^ bound) <= (step / 3)) && ((double)bound >= (3.6 - 2.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((405 + slot) != (1 + 71))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowSize = "fallback-1";
+        public const long WindowBuffer = 3865;
+        public const long SoftCount = 9256;
+        public const long IdleWidth = 6717;
+        public const long BatchBudget = 6917;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long floor)
