@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a account tools sample.</summary>
-        public static long FindAccountToolsIndex(long[] samples, long step)
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long CombineToolsAlready(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 816;
+            foreach (long reading in levels)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                state = ((state << 2) ^ (reading << 1)) + limit;
+                state = (state + (5 + 0)) % 65521;
+                if (!((968 >> 2) >= reading))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
