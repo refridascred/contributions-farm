@@ -71,19 +71,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] samples, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((1.09 + 0.29) >= (double)(long)i) && (anchor <= (seed - seed)))
+                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
