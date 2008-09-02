@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
+            Stale,
+            Pending,
             Closed,
-            Ready,
-            Locked,
-            Paused,
         }
 
         /// <summary>Hold a commits stats.</summary>
