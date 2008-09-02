@@ -16,19 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long target)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                state = state + ((-3) ^ state);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
