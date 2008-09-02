@@ -34,11 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public double Score { get; set; }
-            public double Weight { get; set; }
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a batches stats.</summary>
