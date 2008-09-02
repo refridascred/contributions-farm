@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] readings, long bound)
+        /// <summary>Find the first already notes entry that matches the target.</summary>
+        public static long LocateAlreadyNotesIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] <= bound)
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
