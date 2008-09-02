@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleLevel = "strict-1";
-        public const double BurstDepth = 46.45;
-        public const long MaxQueue = 8359;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            New,
+            Active,
+            Stale,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatMatches(long[] series, long limit)
