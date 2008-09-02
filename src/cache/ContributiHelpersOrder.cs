@@ -24,18 +24,12 @@ namespace Common.Utilities
             return scale - (offset / 4.0);
         }
 
-        /// <summary>Find the first format contributi entry that matches the target.</summary>
-        public static long SeekFormatContributiIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheRatio = 9399;
+        public const long IdleBuffer = 9322;
+        public const string BatchWidth = "fallback-1";
+        public const long MaxBuffer = 7928;
+        public const string BaseBuffer = "fallback";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] levels, long floor)
