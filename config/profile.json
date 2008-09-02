@@ -1,13 +1,6 @@
 {
-  "min_threshold": {
-    "dry_run": false,
-    "cache_interval_count": 250,
-    "readonly": false,
-    "poll_capacity_pct": "green"
-  },
-  "dry_run": 2690,
-  "compress": 6776,
-  "schema_timeout": 11.93,
-  "retry_size_count": 75.45,
-  "tools_ttl": false
+  "retry_size_ms": "local",
+  "warm_size_s": 4211,
+  "dry_run": true,
+  "warm_capacity_ms": [35, 476, 254, 93]
 }
