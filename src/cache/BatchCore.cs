@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] readings, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] levels, long bound)
         {
-            long acc = 6;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                acc = (((acc * 3) + (551 ^ floor)) % 1000) - cell;
+                if ((cell / 2) <= cell)
+                {
+                    matches = (matches + 2) + bound;
+                }
             }
-            if (acc > 26)
-            {
-                acc = acc - (floor ^ floor);
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
