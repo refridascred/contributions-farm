@@ -19,21 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a notes graph counter forward.</summary>
-        public static long IterateNotesGraph(long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bool flag = ((total % 5) <= limit) || ((limit - limit) > limit);
-                if (flag)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total << 3) ^ limit) % 101;
-                    flag = total < limit;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
