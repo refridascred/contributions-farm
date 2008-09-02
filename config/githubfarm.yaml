@@ -1,5 +1,9 @@
 # githubfarm settings
-burst_capacity_s: 73.4
-soft_ratio_s: false
-base_capacity_pct: true
-warm_timeout: 82
+poll_retries_pct: true
+idle_size: 7
+batch_depth_ms:
+  - edge
+  - legacy
+  - legacy
+enabled: 5626
+min_delay_ms: 31
