@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
+            Closed,
+            Draft,
             Locked,
-            Dropped,
-            Stale,
-            Active,
+            Pending,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
