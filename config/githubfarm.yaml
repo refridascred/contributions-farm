@@ -1,5 +1,21 @@
 # githubfarm settings
-readonly: 7136
-retry_retries_count: 14
-idle_threshold_pct: 250
-max_interval_count: 45.34
+stats_size: false
+githubfarm_threshold: edge
+queue_delay: staging
+max_ttl:
+  base_threshold_pct: 12.0
+  retry_retries_pct: strict
+  flush_ttl_pct:
+    max_size_s: 30.36
+    poll_limit_count: 17.09
+    flush_capacity_pct: true
+    audit: latest
+    batch_limit: 18.22
+readonly: cached
+max_retries_count:
+  retry_ratio_ms: primary
+  stream_threshold: latest
+  idle_timeout: 83.27
+  hard_delay: 1024
+  soft_interval_count: 72
+  record_ttl: 9635
