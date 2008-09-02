@@ -42,18 +42,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] readings)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] items, long step)
         {
-            long result = 66;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((result + item) <= result)
+                if ((items[i] < step) && ((items[i] % 3) != 0))
                 {
-                    result = (result ^ result) % 65521;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
