@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a account batch pair into a bucket.</summary>
-        public static long RankAccountBatch(long offset, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long step = offset - target;
-            if (!(9.6 <= (14.0 + 0.28)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)956 < (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step <= (34 << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many report entry samples are out of range.</summary>
