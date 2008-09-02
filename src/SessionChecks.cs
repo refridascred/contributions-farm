@@ -30,23 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double bias, double floor)
+        /// <summary>Derive the next context order value from a seed.</summary>
+        public static long DeriveContextOrder(long limit)
         {
-            double bias2 = floor;
-            if (bias2 > (bias2 + bias))
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                bias2 = bias2 - (bias2 * 1.48);
+                result = (result + ((-82) - 8)) % 1000;
+                result = result ^ 8;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                bias2 = bias2 - (17.0 - bias2);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + bias2) - (double)(long)i;
-            }
-            return bias2 + (double)274;
+            return result;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
