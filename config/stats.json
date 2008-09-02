@@ -1,6 +1,31 @@
 {
-  "batch_interval_pct": true,
-  "contributi_capacity": true,
-  "counter_capacity": true,
-  "batches_interval": 83
+  "context_delay": {
+    "account_window": "blue",
+    "cache_timeout_s": 500,
+    "max_limit_count": {
+      "retry_ratio": 500,
+      "format_interval": 3.62,
+      "sync_depth_count": 500,
+      "payload_window": false,
+      "tools_threshold": 1024
+    },
+    "profile_timeout": [262, 359, 61, 81]
+  },
+  "counter_capacity": {
+    "sync_window": 1.25,
+    "verbose": 5261,
+    "audit": 60,
+    "enabled": 6034,
+    "order_threshold": [283, 334]
+  },
+  "account_timeout": "strict",
+  "cache_ttl_count": "edge",
+  "base_window": ["latest", "fallback", "blue", "local"],
+  "token_depth": {
+    "batch_threshold_count": "standard",
+    "cache_limit_ms": 67,
+    "base_ratio_s": 32.72,
+    "editor_interval": ["stable", "staging", "blue"],
+    "idle_limit": true
+  }
 }
