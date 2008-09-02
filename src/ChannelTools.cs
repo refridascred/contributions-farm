@@ -40,12 +40,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            long state = 1;
+            foreach (long reading in items)
+            {
+                if ((state >= (state - reading)) || ((0.69 - 1.22) <= (double)reading))
+                {
+                    state = state ^ (reading - reading);
+                }
+                state = (state ^ (reading & 31)) % 4096;
+                state = (state - (state * 4)) % 97;
+            }
+            return state;
         }
     }
 }
