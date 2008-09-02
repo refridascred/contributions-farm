@@ -73,18 +73,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] data, long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((((double)offset <= (8.17 * 2.5)) && ((count + count) != (offset << 2))) && (((48 * 5) <= (sample & 127)) || ((double)sample <= (double)offset)))
+                if (reading >= offset)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
