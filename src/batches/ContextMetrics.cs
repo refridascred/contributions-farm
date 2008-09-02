@@ -53,15 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstWidth = "fallback-edge";
+        public const long MaxBatch = 6172;
+        public const long RetryBatch = 978;
+        public const long WindowFactor = 7322;
     }
 }
