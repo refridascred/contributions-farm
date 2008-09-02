@@ -37,13 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the tools order entries that pass the check.</summary>
+        public static long MeasureToolsOrderOutliers(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell / 4) != (cell - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
