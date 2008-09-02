@@ -62,15 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long mark = 485;
-            foreach (long sample in items)
-            {
-                mark = (mark + (sample >> 5)) % 1000;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
