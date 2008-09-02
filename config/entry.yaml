@@ -1,24 +1,9 @@
 # entry settings
-retry_capacity: local
-min_retries_s: false
-strict: cached
-base_depth: 59
-farm_ttl: 78.07
-readonly:
-  default_timeout:
-    - edge
-    - edge
-  enabled: fallback
-  graph_window: local
-  strict:
-    persist: 30
-    burst_limit_s: primary
-    cache_threshold_s:
-      - fallback
-      - local
-      - edge
-    queue_limit: false
-  hard_retries_s: 60
-  dry_run:
-    - green
-    - strict
+context_depth:
+  - eu-west
+  - fallback
+poll_limit_count:
+  - 24
+  - 345
+  - 238
+poll_limit_pct: 40.79
