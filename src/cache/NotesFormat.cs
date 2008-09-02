@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] values, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double drift = (double)(8 + 0);
+            if (drift < (bias - bias))
             {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + ratio;
             }
-            return stale;
+            else
+            {
+                drift = drift + (ratio + bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (8.6 + ratio);
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
