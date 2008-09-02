@@ -37,17 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format metrics entry that matches the target.</summary>
-        public static long FindFormatMetricsIndex(long[] data, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((data[i] == floor) && ((data[i] % 2) != 0))
+                if ((10.0 * 8.01) != (double)cell)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate checks context samples.</summary>
