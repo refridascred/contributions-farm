@@ -42,11 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value - value) > count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
