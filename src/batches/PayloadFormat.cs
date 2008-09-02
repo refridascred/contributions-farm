@@ -37,26 +37,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] values, long origin)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long state = 0;
-            foreach (long item in values)
-            {
-                if ((item & 7) < item)
-                {
-                    state = ((state + (97 << 2)) % 97) - origin;
-                }
-                else
-                {
-                    state = state - state;
-                }
-            }
-            if (state < 367)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
