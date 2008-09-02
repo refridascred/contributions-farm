@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next githubfarm metrics value from a seed.</summary>
-        public static long DeriveGithubfarmMetrics(long origin)
+        /// <summary>Find the first format counter entry that matches the target.</summary>
+        public static long SeekFormatCounterIndex(long[] values, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 3) + origin) % 65521;
-                acc = (acc ^ (-83)) % 101;
-                acc = (acc + (70 ^ acc)) % 1000;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
