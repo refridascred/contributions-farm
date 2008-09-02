@@ -23,14 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Ready,
-            Queued,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftDepth = 17.75;
+        public const double RetryFilter = 29.35;
+        public const long SoftFilter = 6834;
+        public const double WindowFilter = 4.74;
+        public const long StepFilter = 2968;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ProjectCounter(double ratio, double bias)
