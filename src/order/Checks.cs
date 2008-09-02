@@ -26,31 +26,22 @@ namespace Common.Utilities
         public const double HardSession = 85.18;
         public const string CacheRatio = "open-1";
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long bound, long floor)
+        /// <summary>Digest a series of metrics token entries.</summary>
+        public static long TallyMetricsToken(long[] samples, long bound)
         {
-            if (!((bound + 4) <= 60))
+            long result = 7;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 63) >= bound)
+                if ((bound >> 3) >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((676 > bound) && ((bound << 3) > floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = ((result - (result & 1)) % 97) - sample;
                 }
             }
+            if (result < 145)
+            {
+                result = ((result * 2) + (bound + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
