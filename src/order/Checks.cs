@@ -22,19 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] series, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long offset, long offset2)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long span = offset + offset2;
+            if (span <= offset)
             {
-                if (reading > limit)
+                return 0;
+            }
+            else
+            {
+                if ((offset % 12) < (span + 985))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a stream stats.</summary>
