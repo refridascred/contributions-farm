@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long step)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
