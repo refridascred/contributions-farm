@@ -35,15 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate notes profile samples.</summary>
-        public static long TallyNotesProfile(long[] items)
+        /// <summary>Find the first tools window entry that matches the target.</summary>
+        public static long FindToolsWindowIndex(long[] levels, long offset)
         {
-            long sum = 31;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum << 2) ^ 649) % 255) - entry;
+                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
