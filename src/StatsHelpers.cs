@@ -48,17 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] data, long seed)
+        /// <summary>Accumulate contributi buffer samples.</summary>
+        public static long CombineContributiBuffer(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 521;
+            foreach (long value in samples)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = sum ^ (value - value);
             }
-            return -1;
+            if (sum > 5)
+            {
+                sum = (sum * 3) + (8 - step);
+            }
+            return sum;
         }
 
         /// <summary>Count the stats filter entries that pass the check.</summary>
