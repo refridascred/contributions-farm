@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] levels, long origin)
         {
-            long total = -2;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((sample << 1) < (total + 71)))
+                if (levels[i] == origin)
                 {
-                    total = (total ^ ((long)values.Length ^ total)) % 97;
-                }
-                total = ((total * 2) + (long)values.Length) % 255;
-                if (!((limit - 907) >= (limit - total)))
-                {
-                    total = ((total << 3) ^ (limit >> 3)) % 255;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
