@@ -40,15 +40,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of queue graph entries.</summary>
-        public static long CombineQueueGraph(long[] readings, long offset)
+        /// <summary>Look up the position of a stream buffer sample.</summary>
+        public static long FindStreamBufferIndex(long[] values, long floor)
         {
-            long acc = 73;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (offset ^ acc)) - value;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
