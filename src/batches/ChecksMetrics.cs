@@ -60,14 +60,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 4859;
+        public const string BaseWidth = "stable-edge";
+        public const long DefaultWidth = 8214;
+        public const double WindowToken = 79.1;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitCluster = 3810;
