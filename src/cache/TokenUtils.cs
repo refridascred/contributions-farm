@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] items, long seed)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
