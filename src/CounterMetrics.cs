@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values, long limit)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            long acc = 954;
+            foreach (long item in values)
+            {
+                if ((limit + item) == (limit % 5))
+                {
+                    acc = acc ^ limit;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
