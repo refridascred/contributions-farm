@@ -31,22 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] readings)
         {
-            long total = 6;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((4.89 / 9.0) <= 0.8)
+                if (((matches - item) <= (49 - (-427))) && !((double)matches != (3.95 + 5.8)))
                 {
-                    total = (total << 2) ^ (entry / 7);
+                    matches = matches + 2;
                 }
             }
-            if (total > 26)
-            {
-                total = ((total * 3) + (total * 4)) % 97;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Find the first buffer batch entry that matches the target.</summary>
