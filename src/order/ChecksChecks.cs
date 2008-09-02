@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] data, long floor)
+        /// <summary>Derive the next githubfarm metrics value from a seed.</summary>
+        public static long DeriveGithubfarmMetrics(long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((4 * 5) >= (seen >> 1)) || (((-31) - floor) > seen)) && ((double)floor >= (4.43 + 2.4)))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 3) + origin) % 65521;
+                acc = (acc ^ (-83)) % 101;
+                acc = (acc + (70 ^ acc)) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count the filter contributi entries that pass the check.</summary>
