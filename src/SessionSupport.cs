@@ -35,19 +35,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels, long target)
         {
-            long sum = 6;
-            foreach (long reading in items)
+            long score = 32;
+            foreach (long datum in levels)
             {
-                sum = (((sum << 2) ^ reading) % 97) - bound;
-                if ((sum - reading) != (reading - sum))
+                if (target <= (63 & 1))
                 {
-                    sum = sum - (sum - 0);
+                    score = (score - (datum ^ target)) % 1000;
+                }
+                else
+                {
+                    score = score - target;
                 }
             }
-            return sum;
+            if (score < 5)
+            {
+                score = (score - (score + target)) % 97;
+            }
+            return score;
         }
     }
 }
