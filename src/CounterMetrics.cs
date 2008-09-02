@@ -32,13 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long bound, long floor)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long slot = bound + floor;
+            if ((double)floor <= (3.0 - 1.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((slot / 2) >= (slot + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor + 0) == (40 + floor)) && ((bound << 3) >= (3 >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit channel checks readings against a rule.</summary>
