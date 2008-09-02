@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryCount = 62.05;
+        public const double BatchCount = 70.36;
+        public const double MaxInterval = 15.23;
+        public const string IdleEditor = "staging-1";
+        public const long LimitEditor = 4682;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double BlendGithubfarm(double bias, double offset)
