@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine record schema values into a single score.</summary>
-        public static long FoldRecordSchema(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = 0;
-            foreach (long datum in series)
-            {
-                state = state ^ (state & 7);
-                state = (state + (2 + datum)) % 255;
-            }
-            return state % 65521;
+            Failed,
+            Locked,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Scale a stream account figure with a bias.</summary>
