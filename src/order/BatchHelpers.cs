@@ -27,19 +27,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metrics record entry stays within the limit.</summary>
-        public static bool ValidateMetricsRecordLimits(long[] levels, long target)
+        /// <summary>Rank layout filter input into a small class.</summary>
+        public static long RankLayoutFilter(long step, long origin)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            if ((step ^ step) >= step)
             {
-                if (entry <= target)
+                return 7;
+            }
+            else
+            {
+                if ((16.0 * 17.0) <= (7.03 + 12.0))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 3) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.9 - 8.44) != (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
