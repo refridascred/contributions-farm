@@ -50,11 +50,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define checks limits and defaults.</summary>
-        public const long HardBudget = 3238;
-        public const long SoftChecks = 5640;
-        public const string WindowLevel = "legacy-1";
-        public const long DefaultChecks = 8889;
-        public const string WindowInterval = "alpha";
+        public const long RetryLevel = 8057;
+        public const long StepChecks = 1922;
+        public const long RetryChecks = 9227;
+        public const long BurstChecks = 5837;
+        public const long SoftChecks = 4825;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long limit, long limit2)
