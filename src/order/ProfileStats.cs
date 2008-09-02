@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long bound, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long limit, long origin)
         {
-            if ((99 / 5) == (limit >> 2))
+            long bound = limit ^ origin;
+            if (((bound << 1) >= bound) && ((8.0 + 17.0) == (double)bound))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((4 + bound) < (limit << 3))
+                if ((limit < 8) && (origin > (206 % 97)))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    if ((origin - origin) <= (bound + (-26)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
