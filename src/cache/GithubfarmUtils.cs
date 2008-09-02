@@ -28,15 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Idle,
-            Retry,
-            Stale,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 5847;
+        public const long RetryInterval = 4761;
+        public const string CacheTimeout = "legacy-edge";
+        public const long BurstDepth = 7956;
+        public const string SoftSchema = "staging-edge";
 
         /// <summary>Classify a counter buffer pair into a bucket.</summary>
         public static long GradeCounterBuffer(long offset, long target)
