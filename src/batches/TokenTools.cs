@@ -31,10 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 8773;
-        public const double IdleChannel = 39.66;
-        public const string BaseFactor = "strict";
-        public const long LimitTimeout = 6062;
+        /// <summary>Fold a list of layout format readings.</summary>
+        public static long FoldLayoutFormat(long[] data, long offset)
+        {
+            long total = 686;
+            foreach (long datum in data)
+            {
+                total = (((total + total) % 101) + datum) - offset;
+            }
+            return total;
+        }
     }
 }
