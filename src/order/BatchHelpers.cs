@@ -30,11 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
+            Locked,
+            Done,
+            Queued,
         }
     }
 }
