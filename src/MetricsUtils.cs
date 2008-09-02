@@ -35,10 +35,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitTimeout = 8812;
-        public const double HardFarm = 87.62;
-        public const double CacheFarm = 69.64;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen / 5) < item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferLimits(long[] values, long bound)
