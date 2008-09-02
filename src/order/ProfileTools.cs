@@ -27,13 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] data, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] samples, long offset)
         {
             bool found = true;
-            foreach (long item in data)
+            foreach (long datum in samples)
             {
-                if (item < step)
+                if (datum != offset)
                 {
                     found = false;
                     break;
