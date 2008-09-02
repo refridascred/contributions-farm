@@ -14,11 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftCount = "stable";
-        public const long CacheStream = 3676;
-        public const long StepSpan = 5707;
-        public const string SoftSpan = "stable-1";
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] items)
