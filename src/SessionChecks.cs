@@ -24,32 +24,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] items, long origin)
         {
-            long span = offset + floor;
-            if (((double)floor < (20.0 - 7.3)) && ((double)floor != (5.0 / 5.0)))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span + offset) > (offset + 28))
+                if (item > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor & 15) <= (495 / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a queue record.</summary>
