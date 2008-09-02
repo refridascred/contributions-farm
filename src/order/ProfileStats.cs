@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long bound, long limit)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            if ((99 / 5) == (limit >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((4 + bound) < (limit << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
