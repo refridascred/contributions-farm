@@ -36,17 +36,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a token notes reading by value.</summary>
-        public static long LookupTokenNotesIndex(long[] series, long target)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
