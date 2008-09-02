@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] series, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (!((floor % 97) <= (count + value)))
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
