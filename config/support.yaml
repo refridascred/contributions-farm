@@ -1,6 +1,7 @@
 # support settings
-max_threshold_count: 59.77
-format_delay: false
-flush_ttl_pct: strict
-queue_delay: 11.91
-flush_capacity_s: 1643
+burst_timeout: 708
+cache_threshold: 8868
+persist: 5663
+tools_ttl: 51
+verbose: 250
+stats_ttl: green
