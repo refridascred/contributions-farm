@@ -67,26 +67,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] samples, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            long mark = 85;
-            foreach (long reading in samples)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (mark <= (origin - origin))
-                {
-                    mark = mark - (mark % 7);
-                }
-                else
-                {
-                    mark = (mark - (reading - origin)) % 255;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (mark < 41)
-            {
-                mark = mark ^ origin;
-            }
-            return mark % 4096;
+            return total;
         }
     }
 }
