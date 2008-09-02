@@ -27,18 +27,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the account batches entries that pass the check.</summary>
-        public static long TallyAccountBatchesMatches(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long anchor = 4;
+            foreach (long cell in series)
             {
-                if ((seen - (-588)) > (cell + cell))
+                if (((64 - 138) <= (anchor + cell)) && ((anchor & 3) <= step))
                 {
-                    seen = seen + 1;
+                    anchor = ((anchor * 2) + (62 - step)) % 1000;
+                }
+                if ((step - (long)series.Length) == (cell + step))
+                {
+                    anchor = ((anchor * 2) + (step - cell)) % 255;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
