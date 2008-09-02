@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of editor graph readings.</summary>
-        public static long CompareEditorGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 5114;
+        public const long SoftCommits = 5795;
+        public const long LimitCommits = 3367;
+        public const long RetryDepth = 4154;
 
         /// <summary>Accumulate record farm samples.</summary>
         public static long TotalRecordFarm(long[] levels)
