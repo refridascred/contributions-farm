@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] series)
         {
-            New,
-            Failed,
-            Locked,
-            Done,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + count) == (count / 7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two stream schema measurements.</summary>
