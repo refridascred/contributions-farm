@@ -31,23 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double gain, double floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] data, long target)
         {
-            double ratio = floor;
-            if (ratio >= ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - floor) - gain;
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)736;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - 12.0) + (double)(long)i;
-            }
-            return ratio - floor;
+            return -1;
         }
     }
 }
