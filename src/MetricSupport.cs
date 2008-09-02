@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every context command entry stays within the limit.</summary>
-        public static bool ValidateContextCommandLimits(long[] items, long seed)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= seed)
+                if (data[i] == bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the githubfarm payload entries that pass the check.</summary>
