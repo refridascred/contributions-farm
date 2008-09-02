@@ -44,23 +44,13 @@ namespace Common.Utilities
             return mean - (double)256;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)state < 0.15)
-                {
-                    state = (state + (long)i) % 65521;
-                }
-                else
-                {
-                    state = state + (target + target);
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Pending,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
