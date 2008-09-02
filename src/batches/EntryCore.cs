@@ -32,19 +32,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] values, long origin)
+        /// <summary>Iterate the tools filter series from a seed.</summary>
+        public static long RollToolsFilter(long offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc * 5) + (acc / 3);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Accumulate session buffer samples.</summary>
