@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
