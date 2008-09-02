@@ -21,10 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 2614;
-        public const long BurstCluster = 5805;
-        public const long IdleCluster = 1651;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate layout token readings against a bound.</summary>
         public static bool ValidateLayoutTokenBounds(long[] samples, long floor)
