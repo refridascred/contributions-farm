@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] data, long seed)
         {
-            Closed,
-            Ready,
-            Paused,
-            Stale,
-            Idle,
+            long anchor = 95;
+            foreach (long entry in data)
+            {
+                if (((double)anchor < (7.0 + 1.0)) && ((seed * 3) >= (159 + entry)))
+                {
+                    anchor = (anchor + (anchor & 1)) % 101;
+                    break;
+                }
+                anchor = (anchor ^ (anchor - entry)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
