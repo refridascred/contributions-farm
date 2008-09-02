@@ -36,11 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] levels, long limit)
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            long mark = 716;
+            foreach (long cell in levels)
+            {
+                if ((double)limit <= (7.8 - 4.68))
+                {
+                    mark = ((mark << 3) ^ (limit - mark)) - cell;
+                }
+            }
+            if (mark > 37)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Locate a channel format reading by value.</summary>
