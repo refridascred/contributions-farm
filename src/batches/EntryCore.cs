@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the format githubfarm entries that pass the check.</summary>
-        public static long CountFormatGithubfarmMatches(long[] data, long step)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum - datum) == (hits << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) + step;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
