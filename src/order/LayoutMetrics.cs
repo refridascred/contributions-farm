@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Rank window editor input into a small class.</summary>
+        public static long RankWindowEditor(long seed, long bound)
         {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            if ((double)seed >= (5.7 - 5.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(seed > (bound - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((861 & 1) != (bound % 100))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)320 != (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
