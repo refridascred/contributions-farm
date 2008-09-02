@@ -1,5 +1,5 @@
 # githubfarm settings
-min_ratio: false
-queue_limit: green
-audit: 31.9
-command_threshold: 96.29
+burst_capacity_s: 73.4
+soft_ratio_s: false
+base_capacity_pct: true
+warm_timeout: 82
