@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const double IdleInterval = 23.22;
         public const double MaxInterval = 40.67;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 57.96;
-        public const string LimitContext = "fallback";
-        public const long BaseRatio = 7939;
+        /// <summary>Find the first buffer checks entry that matches the target.</summary>
+        public static long SeekBufferChecksIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
