@@ -34,22 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch githubfarm values into a single score.</summary>
-        public static long CombineBatchGithubfarm(long[] levels)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long result = 4;
-            foreach (long datum in levels)
-            {
-                if ((19.0 * 1.06) < (double)datum)
-                {
-                    result = (result - datum) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (datum + result)) % 65521;
-                }
-            }
-            return result;
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
