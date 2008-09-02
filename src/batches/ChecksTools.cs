@@ -32,12 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftInterval = "latest-v2";
-        public const string HardFormat = "stable-v2";
-        public const long RetryInterval = 7679;
-        public const double BurstFormat = 94.11;
-        public const string SoftDepth = "staging-edge";
+        /// <summary>Locate a command record reading by value.</summary>
+        public static long FindCommandRecordIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] data)
