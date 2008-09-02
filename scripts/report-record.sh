@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in staging fallback green; do
+for item in fallback standard; do
     log "checking ${item}"
 done
 
+RECORD_LIMIT=291
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
