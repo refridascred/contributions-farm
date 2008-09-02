@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double bias, double bias2)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings)
         {
-            double weight = bias;
-            if (weight <= bias2)
+            long mark = -351;
+            foreach (long entry in readings)
             {
-                weight = weight + (bias / 3.0);
+                if ((entry + entry) <= (mark & 31))
+                {
+                    mark = (mark + (mark ^ entry)) % 255;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - weight;
+            return mark;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
