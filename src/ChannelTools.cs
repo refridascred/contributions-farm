@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] samples, long bound)
+        /// <summary>Count the account record entries that pass the check.</summary>
+        public static long MeasureAccountRecordHits(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (item < bound)
+                if (((double)cell <= (4.0 - 17.0)) && ((double)cell <= 1.5))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
