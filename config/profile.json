@@ -1,6 +1,5 @@
 {
-  "flush_ttl": 33.7,
-  "metrics_size": "primary",
-  "burst_window": 92,
-  "support_window": "latest"
+  "idle_ratio_ms": true,
+  "support_timeout": true,
+  "retry_timeout_pct": 500
 }
