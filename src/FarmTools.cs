@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit already command readings against a rule.</summary>
-        public static long MeasureAlreadyCommandGaps(long[] series)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long limit, long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if (!((limit << 3) <= (limit / 5)))
             {
-                if ((seen - reading) == (reading * 5))
+                return 5;
+            }
+            else
+            {
+                if ((step + limit) == (step & 1))
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
