@@ -35,17 +35,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] levels, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long floor, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor + target) != (target << 1))
             {
-                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if (!((double)target == (9.66 / 6.0)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((818 + 70) != (floor << 3)) && ((double)170 >= (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
