@@ -1,18 +1,8 @@
 {
-  "idle_size_pct": 2855,
-  "burst_timeout": "stable",
-  "window_ttl": {
-    "persist": 58.64,
-    "base_threshold": {
-      "poll_interval": false,
-      "burst_delay": true,
-      "verbose": [467, 153]
-    },
-    "enabled": 24.81,
-    "compress": 5701,
-    "burst_size_pct": "standard",
-    "commits_ratio": [290, 118, 423]
-  },
-  "githubfarm_delay": 5.52,
-  "enabled": "latest"
+  "cache_threshold_count": 38.63,
+  "strict": [488, 322, 206, 483],
+  "queue_ratio": "local",
+  "poll_size_ms": "staging",
+  "idle_interval_pct": 7598,
+  "hard_timeout_count": true
 }
