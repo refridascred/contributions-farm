@@ -32,12 +32,11 @@ namespace Common.Utilities
             return ((gain + (double)124) + rate) + bias;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinScore = "stable-v2";
+        public const long LimitScore = 8928;
+        public const string WindowFactor = "legacy-edge";
+        public const double CacheGithubfarm = 55.58;
 
         /// <summary>Match up checks samples.</summary>
         public static long MatchChecksCount(long[] values)
