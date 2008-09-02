@@ -1,6 +1,10 @@
-id,active,score,region
-1,40.59,331,80.81
-2,162,37.31,latest
-3,725,22.24,32.97
-4,526,89.26,417
-5,364,primary,standard
+id,level,region,count
+1,eu-west,148,573
+2,837,859,69
+3,929,open,53.2
+4,37.68,98.95,88.57
+5,strict,23.29,local
+6,37.69,983,primary
+7,local,57.92,green
+8,433,fallback,910
+9,stable,805,green
