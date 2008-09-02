@@ -25,19 +25,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] data, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Accumulate queue entry samples.</summary>
