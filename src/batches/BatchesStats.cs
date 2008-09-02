@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] samples, long limit)
+        /// <summary>Audit payload tools readings against a rule.</summary>
+        public static long TallyPayloadToolsOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((datum / 7) <= (99 + limit))
+                if ((8.0 / 7.0) < (double)value)
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
