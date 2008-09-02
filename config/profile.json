@@ -1,5 +1,13 @@
 {
-  "idle_ratio_ms": true,
-  "support_timeout": true,
-  "retry_timeout_pct": 500
+  "soft_delay_pct": false,
+  "strict": "staging",
+  "retry_depth_s": "cached",
+  "audit": "stable",
+  "cache_limit": {
+    "strict": 9309,
+    "sync_size_s": 64,
+    "batch_delay_ms": 30,
+    "base_threshold_s": 5
+  },
+  "idle_depth": 9165
 }
