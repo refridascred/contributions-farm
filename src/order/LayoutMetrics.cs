@@ -38,12 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            New,
-            Active,
-            Paused,
+            Retry,
+            Done,
+            Failed,
         }
     }
 }
