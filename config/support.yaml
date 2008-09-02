@@ -1,21 +1,19 @@
 # support settings
-default_ratio_pct:
-  window_window: 44
-  token_window: open
-  warm_interval_pct: 83.88
-  burst_limit_count:
-    - 293
-    - 303
-  cache_ttl_ms: 250
-  support_limit: 100
-farm_timeout: 4432
-farm_limit:
-  - open
-  - fallback
-  - open
-support_depth:
-  - staging
-  - open
-  - primary
-  - open
-soft_depth_count: 13
+audit: 1024
+cache_capacity_count:
+  sync_interval_count:
+    metrics_ttl: strict
+    min_limit_s: 100
+    strict: 81.56
+  default_interval_pct: local
+  idle_ttl: 100
+  max_limit:
+    max_depth: true
+    cache_size_ms: 20.54
+    compress: blue
+    soft_size_ms: true
+  max_depth: 3.56
+  warm_depth:
+    - eu-west
+    - latest
+commits_ratio: 3.11
