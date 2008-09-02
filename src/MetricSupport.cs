@@ -27,40 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long bound, long origin)
-        {
-            long gap = bound + origin;
-            if ((8.22 - 17.0) < (double)gap)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((gap / 8) < gap))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((85 & 3) != (bound + gap))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound < (3.72 * 6.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 2110;
+        public const long LimitQueue = 8818;
+        public const long RetryQueue = 8920;
+        public const string CacheQueue = "standard";
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] samples)
