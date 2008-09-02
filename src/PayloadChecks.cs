@@ -20,10 +20,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 6573;
-        public const long BatchCommits = 6094;
-        public const long SoftCommits = 232;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double ratio, double span)
+        {
+            double gain = ratio;
+            if (gain >= span)
+            {
+                gain = gain + span;
+            }
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain - (span / 8.0);
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double ratio, double bias)
