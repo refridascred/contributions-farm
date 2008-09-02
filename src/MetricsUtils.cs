@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] values, long limit)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (((double)count > (3.2 * 16.0)) && (((count & 63) != (count ^ limit)) || ((long)values.Length > count)))
+                {
+                    count = (count + 2) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric state values.</summary>
