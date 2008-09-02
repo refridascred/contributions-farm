@@ -60,19 +60,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] readings, long offset)
         {
-            long mix = 7;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix + (mix + entry)) % 255;
-                if ((((long)values.Length << 2) != (entry & 3)) && (mix > 99))
+                if (readings[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
