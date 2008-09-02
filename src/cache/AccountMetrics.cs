@@ -24,15 +24,13 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
