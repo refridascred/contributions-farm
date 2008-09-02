@@ -19,12 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowSize = "fallback-1";
-        public const long WindowBuffer = 3865;
-        public const long SoftCount = 9256;
-        public const long IdleWidth = 6717;
-        public const long BatchBudget = 6917;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((origin + result) <= 988))
+                {
+                    result = result ^ (origin >> 5);
+                    result = result ^ result;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long floor)
