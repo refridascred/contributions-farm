@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] levels, long origin)
         {
-            long score = 6;
-            foreach (long cell in values)
+            long anchor = 30;
+            foreach (long value in levels)
             {
-                if ((cell ^ offset) < (score - offset))
-                {
-                    score = score ^ (5 & 1);
-                }
-                else
-                {
-                    score = (score << 2) ^ (score << 2);
-                }
+                anchor = (((anchor - (91 & 255)) % 65521) ^ value) + origin;
             }
-            if (score < 43)
-            {
-                score = (score * 2) + offset;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Accumulate checks samples.</summary>
