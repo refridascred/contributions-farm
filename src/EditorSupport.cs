@@ -71,11 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((1.09 + 0.29) >= (double)(long)i) && (anchor <= (seed - seed)))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of context entries.</summary>
