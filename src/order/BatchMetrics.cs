@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Closed,
+            Idle,
+            Pending,
+            Synced,
         }
 
         /// <summary>Adjust a cluster reading.</summary>
