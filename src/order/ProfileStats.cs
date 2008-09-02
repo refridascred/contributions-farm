@@ -63,13 +63,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Blend two token tools measurements.</summary>
+        public static double BlendTokenTools(double gain, double offset)
         {
-            Closed,
-            Stale,
-            Done,
-            Dropped,
+            double bias = gain;
+            return (bias - (double)5) + offset;
         }
     }
 }
