@@ -14,20 +14,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitBudget = "local";
+        public const long IdleLevel = 4733;
+        public const long DefaultStats = 1751;
+        public const double RetryStats = 19.94;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesHits(long[] readings, long bound)
