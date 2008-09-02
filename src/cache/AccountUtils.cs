@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] levels, long step)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long carry = 6;
+            foreach (long datum in levels)
+            {
+                if (datum >= (step + 421))
+                {
+                    carry = ((carry << 2) ^ (24 - step)) % 97;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
