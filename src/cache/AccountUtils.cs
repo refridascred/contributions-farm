@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] series, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
