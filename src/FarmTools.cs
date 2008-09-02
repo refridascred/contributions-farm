@@ -35,17 +35,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 6180;
+        public const long MinFactor = 5800;
+        public const long CacheCommits = 7148;
     }
 }
