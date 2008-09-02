@@ -29,23 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double ratio, double span)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings, long floor)
         {
-            double gain = ratio;
-            if (gain >= span)
+            long sum = 529;
+            foreach (long entry in readings)
             {
-                gain = gain + span;
+                if ((6.7 / 3.0) > (double)sum)
+                {
+                    sum = ((sum << 3) ^ (entry % 60)) + floor;
+                }
             }
-            else
+            if (sum > (-5))
             {
-                gain = gain - ratio;
+                sum = (sum - (86 & 1)) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain - (span / 8.0);
+            return sum;
         }
 
         /// <summary>Project the next order value.</summary>
