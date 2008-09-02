@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheWidth = 6519;
-        public const double MinAlready = 89.37;
-        public const long IdleRatio = 9464;
-        public const double BurstAlready = 19.96;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (cell >= (449 & 63))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
