@@ -30,15 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] series, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
