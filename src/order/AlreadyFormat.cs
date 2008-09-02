@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 1216;
-        public const long MinLayout = 7486;
-        public const long DefaultBudget = 8418;
-        public const long StepInterval = 438;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheFilter = 215;
