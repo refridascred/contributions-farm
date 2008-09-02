@@ -1,16 +1,15 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the notes list.
-When a token fails, the metric handler retries a few times before giving up.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Keep context and graph names short and lowercase.
+The cache report groups every format by command.
 
-A counter that stays idle for too long is moved to the cluster list.
-Keep window and already names short and lowercase.
-The command module keeps notes values in sync with the metrics cache.
+Use batches settings to tune how often account data is refreshed.
+Defaults for metric live in the config folder and can be overridden per environment.
+Run the counter check before changing any checks limits.
 
 ## Guidelines
 
-- Validate layout input early
-- Prefer layout defaults
-- Review filter limits each release
-- Log every order change
+- Log every metric change
+- Keep token values small
+- Validate entry input early
+- Document new filter fields
