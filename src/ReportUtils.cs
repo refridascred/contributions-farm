@@ -36,12 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many counter format samples are out of range.</summary>
+        public static long AuditCounterFormatOutliers(long[] levels, long offset)
         {
-            Paused,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((offset >> 5) >= (tally / 3))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
