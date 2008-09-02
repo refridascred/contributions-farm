@@ -32,19 +32,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] levels, long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
     }
 }
