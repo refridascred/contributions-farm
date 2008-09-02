@@ -16,12 +16,14 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheRatio = 9399;
-        public const long IdleBuffer = 9322;
-        public const string BatchWidth = "fallback-1";
-        public const long MaxBuffer = 7928;
-        public const string BaseBuffer = "fallback";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Ready,
+            Queued,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] series)
