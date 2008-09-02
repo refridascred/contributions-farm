@@ -40,18 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] data, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)origin >= 6.55)
+                if ((97 & 1) >= ((long)series.Length * 4))
                 {
-                    tally = (tally + 3) ^ reading;
+                    seen = ((seen + 2) ^ reading) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
