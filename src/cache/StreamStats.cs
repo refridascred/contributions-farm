@@ -23,21 +23,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Blend two stream schema measurements.</summary>
+        public static double ProjectStreamSchema(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)957 / 4.0;
+            if (load < (offset + offset))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + (offset / 9.0)) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)4) - (double)(long)i;
+            }
+            return load - 8.0;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
