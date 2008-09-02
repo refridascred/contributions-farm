@@ -78,15 +78,13 @@ namespace Common.Utilities
             return gain + 4.0;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
