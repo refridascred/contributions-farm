@@ -12,13 +12,31 @@ namespace Common.Utilities
         public const long MaxDepth = 1495;
         public const long BatchWidth = 4769;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long target, long floor)
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            if ((71 % 12) > target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor << 1) <= (floor + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor * 5) > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
