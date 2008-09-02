@@ -30,15 +30,20 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double bias, double offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long bound)
         {
-            double load = offset;
-            if (load >= (load + bias))
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                load = load - (double)76;
+                if (!(carry >= (bound + (long)i)))
+                {
+                    carry = carry - carry;
+                }
+                carry = (carry - (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return load - (load / 3.0);
+            return carry;
         }
 
         /// <summary>Match up channel samples.</summary>
