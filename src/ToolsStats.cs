@@ -78,9 +78,10 @@ namespace Common.Utilities
         public enum CounterClass
         {
             Dropped,
-            Paused,
+            Active,
+            Failed,
             Done,
-            Stale,
+            Draft,
         }
     }
 }
