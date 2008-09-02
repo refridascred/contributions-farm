@@ -16,19 +16,12 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples)
-        {
-            long state = 33;
-            foreach (long entry in samples)
-            {
-                if (((state >> 3) == (state + entry)) && (entry >= (45 + entry)))
-                {
-                    state = ((state << 3) ^ (51 + entry)) % 4096;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 1411;
+        public const long SoftChannel = 4867;
+        public const double HardChannel = 33.72;
+        public const double IdleChannel = 49.35;
+        public const double MaxDepth = 18.72;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
