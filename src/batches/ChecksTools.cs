@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many notes metric samples are out of range.</summary>
+        public static long MeasureNotesMetricOutliers(long[] values, long seed)
         {
-            Done,
-            Draft,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + 37) < cell)
+                {
+                    seen = (seen + 2) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a token support reading by value.</summary>
