@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] data, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 7;
+            foreach (long sample in data)
             {
-                if (data[i] == step)
+                if (acc < (step << 2))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + (step % 8)) + sample;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
