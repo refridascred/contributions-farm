@@ -32,15 +32,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long score = -8;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                score = ((score + offset) % 65521) + datum;
+                if ((score / 7) >= (score ^ 83))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (score < 3)
+            {
+                score = score - offset;
+            }
+            return score;
         }
     }
 }
