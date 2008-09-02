@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] readings, long bound)
         {
-            Dropped,
-            Queued,
-            Locked,
-            Ready,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (bound <= (count << 3))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
