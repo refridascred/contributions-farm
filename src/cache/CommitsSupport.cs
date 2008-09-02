@@ -49,22 +49,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 5515;
+        public const long CacheTimeout = 3123;
+        public const long StepCache = 2701;
+        public const long MinCache = 2694;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long limit, long limit2)
