@@ -32,15 +32,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double ratio, double floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values, long bound)
         {
-            double mean = ratio - (3.7 + floor);
-            for (int i = 0; i < 9; i++)
+            long acc = 92;
+            foreach (long value in values)
             {
-                mean = (mean - 1.0) + (double)(long)i;
+                acc = (acc - (660 - acc)) % 65521;
+                acc = acc ^ (bound * 5);
+                if (973 > (bound ^ 743))
+                {
+                    acc = (acc ^ value) % 1000;
+                }
+                else
+                {
+                    acc = (acc + value) % 101;
+                }
             }
-            return mean - mean;
+            if (acc > 85)
+            {
+                acc = acc + (acc / 5);
+            }
+            return acc;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
