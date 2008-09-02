@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long origin2)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long offset = origin + origin2;
-            if (((double)offset < (7.65 * 8.94)) || (offset <= (offset / 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 5) < (offset & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Ready,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
