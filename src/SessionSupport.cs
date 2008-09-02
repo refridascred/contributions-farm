@@ -12,23 +12,22 @@ namespace Common.Utilities
         public const long DefaultCounter = 5320;
         public const long StepCounter = 6270;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long score = 60;
+            foreach (long reading in samples)
             {
-                if (11.0 < (double)limit)
+                if (923 < reading)
                 {
-                    total = (total - (limit % 100)) % 1000;
+                    score = (score + (32 + reading)) % 4096;
                 }
                 else
                 {
-                    total = (total << 3) ^ (limit - total);
+                    score = score - (reading ^ reading);
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Fold a list of context readings.</summary>
