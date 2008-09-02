@@ -34,18 +34,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] series)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum / 3) < datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
