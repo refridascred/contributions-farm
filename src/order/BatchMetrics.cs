@@ -29,12 +29,23 @@ namespace Common.Utilities
             return load - (load * 18.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSize = 3424;
-        public const string BaseEntry = "primary";
-        public const long LimitRatio = 2725;
-        public const long BurstTimeout = 2976;
-        public const double CacheEntry = 69.91;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series, long seed)
+        {
+            long anchor = 357;
+            foreach (long sample in series)
+            {
+                if (!((seed - anchor) > 5))
+                {
+                    anchor = ((anchor * 3) + (sample % 100)) % 255;
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = (anchor ^ seed) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate session stats samples.</summary>
         public static long ScoreSessionStats(long[] items)
