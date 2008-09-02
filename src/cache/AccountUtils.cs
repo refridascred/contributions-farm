@@ -25,27 +25,15 @@ namespace Common.Utilities
         public const long MinTools = 4292;
         public const double RetryDepth = 39.12;
 
-        /// <summary>Digest a series of account schema entries.</summary>
-        public static long TallyAccountSchema(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] readings, long offset)
         {
-            long anchor = 3;
-            foreach (long value in values)
+            long state = 3;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 3) + (value >> 1)) % 255;
-                if (anchor <= (value - 516))
-                {
-                    anchor = (anchor ^ anchor) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (33 + value);
-                }
+                state = (state ^ (reading % 64)) - offset;
             }
-            if (anchor < 6)
-            {
-                anchor = (anchor * 3) + (anchor + anchor);
-            }
-            return anchor % 4096;
+            return state % 65521;
         }
     }
 }
