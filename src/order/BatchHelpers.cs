@@ -20,12 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Validate format graph readings against a bound.</summary>
+        public static bool GuardFormatGraphLimits(long[] series, long origin)
         {
-            Ready,
-            Closed,
-            Active,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
