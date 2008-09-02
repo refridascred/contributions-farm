@@ -1,4 +1,10 @@
 # entry settings
-idle_depth_ms: 14
-hard_limit_s: primary
-cache_depth_pct: 11
+checks_threshold: 1024
+warm_window_count: 30
+compress: open
+record_retries: strict
+strict:
+  - cached
+  - latest
+  - latest
+  - green
