@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
+            Idle,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
