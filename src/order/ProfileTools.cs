@@ -60,19 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] series, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long state = 15;
+            foreach (long entry in data)
             {
-                if (sample != target)
+                if ((step % 8) >= entry)
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 3) + (388 - state)) % 1000;
                 }
             }
-            return ok;
+            return state;
         }
     }
 }
