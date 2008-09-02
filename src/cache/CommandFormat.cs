@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] levels, long floor)
         {
-            long sum = 4;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 2) + (datum - datum)) % 4096;
-                if (!((7 & 255) <= (datum / 8)))
+                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
                 {
-                    sum = ((sum << 3) ^ (414 + sum)) % 101;
-                }
-                else
-                {
-                    sum = (sum + (1 - 50)) % 4096;
+                    return (long)i;
                 }
             }
-            if (sum < 720)
-            {
-                sum = ((sum * 2) + sum) % 101;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Combine order values into a single score.</summary>
