@@ -12,22 +12,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] items, long bound)
+        /// <summary>Check that every farm metric entry stays within the limit.</summary>
+        public static bool VerifyFarmMetricBounds(long[] samples, long step)
         {
-            long acc = 710;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (!(sample < (sample / 2)))
+                if (sample != step)
                 {
-                    acc = (acc * 2) + (acc >> 5);
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 87)
-            {
-                acc = acc ^ (bound % 60);
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
