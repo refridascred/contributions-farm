@@ -90,12 +90,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Accumulate commits metric samples.</summary>
+        public static long TotalCommitsMetric(long[] items, long offset)
         {
-            Locked,
-            Active,
-            Done,
+            long carry = 147;
+            foreach (long item in items)
+            {
+                carry = ((((carry << 2) ^ (carry & 127)) % 65521) ^ item) - offset;
+            }
+            if (carry < 65)
+            {
+                carry = (carry + (3 - carry)) % 255;
+            }
+            return carry;
         }
     }
 }
