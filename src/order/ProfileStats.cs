@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Fold a list of order context readings.</summary>
+        public static long FoldOrderContext(long[] series)
         {
-            long result = 8;
-            foreach (long item in items)
+            long acc = 19;
+            foreach (long cell in series)
             {
-                if ((item + result) > (result / 9))
-                {
-                    result = (result - ((long)items.Length + result)) % 255;
-                }
+                acc = acc + (cell ^ acc);
             }
-            return result % 65521;
+            return acc % 1000;
         }
 
         /// <summary>Match up queue samples.</summary>
