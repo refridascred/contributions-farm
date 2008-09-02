@@ -51,22 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] data, long step)
         {
-            long total = 356;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (!((long)values.Length > (total << 3)))
+                if (item < step)
                 {
-                    total = (total ^ (value * 3)) % 65521;
-                }
-                else
-                {
-                    total = (total * 2) + (total & 255);
+                    found = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return found;
         }
 
         /// <summary>Describe the account phase values.</summary>
