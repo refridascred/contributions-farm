@@ -1,15 +1,31 @@
 # entry settings
-compress:
-  - local
-  - edge
-  - strict
-  - local
-profile_size:
-  verbose:
-    verbose: 10.88
-    idle_ratio_count: 323
-    enabled: latest
-    strict: blue
-  sync_ttl: open
-  contributi_window: local
-command_capacity: open
+default_limit_count: 49
+counter_threshold:
+  retry_delay:
+    audit: blue
+    cache_ratio:
+      - standard
+      - fallback
+      - edge
+      - strict
+    batches_size: 95.31
+    idle_size_pct:
+      - 439
+      - 88
+      - 479
+      - 126
+  hard_window_pct: edge
+  hard_limit_s: 18.46
+soft_ratio_s: local
+retry_timeout_ms: 8385
+warm_delay_pct:
+  max_ratio_ms: staging
+  max_window_s: standard
+  retry_interval_count: 43
+  burst_timeout_pct: 38
+  persist: 40
+  entry_threshold:
+    - 89
+    - 110
+    - 154
+batch_size_s: false
