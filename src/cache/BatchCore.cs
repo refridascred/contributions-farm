@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const double BatchRatio = 63.3;
         public const long CacheBudget = 1285;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] values, long step)
         {
-            Ready,
-            Paused,
-            Retry,
-            Dropped,
-            Failed,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
