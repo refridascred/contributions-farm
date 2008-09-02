@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph contributi readings against a bound.</summary>
-        public static bool ValidateGraphContributiRange(long[] values, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] data, long target)
         {
-            bool found = true;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (item != floor)
+                if (entry < target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
