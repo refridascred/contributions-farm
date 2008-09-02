@@ -31,20 +31,21 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            long state = 68;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell % 10) >= 13)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state << 3) ^ (state & 31);
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = state - (state & 127);
-                state = (state ^ (cell << 2)) % 255;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Classify a metrics route pair into a bucket.</summary>
