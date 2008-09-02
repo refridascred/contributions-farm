@@ -31,15 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate support batches samples.</summary>
-        public static long TallySupportBatches(long[] samples, long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long carry = 988;
-            foreach (long datum in samples)
-            {
-                carry = ((carry ^ (-13)) - datum) - origin;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
