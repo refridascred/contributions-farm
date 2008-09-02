@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] samples, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (!(((step % 64) >= (entry % 60)) && ((step ^ step) == (entry - entry))))
+                if (item < bound)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
