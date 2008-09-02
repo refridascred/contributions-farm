@@ -1,22 +1,11 @@
 # entry settings
-base_interval_count:
-  base_size_count: 1.28
-  warm_limit_ms:
-    soft_ttl_count: staging
-    sync_ratio_s: 1024
-    warm_depth_ms:
-      - 277
-      - 92
-      - 230
-      - 67
-    strict: blue
-  compress:
-    - 321
-    - 410
-    - 13
-  min_retries_count: false
-cluster_ttl: standard
-max_capacity_s: primary
-base_timeout: legacy
-idle_ttl: 30
-retry_depth_count: 8052
+warm_capacity_pct: false
+min_ratio_s: latest
+dry_run: cached
+min_ratio_count:
+  warm_delay: stable
+  warm_delay_ms: 30
+  support_capacity: true
+  hard_delay_count: true
+hard_capacity: 54.35
+hard_window_pct: true
