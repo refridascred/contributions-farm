@@ -1,5 +1,7 @@
 {
-  "dry_run": 28,
-  "commits_timeout": 61,
-  "report_window": [414, 469, 166, 152]
+  "batch_size_ms": [285, 226, 73],
+  "hard_ttl_ms": 15,
+  "hard_depth_ms": false,
+  "queue_interval": false,
+  "burst_retries": 31.87
 }
