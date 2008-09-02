@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long DefaultFilter = 156;
         public const long BurstFilter = 6779;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Adjust a format metric reading.</summary>
+        public static double ProjectFormatMetric(double ratio, double bias)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            double scale = bias;
+            if (scale <= bias)
+            {
+                scale = scale - (ratio * 8.8);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (ratio - scale);
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
