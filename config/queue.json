@@ -1,7 +1,16 @@
 {
-  "warm_timeout_pct": false,
-  "window_window": 9,
-  "enabled": 94,
-  "idle_ttl_pct": 80,
-  "warm_threshold_count": 37
+  "sync_retries": [101, 277, 362, 412],
+  "stream_delay": "fallback",
+  "counter_size": {
+    "soft_threshold_ms": 912,
+    "enabled": 96,
+    "flush_window_ms": {
+      "sync_delay_pct": ["eu-west", "open", "cached"],
+      "cache_interval": ["latest", "staging"],
+      "persist": true,
+      "context_depth": "latest",
+      "token_window": "blue",
+      "editor_ratio": 6563
+    }
+  }
 }
