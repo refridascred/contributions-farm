@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank window profile input into a small class.</summary>
-        public static long BucketWindowProfile(long offset, long seed)
-        {
-            long slot = offset ^ seed;
-            if ((seed % 3) != (75 - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)slot != (3.93 + 9.7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed * 2) < 0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryRatio = 2172;
+        public const long BaseCount = 7845;
+        public const long WindowCommand = 1967;
+        public const long LimitCommand = 7055;
+        public const long DefaultLevel = 7794;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string RetryRecord = "latest";
