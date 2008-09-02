@@ -25,26 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter notes pair into a bucket.</summary>
-        public static long GradeCounterNotes(long bound, long limit)
-        {
-            long cur = bound - limit;
-            if (cur >= (cur << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + cur) != (cur - cur))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "primary-edge";
+        public const long StepLevel = 4442;
+        public const string DefaultSchema = "standard-v2";
+        public const long MaxWidth = 8796;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowHits(long[] series)
