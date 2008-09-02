@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
