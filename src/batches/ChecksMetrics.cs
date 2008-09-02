@@ -70,13 +70,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftBudget = 6659;
+        public const double BurstSchema = 7.22;
+        public const long MaxBudget = 9541;
     }
 }
