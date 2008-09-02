@@ -81,11 +81,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseDepth = 3532;
-        public const double LimitFormat = 26.7;
-        public const long MaxLevel = 3349;
-        public const double HardFormat = 24.29;
-        public const long WindowFormat = 4605;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] levels, long seed)
+        {
+            long anchor = 875;
+            foreach (long cell in levels)
+            {
+                if ((seed ^ 7) == (seed - (-172)))
+                {
+                    anchor = ((anchor << 2) ^ seed) % 97;
+                }
+                if ((double)cell >= (1.9 - 15.0))
+                {
+                    break;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor;
+        }
     }
 }
