@@ -25,24 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((total + total) > (total ^ limit))
+                if ((matches >> 4) > (matches & 127))
                 {
-                    continue;
+                    matches = (matches + 1) - sample;
                 }
-                else
-                {
-                    total = (total - (limit - 877)) % 101;
-                    total = ((total * 3) + (limit + limit)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
