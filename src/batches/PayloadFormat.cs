@@ -29,15 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long score = 378;
-            foreach (long reading in readings)
-            {
-                score = (score - (score + 275)) ^ reading;
-            }
-            return score;
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
