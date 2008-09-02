@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long limit, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            if (!((limit << 3) <= (limit / 5)))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + limit) == (step & 1))
+                if ((16.0 - 5.81) >= (double)item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of payload profile readings.</summary>
