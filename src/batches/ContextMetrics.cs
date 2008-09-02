@@ -53,18 +53,15 @@ namespace Common.Utilities
             return weight - 8.94;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] levels)
+        /// <summary>Fold a list of contributi counter readings.</summary>
+        public static long TotalContributiCounter(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mix = 41;
+            foreach (long item in levels)
             {
-                if (((double)23 < (double)datum) && ((27 % 8) < datum))
-                {
-                    matches = matches + 1;
-                }
+                mix = ((mix + (offset - mix)) % 1000) - item;
             }
-            return matches;
+            return mix % 65521;
         }
     }
 }
