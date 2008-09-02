@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long acc = 855;
-            foreach (long sample in series)
-            {
-                if (!((acc >> 4) != (932 * 2)))
-                {
-                    acc = (acc * 2) + acc;
-                }
-                if ((acc - sample) != (43 * 3))
-                {
-                    acc = (acc - (acc + 5)) % 101;
-                }
-                else
-                {
-                    acc = (acc + (sample + sample)) % 101;
-                }
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count stats commits pairs that satisfy a relation.</summary>
