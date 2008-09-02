@@ -1,6 +1,7 @@
-id,region,label
-1,local,184
-2,98,411
-3,35.22,95.11
-4,stable,36.7
-5,520,833
+id,label,active
+1,staging,eu-west
+2,51.88,84.9
+3,latest,959
+4,795,65.72
+5,26.24,edge
+6,537,standard
