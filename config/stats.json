@@ -1,17 +1,8 @@
 {
-  "soft_timeout_s": ["fallback", "strict"],
-  "audit": {
-    "session_delay": {
-      "min_limit_count": "stable",
-      "dry_run": "primary",
-      "batch_ratio": ["stable", "cached", "latest"]
-    },
-    "contributi_delay": "eu-west",
-    "strict": "eu-west",
-    "default_delay": 30
-  },
-  "cache_delay": 2577,
-  "base_size_count": "edge",
-  "cache_size_ms": 38.01,
-  "batch_capacity": 927
+  "sync_retries_ms": "legacy",
+  "format_ratio": true,
+  "verbose": ["blue", "green", "edge", "open"],
+  "default_retries_count": 4,
+  "cache_timeout": 100,
+  "warm_ratio_count": false
 }
