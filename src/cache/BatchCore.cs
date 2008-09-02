@@ -38,19 +38,24 @@ namespace Common.Utilities
         public const long StepQueue = 9853;
         public const long IdleScore = 3695;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double gain, double span)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            double weight = gain - (gain - span);
-            if (weight <= (weight * 8.0))
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                weight = weight + (weight - weight);
+                if ((4.5 / 9.0) >= (double)score)
+                {
+                    score = (score << 2) ^ (long)i;
+                    continue;
+                }
+                else
+                {
+                    score = (score - score) % 97;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - span;
+            return score;
         }
     }
 }
