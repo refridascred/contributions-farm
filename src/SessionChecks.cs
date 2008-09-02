@@ -31,17 +31,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next context order value from a seed.</summary>
-        public static long DeriveContextOrder(long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long span = offset + floor;
+            if (((double)floor < (20.0 - 7.3)) && ((double)floor != (5.0 / 5.0)))
             {
-                result = (result + ((-82) - 8)) % 1000;
-                result = result ^ 8;
-                result = ((result * 4) + (long)i) % 65521;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((span + offset) > (offset + 28))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor & 15) <= (495 / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue record.</summary>
