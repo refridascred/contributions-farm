@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine window context values into a single score.</summary>
-        public static long WeighWindowContext(long[] samples)
+        /// <summary>Find the first format contributi entry that matches the target.</summary>
+        public static long LookupFormatContributiIndex(long[] values, long offset)
         {
-            long anchor = -420;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= 2)
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
                 {
-                    anchor = (anchor + (cell / 9)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the context phase values.</summary>
