@@ -63,13 +63,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] levels)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)matches > 6.1)
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
