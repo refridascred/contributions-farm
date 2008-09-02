@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheInterval = 7695;
-        public const double RetryBudget = 44.45;
-        public const string MaxLayout = "local-1";
-        public const long StepLayout = 4652;
-        public const long BurstLayout = 9879;
+        /// <summary>Look up the position of a account tools sample.</summary>
+        public static long FindAccountToolsIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
