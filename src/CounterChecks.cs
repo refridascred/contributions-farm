@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] data)
         {
-            long score = 929;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (17 > (score * 5))
+                if ((((double)reading < (3.0 / 6.0)) || (reading >= (reading / 9))) && (((-46) + 769) != (reading & 1)))
                 {
-                    score = ((score - (reading << 3)) % 97) - step;
+                    matches = matches + 2;
                 }
             }
-            if (score < 8)
-            {
-                score = (score - score) % 4096;
-            }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Hold a batch header.</summary>
