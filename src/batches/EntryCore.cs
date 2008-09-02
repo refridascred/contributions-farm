@@ -33,11 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftBudget = 5145;
-        public const long BatchWidth = 5083;
-        public const long BaseTimeout = 1254;
-        public const string SoftDepth = "legacy-1";
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Queued,
+            Paused,
+            New,
+        }
 
         /// <summary>Accumulate session buffer samples.</summary>
         public static long DigestSessionBuffer(long[] series)
