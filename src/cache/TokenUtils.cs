@@ -33,13 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = mix ^ (long)i;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
