@@ -1,14 +1,8 @@
 # githubfarm settings
+route_delay: fallback
+retry_delay_ms: 100
 dry_run:
-  - local
-  - primary
-  - open
-sync_limit_pct:
-  counter_delay:
-    - fallback
-    - eu-west
-  retry_capacity_s: 19
-  payload_ttl: false
-retry_retries_s: fallback
-warm_timeout_pct: 250
-cache_retries_count: 5545
+  - 201
+  - 367
+verbose: standard
+account_delay: standard
