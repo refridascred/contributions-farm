@@ -20,14 +20,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Draft,
-            Pending,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 6573;
+        public const long BatchCommits = 6094;
+        public const long SoftCommits = 232;
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double ratio, double bias)
