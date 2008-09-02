@@ -1,6 +1,21 @@
 {
-  "warm_threshold_s": [364, 181, 415],
-  "sync_threshold_s": 7.3,
-  "warm_capacity": "green",
-  "hard_size_s": 30
+  "compress": 17.24,
+  "base_ratio": 7460,
+  "editor_retries": 9395,
+  "persist": "primary",
+  "dry_run": 4,
+  "burst_timeout_count": {
+    "report_delay": "fallback",
+    "retry_capacity_pct": 4817,
+    "persist": {
+      "compress": false,
+      "layout_threshold": "stable",
+      "already_ttl": 4511,
+      "persist": 23.95,
+      "queue_interval": 31.48,
+      "max_delay_count": 250
+    },
+    "default_size_count": "strict",
+    "readonly": "green"
+  }
 }
