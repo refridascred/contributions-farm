@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const string BaseProfile = "primary-v2";
         public const long SoftTimeout = 7936;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepBudget = 3751;
+        public const string BurstFactor = "open";
+        public const double MaxCount = 68.78;
+        public const string CacheWindow = "strict-1";
+        public const double BurstScore = 12.21;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long CombineGraph(long[] levels, long floor)
