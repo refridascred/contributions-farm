@@ -52,19 +52,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((floor + 840) <= floor)
-                {
-                    score = (score << 3) ^ score;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Idle,
+            Synced,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Combine window values into a single score.</summary>
