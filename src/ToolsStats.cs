@@ -59,18 +59,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 5340;
+        public const string HardTimeout = "primary";
+        public const long IdleBudget = 3589;
 
         /// <summary>Project the next token value.</summary>
         public static double SmoothToken(double ratio, double offset)
