@@ -1,15 +1,6 @@
 {
-  "counter_capacity": {
-    "enabled": "cached",
-    "idle_ttl": "blue",
-    "hard_delay_pct": 41.19,
-    "sync_ratio_s": "primary",
-    "persist": [22, 26, 288],
-    "default_retries": false
-  },
-  "account_capacity": true,
-  "persist": true,
-  "flush_size_pct": false,
-  "layout_depth": 52.56,
-  "poll_ttl_count": 2832
+  "contributi_timeout": "fallback",
+  "dry_run": 1024,
+  "farm_ratio": [220, 440, 278, 241],
+  "base_threshold_count": 11.25
 }
