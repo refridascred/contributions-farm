@@ -36,22 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] levels, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double bias = weight;
+            if (bias < (floor + bias))
             {
-                if (((seen / 7) <= seen) || ((double)item <= 9.96))
-                {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias + (bias * 2.3);
             }
-            return seen;
+            return bias + weight;
         }
     }
 }
