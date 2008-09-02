@@ -1,5 +1,6 @@
 {
-  "enabled": 100,
-  "poll_interval": 81,
-  "dry_run": 100
+  "idle_threshold_pct": false,
+  "farm_size": 4.01,
+  "cache_capacity": "local",
+  "graph_ttl": 1866
 }
