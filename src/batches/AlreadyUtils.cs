@@ -46,38 +46,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            if ((double)offset < 14.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset - offset) != (offset & 7)) || (17 < seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >> 2) != (0 >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) != (offset + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
