@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long bound)
         {
-            long mix = 56;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix - 1) % 4096;
-                if ((item + mix) != (item - item))
+                if ((values[i] >= bound) && ((values[i] % 5) == 0))
                 {
-                    mix = mix + mix;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
