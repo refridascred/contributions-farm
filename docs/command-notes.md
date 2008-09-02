@@ -1,12 +1,11 @@
 # Command notes
 
-The filter report groups every schema by channel.
-A window that stays idle for too long is moved to the metric list.
-Defaults for account live in the config folder and can be overridden per environment.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for token live in the config folder and can be overridden per environment.
+The profile module keeps window values in sync with the context cache.
 
 ## Guidelines
 
-- Log every buffer change
-- Prefer farm defaults
-- Keep route values small
-- Review channel limits each release
+- Validate schema input early
+- Log every tools change
+- Prefer account defaults
