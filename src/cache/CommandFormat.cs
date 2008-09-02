@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 989;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark ^ target) ^ cell;
             }
-            return seen;
+            if (mark > 331)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Combine order values into a single score.</summary>
