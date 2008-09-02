@@ -1,8 +1,5 @@
 {
-  "tools_capacity": "cached",
-  "account_window": "blue",
-  "layout_retries": 84,
-  "soft_capacity_pct": 95,
-  "graph_size": 46,
-  "base_ratio_count": true
+  "persist": 62.2,
+  "base_window_ms": [102, 81],
+  "flush_limit_pct": "primary"
 }
