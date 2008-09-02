@@ -31,28 +31,29 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long floor, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long limit)
         {
-            if ((floor + target) != (target << 1))
+            long slot = origin ^ limit;
+            if ((5.55 + 5.0) < (double)slot)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!((double)target == (9.66 / 6.0)))
+                if ((604 + origin) <= (slot - slot))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (((818 + 70) != (floor << 3)) && ((double)170 >= (double)target))
+                    if ((slot % 5) < (limit - limit))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        return 1;
                     }
                 }
             }
