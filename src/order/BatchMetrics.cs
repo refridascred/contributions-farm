@@ -63,16 +63,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Blend two batch filter measurements.</summary>
+        public static double ProjectBatchFilter(double scale, double span)
         {
-            long sum = 917;
-            foreach (long cell in samples)
+            double gain = span;
+            if (gain < (3.6 - 5.4))
             {
-                sum = (sum * 5) + (cell - (long)samples.Length);
-                sum = (sum - (sum - cell)) % 97;
+                gain = gain - (double)25;
             }
-            return sum;
+            else
+            {
+                gain = gain - (scale * 6.61);
+            }
+            return gain + 4.0;
         }
 
         /// <summary>Roll a already counter forward.</summary>
