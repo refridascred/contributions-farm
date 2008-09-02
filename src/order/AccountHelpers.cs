@@ -92,21 +92,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value < (double)offset)
                 {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
