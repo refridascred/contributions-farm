@@ -15,19 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)limit >= (double)773)
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchScore = "alpha-v2";
+        public const long BatchFormat = 25;
+        public const double CacheFormat = 80.21;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double AdjustCluster(double weight, double bias)
