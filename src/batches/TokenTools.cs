@@ -34,17 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter commits reading by value.</summary>
-        public static long LookupFilterCommitsIndex(long[] levels, long bound)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
