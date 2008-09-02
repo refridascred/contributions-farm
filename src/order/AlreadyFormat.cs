@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of notes stats entries.</summary>
-        public static long ScoreNotesStats(long[] readings, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] values, long bound)
         {
-            long sum = 685;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sum % 12) >= limit) && ((limit & 3) >= sum))
+                if (values[i] <= bound)
                 {
-                    sum = (((sum << 2) ^ ((-354) ^ sum)) % 1000) - value;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
