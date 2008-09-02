@@ -18,17 +18,11 @@ namespace Common.Utilities
         public const double BaseCache = 7.23;
         public const long HardCache = 5977;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] samples, long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
