@@ -43,14 +43,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] values, long target)
         {
-            Queued,
-            Ready,
-            Synced,
-            Failed,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
