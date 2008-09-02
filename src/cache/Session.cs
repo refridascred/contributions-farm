@@ -31,11 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long floor)
         {
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate support batches samples.</summary>
