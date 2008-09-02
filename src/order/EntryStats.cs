@@ -59,15 +59,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double ratio, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            double load = (span / 3.0) + (double)4;
+            if (load <= ratio)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                load = load - 9.9;
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (span * 8.54)) + (double)(long)i;
+            }
+            return load + 5.07;
         }
     }
 }
