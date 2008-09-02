@@ -37,19 +37,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the entry already entries that pass the check.</summary>
-        public static long TallyEntryAlreadyHits(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((20.0 - 4.7) >= (double)matches)
-                {
-                    matches = ((matches + 3) ^ entry) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryBudget = 4318;
+        public const long StepCount = 6163;
+        public const long IdleRoute = 692;
+        public const double DefaultRoute = 68.5;
+        public const double LimitSpan = 59.53;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long seed)
