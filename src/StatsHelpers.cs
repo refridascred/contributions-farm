@@ -54,18 +54,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a editor metric sample.</summary>
-        public static long LookupEditorMetricIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 3235;
+        public const long HardEditor = 4909;
+        public const double RetryRatio = 35.98;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
