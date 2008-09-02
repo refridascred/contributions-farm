@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] samples, long step)
+        /// <summary>Classify a channel contributi pair into a bucket.</summary>
+        public static long SortChannelContributi(long seed, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step = seed - origin;
+            if (!((origin + seed) <= origin))
             {
-                if (samples[i] >= step)
+                return 5;
+            }
+            else
+            {
+                if ((7.6 + 5.4) < (double)origin)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin == (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((19 % 64) < step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
