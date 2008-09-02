@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const long MinTools = 9741;
         public const long SoftCount = 6206;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Queued,
-            Pending,
-            Retry,
-            Failed,
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
