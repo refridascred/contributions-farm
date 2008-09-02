@@ -49,9 +49,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 8903;
-        public const double MinTimeout = 33.66;
-        public const double BaseInterval = 3.53;
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
