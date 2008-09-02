@@ -23,22 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Locate a stream account reading by value.</summary>
+        public static long LookupStreamAccountIndex(long[] readings, long origin)
         {
-            long state = 38;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state >> 2) <= state)
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
                 {
-                    state = ((state * 2) + ((-4) >> 2)) + datum;
-                }
-                else
-                {
-                    state = (state << 3) ^ ((long)data.Length & 255);
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
