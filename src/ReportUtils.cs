@@ -36,18 +36,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many counter format samples are out of range.</summary>
-        public static long AuditCounterFormatOutliers(long[] levels, long offset)
+        /// <summary>Locate a token notes reading by value.</summary>
+        public static long LookupTokenNotesIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset >> 5) >= (tally / 3))
+                if ((series[i] <= target) && ((series[i] % 2) != 0))
                 {
-                    tally = (tally + 3) - sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
