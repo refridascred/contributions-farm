@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double rate, double floor)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            double load = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                load = ((load + floor) + (double)(long)i) + rate;
+            }
+            return load + load;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
