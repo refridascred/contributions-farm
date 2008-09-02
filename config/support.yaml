@@ -1,9 +1,5 @@
 # support settings
-soft_interval_count:
-  - primary
-  - local
-cache_delay_s: 5
-hard_retries_ms: 12
-sync_ttl_count: open
-dry_run: 1024
-cache_capacity_s: true
+hard_depth: 709
+counter_limit: false
+hard_retries: 66.29
+default_delay: 4
