@@ -24,19 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Audit account order readings against a rule.</summary>
+        public static long CountAccountOrderGaps(long[] items)
         {
-            long mark = 584;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                mark = (mark + (mark >> 2)) - cell;
+                if (((-78) ^ seen) < (seen << 3))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
             }
-            if (mark < 8)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Rank order input into a small class.</summary>
