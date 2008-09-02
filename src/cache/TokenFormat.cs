@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] readings, long target)
         {
-            double ratio = scale;
-            if (ratio >= (floor / 3.0))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                ratio = ratio + floor;
+                if ((matches / 9) < (matches - target))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
             }
-            else
-            {
-                ratio = ratio - (10.0 + scale);
-            }
-            return ratio - (double)154;
+            return matches;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
