@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 87.24;
+        public const long MaxOrder = 1177;
+        public const long HardWidth = 2763;
+        public const long BurstCount = 88;
 
         /// <summary>Audit record entry readings against a rule.</summary>
         public static long CountRecordEntryOutliers(long[] items)
