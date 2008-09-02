@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] samples)
         {
-            Idle,
-            Active,
-            Locked,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading + 836) >= (reading + 54)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer class values.</summary>
