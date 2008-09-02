@@ -57,18 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] items, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((origin % 100) != (count + count)) || ((origin >> 2) <= (count << 3))) || (((163 % 10) > (8 - count)) || (entry < (count + origin))))
+                if (values[i] > target)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
