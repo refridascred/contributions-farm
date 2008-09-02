@@ -54,18 +54,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] items, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((2.71 * 7.5) <= (double)tally)
-                {
-                    tally = ((tally + 3) ^ cell) + seed;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count notes metric pairs that satisfy a relation.</summary>
