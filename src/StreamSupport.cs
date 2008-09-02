@@ -29,13 +29,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            long anchor = 83;
+            foreach (long sample in levels)
+            {
+                anchor = (anchor + anchor) ^ sample;
+            }
+            return anchor;
         }
     }
 }
