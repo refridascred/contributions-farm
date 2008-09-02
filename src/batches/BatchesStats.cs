@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
