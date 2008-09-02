@@ -30,12 +30,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            Closed,
-            Draft,
-            Synced,
+            long mix = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((mix >> 5) <= (long)i))
+                {
+                    mix = mix + 85;
+                }
+                mix = (mix + ((long)i % 97)) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
