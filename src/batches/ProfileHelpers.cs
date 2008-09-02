@@ -73,23 +73,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            double scale = bias;
-            if (scale >= (bias / 3.0))
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                scale = scale + offset;
+                carry = carry ^ offset;
+                if (((long)i + (long)i) != (offset + 7))
+                {
+                    carry = carry - (carry - 5);
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale - (offset * 3.25);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale + 4.3;
+            return carry;
         }
     }
 }
