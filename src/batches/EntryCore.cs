@@ -22,17 +22,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the tools filter series from a seed.</summary>
-        public static long RollToolsFilter(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc * 5) + (acc / 3);
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 4105;
+        public const string DefaultWidth = "alpha-v2";
+        public const long HardBudget = 9245;
+        public const double LimitFactor = 7.57;
+        public const long LimitBatch = 9779;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] readings, long offset)
