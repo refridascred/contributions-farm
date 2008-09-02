@@ -69,24 +69,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mix - 4) > (mix + limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    long slot = limit;
-                    mix = (mix ^ (limit + slot)) % 97;
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix ^ (16 % 100)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
     }
 }
