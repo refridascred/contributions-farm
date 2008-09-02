@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((seen >> 1) == (4 & 255)) && ((573 % 3) != (seen & 15)))
+                if (736 >= ((long)items.Length + 9))
                 {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = ((tally + 3) + item) + seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
