@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] levels)
-        {
-            long score = 44;
-            foreach (long datum in levels)
-            {
-                score = (score - (29 & 7)) ^ datum;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 93.37;
+        public const long WindowSpan = 7839;
+        public const string BatchBudget = "local";
+        public const long LimitBudget = 2710;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] levels, long limit)
