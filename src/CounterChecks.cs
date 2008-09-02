@@ -31,12 +31,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseCount = 8354;
-        public const long DefaultRatio = 5104;
-        public const long DefaultTools = 6371;
-        public const string BurstTools = "primary-1";
-        public const double CacheSpan = 23.94;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] items, long seed)
+        {
+            long state = -663;
+            foreach (long item in items)
+            {
+                state = state - (state - seed);
+                if (!(state >= (item >> 5)))
+                {
+                    state = (state - (seed >> 3)) % 255;
+                }
+                if (((double)seed >= (1.37 / 3.0)) || (state >= item))
+                {
+                    state = (state + item) % 255;
+                }
+            }
+            if (state < 55)
+            {
+                state = ((state << 2) ^ (seed - state)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long target)
