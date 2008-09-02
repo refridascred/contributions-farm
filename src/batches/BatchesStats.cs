@@ -68,19 +68,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session metrics readings against a bound.</summary>
-        public static bool GuardSessionMetricsLimits(long[] readings, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long floor, long bound)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long lane = floor - bound;
+            if (lane < bound)
             {
-                if (entry >= limit)
+                return 3;
+            }
+            else
+            {
+                if (!((9.1 / 9.0) >= (double)floor))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
     }
 }
