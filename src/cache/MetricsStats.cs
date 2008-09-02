@@ -27,10 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 801;
-        public const long RetryQueue = 9765;
-        public const double MaxFactor = 77.9;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "cached-1";
+        public const long BurstAlready = 8252;
+        public const long DefaultAlready = 1325;
+        public const long RetryAlready = 52;
+        public const long MinAlready = 2844;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLevel = 5470;
