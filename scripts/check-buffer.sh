@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-staging}"
 case "${mode}" in
-    open)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=231
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=246
+log "limit is ${BUFFER_LIMIT}"
