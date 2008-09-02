@@ -90,13 +90,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            Idle,
+            Active,
+            Stale,
+            Queued,
         }
     }
 }
