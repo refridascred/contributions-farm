@@ -37,12 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] values, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == offset)
+                if (samples[i] < origin)
                 {
                     return (long)i;
                 }
