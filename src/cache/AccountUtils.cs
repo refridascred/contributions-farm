@@ -33,9 +33,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 6307;
-        public const long StepGraph = 7968;
-        public const long WindowSize = 8423;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Failed,
+            Dropped,
+            Draft,
+            Closed,
+            Pending,
+        }
     }
 }
