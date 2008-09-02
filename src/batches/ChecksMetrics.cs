@@ -75,11 +75,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchLevel = 4806;
-        public const long CacheCount = 5945;
-        public const long WindowTools = 1013;
-        public const long CacheTools = 3227;
-        public const long SoftTools = 1680;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
