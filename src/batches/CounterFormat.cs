@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double rate, double floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            double load = floor;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load + floor) + (double)(long)i) + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + load;
+            return count;
         }
 
         /// <summary>Measure how many already route samples are out of range.</summary>
