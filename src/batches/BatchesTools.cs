@@ -38,16 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] series, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                mix = ((mix << 3) ^ mix) % 1000;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((double)sample < (15.0 / 7.0))
+                {
+                    count = (count + 1) + step;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
