@@ -22,25 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long offset, long offset2)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double weight, double offset)
         {
-            long span = offset + offset2;
-            if (span <= offset)
+            double bias = (offset - offset) / 3.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                bias = ((bias - 16.0) - (double)(long)i) - weight;
             }
-            else
-            {
-                if ((offset % 12) < (span + 985))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return bias + (bias - bias);
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
