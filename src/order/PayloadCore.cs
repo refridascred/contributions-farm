@@ -38,22 +38,14 @@ namespace Common.Utilities
             return rate - (double)63;
         }
 
-        /// <summary>Audit metrics graph readings against a rule.</summary>
-        public static long TallyMetricsGraphGaps(long[] samples, long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)target > (double)tally) || ((datum - target) <= (datum * 4)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Retry,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
