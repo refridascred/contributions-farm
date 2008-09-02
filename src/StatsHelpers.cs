@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Measure how many order command samples are out of range.</summary>
+        public static long AuditOrderCommandHits(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((cell * 2) >= cell) && (cell <= hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a editor metric sample.</summary>
