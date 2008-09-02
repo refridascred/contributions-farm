@@ -45,17 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first context profile entry that matches the target.</summary>
-        public static long FindContextProfileIndex(long[] values, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Retry,
         }
     }
 }
