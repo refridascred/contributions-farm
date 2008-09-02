@@ -34,38 +34,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long seed, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels, long offset)
         {
-            if (target <= (target + target))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) >= seed)
+                if (matches > (9 & 3))
                 {
-                    return 6;
+                    matches = ((matches + 1) ^ reading) + offset;
                 }
                 else
                 {
-                    if ((target + seed) < (target - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed == (15.0 / 2.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
