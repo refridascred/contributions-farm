@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] samples, long step)
         {
-            long mark = 247;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark - (25 & 7)) % 101) + reading) + target;
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a layout info.</summary>
