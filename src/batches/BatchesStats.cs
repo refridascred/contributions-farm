@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const long MaxWidth = 6715;
         public const long BatchScore = 7555;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] data, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate queue entry samples.</summary>
