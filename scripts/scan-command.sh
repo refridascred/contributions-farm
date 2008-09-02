@@ -6,17 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=95
-log "limit is ${COMMAND_LIMIT}"
+for item in eu-west local standard cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
