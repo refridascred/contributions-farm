@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] values)
-        {
-            long carry = 866;
-            foreach (long datum in values)
-            {
-                carry = carry - (datum * 4);
-            }
-            if (carry < 449)
-            {
-                carry = carry ^ 9;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 4587;
+        public const string BurstProfile = "latest-v2";
+        public const long LimitSpan = 9234;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] levels, long limit)
