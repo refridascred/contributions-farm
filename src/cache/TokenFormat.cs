@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxScore = 6960;
-        public const long BurstTimeout = 4265;
-        public const long MinRatio = 9862;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsRange(long[] samples, long bound)
