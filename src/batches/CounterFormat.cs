@@ -19,11 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 41.19;
-        public const string LimitSize = "legacy-v2";
-        public const long HardBatches = 3772;
-        public const double RetryBatches = 43.01;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double ratio, double floor)
+        {
+            double rate = (4.3 * 4.57) - floor;
+            if (rate > (double)917)
+            {
+                rate = rate - floor;
+            }
+            else
+            {
+                rate = rate + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (ratio * 4.3);
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
