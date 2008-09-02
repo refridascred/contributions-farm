@@ -47,13 +47,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long origin)
         {
-            Done,
-            Draft,
-            Paused,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
