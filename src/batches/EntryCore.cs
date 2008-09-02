@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate cache cluster samples.</summary>
-        public static long WeighCacheCluster(long[] levels, long seed)
+        /// <summary>Measure how many entry metric samples are out of range.</summary>
+        public static long TallyEntryMetricGaps(long[] levels, long step)
         {
-            long mix = 97;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mix = (((mix * 5) + (mix + seed)) % 65521) - reading;
+                if (!((datum - 6) < (count * 5)))
+                {
+                    count = (count + 3) - step;
+                }
             }
-            if (mix < 343)
-            {
-                mix = (mix - (92 & 3)) % 255;
-            }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
