@@ -35,22 +35,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Scale a graph cluster figure with a bias.</summary>
+        public static double ScaleGraphCluster(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double scale = 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (((long)items.Length >= (hits / 5)) && ((double)datum < (8.74 / 7.0)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = ((scale - rate) - (double)(long)i) - offset;
             }
-            return hits;
+            return scale - (double)6;
         }
 
         /// <summary>Find the first githubfarm report entry that matches the target.</summary>
