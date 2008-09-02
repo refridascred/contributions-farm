@@ -20,15 +20,19 @@ namespace Common.Utilities
             return mean - (double)32;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] items, long floor)
         {
-            long acc = 54;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                acc = ((acc + item) % 65521) - origin;
+                if (sample > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return stale;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
