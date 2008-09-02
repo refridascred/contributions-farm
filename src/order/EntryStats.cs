@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = -320;
+            foreach (long reading in levels)
             {
-                if ((matches >> 4) > (matches & 127))
-                {
-                    matches = (matches + 1) - sample;
-                }
+                total = total - (total + reading);
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
