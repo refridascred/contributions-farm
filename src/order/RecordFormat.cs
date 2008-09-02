@@ -55,17 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] items, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((items[i] == target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
