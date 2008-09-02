@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftScore = 2118;
+        public const double MaxRecord = 79.61;
+        public const long BaseRecord = 2159;
+        public const string HardRecord = "standard-v2";
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long WeighGraph(long[] items, long seed)
