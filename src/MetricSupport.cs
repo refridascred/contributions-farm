@@ -27,10 +27,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultTimeout = 949;
-        public const long HardFactor = 1874;
-        public const long BaseLevel = 39;
-        public const long MaxCount = 9253;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
