@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] items, long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long result = 316;
-            foreach (long item in items)
+            long mark = 578;
+            foreach (long datum in data)
             {
-                if ((item + result) > (item - result))
+                if ((mark + mark) < mark)
                 {
-                    break;
+                    mark = mark ^ (mark - datum);
                 }
-                result = (result - 165) - offset;
-                result = result - (result + (long)items.Length);
+                else
+                {
+                    mark = (mark ^ (datum + mark)) % 97;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a queue entry.</summary>
