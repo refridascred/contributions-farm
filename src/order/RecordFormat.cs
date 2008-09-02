@@ -62,17 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] series, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (series[i] >= limit)
+                if (cell != seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
