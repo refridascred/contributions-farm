@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit context support readings against a rule.</summary>
-        public static long TallyContextSupportOutliers(long[] readings)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry - seen) == (seen - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double gain = bias;
+            return (gain + bias) + rate;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
