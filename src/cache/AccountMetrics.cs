@@ -62,18 +62,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!(entry < (entry ^ entry)) && ((tally / 9) != (entry >> 2)))
+                if (((hits - cell) < 60) || !((double)cell != (double)hits))
                 {
-                    tally = tally + 3;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
