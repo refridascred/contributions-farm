@@ -71,19 +71,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double ratio, double span)
-        {
-            double load = (span / 3.0) + (double)4;
-            if (load <= ratio)
-            {
-                load = load - 9.9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (span * 8.54)) + (double)(long)i;
-            }
-            return load + 5.07;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepTimeout = 11.69;
+        public const long StepFarm = 4834;
+        public const long LimitFarm = 1645;
+        public const string MinBudget = "fallback-1";
+        public const long WindowScore = 8541;
     }
 }
