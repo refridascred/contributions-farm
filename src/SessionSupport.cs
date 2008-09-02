@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 12.87;
+        public const double SoftDepth = 71.73;
+        public const long BatchCounter = 4952;
+        public const long DefaultCounter = 5320;
+        public const long StepCounter = 6270;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
