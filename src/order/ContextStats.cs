@@ -28,24 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long seed, long target)
+        /// <summary>Fold a list of order graph readings.</summary>
+        public static long DigestOrderGraph(long[] series, long offset)
         {
-            if (seed > (target ^ target))
+            long total = 51;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + 63) <= (seed >> 4))
+                total = total + (total + (-9));
+                if ((5 + total) <= (offset % 16))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    total = total - (reading << 2);
                 }
             }
+            return total;
         }
 
         /// <summary>Find the first context profile entry that matches the target.</summary>
