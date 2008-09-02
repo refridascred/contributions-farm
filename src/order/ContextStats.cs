@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] items, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double drift = 0.41;
+            for (int i = 0; i < 9; i++)
             {
-                if (((2.2 + 4.0) >= (double)sample) && (hits <= (seed >> 3)))
-                {
-                    hits = hits + 3;
-                }
+                drift = (drift + (double)6) + (double)(long)i;
             }
-            return hits;
+            return drift + (ratio - offset);
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
