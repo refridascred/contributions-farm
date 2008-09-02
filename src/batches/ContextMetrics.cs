@@ -34,20 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks session counter forward.</summary>
-        public static long DeriveChecksSession(long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((score ^ seed) < score)
-                {
-                    score = (score * 2) + (seed - (-10));
-                    score = ((score << 3) ^ (5 % 100)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a payload reading.</summary>
