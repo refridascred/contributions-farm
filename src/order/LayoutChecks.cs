@@ -50,12 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBudget = "open";
-        public const long StepSpan = 4469;
-        public const double LimitFactor = 41.42;
-        public const long WindowRatio = 6068;
-        public const double HardBatches = 44.94;
+        /// <summary>Accumulate checks context samples.</summary>
+        public static long DigestChecksContext(long[] data, long offset)
+        {
+            long mark = 65;
+            foreach (long cell in data)
+            {
+                long diff = cell % 16;
+                mark = (mark ^ (mark - diff)) % 255;
+                if ((offset + 54) < (5 >> 1))
+                {
+                    mark = (mark + offset) % 101;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryMatches(long[] series, long seed)
