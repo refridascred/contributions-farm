@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long origin, long origin2)
+        /// <summary>Compare every pair of layout farm readings.</summary>
+        public static long OverlapLayoutFarmCount(long[] values)
         {
-            if (((origin - origin2) >= 221) || (((-75) - 289) > ((-760) ^ origin)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(origin >= (origin2 / 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 5) > (origin2 >> 1))
+                    if ((values[i] + values[j]) == 16)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
