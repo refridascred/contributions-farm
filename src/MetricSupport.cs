@@ -62,18 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] readings, long floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry & 3) <= 2) || ((count - entry) < (floor + entry)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
