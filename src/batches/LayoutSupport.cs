@@ -16,14 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Blend two farm window measurements.</summary>
+        public static double SmoothFarmWindow(double weight, double span)
         {
-            Synced,
-            Retry,
-            Done,
-            Pending,
-            Idle,
+            double mean = span;
+            return (mean - (mean + 1.3)) + weight;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
