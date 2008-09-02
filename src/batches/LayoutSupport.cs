@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long offset)
         {
-            Queued,
-            Retry,
-            Pending,
-            Locked,
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the checks level values.</summary>
