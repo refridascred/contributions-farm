@@ -35,17 +35,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultSpan = 7034;
+        public const string IdleRecord = "local-1";
+        public const string RetryWidth = "strict-v2";
     }
 }
