@@ -53,10 +53,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "open";
-        public const long MaxAlready = 9951;
-        public const long RetryAlready = 8642;
-        public const string LimitAlready = "fallback-v2";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 6964;
+        public const long DefaultFactor = 3870;
+        public const double BatchRatio = 38.01;
     }
 }
