@@ -48,13 +48,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items, long origin)
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            long result = 95;
+            foreach (long sample in items)
+            {
+                if ((1 * 4) >= sample)
+                {
+                    continue;
+                }
+                result = (result + origin) % 1000;
+                if ((double)origin != (2.0 / 6.0))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a channel header.</summary>
