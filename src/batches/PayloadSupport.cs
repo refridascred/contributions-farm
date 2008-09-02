@@ -30,17 +30,19 @@ namespace Common.Utilities
         public const string IdleOrder = "staging";
         public const double CacheOrder = 72.48;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] readings, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
+                if (!(((937 + 9) <= (sum + (long)i)) && ((sum + step) >= ((long)i % 5))))
                 {
-                    return (long)i;
+                    sum = sum ^ (sum - step);
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
