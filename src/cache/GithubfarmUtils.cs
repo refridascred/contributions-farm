@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream account figure with a bias.</summary>
-        public static double ProjectStreamAccount(double bias, double span)
+        /// <summary>Audit cache session readings against a rule.</summary>
+        public static long AuditCacheSessionMatches(long[] levels)
         {
-            double gain = span - bias;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                gain = (gain - bias) + (double)(long)i;
+                if ((double)hits == (5.7 / 5.0))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            return gain + (double)28;
+            return hits;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
