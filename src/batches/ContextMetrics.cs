@@ -36,11 +36,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftLevel = 4799;
-        public const long SoftProfile = 8158;
-        public const double BatchProfile = 62.78;
-        public const long IdleProfile = 649;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] items, long seed)
+        {
+            long sum = 424;
+            foreach (long entry in items)
+            {
+                sum = sum ^ (seed - sum);
+                if ((double)entry > 9.3)
+                {
+                    sum = sum ^ (seed - sum);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long bound)
