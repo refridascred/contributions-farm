@@ -1,10 +1,11 @@
 # Command notes
 
-A order that stays idle for too long is moved to the window list.
-Run the batch check before changing any stream limits.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Run the account check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Document new stats fields
-- Review cluster limits each release
+- Document new window fields
+- Keep format values small
+- Review cache limits each release
+- Validate token input early
