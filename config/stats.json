@@ -1,8 +1,22 @@
 {
-  "default_interval": 9,
-  "compress": 1.42,
-  "audit": ["stable", "cached", "primary"],
-  "flush_threshold_s": 4529,
-  "default_limit_count": 5739,
-  "dry_run": 250
+  "verbose": {
+    "persist": 6931,
+    "filter_limit": {
+      "batch_size_ms": 14,
+      "cache_threshold_count": 4,
+      "dry_run": 4.16,
+      "strict": false,
+      "cache_retries_count": ["latest", "edge", "legacy", "cached"]
+    },
+    "strict": {
+      "stream_retries": 25.02,
+      "githubfarm_ttl": true,
+      "sync_interval_ms": 250
+    },
+    "base_timeout_count": 15,
+    "soft_ttl_s": "stable"
+  },
+  "audit": "local",
+  "max_threshold": 54.7,
+  "token_threshold": 84.9
 }
