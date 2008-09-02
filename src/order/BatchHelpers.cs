@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long bound, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long delta = bound + limit;
+            if (((limit & 127) <= limit) && ((limit - delta) < bound))
             {
-                if ((offset >= (carry - offset)) || ((3.5 - 5.77) == (double)carry))
-                {
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (((delta + bound) > delta) || (delta < (6 + 599)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate format graph readings against a bound.</summary>
