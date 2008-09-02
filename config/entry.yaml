@@ -1,6 +1,19 @@
 # entry settings
-buffer_size: 9007
-flush_timeout_count: true
-burst_ratio_s: true
-max_interval: stable
-max_retries_ms: false
+compress: staging
+batches_ttl:
+  poll_delay: true
+  compress:
+    - 359
+    - 457
+    - 73
+    - 369
+  default_limit_ms: false
+  base_timeout_s: 97.11
+  retry_ttl: latest
+sync_interval: local
+hard_ttl_s:
+  - blue
+  - strict
+  - green
+  - primary
+dry_run: 4575
