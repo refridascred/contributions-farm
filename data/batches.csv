@@ -1,7 +1,9 @@
-id,region,weight,token
-1,cached,97.67,eu-west
-2,856,edge,535
-3,fallback,86.58,380
-4,eu-west,72,85.57
-5,917,standard,763
-6,open,latest,local
+id,level,state,score
+1,90.66,397,4.77
+2,271,589,209
+3,standard,30.71,55.46
+4,419,922,96.5
+5,201,62.98,411
+6,stable,754,2.46
+7,770,15.15,5.07
+8,921,187,open
