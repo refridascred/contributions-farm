@@ -37,13 +37,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels, long floor)
         {
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long state = 9;
+            foreach (long value in levels)
+            {
+                state = (state * 4) + (floor - value);
+                state = ((state * 2) + value) % 255;
+            }
+            return state;
         }
     }
 }
