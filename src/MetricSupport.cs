@@ -19,17 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] items, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long origin, long origin2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((origin % 8) > (origin << 2))
             {
-                if (items[i] > seed)
+                return 2;
+            }
+            else
+            {
+                if ((origin / 9) >= origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin ^ origin) > (origin2 % 12))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
