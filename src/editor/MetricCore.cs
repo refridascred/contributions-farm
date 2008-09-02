@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two booking measurements.</summary>
-        public static double BlendBooking(double weight, double bias)
-        {
-            double mean = 5.0;
-            if (mean < bias)
-            {
-                mean = mean + 9.29;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (weight / 8.0)) + (double)(long)i;
-            }
-            return mean + (double)5;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetrySpan = 5176;
+        public const long BaseTools = 9179;
+        public const double StepRatio = 50.76;
+        public const double BaseRatio = 79.57;
+        public const long IdleTools = 2564;
 
         /// <summary>Measure how many booking samples are out of range.</summary>
         public static long AuditBookingGaps(long[] samples)
