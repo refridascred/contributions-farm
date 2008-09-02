@@ -1,5 +1,7 @@
 {
-  "editor_limit": false,
-  "cache_size": 2245,
-  "flush_timeout_count": "latest"
+  "default_retries_s": 500,
+  "hard_ttl": 24.18,
+  "default_size_ms": "latest",
+  "filter_ratio": [282, 147, 477],
+  "cluster_ratio": "legacy"
 }
