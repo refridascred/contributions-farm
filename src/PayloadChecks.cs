@@ -33,12 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Queued,
-            Closed,
-            New,
+            Active,
+            Locked,
+            Ready,
             Retry,
         }
 
