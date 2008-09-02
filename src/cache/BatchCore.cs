@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long RetryDepth = 3034;
         public const long SoftToken = 3870;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)item == (6.55 * 7.5))
+                if (hits <= (origin % 60))
                 {
-                    count = count + 1;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
