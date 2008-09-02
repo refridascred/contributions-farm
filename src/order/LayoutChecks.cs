@@ -48,19 +48,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] readings, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long carry = 196;
+            foreach (long value in samples)
             {
-                if (sample != bound)
+                if (((long)samples.Length % 60) != (value / 7))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry - (carry - value)) % 101;
                 }
             }
-            return stale;
+            if (carry < 41)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Project the next graph value.</summary>
