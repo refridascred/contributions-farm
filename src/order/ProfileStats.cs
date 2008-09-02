@@ -33,18 +33,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit counter metric readings against a rule.</summary>
-        public static long AuditCounterMetricGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (9.0 <= (double)item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepFactor = 5634;
+        public const long MinGraph = 8212;
+        public const long DefaultBudget = 8130;
+        public const long HardGraph = 6028;
     }
 }
