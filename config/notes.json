@@ -1,5 +1,15 @@
 {
-  "enabled": true,
-  "compress": 2245,
-  "audit": 80
+  "default_threshold_s": 76.87,
+  "hard_capacity": [356, 263, 385],
+  "hard_limit_pct": {
+    "soft_ratio": 26.97,
+    "batch_ttl_pct": 47,
+    "record_window": {
+      "persist": 4,
+      "session_threshold": ["blue", "green"],
+      "cache_retries_count": 30,
+      "flush_threshold_s": false
+    },
+    "idle_size_s": ["blue", "standard", "edge"]
+  }
 }
