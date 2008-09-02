@@ -47,22 +47,38 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine payload githubfarm values into a single score.</summary>
-        public static long CombinePayloadGithubfarm(long[] items, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long bound, long target)
         {
-            long mark = 928;
-            foreach (long datum in items)
+            if (target > (bound + (-40)))
             {
-                if ((step >> 4) < (step % 100))
+                return 5;
+            }
+            else
+            {
+                if ((bound + bound) < (bound - target))
                 {
-                    mark = (((mark << 3) ^ (mark >> 4)) % 4096) - datum;
+                    return 0;
+                }
+                else
+                {
+                    if (bound < (bound + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target > (0.49 - 0.6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mark < 5)
-            {
-                mark = ((mark * 2) + (step % 10)) % 1000;
-            }
-            return mark;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
