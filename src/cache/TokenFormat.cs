@@ -22,13 +22,39 @@ namespace Common.Utilities
         public const long BatchRatio = 5553;
         public const long RetrySize = 6046;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long seed, long limit)
         {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long prev = seed - limit;
+            if (!((double)prev < (double)seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.0 * 4.2) <= (double)prev)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit & 255) <= (limit ^ seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((prev + seed) >= (limit + prev))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
