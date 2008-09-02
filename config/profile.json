@@ -1,6 +1,8 @@
 {
-  "idle_threshold_pct": "green",
-  "warm_timeout": "fallback",
-  "audit": 60,
-  "readonly": ["local", "edge"]
+  "filter_interval": true,
+  "flush_depth_ms": 16.57,
+  "window_size": 42.16,
+  "enabled": "strict",
+  "audit": "standard",
+  "retry_interval": "legacy"
 }
