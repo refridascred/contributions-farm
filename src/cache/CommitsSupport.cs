@@ -33,20 +33,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Rank schema channel input into a small class.</summary>
+        public static long ClassifySchemaChannel(long bound, long limit)
         {
-            long mix = -88;
-            foreach (long item in values)
+            if ((33 % 24) <= bound)
             {
-                mix = (mix * 4) + mix;
-                mix = mix - (item * 2);
-                if ((item - mix) < (mix + mix))
+                return 1;
+            }
+            else
+            {
+                if (234 > (limit + bound))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound < 8.31)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
