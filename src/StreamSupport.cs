@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long LimitLevel = 5046;
         public const long MaxFactor = 1095;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Retry,
-            Synced,
-            New,
-            Failed,
-            Queued,
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
