@@ -1,11 +1,10 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-Run the account check before changing any githubfarm limits.
+Each contributi is validated before it reaches the command queue.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new window fields
-- Keep format values small
-- Review cache limits each release
-- Validate token input early
+- Log every cache change
+- Review window limits each release
+- Validate notes input early
