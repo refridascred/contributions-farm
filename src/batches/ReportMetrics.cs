@@ -31,12 +31,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double gain, double floor)
         {
-            public double Flag { get; set; }
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
+            double ratio = floor;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio - floor) - gain;
+            }
+            else
+            {
+                ratio = ratio - (double)736;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - 12.0) + (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
