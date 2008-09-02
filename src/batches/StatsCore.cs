@@ -55,30 +55,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long offset, long origin)
+        /// <summary>Rank cluster payload input into a small class.</summary>
+        public static long ClassifyClusterPayload(long step, long step2)
         {
-            long step = offset + origin;
-            if ((origin & 127) == (origin - step))
+            long bound = step ^ step2;
+            if ((step << 2) != (step2 / 8))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((origin ^ offset) < (step & 7))
+                if (7.6 > (double)bound)
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (step <= (step * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 4;
                 }
             }
         }
