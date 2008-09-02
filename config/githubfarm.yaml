@@ -1,19 +1,25 @@
 # githubfarm settings
-stream_timeout: 6444
-audit:
-  - strict
-  - green
-  - green
-context_size: latest
-report_delay:
-  retry_threshold_s: true
-  enabled:
-    - 220
-    - 264
-    - 274
-  warm_depth_count: 60
-  payload_ratio: latest
-  default_ttl_count: true
-  default_retries_ms: 28
-flush_depth_pct: local
-warm_ratio: cached
+sync_depth_s:
+  - cached
+  - open
+  - standard
+  - fallback
+cache_delay: primary
+compress: true
+cache_threshold:
+  cluster_timeout: stable
+  record_limit: 41
+  persist: false
+  tools_interval: cached
+  batch_delay:
+    base_delay: staging
+    flush_window_ms:
+      - fallback
+      - staging
+      - latest
+      - green
+    enabled: 70.55
+    batch_timeout_s: edge
+  burst_depth_pct: 100
+retry_ttl_count: standard
+max_threshold_pct: 4273
