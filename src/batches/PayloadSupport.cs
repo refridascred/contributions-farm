@@ -14,13 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] items, long floor)
         {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
