@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
-        public static long MeasureBatchGithubfarmGaps(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((8.27 * 16.0) >= (double)bound)
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 23.04;
+        public const double StepLevel = 22.43;
+        public const long LimitFormat = 2429;
+        public const long DefaultRatio = 58;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseInterval = 6795;
