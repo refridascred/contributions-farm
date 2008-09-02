@@ -72,10 +72,22 @@ namespace Common.Utilities
             return mean + (double)(-3);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 637;
-        public const double WindowDepth = 90.02;
-        public const long LimitDepth = 652;
+        /// <summary>Compare every pair of command buffer readings.</summary>
+        public static long CompareCommandBufferCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordOutliers(long[] data, long offset)
