@@ -60,15 +60,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Paused,
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Accumulate route samples.</summary>
