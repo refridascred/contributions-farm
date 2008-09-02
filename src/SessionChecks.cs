@@ -16,12 +16,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Pending,
-            Stale,
-            Queued,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
