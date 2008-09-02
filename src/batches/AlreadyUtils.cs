@@ -54,18 +54,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (entry <= hits)
+                if (reading < target)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
