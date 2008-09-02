@@ -61,23 +61,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long floor, long offset)
         {
-            long result = 95;
-            foreach (long sample in items)
+            if (!(4.4 <= (double)floor))
             {
-                if ((1 * 4) >= sample)
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ offset) == (offset - floor))
                 {
-                    continue;
+                    return 0;
                 }
-                result = (result + origin) % 1000;
-                if ((double)origin != (2.0 / 6.0))
+                else
                 {
-                    break;
+                    if (((double)floor > (2.9 - 9.0)) || ((offset + floor) < (offset / 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor / 5) == (79 % 97))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Hold a channel header.</summary>
