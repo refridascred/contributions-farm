@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 5465;
-        public const string StepEditor = "local-v2";
-        public const double WindowSpan = 84.96;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] data, long offset)
+        {
+            long carry = 44;
+            foreach (long value in data)
+            {
+                carry = ((carry * 3) + value) % 1000;
+                if (((double)offset >= 4.6) || (42 > (value * 3)))
+                {
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = (carry ^ (value - carry)) % 65521;
+                }
+                if (((carry + value) > (value + carry)) && ((double)82 <= (double)carry))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long GradePayload(long bound, long step)
