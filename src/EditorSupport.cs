@@ -14,12 +14,20 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultSpan = 10.96;
-        public const long BaseFactor = 7683;
-        public const string HardTimeout = "open-v2";
-        public const long StepChecks = 3117;
-        public const double LimitChecks = 21.34;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphRange(long[] readings, long seed)
