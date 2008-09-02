@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] readings, long bound)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((bound / 8) != ((long)readings.Length * 4))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
