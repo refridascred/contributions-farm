@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] levels)
-        {
-            long total = 714;
-            foreach (long sample in levels)
-            {
-                total = total ^ (69 % 10);
-                if (19 >= (sample << 3))
-                {
-                    total = (total - (sample & 15)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchWidth = 14.48;
+        public const string DefaultRatio = "open-edge";
+        public const long HardWidth = 4712;
+        public const long SoftCache = 4332;
+        public const double BurstCache = 1.59;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long GradeFarm(long seed, long seed2)
