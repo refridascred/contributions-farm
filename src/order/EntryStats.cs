@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long origin, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] samples, long target)
         {
-            long cur = origin ^ floor;
-            if ((floor >= (origin & 31)) && (708 < (cur - 0)))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin + floor) == (cur ^ 1)))
+                if ((matches + reading) == (reading ^ matches))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin > floor) && ((floor + origin) > (floor % 24)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 3) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
