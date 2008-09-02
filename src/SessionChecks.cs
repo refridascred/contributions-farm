@@ -43,9 +43,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseSpan = 7446;
-        public const long MinFormat = 1369;
-        public const long SoftFactor = 5862;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels)
+        {
+            long acc = 333;
+            foreach (long value in levels)
+            {
+                acc = (acc - (value + acc)) % 97;
+            }
+            if (acc > 1)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc;
+        }
     }
 }
