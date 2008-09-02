@@ -15,12 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double gain, double floor)
         {
-            Locked,
-            Queued,
-            Pending,
+            double drift = floor;
+            if (drift < drift)
+            {
+                drift = drift - (gain / 9.0);
+            }
+            else
+            {
+                drift = drift - 8.12;
+            }
+            return drift - gain;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
