@@ -29,11 +29,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc << 2) ^ (acc % 5)) % 97;
+                if (((2.88 + 6.07) < (double)acc) || ((25 << 3) >= (step + step)))
+                {
+                    acc = (acc + (acc << 1)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
