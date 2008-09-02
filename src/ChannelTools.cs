@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first farm profile entry that matches the target.</summary>
-        public static long SeekFarmProfileIndex(long[] series, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (series[i] < origin)
+                if (value < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the account phase values.</summary>
