@@ -32,13 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double bias)
         {
-            Active,
-            Locked,
-            Ready,
-            Retry,
+            double drift = ratio;
+            if (drift <= (bias * 0.2))
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (8.92 * 14.0)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
