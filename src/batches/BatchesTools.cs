@@ -30,12 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] readings)
         {
-            Locked,
-            Active,
-            Ready,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally > (82 << 1)) || ((1.6 / 9.0) == (double)tally))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
