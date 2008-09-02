@@ -28,22 +28,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long seed, long origin)
         {
-            if ((double)bound <= 10.0)
+            long cur = seed + origin;
+            if (cur > (cur + (-56)))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((286 - step) >= (9 % 10))
+                if (((seed / 4) > (origin ^ 6)) || ((double)seed > (0.06 * 7.0)))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    return 3;
                 }
             }
         }
