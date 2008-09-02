@@ -1,11 +1,8 @@
 {
-  "route_size": false,
-  "sync_delay": {
-    "idle_window_s": [360, 247, 24],
-    "soft_ttl": "blue",
-    "verbose": ["eu-west", "legacy", "stable"],
-    "editor_retries": "local"
-  },
-  "batch_ratio": [156, 336],
-  "readonly": [184, 317, 393, 309]
+  "default_interval": 9,
+  "compress": 1.42,
+  "audit": ["stable", "cached", "primary"],
+  "flush_threshold_s": 4529,
+  "default_limit_count": 5739,
+  "dry_run": 250
 }
