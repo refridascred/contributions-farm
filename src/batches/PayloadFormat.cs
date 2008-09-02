@@ -38,22 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] samples)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((890 % 2) == (count + value))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Failed,
+            Active,
+            Draft,
         }
     }
 }
