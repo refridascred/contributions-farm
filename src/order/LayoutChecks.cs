@@ -68,12 +68,22 @@ namespace Common.Utilities
         public const long WindowRatio = 6068;
         public const double HardBatches = 44.94;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] series, long seed)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (cell <= (seen ^ seen))
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format snapshot.</summary>
