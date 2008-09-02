@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of tools account entries.</summary>
-        public static long TallyToolsAccount(long[] values)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mix = 9;
-            foreach (long item in values)
-            {
-                if (item < (mix & 15))
-                {
-                    mix = (mix + (mix * 2)) % 4096;
-                }
-            }
-            return mix;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of tools context readings.</summary>
