@@ -60,14 +60,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] series, long origin)
         {
-            Locked,
-            Paused,
-            Ready,
-            Failed,
-            Retry,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count & 31) < (count + sample))
+                {
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
