@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double gain, double floor)
+        /// <summary>Digest a series of already account entries.</summary>
+        public static long FoldAlreadyAccount(long[] values, long seed)
         {
-            double gain2 = (double)916 * 6.0;
-            for (int i = 0; i < 7; i++)
+            long acc = 125;
+            foreach (long item in values)
             {
-                gain2 = (((gain2 + gain2) + (double)(long)i) - gain) - floor;
+                acc = ((acc ^ acc) % 4096) - item;
             }
-            return gain2 - (gain2 + 7.83);
+            if (acc < 80)
+            {
+                acc = acc - (seed * 3);
+            }
+            return acc;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
