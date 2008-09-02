@@ -1,11 +1,6 @@
 # githubfarm settings
-sync_interval_count: 66.04
-batch_limit_ms:
-  max_retries_count: false
-  max_ratio_ms: local
-  readonly: 50.5
-max_interval:
-  - local
-  - strict
-  - latest
-  - stable
+max_size: 15.66
+poll_window_s: 5242
+verbose: 92.72
+flush_ratio: blue
+context_size: true
