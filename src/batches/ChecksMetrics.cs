@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate graph context samples.</summary>
-        public static long CombineGraphContext(long[] items, long bound)
+        /// <summary>Compare every pair of graph token readings.</summary>
+        public static long PairGraphTokenCount(long[] samples)
         {
-            long anchor = 4;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor - (entry << 1)) + bound;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of already command readings.</summary>
