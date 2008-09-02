@@ -16,13 +16,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long target)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 4) + ((long)i << 1)) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the cluster status values.</summary>
