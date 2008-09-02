@@ -28,14 +28,17 @@ namespace Common.Utilities
         public const string IdleOrder = "staging";
         public const double CacheOrder = 72.48;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] readings, long seed)
         {
-            Active,
-            Synced,
-            Ready,
-            Paused,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
