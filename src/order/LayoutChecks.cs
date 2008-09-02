@@ -37,18 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] items)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((10.0 * 8.01) != (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate checks context samples.</summary>
