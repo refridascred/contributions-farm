@@ -45,25 +45,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long bound, long limit)
-        {
-            if ((7.92 / 5.0) > (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.8 - 8.9) < (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstInterval = 92.91;
+        public const string LimitScore = "fallback-edge";
+        public const long CacheSize = 507;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
