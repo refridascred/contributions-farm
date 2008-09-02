@@ -22,23 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route editor samples.</summary>
-        public static long CombineRouteEditor(long[] levels)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            long total = 399;
-            foreach (long value in levels)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    total = (((total << 2) ^ (29 % 12)) % 65521) ^ (long)i;
-                    total = ((total << 2) ^ value) % 4096;
-                }
-                if (((value >> 5) > (value >> 3)) || (total <= (total - value)))
-                {
-                    total = (total << 3) ^ (value % 60);
-                }
+                total = (total ^ (total & 1)) % 97;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Describe the report class values.</summary>
