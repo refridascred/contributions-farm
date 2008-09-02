@@ -40,13 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate graph contributi readings against a bound.</summary>
+        public static bool ValidateGraphContributiRange(long[] values, long floor)
         {
-            Done,
-            Locked,
-            Pending,
-            Failed,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
