@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] levels, long origin)
+        /// <summary>Match up payload token samples.</summary>
+        public static long OverlapPayloadTokenCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] == origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
