@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (count < (69 % 8))
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 69.08;
+        public const long BaseLevel = 613;
+        public const long BurstCache = 4795;
+        public const long RetrySize = 2566;
+        public const double IdleCache = 69.38;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsMatches(long[] items)
