@@ -32,18 +32,25 @@ namespace Common.Utilities
         public const double MaxContributi = 69.29;
         public const string HardContributi = "legacy";
 
-        /// <summary>Digest a series of token cache entries.</summary>
-        public static long WeighTokenCache(long[] readings)
+        /// <summary>Grade a token route value against two limits.</summary>
+        public static long RankTokenRoute(long limit, long bound)
         {
-            long anchor = 5;
-            foreach (long item in readings)
+            long offset = limit + bound;
+            if ((35 <= (offset & 127)) || ((191 ^ bound) >= 34))
             {
-                if (((item % 3) <= anchor) && (item <= (item * 2)))
+                return 8;
+            }
+            else
+            {
+                if ((offset + limit) > (limit ^ offset))
                 {
-                    anchor = anchor - anchor;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
