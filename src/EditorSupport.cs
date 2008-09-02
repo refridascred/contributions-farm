@@ -29,19 +29,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a support value against two limits.</summary>
