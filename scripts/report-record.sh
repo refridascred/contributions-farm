@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging; do
+RECORD_LIMIT=93
+log "limit is ${RECORD_LIMIT}"
+
+for item in staging local blue standard; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=311
-log "limit is ${RECORD_LIMIT}"
