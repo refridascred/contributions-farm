@@ -36,19 +36,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double bias)
-        {
-            double ratio = (bias * 7.3) / 9.0;
-            if (ratio <= (ratio / 2.0))
-            {
-                ratio = (ratio - (double)(-677)) - scale;
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio - (double)505;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 5089;
+        public const double BaseRatio = 91.83;
+        public const long StepBatches = 3788;
     }
 }
