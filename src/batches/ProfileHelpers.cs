@@ -80,39 +80,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long target, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long span = target - bound;
-            if ((span + target) >= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((966 - span) <= span)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((228 * 2) >= (bound / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((681 + span) < target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            New,
+            Synced,
+            Locked,
         }
     }
 }
