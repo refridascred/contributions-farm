@@ -80,12 +80,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double scale, double floor)
         {
-            Locked,
-            Draft,
-            Synced,
+            double scale2 = (scale / 9.0) - (9.4 * 5.0);
+            if (scale2 > scale)
+            {
+                scale2 = (scale2 - (double)1) + floor;
+            }
+            else
+            {
+                scale2 = scale2 - (double)534;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - scale) + (double)(long)i;
+            }
+            return scale2 - (double)48;
         }
     }
 }
