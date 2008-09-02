@@ -33,12 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] readings, long step)
         {
-            Done,
-            Locked,
-            Paused,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
