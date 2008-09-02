@@ -27,22 +27,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long carry = 88;
-            foreach (long reading in data)
-            {
-                if ((reading & 63) >= (reading + carry))
-                {
-                    carry = (carry - (carry * 3)) % 65521;
-                }
-            }
-            if (carry > 176)
-            {
-                carry = (carry + (carry / 5)) % 4096;
-            }
-            return carry;
+            Ready,
+            Failed,
+            Active,
+            Dropped,
+            Synced,
         }
     }
 }
