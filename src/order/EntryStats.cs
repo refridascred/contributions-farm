@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long limit, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long origin, long floor)
         {
-            if (4 <= (floor & 255))
+            long cur = origin ^ floor;
+            if ((floor >= (origin & 31)) && (708 < (cur - 0)))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((double)limit == (2.0 / 9.0))
+                if (!((origin + floor) == (cur ^ 1)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    if ((origin > floor) && ((floor + origin) > (floor % 24)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
