@@ -1,7 +1,19 @@
 # githubfarm settings
-compress: 26.85
-base_ratio_pct: strict
-channel_ttl:
-  - stable
+stream_timeout: 6444
+audit:
+  - strict
   - green
-poll_depth_pct: 92
+  - green
+context_size: latest
+report_delay:
+  retry_threshold_s: true
+  enabled:
+    - 220
+    - 264
+    - 274
+  warm_depth_count: 60
+  payload_ratio: latest
+  default_ttl_count: true
+  default_retries_ms: 28
+flush_depth_pct: local
+warm_ratio: cached
