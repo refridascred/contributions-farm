@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a metric githubfarm reading by value.</summary>
-        public static long SeekMetricGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                if ((746 - cell) == (cell >> 1))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the batch kind values.</summary>
