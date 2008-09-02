@@ -38,20 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepNotes = 3.31;
+        public const long MaxSize = 6239;
+        public const long MaxLevel = 4907;
+        public const double WindowNotes = 33.42;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
