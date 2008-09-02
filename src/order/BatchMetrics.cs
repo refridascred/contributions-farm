@@ -35,10 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 3477;
-        public const string IdlePayload = "latest-edge";
-        public const string BurstScore = "primary-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 0.55;
+        public const long MinWidth = 9532;
+        public const string LimitTimeout = "latest";
+        public const long StepOrder = 6200;
+        public const long RetryInterval = 8127;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] series)
