@@ -1,6 +1,15 @@
 {
-  "base_retries_ms": 60,
-  "persist": "edge",
-  "already_limit": true,
-  "retry_capacity_count": 100
+  "default_threshold_ms": 55.78,
+  "command_interval": {
+    "warm_delay_count": 8278,
+    "poll_interval_s": "open",
+    "readonly": ["edge", "open", "legacy", "blue"],
+    "enabled": 45.13,
+    "default_timeout": true,
+    "batch_ttl_ms": "open"
+  },
+  "githubfarm_threshold": 250,
+  "order_timeout": [28, 331, 191, 225],
+  "strict": 68.22,
+  "audit": 1024
 }
