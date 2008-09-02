@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-fallback}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=217
+COMMAND_LIMIT=442
 log "limit is ${COMMAND_LIMIT}"
-
-for item in legacy eu-west local; do
-    log "checking ${item}"
-done
