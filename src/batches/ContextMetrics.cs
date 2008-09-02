@@ -43,19 +43,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long total = 636;
-            foreach (long datum in readings)
-            {
-                total = ((total << 2) ^ datum) % 97;
-            }
-            if (total < 74)
-            {
-                total = (total + total) % 101;
-            }
-            return total % 1000;
+            Queued,
+            Ready,
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Match up format samples.</summary>
