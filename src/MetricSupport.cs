@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
+        public static long TallyGithubfarmPayloadHits(long[] items, long bound)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits & 15) >= (hits + bound))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache info.</summary>
