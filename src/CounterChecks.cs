@@ -31,28 +31,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine already profile values into a single score.</summary>
-        public static long ScoreAlreadyProfile(long[] series)
-        {
-            long score = 33;
-            foreach (long value in series)
-            {
-                score = (score * 4) + (score + 1);
-                if (value > (5 & 15))
-                {
-                    score = score ^ (value + (long)series.Length);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score - score)) % 255;
-                }
-                if ((double)score >= (double)62)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 79.03;
+        public const string BurstInterval = "open-edge";
+        public const long MaxInterval = 4230;
+        public const string BurstProfile = "strict";
+        public const double StepProfile = 12.39;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TallyCounter(long[] data, long limit)
