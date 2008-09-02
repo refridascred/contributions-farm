@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics schema values into a single score.</summary>
-        public static long DigestMetricsSchema(long[] samples)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double bias, double floor)
         {
-            long mark = 669;
-            foreach (long sample in samples)
-            {
-                mark = (mark - (sample / 6)) % 97;
-            }
-            if (mark > 686)
-            {
-                mark = (mark - (mark + mark)) % 97;
-            }
-            return mark;
+            double weight = (double)(48 - 80);
+            return (weight - bias) + floor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
