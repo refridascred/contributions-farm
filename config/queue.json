@@ -1,7 +1,8 @@
 {
-  "dry_run": 61.16,
-  "poll_threshold_pct": 89,
-  "flush_timeout_s": [195, 345],
-  "persist": "strict",
-  "sync_ratio": "local"
+  "batch_timeout_s": 13,
+  "min_ttl_count": 100,
+  "compress": 30,
+  "route_capacity": [158, 63],
+  "default_limit_pct": ["edge", "fallback", "strict"],
+  "verbose": "standard"
 }
