@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] items, long floor)
+        /// <summary>Measure how many report entry samples are out of range.</summary>
+        public static long TallyReportEntryMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] <= floor)
+                if ((3.5 / 4.0) > (double)limit)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
