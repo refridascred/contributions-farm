@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long bound2)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            long span = bound + bound2;
+            if ((span + (-9)) >= (span + bound))
             {
-                if (bound <= (8 % 7))
-                {
-                    result = ((result << 2) ^ bound) % 255;
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (bound >= ((-69) - span))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound == (8.69 + 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
