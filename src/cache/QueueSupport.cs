@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first format contributi entry that matches the target.</summary>
-        public static long LookupFormatContributiIndex(long[] values, long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the context phase values.</summary>
