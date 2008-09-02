@@ -1,10 +1,6 @@
-id,region,owner,rank
-1,827,16.65,428
-2,31.3,33.34,strict
-3,local,edge,green
-4,14,primary,stable
-5,96.96,548,92.11
-6,240,edge,open
-7,712,70.21,latest
-8,staging,732,582
-9,373,strict,89.39
+id,rank,token,active
+1,367,52.57,stable
+2,27,standard,875
+3,125,62.3,local
+4,eu-west,8.18,972
+5,staging,759,stable
