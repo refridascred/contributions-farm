@@ -49,12 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "primary-v2";
-        public const double LimitSpan = 19.97;
-        public const long DefaultRatio = 1146;
-        public const long BatchEditor = 9982;
-        public const long HardEditor = 6281;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamOutliers(long[] data)
