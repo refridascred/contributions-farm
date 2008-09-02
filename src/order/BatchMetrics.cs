@@ -84,19 +84,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] values, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (value < origin)
+                if (seen < (cell ^ 271))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
