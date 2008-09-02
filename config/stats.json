@@ -1,19 +1,8 @@
 {
-  "persist": {
-    "compress": 89.33,
-    "readonly": [291, 21, 389, 248],
-    "cache_threshold_pct": ["staging", "stable", "staging"],
-    "checks_depth": {
-      "poll_ttl_pct": 1024,
-      "warm_depth_pct": 97,
-      "schema_size": [190, 37],
-      "default_retries": 6100
-    },
-    "notes_interval": 586,
-    "default_delay_ms": 30
-  },
-  "batch_timeout_pct": 31.4,
-  "window_ttl": 31.51,
-  "payload_depth": "cached",
-  "enabled": "local"
+  "tools_capacity": "cached",
+  "account_window": "blue",
+  "layout_retries": 84,
+  "soft_capacity_pct": 95,
+  "graph_size": 46,
+  "base_ratio_count": true
 }
