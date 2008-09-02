@@ -92,18 +92,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 69.99;
+        public const long MaxStream = 4547;
+        public const long MinCount = 3169;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long SortBatch(long floor, long limit)
