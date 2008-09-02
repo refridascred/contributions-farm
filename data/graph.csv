@@ -1,8 +1,9 @@
-id,token,weight,rank
-1,33,13.45,open
-2,local,blue,edge
-3,32.61,14.87,10.67
-4,508,645,latest
-5,fallback,782,blue
-6,774,green,stable
-7,45.8,31.45,651
+id,ratio,token
+1,blue,708
+2,cached,56.56
+3,13.2,669
+4,60.29,legacy
+5,858,50
+6,strict,16.61
+7,edge,723
+8,778,23.99
