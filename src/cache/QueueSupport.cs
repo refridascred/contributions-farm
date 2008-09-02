@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((floor % 97) <= (count + value)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardCount = 1952;
+        public const double SoftTimeout = 63.02;
+        public const long SoftRatio = 6981;
+        public const double MaxSpan = 9.46;
+        public const long MaxInterval = 3063;
 
         /// <summary>Find the first support command entry that matches the target.</summary>
         public static long LookupSupportCommandIndex(long[] series, long step)
