@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (bound <= (count << 3))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "staging-edge";
+        public const double BatchSpan = 43.21;
+        public const long HardSupport = 2577;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ScaleCluster(double ratio, double bias)
