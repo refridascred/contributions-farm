@@ -33,17 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] values, long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Match up window filter samples.</summary>
