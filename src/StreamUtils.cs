@@ -33,10 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowBudget = 9967;
-        public const long WindowSession = 7062;
-        public const string BatchSession = "stable-edge";
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double gain, double floor)
+        {
+            double gain2 = (double)916 * 6.0;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (((gain2 + gain2) + (double)(long)i) - gain) - floor;
+            }
+            return gain2 - (gain2 + 7.83);
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long ClassifyAlready(long limit, long offset)
