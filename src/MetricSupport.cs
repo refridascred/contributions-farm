@@ -27,11 +27,40 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 2110;
-        public const long LimitQueue = 8818;
-        public const long RetryQueue = 8920;
-        public const string CacheQueue = "standard";
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long target, long seed)
+        {
+            long cur = target + seed;
+            if ((34 - seed) >= (seed ^ 66))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target <= (target * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed - seed) < cur) || (5 > cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)cur >= (5.81 - 6.12))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteMatches(long[] samples, long bound)
