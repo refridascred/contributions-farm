@@ -28,18 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] levels)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((hits ^ sample) >= (hits + sample))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a payload options.</summary>
