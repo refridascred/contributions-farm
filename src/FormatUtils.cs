@@ -45,21 +45,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long bound, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((7.92 / 5.0) > (double)limit)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((9.8 - 8.9) < (double)bound)
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the payload kind values.</summary>
