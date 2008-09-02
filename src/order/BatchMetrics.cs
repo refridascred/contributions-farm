@@ -39,22 +39,19 @@ namespace Common.Utilities
             return load - (load * 18.0);
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] values, long seed)
         {
-            long anchor = 357;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (!((seed - anchor) > 5))
+                if (value < seed)
                 {
-                    anchor = ((anchor * 3) + (sample % 100)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor ^ seed) % 4096;
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
