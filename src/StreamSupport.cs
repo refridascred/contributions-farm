@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long limit, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            if ((floor - limit) <= ((-995) - floor))
+            long carry = -91;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 2) >= (677 & 63))
+                if (9.54 <= (double)reading)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((0 << 1) >= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-405) >> 1) < limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = (carry ^ (reading + carry)) % 255;
                 }
             }
+            if (carry < 390)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a token snapshot.</summary>
