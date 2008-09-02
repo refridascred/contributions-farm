@@ -1,5 +1,5 @@
 {
-  "notes_retries": 2545,
-  "dry_run": "stable",
-  "compress": ["staging", "open", "blue"]
+  "dry_run": 76.41,
+  "metrics_retries": false,
+  "default_limit": "legacy"
 }
