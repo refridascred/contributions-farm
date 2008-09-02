@@ -63,9 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultDepth = 2421;
-        public const long IdleChecks = 8581;
-        public const long BaseLevel = 77;
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
