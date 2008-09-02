@@ -1,6 +1,11 @@
-id,count,owner,ratio
-1,local,63.23,987
-2,standard,672,396
-3,936,129,596
-4,109,latest,fallback
-5,85.73,418,567
+id,state,ratio,weight,active
+1,46,latest,793,179
+2,open,14.65,86.56,330
+3,fallback,primary,eu-west,strict
+4,999,eu-west,481,edge
+5,70.37,898,587,2.04
+6,87.67,61.9,670,28.67
+7,63.86,7.16,687,2.73
+8,785,948,16.32,latest
+9,41.91,705,edge,572
+10,43,379,62.66,193
