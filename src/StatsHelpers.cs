@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCount = 674;
-        public const long WindowCommand = 1409;
-        public const long BatchCommand = 1781;
-        public const double BurstCommand = 49.74;
-        public const long RetryCommand = 264;
+        /// <summary>Audit already channel readings against a rule.</summary>
+        public static long MeasureAlreadyChannelMatches(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)origin != (1.79 * 18.0))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long WeighContext(long[] values)
