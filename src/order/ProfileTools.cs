@@ -47,17 +47,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a format profile reading by value.</summary>
-        public static long LocateFormatProfileIndex(long[] samples, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 45;
+            foreach (long value in values)
             {
-                if (samples[i] < target)
+                if ((6 >> 2) <= value)
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (seed + seed);
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
