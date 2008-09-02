@@ -33,19 +33,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryDepth = 6521;
+        public const long BurstScore = 9771;
+        public const string IdleStats = "local-v2";
     }
 }
