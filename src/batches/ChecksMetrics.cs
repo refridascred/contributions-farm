@@ -34,10 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowWidth = "latest-1";
-        public const string CacheLevel = "staging-v2";
-        public const string WindowLevel = "latest";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 96.24;
+        public const double WindowChannel = 69.34;
+        public const long SoftChannel = 3318;
+        public const long DefaultDepth = 1660;
+        public const long CacheInterval = 346;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] series, long floor)
