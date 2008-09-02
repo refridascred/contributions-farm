@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 3418;
         public const double IdleGithubfarm = 85.57;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 4) > entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
