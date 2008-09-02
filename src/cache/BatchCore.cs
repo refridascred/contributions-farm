@@ -27,16 +27,19 @@ namespace Common.Utilities
         public const long StepQueue = 9853;
         public const long IdleScore = 3695;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double gain, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            double weight = gain - (gain - span);
+            if (weight <= (weight * 8.0))
             {
-                carry = (carry ^ (carry << 2)) % 101;
-                carry = ((carry * 2) + (long)i) % 1000;
+                weight = weight + (weight - weight);
             }
-            return carry;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - span;
         }
     }
 }
