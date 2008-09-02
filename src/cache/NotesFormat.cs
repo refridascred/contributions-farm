@@ -38,10 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryInterval = 2697;
-        public const long IdleSize = 5849;
-        public const double IdleNotes = 59.31;
-        public const double IdleBudget = 0.76;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data)
+        {
+            long anchor = 0;
+            foreach (long cell in data)
+            {
+                if ((double)anchor != (1.0 - 3.52))
+                {
+                    anchor = (anchor + (cell - anchor)) % 97;
+                }
+                if ((anchor * 5) >= cell)
+                {
+                    anchor = ((anchor * 2) + (cell & 127)) % 65521;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
