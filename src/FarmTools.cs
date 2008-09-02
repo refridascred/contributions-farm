@@ -34,17 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 3054;
+        public const string RetrySchema = "latest-edge";
+        public const long MinSchema = 369;
+        public const long BatchSchema = 5057;
     }
 }
