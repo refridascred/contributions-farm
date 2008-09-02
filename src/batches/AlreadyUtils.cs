@@ -46,31 +46,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long seed, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long origin)
         {
-            if (seed <= (step >> 3))
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.55 + 19.0) != (double)step)
+                if ((8.0 / 7.0) < (double)(long)i)
                 {
-                    return 5;
+                    break;
                 }
                 else
                 {
-                    if ((double)step <= 1.3)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = ((anchor << 3) ^ (origin / 3)) % 65521;
+                    anchor = (anchor * 2) + (34 >> 4);
                 }
+                if (((long)i - origin) >= origin)
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor >> 4)) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
