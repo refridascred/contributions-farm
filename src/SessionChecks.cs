@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count record order pairs that satisfy a relation.</summary>
-        public static long CompareRecordOrderCount(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading != floor)
                 {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
