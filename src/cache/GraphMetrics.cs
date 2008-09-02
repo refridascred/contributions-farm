@@ -48,12 +48,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 985;
-        public const string DefaultFactor = "primary-1";
-        public const string MaxToken = "local-1";
-        public const string RetryToken = "staging-1";
-        public const long HardTimeout = 4893;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepSpan = 5902;
+        public const long RetryCount = 8454;
+        public const long RetryFactor = 4043;
+        public const long StepTools = 7972;
+        public const long IdleTools = 1333;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportGaps(long[] readings)
