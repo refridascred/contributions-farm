@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 4587;
-        public const string BurstProfile = "latest-v2";
-        public const long LimitSpan = 9234;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((((4 * 5) >= (seen >> 1)) || (((-31) - floor) > seen)) && ((double)floor >= (4.43 + 2.4)))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the filter contributi entries that pass the check.</summary>
         public static long MeasureFilterContributiOutliers(long[] values, long bound)
