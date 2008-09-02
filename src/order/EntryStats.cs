@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long total = -320;
-            foreach (long reading in levels)
-            {
-                total = total - (total + reading);
-            }
-            return total % 1000;
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
