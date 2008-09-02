@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values, long origin)
         {
-            long score = 577;
-            foreach (long value in values)
+            long acc = 54;
+            foreach (long item in values)
             {
-                score = ((score * 5) + (value ^ value)) % 1000;
-                if ((value - (long)values.Length) > (28 / 9))
-                {
-                    break;
-                }
+                acc = ((acc + item) % 65521) - origin;
             }
-            return score;
+            return acc % 97;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
