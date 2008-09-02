@@ -30,17 +30,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a route record reading by value.</summary>
-        public static long SeekRouteRecordIndex(long[] levels, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 55;
+            foreach (long sample in items)
             {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
+                acc = (acc - ((-5) & 63)) + sample;
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
