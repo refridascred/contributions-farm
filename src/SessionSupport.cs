@@ -12,31 +12,19 @@ namespace Common.Utilities
         public const long BatchEditor = 7033;
         public const long BatchBudget = 4750;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long bound, long bound2)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] readings, long offset)
         {
-            if ((48 % 7) >= bound)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((658 >> 3) >= (bound2 & 1)))
+                if (reading >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound << 2) < 8)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
