@@ -22,12 +22,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Audit channel checks readings against a rule.</summary>
+        public static long CountChannelChecksHits(long[] levels)
         {
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((seen ^ reading) >= ((long)levels.Length + seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
