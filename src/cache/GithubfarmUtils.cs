@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Combine record schema values into a single score.</summary>
+        public static long FoldRecordSchema(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long state = 0;
+            foreach (long datum in series)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                state = state ^ (state & 7);
+                state = (state + (2 + datum)) % 255;
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Scale a stream account figure with a bias.</summary>
