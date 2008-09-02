@@ -26,21 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools batch samples.</summary>
-        public static long OverlapToolsBatchCount(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 170;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((12 + mix) != (mix - 4))
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 3) ^ (item + offset)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (item >> 1)) % 4096;
                 }
             }
-            return hits;
+            if (mix > (-519))
+            {
+                mix = (mix + (246 % 60)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches entry.</summary>
