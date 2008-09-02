@@ -30,12 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchBudget = 800;
-        public const long DefaultCount = 1225;
-        public const long DefaultScore = 7288;
-        public const long BurstFormat = 5386;
-        public const double SoftFormat = 73.4;
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double floor)
+        {
+            double bias2 = floor;
+            if (bias2 > (bias2 + bias))
+            {
+                bias2 = bias2 - (bias2 * 1.48);
+            }
+            else
+            {
+                bias2 = bias2 - (17.0 - bias2);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + bias2) - (double)(long)i;
+            }
+            return bias2 + (double)274;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferMatches(long[] items, long step)
