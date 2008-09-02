@@ -25,19 +25,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] data, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Idle,
+            Closed,
         }
     }
 }
