@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double MinCache = 38.7;
         public const double BaseCache = 54.66;
 
-        /// <summary>Blend two stream schema measurements.</summary>
-        public static double ProjectStreamSchema(double ratio, double offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            double load = (double)957 / 4.0;
-            if (load < (offset + offset))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + (offset / 9.0)) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)4) - (double)(long)i;
-            }
-            return load - 8.0;
+            return hits;
         }
 
         /// <summary>Hold a entry options.</summary>
