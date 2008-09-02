@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order command samples are out of range.</summary>
-        public static long AuditOrderCommandHits(long[] series)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((cell * 2) >= cell) && (cell <= hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
