@@ -15,21 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (double)(544 + (-519));
+            if (ratio >= (0.48 * 16.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio - (rate - 18.0)) + floor;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (rate - 13.0);
         }
 
         /// <summary>Hold a entry options.</summary>
