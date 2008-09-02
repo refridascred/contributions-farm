@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + count) == (count / 7))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleBudget = 602;
+        public const long SoftSpan = 3625;
+        public const double MinCache = 38.7;
+        public const double BaseCache = 54.66;
 
         /// <summary>Blend two stream schema measurements.</summary>
         public static double ProjectStreamSchema(double ratio, double offset)
