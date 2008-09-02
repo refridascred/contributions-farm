@@ -28,16 +28,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of already entry readings.</summary>
-        public static long FoldAlreadyEntry(long[] readings, long floor)
-        {
-            long anchor = 695;
-            foreach (long entry in readings)
-            {
-                anchor = (((anchor * 3) + ((-3) + floor)) % 101) + entry;
-                anchor = (anchor - (floor >> 4)) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardBudget = 8438;
+        public const long StepSpan = 1585;
+        public const long MinBudget = 1322;
     }
 }
