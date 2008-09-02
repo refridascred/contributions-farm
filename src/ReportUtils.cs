@@ -43,12 +43,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] levels, long step)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((451 * 2) <= (value + step)) || ((665 ^ step) > (322 - step)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate commits record samples.</summary>
