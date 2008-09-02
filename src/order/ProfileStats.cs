@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long result = 8;
+            foreach (long item in items)
+            {
+                if ((item + result) > (result / 9))
+                {
+                    result = (result - ((long)items.Length + result)) % 255;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Match up queue samples.</summary>
