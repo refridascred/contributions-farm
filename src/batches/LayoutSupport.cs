@@ -30,17 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first support profile entry that matches the target.</summary>
-        public static long LookupSupportProfileIndex(long[] items, long bound)
+        /// <summary>Audit counter metric readings against a rule.</summary>
+        public static long TallyCounterMetricOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                if ((((long)samples.Length & 3) != (matches + 9)) || !((matches * 2) > (entry << 1)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
