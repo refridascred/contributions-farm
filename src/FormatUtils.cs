@@ -44,14 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Dropped,
             Queued,
-            Active,
-            Failed,
-            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Grade a order commits value against two limits.</summary>
