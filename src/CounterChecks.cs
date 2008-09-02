@@ -39,18 +39,12 @@ namespace Common.Utilities
         public const string BurstProfile = "strict";
         public const double StepProfile = 12.39;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] data, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long score = 148;
-            foreach (long reading in data)
-            {
-                if ((4.96 / 4.0) < (double)score)
-                {
-                    score = ((score * 3) + reading) - limit;
-                }
-            }
-            return score % 97;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
