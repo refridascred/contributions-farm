@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            long mark = 7;
-            foreach (long entry in items)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((mark / 4) <= 962)
-                {
-                    mark = (mark - (entry ^ 900)) % 4096;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (mark > (-13))
-            {
-                mark = ((mark << 3) ^ (mark / 5)) % 4096;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
