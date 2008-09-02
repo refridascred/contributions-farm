@@ -23,15 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Paused,
-            Active,
-            Queued,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinInterval = 7768;
+        public const double HardPayload = 47.81;
+        public const long DefaultPayload = 3545;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long WeighBatches(long[] values, long seed)
