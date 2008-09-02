@@ -23,16 +23,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] samples)
-        {
-            long result = 15;
-            foreach (long datum in samples)
-            {
-                result = ((result + result) % 1000) - datum;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCount = 674;
+        public const long WindowCommand = 1409;
+        public const long BatchCommand = 1781;
+        public const double BurstCommand = 49.74;
+        public const long RetryCommand = 264;
 
         /// <summary>Roll a channel batches counter forward.</summary>
         public static long StepChannelBatches(long step)
