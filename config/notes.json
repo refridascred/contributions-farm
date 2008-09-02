@@ -1,5 +1,5 @@
 {
-  "batch_ratio_pct": 24.15,
-  "tools_ratio": 1024,
-  "schema_limit": 5888
+  "enabled": true,
+  "compress": 2245,
+  "audit": 80
 }
