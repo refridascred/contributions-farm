@@ -29,32 +29,19 @@ namespace Common.Utilities
         public const long StepQueue = 9853;
         public const long IdleScore = 3695;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long step, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long offset)
         {
-            long offset = step + limit;
-            if (((offset / 4) == (step << 1)) && (offset <= (94 / 7)))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(offset >= (step + limit)))
+                if (cell > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.0 / 5.0) >= (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
