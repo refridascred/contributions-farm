@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] series)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((((double)69 != (double)cell) && (cell > (cell - cell))) || ((9.12 - 1.8) < (double)matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
