@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 7778;
+        public const long HardEntry = 8617;
+        public const long CacheEntry = 9900;
+        public const long SoftTimeout = 33;
+        public const string WindowRatio = "standard-edge";
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] samples)
