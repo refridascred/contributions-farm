@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const double IdleInterval = 23.22;
         public const double MaxInterval = 40.67;
 
-        /// <summary>Find the first buffer checks entry that matches the target.</summary>
-        public static long SeekBufferChecksIndex(long[] values, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 710;
+            foreach (long sample in items)
             {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                if (!(sample < (sample / 2)))
                 {
-                    return (long)i;
+                    acc = (acc * 2) + (acc >> 5);
                 }
             }
-            return -1;
+            if (acc > 87)
+            {
+                acc = acc ^ (bound % 60);
+            }
+            return acc;
         }
 
         /// <summary>Describe the token state values.</summary>
