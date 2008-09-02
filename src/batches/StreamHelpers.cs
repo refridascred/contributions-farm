@@ -62,13 +62,12 @@ namespace Common.Utilities
         public const string MaxFormat = "fallback-v2";
         public const string LimitDepth = "local-1";
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Closed,
-            Draft,
-            Stale,
-            New,
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a session record.</summary>
