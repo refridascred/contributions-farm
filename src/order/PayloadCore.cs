@@ -14,14 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double ratio, double bias)
         {
-            Closed,
-            Retry,
-            Pending,
-            Synced,
-            Draft,
+            double rate = bias + bias;
+            if (rate >= (ratio - bias))
+            {
+                rate = rate - (double)853;
+            }
+            else
+            {
+                rate = rate - 4.68;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - (double)63;
         }
 
         /// <summary>Adjust a stream reading.</summary>
