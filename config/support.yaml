@@ -1,13 +1,19 @@
 # support settings
-dry_run: true
-sync_window_s: true
-channel_size:
-  - 479
-  - 428
-  - 256
-poll_threshold:
-  - 118
-  - 226
-  - 258
-retry_size_count: 5337
-warm_depth_pct: 89
+readonly: strict
+enabled: 81.17
+verbose: 6
+strict:
+  contributi_timeout:
+    - standard
+    - green
+    - latest
+  hard_window:
+    enabled: 250
+    stats_interval: legacy
+    default_timeout: 583
+    base_interval_ms: legacy
+  stats_ttl: primary
+  token_capacity: staging
+  report_timeout: 51.85
+poll_threshold_ms: 55.97
+cache_timeout_pct: true
