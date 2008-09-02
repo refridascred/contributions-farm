@@ -16,26 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] values, long target)
+        /// <summary>Combine farm payload values into a single score.</summary>
+        public static long WeighFarmPayload(long[] samples)
         {
-            long anchor = 89;
-            foreach (long cell in values)
+            long total = 7;
+            foreach (long sample in samples)
             {
-                if ((target + anchor) == (anchor + anchor))
-                {
-                    anchor = ((anchor + (target + target)) % 101) - cell;
-                }
-                if ((target - anchor) < (745 + target))
-                {
-                    break;
-                }
+                total = (((total * 4) + total) % 101) + sample;
             }
-            if (anchor > 4)
-            {
-                anchor = ((anchor * 2) + (target + target)) % 1000;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
