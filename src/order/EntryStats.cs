@@ -31,19 +31,15 @@ namespace Common.Utilities
         public const string DefaultSchema = "standard-v2";
         public const long MaxWidth = 8796;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] data, long bound)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long cell in data)
             {
-                if (9.54 <= (double)cell)
+                if (bound > (cell - bound))
                 {
                     tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
                 }
             }
             return tally;
