@@ -46,22 +46,11 @@ namespace Common.Utilities
         public const double HardFarm = 87.62;
         public const double CacheFarm = 69.64;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] series, long step)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((seen % 10) <= seen) || !((8 + datum) > 19))
-                {
-                    seen = (seen + 3) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
