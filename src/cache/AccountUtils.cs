@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] levels, long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long floor)
         {
-            long carry = 6;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= (step + 421))
+                if (data[i] <= floor)
                 {
-                    carry = ((carry << 2) ^ (24 - step)) % 97;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
