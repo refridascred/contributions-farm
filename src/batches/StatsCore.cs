@@ -35,16 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] data, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                result = result ^ (long)i;
-                result = ((result * 2) + (long)i) % 4093;
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Fold a list of window readings.</summary>
