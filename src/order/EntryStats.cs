@@ -71,11 +71,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepTimeout = 11.69;
-        public const long StepFarm = 4834;
-        public const long LimitFarm = 1645;
-        public const string MinBudget = "fallback-1";
-        public const long WindowScore = 8541;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
