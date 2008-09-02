@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] levels, long step)
+        /// <summary>Fold a list of entry batch readings.</summary>
+        public static long FoldEntryBatch(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 6;
+            foreach (long datum in samples)
             {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
+                carry = ((carry << 2) ^ (datum + datum)) % 1000;
+                carry = ((carry << 3) ^ (datum % 100)) % 255;
+                if ((double)carry >= 2.0)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
