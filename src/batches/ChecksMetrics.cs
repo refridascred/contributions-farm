@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const double RetryLevel = 64.73;
         public const long WindowRatio = 3665;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] items, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (cell < step)
+                if (datum > bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
