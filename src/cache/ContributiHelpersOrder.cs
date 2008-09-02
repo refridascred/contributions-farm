@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] samples, long offset)
         {
-            Active,
-            Locked,
-            Stale,
-            Retry,
-            Synced,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
