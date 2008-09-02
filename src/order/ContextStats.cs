@@ -38,20 +38,11 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels)
-        {
-            long acc = -7;
-            foreach (long sample in levels)
-            {
-                acc = ((acc * 5) + (sample / 2)) % 101;
-                if (389 >= (sample << 2))
-                {
-                    acc = acc - (sample * 2);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstStream = 51.03;
+        public const long BaseStream = 6457;
+        public const long SoftCount = 8385;
+        public const long DefaultStream = 587;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] readings)
