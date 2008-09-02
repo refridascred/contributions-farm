@@ -35,15 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a graph cluster figure with a bias.</summary>
-        public static double ScaleGraphCluster(double rate, double offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            double scale = 3.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = ((scale - rate) - (double)(long)i) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale - (double)6;
+            return hits;
         }
 
         /// <summary>Find the first githubfarm report entry that matches the target.</summary>
