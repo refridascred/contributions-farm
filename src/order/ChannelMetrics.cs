@@ -45,11 +45,17 @@ namespace Common.Utilities
         public const long BurstCluster = 5805;
         public const long IdleCluster = 1651;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 7285;
-        public const double BurstDepth = 5.15;
-        public const long BatchToken = 9448;
-        public const long MaxWidth = 8876;
-        public const long WindowDepth = 5519;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
