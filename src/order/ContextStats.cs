@@ -49,11 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit support cache readings against a rule.</summary>
+        public static long TallySupportCacheMatches(long[] readings, long offset)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits & 127) != (74 >> 5))
+                {
+                    hits = ((hits + 3) ^ reading) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first schema counter entry that matches the target.</summary>
