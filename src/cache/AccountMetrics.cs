@@ -57,19 +57,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long seed)
+        /// <summary>Rank graph already input into a small class.</summary>
+        public static long BucketGraphAlready(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            if (((limit << 1) == (limit2 >> 1)) || ((limit + 224) <= (limit + limit)))
             {
-                if (value >= seed)
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) > limit2)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit2 < 5.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (19.0 >= (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the payload class values.</summary>
