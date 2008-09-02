@@ -38,15 +38,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((datum / 3) < datum)
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
