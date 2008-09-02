@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] levels)
+        /// <summary>Check that every cache queue entry stays within the limit.</summary>
+        public static bool ValidateCacheQueueLimits(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (((hits - item) == (long)levels.Length) || (hits > (item ^ 92)))
+                if (sample <= target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
