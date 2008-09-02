@@ -26,15 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (((-43) & 1) == (matches % 24))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
