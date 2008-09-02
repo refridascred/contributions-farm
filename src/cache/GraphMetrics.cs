@@ -23,18 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stream account reading by value.</summary>
-        public static long LookupStreamAccountIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 1837;
+        public const string WindowCounter = "stable";
+        public const long BurstCounter = 8735;
+        public const double RetryCounter = 75.71;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
