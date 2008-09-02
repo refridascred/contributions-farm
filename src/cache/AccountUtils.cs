@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Failed,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 4485;
+        public const string CacheTools = "open-1";
+        public const long MinTools = 9741;
+        public const long SoftCount = 6206;
 
         /// <summary>Adjust a token reading.</summary>
         public static double SmoothToken(double scale, double floor)
