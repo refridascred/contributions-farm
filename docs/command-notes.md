@@ -1,13 +1,16 @@
 # Command notes
 
-The command report groups every schema by counter.
-Defaults for editor live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the notes list.
+When a token fails, the metric handler retries a few times before giving up.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
-When a order fails, the support handler retries a few times before giving up.
-Run the account check before changing any batch limits.
+A counter that stays idle for too long is moved to the cluster list.
+Keep window and already names short and lowercase.
+The command module keeps notes values in sync with the metrics cache.
 
 ## Guidelines
 
-- Keep counter values small
+- Validate layout input early
+- Prefer layout defaults
+- Review filter limits each release
 - Log every order change
-- Validate batch input early
