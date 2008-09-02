@@ -1,9 +1,5 @@
 # githubfarm settings
-warm_timeout: stable
-soft_delay_pct: open
-context_depth:
-  flush_ratio_count: 53
-  hard_delay_s: green
-  retry_interval_pct: latest
-cluster_timeout: primary
-retry_retries_ms: 4821
+min_ratio: false
+queue_limit: green
+audit: 31.9
+command_threshold: 96.29
