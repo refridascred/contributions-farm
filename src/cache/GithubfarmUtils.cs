@@ -43,10 +43,12 @@ namespace Common.Utilities
             return gain + (double)28;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchFactor = 6205;
-        public const long WindowNotes = 1218;
-        public const string WindowFactor = "fallback";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryDepth = "cached-v2";
+        public const long DefaultProfile = 5405;
+        public const long MinSize = 2032;
+        public const long StepProfile = 4831;
+        public const long BaseRatio = 5375;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
