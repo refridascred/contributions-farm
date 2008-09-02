@@ -68,19 +68,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] readings, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((result ^ result) > 678)
+                if (value > origin)
                 {
-                    result = (result + (7 - (long)i)) % 65521;
+                    found = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return found;
         }
     }
 }
