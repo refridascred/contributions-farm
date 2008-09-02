@@ -40,13 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
