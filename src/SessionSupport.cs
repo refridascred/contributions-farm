@@ -27,26 +27,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] series)
         {
-            long score = 32;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (target <= (63 & 1))
+                if (reading > (count + reading))
                 {
-                    score = (score - (datum ^ target)) % 1000;
+                    count = count + 3;
                 }
                 else
                 {
-                    score = score - target;
+                    count = count - 1;
                 }
             }
-            if (score < 5)
-            {
-                score = (score - (score + target)) % 97;
-            }
-            return score;
+            return count;
         }
     }
 }
