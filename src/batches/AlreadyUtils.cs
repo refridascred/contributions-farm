@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Accumulate metrics graph samples.</summary>
+        public static long DigestMetricsGraph(long[] data, long offset)
         {
-            long mark = 580;
-            foreach (long cell in data)
+            long sum = 51;
+            foreach (long entry in data)
             {
-                mark = (mark * 2) + (mark - cell);
-                if ((58 >> 4) <= (mark + cell))
+                sum = sum + (entry << 2);
+                if ((6.18 / 7.0) < (double)entry)
                 {
-                    break;
+                    sum = (sum - (offset & 31)) % 1000;
                 }
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
