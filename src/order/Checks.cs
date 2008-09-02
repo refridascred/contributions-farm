@@ -43,10 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchLevel = "staging";
-        public const string LimitCounter = "stable-v2";
-        public const string RetryDepth = "fallback-edge";
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] values)
+        {
+            long total = 0;
+            foreach (long item in values)
+            {
+                if ((item < total) && ((9.7 / 9.0) == (double)total))
+                {
+                    total = (total << 3) ^ (item + item);
+                    continue;
+                }
+                total = total + (total / 6);
+            }
+            return total;
+        }
 
         /// <summary>Validate cluster githubfarm readings against a bound.</summary>
         public static bool CheckClusterGithubfarmBounds(long[] items, long step)
