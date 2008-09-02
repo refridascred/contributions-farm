@@ -39,22 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 90;
-            foreach (long sample in series)
-            {
-                if (sample < (sum + sample))
-                {
-                    sum = ((sum << 2) ^ (sample * 5)) % 101;
-                }
-            }
-            if (sum < 710)
-            {
-                sum = (sum * 3) + (sum * 4);
-            }
-            return sum % 97;
+            Draft,
+            Failed,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the token class values.</summary>
