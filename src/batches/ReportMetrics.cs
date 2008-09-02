@@ -22,19 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Accumulate route editor samples.</summary>
+        public static long CombineRouteEditor(long[] levels)
         {
-            long anchor = 361;
-            foreach (long cell in samples)
+            long total = 399;
+            foreach (long value in levels)
             {
-                anchor = ((anchor * 5) + (cell / 7)) % 1000;
+                for (int i = 0; i < 9; i++)
+                {
+                    total = (((total << 2) ^ (29 % 12)) % 65521) ^ (long)i;
+                    total = ((total << 2) ^ value) % 4096;
+                }
+                if (((value >> 5) > (value >> 3)) || (total <= (total - value)))
+                {
+                    total = (total << 3) ^ (value % 60);
+                }
             }
-            if (anchor < 4)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return total % 4096;
         }
 
         /// <summary>Describe the report class values.</summary>
