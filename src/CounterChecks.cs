@@ -23,38 +23,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            if ((double)step <= 9.1)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit - step) >= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.0 > (double)step) && (limit > (step - limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step % 7) < (limit / 2)) || ((limit >> 1) <= (34 + limit)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine already profile values into a single score.</summary>
