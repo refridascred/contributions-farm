@@ -51,32 +51,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long target, long target2)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long prev = target - target2;
-            if (!((2.0 * 7.0) < (double)prev))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + target2) >= prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target2 + target2) >= (prev + prev))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Closed,
+            Retry,
         }
     }
 }
