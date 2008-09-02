@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((3.0 / 5.0) == (double)matches)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
