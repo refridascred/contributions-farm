@@ -25,16 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double rate, double bias)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = (carry ^ 0) % 1000;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            double gain = 0.47 * 13.0;
+            return ((gain + (double)124) + rate) + bias;
         }
 
         /// <summary>Hold a metrics header.</summary>
