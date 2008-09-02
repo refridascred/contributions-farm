@@ -37,12 +37,13 @@ namespace Common.Utilities
         public const string MaxFormat = "fallback-v2";
         public const string LimitDepth = "local-1";
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Draft,
             Closed,
-            Synced,
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a session record.</summary>
