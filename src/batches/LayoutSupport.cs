@@ -30,24 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank contributi notes input into a small class.</summary>
-        public static long ClassifyContributiNotes(long offset, long offset2)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if (((double)offset2 <= (double)60) && ((offset2 >> 1) == (offset2 + offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset2 - offset2) > (offset + offset2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Accumulate order samples.</summary>
