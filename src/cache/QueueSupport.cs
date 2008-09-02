@@ -16,12 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally + sample) < (sample - (long)series.Length))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
