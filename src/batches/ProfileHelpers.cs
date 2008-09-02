@@ -73,12 +73,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double bias, double offset)
         {
-            New,
-            Synced,
-            Locked,
+            double scale = bias;
+            if (scale >= (bias / 3.0))
+            {
+                scale = scale + offset;
+            }
+            else
+            {
+                scale = scale - (offset * 3.25);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + 4.3;
         }
     }
 }
