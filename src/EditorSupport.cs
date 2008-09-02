@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 7172;
-        public const long SoftOrder = 2610;
-        public const long RetryDepth = 1932;
-        public const long BurstDepth = 568;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public double Mode { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchLimits(long[] items, long floor)
