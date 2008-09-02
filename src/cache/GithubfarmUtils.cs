@@ -38,13 +38,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Classify a counter buffer pair into a bucket.</summary>
+        public static long GradeCounterBuffer(long offset, long target)
         {
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long span = offset + target;
+            if (((target + offset) >= (target / 6)) || ((span + offset) >= offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((4.0 - 6.25) != (double)span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)span <= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
