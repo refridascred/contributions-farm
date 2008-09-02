@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryCount = 1983;
-        public const long RetryDepth = 3034;
-        public const long SoftToken = 3870;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxScore = 21.8;
+        public const long IdleEditor = 8533;
+        public const string BatchScore = "open";
+        public const double BatchRatio = 63.3;
+        public const long CacheBudget = 1285;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] items, long origin)
