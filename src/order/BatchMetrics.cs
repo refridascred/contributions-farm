@@ -33,12 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double bias, double floor)
-        {
-            double weight = (double)(48 - 80);
-            return (weight - bias) + floor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "latest";
+        public const double WindowRecord = 98.31;
+        public const string CacheRecord = "open-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleLevel = 89.87;
