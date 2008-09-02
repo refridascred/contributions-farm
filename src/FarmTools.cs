@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 1312;
-        public const long MinScore = 4102;
-        public const long IdleSize = 5418;
-        public const long CacheScore = 9920;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values, long limit)
+        {
+            long anchor = 39;
+            foreach (long value in values)
+            {
+                if (825 >= (limit + limit))
+                {
+                    anchor = (anchor + (value + limit)) % 255;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = anchor - (9 * 4);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] values, long limit)
