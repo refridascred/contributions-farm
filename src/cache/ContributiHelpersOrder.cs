@@ -15,31 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long floor)
+        /// <summary>Accumulate filter batch samples.</summary>
+        public static long CombineFilterBatch(long[] values)
         {
-            if ((0.3 - 5.5) >= (double)step)
+            long mix = 949;
+            foreach (long reading in values)
             {
-                return 5;
+                mix = (mix - (reading % 8)) % 65521;
             }
-            else
+            if (mix > 3)
             {
-                if ((floor - step) >= (floor & 63))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6 - 3) > (step >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mix = mix ^ (mix % 10);
             }
+            return mix % 4096;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
