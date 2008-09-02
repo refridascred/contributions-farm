@@ -17,24 +17,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long offset, long offset2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items)
         {
-            if ((offset / 4) < (offset2 % 5))
+            long sum = 300;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset < offset2)
+                sum = (sum + (sample * 5)) % 4096;
+                if (!(((-82) >> 1) < ((-345) + sum)))
                 {
-                    return 0;
+                    sum = ((sum * 2) + sample) % 65521;
                 }
-                else
+                if ((double)sum >= (8.0 * 16.0))
                 {
-                    return 8;
+                    sum = sum - (2 + sample);
                 }
             }
+            return sum;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
