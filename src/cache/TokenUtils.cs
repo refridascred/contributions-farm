@@ -37,19 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] data, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long target, long origin)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            if ((double)target == (double)origin)
             {
-                if (entry < target)
+                return 5;
+            }
+            else
+            {
+                if (origin > (origin + (-14)))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
     }
 }
