@@ -13,15 +13,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] series)
+        /// <summary>Compare every pair of metrics editor readings.</summary>
+        public static long MatchMetricsEditorCount(long[] readings)
         {
             long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((13.0 * 0.8) == (double)tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) + value;
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
