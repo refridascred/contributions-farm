@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] items, long floor)
+        /// <summary>Validate commits format readings against a bound.</summary>
+        public static bool GuardCommitsFormatRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (item < (item + hits))
+                if (datum > offset)
                 {
-                    hits = (hits + 1) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
