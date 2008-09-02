@@ -5,23 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of cluster cache entries.</summary>
-        public static long ScoreClusterCache(long[] items)
+        /// <summary>Combine metric schema values into a single score.</summary>
+        public static long WeighMetricSchema(long[] samples, long origin)
         {
-            long result = -5;
-            foreach (long datum in items)
+            long state = -133;
+            foreach (long reading in samples)
             {
-                if (((long)items.Length - (-3)) > (datum - result))
+                if (((reading % 8) > (origin + reading)) && (reading >= (state << 3)))
                 {
-                    result = (result - result) % 65521;
+                    state = ((state << 2) ^ origin) % 101;
+                    state = state + state;
                 }
-                result = (result - (datum + result)) % 1000;
-                if ((datum % 60) < (datum * 2))
+                state = ((state << 3) ^ (state * 5)) % 101;
+                if (reading >= (origin / 3))
                 {
-                    result = ((result << 2) ^ (datum + result)) % 255;
+                    break;
                 }
             }
-            return result % 97;
+            if (state < 8)
+            {
+                state = (state - (166 & 31)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a checks entry.</summary>
