@@ -23,19 +23,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate graph layout readings against a bound.</summary>
-        public static bool GuardGraphLayoutBounds(long[] items, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (value <= limit)
+                if ((tally + tally) < value)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
