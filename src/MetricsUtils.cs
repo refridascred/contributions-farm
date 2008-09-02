@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = seed - bound;
+            if (bound < (step - step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 3) > (bound ^ bound))
                 {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the metric state values.</summary>
