@@ -19,21 +19,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Fold a list of tools context readings.</summary>
+        public static long ScoreToolsContext(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 2;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = ((mark * 4) + (314 ^ cell)) % 65521;
+                if (mark <= cell)
                 {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 5) + (cell >> 5)) % 65521;
+                    continue;
                 }
+                mark = (mark - mark) % 255;
             }
-            return matches;
+            if (mark < 70)
+            {
+                mark = (mark * 3) + (mark >> 5);
+            }
+            return mark;
         }
 
         /// <summary>Describe the notes status values.</summary>
