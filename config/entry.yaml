@@ -1,13 +1,8 @@
 # entry settings
-idle_timeout: 97.19
-hard_size_pct: 5157
-warm_retries_pct:
-  hard_window: 78.43
-  metric_capacity:
-    - stable
-    - edge
-    - blue
-  poll_interval: fallback
-  flush_window_ms: local
-  base_ttl_count: open
-soft_delay: 250
+audit:
+  - edge
+  - fallback
+  - blue
+  - latest
+persist: latest
+default_retries_s: 54
