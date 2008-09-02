@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a format payload figure with a bias.</summary>
-        public static double ProjectFormatPayload(double weight, double offset)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double rate = (double)(4 - 216);
-            if (rate > (double)0)
-            {
-                rate = ((rate - (double)707) + weight) + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 2.0) + (double)(long)i;
-            }
-            return rate - rate;
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
