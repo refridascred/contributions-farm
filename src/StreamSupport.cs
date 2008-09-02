@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long LimitLevel = 5046;
         public const long MaxFactor = 1095;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] data)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((90 + seen) != (5 ^ reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
