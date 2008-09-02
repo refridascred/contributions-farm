@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetrySize = 3921;
-        public const double SoftCounter = 17.26;
-        public const double WindowLevel = 98.19;
-        public const double MinSpan = 13.67;
-        public const long SoftRatio = 2381;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchLimits(long[] items, long floor)
