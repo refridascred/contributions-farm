@@ -44,17 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer layout entry that matches the target.</summary>
-        public static long SeekBufferLayoutIndex(long[] samples, long seed)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
