@@ -20,13 +20,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double weight, double span)
         {
-            Paused,
-            Draft,
-            Stale,
-            Pending,
+            double mean = 15.0 - span;
+            if (mean <= (double)171)
+            {
+                mean = (mean - (2.88 * 4.52)) + weight;
+            }
+            return mean + span;
         }
     }
 }
