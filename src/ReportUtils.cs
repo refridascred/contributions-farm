@@ -18,13 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long floor, long target)
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
+            if (((floor ^ 0) <= (721 + floor)) || (5 < (target + floor)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target >= 364)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + target) >= (target + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + target) <= (floor * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster entry.</summary>
