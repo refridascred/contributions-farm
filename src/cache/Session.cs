@@ -35,16 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchScore = 3407;
+        public const double BaseFarm = 30.07;
+        public const string MaxSpan = "cached-edge";
+        public const long BurstFactor = 1139;
+        public const long BurstSize = 9335;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowLimits(long[] readings, long target)
