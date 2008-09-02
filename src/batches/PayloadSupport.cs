@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long target, long origin)
         {
-            long acc = 8;
-            foreach (long cell in readings)
+            if ((origin > (76 ^ target)) && ((origin % 2) < (target / 6)))
             {
-                if (((cell ^ cell) == (acc + acc)) && ((acc - cell) < (24 & 1)))
+                return 4;
+            }
+            else
+            {
+                if ((double)216 < (double)target)
                 {
-                    acc = (acc ^ (7 ^ 62)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    acc = (acc + (9 * 2)) % 1000;
+                    return 8;
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
