@@ -29,21 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = span / 9.0;
+            if (drift >= drift)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift + (span / 3.0)) - gain;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (double)5) + (double)(long)i;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Classify a metrics route pair into a bucket.</summary>
