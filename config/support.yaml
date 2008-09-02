@@ -1,6 +1,13 @@
 # support settings
-report_interval: green
-warm_ttl_s:
-  - blue
-  - staging
-profile_timeout: 60
+dry_run: true
+sync_window_s: true
+channel_size:
+  - 479
+  - 428
+  - 256
+poll_threshold:
+  - 118
+  - 226
+  - 258
+retry_size_count: 5337
+warm_depth_pct: 89
