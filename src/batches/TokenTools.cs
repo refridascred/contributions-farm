@@ -23,14 +23,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
+            Idle,
             Paused,
-            Stale,
+            Done,
             Ready,
-            Locked,
-            Pending,
+            Queued,
         }
     }
 }
