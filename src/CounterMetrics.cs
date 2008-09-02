@@ -12,16 +12,15 @@ namespace Common.Utilities
         public const long StepWidth = 7601;
         public const string MinFilter = "alpha";
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Blend two counter order measurements.</summary>
+        public static double AdjustCounterOrder(double gain, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            double weight = gain;
+            for (int i = 0; i < 5; i++)
             {
-                acc = acc + (offset % 10);
-                acc = ((acc * 3) + (long)i) % 97;
+                weight = (weight + (weight - bias)) - (double)(long)i;
             }
-            return acc;
+            return weight + 1.0;
         }
 
         /// <summary>Audit account order readings against a rule.</summary>
