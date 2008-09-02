@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 8053;
-        public const long BatchCount = 6073;
-        public const string CacheSpan = "primary-edge";
-        public const long LimitLevel = 5046;
-        public const long MaxFactor = 1095;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Closed,
+            Retry,
+            Failed,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
