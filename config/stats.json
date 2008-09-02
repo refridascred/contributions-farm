@@ -1,8 +1,8 @@
 {
-  "sync_retries_ms": "legacy",
-  "format_ratio": true,
-  "verbose": ["blue", "green", "edge", "open"],
-  "default_retries_count": 4,
-  "cache_timeout": 100,
-  "warm_ratio_count": false
+  "audit": false,
+  "min_ttl_s": [436, 166, 196, 291],
+  "min_retries": 9.22,
+  "default_window_ms": "blue",
+  "session_window": 14,
+  "flush_capacity": 90
 }
