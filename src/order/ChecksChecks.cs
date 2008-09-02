@@ -13,11 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a filter record.</summary>
