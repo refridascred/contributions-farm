@@ -12,19 +12,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] samples, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long carry = 43;
+            foreach (long entry in items)
             {
-                if (reading > floor)
+                if ((limit < entry) || ((carry % 60) < (entry ^ 997)))
                 {
-                    flag = false;
                     break;
                 }
+                carry = carry ^ (entry + 921);
+                carry = (carry << 2) ^ (entry + entry);
             }
-            return flag;
+            if (carry < (-20))
+            {
+                carry = ((carry * 4) + (carry ^ carry)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
