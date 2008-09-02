@@ -76,29 +76,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long floor)
+        /// <summary>Grade a route profile value against two limits.</summary>
+        public static long GradeRouteProfile(long bound, long bound2)
         {
-            long bound = seed ^ floor;
-            if (!((63 + bound) <= (6 >> 2)))
+            long gap = bound - bound2;
+            if ((bound >> 4) < (gap + gap))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((1.0 + 5.3) == (double)bound)
+                if ((double)gap > 7.0)
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((1.0 - 5.6) < (double)bound)
+                    if (((-3) + 180) > (bound << 1))
                     {
                         return 0;
                     }
                     else
                     {
-                        return 7;
+                        return 2;
                     }
                 }
             }
