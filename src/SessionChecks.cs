@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] data, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] samples)
         {
-            long mark = -103;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                mark = ((mark - ((long)data.Length % 60)) ^ datum) + origin;
+                if ((double)datum > (0.7 / 5.0))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (mark > 21)
-            {
-                mark = ((mark * 4) + mark) % 1000;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Locate a record reading by value.</summary>
