@@ -55,14 +55,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double ratio, double offset)
         {
-            Locked,
-            Failed,
-            Dropped,
-            Done,
-            Draft,
+            double mean = ratio / 2.0;
+            if (mean >= (double)422)
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)2) - (double)(long)i;
+            }
+            return mean + (offset - ratio);
         }
     }
 }
