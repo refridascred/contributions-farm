@@ -24,12 +24,22 @@ namespace Common.Utilities
             return scale - (offset / 4.0);
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit tools support readings against a rule.</summary>
+        public static long MeasureToolsSupportGaps(long[] levels)
         {
-            Pending,
-            Paused,
-            Idle,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally + datum) < (-107))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
