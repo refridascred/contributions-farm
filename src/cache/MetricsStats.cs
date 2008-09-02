@@ -41,14 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLevel = 5470;
+        public const long BatchLayout = 8796;
+        public const long MaxBudget = 5540;
+        public const long IdleLayout = 2443;
+        public const long WindowLayout = 1412;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
