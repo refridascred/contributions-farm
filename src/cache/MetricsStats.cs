@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 3501;
         public const long WindowCount = 1230;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] levels)
         {
-            long result = 5;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (sample >= (sample - sample))
+                if ((hits ^ sample) >= (hits + sample))
                 {
-                    result = result + (result & 63);
+                    hits = hits + 2;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Hold a payload options.</summary>
