@@ -20,11 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 3083;
-        public const double LimitRoute = 95.77;
-        public const string DefaultSpan = "strict-v2";
-        public const long WindowLevel = 9140;
+        /// <summary>Check that every counter metric entry stays within the limit.</summary>
+        public static bool GuardCounterMetricLimits(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
