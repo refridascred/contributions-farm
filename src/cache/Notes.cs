@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftCount = "stable";
+        public const long CacheStream = 3676;
+        public const long StepSpan = 5707;
+        public const string SoftSpan = "stable-1";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] samples)
