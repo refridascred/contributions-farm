@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of counter route readings.</summary>
-        public static long CompareCounterRouteCount(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (tally > (tally * 5))
                 {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a window snapshot.</summary>
