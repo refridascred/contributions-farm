@@ -37,16 +37,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowBudget = 9644;
+        public const long MaxBudget = 7465;
+        public const long WindowSpan = 5703;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
