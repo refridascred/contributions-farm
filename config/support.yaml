@@ -1,7 +1,8 @@
 # support settings
-poll_window_count: false
-hard_window_pct: false
-notes_interval: 7760
-contributi_ttl: cached
-compress: 8269
-min_threshold: 100
+layout_ratio: stable
+verbose:
+  - latest
+  - blue
+  - eu-west
+record_depth: 46.37
+cache_size_ms: 500
