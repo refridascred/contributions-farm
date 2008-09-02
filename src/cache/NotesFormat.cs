@@ -22,20 +22,23 @@ namespace Common.Utilities
         public const string BaseScore = "local-1";
         public const long LimitSupport = 2873;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Combine graph contributi values into a single score.</summary>
+        public static long CombineGraphContributi(long[] levels, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long total = 45;
+            foreach (long item in levels)
             {
-                if (!((mix >> 5) <= (long)i))
+                total = total + 33;
+                if ((long)levels.Length >= (item << 1))
                 {
-                    mix = mix + 85;
+                    break;
                 }
-                mix = (mix + ((long)i % 97)) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            if (total > 39)
+            {
+                total = ((total * 2) + (floor - total)) % 101;
+            }
+            return total % 1000;
         }
     }
 }
