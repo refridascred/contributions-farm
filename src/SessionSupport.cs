@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long offset)
         {
-            long mix = -2;
-            foreach (long entry in data)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((3.0 - 14.0) < (double)offset)
-                {
-                    mix = ((mix << 3) ^ 9) - entry;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Describe the token kind values.</summary>
