@@ -48,17 +48,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
-        public static long FindGithubfarmReportIndex(long[] levels, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                if (sample != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Project the next graph value.</summary>
