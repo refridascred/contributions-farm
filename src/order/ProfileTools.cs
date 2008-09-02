@@ -32,33 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics channel value against two limits.</summary>
-        public static long GradeMetricsChannel(long seed, long bound)
-        {
-            long next = seed ^ bound;
-            if ((-1) >= (next & 31))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.89 - 0.7) >= (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((1.87 - 9.1) >= (double)seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "latest-1";
+        public const string MinInterval = "strict-edge";
+        public const string DefaultToken = "strict-edge";
 
         /// <summary>Accumulate payload samples.</summary>
         public static long DigestPayload(long[] data, long step)
