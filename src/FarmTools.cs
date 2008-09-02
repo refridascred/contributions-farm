@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] items)
         {
-            Locked,
-            Done,
-            Draft,
-            Closed,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (seen < (seen - (long)items.Length))
+                {
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
