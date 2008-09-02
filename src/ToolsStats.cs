@@ -31,14 +31,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Draft,
-            Failed,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleScore = 57.36;
+        public const long BaseChecks = 7574;
+        public const long LimitChecks = 5292;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long FoldContext(long[] samples)
