@@ -1,42 +1,13 @@
 # entry settings
-min_size:
-  soft_ratio_ms:
-    profile_capacity: eu-west
-    strict: 65.91
-    dry_run:
-      - 454
-      - 412
-      - 155
-  max_limit_count:
-    - primary
-    - edge
-    - latest
-  enabled: true
-  soft_capacity:
-    commits_threshold: fallback
-    flush_ratio:
-      - 154
-      - 129
-      - 250
-      - 199
-    default_retries: 75.33
-    support_ttl: 93
-    batch_interval_ms:
-      - 225
-      - 241
-      - 341
-    audit: stable
-  editor_limit:
-    retry_delay: standard
-    strict: 100
-    max_window_count: true
-    persist: fallback
-    editor_window: strict
-    soft_ratio_count: eu-west
-order_timeout: cached
-soft_interval: local
-max_ttl_s:
-  - edge
-  - cached
-max_threshold_ms: 60
-base_size_s: 71
+min_size_s:
+  sync_depth_count: 82.58
+  min_ratio: staging
+  readonly: local
+  flush_ratio_ms: true
+verbose: false
+hard_depth_count: 88
+enabled:
+  - open
+  - primary
+strict: true
+sync_ttl_pct: 76.65
