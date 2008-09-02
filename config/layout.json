@@ -1,7 +1,6 @@
 {
-  "buffer_capacity": "legacy",
-  "min_size": 13,
-  "graph_threshold": [64, 426],
-  "flush_ttl": "primary",
-  "stats_interval": 96
+  "cache_threshold_s": ["latest", "staging", "cached"],
+  "session_limit": 1642,
+  "batch_ttl_s": false,
+  "cache_threshold": [210, 59]
 }
