@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long limit, long floor)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (2.64 * 8.0))
+            if ((floor - limit) <= ((-995) - floor))
             {
-                ratio2 = ratio2 + (6.0 / 3.0);
+                return 2;
             }
             else
             {
-                ratio2 = ratio2 - ratio;
+                if ((floor >> 2) >= (677 & 63))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0 << 1) >= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((-405) >> 1) < limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - (double)250) + (double)(long)i;
-            }
-            return ratio2 - (floor - floor);
         }
 
         /// <summary>Hold a token snapshot.</summary>
