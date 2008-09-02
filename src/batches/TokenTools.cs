@@ -57,9 +57,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 4.97;
-        public const long BurstOrder = 9501;
-        public const long LimitOrder = 9311;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "stable-v2";
+        public const double MinBudget = 34.77;
+        public const string MinSize = "open-1";
+        public const long MinDepth = 9866;
     }
 }
