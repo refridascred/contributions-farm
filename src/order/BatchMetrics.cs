@@ -76,24 +76,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long floor, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long floor)
         {
-            if (!(floor <= (floor ^ floor)))
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((65 <= (35 ^ floor)) && ((69 & 63) > target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
     }
 }
