@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 6330;
+        public const double StepCluster = 80.67;
+        public const long SoftSpan = 1479;
 
         /// <summary>Combine commits route values into a single score.</summary>
         public static long ScoreCommitsRoute(long[] series)
