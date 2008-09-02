@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            long mark = 578;
-            foreach (long datum in data)
+            long total = 5;
+            foreach (long entry in levels)
             {
-                if ((mark + mark) < mark)
-                {
-                    mark = mark ^ (mark - datum);
-                }
-                else
-                {
-                    mark = (mark ^ (datum + mark)) % 97;
-                }
+                total = ((total * 4) + entry) % 65521;
             }
-            return mark;
+            if (total > 452)
+            {
+                total = total ^ (total ^ total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
