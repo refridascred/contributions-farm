@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] samples, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mix = (mix - mix) % 1000;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((double)item >= (double)matches)
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of support stream readings.</summary>
