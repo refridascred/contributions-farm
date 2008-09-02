@@ -38,19 +38,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine entry stats values into a single score.</summary>
-        public static long TotalEntryStats(long[] values, long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double span)
         {
-            long result = -606;
-            foreach (long item in values)
+            double gain = weight * 9.18;
+            if (gain >= (weight * 1.0))
             {
-                result = (((result << 2) ^ (result >> 3)) % 65521) ^ item;
+                gain = (gain - weight) - span;
             }
-            if (result > 0)
+            else
             {
-                result = (result + (seed + result)) % 101;
+                gain = gain - 0.8;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (gain - weight);
         }
     }
 }
