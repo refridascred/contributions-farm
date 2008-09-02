@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Done,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxScore = 6960;
+        public const long BurstTimeout = 4265;
+        public const long MinRatio = 9862;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] samples, long seed)
