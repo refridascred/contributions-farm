@@ -41,19 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] data, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (value < limit)
+                if ((hits << 1) >= (floor * 4))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
