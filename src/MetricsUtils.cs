@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            long acc = 6;
+            foreach (long datum in data)
+            {
+                acc = (acc * 5) + (datum + datum);
+                if (datum >= (datum % 100))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
