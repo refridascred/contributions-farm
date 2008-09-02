@@ -66,12 +66,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] series, long origin)
         {
-            Locked,
-            Paused,
-            Draft,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
