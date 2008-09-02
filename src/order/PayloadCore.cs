@@ -24,22 +24,22 @@ namespace Common.Utilities
         public const long MaxInterval = 4171;
         public const string IdleMetrics = "primary-1";
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] data, long target)
         {
-            long acc = -1;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!((-55) > (acc << 2)))
+                if (!!((target & 1) >= (174 / 4)))
                 {
-                    acc = ((acc + acc) % 97) ^ datum;
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc < 88)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            return tally;
         }
     }
 }
