@@ -32,25 +32,12 @@ namespace Common.Utilities
         public const double MaxContributi = 69.29;
         public const string HardContributi = "legacy";
 
-        /// <summary>Grade a token route value against two limits.</summary>
-        public static long RankTokenRoute(long limit, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long offset = limit + bound;
-            if ((35 <= (offset & 127)) || ((191 ^ bound) >= 34))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + limit) > (limit ^ offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            New,
+            Idle,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
