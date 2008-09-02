@@ -1,7 +1,7 @@
 {
-  "max_window_s": ["latest", "edge", "cached"],
-  "base_delay_count": "fallback",
-  "schema_capacity": false,
-  "default_ratio": "stable",
-  "verbose": false
+  "dry_run": 61.16,
+  "poll_threshold_pct": 89,
+  "flush_timeout_s": [195, 345],
+  "persist": "strict",
+  "sync_ratio": "local"
 }
