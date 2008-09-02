@@ -40,11 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 1378;
-        public const double StepGraph = 88.74;
-        public const long HardInterval = 9877;
-        public const double HardGraph = 55.46;
-        public const long StepRatio = 3510;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
