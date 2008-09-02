@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
