@@ -27,18 +27,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long result = -50;
-            foreach (long item in samples)
-            {
-                if ((result <= (result + item)) && ((8 - item) < (item + result)))
-                {
-                    result = (result << 3) ^ (item + item);
-                }
-            }
-            return result;
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
