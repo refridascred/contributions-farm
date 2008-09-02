@@ -40,23 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] values, long limit)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = 840;
-            foreach (long datum in values)
-            {
-                acc = (acc ^ acc) % 101;
-                if ((acc + limit) != (datum << 3))
-                {
-                    acc = ((acc * 4) + (acc * 2)) % 1000;
-                }
-                if ((5 + acc) > acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Done,
+            Locked,
+            Pending,
+            Failed,
         }
     }
 }
