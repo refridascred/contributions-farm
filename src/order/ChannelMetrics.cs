@@ -31,22 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] values, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double mean = weight;
+            if (mean > (double)345)
             {
-                if (((-78) + 7) <= tally)
-                {
-                    tally = ((tally + 1) ^ item) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean + (weight * 4.7);
             }
-            return tally;
+            return mean + bias;
         }
     }
 }
