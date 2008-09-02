@@ -39,39 +39,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long offset, long target)
-        {
-            if (1.94 >= (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target ^ offset) < (target - 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset != (1.8 + 7.1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset < (target ^ target)) || ((-141) > target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowInterval = 1.57;
+        public const long MinLevel = 19;
+        public const double MinDepth = 56.9;
+        public const double HardBatches = 96.12;
+        public const long MaxDepth = 5081;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsRange(long[] series, long offset)
