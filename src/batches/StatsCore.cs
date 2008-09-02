@@ -29,20 +29,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double weight, double bias)
-        {
-            double drift = (double)(2 + 6);
-            if (drift > bias)
-            {
-                drift = drift + 5.3;
-            }
-            else
-            {
-                drift = drift - weight;
-            }
-            return drift - (double)229;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepBudget = "local";
+        public const string WindowStream = "legacy";
+        public const double HardWidth = 75.53;
+        public const long MaxLevel = 8783;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long offset)
