@@ -36,21 +36,15 @@ namespace Common.Utilities
         public const string MaxFormat = "stable-edge";
         public const long CacheSpan = 3540;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
