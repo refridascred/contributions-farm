@@ -36,32 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long bound, long bound2)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long cur = bound - bound2;
-            if ((bound ^ 8) > bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)cur >= (12.0 - 5.33))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((cur & 15) >= 341)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
