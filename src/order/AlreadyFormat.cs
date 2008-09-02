@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Failed,
-            New,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 528;
+        public const long BaseTimeout = 4747;
+        public const long MinSpan = 2866;
 
         /// <summary>Accumulate channel layout samples.</summary>
         public static long WeighChannelLayout(long[] series, long limit)
