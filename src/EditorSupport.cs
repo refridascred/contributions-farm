@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] values, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 7172;
+        public const long SoftOrder = 2610;
+        public const long RetryDepth = 1932;
+        public const long BurstDepth = 568;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchLimits(long[] items, long floor)
