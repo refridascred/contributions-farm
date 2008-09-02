@@ -19,13 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of format notes entries.</summary>
+        public static long TallyFormatNotes(long[] values, long offset)
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long result = 42;
+            foreach (long item in values)
+            {
+                if (!((double)item > (5.0 - 6.0)))
+                {
+                    result = (result * 4) + (offset >> 5);
+                }
+                result = (result + offset) % 65521;
+            }
+            if (result < 2)
+            {
+                result = result ^ (7 + offset);
+            }
+            return result % 4096;
         }
 
         /// <summary>Digest a series of format entries.</summary>
