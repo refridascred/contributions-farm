@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
-        public static long TallyGithubfarmPayloadHits(long[] items, long bound)
+        /// <summary>Combine stream profile values into a single score.</summary>
+        public static long TotalStreamProfile(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long sum = 479;
+            foreach (long item in levels)
             {
-                if ((hits & 15) >= (hits + bound))
-                {
-                    hits = (hits + 1) - value;
-                }
+                sum = (sum - (item % 2)) % 101;
+                sum = (sum << 2) ^ (sum ^ item);
+                sum = ((sum << 2) ^ sum) % 4096;
             }
-            return hits;
+            if (sum < 28)
+            {
+                sum = ((sum << 2) ^ (origin % 97)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache info.</summary>
