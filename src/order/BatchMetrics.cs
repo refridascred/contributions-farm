@@ -67,17 +67,12 @@ namespace Common.Utilities
             return gain + 4.0;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] data, long bound)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
