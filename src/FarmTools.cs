@@ -23,20 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long step, long bound)
         {
-            long acc = 7;
-            foreach (long cell in series)
+            long lane = step ^ bound;
+            if (((double)lane == (9.0 * 16.0)) && (lane < bound))
             {
-                acc = ((acc * 2) + (cell - acc)) % 65521;
-                acc = ((acc * 3) + (cell >> 2)) % 101;
-                if (((acc + acc) < cell) && ((acc + 5) > (7 - cell)))
+                return 7;
+            }
+            else
+            {
+                if (lane < (bound << 3))
                 {
-                    acc = ((acc << 2) ^ (acc - cell)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
