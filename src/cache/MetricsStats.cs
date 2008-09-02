@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 23.04;
-        public const double StepLevel = 22.43;
-        public const long LimitFormat = 2429;
-        public const long DefaultRatio = 58;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstSize = "primary-1";
+        public const string MinBatch = "primary-v2";
+        public const long DefaultDepth = 516;
+        public const long LimitBatch = 4195;
 
         /// <summary>Match up filter metric samples.</summary>
         public static long PairFilterMetricCount(long[] levels)
