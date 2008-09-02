@@ -1,9 +1,4 @@
 # entry settings
-buffer_capacity: latest
-burst_window_ms: 30
-notes_size:
-  max_capacity_pct: eu-west
-  audit: cached
-  cluster_window: false
-  queue_window: fallback
-layout_delay: 45
+warm_timeout_ms: 6148
+batch_ttl: green
+batch_window: 57
