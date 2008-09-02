@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] readings, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 3) + (origin - (-824))) % 101;
-                if (17.0 > (double)total)
+                if (readings[i] <= limit)
                 {
-                    total = (total + (long)i) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total ^ (total + (-99))) % 65521;
-                }
-                total = ((total << 3) ^ (total + total)) % 255;
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
