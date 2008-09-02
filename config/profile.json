@@ -1,8 +1,5 @@
 {
-  "strict": "standard",
-  "entry_capacity": 67.15,
-  "warm_threshold": 30,
-  "default_window": 57,
-  "hard_interval_s": 87,
-  "report_ttl": 1024
+  "flush_interval": 67.61,
+  "persist": 3897,
+  "strict": "legacy"
 }
