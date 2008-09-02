@@ -20,19 +20,17 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= seed)
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a session record.</summary>
