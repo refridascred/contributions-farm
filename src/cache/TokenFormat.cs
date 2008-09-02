@@ -25,13 +25,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Locked,
-            Closed,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryInterval = 65.94;
+        public const long DefaultContributi = 6197;
+        public const string MaxSpan = "strict-v2";
+        public const long SoftCount = 5801;
     }
 }
