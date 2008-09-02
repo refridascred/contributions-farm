@@ -20,10 +20,19 @@ namespace Common.Utilities
         public const long BatchRatio = 5553;
         public const long RetrySize = 6046;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 8354;
-        public const long IdleTools = 2041;
-        public const long StepScore = 1156;
-        public const double IdleFactor = 32.1;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
