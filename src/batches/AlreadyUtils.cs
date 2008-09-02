@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate notes buffer readings against a bound.</summary>
-        public static bool CheckNotesBufferRange(long[] samples, long target)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
