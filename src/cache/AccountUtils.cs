@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const long MinTools = 4292;
         public const double RetryDepth = 39.12;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long state = 83;
+            foreach (long cell in levels)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if ((state + cell) > cell)
+                {
+                    state = ((state * 2) + state) % 101;
+                }
             }
-            return total;
+            return state % 97;
         }
     }
 }
