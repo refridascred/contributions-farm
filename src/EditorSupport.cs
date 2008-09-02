@@ -45,32 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long limit, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] readings, long seed)
         {
-            long prev = limit + target;
-            if ((target + prev) > (prev + limit))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target - limit) <= (648 - limit))
+                if ((47 + 82) >= tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit < (prev - limit)) && (limit >= (prev & 255)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = ((tally + 1) ^ sample) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a counter header.</summary>
