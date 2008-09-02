@@ -1,11 +1,6 @@
 {
-  "warm_retries_count": "eu-west",
-  "strict": "stable",
-  "poll_timeout_count": {
-    "cache_delay": 35.84,
-    "warm_capacity_count": ["stable", "local"],
-    "cache_size": "latest",
-    "default_interval_pct": 38.87,
-    "max_ratio_pct": "green"
-  }
+  "base_timeout_pct": "standard",
+  "audit": 41.63,
+  "cache_size_ms": 100,
+  "cache_window_count": [201, 183, 347, 44]
 }
