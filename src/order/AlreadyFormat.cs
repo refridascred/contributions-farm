@@ -34,21 +34,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target >> 5) >= (target ^ target))
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first buffer layout entry that matches the target.</summary>
