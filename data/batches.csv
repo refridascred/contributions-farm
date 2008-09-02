@@ -1,9 +1,7 @@
-id,rank,state
-1,83.41,84.2
-2,22.3,700
-3,69.86,stable
-4,807,90.09
-5,edge,18.23
-6,blue,standard
-7,legacy,4.73
-8,latest,32.34
+id,region,weight,token
+1,cached,97.67,eu-west
+2,856,edge,535
+3,fallback,86.58,380
+4,eu-west,72,85.57
+5,917,standard,763
+6,open,latest,local
