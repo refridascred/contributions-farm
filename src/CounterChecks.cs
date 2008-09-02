@@ -67,21 +67,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count notes metric pairs that satisfy a relation.</summary>
-        public static long MatchNotesMetricCount(long[] values)
+        /// <summary>Measure how many contributi metric samples are out of range.</summary>
+        public static long TallyContributiMetricHits(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((278 - tally) < (target - sample)) || ((sample * 5) < (target >> 4)))
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
