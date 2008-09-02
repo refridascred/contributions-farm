@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks core helpers.</summary>
     public static class ChecksCore
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the metrics stats series from a seed.</summary>
