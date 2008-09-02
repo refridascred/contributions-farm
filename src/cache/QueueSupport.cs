@@ -28,17 +28,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (data[i] == floor)
+                if ((origin / 2) <= count)
                 {
-                    return (long)i;
+                    count = (count + 2) + reading;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
