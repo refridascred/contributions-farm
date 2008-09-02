@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double weight, double offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
+            double gain = 16.0 - 3.0;
+            if (gain >= (double)257)
+            {
+                gain = (gain - (gain / 9.0)) - offset;
+            }
+            else
+            {
+                gain = gain - weight;
+            }
+            return gain + (2.4 + 2.2);
         }
 
         /// <summary>Describe the cluster level values.</summary>
