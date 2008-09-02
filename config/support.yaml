@@ -1,26 +1,6 @@
 # support settings
-idle_threshold:
-  - staging
-  - edge
-  - primary
-hard_ttl_ms:
-  - 260
-  - 411
-  - 434
-  - 437
-githubfarm_ttl:
-  max_threshold_pct: 6.55
-  cluster_timeout: cached
-  burst_delay_s: cached
-  base_ratio_pct:
-    route_size: 77.06
-    dry_run: 30
-    batch_limit: legacy
-    metric_ratio: 2864
-    audit:
-      - 121
-      - 170
-    flush_size: 79
-  max_delay: 5242
-  retry_ttl: 60
-poll_window_pct: latest
+idle_threshold_ms: standard
+warm_size_s: false
+base_threshold_s: 1024
+strict: false
+compress: 100
