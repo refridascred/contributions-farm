@@ -10,24 +10,15 @@ namespace Common.Utilities
         public const long HardLevel = 2276;
         public const long LimitCount = 1708;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double rate, double span)
         {
-            long total = -4;
-            foreach (long sample in series)
+            double drift = (double)(7 / 5);
+            for (int i = 0; i < 8; i++)
             {
-                total = (total << 3) ^ (4 % 64);
-                total = (total << 2) ^ total;
-                if (sample <= (total >> 5))
-                {
-                    break;
-                }
+                drift = (((drift + (double)1) + (double)(long)i) - rate) - span;
             }
-            if (total < 13)
-            {
-                total = ((total << 3) ^ (total ^ total)) % 1000;
-            }
-            return total % 97;
+            return drift + (double)85;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
