@@ -30,17 +30,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 > (ratio * 6.9))
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 + (ratio + span);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + (4.34 - ratio2)) + (double)(long)i;
+            }
+            return ratio2 + (8.9 * 7.14);
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
