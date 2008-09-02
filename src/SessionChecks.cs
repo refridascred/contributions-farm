@@ -13,21 +13,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit < (18.0 / 4.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit - origin) <= (origin + origin))
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next context order value from a seed.</summary>
