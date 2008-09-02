@@ -46,12 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] readings, long target)
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
