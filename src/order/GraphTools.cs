@@ -43,22 +43,22 @@ namespace Common.Utilities
         public const double BurstMetrics = 61.34;
         public const long BaseDepth = 4701;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] items, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = 2;
+            foreach (long sample in items)
             {
-                if ((seen << 3) >= bound)
+                if ((9.88 / 5.0) >= (double)sample)
                 {
-                    seen = (seen + 2) + value;
+                    anchor = (anchor + (sample + sample)) % 255;
                 }
-                else
+                if (!((double)sample >= 3.0))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
