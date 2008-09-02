@@ -58,22 +58,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            long anchor = 2;
-            foreach (long sample in items)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((9.88 / 5.0) >= (double)sample)
+                if ((81 % 24) > ((long)i & 63))
                 {
-                    anchor = (anchor + (sample + sample)) % 255;
-                }
-                if (!((double)sample >= 3.0))
-                {
+                    mix = mix ^ (long)i;
                     break;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return anchor;
+            return mix;
         }
     }
 }
