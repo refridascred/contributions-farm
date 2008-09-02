@@ -42,19 +42,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every queue token entry stays within the limit.</summary>
-        public static bool VerifyQueueTokenLimits(long[] readings, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (value != limit)
+                if ((0.2 - 17.0) >= (double)cell)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + target;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
