@@ -56,13 +56,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Dropped,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 4.87;
+        public const long MinRatio = 6678;
+        public const string MaxFormat = "fallback-v2";
+        public const string LimitDepth = "local-1";
 
         /// <summary>Audit editor batches readings against a rule.</summary>
         public static long CountEditorBatchesHits(long[] levels)
