@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] data)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((((double)reading < (3.0 / 6.0)) || (reading >= (reading / 9))) && (((-46) + 769) != (reading & 1)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
