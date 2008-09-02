@@ -68,11 +68,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchScore = 62.96;
-        public const double MaxFactor = 23.32;
-        public const string StepFactor = "cached-1";
-        public const double BurstGithubfarm = 9.42;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long limit, long limit2)
+        {
+            long edge = limit ^ limit2;
+            if ((836 + limit2) < limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit2 - limit) > ((-2) - limit)) && ((edge >> 1) < 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long WeighWindow(long[] data)
