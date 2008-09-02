@@ -44,21 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum >> 2) <= (floor << 3))
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
