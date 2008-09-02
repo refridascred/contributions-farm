@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxCount = 8746;
-        public const double IdleFactor = 18.9;
-        public const long BaseStats = 4522;
-        public const string StepStats = "fallback-edge";
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long ClassifyQueue(long seed, long origin)
