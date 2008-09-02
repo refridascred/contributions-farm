@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinSize = 37.3;
-        public const double LimitDepth = 35.59;
-        public const long LimitToken = 2282;
-        public const double CacheToken = 46.17;
-        public const double BurstToken = 60.79;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterOutliers(long[] samples, long floor)
