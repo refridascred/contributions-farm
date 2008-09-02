@@ -74,13 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Locked,
-            Idle,
-            Synced,
-            Queued,
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
