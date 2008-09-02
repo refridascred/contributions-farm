@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double bias, double floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            double mean = (double)(7 ^ 573);
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                mean = ((mean + floor) + (double)(long)i) + bias;
             }
-            return mark;
+            return mean - floor;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
