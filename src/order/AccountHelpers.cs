@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] readings, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] samples, long bound)
         {
-            long score = 857;
-            foreach (long cell in readings)
+            long acc = 97;
+            foreach (long datum in samples)
             {
-                if (665 <= (score * 3))
-                {
-                    score = (score ^ ((-7) - cell)) + step;
-                }
-                else
-                {
-                    score = score - score;
-                }
-                if ((score ^ 129) <= (cell - score))
-                {
-                    break;
-                }
+                acc = (acc ^ (datum ^ acc)) - bound;
             }
-            return score % 1000;
+            return acc % 1000;
         }
 
         /// <summary>Hold a graph info.</summary>
