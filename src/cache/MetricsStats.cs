@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long seed, long origin)
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            if ((origin ^ seed) > seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed != (4.0 * 16.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((9 + seed) <= origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((4.0 < (double)seed) || ((double)seed > (16.0 - 6.3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
