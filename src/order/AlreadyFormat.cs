@@ -28,19 +28,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            double bias = (double)((-522) + 479);
-            if (bias > (span + bias))
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                bias = bias - (weight + weight);
+                result = result + (result ^ result);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (bias * 2.3)) + (double)(long)i;
-            }
-            return bias - bias;
+            return result;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
