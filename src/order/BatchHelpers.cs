@@ -30,12 +30,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Locked,
-            Done,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstSize = 3933;
+        public const long StepSize = 3655;
+        public const string HardContext = "latest-edge";
     }
 }
