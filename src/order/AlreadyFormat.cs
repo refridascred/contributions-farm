@@ -52,21 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((3.21 * 10.0) > (double)hits) || ((double)sample != (9.0 * 5.4)))
                 {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
