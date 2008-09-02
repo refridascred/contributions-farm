@@ -1,6 +1,16 @@
 {
-  "idle_threshold_pct": false,
-  "farm_size": 4.01,
-  "cache_capacity": "local",
-  "graph_ttl": 1866
+  "verbose": "open",
+  "soft_ttl_s": {
+    "audit": true,
+    "burst_interval_pct": 18,
+    "batch_depth": {
+      "layout_threshold": 23,
+      "verbose": "standard",
+      "audit": "strict"
+    }
+  },
+  "cache_retries_s": 64.98,
+  "base_timeout": ["primary", "open", "eu-west", "standard"],
+  "compress": "eu-west",
+  "channel_depth": false
 }
