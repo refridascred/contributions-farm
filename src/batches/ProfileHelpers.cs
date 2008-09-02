@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultCache = 69.08;
-        public const long BaseLevel = 613;
-        public const long BurstCache = 4795;
-        public const long RetrySize = 2566;
-        public const double IdleCache = 69.38;
+        /// <summary>Rank order session input into a small class.</summary>
+        public static long SortOrderSession(long origin, long floor)
+        {
+            long prev = origin - floor;
+            if ((double)origin == (1.63 + 12.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((prev ^ origin) < (prev << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsMatches(long[] items)
