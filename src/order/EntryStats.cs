@@ -39,23 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            long result = -731;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                result = (result ^ (989 << 1)) % 65521;
-                if (((result - result) < (707 & 63)) && (item < (232 + item)))
+                if (9.54 <= (double)cell)
                 {
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result < 490)
-            {
-                result = (result - (result * 4)) % 4096;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the checks phase values.</summary>
