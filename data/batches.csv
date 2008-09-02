@@ -1,9 +1,7 @@
-id,active,token
-1,139,latest
-2,38.38,local
-3,77,staging
-4,580,384
-5,752,green
-6,347,453
-7,980,latest
-8,115,825
+id,token,owner,rank,count
+1,67.99,stable,cached,445
+2,663,primary,14.25,522
+3,86,21.66,42,open
+4,775,942,23.09,86.8
+5,43.49,988,27.4,fallback
+6,539,47.86,76.49,96.59
