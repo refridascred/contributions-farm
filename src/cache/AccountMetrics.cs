@@ -60,38 +60,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank graph already input into a small class.</summary>
-        public static long BucketGraphAlready(long limit, long limit2)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            if (((limit << 1) == (limit2 >> 1)) || ((limit + 224) <= (limit + limit)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) > limit2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit2 < 5.0)
+                    if ((readings[i] - readings[j]) != 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (19.0 >= (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the payload class values.</summary>
