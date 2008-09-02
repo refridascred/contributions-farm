@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] data, long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((7.2 / 8.0) > (double)item)
-                {
-                    count = (count + 3) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
