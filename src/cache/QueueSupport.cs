@@ -19,18 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] levels, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits >> 4) >= (seed / 3))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the metric mode values.</summary>
