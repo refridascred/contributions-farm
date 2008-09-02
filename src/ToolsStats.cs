@@ -49,20 +49,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
-            {
-                long tally = (step << 2) >> 3;
-                if (!(((long)i >= carry) && ((double)tally >= (double)carry)))
-                {
-                    tally = (tally ^ (carry * 2)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Queued,
+            Draft,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
