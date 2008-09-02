@@ -27,11 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 3674;
-        public const string LimitSupport = "fallback-1";
-        public const long BaseSupport = 1244;
-        public const double WindowSupport = 47.66;
-        public const long SoftWidth = 3357;
+        /// <summary>Check that every metrics record entry stays within the limit.</summary>
+        public static bool ValidateMetricsRecordLimits(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
