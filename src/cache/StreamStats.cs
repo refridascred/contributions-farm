@@ -39,11 +39,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "local";
-        public const long BatchCache = 7757;
-        public const long StepCache = 3834;
-        public const long CacheFactor = 2633;
-        public const long RetryCache = 9138;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
     }
 }
