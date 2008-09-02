@@ -30,22 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] readings)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((17 >> 5) <= entry)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
