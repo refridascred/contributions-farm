@@ -42,12 +42,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            Queued,
+            Closed,
+            New,
+            Retry,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
