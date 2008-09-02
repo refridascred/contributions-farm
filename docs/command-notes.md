@@ -1,11 +1,10 @@
 # Command notes
 
-The command report groups every payload by session.
-Keep record and layout names short and lowercase.
-The schema report groups every editor by editor.
+Use format settings to tune how often command data is refreshed.
+The command module keeps channel values in sync with the record cache.
 
 ## Guidelines
 
-- Keep report values small
-- Validate command input early
-- Prefer token defaults
+- Prefer context defaults
+- Document new metric fields
+- Review cache limits each release
