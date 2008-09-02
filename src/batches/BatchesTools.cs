@@ -27,18 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] items, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double scale = bias / 3.0;
+            if (scale <= bias)
             {
-                if ((double)seed > 7.0)
-                {
-                    matches = (matches + 2) + datum;
-                }
+                scale = (scale + scale) + bias2;
             }
-            return matches;
+            return scale - bias;
         }
     }
 }
