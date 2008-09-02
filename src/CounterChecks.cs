@@ -61,13 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] data, long limit)
         {
-            Retry,
-            Ready,
-            Closed,
-            Done,
+            long score = 148;
+            foreach (long reading in data)
+            {
+                if ((4.96 / 4.0) < (double)score)
+                {
+                    score = ((score * 3) + reading) - limit;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
