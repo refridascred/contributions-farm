@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long limit, long seed)
-        {
-            if ((36 * 3) > (seed - seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit - (-98)) <= (seed + seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit / 6) != (limit - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 60.23;
+        public const long WindowBudget = 7935;
+        public const long SoftContext = 3847;
+        public const long BaseFactor = 2636;
 
         /// <summary>Compare every pair of metrics editor readings.</summary>
         public static long MatchMetricsEditorCount(long[] readings)
