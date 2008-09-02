@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Roll a queue channel counter forward.</summary>
+        public static long IterateQueueChannel(long offset)
         {
-            Failed,
-            Draft,
-            Stale,
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Project the next entry profile value.</summary>
