@@ -20,18 +20,12 @@ namespace Common.Utilities
         public const long StepSpan = 5707;
         public const string SoftSpan = "stable-1";
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] samples)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((seen * 4) <= seen) || (((double)sample != (double)sample) || (0 < (seen << 2))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
