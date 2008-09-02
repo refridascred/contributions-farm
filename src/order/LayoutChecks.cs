@@ -57,18 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double gain, double offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            double gain2 = offset / 8.0;
+            if (gain2 >= gain2)
             {
-                if (count > (16 << 1))
-                {
-                    count = ((count + 3) + value) + origin;
-                }
+                gain2 = gain2 + offset;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 - offset;
         }
 
         /// <summary>Describe the command kind values.</summary>
