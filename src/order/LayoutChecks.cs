@@ -65,10 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleInterval = "legacy";
-        public const long DefaultSpan = 541;
-        public const long CacheEditor = 1301;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (count > (16 << 1))
+                {
+                    count = ((count + 3) + value) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
