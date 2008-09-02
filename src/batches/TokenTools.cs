@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine metrics command values into a single score.</summary>
-        public static long DigestMetricsCommand(long[] data)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long total = 950;
-            foreach (long value in data)
-            {
-                total = total + (total + value);
-            }
-            return total % 97;
+            Idle,
+            Closed,
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the profile state values.</summary>
