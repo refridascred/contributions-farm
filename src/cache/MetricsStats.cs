@@ -34,12 +34,21 @@ namespace Common.Utilities
         public const long RetryAlready = 52;
         public const long MinAlready = 2844;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLevel = 5470;
-        public const long BatchLayout = 8796;
-        public const long MaxBudget = 5540;
-        public const long IdleLayout = 2443;
-        public const long WindowLayout = 1412;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!!(89 <= (floor % 16)))
+                {
+                    acc = acc + (27 ^ (long)i);
+                }
+                acc = (acc - (floor / 9)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
