@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] levels)
         {
-            Paused,
-            Active,
-            Queued,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((seen + seen) <= (reading % 60)) && (((reading / 3) < (seen - seen)) && (reading >= seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
