@@ -39,18 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] samples)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry != (1.0 * 8.6))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up queue samples.</summary>
