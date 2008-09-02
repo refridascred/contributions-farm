@@ -22,14 +22,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Dropped,
-            Active,
-            Ready,
-            New,
-            Queued,
+            public double Size { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the batch kind values.</summary>
