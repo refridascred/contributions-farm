@@ -1,9 +1,11 @@
 # githubfarm settings
-farm_depth:
-  - cached
-  - legacy
-  - staging
-  - green
-persist: 30.35
-schema_delay: 1024
-graph_timeout: 6828
+enabled:
+  dry_run: 86
+  hard_retries_ms: standard
+  cache_size: strict
+  poll_retries: 19.78
+  retry_depth: 5135
+  editor_ttl: 36.06
+min_depth_s: staging
+batch_ttl: blue
+hard_interval_s: 7926
