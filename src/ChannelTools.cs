@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double bias, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] levels, long limit)
         {
-            double scale = (double)(624 ^ 94);
-            if (scale >= (scale - span))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                scale = (scale - (double)19) + bias;
+                if ((352 % 64) < (seen >> 1))
+                {
+                    seen = ((seen + 3) + value) - limit;
+                }
             }
-            return scale - (scale - scale);
+            return seen;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
