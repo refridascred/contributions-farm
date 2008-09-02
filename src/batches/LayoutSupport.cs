@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                total = ((total << 3) ^ ((long)i & 15)) % 1000;
+                total = (total - (origin % 10)) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Blend two farm window measurements.</summary>
