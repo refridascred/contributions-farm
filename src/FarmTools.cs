@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Roll a entry counter counter forward.</summary>
+        public static long SeriesEntryCounter(long origin)
         {
-            Locked,
-            Idle,
-            Retry,
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (mix - mix) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a contributi header.</summary>
