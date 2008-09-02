@@ -10,22 +10,23 @@ namespace Common.Utilities
         public const double StepCluster = 80.67;
         public const long SoftSpan = 1479;
 
-        /// <summary>Combine commits route values into a single score.</summary>
-        public static long ScoreCommitsRoute(long[] series)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double ratio, double bias)
         {
-            long mark = 8;
-            foreach (long reading in series)
+            double drift = bias + (ratio * 18.0);
+            if (drift <= (double)53)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = (mark - (long)i) ^ reading;
-                }
-                if ((8 / 9) != (570 + mark))
-                {
-                    mark = (mark << 3) ^ (mark / 9);
-                }
+                drift = drift + drift;
             }
-            return mark;
+            else
+            {
+                drift = drift + (11.0 * 8.19);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)(-323)) + (double)(long)i;
+            }
+            return drift - (bias - bias);
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
