@@ -1,12 +1,5 @@
 {
-  "strict": "latest",
-  "persist": {
-    "stream_threshold": "green",
-    "cache_threshold_s": "primary",
-    "contributi_ratio": "eu-west"
-  },
-  "poll_timeout_ms": 4058,
-  "idle_retries_ms": 500,
-  "notes_retries": "eu-west",
-  "idle_ttl": [228, 158]
+  "idle_ttl": true,
+  "batch_capacity_ms": [16, 163, 388],
+  "verbose": "strict"
 }
