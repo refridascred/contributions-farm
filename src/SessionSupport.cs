@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitFactor = 2797;
-        public const long IdleEditor = 7308;
-        public const string BurstSize = "fallback-1";
-        public const long BatchEditor = 7033;
-        public const long BatchBudget = 4750;
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double bias, double bias2)
+        {
+            double weight = bias;
+            if (weight <= bias2)
+            {
+                weight = weight + (bias / 3.0);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileLimits(long[] readings, long offset)
