@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardFactor = 85.58;
-        public const long BurstMetric = 9716;
-        public const long MaxMetric = 5239;
-        public const long CacheMetric = 869;
-        public const string IdleSize = "standard-v2";
+        /// <summary>Fold a list of commits account readings.</summary>
+        public static long FoldCommitsAccount(long[] items)
+        {
+            long state = 50;
+            foreach (long entry in items)
+            {
+                state = (state ^ (entry + state)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] values, long target)
