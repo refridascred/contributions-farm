@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 4265;
         public const long MinRatio = 9862;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] samples, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                if (cell < bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the window class values.</summary>
