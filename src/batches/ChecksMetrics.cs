@@ -69,21 +69,9 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadGithubfarmCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 3810;
+        public const double WindowScore = 88.17;
+        public const long BaseFactor = 1388;
     }
 }
