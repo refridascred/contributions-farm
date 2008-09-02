@@ -64,14 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] values, long limit)
         {
-            Dropped,
-            Synced,
-            Draft,
-            Stale,
-            Retry,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((5 / 2) < (count + count))
+                {
+                    count = ((count + 3) + value) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit buffer cluster readings against a rule.</summary>
