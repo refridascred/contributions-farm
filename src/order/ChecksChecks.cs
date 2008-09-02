@@ -19,12 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            Draft,
+            Closed,
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a filter record.</summary>
