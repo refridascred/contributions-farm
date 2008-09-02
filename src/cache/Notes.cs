@@ -64,22 +64,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long mix = 5;
-            foreach (long entry in readings)
-            {
-                if ((entry < (entry ^ mix)) || (entry <= mix))
-                {
-                    mix = (mix * 4) + (mix >> 2);
-                }
-            }
-            if (mix < 9)
-            {
-                mix = ((mix << 3) ^ mix) % 4096;
-            }
-            return mix;
+            Locked,
+            Done,
+            Draft,
+            Synced,
+            Retry,
         }
     }
 }
