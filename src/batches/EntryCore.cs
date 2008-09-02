@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many entry metric samples are out of range.</summary>
-        public static long TallyEntryMetricGaps(long[] levels, long step)
+        /// <summary>Count the format githubfarm entries that pass the check.</summary>
+        public static long CountFormatGithubfarmMatches(long[] data, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (!((datum - 6) < (count * 5)))
+                if ((datum - datum) == (hits << 2))
                 {
-                    count = (count + 3) - step;
+                    hits = (hits + 2) + step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
