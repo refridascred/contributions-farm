@@ -72,15 +72,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] levels, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] samples, long step)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long entry in samples)
             {
-                if ((0.2 - 17.0) >= (double)cell)
+                if (!(((hits + 2) != (step % 100)) || (step < (entry & 127))))
                 {
-                    hits = (hits + 3) + target;
+                    hits = hits + 3;
                 }
             }
             return hits;
