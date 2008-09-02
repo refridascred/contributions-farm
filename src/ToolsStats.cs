@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long DigestMetricCache(long[] levels, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long floor)
         {
-            long sum = 767;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (!!((item + limit) >= (item & 31)))
+                if (cell <= floor)
                 {
-                    sum = sum + (item - limit);
-                }
-                if (sum <= (sum >> 5))
-                {
-                    sum = ((sum * 4) + sum) % 1000;
-                }
-                else
-                {
-                    sum = sum + (961 - sum);
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < (-9))
-            {
-                sum = (sum + 619) % 255;
-            }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
