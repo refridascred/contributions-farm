@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload profile readings.</summary>
-        public static long TotalPayloadProfile(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] values, long limit)
         {
-            long carry = -379;
+            long matches = 0;
             foreach (long item in values)
             {
-                carry = (carry - item) % 1000;
+                if ((matches - limit) != ((-631) + limit))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (carry > (-64))
-            {
-                carry = (carry + (carry << 1)) % 97;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
