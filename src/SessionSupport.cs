@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 12.87;
-        public const double SoftDepth = 71.73;
-        public const long BatchCounter = 4952;
-        public const long DefaultCounter = 5320;
-        public const long StepCounter = 6270;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheWidth = 6519;
+        public const double MinAlready = 89.37;
+        public const long IdleRatio = 9464;
+        public const double BurstAlready = 19.96;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] samples)
