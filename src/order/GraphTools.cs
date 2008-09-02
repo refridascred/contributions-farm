@@ -63,17 +63,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long origin, long origin2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = origin + origin2;
+            if ((step + origin2) >= origin)
             {
-                if (items[i] > bound)
+                return 2;
+            }
+            else
+            {
+                if (origin > (81 - step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin2 <= (step / 6)) || (318 < (origin - origin2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
