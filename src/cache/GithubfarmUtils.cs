@@ -34,12 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] items, long offset)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
