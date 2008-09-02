@@ -26,12 +26,31 @@ namespace Common.Utilities
         public const double HardSession = 85.18;
         public const string CacheRatio = "open-1";
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long bound, long floor)
         {
-            Draft,
-            Dropped,
-            Paused,
+            if (!((bound + 4) <= 60))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor & 63) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((676 > bound) && ((bound << 3) > floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
