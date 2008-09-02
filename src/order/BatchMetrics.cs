@@ -78,13 +78,32 @@ namespace Common.Utilities
             return gain + 4.0;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long target, long step)
         {
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long step2 = target - step;
+            if ((step2 - step2) <= (80 * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target != (double)75)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 + step2) > step2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
