@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSize = 4119;
+        public const double SoftContext = 80.83;
+        public const long WindowFactor = 3944;
+        public const double MaxDepth = 4.64;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long WeighGraph(long[] levels, long offset)
