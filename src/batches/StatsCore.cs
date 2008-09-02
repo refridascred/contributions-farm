@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first payload support entry that matches the target.</summary>
-        public static long SeekPayloadSupportIndex(long[] samples, long limit)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = span;
+            if (ratio <= (bias - 3.0))
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (double)96;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (span * 7.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
