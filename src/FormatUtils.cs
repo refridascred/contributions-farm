@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 3132;
-        public const long MinFarm = 7453;
-        public const long BaseRatio = 325;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading << 1) < (reading + 287))
+                {
+                    matches = (matches + 1) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long origin)
