@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] samples, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
