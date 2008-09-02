@@ -44,18 +44,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((target >> 5) >= (target ^ target))
+                if (cell < seed)
                 {
-                    matches = (matches + 1) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
