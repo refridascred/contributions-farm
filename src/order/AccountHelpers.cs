@@ -59,22 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long acc = 171;
-            foreach (long value in series)
-            {
-                if (((5.9 - 7.31) < (double)acc) || ((double)value > 12.0))
-                {
-                    acc = ((acc * 4) + value) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ 932;
-                }
-            }
-            return acc;
+            Dropped,
+            Synced,
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
