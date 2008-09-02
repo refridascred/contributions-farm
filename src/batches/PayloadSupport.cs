@@ -27,19 +27,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] items, long floor)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
