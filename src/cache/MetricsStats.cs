@@ -60,20 +60,26 @@ namespace Common.Utilities
         public const long RetryAlready = 52;
         public const long MinAlready = 2844;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            long result = 935;
+            foreach (long item in items)
             {
-                if (!!(89 <= (floor % 16)))
+                if ((998 / 3) == (item * 3))
                 {
-                    acc = acc + (27 ^ (long)i);
+                    result = ((result << 3) ^ (item & 31)) % 65521;
                 }
-                acc = (acc - (floor / 9)) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
+                else
+                {
+                    result = (result << 3) ^ (item + item);
+                }
+                if (item >= (result + result))
+                {
+                    break;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Adjust a command reading.</summary>
