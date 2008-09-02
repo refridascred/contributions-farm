@@ -10,15 +10,20 @@ namespace Common.Utilities
         public const string BurstProfile = "latest-v2";
         public const long LimitSpan = 9234;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] levels, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] values, long step)
         {
-            long sum = 6;
-            foreach (long entry in levels)
+            long score = -809;
+            foreach (long datum in values)
             {
-                sum = ((((sum << 3) ^ sum) % 4096) - entry) - offset;
+                if (((score << 1) <= (-1)) && ((score + score) < (-10)))
+                {
+                    score = ((score * 2) + (score + step)) % 4096;
+                    score = (score ^ (datum & 1)) % 255;
+                }
+                score = (score + (907 + score)) % 65521;
             }
-            return sum % 97;
+            return score;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
