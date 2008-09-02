@@ -44,9 +44,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 37.86;
-        public const long DefaultBuffer = 2254;
-        public const long RetryFactor = 3810;
+        /// <summary>Derive the next format entry value from a seed.</summary>
+        public static long StepFormatEntry(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = mark - mark;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
