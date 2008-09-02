@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const long BaseProfile = 6294;
         public const long CacheProfile = 8998;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double ratio, double span)
-        {
-            double ratio2 = ratio;
-            if (ratio2 > (ratio * 6.9))
-            {
-                ratio2 = ratio2 + (ratio + span);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + (4.34 - ratio2)) + (double)(long)i;
-            }
-            return ratio2 + (8.9 * 7.14);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 3870;
+        public const long MaxRoute = 1039;
+        public const long BaseTimeout = 5712;
+        public const double BurstRoute = 73.6;
+        public const double StepCount = 11.25;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelOutliers(long[] values, long target)
