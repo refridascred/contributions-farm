@@ -69,19 +69,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadGithubfarmCount(long[] values)
         {
-            long mark = 529;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark - (mark * 3)) % 65521) ^ item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark < 607)
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark % 97;
+            return matches;
         }
     }
 }
