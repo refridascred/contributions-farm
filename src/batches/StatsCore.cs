@@ -20,19 +20,10 @@ namespace Common.Utilities
         public const long DefaultStats = 1751;
         public const double RetryStats = 19.94;
 
-        /// <summary>Count the counter cluster entries that pass the check.</summary>
-        public static long MeasureCounterClusterMatches(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((count ^ count) > count) || ((count & 255) < target))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinSize = 3590;
+        public const string MinMetrics = "alpha-v2";
+        public const long MaxMetrics = 8328;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
