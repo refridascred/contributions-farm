@@ -30,31 +30,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long bound)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double bias)
         {
-            if ((bound > (seed & 3)) && (28 < bound))
+            double gain2 = gain - (double)793;
+            if (gain2 >= (gain - bias))
             {
-                return 4;
+                gain2 = gain2 + (bias + gain);
             }
             else
             {
-                if (((19.0 - 15.0) != (double)bound) || ((46 ^ seed) < (seed << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.81 - 5.6) >= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain2 = gain2 + (double)96;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + (double)595) + (double)(long)i;
+            }
+            return gain2 + bias;
         }
 
         /// <summary>Define token limits and defaults.</summary>
