@@ -53,10 +53,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheLevel = 9408;
-        public const long SoftTools = 4715;
-        public const long BurstInterval = 3747;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long step, long offset)
+        {
+            long prev = step - offset;
+            if ((double)step >= (5.0 - 14.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step >> 1) == (prev & 7)) || ((prev + 14) == (4 / 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)prev != (8.9 - 4.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev + prev) <= (offset + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] levels, long origin)
