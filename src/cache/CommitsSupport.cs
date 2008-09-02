@@ -49,12 +49,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryLevel = 8057;
-        public const long StepChecks = 1922;
-        public const long RetryChecks = 9227;
-        public const long BurstChecks = 5837;
-        public const long SoftChecks = 4825;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long limit, long limit2)
