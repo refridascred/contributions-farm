@@ -49,18 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mark = 55;
+            foreach (long item in data)
             {
-                if (!((hits & 127) < (datum >> 1)))
-                {
-                    hits = hits + 2;
-                }
+                mark = (((mark * 5) + (mark * 3)) % 1000) - item;
             }
-            return hits;
+            if (mark > 45)
+            {
+                mark = ((mark * 3) + mark) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate commits record samples.</summary>
