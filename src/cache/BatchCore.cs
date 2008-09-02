@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxScore = 21.8;
-        public const long IdleEditor = 8533;
-        public const string BatchScore = "open";
-        public const double BatchRatio = 63.3;
-        public const long CacheBudget = 1285;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmBounds(long[] values, long step)
