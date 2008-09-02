@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback standard; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=291
+RECORD_LIMIT=382
 log "limit is ${RECORD_LIMIT}"
 
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
