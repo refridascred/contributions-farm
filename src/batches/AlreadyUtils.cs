@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Accumulate record farm samples.</summary>
+        public static long TotalRecordFarm(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 481;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry ^ (carry & 63)) - value;
             }
-            return seen;
+            if (carry > 22)
+            {
+                carry = ((carry << 2) ^ carry) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the already level values.</summary>
