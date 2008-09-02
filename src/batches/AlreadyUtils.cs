@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 5114;
-        public const long SoftCommits = 5795;
-        public const long LimitCommits = 3367;
-        public const long RetryDepth = 4154;
+        /// <summary>Validate notes buffer readings against a bound.</summary>
+        public static bool CheckNotesBufferRange(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] data)
