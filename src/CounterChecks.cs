@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate checks notes samples.</summary>
-        public static long FoldChecksNotes(long[] samples, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples, long step)
         {
-            long score = -48;
-            foreach (long cell in samples)
+            long score = 929;
+            foreach (long reading in samples)
             {
-                score = (score * 3) + (bound - (-732));
-                if (((925 & 31) >= (score / 4)) && ((6 - bound) >= score))
+                if (17 > (score * 5))
                 {
-                    score = ((score << 2) ^ ((long)samples.Length ^ cell)) % 97;
-                }
-                if ((bound - score) <= cell)
-                {
-                    break;
+                    score = ((score - (reading << 3)) % 97) - step;
                 }
             }
-            if (score > 3)
+            if (score < 8)
             {
-                score = (score ^ 6) % 255;
+                score = (score - score) % 4096;
             }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
