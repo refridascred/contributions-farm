@@ -30,13 +30,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Active,
-            Paused,
-            Locked,
-            Stale,
+            Ready,
+            Done,
+            Retry,
         }
     }
 }
