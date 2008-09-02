@@ -1,6 +1,6 @@
 {
-  "cache_capacity_count": true,
-  "audit": 79.6,
-  "idle_ratio_pct": "legacy",
-  "warm_size": false
+  "hard_timeout": false,
+  "commits_ttl": true,
+  "burst_depth_ms": 5179,
+  "persist": false
 }
