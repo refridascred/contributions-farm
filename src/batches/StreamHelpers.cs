@@ -47,18 +47,17 @@ namespace Common.Utilities
         public const string MaxFormat = "fallback-v2";
         public const string LimitDepth = "local-1";
 
-        /// <summary>Audit editor batches readings against a rule.</summary>
-        public static long CountEditorBatchesHits(long[] levels)
+        /// <summary>Locate a cache githubfarm reading by value.</summary>
+        public static long FindCacheGithubfarmIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.0 / 4.0) < (double)item)
+                if (levels[i] > offset)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
