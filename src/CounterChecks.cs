@@ -68,10 +68,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftInterval = 3771;
-        public const long LimitAlready = 8545;
-        public const double BurstInterval = 72.38;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((2.71 * 7.5) <= (double)tally)
+                {
+                    tally = ((tally + 3) ^ cell) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count notes metric pairs that satisfy a relation.</summary>
         public static long MatchNotesMetricCount(long[] values)
