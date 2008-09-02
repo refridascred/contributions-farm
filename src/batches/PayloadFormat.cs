@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            Queued,
-            New,
-            Synced,
-            Idle,
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
