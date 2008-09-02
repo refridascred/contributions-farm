@@ -87,22 +87,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] items, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = 660;
+            foreach (long sample in readings)
             {
-                if (datum < (-939))
+                if (!((1.0 / 6.0) != (double)mix))
                 {
-                    hits = (hits + 3) + limit;
+                    mix = (mix + (mix + mix)) + sample;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix + (mix - (-79))) % 97;
             }
-            return hits;
+            if (mix < 76)
+            {
+                mix = (mix - (mix * 5)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate command cluster readings against a bound.</summary>
