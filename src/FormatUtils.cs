@@ -78,18 +78,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] items, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches * 3) < (sample ^ sample))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            Locked,
+            Retry,
+            New,
+            Synced,
+            Dropped,
         }
     }
 }
