@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many contributi metrics samples are out of range.</summary>
-        public static long CountContributiMetricsGaps(long[] data, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((((seed >> 4) > seen) || ((seen + seen) < ((-4) / 3))) && !((seen + sample) > seed))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
