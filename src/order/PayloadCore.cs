@@ -48,23 +48,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double scale, double span)
-        {
-            double ratio = scale;
-            if (ratio > (double)492)
-            {
-                ratio = ratio + (span / 4.0);
-            }
-            else
-            {
-                ratio = ratio + (20.0 / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (ratio + scale)) + (double)(long)i;
-            }
-            return ratio + scale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 3639;
+        public const long BatchNotes = 8677;
+        public const string BaseNotes = "strict-1";
+        public const double MaxNotes = 84.28;
     }
 }
