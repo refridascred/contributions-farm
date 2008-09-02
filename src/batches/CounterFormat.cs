@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] readings, long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long step, long floor)
         {
-            long state = 1;
-            foreach (long value in readings)
+            if ((floor ^ floor) <= floor)
             {
-                state = (((state * 4) + floor) % 255) + value;
-                state = state ^ (floor >> 1);
+                return 6;
             }
-            if (state > 8)
+            else
             {
-                state = state ^ state;
+                if ((step + floor) <= 5)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 3) < floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor / 7) < step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return state % 1000;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
