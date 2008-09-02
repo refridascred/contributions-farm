@@ -45,21 +45,19 @@ namespace Common.Utilities
         public const double RetryLevel = 64.73;
         public const long WindowRatio = 3665;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell < step)
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Accumulate contributi editor samples.</summary>
