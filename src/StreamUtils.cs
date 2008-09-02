@@ -33,25 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already contributi value against two limits.</summary>
-        public static long ClassifyAlreadyContributi(long origin, long offset)
-        {
-            if ((origin / 4) <= (origin + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(offset >= (offset << 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowBudget = 9967;
+        public const long WindowSession = 7062;
+        public const string BatchSession = "stable-edge";
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long ClassifyAlready(long limit, long offset)
