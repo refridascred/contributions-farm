@@ -50,12 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
+            Closed,
+            Stale,
+            Done,
+            Dropped,
         }
     }
 }
