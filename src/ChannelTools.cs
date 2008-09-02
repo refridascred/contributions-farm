@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long step, long step2)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] levels)
         {
-            long edge = step - step2;
-            if ((1.2 * 0.9) == (double)step2)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge ^ edge) != (step2 / 7))
+                if ((65 - tally) > datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step / 2) <= (854 + step)) || ((step ^ step2) >= (step << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step / 3) < (step2 >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the account record entries that pass the check.</summary>
