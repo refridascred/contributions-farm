@@ -48,11 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 8273;
-        public const string MaxChannel = "latest";
-        public const long BurstChannel = 3830;
-        public const long WindowFactor = 1536;
-        public const long MinFactor = 425;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "standard";
+        public const long CacheSpan = 2557;
+        public const long SoftRatio = 250;
     }
 }
