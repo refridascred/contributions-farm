@@ -14,10 +14,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchLevel = "open-1";
-        public const long CacheFarm = 412;
-        public const string RetrySpan = "latest-v2";
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long offset, long step)
+        {
+            if ((double)offset > (3.3 + 1.42))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step & 255) != (offset % 12))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step - step) <= (offset - offset)) || ((1.58 - 4.94) != (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double ScaleFilter(double weight, double span)
