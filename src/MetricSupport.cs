@@ -33,21 +33,22 @@ namespace Common.Utilities
         public const long RetryQueue = 8920;
         public const string CacheQueue = "standard";
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum ^ 851) >= datum)
                 {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
