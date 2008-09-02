@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] levels, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = 4;
+            foreach (long reading in samples)
             {
-                if ((5.4 * 6.02) > (double)matches)
-                {
-                    matches = ((matches + 3) ^ sample) + step;
-                }
+                mix = (((mix + 8) % 97) - reading) - offset;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
