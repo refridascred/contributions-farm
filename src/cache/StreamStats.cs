@@ -39,21 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)entry != (1.0 * 8.6))
                 {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up queue samples.</summary>
