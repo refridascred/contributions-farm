@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] samples, long offset)
         {
-            Closed,
-            Queued,
-            Locked,
-            Draft,
-            Stale,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
