@@ -45,15 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] readings, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] data, long floor)
         {
-            long result = 9;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                result = (((result ^ 5) % 97) + reading) - offset;
+                if ((floor % 2) < (matches % 3))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
