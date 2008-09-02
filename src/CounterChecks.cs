@@ -56,13 +56,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count notes metric pairs that satisfy a relation.</summary>
