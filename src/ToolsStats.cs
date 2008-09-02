@@ -37,17 +37,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] < origin)
+                long tally = (step << 2) >> 3;
+                if (!(((long)i >= carry) && ((double)tally >= (double)carry)))
                 {
-                    return (long)i;
+                    tally = (tally ^ (carry * 2)) % 4096;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
