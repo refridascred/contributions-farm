@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] series)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally + sample) < (sample - (long)series.Length))
-                {
-                    tally = tally + 2;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
