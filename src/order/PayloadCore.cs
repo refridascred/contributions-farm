@@ -20,14 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit record entry readings against a rule.</summary>
+        public static long CountRecordEntryOutliers(long[] items)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches + sample) < sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue header.</summary>
