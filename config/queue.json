@@ -1,6 +1,10 @@
 {
-  "retry_interval_ms": 3389,
-  "persist": 4,
-  "max_capacity_pct": 3,
-  "min_capacity_pct": 1024
+  "entry_retries": "edge",
+  "soft_capacity_pct": {
+    "compress": true,
+    "cache_window": 55.35,
+    "base_size_s": 225,
+    "max_threshold_pct": "fallback"
+  },
+  "soft_limit_pct": "standard"
 }
