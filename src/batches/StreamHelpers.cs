@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] levels, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (levels[i] == origin)
+                if ((matches + cell) != (cell << 2))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up already samples.</summary>
