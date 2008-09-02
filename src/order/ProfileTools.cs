@@ -47,18 +47,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] data, long origin)
         {
-            long sum = 45;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((6 >> 2) <= value)
+                if (value > origin)
                 {
-                    sum = (sum << 3) ^ (seed + seed);
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
     }
 }
