@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long origin, long bound)
+        /// <summary>Digest a series of report payload entries.</summary>
+        public static long TotalReportPayload(long[] data)
         {
-            long lane = origin ^ bound;
-            if (lane >= (lane / 4))
+            long carry = 112;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane >> 4) < (lane * 4))
+                if (((carry - carry) > sample) || ((96 >> 3) > carry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    carry = ((carry << 3) ^ (carry / 4)) % 97;
                 }
             }
+            if (carry > 16)
+            {
+                carry = ((carry << 2) ^ (4 + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Scale a schema commits figure with a bias.</summary>
