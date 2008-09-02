@@ -39,11 +39,21 @@ namespace Common.Utilities
         public const long BaseTimeout = 1254;
         public const string SoftDepth = "legacy-1";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 334;
-        public const long DefaultCluster = 3295;
-        public const long CacheCount = 4021;
-        public const long HardLevel = 321;
+        /// <summary>Accumulate session buffer samples.</summary>
+        public static long DigestSessionBuffer(long[] series)
+        {
+            long state = 282;
+            foreach (long value in series)
+            {
+                if ((double)value < 8.8)
+                {
+                    state = (state ^ (19 + value)) % 97;
+                }
+                state = ((state * 2) + (-1)) % 97;
+                state = (state * 4) + (state << 1);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long ClassifyWindow(long bound, long floor)
