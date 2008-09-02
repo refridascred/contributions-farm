@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const double HardBatches = 96.12;
         public const long MaxDepth = 5081;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] series, long offset)
+        /// <summary>Measure how many cluster stream samples are out of range.</summary>
+        public static long TallyClusterStreamMatches(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (reading >= offset)
+                if ((seen << 1) < seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 2) - datum) + step;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
