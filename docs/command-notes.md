@@ -1,15 +1,13 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-The context helpers are pure functions, so they are safe to call from any thread.
-Use report settings to tune how often account data is refreshed.
+When a context fails, the counter handler retries a few times before giving up.
+The commits module keeps graph values in sync with the command cache.
 
-Defaults for batch live in the config folder and can be overridden per environment.
-The metrics report groups every counter by support.
+Keep layout and batches names short and lowercase.
+When a route fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep queue values small
-- Document new buffer fields
-- Prefer command defaults
-- Review notes limits each release
+- Document new payload fields
+- Validate command input early
+- Log every checks change
