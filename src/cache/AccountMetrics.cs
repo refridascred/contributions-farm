@@ -47,14 +47,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long origin)
         {
-            Draft,
-            Failed,
-            Paused,
-            Locked,
-            Stale,
+            if ((floor * 2) >= (4 << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin < (floor - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - floor) <= (origin + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token class values.</summary>
