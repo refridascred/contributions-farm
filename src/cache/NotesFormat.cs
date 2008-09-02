@@ -32,9 +32,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseBudget = 5792;
-        public const long StepLayout = 6934;
-        public const long WindowLayout = 5937;
+        /// <summary>Fold a list of route schema readings.</summary>
+        public static long DigestRouteSchema(long[] readings, long floor)
+        {
+            long result = -174;
+            foreach (long item in readings)
+            {
+                result = (result << 2) ^ (floor / 4);
+                if ((floor - result) > floor)
+                {
+                    result = (result + (item - item)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (floor % 16)) % 97;
+                }
+                if (!((floor * 5) < item))
+                {
+                    result = (result - (floor - floor)) % 65521;
+                }
+            }
+            if (result < 568)
+            {
+                result = (result ^ floor) % 4096;
+            }
+            return result;
+        }
     }
 }
