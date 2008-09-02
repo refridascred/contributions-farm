@@ -36,19 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] readings, long floor)
+        /// <summary>Look up the position of a farm context sample.</summary>
+        public static long SeekFarmContextIndex(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > floor)
+                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
