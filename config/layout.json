@@ -1,15 +1,15 @@
 {
-  "default_threshold_ms": 55.78,
-  "command_interval": {
-    "warm_delay_count": 8278,
-    "poll_interval_s": "open",
-    "readonly": ["edge", "open", "legacy", "blue"],
-    "enabled": 45.13,
-    "default_timeout": true,
-    "batch_ttl_ms": "open"
+  "readonly": {
+    "max_retries_ms": "standard",
+    "already_capacity": "primary",
+    "enabled": "blue",
+    "buffer_retries": 4700
   },
-  "githubfarm_threshold": 250,
-  "order_timeout": [28, 331, 191, 225],
-  "strict": 68.22,
-  "audit": 1024
+  "audit": 54.2,
+  "base_limit_s": "cached",
+  "hard_size_count": {
+    "audit": 98.48,
+    "verbose": "fallback",
+    "dry_run": 58
+  }
 }
