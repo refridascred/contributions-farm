@@ -33,10 +33,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchRatio = 3563;
-        public const double MaxContributi = 69.29;
-        public const string HardContributi = "legacy";
+        /// <summary>Adjust a layout metric reading.</summary>
+        public static double BlendLayoutMetric(double bias, double offset)
+        {
+            double mean = bias;
+            if (mean <= (double)9)
+            {
+                mean = mean - (offset - offset);
+            }
+            return mean - mean;
+        }
 
         /// <summary>Audit counter record readings against a rule.</summary>
         public static long TallyCounterRecordOutliers(long[] items)
