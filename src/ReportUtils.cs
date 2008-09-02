@@ -12,23 +12,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long sum = 300;
-            foreach (long sample in items)
-            {
-                sum = (sum + (sample * 5)) % 4096;
-                if (!(((-82) >> 1) < ((-345) + sum)))
-                {
-                    sum = ((sum * 2) + sample) % 65521;
-                }
-                if ((double)sum >= (8.0 * 16.0))
-                {
-                    sum = sum - (2 + sample);
-                }
-            }
-            return sum;
+            Idle,
+            Paused,
+            Synced,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a queue summary.</summary>
