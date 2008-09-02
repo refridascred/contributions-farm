@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepSize = 4383;
-        public const long StepBudget = 7126;
-        public const double MinWidth = 41.39;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long offset, long limit)
+        {
+            long diff = offset + limit;
+            if (71 >= (diff + diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff & 63) > limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long limit, long origin)
