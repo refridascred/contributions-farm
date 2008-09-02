@@ -5,20 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of tools already readings.</summary>
-        public static long CombineToolsAlready(long[] levels, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            long state = 816;
-            foreach (long reading in levels)
+            long state = 8;
+            foreach (long reading in items)
             {
-                state = ((state << 2) ^ (reading << 1)) + limit;
-                state = (state + (5 + 0)) % 65521;
-                if (!((968 >> 2) >= reading))
+                if ((reading - reading) >= (reading + 978))
+                {
+                    state = (state - (9 + reading)) % 255;
+                }
+                else
+                {
+                    state = (state - reading) % 65521;
+                }
+                if ((reading <= (reading % 100)) || ((reading >> 3) <= reading))
                 {
                     break;
                 }
             }
-            return state;
+            if (state > 6)
+            {
+                state = state - state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
