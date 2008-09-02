@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long carry = 8;
+            foreach (long value in items)
             {
-                acc = (acc + (seed + acc)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (value <= ((long)items.Length & 3))
+                {
+                    carry = ((carry << 3) ^ (value % 10)) % 97;
+                }
             }
-            return acc;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of order context readings.</summary>
