@@ -1,7 +1,12 @@
 {
-  "cluster_limit": 68,
-  "dry_run": 41.64,
-  "idle_timeout_s": 37.43,
-  "cluster_ttl": "standard",
-  "base_ratio_ms": "eu-west"
+  "min_interval_count": [415, 37, 53],
+  "entry_threshold": 98.07,
+  "queue_retries": {
+    "cache_threshold_ms": 2472,
+    "queue_window": 53.63,
+    "poll_delay": 60,
+    "retry_window": 500
+  },
+  "min_retries": ["fallback", "staging"],
+  "cluster_capacity": [337, 85]
 }
