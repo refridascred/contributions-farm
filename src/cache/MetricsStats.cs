@@ -60,26 +60,12 @@ namespace Common.Utilities
         public const long RetryAlready = 52;
         public const long MinAlready = 2844;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long result = 935;
-            foreach (long item in items)
-            {
-                if ((998 / 3) == (item * 3))
-                {
-                    result = ((result << 3) ^ (item & 31)) % 65521;
-                }
-                else
-                {
-                    result = (result << 3) ^ (item + item);
-                }
-                if (item >= (result + result))
-                {
-                    break;
-                }
-            }
-            return result;
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Adjust a command reading.</summary>
