@@ -23,14 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Synced,
-            Ready,
-            Active,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheSize = "primary";
+        public const string BaseBatches = "local-edge";
+        public const long BurstBatches = 3841;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BatchRatio = 3563;
