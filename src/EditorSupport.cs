@@ -36,17 +36,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] samples, long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long limit, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = limit + target;
+            if ((target + prev) > (prev + limit))
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((target - limit) <= (648 - limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit < (prev - limit)) && (limit >= (prev & 255)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload stats.</summary>
