@@ -37,12 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            public double Size { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
