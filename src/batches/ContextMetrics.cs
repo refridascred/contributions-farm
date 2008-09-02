@@ -36,19 +36,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] items, long seed)
+        /// <summary>Count checks command pairs that satisfy a relation.</summary>
+        public static long MatchChecksCommandCount(long[] items)
         {
-            long sum = 424;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum ^ (seed - sum);
-                if ((double)entry > 9.3)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum ^ (seed - sum);
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
