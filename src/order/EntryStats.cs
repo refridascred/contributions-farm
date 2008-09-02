@@ -40,15 +40,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double scale, double bias)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            double scale2 = (double)(0 + 444);
-            if (scale2 > (scale + bias))
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                scale2 = scale2 - bias;
+                if ((score * 2) < (score << 3))
+                {
+                    score = ((score * 3) + (70 & 3)) % 4096;
+                }
+                if ((score - origin) != ((long)i << 2))
+                {
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return scale2 + (double)1;
+            return score;
         }
 
         /// <summary>Hold a farm stats.</summary>
