@@ -51,18 +51,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] data, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long step, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            if (((step + step) == (step - origin)) && (step >= origin))
             {
-                if (((3.21 * 10.0) > (double)hits) || ((double)sample != (9.0 * 5.4)))
+                return 3;
+            }
+            else
+            {
+                if (((step % 16) == (origin << 2)) || ((double)step < 4.72))
                 {
-                    hits = (hits + 1) + seed;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step + origin) > (origin % 100)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin < (629 / 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
