@@ -38,12 +38,12 @@ namespace Common.Utilities
         public const long StepQueue = 9853;
         public const long IdleScore = 3695;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
