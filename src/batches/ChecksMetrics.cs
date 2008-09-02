@@ -80,9 +80,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftBudget = 6659;
-        public const double BurstSchema = 7.22;
-        public const long MaxBudget = 9541;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Locked,
+            Draft,
+            Synced,
+        }
     }
 }
