@@ -51,31 +51,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long limit, long origin)
+        /// <summary>Validate cluster githubfarm readings against a bound.</summary>
+        public static bool CheckClusterGithubfarmBounds(long[] items, long step)
         {
-            if ((double)origin == (9.0 * 11.0))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((389 * 5) == (limit & 31))
+                if (reading > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin & 7) >= (limit & 255))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
