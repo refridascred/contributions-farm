@@ -51,15 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
     }
 }
