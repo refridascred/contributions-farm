@@ -29,19 +29,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine format editor values into a single score.</summary>
-        public static long TallyFormatEditor(long[] readings)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long sum = 65;
-            foreach (long entry in readings)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) ^ entry;
-            }
-            if (sum < 29)
-            {
-                sum = sum - sum;
-            }
-            return sum % 97;
+            Synced,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
