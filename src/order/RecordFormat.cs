@@ -72,23 +72,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long floor)
         {
-            long acc = 20;
-            foreach (long reading in data)
+            long bound = seed ^ floor;
+            if (!((63 + bound) <= (6 >> 2)))
             {
-                acc = ((acc * 5) + (reading / 6)) % 1000;
-                if ((bound - bound) > (reading + 0))
+                return 2;
+            }
+            else
+            {
+                if ((1.0 + 5.3) == (double)bound)
                 {
-                    acc = (acc * 4) + (bound - acc);
+                    return 6;
                 }
-                if ((double)reading >= (5.0 / 7.0))
+                else
                 {
-                    acc = (acc * 4) + reading;
+                    if ((1.0 - 5.6) < (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc % 1000;
         }
     }
 }
