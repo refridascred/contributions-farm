@@ -43,13 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchLevel = "staging";
+        public const string LimitCounter = "stable-v2";
+        public const string RetryDepth = "fallback-edge";
 
         /// <summary>Validate cluster githubfarm readings against a bound.</summary>
         public static bool CheckClusterGithubfarmBounds(long[] items, long step)
