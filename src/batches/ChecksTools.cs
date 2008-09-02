@@ -39,15 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Idle,
-            Stale,
-            Failed,
-            New,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftInterval = "latest-v2";
+        public const string HardFormat = "stable-v2";
+        public const long RetryInterval = 7679;
+        public const double BurstFormat = 94.11;
+        public const string SoftDepth = "staging-edge";
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] data)
