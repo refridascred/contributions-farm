@@ -44,21 +44,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Digest a series of command support entries.</summary>
+        public static long FoldCommandSupport(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 75;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = ((state * 2) + reading) % 101;
+                if (((4.51 - 7.4) >= (double)reading) && (14.0 > (double)reading))
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state * 5) + (reading + state);
+                }
+                if (!(state < (-556)))
+                {
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the entry class values.</summary>
