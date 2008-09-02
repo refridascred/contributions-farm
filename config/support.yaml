@@ -1,7 +1,4 @@
 # support settings
-burst_timeout: 708
-cache_threshold: 8868
-persist: 5663
-tools_ttl: 51
-verbose: 250
-stats_ttl: green
+record_threshold: 500
+burst_timeout: edge
+notes_interval: 16
