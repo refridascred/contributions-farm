@@ -41,12 +41,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Synced,
-            Failed,
-            Stale,
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
