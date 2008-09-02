@@ -24,18 +24,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] data, long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((18.0 >= (double)hits) && ((hits - hits) <= (floor << 3))) && ((floor / 9) < hits))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
