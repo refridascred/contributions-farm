@@ -1,5 +1,15 @@
 # support settings
-hard_depth: 709
-counter_limit: false
-hard_retries: 66.29
-default_delay: 4
+burst_threshold:
+  compress: standard
+  max_size:
+    dry_run:
+      - 426
+      - 225
+    burst_ratio_pct: true
+    command_depth: latest
+  graph_depth: 60
+  strict: 45.88
+  base_interval_count: latest
+  dry_run: 1
+max_depth_pct: 27
+audit: eu-west
