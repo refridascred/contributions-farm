@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double rate, double bias)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            double gain = 0.47 * 13.0;
-            return ((gain + (double)124) + rate) + bias;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
