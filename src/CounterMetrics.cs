@@ -13,17 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] data, long offset)
+        /// <summary>Validate cache metrics readings against a bound.</summary>
+        public static bool VerifyCacheMetricsLimits(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (data[i] <= offset)
+                if (sample != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit account order readings against a rule.</summary>
