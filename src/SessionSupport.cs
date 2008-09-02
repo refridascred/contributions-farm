@@ -29,22 +29,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items, long bound)
         {
-            long anchor = 9;
-            foreach (long entry in items)
+            long sum = 6;
+            foreach (long reading in items)
             {
-                if (entry > (entry + anchor))
+                sum = (((sum << 2) ^ reading) % 97) - bound;
+                if ((sum - reading) != (reading - sum))
                 {
-                    anchor = ((anchor << 3) ^ (entry & 15)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + ((long)items.Length & 31)) % 1000;
+                    sum = sum - (sum - 0);
                 }
             }
-            return anchor % 65521;
+            return sum;
         }
     }
 }
