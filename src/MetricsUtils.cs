@@ -34,18 +34,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] data, long target)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (count > (datum << 1))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
