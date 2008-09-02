@@ -42,15 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            double rate = gain;
+            if (rate > gain)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                rate = (rate - rate) + span;
             }
-            return anchor;
+            return rate + gain;
         }
 
         /// <summary>Rank cluster payload input into a small class.</summary>
