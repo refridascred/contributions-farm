@@ -53,19 +53,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((69 - seed) != (result << 1))
-                {
-                    result = ((result * 2) + (seed + seed)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Done,
+            Queued,
+            New,
+            Idle,
         }
     }
 }
