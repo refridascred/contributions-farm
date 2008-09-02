@@ -27,19 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] values, long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
