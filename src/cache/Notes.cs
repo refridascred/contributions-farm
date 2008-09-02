@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the counter context entries that pass the check.</summary>
-        public static long AuditCounterContextMatches(long[] items)
+        /// <summary>Measure how many metrics stats samples are out of range.</summary>
+        public static long CountMetricsStatsMatches(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((matches % 64) != (entry + (-2)))
+                if (((datum % 5) >= (312 + tally)) || ((9 % 7) <= (tally - (-3))))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
