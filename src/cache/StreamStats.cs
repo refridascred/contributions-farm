@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleBudget = 602;
-        public const long SoftSpan = 3625;
-        public const double MinCache = 38.7;
-        public const double BaseCache = 54.66;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Failed,
+            Draft,
+            Ready,
+            Done,
+            Active,
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] readings)
