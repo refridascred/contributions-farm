@@ -28,21 +28,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 562;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (((anchor * 3) + offset) % 255) ^ item;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
