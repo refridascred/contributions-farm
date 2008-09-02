@@ -54,24 +54,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long offset, long origin)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long target)
         {
-            if ((origin & 63) == (offset & 15))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - origin) < (origin - offset))
+                if (series[i] > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
