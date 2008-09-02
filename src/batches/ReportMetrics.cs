@@ -34,14 +34,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long seed, long target)
         {
-            Stale,
-            Draft,
-            Retry,
-            Pending,
-            Done,
+            if (target <= (target + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + seed) < (target - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed == (15.0 / 2.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
