@@ -62,10 +62,18 @@ namespace Common.Utilities
         public const double MaxRoute = 59.57;
         public const long StepSpan = 973;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 6259;
-        public const long RetryInterval = 7152;
-        public const string BurstContributi = "fallback-v2";
-        public const long SoftScore = 2956;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((datum ^ tally) <= (98 - tally)) && (tally >= (floor % 24))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
