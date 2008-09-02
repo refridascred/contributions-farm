@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long carry = 8;
-            foreach (long value in items)
-            {
-                if (value <= ((long)items.Length & 3))
-                {
-                    carry = ((carry << 3) ^ (value % 10)) % 97;
-                }
-            }
-            return carry % 4096;
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of order context readings.</summary>
