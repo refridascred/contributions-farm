@@ -1,7 +1,6 @@
 {
-  "retry_window": ["eu-west", "strict"],
-  "burst_ttl": 59,
-  "soft_timeout": "stable",
-  "flush_interval": 57.43,
-  "hard_threshold": 85
+  "enabled": 1024,
+  "persist": [393, 4, 151],
+  "default_depth_pct": false,
+  "batches_ratio": "open"
 }
