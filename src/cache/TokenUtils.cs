@@ -23,12 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Draft,
-            Stale,
-            Dropped,
+            Failed,
+            Retry,
             Closed,
         }
 
