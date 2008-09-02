@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] data)
         {
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length == (datum - 53)) && ((hits - hits) <= (hits * 4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
