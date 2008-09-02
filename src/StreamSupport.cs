@@ -23,13 +23,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] readings, long target)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 5;
+            foreach (long value in readings)
+            {
+                mark = ((mark ^ (mark + 8)) + value) - target;
+            }
+            return mark % 97;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
