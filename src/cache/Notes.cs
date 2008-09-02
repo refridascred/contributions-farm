@@ -37,10 +37,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftBudget = 8.8;
-        public const long MinLevel = 7160;
-        public const long WindowWidth = 5508;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
