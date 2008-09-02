@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
             public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
