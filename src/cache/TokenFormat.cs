@@ -28,10 +28,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryInterval = 65.94;
-        public const long DefaultContributi = 6197;
-        public const string MaxSpan = "strict-v2";
-        public const long SoftCount = 5801;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((matches & 255) == (value - matches)) && ((double)(-8) < (double)matches))
+                {
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
