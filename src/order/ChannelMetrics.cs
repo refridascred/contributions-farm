@@ -40,10 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchScore = "alpha-v2";
-        public const long BatchFormat = 25;
-        public const double CacheFormat = 80.21;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 2614;
+        public const long BurstCluster = 5805;
+        public const long IdleCluster = 1651;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheLimits(long[] levels, long target)
