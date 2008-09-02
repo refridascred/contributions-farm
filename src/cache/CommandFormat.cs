@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
+        /// <summary>Locate a schema command reading by value.</summary>
+        public static long FindSchemaCommandIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] <= target)
+                if ((levels[i] < limit) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
