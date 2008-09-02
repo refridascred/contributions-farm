@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] levels, long target)
         {
-            long mark = 4;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if (cell > target)
                 {
-                    mark = (mark << 2) ^ (long)i;
-                }
-                if ((mark ^ mark) > (item << 1))
-                {
-                    mark = (mark - ((long)data.Length + item)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return flag;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
