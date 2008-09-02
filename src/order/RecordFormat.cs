@@ -51,19 +51,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] series, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long floor, long step)
         {
-            bool found = true;
-            foreach (long item in series)
+            if (((floor + 56) >= (step + step)) && (11.0 < (double)step))
             {
-                if (item != floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)step <= (double)floor)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Grade a route profile value against two limits.</summary>
