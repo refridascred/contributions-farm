@@ -19,31 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long origin, long origin2)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] data, long offset)
         {
-            if ((origin % 8) > (origin << 2))
+            long sum = 595;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin / 9) >= origin)
+                if ((sum >= 976) || (56 >= (sum + 785)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin ^ origin) > (origin2 % 12))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = ((sum << 2) ^ (offset + cell)) % 1000;
                 }
             }
+            return sum;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
