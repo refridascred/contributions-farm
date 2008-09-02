@@ -19,13 +19,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Failed,
-            Locked,
-            Paused,
-            Dropped,
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
