@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] items, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)(624 ^ 94);
+            if (scale >= (scale - span))
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (double)19) + bias;
             }
-            return -1;
+            return scale - (scale - scale);
         }
 
         /// <summary>Describe the account phase values.</summary>
