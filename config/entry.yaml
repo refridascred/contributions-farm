@@ -1,13 +1,15 @@
 # entry settings
-min_size_s:
-  sync_depth_count: 82.58
-  min_ratio: staging
-  readonly: local
-  flush_ratio_ms: true
-verbose: false
-hard_depth_count: 88
-enabled:
-  - open
-  - primary
-strict: true
-sync_ttl_pct: 76.65
+compress:
+  - local
+  - edge
+  - strict
+  - local
+profile_size:
+  verbose:
+    verbose: 10.88
+    idle_ratio_count: 323
+    enabled: latest
+    strict: blue
+  sync_ttl: open
+  contributi_window: local
+command_capacity: open
