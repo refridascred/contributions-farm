@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long offset, long floor)
         {
-            Draft,
-            Synced,
-            Done,
-            Idle,
-            Queued,
+            if ((offset + floor) > (floor >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8 ^ 788) <= floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
