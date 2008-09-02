@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] data)
+        /// <summary>Combine metrics command values into a single score.</summary>
+        public static long DigestMetricsCommand(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long total = 950;
+            foreach (long value in data)
             {
-                if ((reading * 5) > (7 & 63))
-                {
-                    tally = tally + 2;
-                }
+                total = total + (total + value);
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
