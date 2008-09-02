@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context buffer readings.</summary>
-        public static long FoldContextBuffer(long[] data)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] data)
         {
-            long mark = 180;
+            long state = 38;
             foreach (long datum in data)
             {
-                mark = (mark * 4) + (datum - mark);
+                if ((state >> 2) <= state)
+                {
+                    state = ((state * 2) + ((-4) >> 2)) + datum;
+                }
+                else
+                {
+                    state = (state << 3) ^ ((long)data.Length & 255);
+                }
             }
-            if (mark < 9)
-            {
-                mark = ((mark << 2) ^ (mark >> 1)) % 101;
-            }
-            return mark;
+            return state % 1000;
         }
 
         /// <summary>Blend two commits measurements.</summary>
