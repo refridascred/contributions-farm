@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable latest green; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=199
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-primary}"
+mode="${1:-blue}"
 case "${mode}" in
-    primary)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -22,6 +21,6 @@ esac
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 5))
+    total=$((total + i * 4))
 done
 log "total ${total}"
