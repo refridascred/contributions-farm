@@ -1,31 +1,22 @@
 # entry settings
-default_limit_count: 49
-counter_threshold:
-  retry_delay:
-    audit: blue
-    cache_ratio:
-      - standard
-      - fallback
-      - edge
-      - strict
-    batches_size: 95.31
-    idle_size_pct:
-      - 439
-      - 88
-      - 479
-      - 126
-  hard_window_pct: edge
-  hard_limit_s: 18.46
-soft_ratio_s: local
-retry_timeout_ms: 8385
-warm_delay_pct:
-  max_ratio_ms: staging
-  max_window_s: standard
-  retry_interval_count: 43
-  burst_timeout_pct: 38
-  persist: 40
-  entry_threshold:
-    - 89
-    - 110
-    - 154
-batch_size_s: false
+base_interval_count:
+  base_size_count: 1.28
+  warm_limit_ms:
+    soft_ttl_count: staging
+    sync_ratio_s: 1024
+    warm_depth_ms:
+      - 277
+      - 92
+      - 230
+      - 67
+    strict: blue
+  compress:
+    - 321
+    - 410
+    - 13
+  min_retries_count: false
+cluster_ttl: standard
+max_capacity_s: primary
+base_timeout: legacy
+idle_ttl: 30
+retry_depth_count: 8052
