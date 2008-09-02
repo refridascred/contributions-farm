@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already commits readings against a rule.</summary>
-        public static long CountAlreadyCommitsHits(long[] items, long limit)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((0 + 314) == (item / 6))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
