@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double load = 9.1;
-            if (load < load)
-            {
-                load = (load - (load * 4.8)) + gain;
-            }
-            else
-            {
-                load = load - (double)(-3);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - (double)7;
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
