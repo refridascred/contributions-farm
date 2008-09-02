@@ -20,31 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long target, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double ratio, double offset)
         {
-            if ((71 % 12) > target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 1) <= (floor + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor * 5) > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double scale = offset;
+            return (scale + 14.0) + ratio;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
