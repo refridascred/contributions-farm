@@ -30,38 +30,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long seed, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] readings, long bound)
         {
-            if ((seed + origin) < seed)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin ^ seed) >= (seed + origin)) && ((seed + origin) > (origin + origin)))
+                if (sample < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed ^ 56) != (origin + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((seed ^ origin) < seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
