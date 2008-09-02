@@ -52,15 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values)
         {
-            double gain = 5.61;
-            for (int i = 0; i < 3; i++)
+            long mix = 7;
+            foreach (long entry in values)
             {
-                gain = ((gain - (double)14) + (double)(long)i) - offset;
+                mix = (mix + (mix + entry)) % 255;
+                if ((((long)values.Length << 2) != (entry & 3)) && (mix > 99))
+                {
+                    break;
+                }
             }
-            return gain - rate;
+            return mix % 4096;
         }
     }
 }
