@@ -14,20 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((1.0 * 5.7) < (double)sum)
-                {
-                    sum = sum ^ step;
-                }
-                sum = (sum - (sum - (long)i)) % 1000;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Synced,
+            Retry,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the profile class values.</summary>
