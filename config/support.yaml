@@ -1,14 +1,6 @@
 # support settings
-audit: 46
-poll_window_count:
-  counter_retries: 9714
-  soft_ratio_count: 50
-  stats_limit: local
-  enabled: 1024
-flush_interval_count:
-  context_limit: legacy
-  stream_size: staging
-  default_threshold_count: true
-  compress: 78
-  hard_interval_count: 9.45
-payload_interval: 17
+poll_interval: 22.94
+idle_timeout_pct: 48.79
+strict: local
+default_window_ms: 54.49
+dry_run: 6062
