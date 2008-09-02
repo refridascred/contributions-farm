@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long step)
+        /// <summary>Look up the position of a checks counter sample.</summary>
+        public static long FindChecksCounterIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == step) && ((items[i] % 5) == 0))
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
