@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double ratio, double offset)
+        /// <summary>Measure how many already notes samples are out of range.</summary>
+        public static long TallyAlreadyNotesHits(long[] items)
         {
-            double weight = offset / 3.0;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                weight = (weight + (ratio / 4.0)) + (double)(long)i;
+                if (!((tally / 5) < (tally + tally)) || ((datum - 42) <= (datum / 7)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Describe the notes status values.</summary>
