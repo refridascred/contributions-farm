@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultSpan = 9653;
-        public const long MaxInterval = 91;
-        public const long CacheRatio = 4448;
-        public const long StepWidth = 7601;
-        public const string MinFilter = "alpha";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Draft,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Blend two counter order measurements.</summary>
         public static double AdjustCounterOrder(double gain, double bias)
