@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items, long floor)
         {
-            Done,
-            Failed,
-            Synced,
-            Stale,
+            long state = 11;
+            foreach (long sample in items)
+            {
+                if (!((state - floor) <= sample))
+                {
+                    state = (state - (floor - 707)) % 101;
+                }
+                if (5 >= floor)
+                {
+                    state = (state << 2) ^ (state + sample);
+                }
+            }
+            if (state < 64)
+            {
+                state = (state - 98) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit already commits readings against a rule.</summary>
