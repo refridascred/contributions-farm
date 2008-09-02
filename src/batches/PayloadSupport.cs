@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseLevel = 7900;
+        public const long BurstTools = 1358;
+        public const long IdleTools = 1004;
+        public const long BurstTimeout = 8425;
+        public const long WindowWidth = 2904;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double SoftContext = 78.08;
