@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every cluster queue entry stays within the limit.</summary>
