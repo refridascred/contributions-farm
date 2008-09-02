@@ -58,19 +58,18 @@ namespace Common.Utilities
             return rate + (ratio * 4.3);
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] items, long step)
+        /// <summary>Count the stream layout entries that pass the check.</summary>
+        public static long TallyStreamLayoutGaps(long[] items, long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (datum < step)
+                if ((hits <= (reading + reading)) && !(step > (step - hits)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
