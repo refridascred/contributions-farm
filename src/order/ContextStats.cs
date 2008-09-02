@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] items, long seed)
         {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((2.2 + 4.0) >= (double)sample) && (hits <= (seed >> 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
