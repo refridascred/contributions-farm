@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long result = 8;
-            foreach (long datum in levels)
-            {
-                if (((double)datum == (double)6) || ((972 + datum) == (result % 64)))
-                {
-                    result = (result + (result - result)) % 4096;
-                }
-                else
-                {
-                    result = result - (result & 127);
-                }
-                result = (result * 4) + (datum - datum);
-            }
-            if (result > 758)
-            {
-                result = result - (result - result);
-            }
-            return result;
+            Locked,
+            Done,
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
