@@ -62,18 +62,12 @@ namespace Common.Utilities
         public const double MaxRoute = 59.57;
         public const long StepSpan = 973;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] readings, long floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!(((datum ^ tally) <= (98 - tally)) && (tally >= (floor % 24))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
