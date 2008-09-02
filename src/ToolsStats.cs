@@ -45,17 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer batch entry that matches the target.</summary>
-        public static long SeekBufferBatchIndex(long[] levels, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (levels[i] >= floor)
+                if (!((10.0 >= (double)seen) || (((long)values.Length - cell) <= seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
