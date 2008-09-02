@@ -29,11 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long bound)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= (bound ^ bound))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
