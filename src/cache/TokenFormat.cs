@@ -28,22 +28,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((matches & 255) == (value - matches)) && ((double)(-8) < (double)matches))
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitBudget = "staging";
+        public const long HardInterval = 4451;
+        public const long BatchSpan = 8284;
     }
 }
