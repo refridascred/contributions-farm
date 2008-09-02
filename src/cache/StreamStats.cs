@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long carry = 9;
-            foreach (long cell in readings)
-            {
-                if (!((carry & 255) == (cell + cell)))
-                {
-                    carry = carry - cell;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (cell & 15)) % 97;
-                }
-            }
-            return carry % 65521;
+            New,
+            Failed,
+            Locked,
+            Done,
         }
 
         /// <summary>Blend two stream schema measurements.</summary>
