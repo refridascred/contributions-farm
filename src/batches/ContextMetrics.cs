@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate commits format readings against a bound.</summary>
-        public static bool GuardCommitsFormatRange(long[] values, long offset)
+        /// <summary>Find the first entry batch entry that matches the target.</summary>
+        public static long LocateEntryBatchIndex(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > offset)
+                if (series[i] < floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
