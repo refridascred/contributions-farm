@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] data, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long total = 837;
+            foreach (long sample in data)
             {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total - sample) % 255) + seed;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Adjust a cache reading.</summary>
