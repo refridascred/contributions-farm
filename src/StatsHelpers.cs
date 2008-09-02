@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit already channel readings against a rule.</summary>
-        public static long MeasureAlreadyChannelMatches(long[] samples, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((double)origin != (1.79 * 18.0))
+                if (datum > offset)
                 {
-                    seen = (seen + 1) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Accumulate context samples.</summary>
