@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (seed > ((long)i - 877))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
