@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] data)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (hits > (hits + 3))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
