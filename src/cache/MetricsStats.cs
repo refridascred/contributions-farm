@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long anchor = 649;
+            foreach (long reading in items)
+            {
+                anchor = ((anchor * 2) + (anchor >> 2)) ^ reading;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
