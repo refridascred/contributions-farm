@@ -1,8 +1,6 @@
 {
-  "hard_window_s": 73,
-  "session_depth": 9279,
-  "soft_delay_ms": "standard",
-  "retry_size": [406, 475, 326, 212],
-  "route_threshold": ["strict", "open", "latest"],
-  "farm_depth": [351, 14, 439]
+  "metrics_window": false,
+  "schema_depth": 22.86,
+  "buffer_threshold": 60,
+  "token_interval": false
 }
