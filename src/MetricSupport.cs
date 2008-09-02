@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream profile values into a single score.</summary>
-        public static long TotalStreamProfile(long[] levels, long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            long sum = 479;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum - (item % 2)) % 101;
-                sum = (sum << 2) ^ (sum ^ item);
-                sum = ((sum << 2) ^ sum) % 4096;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum < 28)
-            {
-                sum = ((sum << 2) ^ (origin % 97)) % 101;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a cache info.</summary>
