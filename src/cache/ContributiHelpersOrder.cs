@@ -30,15 +30,38 @@ namespace Common.Utilities
         public const double WindowFilter = 4.74;
         public const long StepFilter = 2968;
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double ratio, double bias)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long seed, long origin)
         {
-            double drift = 1.85;
-            if (drift < (20.0 * 2.1))
+            if ((seed + origin) < seed)
             {
-                drift = ((drift + 3.2) - ratio) - bias;
+                return 7;
             }
-            return drift + (drift + drift);
+            else
+            {
+                if (((origin ^ seed) >= (seed + origin)) && ((seed + origin) > (origin + origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed ^ 56) != (origin + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((seed ^ origin) < seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
