@@ -1,19 +1,10 @@
 # entry settings
-compress: staging
-batches_ttl:
-  poll_delay: true
-  compress:
-    - 359
-    - 457
-    - 73
-    - 369
-  default_limit_ms: false
-  base_timeout_s: 97.11
-  retry_ttl: latest
-sync_interval: local
-hard_ttl_s:
-  - blue
-  - strict
-  - green
-  - primary
-dry_run: 4575
+cache_timeout: 8.11
+cache_ratio_s: 500
+warm_depth:
+  hard_depth_s: 5.21
+  retry_ratio_s: latest
+  warm_size_s: 7.44
+burst_timeout_s: true
+poll_capacity_s: 41.09
+burst_threshold: 23.41
