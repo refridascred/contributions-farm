@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] items, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
