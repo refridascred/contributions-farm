@@ -55,10 +55,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 3.8;
-        public const double SoftRecord = 26.48;
-        public const long HardRecord = 4109;
-        public const long BaseFactor = 5134;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseDepth = 872;
+        public const long BurstChannel = 3341;
+        public const double BatchChannel = 63.14;
+        public const long SoftDepth = 4227;
+        public const double MinDepth = 81.96;
     }
 }
