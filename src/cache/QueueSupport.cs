@@ -24,18 +24,32 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long delta = bound - seed;
+            if ((double)delta > (9.6 * 9.89))
             {
-                if ((value + 10) <= (matches % 97))
+                return 2;
+            }
+            else
+            {
+                if (23 < (delta >> 3))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((delta + seed) < (4 * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
