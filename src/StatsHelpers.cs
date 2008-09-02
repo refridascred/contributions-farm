@@ -30,15 +30,15 @@ namespace Common.Utilities
         public const double BurstCommand = 49.74;
         public const long RetryCommand = 264;
 
-        /// <summary>Roll a channel batches counter forward.</summary>
-        public static long StepChannelBatches(long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long state = 59;
+            foreach (long value in values)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                state = ((state * 3) + (value + state)) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Accumulate contributi buffer samples.</summary>
