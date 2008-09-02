@@ -30,17 +30,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] series, long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound > (seed & 3)) && (28 < bound))
             {
-                if (series[i] >= step)
+                return 4;
+            }
+            else
+            {
+                if (((19.0 - 15.0) != (double)bound) || ((46 ^ seed) < (seed << 1)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((3.81 - 5.6) >= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
