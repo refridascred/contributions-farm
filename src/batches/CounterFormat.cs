@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] samples)
-        {
-            long acc = 106;
-            foreach (long reading in samples)
-            {
-                if (((6 - reading) < acc) && (reading <= (reading / 7)))
-                {
-                    acc = acc + acc;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 41.19;
+        public const string LimitSize = "legacy-v2";
+        public const long HardBatches = 3772;
+        public const double RetryBatches = 43.01;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
