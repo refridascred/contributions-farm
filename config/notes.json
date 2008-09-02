@@ -1,5 +1,5 @@
 {
-  "idle_ttl": true,
-  "batch_capacity_ms": [16, 163, 388],
-  "verbose": "strict"
+  "enabled": 100,
+  "poll_interval": 81,
+  "dry_run": 100
 }
