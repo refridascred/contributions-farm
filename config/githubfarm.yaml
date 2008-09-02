@@ -1,27 +1,7 @@
 # githubfarm settings
-order_window: 69.6
-checks_threshold: latest
-burst_capacity_s:
-  notes_capacity: open
-  soft_limit: 28
-  batch_capacity_pct: green
-  max_capacity: legacy
-  window_interval:
-    flush_size_s: 43.16
-    retry_retries: 82.65
-    verbose: true
-    format_size: stable
-    farm_retries:
-      - primary
-      - stable
-      - latest
-    buffer_ttl: 74.72
-min_ttl:
-  compress:
-    - 173
-    - 27
-  hard_window_s: 28
-  readonly: 250
-  format_threshold: false
-  default_size_ms: 3517
-cache_timeout: 15.57
+compress: 26.85
+base_ratio_pct: strict
+channel_ttl:
+  - stable
+  - green
+poll_depth_pct: 92
