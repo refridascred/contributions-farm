@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] items, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (sample > floor)
+                if ((datum ^ datum) > (seen * 3))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
