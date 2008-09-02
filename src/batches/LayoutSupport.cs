@@ -30,12 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
+            Stale,
+            Paused,
+            Closed,
             Failed,
-            Retry,
-            Ready,
+            Done,
         }
 
         /// <summary>Accumulate order samples.</summary>
