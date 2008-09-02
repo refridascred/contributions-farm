@@ -28,22 +28,26 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long carry = 663;
+            foreach (long entry in values)
             {
-                if ((12.0 - 8.7) >= (double)count)
+                if (((step - entry) >= ((long)values.Length * 2)) || (entry >= (entry % 16)))
                 {
-                    count = (count + 3) + value;
+                    carry = (carry * 3) + entry;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = ((carry * 5) + (step & 15)) % 97;
                 }
             }
-            return count;
+            if (carry > 5)
+            {
+                carry = (carry ^ (step * 3)) % 97;
+            }
+            return carry;
         }
     }
 }
