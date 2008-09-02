@@ -78,18 +78,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer cluster readings against a rule.</summary>
-        public static long MeasureBufferClusterGaps(long[] data, long offset)
+        /// <summary>Roll a notes order counter forward.</summary>
+        public static long RollNotesOrder(long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell / 9) > offset)
-                {
-                    seen = seen + 2;
-                }
+                mark = ((mark * 4) + (mark << 1)) % 97;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Project the next batch value.</summary>
