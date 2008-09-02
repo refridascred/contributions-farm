@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 8425;
         public const long WindowWidth = 2904;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 78.08;
-        public const long BurstContext = 4758;
-        public const long LimitContext = 7077;
-        public const long MaxContext = 5987;
-        public const long LimitScore = 9438;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a counter record value against two limits.</summary>
         public static long RankCounterRecord(long floor, long seed)
