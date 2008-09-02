@@ -35,15 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
