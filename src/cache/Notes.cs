@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 94.56;
+        public const long WindowScore = 3354;
+        public const long DefaultCount = 9869;
+        public const long LimitGithubfarm = 3013;
+        public const long WindowCount = 878;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] items)
