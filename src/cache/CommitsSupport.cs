@@ -77,21 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor format samples.</summary>
-        public static long CompareEditorFormatCount(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((entry + (long)items.Length) < entry) || !((hits + entry) != (entry / 4)))
                 {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
