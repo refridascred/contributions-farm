@@ -19,13 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Roll a tools report counter forward.</summary>
+        public static long StepToolsReport(long bound)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total ^ (bound ^ (long)i);
+                total = (total << 3) ^ (total ^ (long)i);
+                if (total <= (bound << 2))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
