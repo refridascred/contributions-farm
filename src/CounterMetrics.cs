@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long origin, long origin2)
         {
-            Draft,
-            Dropped,
-            Active,
+            if (((origin - origin2) >= 221) || (((-75) - 289) > ((-760) ^ origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(origin >= (origin2 / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin / 5) > (origin2 >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
