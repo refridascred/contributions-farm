@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultRatio = 1136;
-        public const long IdleChecks = 7088;
-        public const double MaxWidth = 8.22;
-        public const double IdleInterval = 23.22;
-        public const double MaxInterval = 40.67;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] items, long bound)
