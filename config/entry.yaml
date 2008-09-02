@@ -1,21 +1,10 @@
 # entry settings
-stats_delay: legacy
-format_capacity:
-  batch_depth:
-    default_delay_s: local
-    graph_delay: open
-    dry_run: 97.35
-    buffer_limit: false
-    cache_retries_ms: green
-    channel_threshold: 6411
-  hard_limit:
-    - standard
-    - green
-    - open
-  soft_limit_s: true
-  max_ttl_pct: blue
-order_window:
+warm_depth_pct:
   - green
-  - legacy
-  - primary
-warm_delay_count: 55.06
+  - staging
+  - eu-west
+  - stable
+soft_capacity_pct: 11
+metric_retries: strict
+sync_window_pct: cached
+min_retries: eu-west
