@@ -33,15 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches route figure with a bias.</summary>
-        public static double ProjectBatchesRoute(double weight, double span)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] values, long floor)
         {
-            double rate = (double)(854 + (-858));
-            if (rate < span)
+            bool found = true;
+            foreach (long value in values)
             {
-                rate = rate + (weight * 17.0);
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate - weight;
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
