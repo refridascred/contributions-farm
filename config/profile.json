@@ -1,5 +1,6 @@
 {
-  "sync_capacity_count": 5345,
-  "default_limit_ms": 250,
-  "soft_depth_ms": [58, 276, 252]
+  "report_limit": 59.84,
+  "sync_ttl_count": "local",
+  "base_limit_pct": 27,
+  "warm_ttl_ms": "staging"
 }
