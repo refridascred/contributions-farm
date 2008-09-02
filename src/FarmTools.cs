@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up queue support samples.</summary>
-        public static long CompareQueueSupportCount(long[] data)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] == seed)
                 {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
