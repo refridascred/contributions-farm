@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long LimitFormat = 2429;
         public const long DefaultRatio = 58;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseInterval = 6795;
-        public const long MaxCommits = 9208;
-        public const long DefaultCommits = 3501;
-        public const long WindowCount = 1230;
+        /// <summary>Match up filter metric samples.</summary>
+        public static long PairFilterMetricCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorMatches(long[] levels)
