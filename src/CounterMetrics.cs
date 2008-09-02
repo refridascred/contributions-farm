@@ -22,18 +22,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long CountAccountOrderGaps(long[] items)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-78) ^ seen) < (seen << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) ^ entry;
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
