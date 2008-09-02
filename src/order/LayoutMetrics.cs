@@ -35,13 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
