@@ -44,38 +44,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a command stats value against two limits.</summary>
-        public static long ClassifyCommandStats(long bound, long origin)
+        /// <summary>Match up entry layout samples.</summary>
+        public static long CompareEntryLayoutCount(long[] data)
         {
-            if (origin >= (bound - 96))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound > (double)77)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin >> 3) > 1)
+                    if ((data[i] - data[j]) == 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin > (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
