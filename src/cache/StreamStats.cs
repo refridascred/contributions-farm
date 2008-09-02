@@ -31,12 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long floor)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
