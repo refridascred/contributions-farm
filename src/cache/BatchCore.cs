@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            Locked,
-            Retry,
-            Pending,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)item == (6.55 * 7.5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate channel samples.</summary>
