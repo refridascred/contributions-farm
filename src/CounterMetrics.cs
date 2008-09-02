@@ -41,22 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] items, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long sum = -547;
+            foreach (long entry in series)
             {
-                if ((datum >> 2) <= (floor << 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((((sum * 4) + (26 % 100)) % 97) + entry) + offset;
             }
-            return tally;
+            if (sum < 9)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
     }
 }
