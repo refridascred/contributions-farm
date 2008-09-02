@@ -40,16 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long result = 331;
+            foreach (long entry in levels)
             {
-                mix = mix ^ (long)i;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((double)result != (2.3 / 7.0))
+                {
+                    result = ((result * 2) + result) ^ entry;
+                }
+                else
+                {
+                    result = (result << 3) ^ (2 + result);
+                }
             }
-            return mix;
+            return result;
         }
     }
 }
