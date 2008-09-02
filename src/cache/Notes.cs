@@ -34,31 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches format value against two limits.</summary>
-        public static long GradeBatchesFormat(long floor, long offset)
+        /// <summary>Count cache contributi pairs that satisfy a relation.</summary>
+        public static long OverlapCacheContributiCount(long[] levels)
         {
-            if ((floor + offset) != (offset << 3))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor << 2) <= (offset + offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((0.9 + 20.0) == (double)offset))
+                    if ((levels[i] + levels[j]) < 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the format status values.</summary>
