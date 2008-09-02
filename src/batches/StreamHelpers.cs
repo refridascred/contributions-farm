@@ -39,10 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 7449;
-        public const long StepCount = 8680;
-        public const long DefaultEntry = 414;
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MinFormat = 4.87;
