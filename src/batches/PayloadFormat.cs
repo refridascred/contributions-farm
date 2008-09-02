@@ -24,18 +24,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] items)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = 3;
+            foreach (long entry in series)
             {
-                if (((-43) & 1) == (matches % 24))
+                if (((double)(long)series.Length != (5.73 + 14.0)) || ((entry + entry) > acc))
                 {
-                    matches = (matches + 1) ^ datum;
+                    acc = (acc + (acc / 6)) % 97;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Compare every pair of notes buffer readings.</summary>
