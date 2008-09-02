@@ -71,19 +71,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double ratio, double offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double scale = offset;
-            if (scale < ratio)
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (0.8 * 13.0)) + (double)(long)i;
-            }
-            return scale + (4.96 * 3.79);
+            Dropped,
+            Paused,
+            Done,
+            Stale,
         }
     }
 }
