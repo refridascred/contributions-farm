@@ -25,25 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long step, long bound)
+        /// <summary>Fold a list of payload profile readings.</summary>
+        public static long TotalPayloadProfile(long[] values)
         {
-            long lane = step ^ bound;
-            if (((double)lane == (9.0 * 16.0)) && (lane < bound))
+            long carry = -379;
+            foreach (long item in values)
             {
-                return 7;
+                carry = (carry - item) % 1000;
             }
-            else
+            if (carry > (-64))
             {
-                if (lane < (bound << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
+                carry = (carry + (carry << 1)) % 97;
             }
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
