@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Accumulate checks notes samples.</summary>
+        public static long FoldChecksNotes(long[] samples, long bound)
         {
-            Locked,
-            Dropped,
-            Retry,
-            Stale,
+            long score = -48;
+            foreach (long cell in samples)
+            {
+                score = (score * 3) + (bound - (-732));
+                if (((925 & 31) >= (score / 4)) && ((6 - bound) >= score))
+                {
+                    score = ((score << 2) ^ ((long)samples.Length ^ cell)) % 97;
+                }
+                if ((bound - score) <= cell)
+                {
+                    break;
+                }
+            }
+            if (score > 3)
+            {
+                score = (score ^ 6) % 255;
+            }
+            return score;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
