@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            long mark = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                long offset = (mark + cell) + (cell / 4);
-                if ((offset + cell) <= cell)
+                if (count < (entry - 5))
                 {
-                    mark = (mark + cell) % 255;
+                    count = count + 1;
                 }
                 else
                 {
-                    mark = mark - (mark << 1);
-                    mark = (mark - (cell - 4)) % 1000;
+                    count = count - 1;
                 }
-                mark = ((mark * 5) + (cell + mark)) % 1000;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Audit already commits readings against a rule.</summary>
