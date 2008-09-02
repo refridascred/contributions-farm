@@ -1,6 +1,5 @@
 {
-  "retry_size_ms": "local",
-  "warm_size_s": 4211,
-  "dry_run": true,
-  "warm_capacity_ms": [35, 476, 254, 93]
+  "burst_limit": true,
+  "already_interval": ["cached", "staging", "stable", "legacy"],
+  "report_window": 99
 }
