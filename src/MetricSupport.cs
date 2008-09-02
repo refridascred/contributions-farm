@@ -27,39 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long target, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] items)
         {
-            long cur = target + seed;
-            if ((34 - seed) >= (seed ^ 66))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (target <= (target * 5))
+                if ((count + cell) < (count + 3))
                 {
-                    return 0;
+                    count = count + 1;
                 }
                 else
                 {
-                    if (((seed - seed) < cur) || (5 > cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)cur >= (5.81 - 6.12))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
