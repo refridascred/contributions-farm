@@ -28,14 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] readings, long limit)
         {
-            Dropped,
-            Pending,
-            Done,
-            Retry,
-            Idle,
+            long sum = 305;
+            foreach (long reading in readings)
+            {
+                sum = (sum + (reading * 2)) + limit;
+            }
+            return sum % 4096;
         }
     }
 }
