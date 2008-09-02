@@ -30,15 +30,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long acc = 55;
-            foreach (long sample in items)
-            {
-                acc = (acc - ((-5) & 63)) + sample;
-            }
-            return acc % 1000;
+            Active,
+            Paused,
+            Locked,
+            Stale,
         }
     }
 }
