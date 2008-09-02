@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxRatio = 2093;
-        public const long MaxStream = 2157;
-        public const double MinScore = 68.68;
-        public const long BurstStream = 7769;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] samples)
