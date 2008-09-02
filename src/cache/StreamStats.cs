@@ -56,22 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long anchor = 81;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (anchor > (anchor + cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor ^ (676 / 5);
-                }
-                else
-                {
-                    anchor = anchor ^ (cell + cell);
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
