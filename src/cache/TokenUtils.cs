@@ -13,24 +13,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long seed, long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] readings, long step)
         {
-            if ((double)seed >= (7.8 - 4.6))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound < (seed % 3)) && ((seed % 24) <= (seed >> 4)))
+                if (readings[i] >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
