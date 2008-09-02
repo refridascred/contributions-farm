@@ -45,15 +45,21 @@ namespace Common.Utilities
         public const long BatchFormat = 25;
         public const double CacheFormat = 80.21;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double weight, double bias)
+        /// <summary>Compare every pair of filter entry readings.</summary>
+        public static long MatchFilterEntryCount(long[] values)
         {
-            double mean = weight;
-            if (mean > (double)345)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (weight * 4.7);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean + bias;
+            return hits;
         }
     }
 }
