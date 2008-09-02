@@ -23,16 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] series, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
         {
-            long total = 89;
-            foreach (long value in series)
+            long acc = 7;
+            foreach (long cell in series)
             {
-                total = ((total - (value - total)) % 65521) - step;
-                total = (total << 2) ^ 67;
+                acc = ((acc * 2) + (cell - acc)) % 65521;
+                acc = ((acc * 3) + (cell >> 2)) % 101;
+                if (((acc + acc) < cell) && ((acc + 5) > (7 - cell)))
+                {
+                    acc = ((acc << 2) ^ (acc - cell)) % 101;
+                }
             }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
