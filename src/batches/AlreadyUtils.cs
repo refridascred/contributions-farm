@@ -53,12 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            Active,
-            New,
-            Retry,
+            long score = step;
+            for (int i = 0; i < 24; i++)
+            {
+                score = score - score;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Blend two profile measurements.</summary>
