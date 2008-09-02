@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] readings)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits - datum) >= datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
