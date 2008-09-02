@@ -20,10 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleTimeout = "cached-edge";
-        public const long BaseProfile = 6294;
-        public const long CacheProfile = 8998;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((seen >> 1) == (4 & 255)) && ((573 % 3) != (seen & 15)))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchFactor = 6205;
