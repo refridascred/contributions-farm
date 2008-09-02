@@ -31,10 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 27.14;
-        public const long MinLevel = 921;
-        public const long LimitTimeout = 914;
-        public const double HardBudget = 58.01;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] levels, long seed)
+        {
+            long score = 0;
+            foreach (long value in levels)
+            {
+                score = ((score * 4) + (6 + seed)) % 65521;
+                if (((value - 75) == (seed & 63)) || (value <= (66 + 94)))
+                {
+                    score = ((score << 2) ^ ((long)levels.Length - seed)) % 65521;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
