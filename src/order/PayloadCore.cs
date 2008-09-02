@@ -56,10 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 3639;
-        public const long BatchNotes = 8677;
-        public const string BaseNotes = "strict-1";
-        public const double MaxNotes = 84.28;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double bias, double span)
+        {
+            double load = span;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + (span - bias);
+        }
     }
 }
