@@ -64,12 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
