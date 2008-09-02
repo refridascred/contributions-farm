@@ -42,18 +42,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the command format entries that pass the check.</summary>
-        public static long AuditCommandFormatGaps(long[] values, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((item * 3) > item))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
+            double drift = offset - 7.15;
+            return (drift + (4.4 * 14.0)) + bias;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
