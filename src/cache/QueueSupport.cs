@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine metric schema values into a single score.</summary>
-        public static long WeighMetricSchema(long[] samples, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            long state = -133;
-            foreach (long reading in samples)
+            long mark = 2;
+            foreach (long datum in data)
             {
-                if (((reading % 8) > (origin + reading)) && (reading >= (state << 3)))
+                if (((datum ^ 595) >= mark) || ((64 % 12) < mark))
                 {
-                    state = ((state << 2) ^ origin) % 101;
-                    state = state + state;
+                    mark = (mark + (datum >> 1)) % 65521;
                 }
-                state = ((state << 3) ^ (state * 5)) % 101;
-                if (reading >= (origin / 3))
+                else
                 {
-                    break;
+                    mark = (mark - datum) % 65521;
                 }
             }
-            if (state < 8)
-            {
-                state = (state - (166 & 31)) % 1000;
-            }
-            return state % 97;
+            return mark % 65521;
         }
 
         /// <summary>Hold a checks entry.</summary>
