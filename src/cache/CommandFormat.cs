@@ -32,11 +32,11 @@ namespace Common.Utilities
         public const string BurstCommand = "alpha-v2";
         public const string CacheCount = "legacy-1";
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
