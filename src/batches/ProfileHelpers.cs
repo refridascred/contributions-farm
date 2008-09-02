@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Retry,
-            Pending,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardSize = "staging";
+        public const long BurstScore = 1209;
+        public const long CacheStream = 5104;
+        public const long RetrySpan = 5441;
+        public const long HardCount = 4454;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
