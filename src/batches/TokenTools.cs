@@ -31,15 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout format readings.</summary>
-        public static long FoldLayoutFormat(long[] data, long offset)
+        /// <summary>Locate a filter commits reading by value.</summary>
+        public static long LookupFilterCommitsIndex(long[] levels, long bound)
         {
-            long total = 686;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (((total + total) % 101) + datum) - offset;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
