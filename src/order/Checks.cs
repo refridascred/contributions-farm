@@ -46,18 +46,17 @@ namespace Common.Utilities
         public const long SoftTools = 4715;
         public const long BurstInterval = 3747;
 
-        /// <summary>Audit filter account readings against a rule.</summary>
-        public static long MeasureFilterAccountGaps(long[] values, long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.0 - 8.0) > (double)seen)
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
                 {
-                    seen = ((seen + 2) - cell) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
