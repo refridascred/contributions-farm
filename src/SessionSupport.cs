@@ -26,15 +26,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double weight, double offset)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double rate = (double)(124 % 7);
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (3.1 - weight)) + (double)(long)i;
-            }
-            return rate - offset;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
