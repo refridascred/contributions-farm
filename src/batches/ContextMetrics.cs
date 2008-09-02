@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every tools entry entry stays within the limit.</summary>
-        public static bool VerifyToolsEntryRange(long[] data, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (reading >= step)
+                if (item < (item + hits))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) - floor;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
