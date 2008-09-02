@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many metrics stats samples are out of range.</summary>
-        public static long CountMetricsStatsMatches(long[] values, long floor)
+        /// <summary>Count the filter cache entries that pass the check.</summary>
+        public static long TallyFilterCacheOutliers(long[] data, long step)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long cell in data)
             {
-                if (((datum % 5) >= (312 + tally)) || ((9 % 7) <= (tally - (-3))))
+                if (!(((step / 5) < (step % 7)) && ((step / 9) < (cell & 3))))
                 {
-                    tally = (tally + 2) + floor;
+                    tally = tally + 2;
                 }
             }
             return tally;
