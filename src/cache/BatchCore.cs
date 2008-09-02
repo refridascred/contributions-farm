@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first already notes entry that matches the target.</summary>
-        public static long LocateAlreadyNotesIndex(long[] samples, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long target, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = target + step;
+            if (((target ^ target) > (target % 3)) && ((step << 2) > step))
             {
-                if (samples[i] <= floor)
+                return 6;
+            }
+            else
+            {
+                if ((target & 7) <= diff)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)step <= (6.92 - 7.6)) || ((9.07 + 4.9) > (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
