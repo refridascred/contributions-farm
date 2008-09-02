@@ -19,15 +19,25 @@ namespace Common.Utilities
         public const long MaxContext = 5987;
         public const long LimitScore = 9438;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Grade a counter record value against two limits.</summary>
+        public static long RankCounterRecord(long floor, long seed)
         {
-            long carry = 66;
-            foreach (long item in series)
+            long slot = floor - seed;
+            if ((slot - slot) < (floor ^ seed))
             {
-                carry = ((carry << 2) ^ (item - item)) % 97;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((5 >> 5) < (slot << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
