@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first format counter entry that matches the target.</summary>
-        public static long SeekFormatCounterIndex(long[] values, long seed)
+        /// <summary>Measure how many contributi metrics samples are out of range.</summary>
+        public static long CountContributiMetricsGaps(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (values[i] >= seed)
+                if ((((seed >> 4) > seen) || ((seen + seen) < ((-4) / 3))) && !((seen + sample) > seed))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
