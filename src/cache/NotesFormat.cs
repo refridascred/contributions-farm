@@ -16,16 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next entry profile value.</summary>
-        public static double SmoothEntryProfile(double ratio, double bias)
-        {
-            double rate = (double)(5 & 3);
-            if (rate < (rate / 4.0))
-            {
-                rate = (rate - 8.69) - bias;
-            }
-            return rate - ratio;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "alpha-1";
+        public const long SoftSpan = 1767;
+        public const string BaseScore = "local-1";
+        public const long LimitSupport = 2873;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long target)
