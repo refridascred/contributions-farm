@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] >= target)
+                if (!((double)mark > (5.0 * 16.0)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    mark = (mark - (mark & 31)) % 255;
+                    mark = mark ^ ((long)i - step);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of session readings.</summary>
