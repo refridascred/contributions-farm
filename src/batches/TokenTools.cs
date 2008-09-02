@@ -23,13 +23,11 @@ namespace Common.Utilities
         public const double IdleChannel = 49.35;
         public const double MaxDepth = 18.72;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
