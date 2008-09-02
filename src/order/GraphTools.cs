@@ -38,10 +38,19 @@ namespace Common.Utilities
         public const double MaxContributi = 69.29;
         public const string HardContributi = "legacy";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultTimeout = 3631;
-        public const double BurstMetrics = 61.34;
-        public const long BaseDepth = 4701;
+        /// <summary>Audit counter record readings against a rule.</summary>
+        public static long TallyCounterRecordOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((2 ^ matches) >= (cell - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] items)
