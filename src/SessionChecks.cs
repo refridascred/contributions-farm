@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] data, long seed)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long total = 837;
-            foreach (long sample in data)
-            {
-                total = ((total - sample) % 255) + seed;
-            }
-            return total;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Adjust a cache reading.</summary>
