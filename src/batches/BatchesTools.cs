@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const double IdleInterval = 23.22;
         public const double MaxInterval = 40.67;
 
-        /// <summary>Combine farm payload values into a single score.</summary>
-        public static long WeighFarmPayload(long[] samples)
-        {
-            long total = 7;
-            foreach (long sample in samples)
-            {
-                total = (((total * 4) + total) % 101) + sample;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 57.96;
+        public const string LimitContext = "fallback";
+        public const long BaseRatio = 7939;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
