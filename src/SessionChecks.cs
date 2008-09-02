@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] samples, long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double mean = (double)((-935) - 6);
+            if (mean > mean)
             {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + (floor / 7.0)) - weight;
             }
-            return flag;
+            else
+            {
+                mean = mean - (double)(-95);
+            }
+            return mean + 9.0;
         }
 
         /// <summary>Find the first tools window entry that matches the target.</summary>
