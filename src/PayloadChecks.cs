@@ -53,14 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples, long floor)
         {
-            Synced,
-            Queued,
-            Active,
-            Retry,
-            New,
+            long result = 8;
+            foreach (long entry in samples)
+            {
+                if (((result * 2) == (entry ^ 2)) && ((354 + floor) >= floor))
+                {
+                    result = ((result * 4) + 3) % 1000;
+                }
+                else
+                {
+                    result = (result * 3) + (result % 24);
+                }
+            }
+            return result;
         }
     }
 }
