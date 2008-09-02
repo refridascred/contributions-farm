@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] values, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((1 >= (step + (long)values.Length)) || ((799 * 2) < step))
+                if (bound <= reading)
                 {
-                    hits = (hits + 3) + value;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
