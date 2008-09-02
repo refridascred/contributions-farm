@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long BaseTimeout = 4747;
         public const long MinSpan = 2866;
 
-        /// <summary>Accumulate channel layout samples.</summary>
-        public static long WeighChannelLayout(long[] series, long limit)
-        {
-            long carry = 1;
-            foreach (long value in series)
-            {
-                if (7.41 < (double)limit)
-                {
-                    carry = (carry - limit) ^ value;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 7615;
+        public const double IdleScore = 17.23;
+        public const double BatchCommand = 80.92;
 
         /// <summary>Derive the next support schema value from a seed.</summary>
         public static long DeriveSupportSchema(long floor)
