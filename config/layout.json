@@ -1,6 +1,5 @@
 {
-  "cache_threshold_s": ["latest", "staging", "cached"],
-  "session_limit": 1642,
-  "batch_ttl_s": false,
-  "cache_threshold": [210, 59]
+  "tools_depth": "latest",
+  "githubfarm_interval": 5213,
+  "idle_interval_s": 7137
 }
