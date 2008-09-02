@@ -26,22 +26,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] levels, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long step)
         {
-            long mark = 716;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)limit <= (7.8 - 4.68))
+                if ((items[i] == step) && ((items[i] % 5) == 0))
                 {
-                    mark = ((mark << 3) ^ (limit - mark)) - cell;
+                    return (long)i;
                 }
             }
-            if (mark > 37)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a channel format reading by value.</summary>
