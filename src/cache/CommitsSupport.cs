@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -68;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((score * 5) > (score + seed))
                 {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 3) ^ 42) % 4096;
+                }
+                else
+                {
+                    score = ((score << 3) ^ item) % 1000;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Describe the context status values.</summary>
