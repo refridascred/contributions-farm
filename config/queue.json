@@ -1,7 +1,7 @@
 {
-  "schema_window": "eu-west",
-  "retry_window": 90.57,
-  "strict": ["legacy", "primary", "cached"],
-  "enabled": 54,
-  "retry_limit": 500
+  "max_window_s": ["latest", "edge", "cached"],
+  "base_delay_count": "fallback",
+  "schema_capacity": false,
+  "default_ratio": "stable",
+  "verbose": false
 }
