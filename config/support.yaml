@@ -1,6 +1,5 @@
 # support settings
-poll_interval: 22.94
-idle_timeout_pct: 48.79
-strict: local
-default_window_ms: 54.49
-dry_run: 6062
+base_delay_s: 26.33
+order_timeout: false
+sync_size_ms: 9643
+min_size_s: green
