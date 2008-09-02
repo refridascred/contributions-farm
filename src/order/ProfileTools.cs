@@ -32,18 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format stats values into a single score.</summary>
-        public static long TotalFormatStats(long[] values)
+        /// <summary>Grade a metrics channel value against two limits.</summary>
+        public static long GradeMetricsChannel(long seed, long bound)
         {
-            long mix = 0;
-            foreach (long value in values)
+            long next = seed ^ bound;
+            if ((-1) >= (next & 31))
             {
-                if (value < (value + value))
+                return 7;
+            }
+            else
+            {
+                if ((3.89 - 0.7) >= (double)bound)
                 {
-                    mix = (mix - 0) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if (!((1.87 - 9.1) >= (double)seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
