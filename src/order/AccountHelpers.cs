@@ -58,15 +58,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long total = 744;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                total = ((total * 4) + (94 * 3)) ^ datum;
+                total = (total * 4) + (bound + 262);
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Describe the queue status values.</summary>
