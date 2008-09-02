@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc + acc) % 255;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleLevel = "strict-1";
+        public const double BurstDepth = 46.45;
+        public const long MaxQueue = 8359;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatMatches(long[] series, long limit)
