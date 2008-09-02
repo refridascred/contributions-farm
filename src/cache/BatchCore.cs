@@ -39,17 +39,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = step + limit;
+            if (((offset / 4) == (step << 1)) && (offset <= (94 / 7)))
             {
-                if (values[i] < origin)
+                return 1;
+            }
+            else
+            {
+                if (!(offset >= (step + limit)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((8.0 / 5.0) >= (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
