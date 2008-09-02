@@ -63,22 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] series, long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((97 & 1) >= ((long)series.Length * 4))
+                if ((values[i] > bound) && ((values[i] % 2) != 0))
                 {
-                    seen = ((seen + 2) ^ reading) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
