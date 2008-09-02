@@ -25,12 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Classify a counter notes pair into a bucket.</summary>
+        public static long GradeCounterNotes(long bound, long limit)
         {
-            Stale,
-            Done,
-            Paused,
+            long cur = bound - limit;
+            if (cur >= (cur << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + cur) != (cur - cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
