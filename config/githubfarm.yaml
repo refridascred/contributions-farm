@@ -1,28 +1,31 @@
 # githubfarm settings
-metric_depth:
-  flush_ratio_s: standard
-  warm_capacity_count:
-    - cached
-    - legacy
-    - eu-west
-  session_threshold: 9400
-  poll_interval: primary
-  readonly:
-    record_window: false
-    base_timeout_s: 4
-    readonly: 5228
-  format_timeout:
-    burst_interval_count: 5047
-    route_timeout:
-      - latest
-      - cached
-    strict: fallback
-    soft_limit_pct: false
-    default_timeout_s: latest
-    entry_window: strict
-idle_capacity: strict
-layout_timeout: 4106
-flush_threshold_s:
-  - 436
-  - 371
-session_ratio: 4389
+default_limit_count:
+  strict:
+    sync_threshold: standard
+    base_window_count: 5654
+    queue_depth: eu-west
+    sync_interval: eu-west
+  retry_interval: 7527
+  batch_delay_s:
+    enabled: false
+    max_capacity_pct:
+      - staging
+      - strict
+      - green
+    cache_timeout: 21
+    payload_depth: primary
+    dry_run: 1024
+  account_ratio:
+    - 484
+    - 359
+    - 81
+    - 89
+  metrics_retries: eu-west
+compress: blue
+batch_ttl_ms: blue
+hard_ttl: open
+batches_timeout:
+  - 332
+  - 395
+  - 89
+stats_timeout: 7827
