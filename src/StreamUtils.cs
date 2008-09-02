@@ -72,22 +72,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long floor, long limit)
         {
-            long anchor = 75;
-            foreach (long entry in data)
+            long diff = floor + limit;
+            if (!((4.16 * 3.7) < (double)floor))
             {
-                if ((20.0 * 8.7) == (double)entry)
+                return 6;
+            }
+            else
+            {
+                if (((diff & 31) >= (floor / 5)) && (diff < (limit & 31)))
                 {
-                    anchor = anchor - (entry ^ entry);
+                    return 8;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                    if (limit <= 6)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit >= (limit & 255))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the entry command entries that pass the check.</summary>
