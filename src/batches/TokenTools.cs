@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] data, long step)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long acc = 7;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (acc < (step << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 2) + (step % 8)) + sample;
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
