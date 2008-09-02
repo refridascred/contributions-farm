@@ -44,31 +44,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics entry value against two limits.</summary>
-        public static long BucketMetricsEntry(long origin, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] samples)
         {
-            if ((target >> 4) <= (origin - target))
+            long state = 49;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin - target) <= (origin % 16))
+                if ((0.6 - 9.61) <= (double)state)
                 {
-                    return 1;
+                    state = (state ^ (state * 5)) % 101;
                 }
                 else
                 {
-                    if ((target % 16) < (7 >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = (state ^ (cell >> 4)) % 4096;
                 }
             }
+            if (state > 86)
+            {
+                state = ((state * 3) + (state * 2)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a support record.</summary>
