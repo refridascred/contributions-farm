@@ -48,9 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "standard";
-        public const long CacheSpan = 2557;
-        public const long SoftRatio = 250;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
