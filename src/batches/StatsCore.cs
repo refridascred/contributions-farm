@@ -41,10 +41,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSpan = 4701;
-        public const long MinWidth = 264;
-        public const long MaxLevel = 5806;
-        public const double HardMetrics = 55.6;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitFactor = "local-edge";
+        public const double CacheGithubfarm = 1.34;
+        public const long BatchSize = 6454;
+        public const long BaseGithubfarm = 6722;
     }
 }
