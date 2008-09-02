@@ -39,11 +39,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double bias2)
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double ratio = bias * 17.0;
+            if (ratio >= 13.0)
+            {
+                ratio = ratio + bias2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - (bias * 4.6);
         }
     }
 }
