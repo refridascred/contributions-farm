@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Failed,
-            Locked,
-            Active,
-            Done,
-            Paused,
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
