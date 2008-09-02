@@ -35,19 +35,18 @@ namespace Common.Utilities
         public const long BurstDepth = 7956;
         public const string SoftSchema = "staging-edge";
 
-        /// <summary>Check that every notes already entry stays within the limit.</summary>
-        public static bool GuardNotesAlreadyLimits(long[] levels, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (reading >= limit)
+                if ((0.1 + 13.0) == (double)matches)
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 3) + cell) + target;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
