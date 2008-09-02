@@ -1,6 +1,31 @@
 # support settings
-support_window: true
-dry_run: blue
-idle_interval: 250
-base_threshold_pct: 97.21
-hard_retries_pct: primary
+base_capacity_pct:
+  - cached
+  - standard
+  - standard
+  - edge
+persist:
+  - strict
+  - open
+  - legacy
+  - local
+soft_threshold_count:
+  batch_window_pct:
+    - eu-west
+    - latest
+  checks_threshold:
+    audit:
+      - 291
+      - 179
+    batch_retries_pct: 84.74
+    retry_window: 60
+    dry_run: false
+    idle_depth: 63
+  schema_depth:
+    - strict
+    - stable
+    - staging
+    - standard
+  warm_delay_count: true
+command_ratio: fallback
+audit: 24
