@@ -75,13 +75,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long target, long bound)
         {
-            New,
-            Failed,
-            Stale,
-            Idle,
+            long span = target - bound;
+            if ((span + target) >= bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((966 - span) <= span)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((228 * 2) >= (bound / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((681 + span) < target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
