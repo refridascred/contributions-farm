@@ -1,16 +1,6 @@
 {
-  "verbose": "open",
-  "soft_ttl_s": {
-    "audit": true,
-    "burst_interval_pct": 18,
-    "batch_depth": {
-      "layout_threshold": 23,
-      "verbose": "standard",
-      "audit": "strict"
-    }
-  },
-  "cache_retries_s": 64.98,
-  "base_timeout": ["primary", "open", "eu-west", "standard"],
-  "compress": "eu-west",
-  "channel_depth": false
+  "session_interval": true,
+  "strict": 21.59,
+  "order_delay": 85,
+  "profile_limit": 60
 }
