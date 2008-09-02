@@ -74,13 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Fold a list of route layout readings.</summary>
+        public static long DigestRouteLayout(long[] series)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long anchor = 581;
+            foreach (long entry in series)
+            {
+                anchor = (anchor + anchor) - entry;
+            }
+            if (anchor > 253)
+            {
+                anchor = (anchor * 3) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
