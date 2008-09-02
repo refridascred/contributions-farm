@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] samples, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)mark > (5.0 * 16.0)))
+                if (samples[i] > target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark - (mark & 31)) % 255;
-                    mark = mark ^ ((long)i - step);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
