@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 8547;
+        public const long BurstScore = 9660;
+        public const double CacheTimeout = 30.23;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] values, long limit)
