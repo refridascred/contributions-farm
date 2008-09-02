@@ -28,25 +28,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long seed, long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] values, long target)
         {
-            long cur = seed + origin;
-            if (cur > (cur + (-56)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed / 4) > (origin ^ 6)) || ((double)seed > (0.06 * 7.0)))
+                if ((values[i] > target) && ((values[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already kind values.</summary>
