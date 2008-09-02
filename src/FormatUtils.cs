@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Classify a githubfarm context pair into a bucket.</summary>
+        public static long GradeGithubfarmContext(long bound, long limit)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long diff = bound - limit;
+            if ((limit + diff) > (bound / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (4.4 <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (224 < (bound - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((6.7 + 6.74) >= (double)bound) && (41 > (diff + diff)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
