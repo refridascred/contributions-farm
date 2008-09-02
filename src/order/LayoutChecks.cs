@@ -90,13 +90,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Idle,
+            Closed,
             Active,
-            Stale,
-            Queued,
+            Dropped,
         }
     }
 }
