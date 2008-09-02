@@ -72,16 +72,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score + (bound << 1);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Synced,
+            Failed,
+            Draft,
         }
     }
 }
