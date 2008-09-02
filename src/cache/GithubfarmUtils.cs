@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Failed,
-            Locked,
-            Active,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheDepth = 8382;
+        public const long BaseBudget = 2310;
+        public const long LimitAccount = 3386;
+        public const long SoftAccount = 8421;
+        public const long LimitWidth = 4956;
 
         /// <summary>Scale a stream account figure with a bias.</summary>
         public static double ProjectStreamAccount(double bias, double span)
