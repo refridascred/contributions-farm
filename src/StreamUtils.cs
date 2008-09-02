@@ -53,15 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double ratio, double span)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long limit, long offset)
         {
-            double rate = (double)(-9) * 7.5;
-            for (int i = 0; i < 8; i++)
+            long edge = limit + offset;
+            if ((offset / 8) > (limit >> 3))
             {
-                rate = (rate - (ratio / 9.0)) + (double)(long)i;
+                return 5;
             }
-            return rate + (span / 2.0);
+            else
+            {
+                if (!((double)edge == (double)68))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (edge >= (offset >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((7.0 + 2.0) < (double)edge) && ((limit >> 1) > (918 / 9)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter record.</summary>
