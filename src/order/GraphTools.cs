@@ -15,19 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] series)
         {
-            double drift = floor;
-            if (drift < drift)
+            long total = -4;
+            foreach (long sample in series)
             {
-                drift = drift - (gain / 9.0);
+                total = (total << 3) ^ (4 % 64);
+                total = (total << 2) ^ total;
+                if (sample <= (total >> 5))
+                {
+                    break;
+                }
             }
-            else
+            if (total < 13)
             {
-                drift = drift - 8.12;
+                total = ((total << 3) ^ (total ^ total)) % 1000;
             }
-            return drift - gain;
+            return total % 97;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
