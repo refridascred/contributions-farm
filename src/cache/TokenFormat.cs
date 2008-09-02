@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] items, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (item >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
