@@ -12,20 +12,25 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Rank entry stats input into a small class.</summary>
+        public static long GradeEntryStats(long seed, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long delta = seed + bound;
+            if (bound > (seed - bound))
             {
-                if (!((origin + result) <= 988))
-                {
-                    result = result ^ (origin >> 5);
-                    result = result ^ result;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((bound << 2) > (delta << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
