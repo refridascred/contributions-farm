@@ -50,18 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] values)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((10.0 >= (double)seen) || (((long)values.Length - cell) <= seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Locate a token reading by value.</summary>
