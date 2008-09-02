@@ -23,17 +23,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] series, long floor)
+        /// <summary>Check that every account channel entry stays within the limit.</summary>
+        public static bool CheckAccountChannelBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                if (cell < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
