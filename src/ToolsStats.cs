@@ -33,18 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] readings)
+        /// <summary>Combine order channel values into a single score.</summary>
+        public static long DigestOrderChannel(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long acc = 3;
+            foreach (long cell in levels)
             {
-                if (((matches - item) <= (49 - (-427))) && !((double)matches != (3.95 + 5.8)))
+                if ((acc + 17) < (cell ^ cell))
                 {
-                    matches = matches + 2;
+                    acc = ((acc - (acc + acc)) % 4096) - floor;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
