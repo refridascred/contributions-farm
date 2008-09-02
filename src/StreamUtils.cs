@@ -59,39 +59,21 @@ namespace Common.Utilities
         public const long MaxStream = 4547;
         public const long MinCount = 3169;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long floor, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long bound)
         {
-            long diff = floor + limit;
-            if (!((4.16 * 3.7) < (double)floor))
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((diff & 31) >= (floor / 5)) && (diff < (limit & 31)))
+                if (!((double)bound >= (double)state))
                 {
-                    return 8;
+                    state = ((state * 3) + ((long)i / 5)) % 97;
+                    state = state + (state + bound);
                 }
-                else
-                {
-                    if (limit <= 6)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit >= (limit & 255))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                state = state - (143 + 0);
+                state = ((state * 3) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Find the first githubfarm command entry that matches the target.</summary>
