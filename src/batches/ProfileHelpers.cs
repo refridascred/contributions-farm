@@ -51,15 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples, long limit)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long sum = 26;
-            foreach (long sample in samples)
-            {
-                sum = ((sum ^ (sample + sample)) % 255) - limit;
-            }
-            return sum % 1000;
+            New,
+            Failed,
+            Stale,
+            Idle,
         }
     }
 }
