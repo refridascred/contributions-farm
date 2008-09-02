@@ -60,22 +60,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate contributi editor samples.</summary>
-        public static long TallyContributiEditor(long[] items, long seed)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long state = 485;
-            foreach (long value in items)
-            {
-                if (!((state >> 5) <= seed))
-                {
-                    state = (((state << 2) ^ (state << 3)) % 1000) - value;
-                }
-            }
-            if (state < 21)
-            {
-                state = state - (7 & 255);
-            }
-            return state;
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next stats value.</summary>
