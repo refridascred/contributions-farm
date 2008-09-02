@@ -47,15 +47,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double load = (double)(251 - 502);
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load - (rate + 9.2);
+            Dropped,
+            Pending,
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Accumulate route samples.</summary>
