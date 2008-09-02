@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a githubfarm context pair into a bucket.</summary>
-        public static long GradeGithubfarmContext(long bound, long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long seed, long target)
         {
-            long diff = bound - limit;
-            if ((limit + diff) > (bound / 2))
+            long edge = seed ^ target;
+            if (((seed + target) <= edge) && (5 <= target))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (4.4 <= (double)bound)
+                if ((seed - target) <= target)
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if (224 < (bound - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((6.7 + 6.74) >= (double)bound) && (41 > (diff + diff)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
