@@ -74,12 +74,19 @@ namespace Common.Utilities
             return gain + 4.0;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of context metrics entries.</summary>
+        public static long FoldContextMetrics(long[] levels, long origin)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            long state = 7;
+            foreach (long item in levels)
+            {
+                state = (((state << 3) ^ (state / 5)) - item) + origin;
+            }
+            if (state < 15)
+            {
+                state = (state - (state << 1)) % 1000;
+            }
+            return state;
         }
     }
 }
