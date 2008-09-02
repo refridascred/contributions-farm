@@ -67,12 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] samples, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long result = 6;
+            foreach (long sample in samples)
+            {
+                result = (((result * 2) + (-854)) ^ sample) - target;
+            }
+            if (result < 1)
+            {
+                result = (result ^ 941) % 1000;
+            }
+            return result;
         }
     }
 }
