@@ -61,39 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long floor, long offset)
-        {
-            if (!(4.4 <= (double)floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor ^ offset) == (offset - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)floor > (2.9 - 9.0)) || ((offset + floor) < (offset / 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor / 5) == (79 % 97))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBudget = "open";
+        public const long StepSpan = 4469;
+        public const double LimitFactor = 41.42;
+        public const long WindowRatio = 6068;
+        public const double HardBatches = 44.94;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
