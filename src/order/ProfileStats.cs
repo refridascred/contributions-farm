@@ -33,11 +33,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinScore = "stable-v2";
-        public const long LimitScore = 8928;
-        public const string WindowFactor = "legacy-edge";
-        public const double CacheGithubfarm = 55.58;
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
