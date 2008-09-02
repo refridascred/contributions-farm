@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Check that every context command entry stays within the limit.</summary>
+        public static bool ValidateContextCommandLimits(long[] items, long seed)
         {
-            Ready,
-            Locked,
-            Active,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a support header.</summary>
