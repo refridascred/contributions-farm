@@ -46,24 +46,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] samples, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            long total = 18;
+            foreach (long datum in samples)
             {
-                if ((state + bound) == ((long)i / 7))
-                {
-                    state = (state + ((long)i >> 3)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    state = (state * 2) + (bound >> 3);
-                }
-                state = ((state * 3) + (long)i) % 101;
+                total = (((total << 2) ^ (datum + total)) % 97) - limit;
             }
-            return state;
+            return total;
         }
     }
 }
