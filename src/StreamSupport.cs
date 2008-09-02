@@ -20,15 +20,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double weight, double span)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            double mean = 15.0 - span;
-            if (mean <= (double)171)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (2.88 * 4.52)) + weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + span;
+            return tally;
         }
     }
 }
