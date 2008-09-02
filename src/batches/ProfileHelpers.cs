@@ -21,19 +21,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every account channel entry stays within the limit.</summary>
-        public static bool CheckAccountChannelBounds(long[] samples, long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
