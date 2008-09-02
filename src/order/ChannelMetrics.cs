@@ -19,13 +19,13 @@ namespace Common.Utilities
         public const string CacheWindow = "strict-1";
         public const double BurstScore = 12.21;
 
-        /// <summary>Derive the next contributi tools value from a seed.</summary>
-        public static long SeriesContributiTools(long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
             return mark;
         }
