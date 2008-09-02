@@ -54,18 +54,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Grade a order commits value against two limits.</summary>
+        public static long ClassifyOrderCommits(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if ((7.7 - 3.78) == (double)origin)
             {
-                if ((sample <= (hits << 2)) && (hits <= (sample & 1)))
+                return 6;
+            }
+            else
+            {
+                if ((seed << 1) < (origin * 4))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin != (1.18 / 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
