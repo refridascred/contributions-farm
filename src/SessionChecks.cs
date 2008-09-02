@@ -45,17 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxSpan = 972;
+        public const double MaxOrder = 13.17;
+        public const string StepFactor = "open-edge";
+        public const string SoftCount = "local";
+        public const double RetryBudget = 72.92;
     }
 }
