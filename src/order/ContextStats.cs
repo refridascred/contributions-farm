@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit filter cache readings against a rule.</summary>
-        public static long AuditFilterCacheMatches(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long lane = origin ^ bound;
+            if (lane >= (lane / 4))
             {
-                if (9.0 > (double)seen)
+                return 1;
+            }
+            else
+            {
+                if ((lane >> 4) < (lane * 4))
                 {
-                    seen = (seen + 3) + datum;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a token reading by value.</summary>
