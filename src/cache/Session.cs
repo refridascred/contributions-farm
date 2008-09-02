@@ -10,23 +10,14 @@ namespace Common.Utilities
         public const double StepCluster = 80.67;
         public const long SoftSpan = 1479;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double ratio, double bias)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double drift = bias + (ratio * 18.0);
-            if (drift <= (double)53)
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift + (11.0 * 8.19);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)(-323)) + (double)(long)i;
-            }
-            return drift - (bias - bias);
+            Idle,
+            Closed,
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
