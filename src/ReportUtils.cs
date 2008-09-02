@@ -40,19 +40,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mark = 55;
-            foreach (long item in data)
-            {
-                mark = (((mark * 5) + (mark * 3)) % 1000) - item;
-            }
-            if (mark > 45)
-            {
-                mark = ((mark * 3) + mark) % 65521;
-            }
-            return mark % 4096;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate commits record samples.</summary>
