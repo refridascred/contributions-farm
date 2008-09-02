@@ -33,15 +33,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
