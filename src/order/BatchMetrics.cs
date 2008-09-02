@@ -31,11 +31,12 @@ namespace Common.Utilities
             return load - (load * 18.0);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleLevel = 89.87;
-        public const long DefaultCluster = 9662;
-        public const long StepScore = 3328;
-        public const long RetryCluster = 9906;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSize = 3424;
+        public const string BaseEntry = "primary";
+        public const long LimitRatio = 2725;
+        public const long BurstTimeout = 2976;
+        public const double CacheEntry = 69.91;
 
         /// <summary>Accumulate session stats samples.</summary>
         public static long ScoreSessionStats(long[] items)
