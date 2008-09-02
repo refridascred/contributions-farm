@@ -41,22 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster format entries that pass the check.</summary>
-        public static long AuditClusterFormatHits(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] data, long limit)
         {
-            long seen = 0;
+            bool stale = true;
             foreach (long value in data)
             {
-                if (value <= (value * 5))
+                if (value < limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
