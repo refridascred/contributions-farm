@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const double MaxChannel = 3.33;
         public const long CacheWidth = 3690;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] series)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits + entry) >= (entry << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Locate a channel format reading by value.</summary>
