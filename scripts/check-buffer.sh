@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge green staging; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=336
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-blue}"
+mode="${1:-legacy}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in open edge primary cached; do
+    log "checking ${item}"
+done
