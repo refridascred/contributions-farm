@@ -16,15 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double gain, double offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double mean = (double)((-5) >> 5);
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean - (double)6) + (double)(long)i) - gain;
-            }
-            return mean - offset;
+            Failed,
+            New,
+            Locked,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
