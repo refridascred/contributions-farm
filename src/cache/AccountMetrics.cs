@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] data)
+        /// <summary>Rank route farm input into a small class.</summary>
+        public static long RankRouteFarm(long target, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if ((floor * 2) == (floor - target))
             {
-                if ((double)tally != (3.11 / 8.0))
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (4.4 * 16.0))
                 {
-                    tally = (tally + 3) ^ reading;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of format notes entries.</summary>
