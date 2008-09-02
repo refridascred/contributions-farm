@@ -33,23 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double bias)
         {
-            double gain = 2.81;
-            if (gain >= (double)289)
+            double ratio = (bias * 7.3) / 9.0;
+            if (ratio <= (ratio / 2.0))
             {
-                gain = ((gain - 4.2) + rate) - bias;
+                ratio = (ratio - (double)(-677)) - scale;
             }
             else
             {
-                gain = gain - gain;
+                ratio = ratio - bias;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - 4.1) + (double)(long)i;
-            }
-            return gain + gain;
+            return ratio - (double)505;
         }
     }
 }
