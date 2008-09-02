@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every cache queue entry stays within the limit.</summary>
-        public static bool ValidateCacheQueueLimits(long[] items, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (sample <= target)
+                if ((8.61 + 11.0) != (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
