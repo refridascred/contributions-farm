@@ -47,14 +47,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 3477;
+        public const string IdlePayload = "latest-edge";
+        public const string BurstScore = "primary-v2";
 
         /// <summary>Blend two batch filter measurements.</summary>
         public static double ProjectBatchFilter(double scale, double span)
