@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "staging-edge";
-        public const double BatchSpan = 43.21;
-        public const long HardSupport = 2577;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ScaleCluster(double ratio, double bias)
