@@ -27,14 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count the account batches entries that pass the check.</summary>
+        public static long TallyAccountBatchesMatches(long[] values)
         {
-            Ready,
-            Failed,
-            Active,
-            Dropped,
-            Synced,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen - (-588)) > (cell + cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
