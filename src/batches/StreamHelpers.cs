@@ -13,15 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] samples, long floor)
         {
-            long sum = 3;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                sum = (sum * 5) + (value + value);
+                if (!((cell * 2) == (cell + tally)))
+                {
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
