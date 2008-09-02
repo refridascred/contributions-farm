@@ -38,18 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] data, long floor)
+        /// <summary>Locate a channel format reading by value.</summary>
+        public static long SeekChannelFormatIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor % 2) < (matches % 3))
+                if (levels[i] < target)
                 {
-                    matches = (matches + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
