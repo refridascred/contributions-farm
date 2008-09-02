@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] values)
         {
-            Failed,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((7.0 * 16.0) <= (double)matches)
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
