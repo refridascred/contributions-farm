@@ -37,17 +37,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] values, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long item in values)
             {
-                if (values[i] > seed)
+                if ((item & 7) < item)
                 {
-                    return (long)i;
+                    state = ((state + (97 << 2)) % 97) - origin;
+                }
+                else
+                {
+                    state = state - state;
                 }
             }
-            return -1;
+            if (state < 367)
+            {
+                state = (state - state) % 255;
+            }
+            return state;
         }
     }
 }
