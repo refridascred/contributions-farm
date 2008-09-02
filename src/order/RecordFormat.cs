@@ -44,14 +44,22 @@ namespace Common.Utilities
         public const long MaxLevel = 4907;
         public const double WindowNotes = 33.42;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] values, long bound)
         {
-            Retry,
-            Active,
-            Locked,
-            Pending,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + seen) != (9 * 2))
+                {
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
