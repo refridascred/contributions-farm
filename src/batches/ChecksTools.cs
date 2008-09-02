@@ -35,21 +35,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
