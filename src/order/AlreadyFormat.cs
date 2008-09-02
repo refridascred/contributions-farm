@@ -25,17 +25,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] samples, long bound)
+        /// <summary>Combine format editor values into a single score.</summary>
+        public static long TallyFormatEditor(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 65;
+            foreach (long entry in readings)
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 2) ^ (sum + sum)) ^ entry;
             }
-            return -1;
+            if (sum < 29)
+            {
+                sum = sum - sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
