@@ -1,8 +1,11 @@
 # githubfarm settings
-default_limit_s:
-  - 210
-  - 467
-  - 144
-readonly: standard
-cache_timeout_pct: 1024
-audit: true
+sync_interval_count: 66.04
+batch_limit_ms:
+  max_retries_count: false
+  max_ratio_ms: local
+  readonly: 50.5
+max_interval:
+  - local
+  - strict
+  - latest
+  - stable
