@@ -1,20 +1,7 @@
 # support settings
-entry_depth:
-  burst_ttl_ms: 43.39
-  session_ratio:
-    sync_timeout_pct:
-      - eu-west
-      - stable
-      - edge
-    idle_window_ms: 379
-    poll_delay: 30
-  min_window_count: 5.02
-  cache_limit:
-    - 26
-    - 451
-  batch_window_pct: 1024
-base_timeout: 500
-payload_window:
-  idle_delay_s: false
-  enabled: primary
-  min_window_ms: 40
+verbose: 94.62
+retry_interval: false
+audit: 38.43
+layout_size: false
+flush_limit_count: primary
+readonly: 6663
