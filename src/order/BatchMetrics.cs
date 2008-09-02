@@ -60,13 +60,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 1175;
+        public const long WindowCount = 9176;
+        public const double HardLevel = 16.23;
     }
 }
