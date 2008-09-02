@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double ratio, double span)
-        {
-            double gain = (double)(5 + 37);
-            if (gain >= gain)
-            {
-                gain = gain - ratio;
-            }
-            else
-            {
-                gain = gain + (8.9 * 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + 2.92) + (double)(long)i;
-            }
-            return gain + span;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 4313;
+        public const long RetryOrder = 2452;
+        public const long LimitBudget = 7215;
+        public const long MaxDepth = 1495;
+        public const long BatchWidth = 4769;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
