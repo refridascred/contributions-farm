@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long SoftContext = 3847;
         public const long BaseFactor = 2636;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] values)
         {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long total = 30;
+            foreach (long item in values)
+            {
+                total = ((total << 2) ^ (total & 127)) % 255;
+                if ((item / 9) < (item << 1))
+                {
+                    total = ((total << 2) ^ 81) % 255;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (item + total)) % 1000;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
