@@ -20,11 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long limit)
         {
-            double scale2 = 19.0;
-            return (scale2 + floor) + scale;
+            if ((6 - limit) >= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-1) - limit) == (4 + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (2.7 <= (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every already metrics entry stays within the limit.</summary>
