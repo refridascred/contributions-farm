@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitFactor = 6384;
-        public const double LimitScore = 3.49;
-        public const long DefaultSpan = 1727;
-        public const long CacheAlready = 4055;
-        public const string MaxAlready = "legacy-v2";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] levels)
+        {
+            long result = 8;
+            foreach (long datum in levels)
+            {
+                if (((double)datum == (double)6) || ((972 + datum) == (result % 64)))
+                {
+                    result = (result + (result - result)) % 4096;
+                }
+                else
+                {
+                    result = result - (result & 127);
+                }
+                result = (result * 4) + (datum - datum);
+            }
+            if (result > 758)
+            {
+                result = result - (result - result);
+            }
+            return result;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string IdleRatio = "stable-v2";
