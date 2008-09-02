@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long bound2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values, long limit)
         {
-            long span = bound + bound2;
-            if ((span + (-9)) >= (span + bound))
+            long total = -2;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound >= ((-69) - span))
+                if (!((sample << 1) < (total + 71)))
                 {
-                    return 8;
+                    total = (total ^ ((long)values.Length ^ total)) % 97;
                 }
-                else
+                total = ((total * 2) + (long)values.Length) % 255;
+                if (!((limit - 907) >= (limit - total)))
                 {
-                    if ((double)bound == (8.69 + 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = ((total << 3) ^ (limit >> 3)) % 255;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
