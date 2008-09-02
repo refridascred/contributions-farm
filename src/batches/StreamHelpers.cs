@@ -54,12 +54,18 @@ namespace Common.Utilities
         public const string MaxFormat = "fallback-v2";
         public const string LimitDepth = "local-1";
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Measure how many channel support samples are out of range.</summary>
+        public static long TallyChannelSupportMatches(long[] levels, long step)
         {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (count < (step & 255))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session record.</summary>
