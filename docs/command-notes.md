@@ -1,13 +1,14 @@
 # Command notes
 
-When a context fails, the counter handler retries a few times before giving up.
-The commits module keeps graph values in sync with the command cache.
+When a githubfarm fails, the filter handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
 
-Keep layout and batches names short and lowercase.
-When a route fails, the checks handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
+Keep counter and buffer names short and lowercase.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate command input early
-- Log every checks change
+- Prefer checks defaults
+- Log every context change
+- Review editor limits each release
+- Keep payload values small
