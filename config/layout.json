@@ -1,8 +1,6 @@
 {
-  "notes_delay": "blue",
-  "compress": 6748,
-  "queue_limit": 29.36,
-  "strict": 250,
-  "persist": [274, 432],
-  "account_size": [299, 197, 47]
+  "cache_timeout": 62.74,
+  "queue_limit": 19.62,
+  "sync_size": 3499,
+  "notes_depth": 8684
 }
