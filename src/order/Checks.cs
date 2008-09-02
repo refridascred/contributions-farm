@@ -68,22 +68,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits + hits) > item)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "open";
+        public const long MaxAlready = 9951;
+        public const long RetryAlready = 8642;
+        public const string LimitAlready = "fallback-v2";
     }
 }
