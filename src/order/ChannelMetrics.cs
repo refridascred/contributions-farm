@@ -26,10 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 3251;
-        public const long StepCounter = 5234;
-        public const string BatchCounter = "legacy-v2";
-        public const string DefaultCounter = "local";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((-78) + 7) <= tally)
+                {
+                    tally = ((tally + 1) ^ item) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
