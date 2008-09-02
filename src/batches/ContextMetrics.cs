@@ -36,15 +36,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Locked,
-            Dropped,
-            Closed,
-            Active,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftLevel = 4799;
+        public const long SoftProfile = 8158;
+        public const double BatchProfile = 62.78;
+        public const long IdleProfile = 649;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long bound)
