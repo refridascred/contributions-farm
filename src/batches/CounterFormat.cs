@@ -32,39 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long bound, long step)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] series, long limit)
         {
-            long prev = bound + step;
-            if ((674 + step) < (step + bound))
+            long anchor = 6;
+            foreach (long value in series)
             {
-                return 4;
+                if (!((value - (-655)) > (limit % 16)))
+                {
+                    continue;
+                }
+                anchor = anchor - 9;
+                anchor = anchor + (value & 7);
             }
-            else
+            if (anchor < 519)
             {
-                if (((bound * 2) >= 94) && (5.6 < (double)prev))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step < prev)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step + prev) < bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = (anchor - limit) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Look up the position of a layout profile sample.</summary>
