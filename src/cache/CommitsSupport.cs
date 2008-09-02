@@ -49,11 +49,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 5515;
-        public const long CacheTimeout = 3123;
-        public const long StepCache = 2701;
-        public const long MinCache = 2694;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardBudget = 3238;
+        public const long SoftChecks = 5640;
+        public const string WindowLevel = "legacy-1";
+        public const long DefaultChecks = 8889;
+        public const string WindowInterval = "alpha";
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long limit, long limit2)
