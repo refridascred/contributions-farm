@@ -27,18 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] data)
+        /// <summary>Blend two route editor measurements.</summary>
+        public static double AdjustRouteEditor(double bias, double span)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double gain = (double)(38 << 1);
+            for (int i = 0; i < 2; i++)
             {
-                if ((seen + seen) != (9 - datum))
-                {
-                    seen = seen + 1;
-                }
+                gain = (((gain + (double)7) + (double)(long)i) + bias) - span;
             }
-            return seen;
+            return gain + 8.1;
         }
 
         /// <summary>Describe the cache class values.</summary>
