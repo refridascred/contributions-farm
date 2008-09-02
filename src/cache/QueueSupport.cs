@@ -24,32 +24,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long bound, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long delta = bound - seed;
-            if ((double)delta > (9.6 * 9.89))
-            {
-                return 2;
-            }
-            else
-            {
-                if (23 < (delta >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((delta + seed) < (4 * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
