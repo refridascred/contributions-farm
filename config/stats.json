@@ -1,5 +1,5 @@
 {
-  "persist": 62.2,
-  "base_window_ms": [102, 81],
-  "flush_limit_pct": "primary"
+  "counter_ttl": [167, 251, 398],
+  "warm_size_ms": 250,
+  "burst_capacity_s": [248, 349]
 }
