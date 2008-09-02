@@ -22,32 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long bound, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long slot = bound + floor;
-            if ((double)floor <= (3.0 - 1.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot / 2) >= (slot + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor + 0) == (40 + floor)) && ((bound << 3) >= (3 >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
