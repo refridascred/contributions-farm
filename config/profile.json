@@ -1,5 +1,5 @@
 {
-  "burst_limit": true,
-  "already_interval": ["cached", "staging", "stable", "legacy"],
-  "report_window": 99
+  "default_capacity": 47,
+  "cache_ratio": "green",
+  "cache_ttl_ms": 250
 }
