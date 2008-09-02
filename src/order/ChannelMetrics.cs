@@ -12,12 +12,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepBudget = 3751;
-        public const string BurstFactor = "open";
-        public const double MaxCount = 68.78;
-        public const string CacheWindow = "strict-1";
-        public const double BurstScore = 12.21;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] items, long seed)
+        {
+            long score = 1;
+            foreach (long reading in items)
+            {
+                if ((double)seed < (5.0 + 6.12))
+                {
+                    score = (score - reading) % 97;
+                }
+                else
+                {
+                    score = score ^ reading;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long IterateFilter(long target)
