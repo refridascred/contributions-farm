@@ -45,18 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricMetricsCount(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((value + 0) < value) || ((92 + value) > (hits >> 4)))
                 {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
