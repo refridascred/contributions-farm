@@ -1,7 +1,12 @@
 {
-  "idle_ratio_ms": ["open", "strict", "edge", "edge"],
-  "flush_delay": 73.24,
-  "default_limit_s": 250,
-  "filter_interval": [254, 450, 228, 225],
-  "channel_limit": 5502
+  "notes_retries": true,
+  "retry_threshold_s": 21.21,
+  "retry_timeout": {
+    "compress": 2636,
+    "format_size": 30,
+    "githubfarm_timeout": [51, 42, 266, 329]
+  },
+  "batch_ttl_pct": "local",
+  "poll_timeout_count": 4538,
+  "idle_retries_ms": "open"
 }
