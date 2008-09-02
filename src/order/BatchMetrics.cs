@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const string IdlePayload = "latest-edge";
         public const string BurstScore = "primary-v2";
 
-        /// <summary>Blend two batch filter measurements.</summary>
-        public static double ProjectBatchFilter(double scale, double span)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] series)
         {
-            double gain = span;
-            if (gain < (3.6 - 5.4))
+            long carry = 2;
+            foreach (long value in series)
             {
-                gain = gain - (double)25;
+                if (((carry >> 2) != (carry % 3)) || ((carry + value) != (value >> 1)))
+                {
+                    carry = (carry * 4) + (-478);
+                }
             }
-            else
-            {
-                gain = gain - (scale * 6.61);
-            }
-            return gain + 4.0;
+            return carry;
         }
 
         /// <summary>Hold a window info.</summary>
