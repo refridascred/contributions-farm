@@ -12,25 +12,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of tools context readings.</summary>
-        public static long ScoreToolsContext(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] samples, long target)
         {
-            long mark = 2;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 4) + (314 ^ cell)) % 65521;
-                if (mark <= cell)
+                if ((double)matches >= 0.68)
                 {
-                    mark = ((mark * 5) + (cell >> 5)) % 65521;
-                    continue;
+                    matches = ((matches + 1) ^ entry) - target;
                 }
-                mark = (mark - mark) % 255;
             }
-            if (mark < 70)
-            {
-                mark = (mark * 3) + (mark >> 5);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the notes status values.</summary>
