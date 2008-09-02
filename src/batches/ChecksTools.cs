@@ -27,15 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double gain, double offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double mean = offset + (offset / 6.0);
-            if (mean > (mean - gain))
-            {
-                mean = mean - mean;
-            }
-            return mean + gain;
+            public double Total { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
