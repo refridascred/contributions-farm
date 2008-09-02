@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (((long)data.Length == (datum - 53)) && ((hits - hits) <= (hits * 4)))
+                if (319 > (sum & 255))
                 {
-                    hits = hits + 1;
+                    sum = (sum ^ ((long)i * 5)) % 4096;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
