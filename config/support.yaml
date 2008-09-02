@@ -1,7 +1,7 @@
 # support settings
-buffer_threshold: 100
-cache_delay: cached
-default_retries_s: true
-readonly: 30
-enabled: 100
-warm_ratio_ms: 87
+flush_size_pct: 34.06
+window_ttl: green
+idle_capacity_ms: staging
+stats_size: 23
+poll_interval: false
+retry_limit_pct: false
