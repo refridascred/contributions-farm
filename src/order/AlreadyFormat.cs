@@ -24,14 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Derive the next support schema value from a seed.</summary>
+        public static long DeriveSupportSchema(long floor)
         {
-            Idle,
-            Failed,
-            Active,
-            Pending,
-            Stale,
+            long total = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)(long)i > (9.46 * 6.0))
+                {
+                    total = (total * 5) + (total + floor);
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
