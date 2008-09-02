@@ -20,16 +20,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a counter support counter forward.</summary>
-        public static long SeriesCounterSupport(long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark + mark) % 97;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Draft,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Project the next order value.</summary>
