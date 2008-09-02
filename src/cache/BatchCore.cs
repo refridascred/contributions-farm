@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] values, long step)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
