@@ -1,7 +1,19 @@
 # entry settings
-burst_window_ms: 30
-stream_retries: stable
-soft_timeout_ms: false
-readonly: stable
-min_ratio: fallback
-hard_retries_ms: 30
+idle_limit_ms: stable
+contributi_threshold:
+  - 137
+  - 362
+warm_timeout:
+  idle_interval_pct: staging
+  already_limit: 64
+  batch_delay_count: edge
+  schema_depth:
+    - 187
+    - 107
+    - 141
+    - 359
+  sync_capacity_ms: 64.34
+  commits_retries: green
+poll_size_ms: true
+sync_capacity_count: false
+cache_depth_s: 1.86
