@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Derive the next cache githubfarm value from a seed.</summary>
+        public static long StepCacheGithubfarm(long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                score = (score - (limit + limit)) % 101;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
