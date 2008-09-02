@@ -40,18 +40,32 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] values)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long target, long target2)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long prev = target - target2;
+            if (!((2.0 * 7.0) < (double)prev))
             {
-                if ((1 / 3) == (hits ^ hits))
+                return 1;
+            }
+            else
+            {
+                if ((target + target2) >= prev)
                 {
-                    hits = (hits + 3) + value;
+                    return 8;
+                }
+                else
+                {
+                    if ((target2 + target2) >= (prev + prev))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
