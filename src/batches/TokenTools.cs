@@ -37,32 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long floor, long floor2)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long slot = floor ^ floor2;
-            if ((floor / 5) < (slot >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)slot == (1.0 - 2.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor2 - slot) < floor2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
     }
 }
