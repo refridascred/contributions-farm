@@ -45,13 +45,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            Paused,
-            Retry,
-            Active,
-            Ready,
+            double load = (double)(251 - 502);
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load - (rate + 9.2);
         }
 
         /// <summary>Accumulate route samples.</summary>
