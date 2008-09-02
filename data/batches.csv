@@ -1,6 +1,6 @@
-id,level,ratio
-1,open,525
-2,619,81.77
-3,77.52,edge
-4,891,589
-5,64.95,latest
+id,count,owner,ratio
+1,local,63.23,987
+2,standard,672,396
+3,936,129,596
+4,109,latest,fallback
+5,85.73,418,567
