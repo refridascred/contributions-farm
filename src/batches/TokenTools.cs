@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long offset, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] data, long step)
         {
-            long bound = offset - step;
-            if ((offset < bound) || ((double)offset != (double)5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(offset > bound))
+                if (data[i] == step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
