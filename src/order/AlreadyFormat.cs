@@ -29,13 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Synced,
-            Paused,
-            Locked,
-            Closed,
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
