@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] values, long seed)
         {
-            Done,
-            Failed,
-            Synced,
-            Retry,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
