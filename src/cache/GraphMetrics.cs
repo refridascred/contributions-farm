@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a stream command pair into a bucket.</summary>
-        public static long ClassifyStreamCommand(long floor, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] series, long origin)
         {
-            if ((bound % 7) >= ((-553) << 1))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor + floor) <= floor))
+                if ((count >> 5) > entry)
                 {
-                    return 0;
+                    count = (count + 3) + origin;
                 }
                 else
                 {
-                    if ((bound + floor) > (floor - 374))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor > (18 / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate schema samples.</summary>
