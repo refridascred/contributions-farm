@@ -45,18 +45,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the filter queue entries that pass the check.</summary>
-        public static long CountFilterQueueGaps(long[] levels, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((tally + bound) < (tally >> 4))
+                if ((reading - hits) > (hits - hits))
                 {
-                    tally = (tally + 1) - entry;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
