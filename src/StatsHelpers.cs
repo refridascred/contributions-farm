@@ -48,13 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] data, long seed)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stats filter entries that pass the check.</summary>
