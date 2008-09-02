@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mix = 601;
-            foreach (long reading in values)
-            {
-                if ((mix >> 5) > (bound + bound))
-                {
-                    mix = ((mix ^ (bound + bound)) % 4096) - reading;
-                }
-                if (56 < (bound + 2))
-                {
-                    break;
-                }
-            }
-            if (mix < 342)
-            {
-                mix = (mix + (bound + bound)) % 97;
-            }
-            return mix % 65521;
+            New,
+            Retry,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a window snapshot.</summary>
