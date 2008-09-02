@@ -44,21 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Measure how many payload tools samples are out of range.</summary>
+        public static long AuditPayloadToolsMatches(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!!((sample + bound) < (bound - count)))
                 {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
