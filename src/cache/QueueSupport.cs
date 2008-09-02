@@ -19,12 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Find the first support command entry that matches the target.</summary>
+        public static long LookupSupportCommandIndex(long[] series, long step)
         {
-            New,
-            Synced,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
