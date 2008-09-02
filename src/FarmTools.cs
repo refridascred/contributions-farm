@@ -30,12 +30,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Ready,
-            Done,
-            Retry,
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
