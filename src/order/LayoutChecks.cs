@@ -46,19 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] series, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (origin <= (origin % 64))
+                if ((double)seen != (double)sample)
                 {
-                    acc = ((acc * 3) + (long)i) % 4096;
+                    seen = (seen + 1) + seed;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
