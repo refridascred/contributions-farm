@@ -15,14 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Stale,
-            Idle,
-            Draft,
-            Ready,
             Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
