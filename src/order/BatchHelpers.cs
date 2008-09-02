@@ -41,12 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long acc = -43;
+            foreach (long reading in samples)
+            {
+                if (((acc + acc) > (reading ^ acc)) || ((acc + acc) >= (acc << 1)))
+                {
+                    acc = acc - (reading & 7);
+                }
+            }
+            return acc % 1000;
         }
     }
 }
