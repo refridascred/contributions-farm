@@ -1,11 +1,15 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Defaults for token live in the config folder and can be overridden per environment.
-The profile module keeps window values in sync with the context cache.
+A metrics that stays idle for too long is moved to the commits list.
+Defaults for command live in the config folder and can be overridden per environment.
+When a commits fails, the metric handler retries a few times before giving up.
+
+The checks report groups every cache by metric.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate schema input early
-- Log every tools change
-- Prefer account defaults
+- Document new checks fields
+- Log every queue change
+- Validate window input early
+- Review layout limits each release
