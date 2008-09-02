@@ -23,24 +23,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long origin, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            long cur = origin ^ target;
+            if (11.0 <= (double)cur)
             {
-                if ((3.35 * 10.0) > (double)state)
+                return 5;
+            }
+            else
+            {
+                if ((40 % 2) != (origin + 3))
                 {
-                    state = state - (state + seed);
+                    return 2;
                 }
                 else
                 {
-                    state = (state + (seed ^ seed)) % 97;
+                    if (!((52 & 15) > target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((cur + cur) < (target << 1)) || (593 < (cur - 859)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                state = ((state * 4) + (state - seed)) % 1000;
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
         }
     }
 }
