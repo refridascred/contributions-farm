@@ -29,22 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] data)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 840;
+            foreach (long item in readings)
             {
-                if ((count >> 4) != (838 ^ reading))
+                if (item >= (item + offset))
                 {
-                    count = count + 1;
+                    carry = ((carry << 2) ^ item) % 101;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = (carry ^ 9) % 101;
                 }
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Hold a counter options.</summary>
