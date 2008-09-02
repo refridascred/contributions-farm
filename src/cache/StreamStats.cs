@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)(long)series.Length != (1.91 * 9.16))
-                {
-                    hits = (hits + 3) + cell;
-                }
+                anchor = ((anchor * 4) + (anchor - (long)i)) % 97;
+                anchor = (anchor - ((long)i + anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
