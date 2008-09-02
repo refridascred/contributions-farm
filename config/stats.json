@@ -1,8 +1,5 @@
 {
-  "audit": false,
-  "min_ttl_s": [436, 166, 196, 291],
-  "min_retries": 9.22,
-  "default_window_ms": "blue",
-  "session_window": 14,
-  "flush_capacity": 90
+  "base_retries": "latest",
+  "poll_interval_pct": "blue",
+  "burst_ratio": "local"
 }
