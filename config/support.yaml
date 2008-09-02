@@ -1,15 +1,10 @@
 # support settings
-burst_threshold:
-  compress: standard
-  max_size:
-    dry_run:
-      - 426
-      - 225
-    burst_ratio_pct: true
-    command_depth: latest
-  graph_depth: 60
-  strict: 45.88
-  base_interval_count: latest
-  dry_run: 1
-max_depth_pct: 27
-audit: eu-west
+warm_timeout_ms:
+  channel_interval: 75
+  flush_window: 500
+  hard_size_ms: 100
+  route_limit: fallback
+  retry_threshold: 54.37
+batch_limit: latest
+min_ttl_ms: 7937
+enabled: false
