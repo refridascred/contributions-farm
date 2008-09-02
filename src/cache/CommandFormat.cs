@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
