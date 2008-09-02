@@ -21,22 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mix = 996;
+            foreach (long entry in readings)
             {
-                if ((double)cell < (6.0 * 8.4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix * 5) + mix) % 255) + entry;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
