@@ -43,12 +43,16 @@ namespace Common.Utilities
             return gain + (double)28;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryDepth = "cached-v2";
-        public const long DefaultProfile = 5405;
-        public const long MinSize = 2032;
-        public const long StepProfile = 4831;
-        public const long BaseRatio = 5375;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
