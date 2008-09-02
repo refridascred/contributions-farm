@@ -13,15 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two counter order measurements.</summary>
-        public static double AdjustCounterOrder(double gain, double bias)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] data, long offset)
         {
-            double weight = gain;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + (weight - bias)) - (double)(long)i;
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight + 1.0;
+            return -1;
         }
 
         /// <summary>Audit account order readings against a rule.</summary>
