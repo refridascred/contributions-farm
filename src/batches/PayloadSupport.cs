@@ -29,18 +29,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long acc = -30;
-            foreach (long cell in values)
-            {
-                if ((cell & 127) <= (cell * 4))
-                {
-                    acc = (acc << 3) ^ (acc >> 2);
-                }
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
