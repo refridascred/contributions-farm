@@ -59,19 +59,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cluster githubfarm readings against a bound.</summary>
-        public static bool CheckClusterGithubfarmBounds(long[] items, long step)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit filter account readings against a rule.</summary>
