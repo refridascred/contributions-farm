@@ -69,12 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema counter entry that matches the target.</summary>
-        public static long SeekSchemaCounterIndex(long[] data, long seed)
+        /// <summary>Find the first context profile entry that matches the target.</summary>
+        public static long FindContextProfileIndex(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > seed)
+                if (values[i] >= origin)
                 {
                     return (long)i;
                 }
