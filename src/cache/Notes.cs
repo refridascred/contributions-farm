@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Grade a report batch value against two limits.</summary>
+        public static long BucketReportBatch(long seed, long offset)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            if ((19.0 / 4.0) >= (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1.07 - 20.0) == (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a stream record.</summary>
