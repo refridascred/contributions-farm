@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const double CacheEntry = 3.11;
         public const string IdleDepth = "open-v2";
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] levels, long seed)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
