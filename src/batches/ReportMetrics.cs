@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            long anchor = 361;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor * 5) + (cell / 7)) % 1000;
+            }
+            if (anchor < 4)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
