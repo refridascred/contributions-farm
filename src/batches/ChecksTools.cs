@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many notes metric samples are out of range.</summary>
-        public static long MeasureNotesMetricOutliers(long[] values, long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long target, long target2)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((target2 + 2) < target)
             {
-                if ((cell + 37) < cell)
+                return 3;
+            }
+            else
+            {
+                if (target <= (target - target))
                 {
-                    seen = (seen + 2) - seed;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a token support reading by value.</summary>
