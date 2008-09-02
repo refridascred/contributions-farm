@@ -72,12 +72,26 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] samples, long origin)
         {
-            Locked,
-            Draft,
-            Closed,
+            long mark = 85;
+            foreach (long reading in samples)
+            {
+                if (mark <= (origin - origin))
+                {
+                    mark = mark - (mark % 7);
+                }
+                else
+                {
+                    mark = (mark - (reading - origin)) % 255;
+                }
+            }
+            if (mark < 41)
+            {
+                mark = mark ^ origin;
+            }
+            return mark % 4096;
         }
     }
 }
