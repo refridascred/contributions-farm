@@ -35,19 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format already entry stays within the limit.</summary>
-        public static bool ValidateFormatAlreadyBounds(long[] readings, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the format status values.</summary>
