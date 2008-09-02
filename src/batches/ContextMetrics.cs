@@ -50,19 +50,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate channel order readings against a bound.</summary>
-        public static bool GuardChannelOrderRange(long[] values, long offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double weight = 7.98 * 2.8;
+            for (int i = 0; i < 2; i++)
             {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (((weight - (weight / 6.0)) - (double)(long)i) - gain) + offset;
             }
-            return ready;
+            return weight - 8.94;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
