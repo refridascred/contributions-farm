@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((-7) > (step / 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((88 & 127) < (step2 + step2))
                 {
-                    if ((items[i] ^ items[j]) < 2)
+                    return 2;
+                }
+                else
+                {
+                    if (step > (step2 - step2))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
