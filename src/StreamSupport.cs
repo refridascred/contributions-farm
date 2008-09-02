@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double CacheEntry = 3.11;
         public const string IdleDepth = "open-v2";
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] levels, long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= target)
+                if (samples[i] >= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
