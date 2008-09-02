@@ -1,7 +1,5 @@
 {
-  "githubfarm_ttl": 100,
-  "min_window_pct": "strict",
-  "cache_threshold": 18,
-  "verbose": "strict",
-  "compress": [126, 317]
+  "notes_retries": 2545,
+  "dry_run": "stable",
+  "compress": ["staging", "open", "blue"]
 }
