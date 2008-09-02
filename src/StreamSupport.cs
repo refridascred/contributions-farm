@@ -24,11 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            Draft,
+            Stale,
+            Pending,
         }
     }
 }
