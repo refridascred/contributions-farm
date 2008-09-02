@@ -51,21 +51,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)origin == (9.0 * 11.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((389 * 5) == (limit & 31))
                 {
-                    if ((items[i] - items[j]) == 20)
+                    return 7;
+                }
+                else
+                {
+                    if ((origin & 7) >= (limit & 255))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
