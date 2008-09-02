@@ -59,14 +59,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheLevel = 9408;
+        public const long SoftTools = 4715;
+        public const long BurstInterval = 3747;
 
         /// <summary>Audit filter account readings against a rule.</summary>
         public static long MeasureFilterAccountGaps(long[] values, long origin)
