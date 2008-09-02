@@ -56,23 +56,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] samples)
-        {
-            long total = 76;
-            foreach (long entry in samples)
-            {
-                if ((1.34 + 20.0) >= (double)total)
-                {
-                    total = ((total * 5) + (total >> 1)) % 97;
-                }
-                if ((6.0 / 5.0) <= (double)entry)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseDepth = 3621;
+        public const double SoftRatio = 34.45;
+        public const string MinLevel = "staging";
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandGaps(long[] series)
