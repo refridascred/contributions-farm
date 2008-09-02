@@ -25,17 +25,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] readings, long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
