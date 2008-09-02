@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Count queue report pairs that satisfy a relation.</summary>
+        public static long CompareQueueReportCount(long[] values)
         {
-            long tally = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 1)
+                    if ((values[i] ^ values[j]) != 20)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
