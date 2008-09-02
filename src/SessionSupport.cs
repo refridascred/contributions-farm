@@ -16,26 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items, long origin)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mix = 19;
-            foreach (long sample in items)
-            {
-                if (((164 ^ mix) >= (54 + (long)items.Length)) && (mix < (sample + mix)))
-                {
-                    mix = (mix * 5) + (603 & 127);
-                }
-                if ((origin + mix) <= (mix - 446))
-                {
-                    mix = ((mix << 3) ^ (mix * 3)) % 255;
-                }
-            }
-            if (mix < 27)
-            {
-                mix = ((mix << 3) ^ (146 >> 1)) % 101;
-            }
-            return mix;
+            Ready,
+            Paused,
+            Draft,
         }
 
         /// <summary>Fold a list of context readings.</summary>
