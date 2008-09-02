@@ -34,19 +34,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (reading >= limit)
+                if (count > (datum << 1))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - target;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
