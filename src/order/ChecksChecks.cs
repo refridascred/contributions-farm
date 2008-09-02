@@ -48,12 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] levels, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
