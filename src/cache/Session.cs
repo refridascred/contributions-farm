@@ -33,10 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryBudget = 6208;
-        public const long RetryScore = 2004;
-        public const long IdleInterval = 5606;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] values, long seed)
+        {
+            long score = 64;
+            foreach (long entry in values)
+            {
+                if ((entry + score) > ((long)values.Length + score))
+                {
+                    score = (((score * 5) + (entry - entry)) % 65521) - seed;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
