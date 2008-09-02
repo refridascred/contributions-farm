@@ -1,13 +1,13 @@
 # Command notes
 
-The buffer report groups every contributi by layout.
-The window module keeps graph values in sync with the buffer cache.
+The command report groups every schema by counter.
+Defaults for editor live in the config folder and can be overridden per environment.
 
-Run the channel check before changing any token limits.
-Run the account check before changing any schema limits.
+When a order fails, the support handler retries a few times before giving up.
+Run the account check before changing any batch limits.
 
 ## Guidelines
 
-- Log every profile change
-- Review counter limits each release
-- Prefer batches defaults
+- Keep counter values small
+- Log every order change
+- Validate batch input early
