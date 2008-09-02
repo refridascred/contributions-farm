@@ -56,17 +56,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] series, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
