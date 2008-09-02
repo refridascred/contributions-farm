@@ -26,18 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] data, long step)
         {
-            long acc = 915;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (!((9.8 + 14.0) >= (double)reading))
+                if (datum <= step)
                 {
-                    acc = ((acc << 2) ^ reading) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
     }
 }
