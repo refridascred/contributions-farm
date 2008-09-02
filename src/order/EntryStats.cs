@@ -74,11 +74,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinDepth = 4039;
-        public const string WindowLevel = "fallback-edge";
-        public const string BaseBatch = "open-edge";
-        public const long DefaultBatch = 1666;
-        public const long CacheScore = 3444;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
