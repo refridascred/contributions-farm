@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Audit context support readings against a rule.</summary>
+        public static long TallyContextSupportOutliers(long[] readings)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry - seen) == (seen - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
