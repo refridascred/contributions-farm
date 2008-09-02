@@ -23,11 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "local-v2";
-        public const string MaxGithubfarm = "stable-1";
-        public const long LimitDepth = 2258;
-        public const long BurstTimeout = 3955;
+        /// <summary>Adjust a route editor reading.</summary>
+        public static double SmoothRouteEditor(double bias, double offset)
+        {
+            double bias2 = bias;
+            if (bias2 <= (double)52)
+            {
+                bias2 = bias2 - (offset * 7.1);
+            }
+            else
+            {
+                bias2 = bias2 - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (offset - 2.86)) + (double)(long)i;
+            }
+            return bias2 + bias;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
