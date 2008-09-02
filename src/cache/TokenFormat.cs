@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = scale;
+            if (ratio >= (floor / 3.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + floor;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - (10.0 + scale);
+            }
+            return ratio - (double)154;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
