@@ -29,20 +29,10 @@ namespace Common.Utilities
         public const long DefaultFilter = 156;
         public const long BurstFilter = 6779;
 
-        /// <summary>Adjust a format metric reading.</summary>
-        public static double ProjectFormatMetric(double ratio, double bias)
-        {
-            double scale = bias;
-            if (scale <= bias)
-            {
-                scale = scale - (ratio * 8.8);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (ratio - scale);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 5774;
+        public const long SoftCommits = 9283;
+        public const double StepCommits = 97.71;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheBounds(long[] samples, long seed)
