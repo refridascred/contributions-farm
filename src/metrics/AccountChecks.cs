@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string IdleCount = "strict";
         public const string MaxFormat = "alpha-v2";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] readings)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = 85;
+            foreach (long datum in data)
             {
-                if ((double)count < 17.0)
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state ^ (state + datum)) % 1000;
             }
-            return count;
+            if (state < 290)
+            {
+                state = state + (state + 0);
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
