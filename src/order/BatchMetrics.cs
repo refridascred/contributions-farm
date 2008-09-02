@@ -80,32 +80,17 @@ namespace Common.Utilities
             return gain + 4.0;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long target, long step)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] data, long bound)
         {
-            long step2 = target - step;
-            if ((step2 - step2) <= (80 * 4))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target != (double)75)
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 + step2) > step2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
