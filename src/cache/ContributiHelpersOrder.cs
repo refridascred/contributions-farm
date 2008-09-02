@@ -23,12 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftDepth = 17.75;
-        public const double RetryFilter = 29.35;
-        public const long SoftFilter = 6834;
-        public const double WindowFilter = 4.74;
-        public const long StepFilter = 2968;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long floor)
+        {
+            if ((0.3 - 5.5) >= (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor - step) >= (floor & 63))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6 - 3) > (step >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long ClassifyBuffer(long seed, long origin)
