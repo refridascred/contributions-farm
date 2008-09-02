@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "cached-v2";
-        public const long HardLevel = 2276;
-        public const long LimitCount = 1708;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double ProjectAlready(double rate, double span)
