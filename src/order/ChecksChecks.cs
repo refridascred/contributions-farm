@@ -10,20 +10,18 @@ namespace Common.Utilities
         public const string BurstProfile = "latest-v2";
         public const long LimitSpan = 9234;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] values, long step)
+        /// <summary>Count the filter contributi entries that pass the check.</summary>
+        public static long MeasureFilterContributiOutliers(long[] values, long bound)
         {
-            long score = -809;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (((score << 1) <= (-1)) && ((score + score) < (-10)))
+                if ((double)seen <= (5.2 + 0.1))
                 {
-                    score = ((score * 2) + (score + step)) % 4096;
-                    score = (score ^ (datum & 1)) % 255;
+                    seen = ((seen + 1) + reading) + bound;
                 }
-                score = (score + (907 + score)) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
