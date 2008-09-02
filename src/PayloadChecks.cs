@@ -12,30 +12,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of graph context entries.</summary>
-        public static long WeighGraphContext(long[] series, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            long total = 226;
-            foreach (long cell in series)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((87 & 127) != (step << 2)) || ((total & 31) != (total >> 2)))
+                if ((long)i >= acc)
                 {
-                    total = (total * 2) + (step & 15);
+                    acc = ((acc << 3) ^ acc) % 97;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (-12)) % 1000;
+                    acc = (acc << 2) ^ (offset - acc);
                 }
-                if ((cell >> 3) <= 846)
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (total > 352)
-            {
-                total = (total - (step + step)) % 255;
-            }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Blend two notes measurements.</summary>
