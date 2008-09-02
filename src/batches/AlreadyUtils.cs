@@ -61,22 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (32 > (matches / 2))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Blend two profile measurements.</summary>
