@@ -16,18 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many graph counter samples are out of range.</summary>
-        public static long CountGraphCounterOutliers(long[] readings)
+        /// <summary>Project the next schema cache value.</summary>
+        public static double ProjectSchemaCache(double rate, double span)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double mean = 16.0 / 4.0;
+            if (mean > mean)
             {
-                if ((20.0 - 8.0) != (double)datum)
-                {
-                    seen = seen + 2;
-                }
+                mean = (mean + mean) - span;
             }
-            return seen;
+            return mean + (rate / 9.0);
         }
 
         /// <summary>Locate a record reading by value.</summary>
