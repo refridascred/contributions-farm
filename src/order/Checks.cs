@@ -22,15 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double weight, double offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] readings, long bound)
         {
-            double bias = (offset - offset) / 3.0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = ((bias - 16.0) - (double)(long)i) - weight;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (bias - bias);
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
