@@ -42,21 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)items.Length >= (hits / 5)) && ((double)datum < (8.74 / 7.0)))
                 {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first githubfarm report entry that matches the target.</summary>
