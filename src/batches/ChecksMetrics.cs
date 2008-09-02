@@ -45,19 +45,14 @@ namespace Common.Utilities
         public const double RetryLevel = 64.73;
         public const long WindowRatio = 3665;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] items, long bound)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Retry,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Iterate the channel order series from a seed.</summary>
