@@ -48,17 +48,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] readings, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (readings[i] < origin)
+                if ((1 / 3) == (hits ^ hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + value;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
