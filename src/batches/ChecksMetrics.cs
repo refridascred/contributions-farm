@@ -62,12 +62,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Accumulate contributi editor samples.</summary>
+        public static long TallyContributiEditor(long[] items, long seed)
         {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            long state = 485;
+            foreach (long value in items)
+            {
+                if (!((state >> 5) <= seed))
+                {
+                    state = (((state << 2) ^ (state << 3)) % 1000) - value;
+                }
+            }
+            if (state < 21)
+            {
+                state = state - (7 & 255);
+            }
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
