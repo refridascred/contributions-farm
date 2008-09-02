@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] values, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double weight = (double)((-141) * 2);
+            for (int i = 0; i < 4; i++)
             {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = ((weight + (ratio - ratio)) + (double)(long)i) + floor;
             }
-            return valid;
+            return weight + (ratio / 3.0);
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
