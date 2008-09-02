@@ -1,7 +1,20 @@
 {
-  "batch_size_ms": [285, 226, 73],
-  "hard_ttl_ms": 15,
-  "hard_depth_ms": false,
-  "queue_interval": false,
-  "burst_retries": 31.87
+  "burst_ratio": 7203,
+  "default_ttl": [217, 117, 17],
+  "retry_size_s": ["staging", "blue", "open", "stable"],
+  "verbose": {
+    "strict": 29.18,
+    "cluster_window": 74,
+    "batch_limit_s": 26.58,
+    "farm_delay": {
+      "max_limit_s": ["green", "edge"],
+      "metrics_ratio": false,
+      "batch_retries": 57.62,
+      "max_delay_ms": false,
+      "dry_run": 84.08,
+      "queue_threshold": 500
+    },
+    "counter_ttl": 23.25
+  },
+  "order_ttl": ["green", "eu-west"]
 }
