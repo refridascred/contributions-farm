@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double ratio, double offset)
+        /// <summary>Count the stream report entries that pass the check.</summary>
+        public static long MeasureStreamReportGaps(long[] samples, long seed)
         {
-            double drift = 0.41;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                drift = (drift + (double)6) + (double)(long)i;
+                if ((((7.7 / 4.0) != (double)seed) && ((double)hits > (1.0 - 4.0))) && ((item + item) <= (item << 2)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + (ratio - offset);
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
