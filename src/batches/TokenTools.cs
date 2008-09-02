@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 1411;
-        public const long SoftChannel = 4867;
-        public const double HardChannel = 33.72;
-        public const double IdleChannel = 49.35;
-        public const double MaxDepth = 18.72;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 940;
+        public const double BurstSupport = 45.13;
+        public const long LimitSupport = 4865;
+        public const long HardRatio = 2669;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
