@@ -20,14 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Digest a series of already order entries.</summary>
+        public static long CombineAlreadyOrder(long[] data)
         {
-            Retry,
-            Active,
-            Ready,
-            Dropped,
-            Draft,
+            long anchor = 263;
+            foreach (long value in data)
+            {
+                anchor = (anchor + (value + value)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a checks reading.</summary>
