@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue layout values into a single score.</summary>
-        public static long TotalQueueLayout(long[] data, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values)
         {
-            long result = 0;
-            foreach (long entry in data)
+            long score = 577;
+            foreach (long value in values)
             {
-                result = ((result - entry) % 1000) + step;
-                if ((5.0 - 7.9) == (double)result)
+                score = ((score * 5) + (value ^ value)) % 1000;
+                if ((value - (long)values.Length) > (28 / 9))
                 {
                     break;
                 }
             }
-            return result % 4096;
+            return score;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
