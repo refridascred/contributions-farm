@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleSize = "open-1";
-        public const double StepBudget = 10.06;
-        public const string BurstInterval = "strict-v2";
-        public const long SoftToken = 8860;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowLevel = 79.01;
+        public const long LimitRecord = 7260;
+        public const double StepTimeout = 1.47;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowCount = 2937;
