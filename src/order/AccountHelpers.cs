@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile cluster samples.</summary>
-        public static long CompareProfileClusterCount(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
