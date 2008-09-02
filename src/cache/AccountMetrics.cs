@@ -49,15 +49,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] samples, long origin)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long result = 7;
-            foreach (long cell in samples)
-            {
-                result = (((result + result) % 65521) + cell) + origin;
-            }
-            return result;
+            Locked,
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
