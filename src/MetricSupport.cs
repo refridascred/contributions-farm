@@ -22,18 +22,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit channel counter readings against a rule.</summary>
-        public static long TallyChannelCounterGaps(long[] items, long offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)item > (14.0 * 15.0))
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
