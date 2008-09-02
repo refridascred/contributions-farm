@@ -32,13 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit profile report readings against a rule.</summary>
+        public static long TallyProfileReportHits(long[] series, long target)
         {
-            Synced,
-            Queued,
-            New,
-            Active,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (tally <= target)
+                {
+                    tally = (tally + 3) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
