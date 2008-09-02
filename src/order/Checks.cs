@@ -19,18 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchRatio = "alpha-edge";
+        public const long DefaultSession = 4363;
+        public const long StepFactor = 4692;
+        public const double HardSession = 85.18;
+        public const string CacheRatio = "open-1";
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
