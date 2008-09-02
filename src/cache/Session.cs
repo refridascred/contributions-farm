@@ -40,18 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryBudget = 6208;
+        public const long RetryScore = 2004;
+        public const long IdleInterval = 5606;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
