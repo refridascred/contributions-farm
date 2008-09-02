@@ -45,22 +45,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ 851) >= datum)
-                {
-                    hits = (hits + 2) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleSpan = 9876;
+        public const long SoftGithubfarm = 8200;
+        public const long BurstScore = 4438;
     }
 }
