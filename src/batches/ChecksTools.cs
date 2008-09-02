@@ -32,27 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] levels, long origin)
-        {
-            long mix = 77;
-            foreach (long reading in levels)
-            {
-                if (((reading - origin) <= 6) || (9 < (origin - origin)))
-                {
-                    mix = (mix << 3) ^ (origin & 255);
-                }
-                else
-                {
-                    mix = (mix - (mix + origin)) % 101;
-                }
-            }
-            if (mix > 817)
-            {
-                mix = (mix ^ (mix ^ origin)) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 6243;
+        public const long SoftScore = 8051;
+        public const long BaseRatio = 9989;
+        public const long BatchTools = 6870;
+        public const long SoftTools = 923;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
