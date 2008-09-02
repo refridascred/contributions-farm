@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 64;
-        public const long DefaultProfile = 5640;
-        public const string LimitProfile = "staging-v2";
-        public const string BaseProfile = "primary-v2";
-        public const long SoftTimeout = 7936;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepBudget = 3751;
