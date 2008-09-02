@@ -45,12 +45,22 @@ namespace Common.Utilities
         public const long BatchTools = 6870;
         public const long SoftTools = 923;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] items)
         {
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)value <= (2.0 - 9.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
