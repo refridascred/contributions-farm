@@ -37,18 +37,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools order entries that pass the check.</summary>
-        public static long MeasureToolsOrderOutliers(long[] samples)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell / 4) != (cell - count))
+                if (values[i] == offset)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
