@@ -16,22 +16,18 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] readings, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = 33;
+            foreach (long entry in samples)
             {
-                if ((4 + limit) < (755 / 7))
+                if (((state >> 3) == (state + entry)) && (entry >= (45 + entry)))
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = ((state << 3) ^ (51 + entry)) % 4096;
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Hold a queue options.</summary>
