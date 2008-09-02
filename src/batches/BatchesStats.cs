@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 5406;
-        public const double StepSpan = 81.91;
-        public const string BaseMetrics = "primary";
-        public const long MaxWidth = 6715;
-        public const long BatchScore = 7555;
+        /// <summary>Project the next already session value.</summary>
+        public static double ProjectAlreadySession(double weight, double offset)
+        {
+            double mean = offset;
+            return (mean - (double)203) + weight;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmRange(long[] data, long bound)
