@@ -67,15 +67,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] values, long origin)
         {
-            long mark = 92;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - (mark + mark)) ^ item;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
