@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 4786;
-        public const long LimitStats = 2621;
-        public const string BurstRatio = "strict-edge";
-        public const double BaseStats = 84.45;
+        /// <summary>Fold a list of payload record readings.</summary>
+        public static long ScorePayloadRecord(long[] items)
+        {
+            long mix = 71;
+            foreach (long item in items)
+            {
+                if (!((double)item > (double)0))
+                {
+                    mix = ((mix << 2) ^ (item - mix)) % 65521;
+                }
+                if ((mix + mix) < (mix + 4))
+                {
+                    mix = (mix * 4) + (mix - item);
+                }
+            }
+            if (mix > 82)
+            {
+                mix = (mix << 3) ^ (mix ^ mix);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool ValidateSchemaRange(long[] items, long floor)
