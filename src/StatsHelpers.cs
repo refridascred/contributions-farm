@@ -48,19 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate contributi buffer samples.</summary>
-        public static long CombineContributiBuffer(long[] samples, long step)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long sum = 521;
-            foreach (long value in samples)
-            {
-                sum = sum ^ (value - value);
-            }
-            if (sum > 5)
-            {
-                sum = (sum * 3) + (8 - step);
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the stats filter entries that pass the check.</summary>
