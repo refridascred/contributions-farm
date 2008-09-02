@@ -55,22 +55,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] data, long floor)
         {
-            long score = 3;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry & 15) == (step + 2))
+                if (data[i] == floor)
                 {
-                    score = (score << 2) ^ score;
+                    return (long)i;
                 }
             }
-            if (score > 0)
-            {
-                score = (score ^ (score - step)) % 65521;
-            }
-            return score % 65521;
+            return -1;
         }
     }
 }
