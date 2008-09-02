@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] items)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double mean = (double)(343 * 5);
+            if (mean <= (floor - mean))
             {
-                if (!((-66) <= (matches * 4)))
-                {
-                    matches = (matches + 2) ^ value;
-                }
+                mean = (mean + (floor + floor)) + rate;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (12.0 + mean)) + (double)(long)i;
+            }
+            return mean - (double)32;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
