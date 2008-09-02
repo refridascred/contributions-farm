@@ -31,11 +31,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowDepth = "fallback-1";
-        public const long IdleBatch = 6889;
-        public const long RetryBatch = 5747;
-        public const long BurstBatch = 4076;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamHits(long[] readings, long seed)
