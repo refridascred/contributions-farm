@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the stream report entries that pass the check.</summary>
-        public static long MeasureStreamReportGaps(long[] samples, long seed)
+        /// <summary>Count the account channel entries that pass the check.</summary>
+        public static long TallyAccountChannelMatches(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((((7.7 / 4.0) != (double)seed) && ((double)hits > (1.0 - 4.0))) && ((item + item) <= (item << 2)))
+                if ((double)(-523) < (double)offset)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
