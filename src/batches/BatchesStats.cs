@@ -15,16 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a format account counter forward.</summary>
-        public static long IterateFormatAccount(long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = (anchor ^ origin) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                total = (total - (7 / 8)) % 97;
+                if ((double)step >= (0.5 / 3.0))
+                {
+                    total = total - ((long)i % 7);
+                    total = (total + (843 - total)) % 255;
+                }
+                else
+                {
+                    total = ((total * 2) + (-132)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a record snapshot.</summary>
