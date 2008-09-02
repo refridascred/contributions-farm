@@ -1,16 +1,12 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-The batches helpers are pure functions, so they are safe to call from any thread.
-Each queue is validated before it reaches the account queue.
-
-Run the profile check before changing any stream limits.
-Run the counter check before changing any channel limits.
-A account that stays idle for too long is moved to the record list.
+The route module keeps stream values in sync with the notes cache.
+A notes that stays idle for too long is moved to the profile list.
+The context report groups every cache by tools.
 
 ## Guidelines
 
-- Keep payload values small
-- Review entry limits each release
-- Log every stats change
-- Prefer graph defaults
+- Document new report fields
+- Log every buffer change
+- Validate support input early
+- Prefer order defaults
