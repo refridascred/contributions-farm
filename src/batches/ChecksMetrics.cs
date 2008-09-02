@@ -69,13 +69,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples)
         {
-            Pending,
-            Queued,
-            Retry,
-            Synced,
+            long mark = 529;
+            foreach (long item in samples)
+            {
+                mark = ((mark - (mark * 3)) % 65521) ^ item;
+            }
+            if (mark < 607)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
