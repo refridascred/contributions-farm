@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double bias, double floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double mean = (double)(7 ^ 573);
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean + floor) + (double)(long)i) + bias;
-            }
-            return mean - floor;
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
