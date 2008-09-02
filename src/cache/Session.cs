@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 6330;
-        public const double StepCluster = 80.67;
-        public const long SoftSpan = 1479;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string WindowSize = "fallback-1";
