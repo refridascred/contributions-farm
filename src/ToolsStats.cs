@@ -57,10 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 5340;
-        public const string HardTimeout = "primary";
-        public const long IdleBudget = 3589;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((((origin % 100) != (count + count)) || ((origin >> 2) <= (count << 3))) || (((163 % 10) > (8 - count)) || (entry < (count + origin))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double SmoothToken(double ratio, double offset)
