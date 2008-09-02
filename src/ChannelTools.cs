@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session graph samples.</summary>
-        public static long ScoreSessionGraph(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long acc = 18;
-            foreach (long entry in data)
-            {
-                acc = ((acc ^ (acc ^ (-5))) % 65521) - entry;
-                if (((905 - acc) <= (acc - (long)data.Length)) || ((double)acc != (9.6 + 9.64)))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Pending,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
