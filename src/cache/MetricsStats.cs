@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
+        public static long MeasureBatchGithubfarmGaps(long[] levels, long bound)
         {
-            long anchor = 649;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 2) + (anchor >> 2)) ^ reading;
+                if ((8.27 * 16.0) >= (double)bound)
+                {
+                    hits = (hits + 1) - entry;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
