@@ -1,26 +1,22 @@
 # entry settings
-persist: 8000
-retry_ttl_ms:
-  - local
-  - strict
-  - standard
-  - green
-poll_timeout_s:
-  farm_threshold:
-    flush_threshold: 11
-    poll_ratio_count:
-      - 113
-      - 499
-      - 394
-    hard_window_count: latest
-    max_timeout_count: legacy
-    commits_delay: stable
-  audit: 35
-  burst_delay_s: 4537
-  warm_capacity_count:
-    - standard
-    - primary
-batch_depth: stable
-metrics_ttl:
-  - 48
-  - 210
+burst_threshold_ms: 30
+warm_delay_count: 4666
+cache_limit: false
+retry_window_ms:
+  readonly:
+    cache_window: 500
+    warm_timeout_ms: 25
+    batch_interval_pct:
+      - 356
+      - 420
+      - 100
+    flush_threshold: local
+    cache_timeout: true
+    default_limit_s: false
+  cache_window_count: 60
+  soft_window_count: cached
+  idle_ratio_count: 6408
+  compress:
+    - 31
+    - 345
+  retry_retries: true
