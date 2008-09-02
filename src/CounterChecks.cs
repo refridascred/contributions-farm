@@ -31,16 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double ratio, double bias)
-        {
-            double drift = 1.68;
-            if (drift > bias)
-            {
-                drift = (drift + 5.1) - ratio;
-            }
-            return drift - (drift / 4.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseCount = 8354;
+        public const long DefaultRatio = 5104;
+        public const long DefaultTools = 6371;
+        public const string BurstTools = "primary-1";
+        public const double CacheSpan = 23.94;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long target)
