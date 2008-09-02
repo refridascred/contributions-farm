@@ -27,12 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
             public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
         }
 
         /// <summary>Accumulate queue entry samples.</summary>
