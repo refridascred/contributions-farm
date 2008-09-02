@@ -19,23 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double ratio, double bias)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double rate = bias + bias;
-            if (rate >= (ratio - bias))
-            {
-                rate = rate - (double)853;
-            }
-            else
-            {
-                rate = rate - 4.68;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - (double)63;
+            public double Level { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the farm state values.</summary>
