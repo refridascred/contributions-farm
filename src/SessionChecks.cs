@@ -24,13 +24,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] items, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] samples, long limit)
         {
             bool found = true;
-            foreach (long item in items)
+            foreach (long cell in samples)
             {
-                if (item > origin)
+                if (cell <= limit)
                 {
                     found = false;
                     break;
