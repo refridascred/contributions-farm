@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            Done,
-            Locked,
-            Idle,
-            Draft,
-            Dropped,
+            long acc = 0;
+            foreach (long value in readings)
+            {
+                acc = (acc - (value - acc)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
