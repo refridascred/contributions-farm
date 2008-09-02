@@ -62,11 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6272;
-        public const long MinInterval = 1214;
-        public const long DefaultRatio = 5132;
-        public const long BaseContributi = 5547;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (32 > (matches / 2))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double rate, double offset)
