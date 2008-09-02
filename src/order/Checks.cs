@@ -34,12 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Roll a format report counter forward.</summary>
+        public static long SeriesFormatReport(long target)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((50 >= (anchor - anchor)) || ((0 >> 5) < (long)i))
+                {
+                    anchor = anchor - target;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a entry reading.</summary>
