@@ -27,19 +27,13 @@ namespace Common.Utilities
             return (scale2 + floor) + scale;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] values, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Derive the next format entry value from a seed.</summary>
