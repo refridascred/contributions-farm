@@ -46,11 +46,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 3493;
-        public const long IdleEntry = 8888;
-        public const double IdleTimeout = 85.56;
-        public const long MinEntry = 9261;
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long limit, long limit2)
