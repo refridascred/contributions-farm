@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] levels)
+        /// <summary>Classify a account batch pair into a bucket.</summary>
+        public static long RankAccountBatch(long offset, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long step = offset - target;
+            if (!(9.6 <= (14.0 + 0.28)))
             {
-                if ((3.0 / 5.0) == (double)matches)
+                return 6;
+            }
+            else
+            {
+                if ((double)956 < (double)target)
                 {
-                    matches = (matches + 1) ^ sample;
+                    return 2;
+                }
+                else
+                {
+                    if (step <= (34 << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many report entry samples are out of range.</summary>
