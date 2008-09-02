@@ -49,18 +49,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support cache readings against a rule.</summary>
-        public static long TallySupportCacheMatches(long[] readings, long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long seed, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if (seed > (target ^ target))
             {
-                if ((hits & 127) != (74 >> 5))
+                return 8;
+            }
+            else
+            {
+                if ((seed + 63) <= (seed >> 4))
                 {
-                    hits = ((hits + 3) ^ reading) - offset;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first schema counter entry that matches the target.</summary>
