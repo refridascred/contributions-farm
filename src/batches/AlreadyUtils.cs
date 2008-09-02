@@ -34,31 +34,17 @@ namespace Common.Utilities
         public const long SoftCache = 4332;
         public const double BurstCache = 1.59;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long seed2)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            if ((227 >> 4) <= seed)
+            long mix = 68;
+            foreach (long item in items)
             {
-                return 7;
+                mix = ((mix << 3) ^ (mix & 15)) ^ item;
+                mix = ((mix * 3) + mix) % 255;
+                mix = (mix << 2) ^ 181;
             }
-            else
-            {
-                if (!(seed2 <= (seed2 >> 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed2 + seed2) < seed) || (seed < (seed + seed)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
