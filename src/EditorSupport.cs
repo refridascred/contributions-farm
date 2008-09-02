@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((count >> 5) == (count & 63)) && ((count + reading) == (count - origin)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultSpan = 10.96;
+        public const long BaseFactor = 7683;
+        public const string HardTimeout = "open-v2";
+        public const long StepChecks = 3117;
+        public const double LimitChecks = 21.34;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphRange(long[] readings, long seed)
