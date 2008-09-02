@@ -1,8 +1,7 @@
 {
-  "poll_interval_ms": "cached",
-  "min_limit_pct": true,
-  "command_ratio": "local",
-  "support_size": [473, 336, 273, 440],
-  "burst_depth_count": [162, 260, 69],
-  "min_delay": ["local", "latest", "eu-west"]
+  "buffer_capacity": "legacy",
+  "min_size": 13,
+  "graph_threshold": [64, 426],
+  "flush_ttl": "primary",
+  "stats_interval": 96
 }
