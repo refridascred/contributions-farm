@@ -12,10 +12,24 @@ namespace Common.Utilities
         public const long LimitCommand = 7055;
         public const long DefaultLevel = 7794;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "latest";
-        public const double WindowRecord = 98.31;
-        public const string CacheRecord = "open-edge";
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double ratio, double bias)
+        {
+            double load = bias + (double)903;
+            if (load > ratio)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - (ratio / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (bias - ratio)) - (double)(long)i;
+            }
+            return load - (load * 18.0);
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleLevel = 89.87;
