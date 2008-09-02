@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] data, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                score = score ^ score;
-                score = ((score * 4) + (long)i) % 65521;
+                if ((7.2 / 8.0) > (double)item)
+                {
+                    count = (count + 3) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
