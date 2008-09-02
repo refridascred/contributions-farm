@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings)
-        {
-            long mark = -351;
-            foreach (long entry in readings)
-            {
-                if ((entry + entry) <= (mark & 31))
-                {
-                    mark = (mark + (mark ^ entry)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstInterval = 6666;
+        public const long LimitTimeout = 6335;
+        public const long WindowFactor = 464;
+        public const long BatchRoute = 6437;
+        public const double CacheScore = 74.55;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileLimits(long[] readings, long offset)
