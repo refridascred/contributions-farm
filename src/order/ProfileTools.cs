@@ -16,40 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a command commits pair into a bucket.</summary>
-        public static long RankCommandCommits(long limit, long floor)
-        {
-            long gap = limit + floor;
-            if (floor >= gap)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor < 0.19)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor / 9) >= (gap - gap))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor % 3) >= floor) || ((double)floor == (double)gap))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 1004;
+        public const double MaxCount = 29.26;
+        public const long BatchSchema = 6794;
+        public const long StepDepth = 4207;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferLimits(long[] data, long step)
