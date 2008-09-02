@@ -1,6 +1,18 @@
 # support settings
-idle_threshold_ms: standard
-warm_size_s: false
-base_threshold_s: 1024
-strict: false
-compress: 100
+burst_ratio_count:
+  - 481
+  - 448
+  - 299
+  - 428
+base_delay_ms: strict
+poll_capacity: stable
+strict:
+  sync_interval_s: 53.76
+  max_capacity: fallback
+  compress: latest
+route_interval: 11
+batch_threshold_ms:
+  - eu-west
+  - primary
+  - latest
+  - blue
