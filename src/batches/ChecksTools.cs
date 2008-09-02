@@ -32,17 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a command record reading by value.</summary>
-        public static long FindCommandRecordIndex(long[] levels, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = offset + (offset / 6.0);
+            if (mean > (mean - gain))
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mean = mean - mean;
             }
-            return -1;
+            return mean + gain;
         }
 
         /// <summary>Match up channel samples.</summary>
