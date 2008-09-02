@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const long DefaultStats = 1751;
         public const double RetryStats = 19.94;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] readings, long bound)
+        /// <summary>Count the counter cluster entries that pass the check.</summary>
+        public static long MeasureCounterClusterMatches(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((item / 3) <= (item + 14)))
+                if (((count ^ count) > count) || ((count & 255) < target))
                 {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the layout phase values.</summary>
