@@ -44,11 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxSpan = 972;
-        public const double MaxOrder = 13.17;
-        public const string StepFactor = "open-edge";
-        public const string SoftCount = "local";
-        public const double RetryBudget = 72.92;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (6.97 < (double)count)
+                {
+                    count = ((count + 3) ^ cell) - step;
+                }
+            }
+            return count;
+        }
     }
 }
