@@ -25,11 +25,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 7502;
-        public const string StepDepth = "alpha-v2";
-        public const string MaxFormat = "stable-edge";
-        public const long CacheSpan = 3540;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] data, long bound)
+        {
+            long acc = 5;
+            foreach (long reading in data)
+            {
+                if ((double)reading != (5.56 / 4.0))
+                {
+                    acc = (acc ^ (acc & 15)) % 65521;
+                }
+            }
+            if (acc > 529)
+            {
+                acc = ((acc * 2) + bound) % 4096;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
