@@ -63,11 +63,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 3713;
-        public const double DefaultCount = 72.06;
-        public const long BurstEditor = 2759;
-        public const long SoftSpan = 348;
-        public const long DefaultEditor = 975;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
