@@ -27,15 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double bias, double bias2)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double scale = bias / 3.0;
-            if (scale <= bias)
-            {
-                scale = (scale + scale) + bias2;
-            }
-            return scale - bias;
+            Pending,
+            Queued,
+            Stale,
+            Synced,
         }
     }
 }
