@@ -33,39 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long origin, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long cur = origin ^ target;
-            if (11.0 <= (double)cur)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((40 % 2) != (origin + 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((52 & 15) > target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((cur + cur) < (target << 1)) || (593 < (cur - 859)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
