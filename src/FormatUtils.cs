@@ -65,17 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel format reading by value.</summary>
-        public static long SeekChannelFormatIndex(long[] levels, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Active,
+            Done,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
