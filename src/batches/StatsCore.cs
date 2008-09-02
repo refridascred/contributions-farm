@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Find the first payload support entry that matches the target.</summary>
+        public static long SeekPayloadSupportIndex(long[] samples, long limit)
         {
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
