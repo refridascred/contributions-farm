@@ -42,22 +42,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] values, long origin)
+        /// <summary>Count the command format entries that pass the check.</summary>
+        public static long AuditCommandFormatGaps(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (!(((origin >> 2) < (entry - entry)) || ((origin / 9) >= (90 - origin))))
+                if (!((item * 3) > item))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
