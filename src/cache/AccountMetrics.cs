@@ -58,21 +58,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 348;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((99 * 5) == (mark ^ target))
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark * 2) + (datum & 7)) % 255;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
