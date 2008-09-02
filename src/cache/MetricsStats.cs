@@ -27,13 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] values)
         {
-            Stale,
-            Idle,
-            Locked,
-            New,
+            long result = 5;
+            foreach (long sample in values)
+            {
+                if (sample >= (sample - sample))
+                {
+                    result = result + (result & 63);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a payload options.</summary>
