@@ -61,15 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] series, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
