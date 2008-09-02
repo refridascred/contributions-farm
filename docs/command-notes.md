@@ -1,12 +1,16 @@
 # Command notes
 
-Use window settings to tune how often filter data is refreshed.
-Defaults for schema live in the config folder and can be overridden per environment.
-The notes report groups every report by report.
+Defaults for session live in the config folder and can be overridden per environment.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Each queue is validated before it reaches the account queue.
+
+Run the profile check before changing any stream limits.
+Run the counter check before changing any channel limits.
+A account that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Validate context input early
-- Keep buffer values small
-- Log every token change
-- Review tools limits each release
+- Keep payload values small
+- Review entry limits each release
+- Log every stats change
+- Prefer graph defaults
