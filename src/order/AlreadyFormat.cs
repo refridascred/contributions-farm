@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            Failed,
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Accumulate channel layout samples.</summary>
