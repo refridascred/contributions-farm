@@ -1,19 +1,9 @@
 # support settings
-readonly: strict
-enabled: 81.17
-verbose: 6
-strict:
-  contributi_timeout:
-    - standard
-    - green
-    - latest
-  hard_window:
-    enabled: 250
-    stats_interval: legacy
-    default_timeout: 583
-    base_interval_ms: legacy
-  stats_ttl: primary
-  token_capacity: staging
-  report_timeout: 51.85
-poll_threshold_ms: 55.97
-cache_timeout_pct: true
+soft_interval_count:
+  - primary
+  - local
+cache_delay_s: 5
+hard_retries_ms: 12
+sync_ttl_count: open
+dry_run: 1024
+cache_capacity_s: true
