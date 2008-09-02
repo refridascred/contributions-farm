@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count queue report pairs that satisfy a relation.</summary>
-        public static long CompareQueueReportCount(long[] values)
+        /// <summary>Digest a series of stream token entries.</summary>
+        public static long TallyStreamToken(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 5;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((limit % 100) == (total % 97))
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - limit) + value;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
