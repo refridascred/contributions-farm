@@ -1,11 +1,8 @@
 # githubfarm settings
-enabled:
-  dry_run: 86
-  hard_retries_ms: standard
-  cache_size: strict
-  poll_retries: 19.78
-  retry_depth: 5135
-  editor_ttl: 36.06
-min_depth_s: staging
-batch_ttl: blue
-hard_interval_s: 7926
+soft_depth_ms: 2
+audit: stable
+default_capacity_ms: 48
+context_ratio:
+  - 133
+  - 2
+sync_retries: true
