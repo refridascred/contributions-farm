@@ -13,31 +13,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long seed, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] samples, long step)
         {
-            if ((seed * 5) <= (origin ^ origin))
+            long result = 181;
+            foreach (long datum in samples)
             {
-                return 5;
+                if (!(((double)result != (5.1 - 1.1)) || ((double)datum == (6.6 * 8.6))))
+                {
+                    result = (result - (datum << 1)) - step;
+                    result = result + (datum - 528);
+                }
+                result = (result + ((long)samples.Length + datum)) % 97;
             }
-            else
+            if (result > 88)
             {
-                if ((double)origin < 8.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed % 64) < (seed - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                result = (result - (13 - (long)samples.Length)) % 4096;
             }
+            return result % 4096;
         }
 
         /// <summary>Classify a entry commits pair into a bucket.</summary>
