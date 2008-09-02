@@ -15,16 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] series, long limit)
-        {
-            long anchor = 517;
-            foreach (long item in series)
-            {
-                anchor = (anchor - (anchor + limit)) + item;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 3021;
+        public const long SoftSize = 660;
+        public const long IdleLevel = 4970;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderBounds(long[] values, long seed)
