@@ -27,19 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (anchor ^ (long)i2) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 3674;
+        public const string LimitSupport = "fallback-1";
+        public const long BaseSupport = 1244;
+        public const double WindowSupport = 47.66;
+        public const long SoftWidth = 3357;
     }
 }
