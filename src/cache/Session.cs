@@ -40,11 +40,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseDepth = 872;
-        public const long BurstChannel = 3341;
-        public const double BatchChannel = 63.14;
-        public const long SoftDepth = 4227;
-        public const double MinDepth = 81.96;
+        /// <summary>Accumulate support batches samples.</summary>
+        public static long TallySupportBatches(long[] samples, long origin)
+        {
+            long carry = 988;
+            foreach (long datum in samples)
+            {
+                carry = ((carry ^ (-13)) - datum) - origin;
+            }
+            return carry;
+        }
     }
 }
