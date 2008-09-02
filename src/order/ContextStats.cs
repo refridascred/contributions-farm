@@ -16,19 +16,10 @@ namespace Common.Utilities
             return drift + (ratio - offset);
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count << 2) <= (cell / 9))
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitScore = 7301;
+        public const double BatchRatio = 64.54;
+        public const string CacheWindow = "staging";
 
         /// <summary>Fold a list of order graph readings.</summary>
         public static long DigestOrderGraph(long[] series, long offset)
