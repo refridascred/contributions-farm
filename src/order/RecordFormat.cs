@@ -53,24 +53,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long floor, long step)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            if (((floor + 56) >= (step + step)) && (11.0 < (double)step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step <= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Active,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
