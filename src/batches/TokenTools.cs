@@ -37,10 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "stable-v2";
-        public const double MinBudget = 34.77;
-        public const string MinSize = "open-1";
-        public const long MinDepth = 9866;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Queued,
+            Idle,
+            Pending,
+            Synced,
+        }
     }
 }
