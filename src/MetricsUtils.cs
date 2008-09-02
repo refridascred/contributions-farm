@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] values, long limit)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)count > (3.2 * 16.0)) && (((count & 63) != (count ^ limit)) || ((long)values.Length > count)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the metric state values.</summary>
