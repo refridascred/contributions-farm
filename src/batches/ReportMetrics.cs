@@ -34,22 +34,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels, long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (matches > (9 & 3))
-                {
-                    matches = ((matches + 1) ^ reading) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 5) + ((long)i - (long)i)) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
     }
 }
