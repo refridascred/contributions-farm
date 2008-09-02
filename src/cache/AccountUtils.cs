@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Grade a window contributi value against two limits.</summary>
+        public static long BucketWindowContributi(long limit, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            long next = limit ^ offset;
+            if ((limit >> 1) > (next + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-86) << 2) <= next)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
