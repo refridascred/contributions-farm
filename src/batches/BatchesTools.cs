@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of commits account readings.</summary>
-        public static long FoldCommitsAccount(long[] items)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long state = 50;
-            foreach (long entry in items)
-            {
-                state = (state ^ (entry + state)) % 255;
-            }
-            return state;
+            Ready,
+            Queued,
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Combine farm payload values into a single score.</summary>
