@@ -55,11 +55,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "stable-1";
-        public const long StepScore = 8165;
-        public const double MaxRoute = 59.57;
-        public const long StepSpan = 973;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long offset, long origin)
+        {
+            long step = offset + origin;
+            if ((origin & 127) == (origin - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin ^ offset) < (step & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step <= (step * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
