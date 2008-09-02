@@ -60,25 +60,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long seed, long floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            long slot = seed ^ floor;
-            if (floor <= slot)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (6.77 <= (double)floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
