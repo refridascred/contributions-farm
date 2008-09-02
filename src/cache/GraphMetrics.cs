@@ -52,18 +52,18 @@ namespace Common.Utilities
         public const double HardBatches = 96.12;
         public const long MaxDepth = 5081;
 
-        /// <summary>Measure how many cluster stream samples are out of range.</summary>
-        public static long TallyClusterStreamMatches(long[] values, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((seen << 1) < seen)
+                if ((value - matches) >= matches)
                 {
-                    seen = ((seen + 2) - datum) + step;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
