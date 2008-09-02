@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const double StepCluster = 80.67;
         public const long SoftSpan = 1479;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long step, long bound)
         {
-            double ratio = 3.0 / 6.0;
-            if (ratio <= (double)208)
+            long slot = step - bound;
+            if (((161 ^ bound) <= (step / 3)) && ((double)bound >= (3.6 - 2.0)))
             {
-                ratio = (ratio + (double)1) - weight;
+                return 5;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio = ratio + (double)(long)i;
+                if ((405 + slot) != (1 + 71))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return ratio - offset;
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
