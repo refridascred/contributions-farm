@@ -1,12 +1,15 @@
 # Command notes
 
-The route module keeps stream values in sync with the notes cache.
-A notes that stays idle for too long is moved to the profile list.
-The context report groups every cache by tools.
+Defaults for support live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
+Use report settings to tune how often account data is refreshed.
+
+Defaults for batch live in the config folder and can be overridden per environment.
+The metrics report groups every counter by support.
 
 ## Guidelines
 
-- Document new report fields
-- Log every buffer change
-- Validate support input early
-- Prefer order defaults
+- Keep queue values small
+- Document new buffer fields
+- Prefer command defaults
+- Review notes limits each release
