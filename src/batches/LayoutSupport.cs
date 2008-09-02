@@ -30,15 +30,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Find the first support profile entry that matches the target.</summary>
+        public static long LookupSupportProfileIndex(long[] items, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
