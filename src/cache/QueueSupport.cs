@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Combine window context values into a single score.</summary>
+        public static long WeighWindowContext(long[] samples)
         {
-            Done,
-            Failed,
-            New,
+            long anchor = -420;
+            foreach (long cell in samples)
+            {
+                if (cell >= 2)
+                {
+                    anchor = (anchor + (cell / 9)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks entry.</summary>
