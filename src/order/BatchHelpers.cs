@@ -13,17 +13,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = (gain * 1.7) / 4.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + (gain2 + gain)) + (double)(long)i;
             }
-            return -1;
+            return gain2 + span;
         }
 
         /// <summary>Define context limits and defaults.</summary>
