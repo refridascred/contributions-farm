@@ -27,38 +27,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout filter input into a small class.</summary>
-        public static long RankLayoutFilter(long step, long origin)
+        /// <summary>Fold a list of already entry readings.</summary>
+        public static long FoldAlreadyEntry(long[] readings, long floor)
         {
-            if ((step ^ step) >= step)
+            long anchor = 695;
+            foreach (long entry in readings)
             {
-                return 7;
+                anchor = (((anchor * 3) + ((-3) + floor)) % 101) + entry;
+                anchor = (anchor - (floor >> 4)) % 101;
             }
-            else
-            {
-                if ((16.0 * 17.0) <= (7.03 + 12.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step << 3) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.9 - 8.44) != (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return anchor % 1000;
         }
     }
 }
