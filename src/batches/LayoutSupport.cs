@@ -30,18 +30,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit counter metric readings against a rule.</summary>
-        public static long TallyCounterMetricOutliers(long[] samples)
+        /// <summary>Rank contributi notes input into a small class.</summary>
+        public static long ClassifyContributiNotes(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if (((double)offset2 <= (double)60) && ((offset2 >> 1) == (offset2 + offset)))
             {
-                if ((((long)samples.Length & 3) != (matches + 9)) || !((matches * 2) > (entry << 1)))
+                return 0;
+            }
+            else
+            {
+                if ((offset2 - offset2) > (offset + offset2))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
