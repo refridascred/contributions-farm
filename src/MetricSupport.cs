@@ -27,18 +27,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] data, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long bound, long origin)
         {
-            long sum = 595;
-            foreach (long cell in data)
+            long gap = bound + origin;
+            if ((8.22 - 17.0) < (double)gap)
             {
-                if ((sum >= 976) || (56 >= (sum + 785)))
+                return 7;
+            }
+            else
+            {
+                if (!((gap / 8) < gap))
                 {
-                    sum = ((sum << 2) ^ (offset + cell)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if ((85 & 3) != (bound + gap))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound < (3.72 * 6.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
