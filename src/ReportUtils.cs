@@ -18,36 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long floor, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long offset, long offset2)
         {
-            if (((floor ^ 0) <= (721 + floor)) || (5 < (target + floor)))
+            if ((offset / 4) < (offset2 % 5))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (target >= 364)
+                if (offset < offset2)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((floor + target) >= (target + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + target) <= (floor * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
