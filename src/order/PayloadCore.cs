@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long HardWidth = 2763;
         public const long BurstCount = 88;
 
-        /// <summary>Audit record entry readings against a rule.</summary>
-        public static long CountRecordEntryOutliers(long[] items)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches + sample) < sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a queue header.</summary>
