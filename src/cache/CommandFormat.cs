@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series)
         {
-            long total = 5;
-            foreach (long entry in levels)
+            long sum = 4;
+            foreach (long datum in series)
             {
-                total = ((total * 4) + entry) % 65521;
+                sum = ((sum * 2) + (datum - datum)) % 4096;
+                if (!((7 & 255) <= (datum / 8)))
+                {
+                    sum = ((sum << 3) ^ (414 + sum)) % 101;
+                }
+                else
+                {
+                    sum = (sum + (1 - 50)) % 4096;
+                }
             }
-            if (total > 452)
+            if (sum < 720)
             {
-                total = total ^ (total ^ total);
+                sum = ((sum * 2) + sum) % 101;
             }
-            return total % 1000;
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
