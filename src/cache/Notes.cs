@@ -19,13 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long target, long step)
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            long next = target ^ step;
+            if (((double)next < (4.2 - 3.4)) || ((double)step == (1.0 - 1.76)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)step >= (7.69 * 5.35)) || (next >= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((2.9 - 1.0) > (double)next) && ((10.0 / 9.0) >= (double)next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
