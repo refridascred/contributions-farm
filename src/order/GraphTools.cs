@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels, long origin)
-        {
-            long anchor = 30;
-            foreach (long value in levels)
-            {
-                anchor = (((anchor - (91 & 255)) % 65521) ^ value) + origin;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTools = "cached-v2";
+        public const long HardLevel = 2276;
+        public const long LimitCount = 1708;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TotalChecks(long[] series)
