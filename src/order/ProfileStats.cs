@@ -28,23 +28,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of command support entries.</summary>
-        public static long FoldCommandSupport(long[] items)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long state = 75;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 2) + reading) % 101;
-                if (((4.51 - 7.4) >= (double)reading) && (14.0 > (double)reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state * 5) + (reading + state);
-                }
-                if (!(state < (-556)))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Blend two token tools measurements.</summary>
