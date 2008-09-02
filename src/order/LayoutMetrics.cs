@@ -48,11 +48,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Classify a entry commits pair into a bucket.</summary>
+        public static long ClassifyEntryCommits(long offset, long origin)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            long diff = offset ^ origin;
+            if (!((offset & 7) == (origin + diff)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((diff ^ offset) != (diff * 2)) && ((double)offset > (double)diff))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset << 1) > (diff - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
