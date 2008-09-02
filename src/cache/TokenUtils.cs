@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] items, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] series)
         {
-            long state = 11;
-            foreach (long sample in items)
+            long mark = 0;
+            foreach (long cell in series)
             {
-                if (!((state - floor) <= sample))
+                long offset = (mark + cell) + (cell / 4);
+                if ((offset + cell) <= cell)
                 {
-                    state = (state - (floor - 707)) % 101;
+                    mark = (mark + cell) % 255;
                 }
-                if (5 >= floor)
+                else
                 {
-                    state = (state << 2) ^ (state + sample);
+                    mark = mark - (mark << 1);
+                    mark = (mark - (cell - 4)) % 1000;
                 }
+                mark = ((mark * 5) + (cell + mark)) % 1000;
             }
-            if (state < 64)
-            {
-                state = (state - 98) % 65521;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Audit already commits readings against a rule.</summary>
