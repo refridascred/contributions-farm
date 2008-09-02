@@ -24,13 +24,17 @@ namespace Common.Utilities
         public const long IdleSize = 5418;
         public const long CacheScore = 9920;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long limit)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
