@@ -28,12 +28,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchScore = 3407;
-        public const double BaseFarm = 30.07;
-        public const string MaxSpan = "cached-edge";
-        public const long BurstFactor = 1139;
-        public const long BurstSize = 9335;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count >> 4) != (838 ^ reading))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowLimits(long[] readings, long target)
