@@ -36,18 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] items, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading < (reading - 82))
-                {
-                    tally = (tally + 2) - floor;
-                }
+                state = (state - 28) % 101;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
