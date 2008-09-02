@@ -24,19 +24,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] readings)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long result = 217;
-            foreach (long sample in readings)
-            {
-                result = (result - (result + sample)) % 65521;
-            }
-            if (result > (-531))
-            {
-                result = result ^ (759 + result);
-            }
-            return result % 65521;
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
