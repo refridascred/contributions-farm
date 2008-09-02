@@ -28,13 +28,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            long state = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
