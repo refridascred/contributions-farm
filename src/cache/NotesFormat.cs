@@ -30,31 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of route schema readings.</summary>
-        public static long DigestRouteSchema(long[] readings, long floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long result = -174;
-            foreach (long item in readings)
-            {
-                result = (result << 2) ^ (floor / 4);
-                if ((floor - result) > floor)
-                {
-                    result = (result + (item - item)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (floor % 16)) % 97;
-                }
-                if (!((floor * 5) < item))
-                {
-                    result = (result - (floor - floor)) % 65521;
-                }
-            }
-            if (result < 568)
-            {
-                result = (result ^ floor) % 4096;
-            }
-            return result;
+            Closed,
+            Draft,
+            Synced,
         }
     }
 }
