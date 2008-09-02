@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "open";
-        public const long MinTools = 4292;
-        public const double RetryDepth = 39.12;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Done,
+            Failed,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 6307;
