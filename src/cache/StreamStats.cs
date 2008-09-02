@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] samples)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches <= (matches + 21)) || (((long)samples.Length ^ matches) <= (cell + cell)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
