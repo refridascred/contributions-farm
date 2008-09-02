@@ -44,19 +44,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate farm payload readings against a bound.</summary>
-        public static bool CheckFarmPayloadBounds(long[] samples, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Ready,
+            Pending,
+            Active,
         }
     }
 }
