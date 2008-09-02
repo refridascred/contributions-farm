@@ -16,13 +16,12 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
             Pending,
-            Done,
+            Idle,
             Ready,
-            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
