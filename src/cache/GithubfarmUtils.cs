@@ -20,16 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of already order entries.</summary>
-        public static long CombineAlreadyOrder(long[] data)
-        {
-            long anchor = 263;
-            foreach (long value in data)
-            {
-                anchor = (anchor + (value + value)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleTimeout = "cached-edge";
+        public const long BaseProfile = 6294;
+        public const long CacheProfile = 8998;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double SmoothChecks(double ratio, double span)
