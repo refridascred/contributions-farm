@@ -41,15 +41,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two record filter measurements.</summary>
-        public static double BlendRecordFilter(double weight, double floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double bias = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (weight + floor)) - (double)(long)i;
-            }
-            return bias - (floor + weight);
+            Locked,
+            Dropped,
+            Closed,
+            Active,
+            Done,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
