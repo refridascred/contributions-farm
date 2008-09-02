@@ -36,17 +36,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a farm context sample.</summary>
-        public static long SeekFarmContextIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 5032;
+        public const long LimitCount = 3574;
+        public const string RetryInterval = "fallback-v2";
     }
 }
