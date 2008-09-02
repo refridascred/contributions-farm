@@ -13,18 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] values, long target)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (cell < seen)
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Fold a list of already entry readings.</summary>
