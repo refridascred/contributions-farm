@@ -33,19 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already account entries.</summary>
-        public static long FoldAlreadyAccount(long[] values, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long step, long floor)
         {
-            long acc = 125;
-            foreach (long item in values)
+            long cur = step - floor;
+            if (((cur + floor) >= (cur - 1)) || (step <= (step - cur)))
             {
-                acc = ((acc ^ acc) % 4096) - item;
+                return 6;
             }
-            if (acc < 80)
+            else
             {
-                acc = acc - (seed * 3);
+                if ((double)cur != (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step & 7) < (step % 16))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((((-282) % 60) < (floor + 7)) || ((double)396 >= (double)cur))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
