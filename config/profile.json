@@ -1,11 +1,8 @@
 {
-  "audit": 1128,
-  "burst_retries_pct": {
-    "editor_size": "green",
-    "commits_ratio": ["local", "standard", "legacy", "fallback"],
-    "persist": 500
-  },
-  "poll_delay": "strict",
-  "sync_timeout_ms": 51.29,
-  "idle_ratio": true
+  "cache_depth_pct": "fallback",
+  "cache_timeout": 38.47,
+  "hard_ratio_pct": 6154,
+  "min_window_pct": 60.28,
+  "compress": 21.63,
+  "stream_ratio": "stable"
 }
