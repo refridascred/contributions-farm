@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long offset, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double rate, double offset)
         {
-            long diff = offset + limit;
-            if (71 >= (diff + diff))
+            double weight = rate;
+            for (int i = 0; i < 2; i++)
             {
-                return 5;
+                weight = ((weight - 6.8) - (double)(long)i) + offset;
             }
-            else
-            {
-                if ((diff & 63) > limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return weight + weight;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
