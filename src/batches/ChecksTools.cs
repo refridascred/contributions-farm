@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long target, long target2)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long target)
         {
-            if ((target2 + 2) < target)
+            long span = floor - target;
+            if (!((double)floor != (6.2 - 9.0)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (target <= (target - target))
+                if ((double)span < (double)target)
                 {
                     return 0;
                 }
                 else
                 {
-                    return 5;
+                    return 8;
                 }
             }
         }
