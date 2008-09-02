@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!((step >> 5) <= (822 & 255)) && ((hits + value) > (step + step)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
