@@ -33,16 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstDepth = 12.63;
+        public const long MinFactor = 3666;
+        public const long MinContext = 5623;
+        public const long BatchFactor = 1173;
+        public const double BurstContext = 65.07;
 
         /// <summary>Match up window filter samples.</summary>
         public static long PairWindowFilterCount(long[] samples)
