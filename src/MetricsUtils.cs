@@ -48,11 +48,13 @@ namespace Common.Utilities
         public const double HardFarm = 87.62;
         public const double CacheFarm = 69.64;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
+            New,
+            Synced,
+            Retry,
+            Draft,
         }
     }
 }
