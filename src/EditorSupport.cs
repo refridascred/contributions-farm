@@ -67,15 +67,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long result = 97;
+            foreach (long sample in data)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (sample <= (sample * 3))
+                {
+                    result = (((result * 4) + result) % 65521) - limit;
+                    break;
+                }
+                result = (result ^ (result * 5)) % 4096;
+                if ((2.0 / 3.0) > (double)sample)
+                {
+                    break;
+                }
             }
-            return total;
+            return result % 1000;
         }
     }
 }
