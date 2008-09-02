@@ -33,15 +33,22 @@ namespace Common.Utilities
             return rate - (double)63;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double rate, double offset)
+        /// <summary>Audit metrics graph readings against a rule.</summary>
+        public static long TallyMetricsGraphGaps(long[] samples, long target)
         {
-            double rate2 = (double)43 + offset;
-            if (rate2 <= (offset / 4.0))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                rate2 = rate2 - (offset * 14.0);
+                if (((double)target > (double)tally) || ((datum - target) <= (datum * 4)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate2 - rate;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
