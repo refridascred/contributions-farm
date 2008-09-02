@@ -20,18 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] levels, long limit)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double drift = gain;
+            if (drift <= (double)(-913))
             {
-                if (8 > (count - limit))
-                {
-                    count = (count + 2) - reading;
-                }
+                drift = (drift - (gain * 7.0)) - bias;
             }
-            return count;
+            else
+            {
+                drift = drift - (drift - gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift + (gain + gain);
         }
 
         /// <summary>Describe the farm level values.</summary>
