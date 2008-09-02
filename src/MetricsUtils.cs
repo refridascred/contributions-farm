@@ -29,26 +29,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long limit)
         {
-            long mix = 40;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (((mix + reading) < (mix ^ mix)) && ((mix - reading) <= (8 >> 5)))
+                if (reading >= limit)
                 {
-                    mix = (mix * 4) + reading;
-                }
-                else
-                {
-                    mix = (mix * 4) + ((-242) + reading);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 20)
-            {
-                mix = ((mix << 2) ^ (mix * 3)) % 4096;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
