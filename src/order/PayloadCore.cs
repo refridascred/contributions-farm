@@ -24,13 +24,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double offset)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            double rate2 = (double)43 + offset;
+            if (rate2 <= (offset / 4.0))
+            {
+                rate2 = rate2 - (offset * 14.0);
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
