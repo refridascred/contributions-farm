@@ -44,12 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Validate farm payload readings against a bound.</summary>
+        public static bool CheckFarmPayloadBounds(long[] samples, long seed)
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
