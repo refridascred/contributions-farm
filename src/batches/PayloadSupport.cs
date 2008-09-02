@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseLevel = 7900;
-        public const long BurstTools = 1358;
-        public const long IdleTools = 1004;
-        public const long BurstTimeout = 8425;
-        public const long WindowWidth = 2904;
+        /// <summary>Grade a session payload value against two limits.</summary>
+        public static long RankSessionPayload(long limit, long floor)
+        {
+            long diff = limit - floor;
+            if ((floor % 60) == (2 + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit > (limit + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - diff) <= (487 / 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LocateSchemaIndex(long[] values, long target)
