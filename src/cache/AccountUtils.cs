@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
