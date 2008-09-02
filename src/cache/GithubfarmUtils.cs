@@ -37,11 +37,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
