@@ -45,18 +45,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] readings)
         {
-            long acc = -43;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (((acc + acc) > (reading ^ acc)) || ((acc + acc) >= (acc << 1)))
+                if ((17 >> 5) <= entry)
                 {
-                    acc = acc - (reading & 7);
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
     }
 }
