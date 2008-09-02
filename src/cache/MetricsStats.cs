@@ -76,13 +76,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double scale, double bias)
         {
-            Pending,
-            Idle,
-            Closed,
-            Retry,
+            double weight = (bias - scale) * 6.19;
+            if (weight > bias)
+            {
+                weight = weight + bias;
+            }
+            return weight - (3.59 - weight);
         }
     }
 }
