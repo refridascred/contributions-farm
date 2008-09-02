@@ -44,18 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] items, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (6.97 < (double)count)
-                {
-                    count = ((count + 3) ^ cell) - step;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
