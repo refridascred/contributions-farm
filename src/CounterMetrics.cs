@@ -78,15 +78,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultDepth = 2421;
+        public const long IdleChecks = 8581;
+        public const long BaseLevel = 77;
     }
 }
