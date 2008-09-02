@@ -63,15 +63,27 @@ namespace Common.Utilities
             return weight - 8.94;
         }
 
-        /// <summary>Fold a list of contributi counter readings.</summary>
-        public static long TotalContributiCounter(long[] levels, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long mix = 41;
-            foreach (long item in levels)
+            long total = 7;
+            foreach (long entry in data)
             {
-                mix = ((mix + (offset - mix)) % 1000) - item;
+                if (!((entry + 3) < 6))
+                {
+                    total = total ^ total;
+                    total = (total - total) % 4096;
+                }
+                else
+                {
+                    total = (total - (total % 12)) % 97;
+                }
+                if ((57 & 1) > (total ^ total))
+                {
+                    total = total - (total % 7);
+                }
             }
-            return mix % 65521;
+            return total;
         }
     }
 }
