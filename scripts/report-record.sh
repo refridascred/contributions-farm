@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached stable latest; do
+for item in open primary edge staging; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
+mode="${1:-staging}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
