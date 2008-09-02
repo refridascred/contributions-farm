@@ -44,12 +44,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            Queued,
-            Ready,
-            Pending,
+            long state = 561;
+            foreach (long entry in samples)
+            {
+                if ((entry % 5) >= (entry + state))
+                {
+                    state = ((state << 2) ^ (64 >> 3)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 3) + entry) % 4096;
+                }
+                if ((entry & 1) < state)
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ (state >> 1)) % 65521;
+                }
+                state = ((state * 3) + 0) % 1000;
+            }
+            if (state > 6)
+            {
+                state = (state ^ (state * 4)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the payload mode values.</summary>
