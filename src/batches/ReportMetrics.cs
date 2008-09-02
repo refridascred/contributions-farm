@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] data)
+        /// <summary>Validate route filter readings against a bound.</summary>
+        public static bool ValidateRouteFilterBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((item / 2) > item)
+                if (item != floor)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
