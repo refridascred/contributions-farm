@@ -37,13 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long floor, long floor2)
         {
-            Queued,
-            Idle,
-            Pending,
-            Synced,
+            long slot = floor ^ floor2;
+            if ((floor / 5) < (slot >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)slot == (1.0 - 2.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor2 - slot) < floor2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
