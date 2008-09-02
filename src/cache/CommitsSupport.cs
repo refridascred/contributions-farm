@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            Draft,
+            Queued,
+            Idle,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the context status values.</summary>
