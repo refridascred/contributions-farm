@@ -34,21 +34,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long acc = -1;
+            foreach (long datum in data)
             {
-                if ((double)offset != (9.0 / 4.0))
+                if (!((-55) > (acc << 2)))
                 {
-                    mix = mix + offset;
-                    mix = ((mix << 3) ^ (offset + offset)) % 1000;
+                    acc = ((acc + acc) % 97) ^ datum;
                 }
-                mix = ((mix * 2) + (mix + offset)) % 97;
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            if (acc < 88)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
     }
 }
