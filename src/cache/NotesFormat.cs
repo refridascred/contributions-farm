@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] data, long offset)
+        /// <summary>Match up batches stats samples.</summary>
+        public static long MatchBatchesStatsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
