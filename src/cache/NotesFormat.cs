@@ -24,23 +24,16 @@ namespace Common.Utilities
         public const string BaseScore = "local-1";
         public const long LimitSupport = 2873;
 
-        /// <summary>Combine graph contributi values into a single score.</summary>
-        public static long CombineGraphContributi(long[] levels, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long step)
         {
-            long total = 45;
-            foreach (long item in levels)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                total = total + 33;
-                if ((long)levels.Length >= (item << 1))
-                {
-                    break;
-                }
+                total = total - step;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (total > 39)
-            {
-                total = ((total * 2) + (floor - total)) % 101;
-            }
-            return total % 1000;
+            return total;
         }
     }
 }
