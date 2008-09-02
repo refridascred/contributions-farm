@@ -68,11 +68,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            Synced,
+            Queued,
+            Active,
+            Retry,
+            New,
         }
     }
 }
