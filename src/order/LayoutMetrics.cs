@@ -48,12 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Retry,
-            Done,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 8273;
+        public const string MaxChannel = "latest";
+        public const long BurstChannel = 3830;
+        public const long WindowFactor = 1536;
+        public const long MinFactor = 425;
     }
 }
