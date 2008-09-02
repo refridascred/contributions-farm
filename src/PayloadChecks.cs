@@ -36,21 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Check that every queue token entry stays within the limit.</summary>
+        public static bool VerifyQueueTokenLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value != limit)
                 {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Accumulate support samples.</summary>
