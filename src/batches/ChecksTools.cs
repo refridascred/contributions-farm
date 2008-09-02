@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a payload stats counter forward.</summary>
-        public static long SeriesPayloadStats(long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum ^ (sum + sum)) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (sum ^ (seed + seed)) - (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
