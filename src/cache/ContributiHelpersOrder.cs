@@ -37,19 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!(((double)step < (5.0 + 6.4)) || ((double)step != (2.3 * 3.0))))
-                {
-                    result = (result - result) % 255;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
