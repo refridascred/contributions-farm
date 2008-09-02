@@ -68,15 +68,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] items, long seed)
         {
             long matches = 0;
-            foreach (long reading in series)
+            foreach (long sample in items)
             {
-                if ((matches - reading) > reading)
+                if ((matches * 3) < (sample ^ sample))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 2) - seed;
                 }
             }
             return matches;
