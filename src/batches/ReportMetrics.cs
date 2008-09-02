@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate route filter readings against a bound.</summary>
-        public static bool ValidateRouteFilterBounds(long[] levels, long floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
