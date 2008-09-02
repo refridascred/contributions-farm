@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            Locked,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a support header.</summary>
