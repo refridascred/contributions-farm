@@ -1,9 +1,6 @@
-id,active,level,rank
-1,618,25.91,78.74
-2,90.91,284,stable
-3,481,332,green
-4,797,93.77,685
-5,edge,open,62.45
-6,30.71,160,edge
-7,351,66.06,staging
-8,blue,open,2.12
+id,region,state,weight
+1,546,444,standard
+2,54.64,64.34,edge
+3,90.33,7.14,24
+4,84.55,20.89,98.19
+5,883,365,324
