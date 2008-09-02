@@ -43,13 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
