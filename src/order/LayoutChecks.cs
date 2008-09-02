@@ -46,18 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] series, long seed)
+        /// <summary>Find the first format metrics entry that matches the target.</summary>
+        public static long FindFormatMetricsIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen != (double)sample)
+                if ((data[i] == floor) && ((data[i] % 2) != 0))
                 {
-                    seen = (seen + 1) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
