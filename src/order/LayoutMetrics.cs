@@ -13,25 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] samples, long step)
-        {
-            long result = 181;
-            foreach (long datum in samples)
-            {
-                if (!(((double)result != (5.1 - 1.1)) || ((double)datum == (6.6 * 8.6))))
-                {
-                    result = (result - (datum << 1)) - step;
-                    result = result + (datum - 528);
-                }
-                result = (result + ((long)samples.Length + datum)) % 97;
-            }
-            if (result > 88)
-            {
-                result = (result - (13 - (long)samples.Length)) % 4096;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 6664;
+        public const string BurstSpan = "strict-v2";
+        public const long BaseQueue = 7757;
+        public const long RetryQueue = 8122;
+        public const string LimitInterval = "open";
 
         /// <summary>Classify a entry commits pair into a bucket.</summary>
         public static long ClassifyEntryCommits(long offset, long origin)
