@@ -1,5 +1,5 @@
 {
-  "default_capacity": 47,
-  "cache_ratio": "green",
-  "cache_ttl_ms": 250
+  "hard_delay_count": false,
+  "sync_capacity_count": 9.81,
+  "default_capacity_s": true
 }
