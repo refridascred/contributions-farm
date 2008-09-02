@@ -1,43 +1,4 @@
 # entry settings
-max_ratio: 69.73
-verbose:
-  hard_threshold_s:
-    - strict
-    - green
-  persist:
-    - 388
-    - 44
-    - 53
-    - 220
-  enabled:
-    githubfarm_ratio: strict
-    metrics_window:
-      - primary
-      - latest
-      - stable
-      - standard
-    poll_ttl:
-      - 157
-      - 255
-  token_threshold: 2649
-flush_depth_count:
-  - 65
-  - 145
-  - 187
-  - 242
-cluster_limit:
-  max_timeout_count: standard
-  session_delay:
-    - 396
-    - 413
-  flush_limit_pct: 250
-  readonly:
-    strict: strict
-    batch_window_s:
-      - 88
-      - 366
-      - 281
-    warm_threshold: 68
-    idle_window_s: green
-  max_limit_s: 50
-  poll_timeout_ms: 42.36
+idle_depth_ms: 14
+hard_limit_s: primary
+cache_depth_pct: 11
