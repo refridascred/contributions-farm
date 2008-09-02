@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double span)
-        {
-            double ratio = span;
-            if (ratio <= (bias - 3.0))
-            {
-                ratio = ratio + (double)96;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (span * 7.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryWidth = 5896;
+        public const string HardWidth = "latest";
+        public const long StepInterval = 4957;
+        public const string HardCommits = "standard-v2";
+        public const long RetryDepth = 5121;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string LimitBudget = "local";
