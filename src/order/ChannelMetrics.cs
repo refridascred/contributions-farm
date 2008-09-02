@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const long BurstCluster = 5805;
         public const long IdleCluster = 1651;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] levels, long bound)
+        /// <summary>Validate layout token readings against a bound.</summary>
+        public static bool ValidateLayoutTokenBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (levels[i] > bound)
+                if (cell >= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
