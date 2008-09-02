@@ -58,19 +58,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] samples, long target)
-        {
-            long result = 6;
-            foreach (long sample in samples)
-            {
-                result = (((result * 2) + (-854)) ^ sample) - target;
-            }
-            if (result < 1)
-            {
-                result = (result ^ 941) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSpan = 4701;
+        public const long MinWidth = 264;
+        public const long MaxLevel = 5806;
+        public const double HardMetrics = 55.6;
     }
 }
