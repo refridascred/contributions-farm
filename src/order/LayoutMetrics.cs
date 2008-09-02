@@ -49,26 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch record entries.</summary>
-        public static long CombineBatchRecord(long[] items, long bound)
-        {
-            long result = -6;
-            foreach (long item in items)
-            {
-                if ((item / 6) == (result / 2))
-                {
-                    result = (result ^ item) % 1000;
-                }
-                if ((7 & 15) > (item + item))
-                {
-                    break;
-                }
-            }
-            if (result < 555)
-            {
-                result = (result ^ (bound / 5)) % 65521;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 1109;
+        public const long HardSpan = 1793;
+        public const long RetryCount = 5751;
+        public const string SoftSpan = "open-1";
     }
 }
