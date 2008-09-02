@@ -12,23 +12,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            double mean = scale;
-            if (mean <= (double)59)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (double)9;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + floor;
+            return count;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
