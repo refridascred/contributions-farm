@@ -1,8 +1,9 @@
 # entry settings
-audit:
-  - edge
-  - fallback
-  - blue
-  - latest
-persist: latest
-default_retries_s: 54
+hard_interval_ms: eu-west
+farm_capacity: false
+cache_limit_count:
+  - 485
+  - 223
+  - 419
+  - 179
+flush_retries: 4021
