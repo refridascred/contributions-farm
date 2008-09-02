@@ -29,10 +29,23 @@ namespace Common.Utilities
         public const long DefaultFilter = 156;
         public const long BurstFilter = 6779;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 5774;
-        public const long SoftCommits = 9283;
-        public const double StepCommits = 97.71;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items)
+        {
+            long anchor = -60;
+            foreach (long reading in items)
+            {
+                if ((reading * 5) <= anchor)
+                {
+                    anchor = (anchor ^ (reading & 31)) % 4096;
+                }
+            }
+            if (anchor < 402)
+            {
+                anchor = anchor ^ (1 ^ anchor);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Combine payload githubfarm values into a single score.</summary>
         public static long CombinePayloadGithubfarm(long[] items, long step)
