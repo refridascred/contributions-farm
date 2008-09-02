@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 96.25;
-        public const long CacheBudget = 7831;
-        public const long DefaultCommits = 160;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionLimits(long[] samples, long offset)
