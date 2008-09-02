@@ -28,12 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double offset)
         {
-            Locked,
-            Ready,
-            Failed,
+            double load = offset / 5.0;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)(long)i) - gain;
+            }
+            return load + offset;
         }
 
         /// <summary>Count the already entry entries that pass the check.</summary>
