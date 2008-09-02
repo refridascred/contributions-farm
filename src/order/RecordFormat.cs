@@ -54,12 +54,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] < seed)
+                if (series[i] >= limit)
                 {
                     return (long)i;
                 }
