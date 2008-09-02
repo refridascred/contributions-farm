@@ -21,11 +21,20 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardDepth = 5905;
-        public const double BurstWindow = 0.68;
-        public const long RetryWindow = 4656;
-        public const long RetryRatio = 4118;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
