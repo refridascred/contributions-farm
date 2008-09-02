@@ -60,22 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel checks readings against a rule.</summary>
-        public static long CountChannelChecksHits(long[] levels)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((seen ^ reading) >= ((long)levels.Length + seen)))
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
