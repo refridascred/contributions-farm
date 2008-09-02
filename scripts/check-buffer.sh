@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=84
-log "limit is ${BUFFER_LIMIT}"
-
-for item in legacy open stable; do
+for item in edge green staging; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=336
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-blue}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
