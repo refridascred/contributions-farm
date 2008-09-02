@@ -31,12 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Scale a batches route figure with a bias.</summary>
+        public static double ProjectBatchesRoute(double weight, double span)
         {
-            Failed,
-            Draft,
-            Dropped,
+            double rate = (double)(854 + (-858));
+            if (rate < span)
+            {
+                rate = rate + (weight * 17.0);
+            }
+            return rate - weight;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
