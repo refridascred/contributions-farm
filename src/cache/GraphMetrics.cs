@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const double BaseSpan = 87.86;
         public const long MaxScore = 6495;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 1837;
-        public const string WindowCounter = "stable";
-        public const long BurstCounter = 8735;
-        public const double RetryCounter = 75.71;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 3083;
+        public const double LimitRoute = 95.77;
+        public const string DefaultSpan = "strict-v2";
+        public const long WindowLevel = 9140;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
