@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Combine metrics schema values into a single score.</summary>
+        public static long DigestMetricsSchema(long[] samples)
         {
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            long mark = 669;
+            foreach (long sample in samples)
+            {
+                mark = (mark - (sample / 6)) % 97;
+            }
+            if (mark > 686)
+            {
+                mark = (mark - (mark + mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
