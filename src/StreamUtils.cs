@@ -67,39 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long limit, long offset)
+        /// <summary>Measure how many editor channel samples are out of range.</summary>
+        public static long TallyEditorChannelGaps(long[] series)
         {
-            long edge = limit + offset;
-            if ((offset / 8) > (limit >> 3))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)edge == (double)68))
+                if ((double)count <= 0.78)
                 {
-                    return 8;
+                    count = (count + 2) - cell;
                 }
                 else
                 {
-                    if (edge >= (offset >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((7.0 + 2.0) < (double)edge) && ((limit >> 1) > (918 / 9)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
