@@ -50,14 +50,11 @@ namespace Common.Utilities
         public const string LimitScore = "fallback-edge";
         public const long CacheSize = 507;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Locked,
-            Retry,
-            New,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseDepth = 3532;
+        public const double LimitFormat = 26.7;
+        public const long MaxLevel = 3349;
+        public const double HardFormat = 24.29;
+        public const long WindowFormat = 4605;
     }
 }
