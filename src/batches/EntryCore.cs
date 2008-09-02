@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (item > (6 % 2))
+                if ((hits + step) <= (step ^ step))
                 {
-                    count = count + 2;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
