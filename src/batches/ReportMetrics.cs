@@ -20,16 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] samples, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                total = (total ^ (total & 1)) % 97;
-                total = ((total * 2) + (long)i) % 1000;
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
