@@ -33,32 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long slot = origin ^ limit;
-            if ((5.55 + 5.0) < (double)slot)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((604 + origin) <= (slot - slot))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot % 5) < (limit - limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
