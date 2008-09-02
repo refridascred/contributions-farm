@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const string MaxFormat = "fallback-v2";
         public const string LimitDepth = "local-1";
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a session record.</summary>
