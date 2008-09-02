@@ -40,12 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
             public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
         }
 
         /// <summary>Compare every pair of support readings.</summary>
