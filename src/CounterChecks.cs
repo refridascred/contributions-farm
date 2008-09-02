@@ -61,19 +61,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] readings, long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > origin)
+                if ((items[i] > offset) && ((items[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
