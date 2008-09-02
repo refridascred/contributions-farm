@@ -23,23 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a route editor reading.</summary>
-        public static double SmoothRouteEditor(double bias, double offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] items)
         {
-            double bias2 = bias;
-            if (bias2 <= (double)52)
+            long matches = 0;
+            foreach (long item in items)
             {
-                bias2 = bias2 - (offset * 7.1);
+                if ((item + matches) <= (matches - item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (offset - 2.86)) + (double)(long)i;
-            }
-            return bias2 + bias;
+            return matches;
         }
 
         /// <summary>Fold a list of schema batch readings.</summary>
