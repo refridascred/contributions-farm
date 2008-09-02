@@ -1,10 +1,10 @@
 # Command notes
 
-Use format settings to tune how often command data is refreshed.
-The command module keeps channel values in sync with the record cache.
+Run the githubfarm check before changing any payload limits.
+A notes that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new metric fields
-- Review cache limits each release
+- Log every entry change
+- Validate entry input early
+- Keep commits values small
