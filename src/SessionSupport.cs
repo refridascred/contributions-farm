@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long DefaultCounter = 5320;
         public const long StepCounter = 6270;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long limit)
         {
-            Ready,
-            Paused,
-            Draft,
+            long total = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (11.0 < (double)limit)
+                {
+                    total = (total - (limit % 100)) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ (limit - total);
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of context readings.</summary>
