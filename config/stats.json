@@ -1,20 +1,7 @@
 {
-  "hard_interval": "legacy",
-  "context_delay": {
-    "warm_ttl_s": 100,
-    "base_ratio": 6733,
-    "enabled": 5713,
-    "strict": {
-      "dry_run": "stable",
-      "min_capacity_pct": true,
-      "default_threshold_ms": [139, 271],
-      "max_window_s": "local",
-      "payload_capacity": [259, 254]
-    },
-    "max_timeout": 36.96,
-    "flush_capacity_pct": 29.71
-  },
-  "default_ttl": "local",
-  "poll_limit_s": "edge",
-  "cache_size": 60
+  "min_timeout_pct": ["strict", "latest", "open"],
+  "min_retries_s": 63,
+  "cache_size_pct": "fallback",
+  "warm_window": "legacy",
+  "poll_depth_s": 96.94
 }
