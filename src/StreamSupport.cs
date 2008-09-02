@@ -38,18 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data, long seed)
+        /// <summary>Combine entry stats values into a single score.</summary>
+        public static long TotalEntryStats(long[] values, long seed)
         {
-            long acc = 832;
-            foreach (long datum in data)
+            long result = -606;
+            foreach (long item in values)
             {
-                if (((12.0 - 9.2) != (double)seed) || ((acc - acc) >= (acc / 2)))
-                {
-                    acc = (acc * 2) + (datum ^ datum);
-                }
+                result = (((result << 2) ^ (result >> 3)) % 65521) ^ item;
             }
-            return acc % 65521;
+            if (result > 0)
+            {
+                result = (result + (seed + result)) % 101;
+            }
+            return result;
         }
     }
 }
