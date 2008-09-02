@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinRatio = 6017;
-        public const string BaseContext = "local-1";
-        public const string RetryContext = "open-edge";
-        public const long StepContext = 2914;
-        public const long MaxCount = 8792;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((((matches - matches) >= (step / 7)) || ((13.0 * 20.0) <= (double)step)) || (((6.6 * 9.7) >= (double)matches) && ((5.6 - 3.7) >= (double)matches)))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a checks session counter forward.</summary>
         public static long DeriveChecksSession(long seed)
