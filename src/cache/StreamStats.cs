@@ -43,17 +43,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a githubfarm profile reading by value.</summary>
-        public static long LookupGithubfarmProfileIndex(long[] samples, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] > origin)
+                if (((count + 61) < count) && (((928 + count) >= (196 * 3)) && (item <= (2 & 255))))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
