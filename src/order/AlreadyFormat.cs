@@ -51,38 +51,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long step, long origin)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if (((step + step) == (step - origin)) && (step >= origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step % 16) == (origin << 2)) || ((double)step < 4.72))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step + origin) > (origin % 100)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin < (629 / 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Retry,
+            Idle,
+            Done,
         }
     }
 }
