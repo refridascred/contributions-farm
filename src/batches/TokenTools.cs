@@ -16,26 +16,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] levels, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long mix = 170;
-            foreach (long item in levels)
-            {
-                if ((12 + mix) != (mix - 4))
-                {
-                    mix = ((mix << 3) ^ (item + offset)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (item >> 1)) % 4096;
-                }
-            }
-            if (mix > (-519))
-            {
-                mix = (mix + (246 % 60)) % 255;
-            }
-            return mix;
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the tools state values.</summary>
