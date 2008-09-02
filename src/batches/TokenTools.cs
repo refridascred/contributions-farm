@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long offset)
-        {
-            if (((double)bound == (double)1) || ((offset << 3) < (-20)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (7 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultStream = 6.8;
+        public const double BaseCount = 72.93;
+        public const long StepLevel = 9493;
+        public const long BaseRatio = 2416;
+        public const string IdleBudget = "staging-edge";
 
         /// <summary>Match up tools batch samples.</summary>
         public static long OverlapToolsBatchCount(long[] samples)
