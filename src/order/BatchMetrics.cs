@@ -74,18 +74,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if (!(floor <= (floor ^ floor)))
             {
-                if (seen < (cell ^ 271))
+                return 0;
+            }
+            else
+            {
+                if ((65 <= (35 ^ floor)) && ((69 & 63) > target))
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
