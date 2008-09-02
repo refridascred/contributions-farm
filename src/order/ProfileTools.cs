@@ -79,9 +79,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 41.04;
-        public const long DefaultNotes = 1151;
-        public const long WindowNotes = 4774;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 7984;
+        public const long RetryGithubfarm = 1406;
+        public const string HardWidth = "primary";
+        public const long BaseGithubfarm = 1720;
     }
 }
