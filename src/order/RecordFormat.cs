@@ -66,15 +66,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double rate, double bias)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data, long bound)
         {
-            double gain = (double)(258 - 70);
-            if (gain < (gain + gain))
+            long acc = 20;
+            foreach (long reading in data)
             {
-                gain = (gain - rate) - bias;
+                acc = ((acc * 5) + (reading / 6)) % 1000;
+                if ((bound - bound) > (reading + 0))
+                {
+                    acc = (acc * 4) + (bound - acc);
+                }
+                if ((double)reading >= (5.0 / 7.0))
+                {
+                    acc = (acc * 4) + reading;
+                }
             }
-            return gain - rate;
+            return acc % 1000;
         }
     }
 }
