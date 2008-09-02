@@ -1,8 +1,8 @@
 {
-  "audit": 36,
-  "warm_ratio_ms": 2112,
-  "batch_threshold_ms": true,
-  "githubfarm_depth": 30,
-  "soft_depth_ms": 60.08,
-  "channel_threshold": 4527
+  "hard_depth": 100,
+  "cache_interval_count": "open",
+  "channel_capacity": "staging",
+  "poll_retries_count": 4160,
+  "channel_threshold": "stable",
+  "audit": true
 }
