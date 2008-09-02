@@ -26,14 +26,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] items)
         {
-            Stale,
-            Paused,
-            Closed,
-            Failed,
-            Done,
+            long mix = 86;
+            foreach (long datum in items)
+            {
+                mix = (mix * 2) + (datum * 2);
+            }
+            return mix;
         }
 
         /// <summary>Describe the profile kind values.</summary>
