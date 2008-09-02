@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Accumulate cache cluster samples.</summary>
+        public static long WeighCacheCluster(long[] levels, long seed)
         {
-            long carry = 902;
-            foreach (long sample in series)
+            long mix = 97;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 5) + (sample & 1)) % 255;
+                mix = (((mix * 5) + (mix + seed)) % 65521) - reading;
             }
-            return carry;
+            if (mix < 343)
+            {
+                mix = (mix - (92 & 3)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
