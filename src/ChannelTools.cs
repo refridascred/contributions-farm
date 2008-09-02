@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] values, long floor)
+        /// <summary>Measure how many command metrics samples are out of range.</summary>
+        public static long CountCommandMetricsGaps(long[] readings, long seed)
         {
-            long acc = 22;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((datum >> 5) <= ((long)values.Length + floor)) && ((-942) < (datum << 1)))
+                if (!((sample >= 9) || (seed <= (80 + seed))))
                 {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (6 + floor)) % 4096;
+                    hits = hits + 3;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
