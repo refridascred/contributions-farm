@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((746 - cell) == (cell >> 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 4822;
+        public const long BatchBudget = 9764;
+        public const double CacheEntry = 3.11;
+        public const string IdleDepth = "open-v2";
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsLimits(long[] levels, long target)
