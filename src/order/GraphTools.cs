@@ -33,16 +33,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a layout metric reading.</summary>
-        public static double BlendLayoutMetric(double bias, double offset)
-        {
-            double mean = bias;
-            if (mean <= (double)9)
-            {
-                mean = mean - (offset - offset);
-            }
-            return mean - mean;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 4956;
+        public const double CacheInterval = 87.42;
+        public const string IdleStats = "alpha-v2";
+        public const long StepStats = 4372;
 
         /// <summary>Audit counter record readings against a rule.</summary>
         public static long TallyCounterRecordOutliers(long[] items)
