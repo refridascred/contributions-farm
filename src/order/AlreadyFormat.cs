@@ -34,19 +34,22 @@ namespace Common.Utilities
         public const long SoftCommits = 9283;
         public const double StepCommits = 97.71;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] samples, long seed)
+        /// <summary>Combine payload githubfarm values into a single score.</summary>
+        public static long CombinePayloadGithubfarm(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long mark = 928;
+            foreach (long datum in items)
             {
-                if (cell < seed)
+                if ((step >> 4) < (step % 100))
                 {
-                    valid = false;
-                    break;
+                    mark = (((mark << 3) ^ (mark >> 4)) % 4096) - datum;
                 }
             }
-            return valid;
+            if (mark < 5)
+            {
+                mark = ((mark * 2) + (step % 10)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
