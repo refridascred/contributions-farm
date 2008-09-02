@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] samples, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((long)i << 3) > (long)i)
+                if (cell <= origin)
                 {
+                    stale = false;
                     break;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Describe the stream kind values.</summary>
