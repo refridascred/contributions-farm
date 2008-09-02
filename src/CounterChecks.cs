@@ -39,12 +39,19 @@ namespace Common.Utilities
         public const string BurstProfile = "strict";
         public const double StepProfile = 12.39;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long limit)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
