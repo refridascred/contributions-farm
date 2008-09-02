@@ -27,22 +27,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series, long step)
-        {
-            long anchor = 4;
-            foreach (long cell in series)
-            {
-                if (((64 - 138) <= (anchor + cell)) && ((anchor & 3) <= step))
-                {
-                    anchor = ((anchor * 2) + (62 - step)) % 1000;
-                }
-                if ((step - (long)series.Length) == (cell + step))
-                {
-                    anchor = ((anchor * 2) + (step - cell)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 27.14;
+        public const long MinLevel = 921;
+        public const long LimitTimeout = 914;
+        public const double HardBudget = 58.01;
     }
 }
