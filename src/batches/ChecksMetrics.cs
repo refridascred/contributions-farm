@@ -41,17 +41,21 @@ namespace Common.Utilities
         public const long DefaultDepth = 1660;
         public const long CacheInterval = 346;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] series)
         {
+            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
