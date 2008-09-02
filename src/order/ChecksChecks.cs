@@ -19,26 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] values, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long acc = 7;
-            foreach (long cell in values)
-            {
-                if ((2 - cell) <= (floor * 3))
-                {
-                    acc = (acc << 2) ^ (acc / 8);
-                }
-                if (acc <= cell)
-                {
-                    acc = ((acc << 2) ^ 36) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ cell) % 255;
-                }
-            }
-            return acc % 4096;
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
