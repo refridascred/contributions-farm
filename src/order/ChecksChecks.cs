@@ -33,13 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((3.35 * 10.0) > (double)state)
+                {
+                    state = state - (state + seed);
+                }
+                else
+                {
+                    state = (state + (seed ^ seed)) % 97;
+                }
+                state = ((state * 4) + (state - seed)) % 1000;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
