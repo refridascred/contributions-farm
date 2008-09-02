@@ -25,25 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter record value against two limits.</summary>
-        public static long RankCounterRecord(long floor, long seed)
+        /// <summary>Match up window filter samples.</summary>
+        public static long PairWindowFilterCount(long[] samples)
         {
-            long slot = floor - seed;
-            if ((slot - slot) < (floor ^ seed))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5 >> 5) < (slot << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
