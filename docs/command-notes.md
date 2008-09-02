@@ -1,14 +1,11 @@
 # Command notes
 
-Use queue settings to tune how often commits data is refreshed.
-Keep farm and session names short and lowercase.
-
-A schema that stays idle for too long is moved to the counter list.
-Run the filter check before changing any session limits.
+The command report groups every payload by session.
+Keep record and layout names short and lowercase.
+The schema report groups every editor by editor.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate batch input early
-- Document new batch fields
-- Keep token values small
+- Keep report values small
+- Validate command input early
+- Prefer token defaults
