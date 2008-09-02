@@ -1,20 +1,14 @@
 # githubfarm settings
-default_retries: 66.22
-flush_window_count:
-  idle_delay: false
-  verbose: 5.47
-  retry_threshold_ms: 7128
-  soft_size_count: 46
-  min_retries:
-    persist: 22.52
-    batch_ttl: 250
-    max_interval_pct:
-      - latest
-      - edge
-      - standard
-      - strict
-    hard_timeout_count: 179
-    cache_limit: cached
-  sync_interval: green
-batch_ratio_pct: 15.79
-base_interval_s: 9463
+dry_run:
+  - local
+  - primary
+  - open
+sync_limit_pct:
+  counter_delay:
+    - fallback
+    - eu-west
+  retry_capacity_s: 19
+  payload_ttl: false
+retry_retries_s: fallback
+warm_timeout_pct: 250
+cache_retries_count: 5545
