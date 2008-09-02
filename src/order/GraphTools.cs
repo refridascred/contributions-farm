@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] data, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] == bound)
+                if (offset >= sample)
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the payload class values.</summary>
