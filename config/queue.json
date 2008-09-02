@@ -1,15 +1,6 @@
 {
-  "already_capacity": "staging",
-  "batch_threshold": "local",
-  "poll_depth": {
-    "idle_timeout_pct": 5125,
-    "retry_depth_s": true,
-    "soft_window_pct": false,
-    "enabled": ["strict", "stable", "cached"],
-    "readonly": 7747,
-    "tools_retries": "eu-west"
-  },
-  "flush_window_ms": 94,
-  "format_ratio": 80.5,
-  "max_timeout_count": 75.04
+  "retry_interval_ms": 3389,
+  "persist": 4,
+  "max_capacity_pct": 3,
+  "min_capacity_pct": 1024
 }
