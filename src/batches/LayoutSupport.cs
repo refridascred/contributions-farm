@@ -14,21 +14,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((1.0 * 5.7) < (double)sum)
                 {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum ^ step;
                 }
+                sum = (sum - (sum - (long)i)) % 1000;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Roll a report counter forward.</summary>
