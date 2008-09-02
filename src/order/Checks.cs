@@ -69,32 +69,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long seed2)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] readings, long limit)
         {
-            long next = seed + seed2;
-            if (seed2 <= next)
+            long anchor = 211;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)37 != (double)seed2) && (60 <= next))
+                if ((cell <= (anchor / 8)) || ((double)anchor >= (double)4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((next >> 1) <= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = ((anchor << 3) ^ (limit >> 3)) % 97;
                 }
             }
+            if (anchor < 35)
+            {
+                anchor = (anchor ^ (limit + limit)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
