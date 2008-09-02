@@ -41,17 +41,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] samples, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (samples[i] == limit)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc - (acc + acc)) % 97) ^ (long)i2;
+                    acc = acc + (origin & 127);
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
