@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] readings, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!(619 < (seen ^ datum)))
-                {
-                    seen = (seen + 3) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
