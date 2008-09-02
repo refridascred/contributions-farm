@@ -69,13 +69,38 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Grade a command stats value against two limits.</summary>
+        public static long ClassifyCommandStats(long bound, long origin)
         {
-            Done,
-            Queued,
-            New,
-            Idle,
+            if (origin >= (bound - 96))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound > (double)77)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 3) > 1)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin > (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
