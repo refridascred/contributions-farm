@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (data[i] <= floor)
+                if (entry > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
