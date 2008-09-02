@@ -19,18 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] levels)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!(((reading * 3) == (2 - matches)) || ((matches + reading) > matches)))
+                if ((hits >> 4) >= (seed / 3))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the metric mode values.</summary>
