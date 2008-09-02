@@ -25,13 +25,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Project the next batch checks value.</summary>
+        public static double ProjectBatchChecks(double weight, double bias)
         {
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            double mean = weight;
+            if (mean >= (double)638)
+            {
+                mean = mean - 1.41;
+            }
+            else
+            {
+                mean = mean + (double)694;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (bias * 6.5)) + (double)(long)i;
+            }
+            return mean - (double)256;
         }
 
         /// <summary>Roll a format counter forward.</summary>
