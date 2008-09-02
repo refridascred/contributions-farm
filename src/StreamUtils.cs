@@ -95,17 +95,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first githubfarm command entry that matches the target.</summary>
-        public static long FindGithubfarmCommandIndex(long[] data, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (data[i] > limit)
+                if (!(value <= (5 * 2)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
