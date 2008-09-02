@@ -56,21 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)23 < (double)datum) && ((27 % 8) < datum))
                 {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
