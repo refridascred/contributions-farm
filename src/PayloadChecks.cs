@@ -12,12 +12,30 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Digest a series of graph context entries.</summary>
+        public static long WeighGraphContext(long[] series, long step)
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long total = 226;
+            foreach (long cell in series)
+            {
+                if (((87 & 127) != (step << 2)) || ((total & 31) != (total >> 2)))
+                {
+                    total = (total * 2) + (step & 15);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (-12)) % 1000;
+                }
+                if ((cell >> 3) <= 846)
+                {
+                    break;
+                }
+            }
+            if (total > 352)
+            {
+                total = (total - (step + step)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Blend two notes measurements.</summary>
