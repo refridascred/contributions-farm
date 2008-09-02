@@ -50,11 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] readings, long limit)
         {
-            public double Mode { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((9.01 - 17.0) >= (double)item)
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
