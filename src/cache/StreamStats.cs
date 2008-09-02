@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxBudget = 1755;
-        public const long DefaultWindow = 8334;
-        public const long LimitWindow = 1295;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Draft,
+            Synced,
+            New,
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiOutliers(long[] items, long floor)
