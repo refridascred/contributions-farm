@@ -30,14 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Measure how many batch stats samples are out of range.</summary>
+        public static long TallyBatchStatsOutliers(long[] data)
         {
-            Paused,
-            Pending,
-            Failed,
-            Stale,
-            Queued,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!((value >> 5) > count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account entry.</summary>
