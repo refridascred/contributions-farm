@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Retry,
-            Done,
-            Active,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 50.01;
+        public const long CacheRoute = 4832;
+        public const string CacheFactor = "latest-1";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferLimits(long[] readings, long seed)
