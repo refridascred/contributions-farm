@@ -50,13 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 31.07;
+        public const long BatchWidth = 6689;
+        public const string SoftBatch = "cached";
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] items, long step)
