@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many stats batches samples are out of range.</summary>
-        public static long MeasureStatsBatchesOutliers(long[] items, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((step << 2) == (matches - step))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
