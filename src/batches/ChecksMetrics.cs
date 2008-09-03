@@ -82,16 +82,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the channel order series from a seed.</summary>
-        public static long StepChannelOrder(long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] readings, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mark = (mark + (offset - offset)) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((sample << 1) != (sample + 674))
+                {
+                    tally = (tally + 2) + step;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
