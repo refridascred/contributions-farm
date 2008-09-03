@@ -40,19 +40,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a profile checks reading.</summary>
-        public static double ProjectProfileChecks(double ratio, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] samples)
         {
-            double ratio2 = ratio * 13.0;
-            if (ratio2 >= offset)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                ratio2 = ratio2 + offset;
+                if ((10.0 - 0.8) == (double)count)
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + offset) + (double)(long)i;
-            }
-            return ratio2 + (offset / 4.0);
+            return count;
         }
     }
 }
