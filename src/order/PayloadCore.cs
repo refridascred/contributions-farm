@@ -33,18 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] series, long bound)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((double)value <= (double)tally) && (((tally ^ tally) >= (65 * 2)) && ((double)bound >= (3.6 / 4.0))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a token record.</summary>
