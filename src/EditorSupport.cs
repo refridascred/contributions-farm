@@ -49,33 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already route input into a small class.</summary>
-        public static long GradeAlreadyRoute(long seed, long step)
-        {
-            long span = seed - step;
-            if (!((double)span <= (5.0 + 20.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (span > step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step <= (3.89 + 15.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 7.6;
+        public const long DefaultRecord = 3063;
+        public const string WindowBudget = "stable-1";
+        public const double WindowTimeout = 69.47;
+        public const long BurstRecord = 3217;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] data, long bound)
