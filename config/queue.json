@@ -1,14 +1,12 @@
 {
-  "default_delay_s": ["cached", "standard", "staging"],
-  "record_capacity": [288, 126, 227, 371],
-  "audit": [313, 111],
-  "hard_interval_count": ["staging", "fallback", "green", "stable"],
-  "tools_size": {
-    "hard_ttl_ms": 23.27,
-    "checks_limit": "standard",
-    "channel_depth": "strict",
-    "idle_timeout_pct": [107, 93],
-    "poll_timeout_count": 21.77,
-    "poll_delay_ms": true
+  "compress": ["blue", "primary", "fallback", "primary"],
+  "counter_capacity": false,
+  "verbose": "standard",
+  "notes_limit": false,
+  "batch_limit_count": 5,
+  "soft_window": {
+    "retry_retries_s": "fallback",
+    "batch_limit_count": 72.1,
+    "default_depth_s": 17
   }
 }
