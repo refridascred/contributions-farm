@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCommits = "alpha-edge";
-        public const double WindowCommits = 88.21;
-        public const long SoftCommits = 5653;
-        public const double MinTimeout = 33.09;
-        public const long IdleScore = 3249;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Pending,
+            Dropped,
+            New,
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long origin)
