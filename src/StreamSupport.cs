@@ -15,18 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] levels, long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(3.3 <= (double)seen) || !((double)seen < (8.0 + 5.4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 1) + sample) - bound;
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
