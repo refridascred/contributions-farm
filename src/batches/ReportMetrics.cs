@@ -13,23 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] items, long floor)
         {
-            long acc = 261;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                acc = (acc << 2) ^ (entry + 448);
-                if (!((86 + acc) > entry))
+                if ((3.11 - 15.0) <= (double)floor)
                 {
-                    acc = (acc + (entry << 3)) % 255;
+                    tally = (tally + 2) + sample;
                 }
             }
-            if (acc > 701)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Hold a stream entry.</summary>
