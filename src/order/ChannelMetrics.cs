@@ -22,23 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] items, long seed)
-        {
-            long score = 1;
-            foreach (long reading in items)
-            {
-                if ((double)seed < (5.0 + 6.12))
-                {
-                    score = (score - reading) % 97;
-                }
-                else
-                {
-                    score = score ^ reading;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstEditor = 64.19;
+        public const string BurstDepth = "staging-v2";
+        public const long RetryEditor = 9310;
+        public const double BurstInterval = 71.94;
+        public const string WindowInterval = "local-1";
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] items, long origin)
