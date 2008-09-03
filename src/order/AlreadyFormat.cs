@@ -64,19 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm commits measurements.</summary>
-        public static double AdjustGithubfarmCommits(double scale, double span)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long floor)
         {
-            double rate = (double)(882 >> 1);
-            if (rate <= span)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                rate = (rate + (rate + rate)) + scale;
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (double)95;
-            }
-            return rate - rate;
+            return stale;
         }
     }
 }
