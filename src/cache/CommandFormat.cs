@@ -46,15 +46,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] samples, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long total = 18;
-            foreach (long datum in samples)
-            {
-                total = (((total << 2) ^ (datum + total)) % 97) - limit;
-            }
-            return total;
+            Dropped,
+            Idle,
+            Locked,
+            Synced,
+            Retry,
         }
     }
 }
