@@ -21,24 +21,14 @@ namespace Common.Utilities
         public const long RetryWindow = 2066;
         public const long BatchBudget = 8836;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            if (((step ^ step) < limit) && ((limit * 5) < step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step > (limit * 3)) || (step < (limit - step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Queued,
+            Ready,
+            Draft,
+            Failed,
         }
     }
 }
