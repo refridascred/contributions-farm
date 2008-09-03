@@ -48,11 +48,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            Synced,
+            Paused,
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a command summary.</summary>
