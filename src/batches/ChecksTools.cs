@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series)
-        {
-            long result = 481;
-            foreach (long reading in series)
-            {
-                if ((reading + 10) >= (reading + result))
-                {
-                    result = (result - reading) % 101;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryRatio = 14.03;
+        public const double BaseSize = 1.31;
+        public const string MinFilter = "stable";
+        public const long DefaultFilter = 7968;
+        public const long BatchInterval = 7382;
 
         /// <summary>Count the session token entries that pass the check.</summary>
         public static long CountSessionTokenGaps(long[] samples)
