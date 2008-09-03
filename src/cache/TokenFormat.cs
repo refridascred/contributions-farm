@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "open";
-        public const long BurstDepth = 3992;
-        public const string MinTools = "staging-edge";
-        public const long CacheDepth = 5417;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Done,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long limit)
