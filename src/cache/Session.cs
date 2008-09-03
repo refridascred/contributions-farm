@@ -28,11 +28,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitInterval = 4872;
-        public const long IdleCommits = 6506;
-        public const long SoftCount = 2448;
-        public const string WindowCommits = "open-1";
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiHits(long[] readings, long offset)
