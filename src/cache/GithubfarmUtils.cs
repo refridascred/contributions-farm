@@ -55,24 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long floor, long target)
+        /// <summary>Fold a list of profile record readings.</summary>
+        public static long FoldProfileRecord(long[] items, long origin)
         {
-            if (floor >= (146 << 3))
+            long result = 1;
+            foreach (long datum in items)
             {
-                return 3;
+                result = ((result - (origin + origin)) % 4096) - datum;
             }
-            else
-            {
-                if ((target << 3) > (floor ^ target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result % 4096;
         }
     }
 }
