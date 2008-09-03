@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long HardLevel = 79;
         public const long WindowScore = 8690;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] series, long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] items)
         {
             long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count * 5) < (count ^ reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
