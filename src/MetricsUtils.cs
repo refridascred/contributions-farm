@@ -24,12 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultTimeout = 694;
-        public const double LimitReport = 53.27;
-        public const double MaxReport = 74.32;
-        public const long WindowWidth = 7863;
-        public const long BatchReport = 7951;
+        /// <summary>Locate a schema payload reading by value.</summary>
+        public static long SeekSchemaPayloadIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionGaps(long[] items)
