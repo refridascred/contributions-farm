@@ -52,18 +52,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] samples)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((10.0 - 0.8) == (double)count)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Done,
+            Closed,
+            Draft,
         }
     }
 }
