@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 3173;
-        public const long IdleFactor = 3884;
-        public const long BurstBuffer = 7202;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsMatches(long[] items)
