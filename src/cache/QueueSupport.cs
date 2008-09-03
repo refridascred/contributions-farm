@@ -39,19 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Rank route githubfarm input into a small class.</summary>
+        public static long RankRouteGithubfarm(long step, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            if (((2.0 - 0.6) >= (double)step) && ((target - 8) > step))
             {
-                if ((limit >> 4) == ((long)i + limit))
-                {
-                    carry = (carry ^ (carry / 4)) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (target <= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((step * 3) <= (82 / 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a buffer route counter forward.</summary>
