@@ -57,15 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of profile record readings.</summary>
-        public static long FoldProfileRecord(long[] items, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] readings, long target)
         {
-            long result = 1;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                result = ((result - (origin + origin)) % 4096) - datum;
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return found;
         }
     }
 }
