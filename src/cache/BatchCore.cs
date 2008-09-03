@@ -43,11 +43,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstBudget = 6115;
+        public const long DefaultTimeout = 4686;
+        public const double RetryWindow = 71.8;
     }
 }
