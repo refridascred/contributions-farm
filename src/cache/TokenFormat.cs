@@ -33,22 +33,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Count the metrics order entries that pass the check.</summary>
-        public static long AuditMetricsOrderHits(long[] items, long step)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally / 2) <= ((long)items.Length % 12))
-                {
-                    tally = ((tally + 1) ^ datum) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
