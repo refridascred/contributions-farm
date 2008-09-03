@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric profile values into a single score.</summary>
-        public static long TallyMetricProfile(long[] values, long limit)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = 5;
-            foreach (long entry in values)
-            {
-                if ((limit - 8) > (entry / 4))
-                {
-                    acc = (acc - (acc * 3)) % 4096;
-                }
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
