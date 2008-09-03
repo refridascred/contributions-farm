@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry * 4) + ((long)i << 3);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
