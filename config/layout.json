@@ -1,6 +1,7 @@
 {
-  "strict": 8885,
-  "hard_retries": "legacy",
-  "base_ttl_count": 45,
-  "persist": "fallback"
+  "support_limit": [362, 490, 119, 273],
+  "min_ttl_s": "local",
+  "idle_limit": 52.02,
+  "readonly": 1024,
+  "base_timeout": ["local", "primary", "latest", "cached"]
 }
