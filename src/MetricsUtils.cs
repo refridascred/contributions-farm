@@ -57,19 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] data, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
