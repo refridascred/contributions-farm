@@ -34,11 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Paused,
-            Active,
+            Done,
+            Dropped,
+            Idle,
+            Ready,
             Locked,
         }
 
