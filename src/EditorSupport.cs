@@ -12,21 +12,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] >= limit)
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
