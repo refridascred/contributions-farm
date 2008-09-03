@@ -67,13 +67,10 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Idle,
-            Active,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 3435;
+        public const long CacheCount = 8667;
+        public const double LimitScore = 36.05;
+        public const long BurstInterval = 700;
     }
 }
