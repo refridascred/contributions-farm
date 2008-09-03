@@ -39,17 +39,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardTimeout = 1.9;
+        public const long RetryDepth = 6999;
+        public const string IdleSpan = "latest-1";
+        public const long BatchLevel = 3310;
     }
 }
