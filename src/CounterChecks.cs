@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] values, long offset)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
