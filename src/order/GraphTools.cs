@@ -64,13 +64,14 @@ namespace Common.Utilities
             return gain2 + (gain * 1.46);
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            Dropped,
+            Idle,
+            New,
+            Queued,
+            Stale,
         }
     }
 }
