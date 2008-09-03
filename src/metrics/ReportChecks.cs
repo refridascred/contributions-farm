@@ -68,15 +68,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a token cache figure with a bias.</summary>
-        public static double BlendTokenCache(double weight, double span)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long floor, long offset)
         {
-            double scale = (span + weight) * 9.31;
-            if (scale < 4.3)
+            long lane = floor ^ offset;
+            if ((offset + offset) != (lane - lane))
             {
-                scale = scale + (double)74;
+                return 8;
             }
-            return scale - weight;
+            else
+            {
+                if (!(19 < (offset + offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((lane % 60) >= 49)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
