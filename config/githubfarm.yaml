@@ -1,4 +1,4 @@
 # githubfarm settings
-cluster_ratio: fallback
-cache_ttl_ms: fallback
-idle_interval_ms: 46.26
+batch_retries_pct: blue
+readonly: eu-west
+dry_run: 13.84
