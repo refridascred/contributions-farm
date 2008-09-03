@@ -59,18 +59,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] series, long seed)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!(((tally * 5) > (tally & 255)) || ((seed % 16) <= seed)))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Ready,
+            Closed,
         }
     }
 }
