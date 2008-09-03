@@ -46,20 +46,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "open-edge";
+        public const string HardCount = "fallback";
+        public const double BaseContext = 19.28;
+        public const double StepTimeout = 82.26;
+        public const long BatchCount = 4133;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] levels, long seed)
