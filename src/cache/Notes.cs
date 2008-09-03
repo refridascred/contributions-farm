@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the buffer format entries that pass the check.</summary>
-        public static long AuditBufferFormatMatches(long[] items)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally + tally) > 66)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            Paused,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
