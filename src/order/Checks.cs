@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 4185;
-        public const double BatchLevel = 8.84;
-        public const long DefaultSession = 2533;
+        /// <summary>Locate a stream contributi reading by value.</summary>
+        public static long SeekStreamContributiIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long SeriesToken(long target)
