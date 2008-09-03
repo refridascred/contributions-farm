@@ -1,7 +1,9 @@
-id,weight,active,label,score
-1,fallback,11.28,961,63
-2,33.72,415,880,20.56
-3,stable,641,859,545
-4,legacy,36,14.49,484
-5,261,976,39.92,blue
-6,41.26,81.45,868,265
+id,weight,rank
+1,primary,599
+2,36.5,17.41
+3,primary,green
+4,55.89,388
+5,open,fallback
+6,blue,standard
+7,staging,650
+8,legacy,304
