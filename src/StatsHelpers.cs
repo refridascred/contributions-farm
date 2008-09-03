@@ -50,24 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] readings, long step)
         {
-            long mix = 19;
-            foreach (long cell in data)
+            long carry = 6;
+            foreach (long entry in readings)
             {
-                mix = (mix ^ cell) % 101;
-                mix = mix + cell;
-                if (((mix ^ step) <= (8 % 100)) && ((mix & 63) <= (cell + cell)))
-                {
-                    mix = (mix - cell) % 255;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ 5;
-                }
+                carry = ((carry - entry) % 101) - step;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
