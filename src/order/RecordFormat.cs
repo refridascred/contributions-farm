@@ -61,26 +61,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate record context samples.</summary>
-        public static long TotalRecordContext(long[] levels, long bound)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long state = 985;
-            foreach (long entry in levels)
-            {
-                if (!((660 - state) == (bound >> 4)))
-                {
-                    state = state + (state - entry);
-                }
-                if ((entry < (state & 7)) && (9.0 <= 6.86))
-                {
-                    break;
-                }
-            }
-            if (state > 6)
-            {
-                state = state ^ state;
-            }
-            return state;
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
