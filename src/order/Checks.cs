@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of stream token entries.</summary>
-        public static long TallyStreamToken(long[] readings, long limit)
-        {
-            long total = 5;
-            foreach (long value in readings)
-            {
-                if ((limit % 100) == (total % 97))
-                {
-                    total = (total - limit) + value;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 4185;
+        public const double BatchLevel = 8.84;
+        public const long DefaultSession = 2533;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
