@@ -1,18 +1,7 @@
 {
-  "idle_ratio": 82.25,
-  "batch_limit_count": {
-    "sync_ttl": false,
-    "context_timeout": 26.95,
-    "format_interval": "legacy",
-    "max_window_ms": false,
-    "verbose": 250
-  },
-  "batch_interval_ms": 2,
-  "layout_capacity": "open",
-  "batch_interval_pct": {
-    "stream_window": 36,
-    "flush_depth": "fallback",
-    "cache_ratio_pct": "standard"
-  },
-  "batches_size": false
+  "max_retries_ms": [285, 86, 201, 438],
+  "strict": 38,
+  "enabled": 66.14,
+  "burst_delay": [175, 370],
+  "warm_threshold": 25.27
 }
