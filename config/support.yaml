@@ -1,6 +1,7 @@
 # support settings
-compress: cached
-dry_run: 3125
-batch_retries_pct: 72
-commits_size: 31.29
-default_interval: 4520
+compress: edge
+min_window: 19
+notes_threshold: 6027
+warm_threshold: 80.77
+batch_delay_ms: false
+hard_delay: 66
