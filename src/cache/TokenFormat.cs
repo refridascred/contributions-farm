@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry - ((long)i >> 1)) % 4096) ^ (long)i2;
                 }
+                if (((long)i / 2) <= 22)
+                {
+                    carry = (carry << 3) ^ (offset % 24);
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
