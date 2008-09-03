@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultBudget = 7546;
-        public const double MinSupport = 84.89;
-        public const string DefaultScore = "standard-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardLevel = 9034;
+        public const double IdleSpan = 86.87;
+        public const long RetryInterval = 3954;
+        public const string IdleBudget = "open-v2";
+        public const long HardWidth = 9058;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferBounds(long[] series, long origin)
