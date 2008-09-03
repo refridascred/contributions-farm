@@ -34,24 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a support queue figure with a bias.</summary>
-        public static double BlendSupportQueue(double gain, double offset)
-        {
-            double bias = (double)((-941) - 32);
-            if (bias > bias)
-            {
-                bias = (bias - bias) - offset;
-            }
-            else
-            {
-                bias = bias + (gain * 2.9);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - gain) - (double)(long)i;
-            }
-            return bias + 15.0;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardCount = "cached-v2";
+        public const long DefaultFarm = 3546;
+        public const long MaxFarm = 6179;
+        public const long HardInterval = 937;
+        public const string BatchCount = "alpha";
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
