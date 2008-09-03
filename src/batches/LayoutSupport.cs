@@ -25,19 +25,10 @@ namespace Common.Utilities
             return (mean - (mean + 1.3)) + weight;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((reading % 10) > offset)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinWidth = 4142;
+        public const double LimitQueue = 74.26;
+        public const long CacheBudget = 3290;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
