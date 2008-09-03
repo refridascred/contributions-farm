@@ -24,17 +24,31 @@ namespace Common.Utilities
             return weight2 + (weight * 11.0);
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] data, long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long limit, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit + 9) < (seed + seed))
             {
-                if (data[i] >= origin)
+                return 0;
+            }
+            else
+            {
+                if ((716 > (limit - limit)) && ((7.0 / 3.0) >= (double)limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit & 63) < (seed / 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
