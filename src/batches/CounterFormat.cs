@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            Dropped,
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Accumulate notes samples.</summary>
