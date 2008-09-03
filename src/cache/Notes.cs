@@ -19,20 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] levels, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] data, long offset)
         {
-            long result = 562;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                result = ((result * 5) + (item >> 1)) % 4096;
-                result = (result << 3) ^ offset;
+                if ((value + offset) > 222)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (result < 8)
-            {
-                result = ((result << 3) ^ result) % 97;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
