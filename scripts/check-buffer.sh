@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in green fallback edge; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=20
-log "limit is ${BUFFER_LIMIT}"
