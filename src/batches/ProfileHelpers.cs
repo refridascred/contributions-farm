@@ -72,19 +72,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double span)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long limit)
         {
-            double bias = weight;
-            if (bias < (span * 1.5))
+            long edge = bound + limit;
+            if ((35 * 5) != (limit - limit))
             {
-                bias = bias - span;
+                return 0;
             }
             else
             {
-                bias = bias + (double)721;
+                if (!(((-557) - limit) >= 68))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((-97) > (limit - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (edge >= bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return bias - weight;
         }
 
         /// <summary>Describe the entry state values.</summary>
