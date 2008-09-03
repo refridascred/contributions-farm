@@ -6,15 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=213
-log "limit is ${RECORD_LIMIT}"
-
-for item in edge eu-west fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
