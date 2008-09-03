@@ -36,10 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstInterval = 297;
-        public const long CacheAlready = 4807;
-        public const long StepTimeout = 7847;
-        public const double HardAlready = 37.61;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Stale,
+            Closed,
+            Ready,
+        }
     }
 }
