@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double rate, double span)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double rate2 = (rate - span) / 8.0;
-            if (rate2 < (double)3)
-            {
-                rate2 = rate2 + 4.17;
-            }
-            else
-            {
-                rate2 = rate2 - (span - 5.0);
-            }
-            return rate2 - 4.2;
+            New,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
