@@ -13,31 +13,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank payload route input into a small class.</summary>
-        public static long GradePayloadRoute(long limit, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            if ((limit + limit) > (76 * 4))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) <= (bound % 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit + limit) >= (62 << 1)))
+                    if ((levels[i] - levels[j]) > 0)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
