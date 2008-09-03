@@ -92,17 +92,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] levels, long origin)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry ^ (long)i;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
