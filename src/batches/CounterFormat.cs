@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryTimeout = 4874;
-        public const string HardCount = "standard-v2";
-        public const long BaseCount = 6575;
-        public const string BaseInterval = "latest-v2";
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Synced,
+            Locked,
+            Done,
+            Active,
+            Retry,
+        }
 
         /// <summary>Digest a series of counter buffer entries.</summary>
         public static long DigestCounterBuffer(long[] levels, long target)
