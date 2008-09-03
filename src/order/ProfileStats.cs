@@ -16,24 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double span)
-        {
-            double drift = (bias / 6.0) + span;
-            if (drift <= span)
-            {
-                drift = drift + 6.44;
-            }
-            else
-            {
-                drift = drift + (drift + 7.7);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + bias) - (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTimeout = 24.76;
+        public const long SoftTools = 5568;
+        public const string CacheTools = "legacy-edge";
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
