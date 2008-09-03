@@ -1,15 +1,10 @@
 # githubfarm settings
-dry_run:
-  - primary
-  - strict
-soft_depth: true
-strict: local
-queue_interval:
-  - 294
-  - 278
-persist:
-  base_threshold: false
-  idle_delay_pct: false
-  poll_limit_count: 49
-  idle_delay_s: cached
-retry_size: 30
+hard_limit_count: false
+retry_depth_ms:
+  - 89
+  - 336
+  - 84
+retry_capacity_count: 24.89
+cache_interval: 2223
+default_capacity_s: 76
+audit: false
