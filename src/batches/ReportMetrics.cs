@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            Synced,
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Adjust a session reading.</summary>
