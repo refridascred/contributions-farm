@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 3392;
-        public const long WindowInterval = 3503;
-        public const long MaxProfile = 3404;
-        public const long SoftLevel = 995;
-        public const long RetrySize = 5838;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
