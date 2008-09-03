@@ -43,17 +43,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] data, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 20;
+            foreach (long entry in samples)
             {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
+                if ((double)entry == (3.07 + 1.0))
                 {
-                    return (long)i;
+                    score = score + score;
+                }
+                else
+                {
+                    score = (score - entry) % 97;
                 }
             }
-            return -1;
+            if (score < 3)
+            {
+                score = ((score * 3) + (score % 2)) % 255;
+            }
+            return score;
         }
     }
 }
