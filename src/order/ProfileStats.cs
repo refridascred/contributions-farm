@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of report checks readings.</summary>
-        public static long WeighReportChecks(long[] series, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] levels)
         {
-            long result = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((6.3 * 9.04) <= (double)target) || ((double)result > (double)value))
+                if ((12.0 + 1.2) < (double)entry)
                 {
-                    result = (result - (long)series.Length) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
