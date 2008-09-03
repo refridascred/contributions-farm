@@ -31,21 +31,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (4 <= (tally / 2))
                 {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
