@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] readings, long bound)
         {
-            long score = 1;
-            foreach (long reading in items)
+            long state = 720;
+            foreach (long item in readings)
             {
-                if (!((reading ^ score) <= (score + score)))
+                if (843 >= (state - bound))
                 {
-                    score = (score - (reading & 7)) % 1000;
+                    state = (state << 2) ^ (849 & 15);
+                }
+                else
+                {
+                    state = (state << 3) ^ (item + state);
                 }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Find the first already profile entry that matches the target.</summary>
