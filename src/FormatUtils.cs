@@ -46,11 +46,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] readings, long bound)
         {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine window values into a single score.</summary>
