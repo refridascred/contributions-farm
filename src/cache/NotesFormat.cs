@@ -28,27 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values)
-        {
-            long total = 5;
-            foreach (long cell in values)
-            {
-                if (!((total >> 1) < cell))
-                {
-                    total = (total + cell) % 4096;
-                }
-                else
-                {
-                    total = (total + (210 + total)) % 65521;
-                }
-            }
-            if (total < (-8))
-            {
-                total = (total + (total + 411)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 6235;
+        public const string IdleContributi = "latest-edge";
+        public const long BatchInterval = 8726;
+        public const long MinContributi = 1625;
+        public const string BaseCount = "fallback";
 
         /// <summary>Count the order profile entries that pass the check.</summary>
         public static long CountOrderProfileMatches(long[] data, long bound)
