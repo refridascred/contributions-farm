@@ -57,15 +57,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of commits payload entries.</summary>
-        public static long TotalCommitsPayload(long[] levels, long floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long anchor = 332;
-            foreach (long item in levels)
-            {
-                anchor = (anchor - (floor + anchor)) - item;
-            }
-            return anchor;
+            Idle,
+            Draft,
+            Paused,
         }
     }
 }
