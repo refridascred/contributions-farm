@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepBudget = 47.39;
-        public const long DefaultContext = 7823;
-        public const long RetrySpan = 9114;
-        public const long DefaultSpan = 1428;
-        public const long LimitContext = 2198;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Pending,
+            Queued,
+            Paused,
+            Active,
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long offset)
