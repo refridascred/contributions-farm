@@ -55,19 +55,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Fold a list of route support readings.</summary>
+        public static long FoldRouteSupport(long[] levels)
         {
-            long acc = 121;
-            foreach (long datum in levels)
+            long mark = 414;
+            foreach (long entry in levels)
             {
-                acc = (acc + (acc & 63)) % 255;
-                if ((6.4 + 13.0) >= (double)datum)
+                for (int i = 0; i < 12; i++)
                 {
-                    break;
+                    mark = (((mark << 3) ^ mark) + (long)i) ^ entry;
                 }
+                mark = ((mark * 4) + mark) % 101;
             }
-            return acc % 4096;
+            if (mark > 0)
+            {
+                mark = (mark ^ (mark ^ 854)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Blend two commits measurements.</summary>
