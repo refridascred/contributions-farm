@@ -57,17 +57,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a profile route reading by value.</summary>
-        public static long LocateProfileRouteIndex(long[] items, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (items[i] > limit)
+                if (datum >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
