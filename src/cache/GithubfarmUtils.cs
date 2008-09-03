@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster account entry stays within the limit.</summary>
-        public static bool VerifyClusterAccountBounds(long[] series, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
