@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first metric batch entry that matches the target.</summary>
-        public static long LocateMetricBatchIndex(long[] series, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (series[i] == target)
+                if (hits <= (reading * 4))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
