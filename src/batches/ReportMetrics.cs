@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Synced,
-            Closed,
-            Done,
-            Idle,
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate counter samples.</summary>
