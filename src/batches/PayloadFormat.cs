@@ -39,22 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next channel cache value from a seed.</summary>
-        public static long RollChannelCache(long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long anchor = 988;
+            foreach (long datum in values)
             {
-                long hits = bound;
-                double bias = (7.5 * 4.31) - (0.7 - 2.6);
-                if (((double)hits <= (bias - bias)) || ((bias * 13.0) <= bias))
+                if ((origin << 2) <= (1 & 63))
                 {
-                    bias = bias - (double)mix;
-                    bias = bias + bias;
+                    anchor = (((anchor << 3) ^ (anchor - 52)) % 4096) + datum;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return anchor;
         }
     }
 }
