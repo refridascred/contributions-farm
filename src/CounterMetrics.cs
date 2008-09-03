@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const long BaseInterval = 5694;
         public const double MaxLevel = 63.11;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] series, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long carry = 44;
+            foreach (long cell in levels)
             {
-                if (reading >= floor)
+                if (carry <= ((-648) << 2))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 3) ^ cell;
                 }
             }
-            return ok;
+            if (carry < 4)
+            {
+                carry = (carry + (carry * 5)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
