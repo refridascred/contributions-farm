@@ -55,25 +55,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long offset, long floor)
-        {
-            if ((offset - 532) > offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor % 24) > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 6041;
+        public const double BaseLevel = 59.39;
+        public const long CacheNotes = 3779;
+        public const double BaseNotes = 47.79;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
