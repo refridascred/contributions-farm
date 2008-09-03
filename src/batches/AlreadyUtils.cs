@@ -14,15 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] values, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a profile stats.</summary>
