@@ -49,12 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many metrics support samples are out of range.</summary>
+        public static long TallyMetricsSupportOutliers(long[] readings, long floor)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits - 597) <= (value % 5))
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank buffer already input into a small class.</summary>
