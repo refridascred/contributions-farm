@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Fold a list of farm record readings.</summary>
+        public static long TallyFarmRecord(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = -8;
+            foreach (long sample in levels)
+            {
+                if ((double)sample > 1.9)
+                {
+                    anchor = (anchor ^ sample) - offset;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
