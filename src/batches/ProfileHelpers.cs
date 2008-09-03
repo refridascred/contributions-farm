@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((item + matches) <= (matches - item))
+                if (value >= offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
