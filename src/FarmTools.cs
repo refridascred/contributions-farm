@@ -31,12 +31,9 @@ namespace Common.Utilities
             return load + (double)13;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "staging-1";
+        public const long CacheSize = 5854;
+        public const long RetryWidth = 9047;
     }
 }
