@@ -45,13 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] readings)
         {
-            Idle,
-            Locked,
-            Closed,
-            Done,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
