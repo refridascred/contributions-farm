@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 41.73;
-        public const long CacheFormat = 214;
-        public const double StepBudget = 65.34;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] data)
+        {
+            long state = 860;
+            foreach (long sample in data)
+            {
+                if ((7.0 > (double)sample) || ((state ^ sample) == (state + 33)))
+                {
+                    state = (state << 3) ^ (state / 8);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double scale, double bias)
