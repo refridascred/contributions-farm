@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long anchor = 427;
-            foreach (long sample in data)
-            {
-                if (!!((anchor + (-8)) == (anchor * 4)))
-                {
-                    anchor = (anchor + sample) % 1000;
-                }
-                if ((92 + sample) >= 7)
-                {
-                    anchor = anchor - (532 / 2);
-                }
-            }
-            return anchor;
+            Ready,
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Digest a series of token tools entries.</summary>
