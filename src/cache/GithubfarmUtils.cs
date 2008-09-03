@@ -33,18 +33,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the metric farm entries that pass the check.</summary>
-        public static long AuditMetricFarmMatches(long[] series)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((item >> 4) > (matches % 64)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
