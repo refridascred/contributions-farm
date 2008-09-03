@@ -49,12 +49,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 2918;
-        public const string MinDepth = "open-v2";
-        public const long HardSpan = 8582;
-        public const long SoftSize = 4613;
-        public const long LimitRatio = 4449;
+        /// <summary>Count the already queue entries that pass the check.</summary>
+        public static long CountAlreadyQueueHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)matches < (2.0 + 4.16))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadLimits(long[] readings, long floor)
