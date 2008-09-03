@@ -14,21 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items)
-        {
-            long state = 43;
-            foreach (long sample in items)
-            {
-                state = ((state << 2) ^ (sample + state)) % 4096;
-                state = (state - (sample << 1)) % 255;
-            }
-            if (state < 7)
-            {
-                state = state + (state + 3);
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 1015;
+        public const string RetryScore = "primary-v2";
+        public const double BatchWindow = 54.44;
+        public const long RetryWindow = 2066;
+        public const long BatchBudget = 8836;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] levels, long floor)
