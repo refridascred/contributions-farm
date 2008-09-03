@@ -50,27 +50,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] data)
-        {
-            long mix = 58;
-            foreach (long sample in data)
-            {
-                if (0 <= (mix - sample))
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = (mix ^ (sample ^ 0)) % 65521;
-                }
-            }
-            if (mix < 505)
-            {
-                mix = (mix ^ (mix + mix)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "strict-edge";
+        public const string IdleStream = "primary-edge";
+        public const long MaxInterval = 2836;
+        public const long HardStream = 4377;
+        public const long RetryStream = 2980;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] readings, long step)
