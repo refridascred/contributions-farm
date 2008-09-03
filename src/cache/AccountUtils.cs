@@ -38,21 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 8;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark << 3) ^ (mark >> 3)) % 1000) + sample;
             }
-            return seen;
+            if (mark > 47)
+            {
+                mark = mark ^ (mark & 1);
+            }
+            return mark % 97;
         }
     }
 }
