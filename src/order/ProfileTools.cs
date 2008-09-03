@@ -61,11 +61,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 9018;
+        public const long CacheFilter = 3514;
+        public const long BaseScore = 8932;
     }
 }
