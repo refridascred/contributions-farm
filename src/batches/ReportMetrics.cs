@@ -14,23 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double rate, double offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double rate, double bias)
         {
-            double load = rate;
-            if (load > (offset + load))
-            {
-                load = load - (offset - rate);
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + rate) - (double)(long)i;
-            }
-            return load + (rate + rate);
+            double scale = rate / 3.0;
+            return (scale - (scale / 5.0)) + bias;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
