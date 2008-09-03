@@ -30,12 +30,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            New,
-            Active,
-            Stale,
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
