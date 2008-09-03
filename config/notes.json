@@ -1,7 +1,12 @@
 {
-  "base_depth_ms": false,
-  "cache_timeout_pct": "staging",
-  "tools_capacity": [371, 155, 79, 261],
-  "hard_window": "local",
-  "dry_run": 5433
+  "retry_interval_ms": [75, 271],
+  "base_size_ms": 65,
+  "soft_threshold_count": true,
+  "default_ttl_count": "fallback",
+  "retry_window_s": {
+    "readonly": ["legacy", "primary", "local"],
+    "strict": 5759,
+    "window_size": false,
+    "hard_window": "blue"
+  }
 }
