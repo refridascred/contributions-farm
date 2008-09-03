@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long offset, long origin)
+        /// <summary>Check that every counter layout entry stays within the limit.</summary>
+        public static bool VerifyCounterLayoutBounds(long[] levels, long offset)
         {
-            if (origin <= (origin - offset))
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin < (29 * 4))
+                if (datum >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
