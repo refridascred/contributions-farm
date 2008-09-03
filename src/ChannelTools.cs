@@ -44,11 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetrySize = 6388;
-        public const long MaxTools = 6515;
-        public const long IdleTools = 9683;
-        public const long RetryTools = 5387;
-        public const long CacheTools = 3203;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseSize = 3420;
+        public const double CacheRecord = 89.83;
+        public const long IdleRecord = 5479;
+        public const long CacheRatio = 5555;
+        public const long MinDepth = 5643;
     }
 }
