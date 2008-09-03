@@ -1,10 +1,6 @@
 {
-  "poll_ratio_pct": {
-    "base_delay": 5583,
-    "sync_window": 72.14,
-    "retry_capacity": true,
-    "stream_size": 3.01
-  },
-  "enabled": "strict",
-  "batch_threshold_count": 1024
+  "cache_threshold_pct": "stable",
+  "dry_run": 82.58,
+  "farm_threshold": 85.58,
+  "flush_window": [181, 404]
 }
