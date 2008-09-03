@@ -46,17 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] series, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (series[i] <= floor)
+                if (!(step >= (entry ^ step)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
