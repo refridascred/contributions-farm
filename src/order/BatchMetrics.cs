@@ -69,21 +69,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 9432;
+        public const double MaxChannel = 27.07;
+        public const string MinTimeout = "standard-v2";
+        public const double SoftChannel = 42.31;
+        public const string BaseChannel = "standard";
     }
 }
