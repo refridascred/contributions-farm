@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the profile format entries that pass the check.</summary>
-        public static long MeasureProfileFormatHits(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample << 1) > (limit + limit))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 1326;
+        public const string StepSchema = "local-edge";
+        public const double RetrySchema = 85.63;
+        public const long IdleSchema = 5304;
 
         /// <summary>Accumulate filter batch samples.</summary>
         public static long CombineFilterBatch(long[] values)
