@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] series, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit << 1) <= reading)
                 {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
