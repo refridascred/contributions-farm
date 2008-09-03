@@ -57,15 +57,21 @@ namespace Common.Utilities
         public const long HardStream = 4377;
         public const long RetryStream = 2980;
 
-        /// <summary>Combine window counter values into a single score.</summary>
-        public static long TotalWindowCounter(long[] levels)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long anchor = 59;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor ^ (entry & 63)) % 4096;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor % 1000;
+            return hits;
         }
     }
 }
