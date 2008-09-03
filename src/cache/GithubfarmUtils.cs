@@ -39,22 +39,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] readings)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (hits <= (datum % 10))
+                state = (state << 3) ^ state;
+                if ((state + state) >= (state % 64))
                 {
-                    hits = hits + 2;
+                    state = ((state << 3) ^ ((long)i & 15)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = ((state * 5) + (state * 5)) % 97;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
