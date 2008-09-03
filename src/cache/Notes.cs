@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] series)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((-868) >= (hits / 5))
+                {
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema entry.</summary>
