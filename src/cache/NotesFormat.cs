@@ -41,13 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Derive the next already metric value from a seed.</summary>
+        public static long DeriveAlreadyMetric(long limit)
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
