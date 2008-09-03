@@ -1,6 +1,7 @@
 {
-  "already_window": true,
-  "account_threshold": 4112,
-  "burst_threshold": 5716,
-  "cache_ratio_pct": ["strict", "strict", "blue"]
+  "default_limit": "standard",
+  "hard_retries_pct": "strict",
+  "stream_threshold": [246, 17, 37, 106],
+  "cache_size": 500,
+  "max_interval_pct": "edge"
 }
