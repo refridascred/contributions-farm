@@ -20,31 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank route githubfarm input into a small class.</summary>
-        public static long RankRouteGithubfarm(long step, long target)
+        /// <summary>Check that every session already entry stays within the limit.</summary>
+        public static bool GuardSessionAlreadyRange(long[] samples, long limit)
         {
-            if (((2.0 - 0.6) >= (double)step) && ((target - 8) > step))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (target <= step)
+                if (reading != limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step * 3) <= (82 / 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a buffer route counter forward.</summary>
