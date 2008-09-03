@@ -50,38 +50,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batches report pair into a bucket.</summary>
-        public static long SortBatchesReport(long origin, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] series, long floor)
         {
-            if ((11.0 / 9.0) >= (double)origin)
+            long total = 29;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound ^ bound) != (6 - 46))
+                if (entry >= (floor % 100))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 3) < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound * 4) <= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (total << 3) ^ (floor % 24);
                 }
             }
+            return total;
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
