@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] series)
-        {
-            long total = 1;
-            foreach (long sample in series)
-            {
-                if ((38 - total) >= (82 % 3))
-                {
-                    total = (total << 3) ^ (sample - total);
-                    total = total - 3;
-                }
-                if ((sample - total) > (sample + 7))
-                {
-                    total = ((total * 2) + sample) % 101;
-                }
-                if (!((total + total) == (sample + total)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 11.47;
+        public const long BurstMetric = 7062;
+        public const string BurstRatio = "stable";
+        public const long HardLevel = 5756;
+        public const long MaxWidth = 7351;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long DigestProfile(long[] items)
