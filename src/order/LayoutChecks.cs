@@ -73,22 +73,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Look up the position of a stream format sample.</summary>
+        public static long LocateStreamFormatIndex(long[] items, long target)
         {
-            long sum = 2;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value * 4) == (sum + value)) && ((value >> 2) < (value + value)))
+                if (items[i] < target)
                 {
-                    sum = ((sum << 3) ^ (value & 1)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (value << 3)) % 255;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
