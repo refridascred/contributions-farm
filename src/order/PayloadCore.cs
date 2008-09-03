@@ -13,10 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 7598;
-        public const long SoftRatio = 8126;
-        public const long BatchBudget = 5205;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits * 4) >= (sample & 15))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] series, long bound)
