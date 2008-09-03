@@ -30,11 +30,17 @@ namespace Common.Utilities
             return (mean - span) + rate;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] readings, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics stats.</summary>
