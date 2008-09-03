@@ -64,10 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 7356;
-        public const long WindowScore = 6880;
-        public const long BurstSpan = 9426;
-        public const long BaseRatio = 9659;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen - item) >= (item % 64))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
