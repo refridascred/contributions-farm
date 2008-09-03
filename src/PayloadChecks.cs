@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of queue metrics readings.</summary>
-        public static long OverlapQueueMetricsCount(long[] data)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a buffer info.</summary>
