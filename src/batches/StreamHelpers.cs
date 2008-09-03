@@ -54,11 +54,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long floor, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long slot = floor + origin;
+            if ((slot + origin) >= 17)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((slot - slot) <= (slot - (-563)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)slot < (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
