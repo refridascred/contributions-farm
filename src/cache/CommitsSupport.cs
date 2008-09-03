@@ -93,18 +93,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] items)
+        /// <summary>Digest a series of stream tools entries.</summary>
+        public static long TallyStreamTools(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = 188;
+            foreach (long value in items)
             {
-                if (((entry + (long)items.Length) < entry) || !((hits + entry) != (entry / 4)))
+                if (((double)value <= (7.09 * 3.9)) && ((value ^ value) <= (value / 7)))
                 {
-                    hits = hits + 3;
+                    state = (state + (value / 4)) % 4096;
                 }
             }
-            return hits;
+            if (state > 153)
+            {
+                state = (state + (state + state)) % 255;
+            }
+            return state % 97;
         }
     }
 }
