@@ -15,11 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "alpha-1";
-        public const long SoftSpan = 1767;
-        public const string BaseScore = "local-1";
-        public const long LimitSupport = 2873;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            New,
+            Active,
+            Locked,
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
