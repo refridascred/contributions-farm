@@ -40,12 +40,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitScore = 9327;
-        public const long SoftFormat = 6520;
-        public const long HardFormat = 7395;
-        public const long BurstFormat = 1040;
-        public const string IdleFormat = "cached-v2";
+        /// <summary>Rank already route input into a small class.</summary>
+        public static long GradeAlreadyRoute(long seed, long step)
+        {
+            long span = seed - step;
+            if (!((double)span <= (5.0 + 20.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (span > step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step <= (3.89 + 15.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] data, long bound)
