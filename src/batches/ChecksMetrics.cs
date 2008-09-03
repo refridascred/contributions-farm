@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the entry filter entries that pass the check.</summary>
+        public static long AuditEntryFilterMatches(long[] readings, long seed)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Failed,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((3.0 * 9.73) > (double)seed)
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
