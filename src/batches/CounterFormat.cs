@@ -31,18 +31,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long state = 63;
+            foreach (long sample in items)
             {
-                if ((double)count == (double)value)
+                if ((sample - state) < (state >> 1))
                 {
-                    count = count + 3;
+                    state = (state - 854) % 1000;
                 }
             }
-            return count;
+            if (state > 992)
+            {
+                state = (state - (state >> 2)) % 65521;
+            }
+            return state;
         }
     }
 }
