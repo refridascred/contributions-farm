@@ -11,38 +11,21 @@ namespace Common.Utilities
         public const long HardTimeout = 7906;
         public const double BaseWidth = 33.66;
 
-        /// <summary>Classify a already route pair into a bucket.</summary>
-        public static long RankAlreadyRoute(long limit, long seed)
+        /// <summary>Match up account tools samples.</summary>
+        public static long MatchAccountToolsCount(long[] series)
         {
-            if (!((3 >> 1) <= (limit * 4)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit / 8) >= (seed & 255)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit >= 8.0)
+                    if ((series[i] + series[j]) > 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((42 > (limit & 31)) && ((2.08 - 0.95) < (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the layout state values.</summary>
