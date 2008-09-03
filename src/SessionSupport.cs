@@ -31,10 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 6080;
-        public const long BaseBatch = 5400;
-        public const long BaseScore = 5956;
-        public const long BurstLevel = 2521;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            New,
+            Paused,
+            Active,
+            Ready,
+            Failed,
+        }
     }
 }
