@@ -1,7 +1,6 @@
 {
-  "retry_threshold_count": "stable",
-  "sync_size": 30,
-  "soft_capacity_pct": 46,
-  "flush_limit": 27,
-  "farm_window": true
+  "persist": "local",
+  "cache_depth_count": 52.68,
+  "command_threshold": [398, 152],
+  "default_depth": 11
 }
