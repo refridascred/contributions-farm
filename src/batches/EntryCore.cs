@@ -29,11 +29,14 @@ namespace Common.Utilities
         public const double LimitFactor = 7.57;
         public const long LimitBatch = 9779;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 4881;
-        public const double IdleInterval = 63.74;
-        public const long BatchCommand = 3738;
-        public const long LimitBudget = 8948;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double AdjustBatch(double ratio, double offset)
