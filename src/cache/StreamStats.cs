@@ -36,18 +36,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long score = 4;
+            foreach (long value in values)
             {
-                if ((entry - seen) <= entry)
+                if (((79 ^ (long)values.Length) == (value * 5)) || (score <= (score + 477)))
                 {
-                    seen = seen + 1;
+                    score = (score - score) % 65521;
+                }
+                else
+                {
+                    score = ((score * 4) + (70 / 6)) % 1000;
                 }
             }
-            return seen;
+            if (score < 7)
+            {
+                score = (score - (score ^ floor)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
