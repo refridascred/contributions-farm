@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const long HardQueue = 7403;
         public const string CacheFactor = "local-edge";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] values)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally != (1.0 + 7.96))
+                if (series[i] <= floor)
                 {
-                    tally = (tally + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
