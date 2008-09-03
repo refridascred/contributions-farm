@@ -1,10 +1,8 @@
 {
-  "dry_run": 7.49,
-  "base_ratio_s": {
-    "poll_retries_ms": [74, 147],
-    "dry_run": 28.92,
-    "sync_timeout": 58.3,
-    "idle_interval": 1024
-  },
-  "report_interval": "latest"
+  "soft_threshold": 7266,
+  "batch_size": "blue",
+  "soft_ratio_ms": 100,
+  "persist": 1186,
+  "poll_ratio_pct": "open",
+  "batch_delay_s": "standard"
 }
