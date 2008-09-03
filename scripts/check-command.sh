@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=261
+log "limit is ${COMMAND_LIMIT}"
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in edge strict fallback standard; do
+for item in fallback strict eu-west legacy; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=144
-log "limit is ${COMMAND_LIMIT}"
