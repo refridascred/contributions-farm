@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchRatio = "alpha-1";
-        public const long BatchSpan = 571;
-        public const double MaxLayout = 0.79;
-        public const long HardSpan = 2480;
-        public const long RetryInterval = 4850;
+        /// <summary>Roll a cache notes counter forward.</summary>
+        public static long RollCacheNotes(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((total << 2) == (offset - offset))
+                {
+                    total = total + offset;
+                    total = ((total << 2) ^ (total + (long)i)) % 4096;
+                }
+                total = ((total * 3) + (total >> 2)) % 97;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string MaxSupport = "alpha-1";
