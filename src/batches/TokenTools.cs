@@ -38,22 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long bound, long floor)
         {
-            long mix = 72;
-            foreach (long datum in values)
+            if ((floor > (floor & 63)) || ((double)bound < (11.0 / 7.0)))
             {
-                if ((datum - datum) == (seed + seed))
+                return 4;
+            }
+            else
+            {
+                if (!(bound > (bound * 4)))
                 {
-                    continue;
+                    return 5;
                 }
-                if (((double)seed >= (double)datum) || ((datum - seed) > (long)values.Length))
+                else
                 {
-                    mix = (mix + (mix + seed)) % 4096;
+                    if ((bound ^ floor) == (floor & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
