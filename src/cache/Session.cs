@@ -25,11 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order editor reading.</summary>
-        public static double SmoothOrderEditor(double weight, double offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long limit)
         {
-            double load = 2.0;
-            return ((load - (load / 5.0)) + weight) + offset;
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result * 5) + ((-72) & 127)) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
