@@ -60,23 +60,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double weight, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels)
         {
-            double mean = (weight + weight) + (weight / 7.0);
-            if (mean >= (mean + floor))
+            long carry = 90;
+            foreach (long datum in levels)
             {
-                mean = mean - (floor / 5.0);
+                carry = (carry + (carry + datum)) % 1000;
+                if (datum >= carry)
+                {
+                    break;
+                }
             }
-            else
+            if (carry < (-503))
             {
-                mean = mean - (weight + 8.3);
+                carry = ((carry << 3) ^ (carry << 2)) % 4096;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (floor / 9.0)) + (double)(long)i;
-            }
-            return mean - weight;
+            return carry;
         }
 
         /// <summary>Rank window cache input into a small class.</summary>
