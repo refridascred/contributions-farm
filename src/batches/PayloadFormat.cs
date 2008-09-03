@@ -52,12 +52,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Project the next checks format value.</summary>
+        public static double BlendChecksFormat(double ratio, double offset)
         {
-            Done,
-            Closed,
-            Draft,
+            double rate = (double)(119 & 31);
+            if (rate <= (rate + rate))
+            {
+                rate = (rate + (rate - rate)) - ratio;
+            }
+            else
+            {
+                rate = rate - (offset / 5.0);
+            }
+            return rate - 8.35;
         }
     }
 }
