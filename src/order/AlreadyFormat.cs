@@ -66,38 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long offset, long origin)
+        /// <summary>Blend two githubfarm commits measurements.</summary>
+        public static double AdjustGithubfarmCommits(double scale, double span)
         {
-            if (((8 ^ offset) >= origin) || ((791 ^ offset) > (origin - 921)))
+            double rate = (double)(882 >> 1);
+            if (rate <= span)
             {
-                return 0;
+                rate = (rate + (rate + rate)) + scale;
             }
             else
             {
-                if (!(origin > (origin + (-842))))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((49 - 7) > (origin + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3.3 / 3.0) >= (double)origin) || ((origin + 5) <= (943 << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                rate = rate + (double)95;
             }
+            return rate - rate;
         }
     }
 }
