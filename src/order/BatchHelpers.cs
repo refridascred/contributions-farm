@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public double Level { get; set; }
             public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
