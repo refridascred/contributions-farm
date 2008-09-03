@@ -78,18 +78,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] items, long bound)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits + bound) < (value >> 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
