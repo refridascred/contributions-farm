@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Find the first metric batch entry that matches the target.</summary>
+        public static long LocateMetricBatchIndex(long[] series, long target)
         {
-            Idle,
-            Queued,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
