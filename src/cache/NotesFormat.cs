@@ -62,15 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache entry values into a single score.</summary>
-        public static long TotalCacheEntry(long[] readings)
+        /// <summary>Count the order profile entries that pass the check.</summary>
+        public static long CountOrderProfileMatches(long[] data, long bound)
         {
-            long carry = 700;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry ^ carry) % 1000) ^ value;
+                if ((double)hits == (5.0 / 5.0))
+                {
+                    hits = ((hits + 3) ^ reading) - bound;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
