@@ -1,8 +1,10 @@
 {
-  "soft_threshold": 7266,
-  "batch_size": "blue",
-  "soft_ratio_ms": 100,
-  "persist": 1186,
-  "poll_ratio_pct": "open",
-  "batch_delay_s": "standard"
+  "hard_interval_pct": {
+    "retry_ratio": true,
+    "cache_window": "edge",
+    "stream_limit": "standard"
+  },
+  "compress": "eu-west",
+  "warm_depth_ms": ["latest", "strict", "stable"],
+  "account_threshold": ["standard", "stable", "fallback", "primary"]
 }
