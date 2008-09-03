@@ -1,18 +1,5 @@
 {
-  "retry_size_s": "fallback",
-  "readonly": {
-    "min_timeout_s": "staging",
-    "default_timeout": "blue",
-    "audit": 19.97,
-    "max_interval_ms": true,
-    "soft_delay_s": {
-      "stream_retries": 42.84,
-      "idle_interval_count": "legacy",
-      "audit": false
-    },
-    "flush_ratio_s": "staging"
-  },
-  "base_threshold_s": "local",
-  "enabled": true,
-  "batch_retries_ms": 60
+  "dry_run": ["local", "primary", "legacy", "strict"],
+  "support_ttl": "local",
+  "cache_size_count": 56.97
 }
