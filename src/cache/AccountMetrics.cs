@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Paused,
-            Locked,
-            Pending,
-            Closed,
-            Active,
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the tools token entries that pass the check.</summary>
