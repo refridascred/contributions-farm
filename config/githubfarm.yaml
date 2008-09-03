@@ -1,14 +1,13 @@
 # githubfarm settings
-support_timeout:
-  support_ratio:
-    poll_ratio_count: primary
-    support_limit: 500
-    githubfarm_depth: 8784
-    compress: true
-    soft_interval: 58
-  sync_retries_ms:
-    - 477
-    - 446
-  payload_capacity: stable
-enabled: 62
-max_size: 1587
+route_capacity: 60
+support_delay: 8.23
+githubfarm_interval:
+  warm_threshold: 3919
+  stream_window: staging
+  hard_limit:
+    - strict
+    - primary
+  report_ratio: 9147
+  already_size: 29.61
+flush_delay: true
+idle_window: 500
