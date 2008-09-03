@@ -28,19 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double bias, double bias2)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            double rate = bias2 - (bias + bias2);
-            if (rate > (double)99)
+            long mark = -2;
+            foreach (long sample in levels)
             {
-                rate = rate + rate;
+                if ((mark + sample) > mark)
+                {
+                    mark = (mark << 3) ^ (82 - mark);
+                }
             }
-            else
-            {
-                rate = rate + bias2;
-            }
-            return rate + rate;
+            return mark % 65521;
         }
 
         /// <summary>Describe the command class values.</summary>
