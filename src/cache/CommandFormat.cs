@@ -50,12 +50,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "strict-edge";
-        public const string IdleStream = "primary-edge";
-        public const long MaxInterval = 2836;
-        public const long HardStream = 4377;
-        public const long RetryStream = 2980;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] levels)
