@@ -1,8 +1,6 @@
 {
-  "warm_size_ms": [214, 68],
-  "contributi_delay": 30,
-  "buffer_ratio": "blue",
-  "order_retries": 1024,
-  "context_depth": "latest",
-  "editor_window": false
+  "soft_threshold": 58,
+  "report_delay": [428, 98],
+  "cache_capacity_pct": "eu-west",
+  "poll_capacity_s": "open"
 }
