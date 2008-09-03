@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long seed, long origin)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long floor2)
         {
-            long bound = seed ^ origin;
-            if ((6.11 - 0.35) != (double)bound)
+            long slot = floor - floor2;
+            if ((floor2 & 7) > (floor + slot))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((76 > (bound + origin)) || ((seed << 3) >= (seed + 3)))
+                if (!((14.0 - 8.6) == (double)slot))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if (((5.0 / 9.0) <= (double)seed) || (20 >= (origin % 3)))
+                    if (((slot % 100) < floor2) || ((floor & 1) > (slot - floor2)))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        if ((5 > (slot % 60)) && ((floor2 % 60) == (slot + slot)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
