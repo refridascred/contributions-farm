@@ -1,7 +1,10 @@
 {
-  "checks_timeout": "primary",
-  "cache_depth_count": 91,
-  "default_limit": 3353,
-  "editor_delay": 5146,
-  "enabled": 79
+  "poll_ratio_pct": {
+    "base_delay": 5583,
+    "sync_window": 72.14,
+    "retry_capacity": true,
+    "stream_size": 3.01
+  },
+  "enabled": "strict",
+  "batch_threshold_count": 1024
 }
