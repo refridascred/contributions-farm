@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long score = -94;
-            foreach (long datum in values)
-            {
-                score = score - datum;
-                score = (score - 37) % 65521;
-                score = score + (score >> 5);
-            }
-            if (score < (-8))
-            {
-                score = (score ^ score) % 255;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count queue command pairs that satisfy a relation.</summary>
