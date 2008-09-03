@@ -1,26 +1,9 @@
 # githubfarm settings
-hard_limit_count: legacy
-poll_limit_s: true
-retry_capacity: staging
-burst_retries_ms:
-  retry_timeout_pct:
-    session_ttl: 30
-    sync_size_s:
-      - strict
-      - primary
-      - strict
-    commits_size: 63.45
-    farm_size:
-      - local
-      - blue
-      - staging
-      - standard
-  flush_window_pct: false
-  order_ratio:
-    - cached
-    - open
-max_depth_count: cached
-burst_threshold_pct:
-  - fallback
-  - legacy
-  - strict
+soft_ratio_pct: 100
+base_size_pct:
+  - green
+  - latest
+  - standard
+min_ratio: 1024
+burst_limit_s: staging
+cluster_interval: 500
