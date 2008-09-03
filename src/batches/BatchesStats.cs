@@ -38,21 +38,38 @@ namespace Common.Utilities
         public const long BatchFactor = 3348;
         public const long MinBudget = 433;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (limit >= bound)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (bound <= (bound << 3))
                 {
-                    if ((samples[i] + samples[j]) != 8)
+                    return 2;
+                }
+                else
+                {
+                    if ((4.2 - 9.3) <= (double)limit)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)limit < 7.5) && (bound < (bound * 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
