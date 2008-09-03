@@ -73,11 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] readings)
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!((tally << 1) <= (datum % 64)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
