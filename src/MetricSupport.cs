@@ -19,19 +19,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] items, long seed)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Project the next profile stream value.</summary>
