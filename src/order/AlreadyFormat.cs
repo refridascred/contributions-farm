@@ -31,10 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 901;
-        public const long WindowWidth = 9173;
-        public const long CacheChannel = 1449;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long offset)
+        {
+            if (((floor + offset) != (offset & 3)) || (floor <= (offset & 31)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((floor + floor) <= offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long DigestReport(long[] samples, long target)
