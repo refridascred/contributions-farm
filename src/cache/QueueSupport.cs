@@ -20,14 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the format profile entries that pass the check.</summary>
+        public static long AuditFormatProfileMatches(long[] samples)
         {
-            Pending,
-            Closed,
-            Retry,
-            Locked,
-            New,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading >> 2) < (reading << 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
