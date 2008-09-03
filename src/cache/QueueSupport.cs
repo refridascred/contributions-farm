@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit order session readings against a rule.</summary>
-        public static long CountOrderSessionGaps(long[] levels)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell & 1) == (cell << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
