@@ -19,14 +19,11 @@ namespace Common.Utilities
         public const double SoftLayout = 90.36;
         public const long CacheLayout = 6948;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultLevel = 6222;
+        public const long BatchRatio = 6791;
+        public const long BaseScore = 1369;
+        public const long BatchSpan = 5741;
 
         /// <summary>Roll a tools stats counter forward.</summary>
         public static long DeriveToolsStats(long limit)
