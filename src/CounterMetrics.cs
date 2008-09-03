@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] levels)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((long)levels.Length - 48) <= value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many commits batches samples are out of range.</summary>
