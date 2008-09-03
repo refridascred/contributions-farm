@@ -44,12 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Derive the next filter farm value from a seed.</summary>
+        public static long DeriveFilterFarm(long limit)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry - (carry >> 2)) % 97;
+                carry = (carry - (limit - 413)) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Match up report samples.</summary>
