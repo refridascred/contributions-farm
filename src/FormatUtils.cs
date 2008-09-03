@@ -75,19 +75,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] levels, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long floor, long target)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long lane = floor - target;
+            if (((double)lane <= (1.0 / 8.0)) || ((double)lane == (double)floor))
             {
-                if (entry <= origin)
+                return 0;
+            }
+            else
+            {
+                if ((lane * 2) < (target << 3))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)target > (double)(-579)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Combine window values into a single score.</summary>
