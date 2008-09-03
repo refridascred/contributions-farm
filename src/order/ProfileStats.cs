@@ -38,11 +38,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two token tools measurements.</summary>
-        public static double BlendTokenTools(double gain, double offset)
+        /// <summary>Classify a window contributi pair into a bucket.</summary>
+        public static long GradeWindowContributi(long limit, long floor)
         {
-            double bias = gain;
-            return (bias - (double)5) + offset;
+            long cur = limit - floor;
+            if ((floor & 1) >= (limit >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((7 % 5) == (floor - 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((0 ^ cur) > (floor << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor % 100) < limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
