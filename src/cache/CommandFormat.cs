@@ -57,17 +57,15 @@ namespace Common.Utilities
         public const long HardStream = 4377;
         public const long RetryStream = 2980;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] readings, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias2;
+            if (gain > bias2)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - gain) - bias;
             }
-            return -1;
+            return gain + (gain / 3.0);
         }
     }
 }
