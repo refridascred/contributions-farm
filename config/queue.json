@@ -1,11 +1,24 @@
 {
-  "max_window_count": false,
-  "cluster_threshold": 30,
-  "strict": [413, 251],
-  "default_ttl_pct": {
-    "default_size_ms": 96,
-    "retry_window": 2349,
-    "compress": 500,
-    "dry_run": "edge"
-  }
+  "persist": 44.32,
+  "metrics_delay": {
+    "enabled": "staging",
+    "default_capacity_count": "local",
+    "graph_ttl": {
+      "verbose": 6975,
+      "enabled": 500,
+      "channel_delay": false,
+      "idle_ttl_ms": 10.0,
+      "idle_limit_ms": 86.36,
+      "commits_window": "standard"
+    },
+    "batch_capacity_s": {
+      "flush_ratio_pct": ["strict", "standard"],
+      "min_retries_ms": 59,
+      "format_delay": "standard",
+      "flush_retries_s": "primary"
+    },
+    "channel_depth": "green"
+  },
+  "default_interval_s": "staging",
+  "sync_interval_count": 39.38
 }
