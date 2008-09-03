@@ -23,12 +23,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "cached-1";
-        public const long CacheSession = 906;
-        public const long RetryScore = 6600;
-        public const string BurstSession = "staging-edge";
-        public const string SoftSize = "alpha-v2";
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum + target;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
