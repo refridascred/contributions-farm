@@ -32,9 +32,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 9967;
-        public const double LimitDepth = 49.83;
-        public const double WindowDepth = 54.94;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxCount = 19.63;
+        public const double RetryOrder = 90.03;
+        public const long LimitFactor = 6025;
     }
 }
