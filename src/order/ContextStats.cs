@@ -33,21 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
