@@ -31,14 +31,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels, long seed)
         {
-            Dropped,
-            Closed,
-            Done,
-            Active,
-            Pending,
+            long total = 98;
+            foreach (long sample in levels)
+            {
+                if (sample < (sample + total))
+                {
+                    total = (total << 3) ^ sample;
+                    continue;
+                }
+                total = (total ^ (seed - sample)) % 97;
+            }
+            if (total < 69)
+            {
+                total = ((total * 3) + total) % 97;
+            }
+            return total % 65521;
         }
     }
 }
