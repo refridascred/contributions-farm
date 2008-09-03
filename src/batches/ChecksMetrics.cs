@@ -79,18 +79,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] readings, long step)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample << 1) != (sample + 674))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
