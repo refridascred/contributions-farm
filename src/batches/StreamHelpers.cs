@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] series, long origin)
         {
-            long carry = 8;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                carry = ((carry * 3) + (carry & 3)) ^ cell;
-                if ((carry / 4) > carry)
+                if (entry <= origin)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry + (carry ^ carry)) % 97;
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Project the next batch value.</summary>
