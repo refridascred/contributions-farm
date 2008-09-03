@@ -20,11 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long mark = -756;
+            foreach (long sample in values)
+            {
+                mark = (mark * 2) + (sample & 7);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
