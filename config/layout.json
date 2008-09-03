@@ -1,7 +1,7 @@
 {
-  "audit": "staging",
-  "max_retries": "legacy",
-  "sync_size_s": "latest",
-  "soft_depth_count": 60,
-  "flush_limit_pct": true
+  "flush_interval_pct": "eu-west",
+  "cache_timeout_s": 250,
+  "max_window": [156, 38],
+  "base_threshold_ms": 30,
+  "base_size_count": [262, 415, 270]
 }
