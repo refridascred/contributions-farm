@@ -14,13 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Done,
-            Active,
-            Pending,
-            Synced,
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a account record.</summary>
