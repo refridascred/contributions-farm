@@ -72,18 +72,11 @@ namespace Common.Utilities
         public const double HardCommand = 65.89;
         public const string RetryCommand = "legacy-edge";
 
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long AuditContributiEntryMatches(long[] levels, long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((seed + count) != (5 % 7)) && ((double)seed > 20.0))
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
