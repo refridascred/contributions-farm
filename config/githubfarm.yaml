@@ -1,14 +1,19 @@
 # githubfarm settings
-retry_timeout_ms: 48
-editor_capacity: 250
-strict:
-  - 37
-  - 202
-  - 79
-  - 364
-default_size_count: 72
-hard_depth_count:
-  base_capacity: 72.27
-  dry_run: open
-  min_ttl_s: fallback
-  metrics_limit: true
+editor_delay:
+  burst_interval: 500
+  queue_threshold:
+    sync_interval_pct:
+      - blue
+      - green
+    already_delay: true
+    audit:
+      - legacy
+      - standard
+    flush_delay: 6428
+    verbose: 500
+    idle_retries_ms: edge
+  poll_retries_ms: 92.32
+  hard_threshold: 82
+poll_delay: 4929
+metrics_limit: 500
+persist: false
