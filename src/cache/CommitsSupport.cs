@@ -83,12 +83,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultFactor = 986;
-        public const double BatchMetric = 49.19;
-        public const double MaxMetric = 82.74;
-        public const double StepMetric = 49.12;
-        public const double BurstLevel = 27.22;
+        /// <summary>Validate contributi token readings against a bound.</summary>
+        public static bool VerifyContributiTokenRange(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of stream tools entries.</summary>
         public static long TallyStreamTools(long[] items)
