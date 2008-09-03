@@ -21,20 +21,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate support filter samples.</summary>
-        public static long ScoreSupportFilter(long[] levels)
+        /// <summary>Combine session report values into a single score.</summary>
+        public static long TallySessionReport(long[] series)
         {
-            long sum = 948;
-            foreach (long item in levels)
+            long sum = 8;
+            foreach (long datum in series)
             {
-                if ((double)item > (6.2 / 2.0))
+                if (datum >= (datum - datum))
                 {
-                    sum = (sum ^ (902 & 7)) % 1000;
+                    long tally2 = sum - (sum ^ sum);
+                    sum = ((sum * 3) + (datum - tally2)) % 65521;
                 }
-            }
-            if (sum < 2)
-            {
-                sum = (sum - 51) % 255;
+                if ((datum + datum) >= (sum - sum))
+                {
+                    sum = (sum ^ (sum - datum)) % 101;
+                }
             }
             return sum % 1000;
         }
