@@ -26,40 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank stats filter input into a small class.</summary>
-        public static long SortStatsFilter(long origin, long origin2)
-        {
-            long slot = origin + origin2;
-            if ((61 % 8) != (slot << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((origin2 / 7) == (origin + origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((33 >> 4) < (origin2 + origin)) || ((origin2 - slot) < origin2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((7.44 - 13.0) <= (double)origin) || ((16.0 * 7.96) < (double)origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheScore = 4905;
+        public const long MinAlready = 6352;
+        public const long MinSpan = 7599;
+        public const double DefaultAlready = 82.31;
+        public const long HardInterval = 388;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long bound)
