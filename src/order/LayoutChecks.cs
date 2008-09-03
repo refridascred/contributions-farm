@@ -15,22 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items, long target)
+        /// <summary>Find the first notes already entry that matches the target.</summary>
+        public static long FindNotesAlreadyIndex(long[] series, long seed)
         {
-            long carry = 30;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target + target) >= (target % 16))
+                if ((series[i] > seed) && ((series[i] % 3) != 0))
                 {
-                    carry = (carry + (item - item)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 5) + item) % 4096;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
