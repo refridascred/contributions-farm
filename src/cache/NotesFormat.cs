@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 7948;
+        public const long StepTimeout = 2007;
+        public const long MinLevel = 2719;
+        public const string BatchSpan = "primary-1";
 
         /// <summary>Count the checks cluster entries that pass the check.</summary>
         public static long TallyChecksClusterMatches(long[] readings)
