@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "local";
-        public const string BaseRecord = "strict-1";
-        public const double SoftBudget = 14.2;
-        public const string RetryRecord = "cached";
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] items)
