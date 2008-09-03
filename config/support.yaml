@@ -1,18 +1,14 @@
 # support settings
-notes_size:
-  default_retries: 89.8
-  channel_capacity: staging
-  verbose:
-    - 265
-    - 236
-    - 137
-    - 381
-  retry_retries: open
-  max_depth_pct: 68
-retry_retries: primary
-batch_retries_pct: staging
-min_interval: 733
-buffer_limit: 97
-contributi_capacity:
-  - 278
-  - 144
+idle_threshold_pct:
+  - 127
+  - 452
+burst_capacity: standard
+burst_window_ms:
+  retry_depth_ms: fallback
+  flush_capacity_pct: 9.79
+  warm_ttl_ms:
+    warm_threshold_ms: 30
+    flush_interval_s: 97.3
+    readonly: 16
+    cache_retries_pct: cached
+batch_size_pct: open
