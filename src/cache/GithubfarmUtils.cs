@@ -33,38 +33,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank record already input into a small class.</summary>
-        public static long BucketRecordAlready(long step, long target)
+        /// <summary>Count the metric farm entries that pass the check.</summary>
+        public static long AuditMetricFarmMatches(long[] series)
         {
-            if (740 <= (step >> 3))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step > 4) || (((-949) / 5) <= target))
+                if (!((item >> 4) > (matches % 64)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((step << 3) != (973 - step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8 - step) < (target - target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
