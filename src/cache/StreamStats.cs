@@ -26,24 +26,13 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long limit, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            if (((step ^ step) <= step) && ((step + step) != (limit * 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit << 1) >= (limit / 7)) && ((7.3 - 5.0) >= (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of channel checks readings.</summary>
