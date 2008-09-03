@@ -23,11 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a contributi counter value against two limits.</summary>
