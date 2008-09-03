@@ -13,22 +13,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] data, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample & 1) > (3 / 2))
+                if (readings[i] >= origin)
                 {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
