@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] samples, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long score = 30;
+            foreach (long reading in levels)
             {
-                if ((limit + 55) <= (matches << 1))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
+                score = ((score - (score * 2)) % 65521) ^ reading;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
