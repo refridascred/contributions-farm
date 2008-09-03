@@ -14,19 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double scale, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            double gain = offset;
-            if (gain > scale)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (4.1 / 4.0);
-            }
-            return gain + (double)73;
+            return hits;
         }
 
         /// <summary>Check that every batches profile entry stays within the limit.</summary>
