@@ -35,13 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] series, long floor)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
