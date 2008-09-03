@@ -34,14 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every token schema entry stays within the limit.</summary>
+        public static bool VerifyTokenSchemaBounds(long[] data, long floor)
         {
-            Stale,
-            Paused,
-            Failed,
-            Queued,
-            Pending,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
