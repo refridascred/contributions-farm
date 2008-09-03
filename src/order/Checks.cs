@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] data, long step)
         {
-            Closed,
-            Queued,
-            Retry,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen & 255) <= (72 - cell))
+                {
+                    seen = (seen + 3) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count filter order pairs that satisfy a relation.</summary>
