@@ -25,18 +25,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] items, long floor)
+        /// <summary>Rank checks account input into a small class.</summary>
+        public static long ClassifyChecksAccount(long bound, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if ((double)step <= (4.2 * 3.7))
             {
-                if ((5 >= floor) || ((0 & 3) >= (seen - datum)))
+                return 0;
+            }
+            else
+            {
+                if ((step * 3) < (step - bound))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= (bound - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound + step) == (step + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
