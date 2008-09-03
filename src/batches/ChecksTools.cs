@@ -36,18 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] items)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen <= (value + seen)) && ((double)value <= (8.29 - 2.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
