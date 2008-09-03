@@ -19,22 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long acc = 46;
-            foreach (long item in readings)
-            {
-                if (((acc << 3) <= acc) || (item <= (item - item)))
-                {
-                    acc = (acc - (acc >> 5)) % 65521;
-                }
-                else
-                {
-                    acc = (acc - item) % 101;
-                }
-            }
-            return acc;
+            New,
+            Draft,
+            Locked,
+            Queued,
+            Paused,
         }
 
         /// <summary>Fold a list of order readings.</summary>
