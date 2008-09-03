@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long seed, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long limit)
         {
-            if ((origin ^ seed) > seed)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed != (4.0 * 16.0))
+                if (item < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((9 + seed) <= origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4.0 < (double)seed) || ((double)seed > (16.0 - 6.3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the order queue entries that pass the check.</summary>
