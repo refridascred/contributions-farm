@@ -19,15 +19,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] items, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Project the next profile stream value.</summary>
