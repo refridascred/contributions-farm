@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Count the buffer format entries that pass the check.</summary>
+        public static long AuditBufferFormatMatches(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally + tally) > 66)
                 {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
