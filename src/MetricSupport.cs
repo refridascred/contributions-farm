@@ -26,19 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] values, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
