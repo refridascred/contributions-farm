@@ -54,11 +54,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
         }
     }
 }
