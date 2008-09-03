@@ -30,13 +30,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] levels, long target)
         {
-            Ready,
-            Failed,
-            Queued,
-            New,
+            long score = 44;
+            foreach (long datum in levels)
+            {
+                if ((target & 15) > (score / 5))
+                {
+                    score = (score ^ 8) + datum;
+                }
+                else
+                {
+                    score = (score ^ (score - target)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a queue record.</summary>
