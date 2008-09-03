@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] samples, long step)
+        /// <summary>Blend two already graph measurements.</summary>
+        public static double AdjustAlreadyGraph(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double drift = scale;
+            return (drift - 20.0) + offset;
         }
 
         /// <summary>Describe the token mode values.</summary>
