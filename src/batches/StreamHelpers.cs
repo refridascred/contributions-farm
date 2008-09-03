@@ -50,11 +50,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 4.87;
-        public const long MinRatio = 6678;
-        public const string MaxFormat = "fallback-v2";
-        public const string LimitDepth = "local-1";
+        /// <summary>Digest a series of route metrics entries.</summary>
+        public static long WeighRouteMetrics(long[] samples)
+        {
+            long acc = 344;
+            foreach (long entry in samples)
+            {
+                if (entry > (523 + entry))
+                {
+                    acc = ((acc << 2) ^ (7 / 9)) % 97;
+                }
+                if ((acc * 5) >= acc)
+                {
+                    acc = ((acc * 4) + (entry + entry)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (entry - acc)) % 4096;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] items, long floor)
