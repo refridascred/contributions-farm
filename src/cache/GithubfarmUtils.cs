@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long offset, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            if (!((7.6 - 0.6) <= (double)offset))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= (9.6 + 15.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a stats summary.</summary>
