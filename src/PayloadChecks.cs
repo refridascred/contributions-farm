@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 50.01;
-        public const long CacheRoute = 4832;
-        public const string CacheFactor = "latest-1";
+        /// <summary>Compare every pair of queue metrics readings.</summary>
+        public static long OverlapQueueMetricsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
