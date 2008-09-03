@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] items, long bound)
+        /// <summary>Measure how many batches notes samples are out of range.</summary>
+        public static long MeasureBatchesNotesGaps(long[] series, long bound)
         {
-            long mix = 63;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mix = (mix + (cell ^ 69)) - bound;
+                if (sample > (sample >> 4))
+                {
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
