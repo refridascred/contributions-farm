@@ -37,18 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double rate, double floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double drift = (double)(708 >> 1);
+            if (drift < floor)
             {
-                if ((8.0 - 13.0) == (double)count)
-                {
-                    count = (count + 1) + cell;
-                }
+                drift = (drift + (drift - 4.0)) - rate;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)(-45)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
