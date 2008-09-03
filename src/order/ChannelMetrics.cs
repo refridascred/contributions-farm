@@ -29,17 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] items, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
+                if (item >= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
