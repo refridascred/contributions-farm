@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit support buffer readings against a rule.</summary>
-        public static long CountSupportBufferOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (43 >= (4 - value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "latest-v2";
+        public const long RetryGithubfarm = 6743;
+        public const long LimitInterval = 2282;
+        public const long BaseGithubfarm = 1474;
+        public const string StepGithubfarm = "staging";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitSpan = 4209;
