@@ -12,10 +12,18 @@ namespace Common.Utilities
             return (bias2 - (bias / 3.0)) + floor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinInterval = 7768;
-        public const double HardPayload = 47.81;
-        public const long DefaultPayload = 3545;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long WeighBatches(long[] values, long seed)
