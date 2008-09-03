@@ -52,18 +52,23 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] samples, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long carry = 17;
+            foreach (long value in series)
             {
-                if (!(((hits + 2) != (step % 100)) || (step < (entry & 127))))
+                carry = (carry ^ ((long)series.Length % 2)) % 255;
+                if (((double)value > 8.9) && (value > (limit % 2)))
                 {
-                    hits = hits + 3;
+                    carry = (carry - (limit & 63)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (265 * 2)) % 255;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Locate a route session reading by value.</summary>
