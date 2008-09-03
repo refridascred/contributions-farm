@@ -32,19 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            long state = -429;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = ((result << 3) ^ result) - (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                state = (state - (datum ^ state)) % 101;
             }
-            return result;
+            return state % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
