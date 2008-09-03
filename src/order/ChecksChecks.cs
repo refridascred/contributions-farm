@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxSpan = "open-v2";
+        public const long MinRatio = 391;
+        public const string BatchMetrics = "primary-edge";
+        public const string LimitScore = "fallback-v2";
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
