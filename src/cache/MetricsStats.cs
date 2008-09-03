@@ -71,15 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double scale, double bias)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] items, long bound)
         {
-            double weight = (bias - scale) * 6.19;
-            if (weight > bias)
+            long hits = 0;
+            foreach (long value in items)
             {
-                weight = weight + bias;
+                if ((hits + bound) < (value >> 1))
+                {
+                    hits = hits + 1;
+                }
             }
-            return weight - (3.59 - weight);
+            return hits;
         }
     }
 }
