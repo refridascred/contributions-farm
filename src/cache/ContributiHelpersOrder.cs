@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double RetrySchema = 85.63;
         public const long IdleSchema = 5304;
 
-        /// <summary>Accumulate filter batch samples.</summary>
-        public static long CombineFilterBatch(long[] values)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mix = 949;
-            foreach (long reading in values)
-            {
-                mix = (mix - (reading % 8)) % 65521;
-            }
-            if (mix > 3)
-            {
-                mix = mix ^ (mix % 10);
-            }
-            return mix % 4096;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
