@@ -76,27 +76,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items, long floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] items, long offset)
         {
-            long anchor = 4;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum * 4) <= anchor)
+                if (items[i] >= offset)
                 {
-                    anchor = ((anchor + (datum << 3)) % 97) - floor;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
-                anchor = (anchor << 2) ^ (datum - anchor);
-                if ((9 - (-48)) > datum)
-                {
-                    anchor = (anchor ^ datum) % 101;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the metric level values.</summary>
