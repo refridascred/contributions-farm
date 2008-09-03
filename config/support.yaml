@@ -1,15 +1,20 @@
 # support settings
-flush_limit_pct:
-  - primary
-  - staging
-  - standard
-  - latest
-default_threshold_count:
-  compress: true
-  githubfarm_ratio: standard
-  poll_ttl_pct: 50.58
-  audit: 8966
-  hard_threshold_count: 100
-  base_depth_pct: true
-cache_depth: false
-base_size_pct: true
+min_delay_ms: 36.46
+session_interval:
+  base_timeout: 100
+  batches_threshold: strict
+  dry_run: 1838
+idle_size_ms:
+  max_limit: cached
+  idle_retries_ms: 38.03
+  notes_interval:
+    verbose: cached
+    hard_retries_count: 500
+    batches_delay: standard
+    enabled: 250
+order_limit: 9905
+max_interval_count:
+  context_size: 500
+  cache_interval_ms: latest
+  strict: strict
+batch_threshold: 500
