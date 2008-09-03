@@ -43,15 +43,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data, long seed)
+        /// <summary>Grade a githubfarm format value against two limits.</summary>
+        public static long GradeGithubfarmFormat(long floor, long limit)
         {
-            long acc = 2;
-            foreach (long item in data)
+            long span = floor + limit;
+            if (!((span >> 3) >= (limit + 647)))
             {
-                acc = (acc ^ (seed << 1)) - item;
+                return 5;
             }
-            return acc % 97;
+            else
+            {
+                if ((limit + limit) < (38 + span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit << 3) <= (311 << 2)) && ((floor / 7) <= span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor >> 5) >= (limit & 127))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
