@@ -12,38 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long origin, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if ((origin * 5) == (target * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target << 2) > (origin >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin >> 4) == (origin / 5)) && ((target * 4) <= (target + 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((target + origin) <= origin) && ((origin * 4) >= (origin - target)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
