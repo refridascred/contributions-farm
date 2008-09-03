@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 22;
-        public const long MinWidth = 9549;
-        public const long SoftFactor = 4547;
-        public const long IdleTimeout = 208;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstStream = 30.44;
+        public const long CacheScore = 412;
+        public const string SoftStream = "standard-1";
+        public const double WindowStream = 61.58;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
