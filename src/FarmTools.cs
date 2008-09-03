@@ -20,14 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many metrics metric samples are out of range.</summary>
+        public static long TallyMetricsMetricHits(long[] readings)
         {
-            Active,
-            Stale,
-            Closed,
-            New,
-            Queued,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)978 != (double)(long)readings.Length)
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
