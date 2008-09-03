@@ -38,38 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metrics route pair into a bucket.</summary>
-        public static long ClassifyMetricsRoute(long floor, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] data)
         {
-            if ((0 - floor) >= (floor / 4))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= (0.6 / 5.0))
+                if ((cell >> 2) <= (tally % 8))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((floor << 2) <= (step >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step > (4 - floor)) && ((7.46 / 4.0) == (double)floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
