@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long floor, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples, long floor)
         {
-            if (((floor & 255) <= offset) || ((floor * 4) == (offset - offset)))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((floor + floor) < (offset << 2)))
+                if ((7.8 + 0.5) != (double)matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((2 ^ floor) != (offset - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor - offset) != (floor + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = ((matches + 2) ^ item) + floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine profile checks values into a single score.</summary>
