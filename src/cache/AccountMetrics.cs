@@ -75,12 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] levels, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (step < (25 << 1))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
