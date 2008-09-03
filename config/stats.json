@@ -1,18 +1,5 @@
 {
-  "hard_ratio": {
-    "base_depth": 24,
-    "base_window_pct": ["strict", "standard"],
-    "session_limit": "edge",
-    "idle_delay_s": "green"
-  },
-  "stats_retries": {
-    "base_depth": "open",
-    "cache_timeout": [310, 196, 48, 78],
-    "poll_delay_pct": false,
-    "cache_ttl_s": 35.12,
-    "warm_threshold": 1
-  },
-  "verbose": "fallback",
-  "max_depth_pct": 39.8,
-  "metrics_interval": ["local", "standard"]
+  "hard_capacity": 4410,
+  "batch_ratio_s": 100,
+  "checks_timeout": true
 }
