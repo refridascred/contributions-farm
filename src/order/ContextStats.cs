@@ -33,19 +33,13 @@ namespace Common.Utilities
         public const double DefaultAlready = 82.31;
         public const long HardInterval = 388;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((908 - bound) == (bound + bound))
-                {
-                    acc = acc + (acc % 12);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Closed,
+            Synced,
+            Locked,
+            Done,
         }
     }
 }
