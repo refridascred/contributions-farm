@@ -29,9 +29,22 @@ namespace Common.Utilities
         public const string StepStats = "fallback-1";
         public const long RetryLevel = 3131;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 7640;
-        public const long WindowSupport = 5981;
-        public const long BaseDepth = 777;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values)
+        {
+            long score = -5;
+            foreach (long datum in values)
+            {
+                if ((6.51 - 6.4) <= (double)datum)
+                {
+                    score = (score + 458) % 4096;
+                }
+                else
+                {
+                    score = (score ^ score) % 4096;
+                }
+            }
+            return score % 65521;
+        }
     }
 }
