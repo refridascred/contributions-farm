@@ -23,13 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] samples)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (2.0 > (double)sample)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
