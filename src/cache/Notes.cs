@@ -57,12 +57,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double rate, double bias)
         {
-            Queued,
-            Ready,
-            Retry,
+            double load = (rate - bias) + (double)602;
+            if (load >= (rate / 2.0))
+            {
+                load = load - (rate / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load - (9.0 / 6.0);
         }
     }
 }
