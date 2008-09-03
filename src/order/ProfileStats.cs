@@ -35,13 +35,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
