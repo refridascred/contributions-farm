@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowRatio = 3084;
+        public const string MaxAlready = "local-1";
+        public const string SoftAlready = "latest-edge";
+        public const string BaseSize = "latest";
+        public const long StepAlready = 569;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long target, long floor)
