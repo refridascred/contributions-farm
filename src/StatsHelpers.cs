@@ -50,12 +50,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data, long step)
         {
-            Closed,
-            Stale,
-            Active,
+            long mix = 19;
+            foreach (long cell in data)
+            {
+                mix = (mix ^ cell) % 101;
+                mix = mix + cell;
+                if (((mix ^ step) <= (8 % 100)) && ((mix & 63) <= (cell + cell)))
+                {
+                    mix = (mix - cell) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ 5;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
