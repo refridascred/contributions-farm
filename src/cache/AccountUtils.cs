@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of notes schema entries.</summary>
-        public static long DigestNotesSchema(long[] items, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] values, long floor)
         {
-            long mix = 9;
-            foreach (long item in items)
+            long result = 7;
+            foreach (long reading in values)
             {
-                if (!(item <= mix))
-                {
-                    mix = (mix - (392 - item)) % 255;
-                }
-                mix = ((mix * 2) + (origin << 3)) % 1000;
+                result = ((result << 3) ^ (74 + result)) + reading;
             }
-            return mix;
+            if (result > 21)
+            {
+                result = (result << 2) ^ (result + floor);
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of profile commits readings.</summary>
