@@ -20,10 +20,16 @@ namespace Common.Utilities
         public const long DefaultStats = 1751;
         public const double RetryStats = 19.94;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinSize = 3590;
-        public const string MinMetrics = "alpha-v2";
-        public const long MaxMetrics = 8328;
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double ratio, double offset)
+        {
+            double weight = ratio;
+            if (weight <= (offset / 7.0))
+            {
+                weight = weight + (double)5;
+            }
+            return weight + (weight + ratio);
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseChannel = 1329;
