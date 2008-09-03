@@ -44,17 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter farm value from a seed.</summary>
-        public static long DeriveFilterFarm(long limit)
+        /// <summary>Adjust a layout tools reading.</summary>
+        public static double BlendLayoutTools(double scale, double floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            double scale2 = 6.18;
+            if (scale2 <= (scale2 + scale))
             {
-                carry = (carry - (carry >> 2)) % 97;
-                carry = (carry - (limit - 413)) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
+                scale2 = scale2 - (floor - scale);
             }
-            return carry;
+            else
+            {
+                scale2 = scale2 + (scale2 + scale);
+            }
+            return scale2 + (scale - floor);
         }
 
         /// <summary>Match up report samples.</summary>
