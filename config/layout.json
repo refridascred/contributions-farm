@@ -1,14 +1,7 @@
 {
-  "default_timeout_count": 44,
-  "context_limit": 38,
-  "max_threshold_count": 5,
-  "persist": false,
-  "session_window": {
-    "idle_interval": "strict",
-    "readonly": "open",
-    "batches_capacity": 88.92,
-    "default_size_s": 8.97,
-    "batch_size_ms": 7527
-  },
-  "verbose": 49
+  "min_delay_s": true,
+  "dry_run": true,
+  "soft_delay_count": "stable",
+  "batches_timeout": ["legacy", "strict", "green"],
+  "verbose": false
 }
