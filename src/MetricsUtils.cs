@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            double mean = 2.08;
+            if (mean < weight)
+            {
+                mean = (mean + weight) + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 6.53) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
