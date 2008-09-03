@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] samples, long seed)
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long acc = 7;
+            foreach (long entry in samples)
+            {
+                if ((entry + acc) == (acc - (long)samples.Length))
+                {
+                    acc = ((acc + (long)samples.Length) % 97) - seed;
+                }
+                if ((378 & 127) >= (entry - acc))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a graph entry.</summary>
