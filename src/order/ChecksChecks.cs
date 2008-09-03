@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] series, long origin)
         {
-            long state = 860;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((7.0 > (double)sample) || ((state ^ sample) == (state + 33)))
+                if ((2.66 / 4.0) >= (double)count)
                 {
-                    state = (state << 3) ^ (state / 8);
+                    count = ((count + 1) + reading) + origin;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
