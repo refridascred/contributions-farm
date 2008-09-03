@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double rate, double bias)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double weight, double floor)
         {
-            double weight = bias;
-            if (weight <= (weight + 9.25))
+            double drift = (7.34 * 1.32) * 6.4;
+            for (int i = 0; i < 9; i++)
             {
-                weight = (weight - weight) - rate;
+                drift = (((drift + (drift - drift)) + (double)(long)i) - weight) - floor;
             }
-            return weight - 16.0;
+            return drift + (double)660;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
