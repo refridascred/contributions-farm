@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Look up the position of a report payload sample.</summary>
+        public static long LookupReportPayloadIndex(long[] series, long limit)
         {
-            long total = 114;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (series[i] > limit)
                 {
-                    total = ((total - 51) % 4096) + (long)i;
-                    total = (total ^ (total >> 1)) % 97;
+                    return (long)i;
                 }
-                total = ((total * 5) + (sample ^ sample)) % 4096;
             }
-            if (total > 64)
-            {
-                total = (total + total) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
