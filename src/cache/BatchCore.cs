@@ -22,21 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] samples, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total ^ ((long)i & 31);
-                total = total - (limit % 24);
-                if ((total * 4) > total)
+                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
                 {
-                    total = ((total << 3) ^ (limit * 5)) % 255;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
