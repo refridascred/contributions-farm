@@ -26,13 +26,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            Closed,
-            Retry,
-            Done,
-            Active,
+            long carry = 0;
+            foreach (long item in samples)
+            {
+                if ((carry < (item << 2)) && ((carry >> 5) < (99 - 405)))
+                {
+                    carry = (carry - carry) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (31 - carry)) % 1000;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate layout samples.</summary>
