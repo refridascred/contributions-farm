@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] readings)
         {
-            Failed,
-            Synced,
-            Locked,
+            long anchor = 2;
+            foreach (long item in readings)
+            {
+                if (!((item + anchor) > (367 << 2)))
+                {
+                    anchor = (anchor + (item << 1)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (item + item)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
