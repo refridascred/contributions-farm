@@ -39,11 +39,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] data, long origin)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((4.9 - 5.77) != (double)tally)
+                {
+                    tally = ((tally + 1) + reading) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
