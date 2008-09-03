@@ -25,16 +25,18 @@ namespace Common.Utilities
         public const long MinSession = 1643;
         public const long RetrySession = 7697;
 
-        /// <summary>Derive the next channel batch value from a seed.</summary>
-        public static long StepChannelBatch(long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] levels, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = ((state * 5) + (74 % 8)) % 101;
-                state = ((state * 5) + (long)i) % 65521;
+                if (!(((hits << 1) > (datum >> 3)) || (345 <= target)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the format state values.</summary>
