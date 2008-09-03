@@ -1,9 +1,6 @@
 {
-  "max_limit_count": "eu-west",
-  "hard_ttl_s": "strict",
-  "hard_delay_s": {
-    "flush_interval_s": "legacy",
-    "strict": 89.17,
-    "cache_retries": 8
-  }
+  "readonly": 7551,
+  "default_window_s": "stable",
+  "default_depth": 74.0,
+  "verbose": "stable"
 }
