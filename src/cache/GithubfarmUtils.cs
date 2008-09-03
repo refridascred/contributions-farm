@@ -33,15 +33,38 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Rank record already input into a small class.</summary>
+        public static long BucketRecordAlready(long step, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            if (740 <= (step >> 3))
             {
-                result = ((result * 4) + (long)i) % 101;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((step > 4) || (((-949) / 5) <= target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((step << 3) != (973 - step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8 - step) < (target - target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
