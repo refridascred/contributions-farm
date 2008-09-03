@@ -33,9 +33,15 @@ namespace Common.Utilities
             return load + (rate + rate);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "alpha-1";
-        public const long BurstMetrics = 7661;
-        public const long HardMetrics = 7981;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
