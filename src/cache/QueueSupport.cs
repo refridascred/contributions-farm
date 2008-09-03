@@ -22,20 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] items, long origin)
         {
-            long total = 14;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long datum in items)
             {
-                total = ((total * 3) + total) % 255;
-                total = (total + reading) % 4096;
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 6)
-            {
-                total = (total * 4) + (8 + total);
-            }
-            return total % 97;
+            return found;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
