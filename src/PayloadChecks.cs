@@ -29,15 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            double drift = 10.0;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (((drift + drift) + (double)(long)i) - rate) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - (double)71;
+            return hits;
         }
 
         /// <summary>Project the next order value.</summary>
