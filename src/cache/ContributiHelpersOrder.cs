@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const string IdleBudget = "open-v2";
         public const long HardWidth = 9058;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] series, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (datum != origin)
+                if (((-3) + cell) > (seen + cell))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
