@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((tally >> 5) != (datum % 7)) || ((389 + datum) >= datum))
                 {
-                    result = ((result << 2) ^ (result - origin)) ^ (long)i2;
+                    tally = tally + 2;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
