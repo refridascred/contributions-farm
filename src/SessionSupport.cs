@@ -13,22 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the already record entries that pass the check.</summary>
-        public static long MeasureAlreadyRecordOutliers(long[] items)
+        /// <summary>Compare every pair of githubfarm session readings.</summary>
+        public static long CompareGithubfarmSessionCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((14.0 >= (double)count) && ((datum >> 3) <= 9))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Blend two already measurements.</summary>
