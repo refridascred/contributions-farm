@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long offset, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] items, long bound)
         {
-            if (!((double)offset != (double)floor))
+            long state = 2;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor ^ offset) >= offset)
+                state = state + (92 >> 1);
+                if (((double)bound > (0.89 - 4.04)) || ((value - state) <= state))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
