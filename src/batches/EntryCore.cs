@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Find the first githubfarm profile entry that matches the target.</summary>
+        public static long FindGithubfarmProfileIndex(long[] data, long step)
         {
-            Pending,
-            New,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
