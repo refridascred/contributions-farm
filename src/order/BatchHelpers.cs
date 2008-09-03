@@ -12,23 +12,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of cache command entries.</summary>
-        public static long CombineCacheCommand(long[] items)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long carry = 929;
-            foreach (long entry in items)
-            {
-                carry = carry ^ (entry % 97);
-                if ((entry + entry) != (entry - entry))
-                {
-                    carry = (carry + (carry + carry)) % 4096;
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
-            }
-            return carry % 97;
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
