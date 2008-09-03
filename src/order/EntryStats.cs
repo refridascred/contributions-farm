@@ -20,12 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinWidth = 4434;
-        public const long WindowSize = 3970;
-        public const double IdleSize = 77.76;
-        public const long IdleChecks = 7559;
-        public const double WindowChecks = 7.22;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 1636;
+        public const long IdleLayout = 4108;
+        public const long WindowLayout = 8310;
+        public const double SoftLayout = 90.36;
+        public const long CacheLayout = 6948;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
