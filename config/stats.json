@@ -1,11 +1,8 @@
 {
-  "already_retries": {
-    "default_limit": 57,
-    "soft_limit_count": false,
-    "flush_ratio": 6,
-    "flush_interval_pct": false
-  },
-  "burst_ttl": true,
-  "idle_delay": true,
-  "base_size_pct": "blue"
+  "strict": 8079,
+  "batch_interval_ms": false,
+  "warm_limit_count": true,
+  "soft_limit": 51.92,
+  "soft_depth_count": ["cached", "legacy", "green", "strict"],
+  "batch_depth_pct": "latest"
 }
