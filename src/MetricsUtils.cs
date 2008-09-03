@@ -36,11 +36,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepScore = 1950;
-        public const long StepFactor = 5617;
-        public const string DefaultWindow = "local-edge";
-        public const long MinInterval = 6011;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultTimeout = 694;
+        public const double LimitReport = 53.27;
+        public const double MaxReport = 74.32;
+        public const long WindowWidth = 7863;
+        public const long BatchReport = 7951;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionGaps(long[] items)
