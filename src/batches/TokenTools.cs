@@ -20,22 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] readings, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long delta = bound + floor;
+            if (bound >= (bound + floor))
             {
-                if ((double)reading > (4.2 + 0.2))
+                return 2;
+            }
+            else
+            {
+                if ((delta + bound) > (delta - floor))
                 {
-                    tally = (tally + 1) + step;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound - floor) <= (floor * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor ^ 5) <= (delta + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
