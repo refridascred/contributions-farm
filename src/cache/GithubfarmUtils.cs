@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache session readings against a rule.</summary>
-        public static long AuditCacheSessionMatches(long[] levels)
+        /// <summary>Check that every cluster account entry stays within the limit.</summary>
+        public static bool VerifyClusterAccountBounds(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((double)hits == (5.7 / 5.0))
+                if (item > origin)
                 {
-                    hits = (hits + 1) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
