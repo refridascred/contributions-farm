@@ -1,7 +1,6 @@
 {
-  "stream_window": "eu-west",
-  "max_window": "open",
-  "max_timeout_count": 6167,
-  "batch_interval": 62.79,
-  "base_depth_ms": "local"
+  "base_timeout_s": "latest",
+  "contributi_capacity": 77.58,
+  "tools_ratio": 75,
+  "enabled": [56, 39, 457, 154]
 }
