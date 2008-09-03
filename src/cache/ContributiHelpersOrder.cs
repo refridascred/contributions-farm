@@ -30,19 +30,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] readings, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (sample < bound)
+                if (sample > step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
