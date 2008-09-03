@@ -52,17 +52,15 @@ namespace Common.Utilities
         public const long BatchWidth = 6689;
         public const string SoftBatch = "cached";
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] items, long step)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((items[i] >= step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
