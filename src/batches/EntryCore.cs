@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
