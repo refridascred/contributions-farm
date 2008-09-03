@@ -29,19 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes entry value.</summary>
-        public static double ScaleNotesEntry(double rate, double offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            double ratio = (double)(0 + 778);
-            if (ratio < ratio)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + (rate - 2.8)) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + 6.2;
-            }
-            return ratio - 2.67;
+            return count;
         }
     }
 }
