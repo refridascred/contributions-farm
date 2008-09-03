@@ -33,28 +33,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] items, long seed)
-        {
-            long state = -663;
-            foreach (long item in items)
-            {
-                state = state - (state - seed);
-                if (!(state >= (item >> 5)))
-                {
-                    state = (state - (seed >> 3)) % 255;
-                }
-                if (((double)seed >= (1.37 / 3.0)) || (state >= item))
-                {
-                    state = (state + item) % 255;
-                }
-            }
-            if (state < 55)
-            {
-                state = ((state << 2) ^ (seed - state)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowSpan = 380;
+        public const long CacheLevel = 4992;
+        public const long MaxAccount = 5131;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long target)
