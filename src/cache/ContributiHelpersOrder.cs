@@ -20,12 +20,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardLevel = 9034;
-        public const double IdleSpan = 86.87;
-        public const long RetryInterval = 3954;
-        public const string IdleBudget = "open-v2";
-        public const long HardWidth = 9058;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark << 2) ^ (mark >> 5);
+                if (((mark << 1) <= ((long)i - offset)) || ((mark + (long)i) >= offset))
+                {
+                    mark = (mark - (offset + 96)) % 97;
+                }
+                else
+                {
+                    mark = (mark - ((long)i % 2)) % 255;
+                    mark = (mark << 2) ^ 682;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] readings)
