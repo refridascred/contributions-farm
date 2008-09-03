@@ -41,19 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] readings, long limit)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < limit)
+                if (data[i] > offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a metrics stats.</summary>
