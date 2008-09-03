@@ -1,10 +1,7 @@
 # support settings
-buffer_ttl: false
-warm_size: strict
-verbose: 87
-warm_ttl: stable
-retry_depth:
-  - staging
-  - strict
-  - edge
-cache_delay: edge
+max_interval: latest
+audit: 3895
+persist: staging
+batch_limit_pct: 7433
+flush_timeout: 30
+min_limit_ms: 91
