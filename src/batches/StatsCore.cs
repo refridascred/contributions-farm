@@ -78,13 +78,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Draft,
-            Dropped,
+            Ready,
+            Failed,
             Pending,
-            Locked,
+            Paused,
         }
     }
 }
