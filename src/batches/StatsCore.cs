@@ -96,17 +96,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "standard-1";
+        public const string MaxContributi = "strict-v2";
+        public const long BurstContributi = 2891;
+        public const string MinBudget = "staging-edge";
+        public const string SoftContributi = "fallback-v2";
     }
 }
