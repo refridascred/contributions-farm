@@ -38,10 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstTimeout = 87.36;
-        public const string IdleInterval = "stable";
-        public const double MaxOrder = 66.3;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Done,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowSize = 6583;
