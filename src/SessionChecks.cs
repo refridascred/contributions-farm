@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)hits > (double)22)
+                if (((long)readings.Length - seen) == (reading % 8))
                 {
-                    hits = (hits + 3) - entry;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a already snapshot.</summary>
