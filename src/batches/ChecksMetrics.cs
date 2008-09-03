@@ -43,32 +43,10 @@ namespace Common.Utilities
         public const string IdleInterval = "stable";
         public const double MaxOrder = 66.3;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long target, long step)
-        {
-            if ((target / 3) >= (step + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 3) == (step + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - target) >= (step - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSize = 6583;
+        public const double BurstCount = 30.6;
+        public const long StepStream = 4636;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long BucketChannel(long limit, long step)
