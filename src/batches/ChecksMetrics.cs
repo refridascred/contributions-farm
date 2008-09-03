@@ -96,19 +96,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] readings, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long limit, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if ((step * 2) < (limit << 3))
             {
-                if (sample != step)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (6.25 / 9.0))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step > (16.0 - 14.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit < (6 << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
