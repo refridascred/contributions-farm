@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 42.86;
+        public const double LimitFactor = 42.46;
+        public const long DefaultCommits = 3392;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryGraph = 7372;
