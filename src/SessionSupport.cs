@@ -30,12 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double ratio, double bias)
         {
-            public double Rank { get; set; }
-            public bool Region { get; set; }
-            public double Count { get; set; }
+            double rate = bias + bias;
+            if (rate <= (bias / 3.0))
+            {
+                rate = rate + (ratio * 1.0);
+            }
+            return rate - rate;
         }
     }
 }
