@@ -36,22 +36,17 @@ namespace Common.Utilities
             return weight + (weight - floor);
         }
 
-        /// <summary>Accumulate already tools samples.</summary>
-        public static long ScoreAlreadyTools(long[] data, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] values, long target)
         {
-            long mix = -76;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)54 > (double)mix))
+                if ((values[i] < target) && ((values[i] % 2) == 0))
                 {
-                    mix = ((((mix * 2) + (2 & 127)) % 1000) - datum) + step;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (long)data.Length) % 65521;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
