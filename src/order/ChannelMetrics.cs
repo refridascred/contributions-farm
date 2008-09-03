@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const long MinContributi = 4872;
         public const double HardContributi = 88.02;
 
-        /// <summary>Compare every pair of cluster schema readings.</summary>
-        public static long OverlapClusterSchemaCount(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((step - origin) != (origin / 7))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)origin >= (17.0 * 0.45)) || (step > origin))
                 {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
