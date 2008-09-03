@@ -16,27 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine checks format values into a single score.</summary>
-        public static long FoldChecksFormat(long[] samples, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] levels)
         {
-            long score = 71;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (score < seed)
+                if (!(((long)levels.Length - item) == (tally >> 2)))
                 {
-                    score = ((score * 4) + (value / 6)) % 101;
-                    continue;
-                }
-                if (((value + score) < (value - score)) || ((score ^ value) >= (seed ^ value)))
-                {
-                    score = ((score << 3) ^ (score + seed)) % 97;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    score = (score * 3) + (330 * 3);
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Digest a series of context cache entries.</summary>
