@@ -48,19 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetrySize = 6388;
+        public const long MaxTools = 6515;
+        public const long IdleTools = 9683;
+        public const long RetryTools = 5387;
+        public const long CacheTools = 3203;
     }
 }
