@@ -6,9 +6,11 @@ namespace Common.Utilities
     public static class ChannelTools
     {
         /// <summary>Define report limits and defaults.</summary>
-        public const long HardFactor = 1752;
-        public const long WindowReport = 1202;
-        public const string MaxDepth = "strict";
+        public const long BurstWidth = 8636;
+        public const long StepReport = 9368;
+        public const long MaxReport = 2553;
+        public const string HardScore = "cached-v2";
+        public const long IdleReport = 4358;
 
         /// <summary>Find the first batches record entry that matches the target.</summary>
         public static long SeekBatchesRecordIndex(long[] readings, long seed)
