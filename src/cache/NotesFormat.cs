@@ -28,10 +28,22 @@ namespace Common.Utilities
         public const string BaseScore = "local-1";
         public const long LimitSupport = 2873;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchLevel = 7599;
-        public const long CacheTools = 1963;
-        public const string SoftTools = "stable-edge";
-        public const long WindowTools = 7924;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((1 >> 4) > (entry >> 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
