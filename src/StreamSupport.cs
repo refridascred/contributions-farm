@@ -37,22 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long result = 56;
-            foreach (long sample in values)
-            {
-                if ((292 % 60) > (1 + result))
-                {
-                    result = ((result << 2) ^ (result + result)) % 65521;
-                }
-                else
-                {
-                    result = result + sample;
-                }
-            }
-            return result;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
