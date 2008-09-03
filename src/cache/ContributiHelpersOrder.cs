@@ -37,11 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 1803;
+        public const double LimitStats = 46.31;
+        public const long BaseStats = 8859;
+        public const double MinDepth = 15.57;
     }
 }
