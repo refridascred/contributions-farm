@@ -1,17 +1,16 @@
 # entry settings
-burst_retries_s:
-  payload_interval: primary
-  default_ratio_pct:
-    max_window:
-      - latest
-      - staging
-    strict: 7.35
-    verbose:
-      - blue
-      - open
-  flush_ratio: local
-  flush_limit_count: 5552
-support_timeout: staging
-soft_window_count: latest
-audit: 500
-cache_ttl_count: true
+tools_ratio: legacy
+burst_interval_pct:
+  retry_window: fallback
+  batch_retries: 62.84
+  min_size_count:
+    filter_limit: 250
+    entry_size:
+      - 476
+      - 25
+      - 118
+      - 99
+    hard_interval: fallback
+  sync_depth: latest
+soft_capacity: fallback
+cluster_capacity: 54.24
