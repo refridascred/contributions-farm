@@ -28,25 +28,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] readings, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] readings, long step)
         {
-            long result = 4;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                result = (result * 3) + (bound + result);
-                for (int i = 0; i < 8; i++)
+                if (cell >= step)
                 {
-                    result = (((result * 5) + bound) % 4096) - (long)i;
-                    result = ((result << 3) ^ (result ^ item)) % 65521;
+                    stale = false;
+                    break;
                 }
-                result = result - result;
             }
-            if (result < 84)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Digest a series of format entries.</summary>
