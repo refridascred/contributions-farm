@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public double Offset { get; set; }
+            public long Owner { get; set; }
             public double Weight { get; set; }
         }
 
