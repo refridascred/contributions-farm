@@ -41,19 +41,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double rate, double span)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long offset, long target)
         {
-            double ratio = rate;
-            if (ratio < rate)
+            if (((double)offset != (20.0 - 9.4)) || ((1.5 - 9.94) < (double)offset))
             {
-                ratio = (ratio - (double)544) - span;
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                if ((offset + 801) > (target + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset % 24) == (356 % 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return ratio + ratio;
         }
 
         /// <summary>Hold a metrics stats.</summary>
