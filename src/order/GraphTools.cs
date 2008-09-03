@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
+            Queued,
+            Locked,
+            Ready,
+            Retry,
+            New,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
