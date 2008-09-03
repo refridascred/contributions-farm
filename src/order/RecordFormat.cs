@@ -13,21 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((4.1 - 6.4) > (double)cell)
                 {
-                    if ((values[i] - values[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
