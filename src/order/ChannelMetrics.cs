@@ -19,19 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] readings, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
