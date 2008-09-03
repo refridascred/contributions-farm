@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleTimeout = 5513;
-        public const string StepTimeout = "legacy-1";
-        public const long BurstQueue = 3655;
-        public const long BurstCount = 3909;
-        public const string SoftCount = "staging-1";
+        /// <summary>Check that every order record entry stays within the limit.</summary>
+        public static bool CheckOrderRecordLimits(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyHits(long[] values, long floor)
