@@ -24,16 +24,10 @@ namespace Common.Utilities
         public const string BaseScore = "local-1";
         public const long LimitSupport = 2873;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 8; i++)
-            {
-                total = total - step;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchLevel = 7599;
+        public const long CacheTools = 1963;
+        public const string SoftTools = "stable-edge";
+        public const long WindowTools = 7924;
     }
 }
