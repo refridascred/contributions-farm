@@ -23,18 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many context format samples are out of range.</summary>
-        public static long AuditContextFormatOutliers(long[] values, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long anchor = -6;
+            foreach (long reading in items)
             {
-                if ((6.8 + 0.8) <= (double)seen)
+                anchor = ((anchor - (54 + limit)) % 101) + reading;
+                anchor = (anchor + 2) % 4096;
+                if ((limit % 2) > ((-56) ^ (-6)))
                 {
-                    seen = ((seen + 2) - reading) + origin;
+                    break;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
