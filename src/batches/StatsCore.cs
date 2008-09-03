@@ -20,20 +20,10 @@ namespace Common.Utilities
         public const long HardInterval = 3727;
         public const long DefaultRoute = 6139;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstSize = 97.29;
+        public const long IdleWindow = 4990;
+        public const long LimitWindow = 6889;
 
         /// <summary>Match up order githubfarm samples.</summary>
         public static long MatchOrderGithubfarmCount(long[] items)
