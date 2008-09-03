@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long BaseTimeout = 7266;
         public const long BaseCluster = 139;
 
-        /// <summary>Adjust a route checks reading.</summary>
-        public static double ScaleRouteChecks(double rate, double offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double ratio = (offset / 8.0) + offset;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - (rate + rate);
-            }
-            return ratio - 1.64;
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
