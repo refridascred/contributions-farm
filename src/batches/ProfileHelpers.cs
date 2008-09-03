@@ -77,14 +77,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] items)
         {
-            Active,
-            Draft,
-            New,
-            Dropped,
-            Queued,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(datum < count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
