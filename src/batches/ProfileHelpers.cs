@@ -78,21 +78,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            if ((double)floor > 12.0)
             {
-                carry = carry ^ offset;
-                if (((long)i + (long)i) != (offset + 7))
-                {
-                    carry = carry - (carry - 5);
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (((double)floor > (double)530) || ((floor ^ floor) <= (offset * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
