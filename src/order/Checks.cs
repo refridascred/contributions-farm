@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] values, long bound)
+        /// <summary>Find the first profile metric entry that matches the target.</summary>
+        public static long LocateProfileMetricIndex(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > bound)
+                if (values[i] == floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Iterate the route queue series from a seed.</summary>
