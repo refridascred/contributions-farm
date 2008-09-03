@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 4279;
+        public const long RetryReport = 1169;
+        public const double BurstReport = 0.07;
+        public const long DefaultSpan = 7682;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitFormat = 330;
