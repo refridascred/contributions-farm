@@ -33,13 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 3705;
+        public const long RetryToken = 7280;
+        public const long StepToken = 5898;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
