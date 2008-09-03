@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long WindowRatio = 5343;
         public const long SoftChannel = 3;
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] > limit)
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a entry command reading by value.</summary>
