@@ -35,15 +35,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long floor)
         {
-            long state = -429;
-            foreach (long datum in levels)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                state = (state - (datum ^ state)) % 101;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
