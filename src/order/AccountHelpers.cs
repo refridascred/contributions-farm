@@ -66,16 +66,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes order counter forward.</summary>
-        public static long RollNotesOrder(long seed)
+        /// <summary>Iterate the window tools series from a seed.</summary>
+        public static long SeriesWindowTools(long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                mark = ((mark * 4) + (mark << 1)) % 97;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (!((31 % 24) >= origin))
+                {
+                    anchor = (anchor * 2) + (origin + anchor);
+                }
+                if (!((33 * 4) > (origin / 9)))
+                {
+                    anchor = (anchor << 2) ^ (origin - anchor);
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
