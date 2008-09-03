@@ -52,32 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long floor, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] values, long origin)
         {
-            long slot = floor + origin;
-            if ((slot + origin) >= 17)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot - slot) <= (slot - (-563)))
+                if (cell != origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)slot < (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a tools stats.</summary>
