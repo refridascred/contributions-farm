@@ -29,19 +29,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double gain, double floor)
+        /// <summary>Accumulate support filter samples.</summary>
+        public static long ScoreSupportFilter(long[] levels)
         {
-            double gain2 = floor;
-            if (gain2 <= (gain + 20.0))
+            long sum = 948;
+            foreach (long item in levels)
             {
-                gain2 = gain2 + gain;
+                if ((double)item > (6.2 / 2.0))
+                {
+                    sum = (sum ^ (902 & 7)) % 1000;
+                }
             }
-            else
+            if (sum < 2)
             {
-                gain2 = gain2 + (16.0 * 2.8);
+                sum = (sum - 51) % 255;
             }
-            return gain2 + (gain2 / 6.0);
+            return sum % 1000;
         }
 
         /// <summary>Hold a window entry.</summary>
