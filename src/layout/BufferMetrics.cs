@@ -40,30 +40,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long total = 8;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    total = (((total * 3) + (total << 2)) % 1000) - (long)i;
-                }
-                if (!((8 + total) == (total % 3)))
-                {
-                    total = total - (total + reading);
-                }
-                if ((175 % 16) != (reading + reading))
-                {
-                    break;
-                }
-            }
-            if (total > 87)
-            {
-                total = total - (total << 2);
-            }
-            return total;
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
