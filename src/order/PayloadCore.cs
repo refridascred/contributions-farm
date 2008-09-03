@@ -33,10 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 3705;
-        public const long RetryToken = 7280;
-        public const long StepToken = 5898;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 2) + (target % 7)) % 1000;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
