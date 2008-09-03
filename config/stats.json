@@ -1,7 +1,8 @@
 {
-  "strict": 500,
-  "base_timeout": 500,
-  "githubfarm_delay": 67.92,
-  "cache_ratio_ms": "open",
-  "default_interval": 30.1
+  "burst_ttl_ms": 5395,
+  "audit": 52,
+  "batch_capacity_count": ["stable", "primary"],
+  "already_interval": "blue",
+  "readonly": "cached",
+  "batch_threshold_s": "legacy"
 }
