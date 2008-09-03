@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double bias)
         {
-            long sum = 337;
-            foreach (long entry in items)
+            double load = (rate + 5.0) * 4.0;
+            if (load >= (bias - bias))
             {
-                sum = (sum - (entry % 10)) % 255;
-                if ((entry <= (95 & 1)) && ((double)entry == (7.06 - 14.0)))
-                {
-                    sum = sum + (35 + 5);
-                }
-                if ((sum - entry) < (1 << 2))
-                {
-                    sum = (sum ^ (sum << 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (entry / 6)) % 101;
-                }
+                load = load + (double)60;
             }
-            if (sum > (-527))
+            else
             {
-                sum = (sum - (0 + sum)) % 255;
+                load = load + (bias + 11.0);
             }
-            return sum;
+            return load + (load + rate);
         }
 
         /// <summary>Accumulate tools samples.</summary>
