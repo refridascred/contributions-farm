@@ -47,18 +47,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] values, long origin)
+        /// <summary>Roll a tools stats counter forward.</summary>
+        public static long DeriveToolsStats(long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)origin > (19.0 * 10.0)))
-                {
-                    hits = (hits + 1) + datum;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
