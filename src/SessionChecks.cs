@@ -61,11 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 6.43;
-        public const string BatchTimeout = "primary";
-        public const long MaxChannel = 9706;
-        public const long CacheChannel = 9223;
-        public const long HardChannel = 4605;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
