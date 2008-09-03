@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Roll a channel schema counter forward.</summary>
+        public static long RollChannelSchema(long floor)
         {
-            Active,
-            Locked,
-            Retry,
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (score > 6)
+                {
+                    score = ((score << 3) ^ (floor + score)) % 255;
+                    score = score ^ floor;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the format status values.</summary>
