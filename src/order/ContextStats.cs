@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the command metrics entries that pass the check.</summary>
-        public static long TallyCommandMetricsHits(long[] levels, long step)
+        /// <summary>Count filter batches pairs that satisfy a relation.</summary>
+        public static long MatchFilterBatchesCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)reading > (8.3 * 19.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) + step;
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
