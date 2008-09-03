@@ -12,18 +12,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 542;
+            foreach (long item in samples)
             {
-                if (((45 % 2) == (tally - tally)) && ((sample * 3) <= sample))
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum ^ (bound & 63)) % 101;
+                sum = (sum + (item << 2)) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Blend two already stream measurements.</summary>
