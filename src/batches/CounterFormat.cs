@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultTimeout = 28.78;
+        public const double BurstCount = 51.04;
+        public const string WindowCount = "alpha-v2";
+        public const double MinProfile = 36.48;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] data, long step)
