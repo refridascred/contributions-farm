@@ -43,13 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Paused,
-            Locked,
-            Active,
-            Done,
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
