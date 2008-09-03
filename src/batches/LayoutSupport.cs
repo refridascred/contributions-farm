@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((7.8 + 0.5) != (double)matches)
-                {
-                    matches = ((matches + 2) ^ item) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "alpha-v2";
+        public const double BatchBudget = 44.31;
+        public const long BurstCommits = 5780;
+        public const long WindowBudget = 3437;
+        public const long RetryCommits = 802;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadHits(long[] data, long limit)
