@@ -1,14 +1,12 @@
 {
-  "layout_ratio": {
-    "batch_interval": 808,
-    "route_limit": [25, 266, 71, 353],
-    "schema_threshold": 100,
-    "window_ratio": 19.8,
-    "profile_timeout": "standard",
-    "default_capacity_ms": ["local", "legacy", "blue"]
+  "max_size_ms": true,
+  "hard_limit": "blue",
+  "soft_ratio_s": [192, 311, 176, 256],
+  "burst_threshold_count": {
+    "sync_retries": 50.89,
+    "strict": [54, 13, 119],
+    "buffer_retries": "edge",
+    "base_delay_pct": 87.49
   },
-  "burst_interval": 250,
-  "max_size_ms": [199, 249, 174, 45],
-  "format_depth": 27.76,
-  "batch_capacity_pct": ["legacy", "legacy", "edge", "edge"]
+  "poll_threshold_pct": ["legacy", "legacy", "edge", "fallback"]
 }
