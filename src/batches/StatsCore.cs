@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank stream farm input into a small class.</summary>
-        public static long ClassifyStreamFarm(long floor, long origin)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double rate, double span)
         {
-            if (!(792 < floor))
+            double rate2 = (rate - span) / 8.0;
+            if (rate2 < (double)3)
             {
-                return 2;
+                rate2 = rate2 + 4.17;
             }
             else
             {
-                if (((origin / 3) == (731 ^ floor)) || ((floor << 2) <= (origin + floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin << 3) > (floor + 26))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin >= (floor ^ origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                rate2 = rate2 - (span - 5.0);
             }
+            return rate2 - 4.2;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
