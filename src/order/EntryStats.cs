@@ -30,18 +30,14 @@ namespace Common.Utilities
             return gain - (offset * 5.5);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)count >= (16.0 + 11.0))
-                {
-                    count = ((count + 2) - reading) - floor;
-                }
-            }
-            return count;
+            Ready,
+            Paused,
+            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
