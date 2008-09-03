@@ -43,13 +43,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Grade a metric checks value against two limits.</summary>
+        public static long SortMetricChecks(long floor, long step)
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
+            long diff = floor + step;
+            if ((step > (diff + floor)) && ((6.0 * 3.4) < (double)diff))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + diff) >= (diff - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Blend two githubfarm commits measurements.</summary>
