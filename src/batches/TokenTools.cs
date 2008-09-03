@@ -38,31 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long bound, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if ((floor > (floor & 63)) || ((double)bound < (11.0 / 7.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(bound > (bound * 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ floor) == (floor & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Active,
+            Done,
         }
     }
 }
