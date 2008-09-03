@@ -39,18 +39,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] samples)
+        /// <summary>Compare every pair of channel checks readings.</summary>
+        public static long PairChannelChecksCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((count + 61) < count) && (((928 + count) >= (196 * 3)) && (item <= (2 & 255))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
