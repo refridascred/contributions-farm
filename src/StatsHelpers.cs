@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string RetrySchema = "standard-1";
         public const string BurstInterval = "staging-1";
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] data, long target)
         {
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
