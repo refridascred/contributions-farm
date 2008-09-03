@@ -68,13 +68,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] data, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((1.7 + 12.0) <= (double)count)
+                {
+                    count = ((count + 1) + sample) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a already reading by value.</summary>
