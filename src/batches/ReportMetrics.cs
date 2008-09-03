@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] samples)
+        /// <summary>Roll a notes editor counter forward.</summary>
+        public static long SeriesNotesEditor(long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)tally < (19.0 - 7.7))
-                {
-                    tally = (tally + 3) + value;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
