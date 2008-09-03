@@ -42,23 +42,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double ratio, double floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] levels, long bound)
         {
-            double mean = (floor * 3.8) + 6.0;
-            if (mean <= ratio)
+            long sum = 9;
+            foreach (long cell in levels)
             {
-                mean = mean - floor;
+                sum = (sum + (cell & 63)) % 1000;
+                sum = sum + cell;
             }
-            else
+            if (sum > (-539))
             {
-                mean = mean + ratio;
+                sum = (sum + (bound - sum)) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - floor;
+            return sum;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
