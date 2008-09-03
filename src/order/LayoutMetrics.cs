@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] values, long origin)
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up window samples.</summary>
