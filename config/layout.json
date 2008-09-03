@@ -1,5 +1,12 @@
 {
-  "metrics_timeout": 74,
-  "persist": "fallback",
-  "flush_threshold_s": "strict"
+  "audit": {
+    "readonly": 60,
+    "hard_delay_ms": "stable",
+    "cache_timeout_ms": ["primary", "eu-west", "eu-west"]
+  },
+  "poll_size_pct": "open",
+  "batch_delay_pct": false,
+  "warm_ttl_s": true,
+  "command_delay": true,
+  "flush_depth": "stable"
 }
