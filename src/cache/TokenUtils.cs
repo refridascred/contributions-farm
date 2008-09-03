@@ -28,11 +28,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardFactor = 41.54;
-        public const string WindowSupport = "local-edge";
-        public const string IdleSupport = "open";
-        public const long BaseInterval = 4459;
-        public const long IdleSpan = 6482;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 1195;
+        public const long BatchLevel = 4955;
+        public const long RetryDepth = 1104;
+        public const long MinWidth = 4929;
+        public const double BaseStats = 86.31;
     }
 }
