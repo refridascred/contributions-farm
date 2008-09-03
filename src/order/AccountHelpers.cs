@@ -37,19 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long sum = 205;
-            foreach (long datum in data)
-            {
-                sum = ((sum - (0 >> 3)) % 4096) - datum;
-            }
-            if (sum > (-80))
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum % 1000;
+            Dropped,
+            Synced,
+            Idle,
+            Active,
+            Stale,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
