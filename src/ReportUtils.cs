@@ -23,13 +23,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            Stale,
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Fold a list of account readings.</summary>
