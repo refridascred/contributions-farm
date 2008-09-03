@@ -20,21 +20,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = rate;
+            if (mean > (span + mean))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - span;
             }
-            return tally;
+            else
+            {
+                mean = mean - (double)0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - 8.4) + (double)(long)i;
+            }
+            return mean + (mean - rate);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
