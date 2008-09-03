@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next token farm value from a seed.</summary>
-        public static long StepTokenFarm(long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((carry / 5) > 3)
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
