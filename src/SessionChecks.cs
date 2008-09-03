@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mix = 903;
-            foreach (long item in values)
-            {
-                mix = (mix * 3) + ((long)values.Length >> 5);
-                if (!((item - mix) < (mix ^ mix)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
