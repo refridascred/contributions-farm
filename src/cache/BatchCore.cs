@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long bound, long bound2)
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            if (((974 / 5) <= (bound ^ bound2)) || ((double)bound2 < (double)bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)bound > (2.4 * 2.1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - bound2) != (bound << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound2 == (0.43 - 3.09))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
