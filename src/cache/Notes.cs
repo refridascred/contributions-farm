@@ -15,21 +15,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count order support pairs that satisfy a relation.</summary>
-        public static long MatchOrderSupportCount(long[] data)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long limit, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = limit ^ floor;
+            if ((limit << 1) < (floor >> 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (3.2 < (double)slot)
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
