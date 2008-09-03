@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long CacheFormat = 8198;
         public const long BatchInterval = 3117;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Fold a list of account schema readings.</summary>
+        public static long CombineAccountSchema(long[] series)
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            long result = 40;
+            foreach (long value in series)
+            {
+                result = (((result << 2) ^ (result * 2)) % 65521) - value;
+            }
+            if (result > 605)
+            {
+                result = (result - result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
