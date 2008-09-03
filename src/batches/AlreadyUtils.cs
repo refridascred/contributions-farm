@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a stats checks value against two limits.</summary>
-        public static long GradeStatsChecks(long target, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] samples)
         {
-            long delta = target + seed;
-            if ((double)75 <= (double)target)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (2 > (40 + delta))
+                if (((20 - seen) < (seen & 15)) && ((double)seen < (19.0 + 11.0)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (6 <= (seed * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)seed >= (18.0 - 6.3)) && ((seed * 3) < seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 3) - entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
