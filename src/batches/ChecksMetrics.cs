@@ -80,11 +80,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 5625;
+        public const double BatchSchema = 69.72;
+        public const double BurstSchema = 93.99;
+        public const long RetryFactor = 1979;
     }
 }
