@@ -30,23 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double bias, double bias2)
-        {
-            double weight = (double)237 * 2.64;
-            if (weight < (19.0 / 7.0))
-            {
-                weight = weight - (bias / 4.0);
-            }
-            else
-            {
-                weight = weight + (bias2 * 6.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - 6.27) + (double)(long)i;
-            }
-            return weight - bias;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxTimeout = 8108;
+        public const double SoftInterval = 12.3;
+        public const string RetryQueue = "cached-v2";
+        public const long BurstQueue = 3394;
     }
 }
