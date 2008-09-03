@@ -48,23 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Adjust a contributi layout reading.</summary>
+        public static double BlendContributiLayout(double ratio, double floor)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    result = result + (long)i3;
-                }
-                if (!!(result <= ((-97) << 1)))
-                {
-                    result = ((result * 2) + (result - (long)i)) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            double gain = (floor / 9.0) - (double)86;
+            return (gain + 0.2) + ratio;
         }
     }
 }
