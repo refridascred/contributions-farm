@@ -1,16 +1,15 @@
 # entry settings
-queue_delay:
-  enabled: stable
-  default_depth: stable
-  burst_capacity: 54
-metric_interval: true
-contributi_ttl: false
-idle_capacity_s:
-  persist: true
-  max_interval: 500
-  poll_retries_count: true
-base_delay_s: stable
-warm_timeout_count:
-  - 446
-  - 71
-  - 80
+commits_interval: 67
+checks_timeout:
+  - fallback
+  - primary
+  - cached
+  - cached
+cluster_retries:
+  - 482
+  - 194
+  - 412
+burst_threshold_s: false
+min_interval_s:
+  - 145
+  - 256
