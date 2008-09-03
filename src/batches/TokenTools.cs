@@ -32,13 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public double Limit { get; set; }
+            public double Offset { get; set; }
+            public double Count { get; set; }
         }
     }
 }
