@@ -12,10 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepFactor = "latest";
-        public const long BurstSpan = 3179;
-        public const long MinBudget = 4464;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((45 % 2) == (tally - tally)) && ((sample * 3) <= sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two already stream measurements.</summary>
         public static double ScaleAlreadyStream(double gain, double floor)
