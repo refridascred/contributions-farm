@@ -20,22 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] readings, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] values)
         {
-            long acc = 652;
-            foreach (long value in readings)
+            long total = 40;
+            foreach (long sample in values)
             {
-                if (acc < seed)
+                if (((double)total < (3.75 + 3.1)) && (9.0 < (1.52 + 4.5)))
                 {
-                    acc = ((acc * 4) + (925 + value)) % 101;
+                    total = (((total * 4) + total) % 101) + sample;
+                }
+                if ((8 & 1) == (total & 63))
+                {
+                    break;
                 }
             }
-            if (acc > (-12))
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc % 4096;
+            return total % 97;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
