@@ -27,10 +27,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 68.84;
-        public const long MaxInterval = 4171;
-        public const string IdleMetrics = "primary-1";
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] values)
