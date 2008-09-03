@@ -16,14 +16,19 @@ namespace Common.Utilities
             return weight - 16.0;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] series, long target)
         {
-            Active,
-            Draft,
-            Retry,
-            Ready,
-            New,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
