@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long CacheFormat = 8198;
         public const long BatchInterval = 3117;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] values)
-        {
-            long mark = 2;
-            foreach (long entry in values)
-            {
-                mark = ((mark << 2) ^ (entry & 127)) % 65521;
-            }
-            if (mark < (-2))
-            {
-                mark = (mark * 4) + ((long)values.Length + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinQueue = "alpha-1";
+        public const long SoftQueue = 8640;
+        public const long HardQueue = 7403;
+        public const string CacheFactor = "local-edge";
 
         /// <summary>Count the profile support entries that pass the check.</summary>
         public static long MeasureProfileSupportMatches(long[] series)
