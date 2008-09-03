@@ -71,11 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "standard-1";
-        public const string MaxContributi = "strict-v2";
-        public const long BurstContributi = 2891;
-        public const string MinBudget = "staging-edge";
-        public const string SoftContributi = "fallback-v2";
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
