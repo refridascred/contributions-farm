@@ -42,39 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a githubfarm format value against two limits.</summary>
-        public static long GradeGithubfarmFormat(long floor, long limit)
+        /// <summary>Check that every notes commits entry stays within the limit.</summary>
+        public static bool ValidateNotesCommitsLimits(long[] items, long offset)
         {
-            long span = floor + limit;
-            if (!((span >> 3) >= (limit + 647)))
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) < (38 + span))
+                if (item >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit << 3) <= (311 << 2)) && ((floor / 7) <= span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor >> 5) >= (limit & 127))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
