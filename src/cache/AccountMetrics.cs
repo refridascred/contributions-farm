@@ -17,19 +17,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Scale a session queue figure with a bias.</summary>
-        public static double SmoothSessionQueue(double gain, double span)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double rate = span / 2.0;
-            if (rate >= (16.0 + gain))
-            {
-                rate = rate - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (gain / 8.0)) - (double)(long)i;
-            }
-            return rate - (double)58;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
