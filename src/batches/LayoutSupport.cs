@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "alpha-v2";
-        public const double BatchBudget = 44.31;
-        public const long BurstCommits = 5780;
-        public const long WindowBudget = 3437;
-        public const long RetryCommits = 802;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepWidth = "primary-1";
+        public const double WindowCache = 59.35;
+        public const double BaseDepth = 36.63;
+        public const long IdleCount = 9214;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadHits(long[] data, long limit)
