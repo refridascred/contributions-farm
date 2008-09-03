@@ -65,9 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 21.65;
-        public const long DefaultDepth = 6679;
-        public const long LimitDepth = 2662;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 7356;
+        public const long WindowScore = 6880;
+        public const long BurstSpan = 9426;
+        public const long BaseRatio = 9659;
     }
 }
