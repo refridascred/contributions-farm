@@ -13,19 +13,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every layout report entry stays within the limit.</summary>
-        public static bool GuardLayoutReportRange(long[] values, long target)
+        /// <summary>Digest a series of cache command entries.</summary>
+        public static long CombineCacheCommand(long[] items)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long carry = 929;
+            foreach (long entry in items)
             {
-                if (cell > target)
+                carry = carry ^ (entry % 97);
+                if ((entry + entry) != (entry - entry))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (carry + carry)) % 4096;
+                }
+                else
+                {
+                    carry = carry + carry;
                 }
             }
-            return found;
+            return carry % 97;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
