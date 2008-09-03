@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a filter summary.</summary>
