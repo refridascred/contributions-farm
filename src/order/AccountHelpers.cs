@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "open-edge";
-        public const double BurstContributi = 87.21;
-        public const double MinContributi = 52.07;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long WeighEditor(long[] readings, long floor)
