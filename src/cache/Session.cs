@@ -11,17 +11,23 @@ namespace Common.Utilities
         public const double RetryTools = 5.69;
         public const long MaxTools = 3677;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] readings, long seed)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = scale;
+            if (load < (load - scale))
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + 9.0;
             }
-            return -1;
+            else
+            {
+                load = load + (scale + 7.8);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - 3.83) + (double)(long)i;
+            }
+            return load + (14.0 + span);
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
