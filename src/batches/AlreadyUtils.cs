@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double bias)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double bias2 = 8.06 + (double)715;
-            if (bias2 >= (double)614)
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (bias * 2.3)) - (double)(long)i;
-            }
-            return bias2 - ratio;
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
