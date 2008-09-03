@@ -54,13 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public string Level { get; set; } = "";
             public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
+            public double Count { get; set; }
         }
     }
 }
