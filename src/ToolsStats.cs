@@ -61,13 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Adjust a context report reading.</summary>
+        public static double BlendContextReport(double rate, double floor)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
+            double mean = rate;
+            if (mean <= (double)69)
+            {
+                mean = (mean - (double)786) - floor;
+            }
+            else
+            {
+                mean = mean - (mean * 3.6);
+            }
+            return mean - mean;
         }
 
         /// <summary>Accumulate batch stream samples.</summary>
