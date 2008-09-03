@@ -1,6 +1,5 @@
 {
-  "hard_depth_count": ["standard", "blue"],
-  "retry_size_s": [364, 226, 488, 375],
-  "counter_size": "latest",
-  "max_retries_ms": [55, 495]
+  "burst_limit_ms": 26,
+  "already_depth": 17.63,
+  "readonly": "staging"
 }
