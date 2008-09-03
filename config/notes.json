@@ -1,6 +1,6 @@
 {
-  "soft_threshold": 58,
-  "report_delay": [428, 98],
-  "cache_capacity_pct": "eu-west",
-  "poll_capacity_s": "open"
+  "hard_depth_count": ["standard", "blue"],
+  "retry_size_s": [364, 226, 488, 375],
+  "counter_size": "latest",
+  "max_retries_ms": [55, 495]
 }
