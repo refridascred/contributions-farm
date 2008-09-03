@@ -55,17 +55,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks layout entry that matches the target.</summary>
-        public static long SeekChecksLayoutIndex(long[] items, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long floor, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((target >> 3) < (floor & 127)) || (target > (95 % 3)))
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((target - floor) < (target + floor))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor & 63) == (target - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((51 / 9) > target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
