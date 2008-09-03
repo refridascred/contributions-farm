@@ -1,10 +1,24 @@
 # githubfarm settings
-hard_limit_count: false
-retry_depth_ms:
-  - 89
-  - 336
-  - 84
-retry_capacity_count: 24.89
-cache_interval: 2223
-default_capacity_s: 76
-audit: false
+record_delay:
+  context_window: 500
+  poll_interval:
+    - strict
+    - primary
+  warm_retries: stable
+  compress: 30
+  persist:
+    - 303
+    - 71
+    - 462
+  commits_delay: 98.93
+retry_retries_s: 2777
+schema_ratio:
+  commits_interval: 99
+  command_ratio: 9299
+  poll_size_ms: 68.8
+  idle_ratio: cached
+  enabled: 78.79
+  retry_retries:
+    - 428
+    - 438
+    - 368
