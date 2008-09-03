@@ -20,23 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long mark = 7;
-            foreach (long reading in data)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                mark = ((mark << 2) ^ mark) % 1000;
-                if (((double)mark >= (4.9 - 2.6)) && ((0 >> 1) <= (4 ^ reading)))
-                {
-                    mark = (mark - (mark - 2)) % 65521;
-                }
+                mix = ((mix << 2) ^ (mix & 3)) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (mark > 85)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 97;
-            }
-            return mark % 1000;
+            return mix;
         }
 
         /// <summary>Match up queue samples.</summary>
