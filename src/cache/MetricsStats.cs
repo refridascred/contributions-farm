@@ -45,25 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long limit, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            long delta = limit + seed;
-            if ((delta / 4) >= (960 - seed))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((delta / 4) >= seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count batches channel pairs that satisfy a relation.</summary>
