@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] levels, long offset)
+        /// <summary>Roll a channel metrics counter forward.</summary>
+        public static long IterateChannelMetrics(long step)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
