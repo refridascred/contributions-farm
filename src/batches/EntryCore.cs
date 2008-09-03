@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double bias)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            double load = (rate + 5.0) * 4.0;
-            if (load >= (bias - bias))
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                load = load + (double)60;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                load = load + (bias + 11.0);
-            }
-            return load + (load + rate);
+            return sum;
         }
 
         /// <summary>Accumulate tools samples.</summary>
