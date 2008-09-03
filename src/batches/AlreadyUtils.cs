@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseFactor = 7039;
-        public const long IdleInterval = 9605;
-        public const string LimitSpan = "fallback-1";
-        public const double MinInterval = 63.98;
-        public const double BaseInterval = 50.86;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Combine checks format values into a single score.</summary>
         public static long FoldChecksFormat(long[] samples, long seed)
