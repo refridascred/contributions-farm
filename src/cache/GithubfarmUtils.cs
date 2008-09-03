@@ -48,22 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] samples)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample + sample) >= sample))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
