@@ -37,38 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel tools pair into a bucket.</summary>
-        public static long BucketChannelTools(long floor, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] readings, long seed)
         {
-            if ((752 <= (step - floor)) || ((floor >> 3) != (step + floor)))
+            long sum = 7;
+            foreach (long reading in readings)
             {
-                return 8;
+                sum = (sum - (701 ^ reading)) % 65521;
             }
-            else
+            if (sum < 2)
             {
-                if ((step & 127) >= step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step * 5) == (step << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step ^ 667) > (floor >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                sum = sum + (seed * 4);
             }
+            return sum;
         }
 
         /// <summary>Describe the layout status values.</summary>
