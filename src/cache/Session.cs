@@ -31,13 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] data, long seed)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
