@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit queue layout readings against a rule.</summary>
-        public static long TallyQueueLayoutOutliers(long[] items, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if ((double)seed != (19.0 / 9.0))
             {
-                if ((cell + limit) != (cell / 9))
+                return 3;
+            }
+            else
+            {
+                if ((seed * 3) >= (bound & 7))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((5.0 * 0.33) < (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine metric profile values into a single score.</summary>
