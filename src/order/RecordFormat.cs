@@ -37,20 +37,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session githubfarm value from a seed.</summary>
-        public static long StepSessionGithubfarm(long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)result < 4.0)
-                {
-                    result = (result << 3) ^ (limit ^ (long)i);
-                }
-                result = (result << 3) ^ (limit + limit);
-                result = ((result * 3) + (long)i) % 101;
+                acc = (acc + (limit - acc)) % 4096;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
