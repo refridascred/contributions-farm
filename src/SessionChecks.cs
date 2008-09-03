@@ -14,19 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate support buffer readings against a bound.</summary>
-        public static bool VerifySupportBufferBounds(long[] series, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many graph payload samples are out of range.</summary>
