@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank order session input into a small class.</summary>
-        public static long SortOrderSession(long origin, long floor)
-        {
-            long prev = origin - floor;
-            if ((double)origin == (1.63 + 12.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((prev ^ origin) < (prev << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 3173;
+        public const long IdleFactor = 3884;
+        public const long BurstBuffer = 7202;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsMatches(long[] items)
