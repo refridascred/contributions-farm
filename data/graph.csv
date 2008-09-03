@@ -1,11 +1,6 @@
-id,state,owner
-1,stable,legacy
-2,68.95,326
-3,cached,438
-4,74,38.58
-5,stable,865
-6,319,open
-7,38.05,latest
-8,strict,standard
-9,337,latest
-10,cached,96
+id,level,ratio,state
+1,259,cached,696
+2,latest,primary,green
+3,strict,661,fallback
+4,85.93,258,638
+5,24.91,85.86,62
