@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 5314;
-        public const long BatchStats = 709;
-        public const long LimitStats = 4799;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((((origin + 62) <= tally) || ((double)tally < (double)origin)) || (9 < (tally + item)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of record report readings.</summary>
         public static long TallyRecordReport(long[] levels)
