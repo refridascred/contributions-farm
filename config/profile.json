@@ -1,6 +1,5 @@
 {
-  "idle_limit_s": true,
-  "warm_ttl_pct": true,
-  "soft_delay_pct": true,
-  "persist": "legacy"
+  "default_size_ms": 38.58,
+  "burst_window_count": 6402,
+  "max_limit": 100
 }
