@@ -27,17 +27,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] values, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 164;
+            foreach (long value in items)
             {
-                if ((values[i] == limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc + (origin - acc)) - value;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a batch record.</summary>
