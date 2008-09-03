@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a command queue counter forward.</summary>
-        public static long StepCommandQueue(long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] values, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                for (int i3 = 0; i3 < 12; i3++)
+                if (reading > target)
                 {
-                    carry = (((carry << 3) ^ (offset - carry)) % 255) - (long)i3;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Hold a record options.</summary>
