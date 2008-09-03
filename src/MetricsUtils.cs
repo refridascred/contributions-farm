@@ -41,19 +41,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen / 5) < item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 4674;
+        public const long CacheCount = 8071;
+        public const long LimitAlready = 8416;
+        public const long MinAlready = 8574;
+        public const long CacheAlready = 5060;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
