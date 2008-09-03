@@ -21,17 +21,13 @@ namespace Common.Utilities
         public const long SoftTimeout = 33;
         public const string WindowRatio = "standard-edge";
 
-        /// <summary>Locate a filter editor reading by value.</summary>
-        public static long LookupFilterEditorIndex(long[] items, long seed)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
