@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long offset, long offset2)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            if (0 >= (offset + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) == (offset2 - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset2 * 5) < (offset & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset2 <= (offset << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Rank route githubfarm input into a small class.</summary>
