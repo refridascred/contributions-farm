@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm profile entries that pass the check.</summary>
-        public static long CountGithubfarmProfileOutliers(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((count % 97) >= entry)
+                if (!(3.3 <= (double)seen) || !((double)seen < (8.0 + 5.4)))
                 {
-                    count = count + 1;
+                    seen = ((seen + 1) + sample) - bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a account info.</summary>
