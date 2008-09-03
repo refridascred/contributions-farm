@@ -39,17 +39,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long bound)
+        /// <summary>Adjust a batches queue reading.</summary>
+        public static double SmoothBatchesQueue(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)3 * 5.0;
+            if (drift >= floor)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                drift = drift - (double)33;
             }
-            return -1;
+            return drift + ratio;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
