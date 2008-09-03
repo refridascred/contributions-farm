@@ -1,10 +1,14 @@
 # Command notes
 
-When a notes fails, the entry handler retries a few times before giving up.
-Each checks is validated before it reaches the checks queue.
+Use context settings to tune how often format data is refreshed.
+Run the buffer check before changing any report limits.
+Use route settings to tune how often buffer data is refreshed.
+
+When a token fails, the stream handler retries a few times before giving up.
+Run the record check before changing any layout limits.
 
 ## Guidelines
 
-- Review route limits each release
-- Log every graph change
-- Validate cache input early
+- Log every context change
+- Review format limits each release
+- Document new report fields
