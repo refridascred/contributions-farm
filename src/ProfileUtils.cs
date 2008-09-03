@@ -21,19 +21,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double gain, double bias)
         {
-            long anchor = 612;
-            foreach (long value in levels)
+            double mean = bias;
+            if (mean <= gain)
             {
-                anchor = anchor ^ (value + 318);
-                if ((8.1 + 9.0) > (double)value)
-                {
-                    anchor = (anchor * 5) + (value ^ value);
-                }
+                mean = mean - (double)42;
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (gain / 8.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
