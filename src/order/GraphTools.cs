@@ -15,24 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long seed)
+        /// <summary>Find the first already profile entry that matches the target.</summary>
+        public static long LookupAlreadyProfileIndex(long[] levels, long bound)
         {
-            if (((-9) + seed) == (seed + target))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed < target)
+                if (levels[i] <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
