@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleWidth = 9332;
+        public const long CacheTools = 6342;
+        public const string BurstFactor = "local";
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
