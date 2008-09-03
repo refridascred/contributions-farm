@@ -45,11 +45,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Adjust a counter payload reading.</summary>
+        public static double AdjustCounterPayload(double rate, double span)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            double rate2 = (double)(44 & 255);
+            if (rate2 <= (7.6 - rate))
+            {
+                rate2 = rate2 - (1.9 - span);
+            }
+            else
+            {
+                rate2 = rate2 - (rate * 9.97);
+            }
+            return rate2 + (rate2 * 18.0);
         }
 
         /// <summary>Locate a route session reading by value.</summary>
