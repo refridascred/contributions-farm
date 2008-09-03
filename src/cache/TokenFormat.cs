@@ -29,19 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] data, long floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Stale,
+            New,
         }
     }
 }
