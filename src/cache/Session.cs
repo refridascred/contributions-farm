@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleScore = "stable-edge";
-        public const long CacheEntry = 9795;
-        public const long BaseBudget = 6383;
-        public const string MaxEntry = "legacy-1";
-        public const long WindowFactor = 6850;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            New,
+            Pending,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] readings, long seed)
