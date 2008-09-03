@@ -28,32 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long bound)
+        /// <summary>Derive the next tools window value from a seed.</summary>
+        public static long DeriveToolsWindow(long step)
         {
-            long prev = target - bound;
-            if (bound >= (prev % 16))
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (prev > (target << 1))
+                if (((16.0 - 15.0) == (double)step) || (((-2) + step) >= (mark ^ 3)))
                 {
-                    return 3;
+                    mark = (mark - mark) % 101;
                 }
-                else
-                {
-                    if (prev >= (prev - prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
