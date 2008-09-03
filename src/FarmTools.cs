@@ -13,20 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Project the next route command value.</summary>
+        public static double BlendRouteCommand(double bias, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 2; i++)
             {
-                anchor = (anchor << 3) ^ (722 - (long)i);
-                if ((anchor / 8) < (origin + (long)i))
-                {
-                    anchor = ((anchor * 4) + (anchor + anchor)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                bias2 = ((bias2 + bias) - (double)(long)i) - floor;
             }
-            return anchor;
+            return bias2 - (9.0 - bias2);
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
