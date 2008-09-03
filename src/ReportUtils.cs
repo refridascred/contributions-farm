@@ -19,14 +19,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Idle,
-            Paused,
-            Synced,
-            Locked,
-            Done,
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
