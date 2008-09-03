@@ -43,19 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools window figure with a bias.</summary>
-        public static double AdjustToolsWindow(double weight, double offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] samples, long origin)
         {
-            double mean = 7.3 / 7.0;
-            if (mean > weight)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                mean = mean - (double)8;
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean + (offset + weight);
+            return valid;
         }
 
         /// <summary>Digest a series of commits payload entries.</summary>
