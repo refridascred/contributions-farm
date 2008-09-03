@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] values, long seed)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long score = -68;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score * 5) > (score + seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 3) ^ 42) % 4096;
-                }
-                else
-                {
-                    score = ((score << 3) ^ item) % 1000;
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
