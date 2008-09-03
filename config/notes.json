@@ -1,5 +1,7 @@
 {
-  "base_capacity": 1991,
-  "burst_interval": 250,
-  "idle_window_s": false
+  "metrics_window": "stable",
+  "cache_threshold": 2399,
+  "base_ttl_ms": "strict",
+  "dry_run": 89.7,
+  "sync_interval_ms": 605
 }
