@@ -22,20 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                carry = carry - (2 + origin);
-                if (4 <= carry)
+                if (86 <= entry)
                 {
-                    break;
+                    hits = hits + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the order mode values.</summary>
