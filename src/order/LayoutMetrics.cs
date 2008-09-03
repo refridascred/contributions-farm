@@ -36,18 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] data, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] samples, long step)
         {
-            long carry = 21;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((entry >> 3) < (carry ^ bound))
+                if ((step + step) <= (33 << 2))
                 {
-                    carry = carry + (entry ^ entry);
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry % 1000;
+            return count;
         }
     }
 }
