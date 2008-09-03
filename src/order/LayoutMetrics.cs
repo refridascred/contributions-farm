@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 3064;
-        public const string BurstSize = "stable";
-        public const long LimitMetrics = 2839;
-        public const long BaseInterval = 6284;
-        public const long IdleMetrics = 6873;
+        /// <summary>Look up the position of a buffer support sample.</summary>
+        public static long LookupBufferSupportIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
