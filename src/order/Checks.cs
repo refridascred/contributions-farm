@@ -18,24 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Iterate the route queue series from a seed.</summary>
+        public static long SeriesRouteQueue(long floor)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((386 * 3) < ((long)i ^ state))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state * 2) + (target >> 2);
-                }
-                state = ((state * 3) + (target / 2)) % 4096;
-                state = ((state * 3) + (long)i) % 1000;
+                result = result - (232 / 3);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
