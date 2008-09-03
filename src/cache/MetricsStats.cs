@@ -38,26 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] samples, long step)
+        /// <summary>Derive the next session cluster value from a seed.</summary>
+        public static long RollSessionCluster(long step)
         {
-            long anchor = 342;
-            foreach (long datum in samples)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((datum / 8) != (datum << 3))
+                if (7 > (long)i)
                 {
-                    anchor = (anchor + (anchor * 4)) % 255;
+                    break;
                 }
-                if (datum > (datum & 15))
-                {
-                    anchor = (anchor ^ (anchor << 1)) % 4096;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (anchor > 76)
-            {
-                anchor = anchor ^ step;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Audit stream profile readings against a rule.</summary>
