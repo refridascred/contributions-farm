@@ -20,17 +20,16 @@ namespace Common.Utilities
             return load - (bias / 6.0);
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] levels, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 487;
+            foreach (long sample in items)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc - acc) % 65521) + sample) - floor;
+                acc = (acc + (acc - acc)) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
