@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long bound)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
+            long step = seed ^ bound;
+            if ((4.0 / 8.0) >= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step <= (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((20 < (seed >> 2)) && ((double)bound != (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (9.2 / 6.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
