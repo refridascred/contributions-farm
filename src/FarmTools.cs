@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long bound, long origin)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
+            if ((7.2 + 3.09) > (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)origin > (8.4 + 7.0)) && ((bound - bound) < (origin / 8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin > 3.18) || ((bound - bound) <= bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
