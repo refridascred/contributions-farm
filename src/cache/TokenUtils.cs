@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardTimeout = 7754;
-        public const string CacheCount = "local-1";
-        public const long BatchDepth = 2465;
-        public const long WindowInterval = 328;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Idle,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long step, long origin)
