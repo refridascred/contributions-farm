@@ -27,21 +27,31 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long limit2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit << 1) != (954 << 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (84 > (limit ^ limit2))
                 {
-                    if ((items[i] ^ items[j]) < 20)
+                    return 1;
+                }
+                else
+                {
+                    if ((limit ^ limit) != (limit + limit))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
     }
 }
