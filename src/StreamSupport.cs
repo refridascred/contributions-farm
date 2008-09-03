@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] data)
+        /// <summary>Count the githubfarm profile entries that pass the check.</summary>
+        public static long CountGithubfarmProfileOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((tally + tally) < value)
+                if ((count % 97) >= entry)
                 {
-                    tally = tally + 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a token options.</summary>
