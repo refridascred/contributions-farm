@@ -1,6 +1,18 @@
 {
-  "sync_size_ms": true,
-  "base_size_ms": 57,
-  "base_delay": 96,
-  "sync_limit_pct": 86
+  "warm_depth_count": 73,
+  "graph_interval": 7822,
+  "format_limit": 39.12,
+  "dry_run": {
+    "warm_window_count": ["green", "strict", "primary", "open"],
+    "strict": 250,
+    "token_retries": {
+      "retry_size_pct": 5,
+      "idle_threshold_pct": [266, 436, 71, 180],
+      "format_delay": "legacy",
+      "support_depth": [319, 461, 147, 4]
+    },
+    "hard_ratio_pct": 500
+  },
+  "contributi_timeout": true,
+  "verbose": false
 }
