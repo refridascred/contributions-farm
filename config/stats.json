@@ -1,5 +1,7 @@
 {
-  "base_ratio_ms": 4051,
-  "report_ttl": "fallback",
-  "graph_threshold": 27.23
+  "sync_delay": 4564,
+  "default_timeout": "staging",
+  "retry_capacity_count": true,
+  "compress": 41.89,
+  "min_size": 57.19
 }
