@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples, long offset)
-        {
-            long anchor = 562;
-            foreach (long item in samples)
-            {
-                anchor = (((anchor * 3) + offset) % 255) ^ item;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "cached-1";
+        public const string SoftSize = "fallback-edge";
+        public const long MinSession = 1643;
+        public const long RetrySession = 7697;
 
         /// <summary>Derive the next channel batch value from a seed.</summary>
         public static long StepChannelBatch(long floor)
