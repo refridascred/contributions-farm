@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((mark / 6) > 746)
+                total = total ^ ((long)i & 31);
+                total = total - (limit % 24);
+                if ((total * 4) > total)
                 {
-                    mark = (mark ^ (972 ^ (long)i)) % 1000;
+                    total = ((total << 3) ^ (limit * 5)) % 255;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Project the next queue value.</summary>
