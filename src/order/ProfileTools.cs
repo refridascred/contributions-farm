@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 60.23;
-        public const long WindowBudget = 7935;
-        public const long SoftContext = 3847;
-        public const long BaseFactor = 2636;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long OverlapChannelCount(long[] items)
