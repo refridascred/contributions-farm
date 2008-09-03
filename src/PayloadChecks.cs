@@ -20,17 +20,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            long acc = -740;
+            foreach (long cell in samples)
             {
-                long hits = (long)i;
-                anchor = (anchor * 5) + (hits + 5);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (cell >= (3 << 2))
+                {
+                    acc = acc - (cell << 1);
+                }
             }
-            return anchor;
+            return acc % 65521;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
