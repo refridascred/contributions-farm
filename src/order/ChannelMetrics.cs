@@ -16,14 +16,12 @@ namespace Common.Utilities
             return scale - (3.0 * 6.7);
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardScore = 9953;
+        public const long StepTimeout = 6357;
+        public const long BatchBudget = 6386;
+        public const long DefaultChannel = 8709;
+        public const string MinWidth = "fallback-edge";
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] items, long origin)
