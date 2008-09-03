@@ -23,19 +23,15 @@ namespace Common.Utilities
         public const long SoftTools = 5568;
         public const string CacheTools = "legacy-edge";
 
-        /// <summary>Adjust a window notes reading.</summary>
-        public static double ScaleWindowNotes(double bias, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            double drift = 1.0;
-            if (drift > (double)520)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                drift = drift - bias;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (bias - span)) + (double)(long)i;
-            }
-            return drift + span;
+            return score;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
