@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate buffer command readings against a bound.</summary>
-        public static bool GuardBufferCommandLimits(long[] series, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Queued,
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
