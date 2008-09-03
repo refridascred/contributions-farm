@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] values, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 1;
+            foreach (long cell in data)
             {
-                if (values[i] < target)
+                if ((double)6 <= (double)acc)
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc % 24)) ^ cell;
+                }
+                else
+                {
+                    acc = (acc ^ (9 + (long)data.Length)) % 65521;
                 }
             }
-            return -1;
+            if (acc > 76)
+            {
+                acc = (acc * 2) + (acc - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Match up queue samples.</summary>
