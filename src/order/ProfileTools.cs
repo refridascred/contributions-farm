@@ -14,19 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((floor % 3) == (value * 3)) || ((8.22 / 2.0) == (double)value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 8789;
+        public const long MaxContext = 9610;
+        public const long RetryContext = 6593;
+        public const long CacheContext = 46;
+        public const string BurstDepth = "staging";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRatio = 4230;
