@@ -15,17 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long seed)
+        /// <summary>Count order support pairs that satisfy a relation.</summary>
+        public static long MatchOrderSupportCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine context githubfarm values into a single score.</summary>
