@@ -1,8 +1,17 @@
 {
-  "base_interval": "legacy",
-  "readonly": "open",
-  "verbose": ["stable", "blue"],
-  "max_timeout_pct": "primary",
-  "min_threshold": "open",
-  "max_timeout": 94.09
+  "token_ttl": {
+    "base_size_pct": 100,
+    "min_ratio_pct": 30,
+    "min_threshold_ms": false,
+    "strict": 60
+  },
+  "batch_threshold": true,
+  "metrics_ratio": "standard",
+  "soft_interval": {
+    "graph_threshold": "edge",
+    "batch_interval_ms": 72,
+    "tools_ttl": 8407,
+    "sync_capacity_pct": ["primary", "cached"],
+    "max_window": 13
+  }
 }
