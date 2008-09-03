@@ -48,13 +48,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Rank buffer already input into a small class.</summary>
+        public static long GradeBufferAlready(long limit, long step)
         {
-            Queued,
-            Draft,
-            Active,
-            Stale,
+            if ((limit + 451) == (step >> 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit * 3) <= 777)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step % 2) >= (3 - 378))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record header.</summary>
