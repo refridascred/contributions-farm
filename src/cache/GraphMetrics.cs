@@ -23,20 +23,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every counter metric entry stays within the limit.</summary>
-        public static bool GuardCounterMetricLimits(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "cached-1";
+        public const long CacheSession = 906;
+        public const long RetryScore = 6600;
+        public const string BurstSession = "staging-edge";
+        public const string SoftSize = "alpha-v2";
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
