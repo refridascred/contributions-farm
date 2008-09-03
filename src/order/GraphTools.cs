@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset > (2.47 / 3.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)target != (5.37 * 3.3))
                 {
-                    if ((levels[i] + levels[j]) != 6)
+                    return 1;
+                }
+                else
+                {
+                    if (935 > (offset + offset))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
