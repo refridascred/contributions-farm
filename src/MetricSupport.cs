@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] values, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] values, long target)
         {
-            long sum = 54;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum << 3) ^ (sum % 12);
-                if (cell < (limit ^ cell))
+                if (values[i] == target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
