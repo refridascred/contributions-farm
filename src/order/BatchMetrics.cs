@@ -46,12 +46,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] series, long seed)
         {
-            New,
-            Locked,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
