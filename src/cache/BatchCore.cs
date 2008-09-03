@@ -43,12 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
