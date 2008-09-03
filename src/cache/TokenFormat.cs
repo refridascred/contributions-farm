@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double scale, double span)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double bias, double offset)
         {
-            double load = 5.6;
-            if (load > (double)67)
+            double ratio = 4.04;
+            if (ratio < ratio)
             {
-                load = (load + (load - scale)) - span;
+                ratio = ratio - offset;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load - load) + (double)(long)i;
+                ratio = ratio + 9.2;
             }
-            return load + load;
+            return ratio - bias;
         }
 
         /// <summary>Hold a profile summary.</summary>
