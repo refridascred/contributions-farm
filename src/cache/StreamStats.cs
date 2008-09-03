@@ -43,19 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches + (long)items.Length) <= matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 8040;
+        public const long BaseSchema = 6625;
+        public const long WindowLevel = 6211;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelRange(long[] levels, long target)
