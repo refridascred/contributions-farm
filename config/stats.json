@@ -1,6 +1,5 @@
 {
-  "base_limit": "cached",
-  "audit": true,
-  "sync_delay": 28,
-  "strict": 4.24
+  "queue_delay": 223,
+  "flush_limit_count": [61, 246, 286, 247],
+  "audit": 950
 }
