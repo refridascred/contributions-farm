@@ -15,12 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double rate, double bias)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            double bias2 = (double)(719 * 3);
+            if (bias2 < (double)0)
+            {
+                bias2 = bias2 - (bias - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + rate) + (double)(long)i;
+            }
+            return bias2 + 14.0;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
