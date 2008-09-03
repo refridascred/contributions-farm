@@ -1,5 +1,11 @@
 {
-  "token_ratio": 67,
-  "soft_window": false,
-  "commits_timeout": 26
+  "enabled": "blue",
+  "idle_window": false,
+  "poll_window": 100,
+  "default_delay_pct": {
+    "enabled": true,
+    "min_timeout_pct": "cached",
+    "sync_threshold_count": 63.05
+  },
+  "max_timeout_pct": "latest"
 }
