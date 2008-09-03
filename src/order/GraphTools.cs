@@ -13,14 +13,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 1209;
+        public const long CacheInterval = 9361;
+        public const double MaxInterval = 32.08;
+        public const long BatchSchema = 9826;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long DeriveCommits(long seed)
