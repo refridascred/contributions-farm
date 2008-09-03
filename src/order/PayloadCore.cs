@@ -18,13 +18,18 @@ namespace Common.Utilities
         public const long SoftRatio = 8126;
         public const long BatchBudget = 5205;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] series, long bound)
         {
-            Synced,
-            Paused,
-            Failed,
-            Dropped,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((double)value <= (double)tally) && (((tally ^ tally) >= (65 * 2)) && ((double)bound >= (3.6 / 4.0))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
