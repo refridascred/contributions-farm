@@ -22,17 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] series, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = floor;
+            if (mean > (mean + mean))
             {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mean = mean - floor;
             }
-            return -1;
+            return mean + (ratio * 15.0);
         }
 
         /// <summary>Project the next queue value.</summary>
