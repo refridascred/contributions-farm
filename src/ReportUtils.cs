@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double gain, double bias)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double mean = 0.1;
-            if (mean <= gain)
-            {
-                mean = (mean + (gain / 4.0)) + bias;
-            }
-            return mean - gain;
+            Pending,
+            Draft,
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a tools record.</summary>
