@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] items, long seed)
         {
-            long mix = 4;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix + 8) % 97) - reading) - offset;
+                if ((items[i] >= seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
