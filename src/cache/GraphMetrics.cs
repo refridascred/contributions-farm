@@ -56,18 +56,19 @@ namespace Common.Utilities
         public const long SoftSize = 4613;
         public const long LimitRatio = 4449;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((value - matches) >= matches)
+                if (sample > floor)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
