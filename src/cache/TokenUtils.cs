@@ -20,11 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 82.87;
-        public const long CacheSpan = 87;
-        public const double DefaultScore = 85.94;
-        public const string CacheGithubfarm = "stable-v2";
+        /// <summary>Combine session checks values into a single score.</summary>
+        public static long WeighSessionChecks(long[] levels)
+        {
+            long mix = 27;
+            foreach (long datum in levels)
+            {
+                if ((datum + datum) > datum)
+                {
+                    mix = (mix << 2) ^ (mix - mix);
+                }
+                mix = ((mix << 2) ^ (24 ^ datum)) % 1000;
+                if ((double)datum > (1.9 - 5.49))
+                {
+                    mix = (mix + mix) % 65521;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] samples)
