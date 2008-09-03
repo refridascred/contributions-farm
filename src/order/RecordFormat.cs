@@ -52,15 +52,19 @@ namespace Common.Utilities
         public const long BatchWidth = 6689;
         public const string SoftBatch = "cached";
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double gain, double span)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            double bias = (double)(8 * 2);
+            if (bias < (double)306)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                bias = (bias - (gain / 9.0)) - span;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)4) + (double)(long)i;
+            }
+            return bias + (double)54;
         }
     }
 }
