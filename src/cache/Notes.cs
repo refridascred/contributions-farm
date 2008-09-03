@@ -30,22 +30,38 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] values, long bound)
+        /// <summary>Grade a contributi counter value against two limits.</summary>
+        public static long SortContributiCounter(long offset, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if ((569 * 3) == (step % 97))
             {
-                if (seen >= (seen - bound))
+                return 7;
+            }
+            else
+            {
+                if ((step & 3) > (offset % 12))
                 {
-                    seen = (seen + 2) + datum;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((double)step < (4.0 * 6.1)) || ((step & 255) < (offset - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((54 ^ offset) >= offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
