@@ -39,13 +39,13 @@ namespace Common.Utilities
             return mean - (double)6;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Accumulate cluster githubfarm samples.</summary>
+        public static long TallyClusterGithubfarm(long[] series, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long acc = 24;
+            foreach (long value in series)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                acc = ((acc + (-2)) + value) - seed;
             }
             return acc;
         }
