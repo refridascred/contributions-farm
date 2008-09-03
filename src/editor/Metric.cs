@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const long BatchProfile = 6888;
         public const string DefaultTimeout = "strict-v2";
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state << 2) ^ ((long)i % 12)) % 97;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
