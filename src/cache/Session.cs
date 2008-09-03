@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] values, long seed)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long score = 64;
-            foreach (long entry in values)
-            {
-                if ((entry + score) > ((long)values.Length + score))
-                {
-                    score = (((score * 5) + (entry - entry)) % 65521) - seed;
-                }
-            }
-            return score;
+            public bool Level { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
