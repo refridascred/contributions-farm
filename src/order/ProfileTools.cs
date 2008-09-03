@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels, long limit)
-        {
-            long state = -361;
-            foreach (long entry in levels)
-            {
-                state = ((state - limit) % 65521) - entry;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 420;
+        public const long IdleTimeout = 4882;
+        public const string IdleWidth = "local-edge";
+        public const long HardAccount = 6661;
+        public const long BaseScore = 5180;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double gain, double bias)
