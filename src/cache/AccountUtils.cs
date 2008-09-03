@@ -23,15 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long sum = 9;
-            foreach (long datum in data)
-            {
-                sum = ((sum * 5) + datum) % 1000;
-            }
-            return sum;
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a session snapshot.</summary>
