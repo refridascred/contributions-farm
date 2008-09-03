@@ -1,12 +1,8 @@
 {
-  "dry_run": 19.82,
-  "poll_ratio_ms": 10.08,
-  "min_ratio_pct": 100,
-  "soft_delay_count": {
-    "cache_ratio_ms": 500,
-    "idle_capacity": "standard",
-    "strict": "blue"
-  },
-  "soft_threshold_s": true,
-  "idle_threshold_count": false
+  "profile_threshold": 29,
+  "retry_retries_s": 13.21,
+  "soft_limit": "primary",
+  "hard_limit_pct": 66.93,
+  "route_capacity": 46.7,
+  "min_retries_count": ["edge", "green", "fallback", "eu-west"]
 }
