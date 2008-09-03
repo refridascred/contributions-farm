@@ -16,19 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every farm metric entry stays within the limit.</summary>
-        public static bool VerifyFarmMetricBounds(long[] samples, long step)
+        /// <summary>Iterate the session cluster series from a seed.</summary>
+        public static long DeriveSessionCluster(long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
