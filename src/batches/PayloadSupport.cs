@@ -18,19 +18,21 @@ namespace Common.Utilities
         public const string IdleOrder = "staging";
         public const double CacheOrder = 72.48;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((937 + 9) <= (sum + (long)i)) && ((sum + step) >= ((long)i % 5))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum ^ (sum - step);
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
     }
 }
