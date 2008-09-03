@@ -13,15 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
         {
             long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((-883) * 5) > count))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + sample;
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
