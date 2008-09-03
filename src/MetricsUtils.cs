@@ -32,17 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a schema payload reading by value.</summary>
-        public static long SeekSchemaPayloadIndex(long[] data, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
