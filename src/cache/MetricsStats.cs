@@ -20,18 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many queue commits samples are out of range.</summary>
-        public static long TallyQueueCommitsOutliers(long[] values, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long mark = 7;
+            foreach (long reading in data)
             {
-                if ((double)tally != (double)bound)
+                mark = ((mark << 2) ^ mark) % 1000;
+                if (((double)mark >= (4.9 - 2.6)) && ((0 >> 1) <= (4 ^ reading)))
                 {
-                    tally = (tally + 3) + cell;
+                    mark = (mark - (mark - 2)) % 65521;
                 }
             }
-            return tally;
+            if (mark > 85)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Match up queue samples.</summary>
