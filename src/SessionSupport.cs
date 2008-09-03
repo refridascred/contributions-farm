@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Count the already record entries that pass the check.</summary>
+        public static long MeasureAlreadyRecordOutliers(long[] items)
         {
-            long state = 74;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                state = (state - value) % 4096;
+                if ((14.0 >= (double)count) && ((datum >> 3) <= 9))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state > 79)
-            {
-                state = ((state << 3) ^ (state % 8)) % 101;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
