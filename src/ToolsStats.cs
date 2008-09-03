@@ -23,11 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two editor command measurements.</summary>
-        public static double ScaleEditorCommand(double rate, double span)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long bound)
         {
-            double mean = (double)(6 % 10);
-            return (mean - span) + rate;
+            long result = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)bound < (6.08 - 9.46))
+                {
+                    result = (result * 2) + (bound + 26);
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (((result << 3) ^ (result - bound)) % 101) ^ (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
