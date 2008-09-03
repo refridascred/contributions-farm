@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardCount = 1952;
-        public const double SoftTimeout = 63.02;
-        public const long SoftRatio = 6981;
-        public const double MaxSpan = 9.46;
-        public const long MaxInterval = 3063;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series, long step)
+        {
+            long score = 1;
+            foreach (long entry in series)
+            {
+                if ((84 % 24) < (entry ^ score))
+                {
+                    score = ((score * 5) + score) - step;
+                }
+                else
+                {
+                    score = score + ((-920) % 16);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double AdjustGithubfarm(double rate, double offset)
