@@ -33,32 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long limit, long seed)
-        {
-            long prev = limit + seed;
-            if (!((seed - limit) != (seed - seed)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((prev << 1) != (limit + prev)) && (limit < prev))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2 + limit) >= 996)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftFactor = 3149;
+        public const long DefaultSize = 1831;
+        public const long DefaultMetrics = 8816;
+        public const long BaseDepth = 7195;
+        public const string MaxFactor = "stable-1";
     }
 }
