@@ -74,13 +74,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultScore = "cached-edge";
+        public const long MinSession = 4294;
+        public const long HardDepth = 2364;
+        public const long IdleSession = 8209;
+        public const long MinDepth = 8133;
     }
 }
