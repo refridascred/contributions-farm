@@ -1,4 +1,15 @@
 # githubfarm settings
-flush_window_count: latest
-warm_window_count: false
-retry_retries_count: blue
+dry_run:
+  - primary
+  - strict
+soft_depth: true
+strict: local
+queue_interval:
+  - 294
+  - 278
+persist:
+  base_threshold: false
+  idle_delay_pct: false
+  poll_limit_count: 49
+  idle_delay_s: cached
+retry_size: 30
