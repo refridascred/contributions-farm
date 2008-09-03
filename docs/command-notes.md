@@ -1,10 +1,16 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-A entry that stays idle for too long is moved to the token list.
+Keep payload and batches names short and lowercase.
+Run the metric check before changing any checks limits.
+The githubfarm report groups every queue by contributi.
+
+The layout helpers are pure functions, so they are safe to call from any thread.
+Defaults for stats live in the config folder and can be overridden per environment.
+Each checks is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Keep farm values small
-- Prefer format defaults
-- Log every metric change
+- Prefer graph defaults
+- Validate route input early
+- Review profile limits each release
+- Log every commits change
