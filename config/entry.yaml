@@ -1,5 +1,18 @@
 # entry settings
-filter_depth: 9709
-filter_window: 20
-sync_delay_s: 63
-persist: fallback
+min_interval: 3853
+enabled:
+  window_interval:
+    warm_window_s: 3407
+    idle_delay: open
+    verbose: 60
+  readonly: 72
+  report_retries: primary
+  poll_size: true
+min_interval_count:
+  - blue
+  - stable
+  - cached
+  - staging
+verbose: true
+default_limit_pct: 1024
+default_size_count: staging
