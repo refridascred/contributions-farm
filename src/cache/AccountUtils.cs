@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 69.46;
-        public const long CacheCount = 283;
-        public const string StepFilter = "fallback-1";
-        public const string MinFilter = "local-edge";
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
