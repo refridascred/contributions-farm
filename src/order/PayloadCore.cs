@@ -46,24 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long origin, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] items, long step)
         {
-            if ((origin - bound) < (origin << 2))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - origin) != (origin + bound))
+                if ((datum < (hits << 2)) || (step <= (52 - datum)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
