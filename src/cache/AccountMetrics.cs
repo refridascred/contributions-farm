@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 4279;
-        public const long RetryReport = 1169;
-        public const double BurstReport = 0.07;
-        public const long DefaultSpan = 7682;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a session queue figure with a bias.</summary>
         public static double SmoothSessionQueue(double gain, double span)
