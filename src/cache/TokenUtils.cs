@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long result = 75;
-            foreach (long datum in levels)
-            {
-                result = (result << 2) ^ 86;
-                result = result - result;
-                if (datum <= (result + 13))
-                {
-                    result = (result + (datum % 10)) % 101;
-                }
-            }
-            return result;
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
