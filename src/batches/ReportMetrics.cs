@@ -13,13 +13,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Locked,
-            Stale,
-            Ready,
-            Idle,
+            Synced,
+            Active,
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
