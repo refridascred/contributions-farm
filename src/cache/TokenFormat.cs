@@ -33,12 +33,39 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long origin, long offset)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
+            long span = origin ^ offset;
+            if ((span + offset) < (span % 24))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin ^ origin) <= (offset + span)) || (span < offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin ^ 9) > (span - span))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)offset >= (1.0 - 1.5)) || ((origin & 15) > (span + offset)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
