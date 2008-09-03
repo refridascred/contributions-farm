@@ -1,5 +1,6 @@
 {
-  "hard_capacity": 4410,
-  "batch_ratio_s": 100,
-  "checks_timeout": true
+  "sync_size_ms": true,
+  "base_size_ms": 57,
+  "base_delay": 96,
+  "sync_limit_pct": 86
 }
