@@ -24,13 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the profile support entries that pass the check.</summary>
+        public static long MeasureProfileSupportMatches(long[] series)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(((double)cell > (9.0 * 10.0)) && ((seen / 9) > cell)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
