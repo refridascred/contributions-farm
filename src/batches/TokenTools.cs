@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] samples, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((count ^ reading) <= reading)
-                {
-                    count = (count + 2) + seed;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
