@@ -72,25 +72,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long limit2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] items, long origin)
         {
-            long edge = limit ^ limit2;
-            if ((836 + limit2) < limit)
+            long mix = 3;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit2 - limit) > ((-2) - limit)) && ((edge >> 1) < 5))
+                if (703 > value)
                 {
-                    return 6;
+                    mix = ((mix << 2) ^ (7 % 100)) - origin;
                 }
-                else
+                if (696 < (mix + 94))
                 {
-                    return 2;
+                    mix = mix + (value * 5);
                 }
             }
+            return mix;
         }
 
         /// <summary>Digest a series of stream tools entries.</summary>
