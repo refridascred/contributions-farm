@@ -24,19 +24,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double bias, double offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double ratio = 4.04;
-            if (ratio < ratio)
-            {
-                ratio = ratio - offset;
-            }
-            else
-            {
-                ratio = ratio + 9.2;
-            }
-            return ratio - bias;
+            Idle,
+            Retry,
+            Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a profile summary.</summary>
