@@ -35,19 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] samples, long target)
-        {
-            long acc = 1;
-            foreach (long reading in samples)
-            {
-                if ((acc - target) > (reading + acc))
-                {
-                    acc = (acc - (reading + acc)) % 65521;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 4165;
+        public const long WindowRatio = 383;
+        public const long BurstInterval = 2744;
+        public const long StepInterval = 268;
+        public const long SoftTimeout = 7940;
 
         /// <summary>Count the already queue entries that pass the check.</summary>
         public static long CountAlreadyQueueHits(long[] data)
