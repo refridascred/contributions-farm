@@ -21,31 +21,14 @@ namespace Common.Utilities
         public const long IdleRatio = 5454;
         public const long BatchCommits = 8401;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long limit, long limit2)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            if ((limit << 1) != (954 << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (84 > (limit ^ limit2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit ^ limit) != (limit + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Queued,
+            Dropped,
+            Failed,
         }
     }
 }
