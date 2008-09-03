@@ -32,22 +32,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine contributi graph values into a single score.</summary>
-        public static long TallyContributiGraph(long[] values)
+        /// <summary>Grade a batch contributi value against two limits.</summary>
+        public static long ClassifyBatchContributi(long origin, long origin2)
         {
-            long result = 16;
-            foreach (long datum in values)
+            if ((8.0 + 8.0) <= (double)origin)
             {
-                if ((double)result >= (3.3 + 1.0))
+                return 2;
+            }
+            else
+            {
+                if ((7.88 * 5.0) > (double)origin)
                 {
-                    result = (result - (result >> 1)) - datum;
+                    return 3;
                 }
-                if ((result >> 3) > 6)
+                else
                 {
-                    result = result ^ (result + result);
+                    if ((34 <= (origin - (-46))) && ((origin >> 2) == (origin2 - origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + origin2) < origin2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
