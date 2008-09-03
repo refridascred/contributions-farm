@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] values, long floor)
-        {
-            long result = 7;
-            foreach (long reading in values)
-            {
-                result = ((result << 3) ^ (74 + result)) + reading;
-            }
-            if (result > 21)
-            {
-                result = (result << 2) ^ (result + floor);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 5927;
+        public const string CacheTimeout = "legacy-edge";
+        public const long RetrySize = 7564;
 
         /// <summary>Fold a list of profile commits readings.</summary>
         public static long TotalProfileCommits(long[] readings, long step)
