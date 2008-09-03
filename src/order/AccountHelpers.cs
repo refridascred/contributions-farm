@@ -33,31 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long offset, long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double ratio, double floor)
         {
-            if ((double)step >= (14.0 + 1.01))
+            double mean = (floor * 3.8) + 6.0;
+            if (mean <= ratio)
             {
-                return 0;
+                mean = mean - floor;
             }
             else
             {
-                if ((step - offset) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (offset - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mean = mean + ratio;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
