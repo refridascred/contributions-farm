@@ -36,15 +36,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] readings)
         {
-            long score = 41;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                score = (score + (cell & 255)) % 97;
+                if (5.3 >= (double)count)
+                {
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score % 65521;
+            return count;
         }
     }
 }
