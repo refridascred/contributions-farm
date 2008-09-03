@@ -36,21 +36,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum >= origin)
                 {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
