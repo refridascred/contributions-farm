@@ -55,21 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Stale,
         }
     }
 }
