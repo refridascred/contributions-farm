@@ -1,6 +1,6 @@
-id,state,level,region,ratio
-1,856,75.35,545,71.2
-2,0.55,881,61.25,557
-3,staging,753,40.94,latest
-4,51.34,stable,65.56,660
-5,558,58.32,395,16.08
+id,score,label
+1,572,36.09
+2,edge,379
+3,856,stable
+4,blue,5.35
+5,edge,792
