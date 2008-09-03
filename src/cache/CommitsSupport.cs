@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const double SoftWindow = 26.97;
         public const long RetryScore = 2617;
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double scale, double span)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] series, long step)
         {
-            double mean = (double)(3 + 31);
-            if (mean > 5.0)
+            long carry = 8;
+            foreach (long sample in series)
             {
-                mean = (mean + (double)392) + span;
+                carry = ((carry ^ step) % 1000) + sample;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (mean - scale)) + (double)(long)i;
-            }
-            return mean - (double)6;
+            return carry;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
