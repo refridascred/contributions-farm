@@ -50,11 +50,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSpan = 290;
-        public const string MaxTimeout = "primary";
-        public const long BatchSchema = 2538;
-        public const string StepSchema = "cached";
-        public const long CacheSchema = 5574;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
