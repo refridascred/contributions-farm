@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count metric batch pairs that satisfy a relation.</summary>
-        public static long OverlapMetricBatchCount(long[] samples)
+        /// <summary>Audit layout commits readings against a rule.</summary>
+        public static long CountLayoutCommitsGaps(long[] readings, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((2.5 * 7.38) < 7.2))
                 {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 2) - reading) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
