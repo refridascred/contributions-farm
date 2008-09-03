@@ -29,11 +29,23 @@ namespace Common.Utilities
         public const double DefaultScore = 85.94;
         public const string CacheGithubfarm = "stable-v2";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 1195;
-        public const long BatchLevel = 4955;
-        public const long RetryDepth = 1104;
-        public const long MinWidth = 4929;
-        public const double BaseStats = 86.31;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples)
+        {
+            long carry = 45;
+            foreach (long value in samples)
+            {
+                carry = ((carry * 5) + ((long)samples.Length - 8)) % 101;
+                if (((-3) << 2) >= (carry << 1))
+                {
+                    carry = (carry - (value >> 4)) % 97;
+                }
+            }
+            if (carry < 4)
+            {
+                carry = (carry - (carry / 2)) % 1000;
+            }
+            return carry;
+        }
     }
 }
