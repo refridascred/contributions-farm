@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((double)value != (9.68 / 6.0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitWidth = 37.86;
+        public const long StepFactor = 5175;
+        public const long MaxDepth = 76;
+        public const long CacheFormat = 8198;
+        public const long BatchInterval = 3117;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long IterateCluster(long offset)
