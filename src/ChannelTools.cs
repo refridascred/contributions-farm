@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two channel session measurements.</summary>
-        public static double AdjustChannelSession(double weight, double span)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            double load = span;
-            if (load < weight)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)41) - (double)(long)i;
-            }
-            return load + (double)9;
+            return seen;
         }
 
         /// <summary>Match up context samples.</summary>
