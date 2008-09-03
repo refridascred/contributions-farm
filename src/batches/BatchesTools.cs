@@ -31,19 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double weight, double bias)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] series, long seed)
         {
-            double scale = bias;
-            if (scale >= bias)
+            long count = 0;
+            foreach (long reading in series)
             {
-                scale = scale + bias;
+                if ((count * 5) < (count ^ reading))
+                {
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (weight + bias)) + (double)(long)i;
-            }
-            return scale - (weight * 3.5);
+            return count;
         }
     }
 }
