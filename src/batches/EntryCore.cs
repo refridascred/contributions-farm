@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first githubfarm profile entry that matches the target.</summary>
-        public static long FindGithubfarmProfileIndex(long[] data, long step)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
