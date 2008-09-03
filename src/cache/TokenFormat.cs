@@ -24,18 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] items)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long anchor = 350;
+            foreach (long sample in series)
             {
-                if ((matches << 1) < item)
-                {
-                    matches = matches + 3;
-                }
+                anchor = (((anchor ^ (anchor / 3)) % 255) + sample) + limit;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
