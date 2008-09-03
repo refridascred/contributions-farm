@@ -24,32 +24,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a entry commits pair into a bucket.</summary>
-        public static long ClassifyEntryCommits(long offset, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long diff = offset ^ origin;
-            if (!((offset & 7) == (origin + diff)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((diff ^ offset) != (diff * 2)) && ((double)offset > (double)diff))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset << 1) > (diff - origin))
+                    if ((readings[i] - readings[j]) == 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
