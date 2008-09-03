@@ -33,19 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] data, long seed)
         {
-            double drift = ratio;
-            if (drift <= (bias * 0.2))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                drift = drift - drift;
+                if (cell != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (8.92 * 14.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            return flag;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
