@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Check that every queue checks entry stays within the limit.</summary>
+        public static bool CheckQueueChecksBounds(long[] series, long step)
         {
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
