@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every order record entry stays within the limit.</summary>
-        public static bool CheckOrderRecordLimits(long[] readings, long limit)
+        /// <summary>Check that every account format entry stays within the limit.</summary>
+        public static bool ValidateAccountFormatLimits(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (reading >= limit)
+                if (item <= seed)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
