@@ -1,36 +1,21 @@
 # entry settings
-flush_ratio_s: 252
-strict:
-  idle_delay: staging
-  graph_depth: true
-  route_depth: standard
-  audit:
-    - 6
-    - 231
-    - 75
-    - 181
-  graph_threshold: true
-  base_timeout_count:
-    - 457
-    - 11
-    - 226
-    - 73
-min_size_s:
-  idle_interval_ms: 8224
-  batch_window_pct:
-    - fallback
-    - staging
+warm_limit_pct: 250
+batch_retries_ms: 6455
+support_depth: eu-west
+retry_window_ms:
+  queue_ratio: false
+  compress: blue
+  batch_window_s: standard
+  stats_depth:
+    - primary
+    - edge
     - blue
-  min_capacity_ms: open
-  base_ratio:
-    stats_threshold: false
-    enabled: 1
-    retry_threshold_s: 7
-    flush_capacity: 250
-flush_ttl_pct:
-  default_capacity: true
-  batch_interval: 65
-  flush_ttl_count: 3289
-  dry_run: false
-  hard_threshold_count: true
-stats_retries: true
+    - local
+  enabled: true
+  retry_threshold_ms:
+    - 481
+    - 28
+burst_delay_ms:
+  - 48
+  - 444
+  - 81
