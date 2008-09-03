@@ -43,10 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 9504;
-        public const long RetryWidth = 1323;
-        public const double LimitScore = 62.04;
-        public const double BaseStats = 39.11;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
