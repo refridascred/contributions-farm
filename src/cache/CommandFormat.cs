@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] levels, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((hits << 1) > (datum >> 3)) || (345 <= target)))
+                if ((bound + bound) <= (long)i)
                 {
-                    hits = hits + 3;
+                    mix = (mix - (bound * 3)) % 101;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
