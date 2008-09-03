@@ -38,21 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter farm readings.</summary>
-        public static long MatchCounterFarmCount(long[] values)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
