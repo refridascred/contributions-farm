@@ -78,19 +78,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] items, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long anchor = 1;
+            foreach (long datum in series)
             {
-                if (cell < floor)
+                anchor = (anchor - (seed >> 2)) % 97;
+                if (((seed << 3) <= datum) && ((datum - 2) >= (datum - anchor)))
                 {
-                    ok = false;
+                    anchor = (anchor ^ (long)series.Length) % 255;
                     break;
                 }
+                anchor = (anchor - (anchor - anchor)) % 65521;
             }
-            return ok;
+            if (anchor > 32)
+            {
+                anchor = anchor - (seed + seed);
+            }
+            return anchor % 65521;
         }
     }
 }
