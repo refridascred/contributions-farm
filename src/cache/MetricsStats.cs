@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 83.47;
+        public const long BatchEntry = 8645;
+        public const long LimitEntry = 4821;
+        public const long MinEntry = 6750;
+        public const string CacheEntry = "fallback-v2";
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
