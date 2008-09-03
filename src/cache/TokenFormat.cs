@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const string MinTools = "staging-edge";
         public const long CacheDepth = 5417;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] items, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long limit)
         {
-            long total = 78;
-            foreach (long entry in items)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (((long)items.Length - entry) != (entry + total))
+                if (((sum + 23) == (sum >> 4)) && ((4.8 * 7.0) <= (double)(long)i))
                 {
-                    total = ((total << 3) ^ limit) % 1000;
+                    sum = ((sum << 2) ^ (60 << 3)) % 255;
                 }
+                if ((double)474 <= (double)limit)
+                {
+                    sum = (sum - sum) % 65521;
+                    sum = ((sum * 5) + sum) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Describe the farm phase values.</summary>
