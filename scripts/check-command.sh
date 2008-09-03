@@ -7,11 +7,20 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in primary strict; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=350
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-latest}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
