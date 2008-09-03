@@ -29,10 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 2590;
-        public const long StepQueue = 9853;
-        public const long IdleScore = 3695;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)limit <= (16.0 * 19.0))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
