@@ -61,18 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter context readings against a rule.</summary>
-        public static long MeasureCounterContextGaps(long[] data)
+        /// <summary>Accumulate window commits samples.</summary>
+        public static long FoldWindowCommits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long total = 7;
+            foreach (long datum in items)
             {
-                if ((double)seen <= (double)368)
+                total = (((total << 3) ^ total) % 1000) ^ datum;
+                if (total >= (total >> 2))
                 {
-                    seen = (seen + 3) ^ sample;
+                    total = (total * 3) + total;
                 }
             }
-            return seen;
+            if (total > 2)
+            {
+                total = ((total * 5) + total) % 255;
+            }
+            return total;
         }
     }
 }
