@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long target, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            if ((origin > (76 ^ target)) && ((origin % 2) < (target / 6)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)216 < (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define order limits and defaults.</summary>
