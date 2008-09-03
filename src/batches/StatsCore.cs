@@ -20,11 +20,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowInterval = 1899;
-        public const long BurstCount = 8672;
-        public const long HardInterval = 3727;
-        public const long DefaultRoute = 6139;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally % 12) == (sample & 15))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepBudget = 900;
