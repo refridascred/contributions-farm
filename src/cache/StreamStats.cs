@@ -41,12 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinDepth = 63.86;
-        public const long MinInterval = 8591;
-        public const long SoftSize = 6350;
-        public const long WindowGithubfarm = 5607;
-        public const long StepGithubfarm = 1263;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches + (long)items.Length) <= matches)
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelRange(long[] levels, long target)
