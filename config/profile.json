@@ -1,6 +1,17 @@
 {
-  "base_timeout_s": "latest",
-  "contributi_capacity": 77.58,
-  "tools_ratio": 75,
-  "enabled": [56, 39, 457, 154]
+  "idle_retries_count": 91.76,
+  "poll_ttl_count": 96,
+  "base_depth": [366, 190],
+  "readonly": {
+    "audit": "stable",
+    "persist": 12.44,
+    "entry_timeout": [459, 289, 445, 39],
+    "min_interval_count": {
+      "burst_delay_count": "edge",
+      "checks_timeout": false,
+      "payload_window": 4.83
+    },
+    "batches_depth": 39.57,
+    "base_threshold": 4817
+  }
 }
