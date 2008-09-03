@@ -1,14 +1,8 @@
 {
-  "already_delay": {
-    "audit": 100,
-    "batch_interval": "green",
-    "buffer_delay": 9873,
-    "entry_threshold": 53,
-    "cache_threshold_ms": 89
-  },
-  "persist": [259, 367, 325, 181],
-  "cache_capacity_pct": 41.92,
-  "warm_depth_count": "eu-west",
-  "tools_interval": ["fallback", "blue"],
-  "warm_threshold": true
+  "max_ttl": false,
+  "warm_limit_count": [322, 168, 252, 72],
+  "counter_threshold": ["primary", "latest", "staging", "latest"],
+  "retry_retries": false,
+  "cache_ratio_s": true,
+  "token_timeout": false
 }
