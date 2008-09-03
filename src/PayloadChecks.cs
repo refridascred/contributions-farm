@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a filter summary.</summary>
