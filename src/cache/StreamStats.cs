@@ -23,17 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format support sample.</summary>
-        public static long SeekFormatSupportIndex(long[] series, long bound)
+        /// <summary>Match up batches stream samples.</summary>
+        public static long OverlapBatchesStreamCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
