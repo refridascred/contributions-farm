@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double weight = bias;
-            if (weight < (20.0 * 6.54))
-            {
-                weight = (weight - (weight - bias)) - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (bias / 8.0)) + (double)(long)i;
-            }
-            return weight + bias;
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Adjust a session reading.</summary>
