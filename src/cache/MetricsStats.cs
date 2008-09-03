@@ -37,12 +37,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "cached-1";
-        public const long BurstAlready = 8252;
-        public const long DefaultAlready = 1325;
-        public const long RetryAlready = 52;
-        public const long MinAlready = 2844;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long origin, long origin2)
+        {
+            long bound = origin - origin2;
+            if ((6.83 + 8.0) <= (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin2 + 936) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
