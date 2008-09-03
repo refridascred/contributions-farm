@@ -44,22 +44,12 @@ namespace Common.Utilities
         public const long MaxLevel = 4907;
         public const double WindowNotes = 33.42;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] values, long bound)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + seen) != (9 * 2))
-                {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate record readings against a bound.</summary>
