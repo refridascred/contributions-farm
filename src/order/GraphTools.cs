@@ -41,12 +41,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long origin, long target)
         {
-            Active,
-            Idle,
-            Done,
+            if (target > (target >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4.7 - 8.28) <= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target * 2) > (origin >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
