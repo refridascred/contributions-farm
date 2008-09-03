@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long BaseCount = 6575;
         public const string BaseInterval = "latest-v2";
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of counter buffer entries.</summary>
+        public static long DigestCounterBuffer(long[] levels, long target)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            long sum = 5;
+            foreach (long sample in levels)
+            {
+                sum = (sum ^ 6) + sample;
+                sum = (sum ^ (target - target)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate notes samples.</summary>
