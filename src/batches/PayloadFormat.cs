@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] levels, long floor)
+        /// <summary>Blend two schema token measurements.</summary>
+        public static double SmoothSchemaToken(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = bias;
+            if (load <= (load * 6.0))
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                load = (load - (bias / 5.0)) + bias2;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (bias - bias)) + (double)(long)i;
+            }
+            return load - (bias / 6.0);
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
