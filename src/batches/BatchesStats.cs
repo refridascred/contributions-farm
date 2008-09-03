@@ -56,12 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
