@@ -19,16 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long step, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            long bound2 = step - bound;
+            if (((bound2 >> 3) < 9) && ((bound >> 3) > (2 * 2)))
             {
-                mix = mix - (mix + origin);
-                mix = ((mix * 4) + (long)i) % 101;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (((double)bound2 != (10.0 / 8.0)) || ((double)bound2 < 6.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
