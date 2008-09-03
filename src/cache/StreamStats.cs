@@ -28,22 +28,14 @@ namespace Common.Utilities
         public const long BaseSchema = 6625;
         public const long WindowLevel = 6211;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] levels)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count / 4) < (464 % 2))
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            New,
+            Locked,
+            Dropped,
         }
     }
 }
