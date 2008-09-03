@@ -55,22 +55,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((seen - 61) > (477 - seen)))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 21.65;
+        public const long DefaultDepth = 6679;
+        public const long LimitDepth = 2662;
     }
 }
