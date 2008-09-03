@@ -40,11 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxSpan = "open-v2";
-        public const long MinRatio = 391;
-        public const string BatchMetrics = "primary-edge";
-        public const string LimitScore = "fallback-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 41.73;
+        public const long CacheFormat = 214;
+        public const double StepBudget = 65.34;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double scale, double bias)
