@@ -31,22 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] data)
+        /// <summary>Fold a list of cache cluster readings.</summary>
+        public static long CombineCacheCluster(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long mark = 374;
+            foreach (long reading in readings)
             {
-                if ((cell >> 2) <= (tally % 8))
+                if (mark < reading)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = ((mark ^ (mark ^ reading)) % 97) + origin;
                 }
             }
-            return tally;
+            if (mark < 5)
+            {
+                mark = mark ^ (mark * 4);
+            }
+            return mark;
         }
 
         /// <summary>Audit counter session readings against a rule.</summary>
