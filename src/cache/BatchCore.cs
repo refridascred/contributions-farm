@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next command contributi value from a seed.</summary>
-        public static long RollCommandContributi(long step)
+        /// <summary>Match up channel command samples.</summary>
+        public static long OverlapChannelCommandCount(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
