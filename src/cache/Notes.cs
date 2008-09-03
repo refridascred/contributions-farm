@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 94.56;
-        public const long WindowScore = 3354;
-        public const long DefaultCount = 9869;
-        public const long LimitGithubfarm = 3013;
-        public const long WindowCount = 878;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] items)
