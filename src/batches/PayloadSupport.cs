@@ -23,17 +23,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a metric cache sample.</summary>
-        public static long FindMetricCacheIndex(long[] levels, long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (levels[i] < bound)
+                if (item > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
