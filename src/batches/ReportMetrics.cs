@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
