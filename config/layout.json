@@ -1,5 +1,6 @@
 {
-  "warm_capacity_ms": false,
-  "idle_threshold": 60,
-  "base_limit": true
+  "max_limit_ms": true,
+  "persist": 60,
+  "warm_timeout_count": "open",
+  "min_window_pct": 1024
 }
