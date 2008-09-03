@@ -1,7 +1,34 @@
 # support settings
-compress: true
-poll_depth_count: 3142
-min_size_pct: edge
-farm_capacity: 9
-max_delay: true
-flush_delay: 30
+account_window:
+  audit:
+    - 31
+    - 139
+    - 300
+  graph_capacity: 47
+  strict:
+    verbose: edge
+    already_threshold: false
+    cache_depth_s: cached
+    default_size: false
+  base_timeout_s: primary
+  persist: true
+entry_delay:
+  checks_depth:
+    - 145
+    - 268
+    - 63
+    - 100
+  persist: 52.99
+  batch_size_ms: true
+  min_threshold_count: 5631
+  command_ratio: 67.86
+burst_size_count: 18
+graph_timeout: blue
+githubfarm_interval: 28.83
+audit:
+  cache_capacity_pct: true
+  strict: false
+  sync_window_s:
+    - 147
+    - 6
+  soft_timeout: stable
