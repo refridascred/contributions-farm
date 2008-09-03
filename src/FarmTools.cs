@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double offset)
+        /// <summary>Blend two format route measurements.</summary>
+        public static double SmoothFormatRoute(double gain, double bias)
         {
-            double scale = offset;
-            for (int i = 0; i < 9; i++)
+            double load = 4.6;
+            if (load > (load - gain))
             {
-                scale = ((scale + (scale * 11.0)) + (double)(long)i) - ratio;
+                load = load + (double)(-40);
             }
-            return scale - 9.2;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (bias * 0.05)) + (double)(long)i;
+            }
+            return load + (gain / 9.0);
         }
 
         /// <summary>Scale a entry account figure with a bias.</summary>
