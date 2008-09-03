@@ -1,19 +1,6 @@
 {
-  "verbose": {
-    "checks_interval": {
-      "checks_limit": 67.62,
-      "default_delay_ms": 58.28,
-      "persist": "blue",
-      "stream_window": [484, 404, 141]
-    },
-    "flush_limit_ms": [351, 67, 264, 291],
-    "cache_ttl": false,
-    "batch_ttl_count": 73.42,
-    "min_ttl_pct": 30.84
-  },
-  "window_capacity": false,
-  "flush_ttl_pct": 60,
-  "batch_limit": 5897,
-  "flush_threshold_pct": 2052,
-  "warm_retries_count": false
+  "already_window": true,
+  "account_threshold": 4112,
+  "burst_threshold": 5716,
+  "cache_ratio_pct": ["strict", "strict", "blue"]
 }
