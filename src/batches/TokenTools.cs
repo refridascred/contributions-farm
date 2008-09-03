@@ -20,25 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long bound, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long lane = bound ^ offset;
-            if ((lane - offset) < bound)
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
+                acc = (acc << 2) ^ (seed * 3);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset - bound) <= (lane + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
