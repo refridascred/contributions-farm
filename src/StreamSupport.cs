@@ -37,12 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Project the next notes entry value.</summary>
+        public static double ScaleNotesEntry(double rate, double offset)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            double ratio = (double)(0 + 778);
+            if (ratio < ratio)
+            {
+                ratio = (ratio + (rate - 2.8)) + offset;
+            }
+            else
+            {
+                ratio = ratio + 6.2;
+            }
+            return ratio - 2.67;
         }
     }
 }
