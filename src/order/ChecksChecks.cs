@@ -46,12 +46,11 @@ namespace Common.Utilities
         public const string BatchMetrics = "primary-edge";
         public const string LimitScore = "fallback-v2";
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double scale, double bias)
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
+            double gain = bias;
+            return (gain - (bias * 17.0)) + scale;
         }
     }
 }
