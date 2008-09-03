@@ -1,7 +1,12 @@
 {
-  "max_capacity": true,
-  "retry_limit_pct": 5411,
-  "poll_window_count": [371, 500, 196, 138],
-  "idle_depth_s": "open",
-  "cache_limit": "standard"
+  "cache_threshold": "legacy",
+  "retry_retries_ms": {
+    "idle_ratio_ms": false,
+    "cache_limit_ms": false,
+    "report_limit": 7542,
+    "report_depth": true,
+    "flush_depth_ms": true
+  },
+  "account_delay": 1024,
+  "compress": 14.56
 }
