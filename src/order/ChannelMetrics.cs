@@ -24,31 +24,15 @@ namespace Common.Utilities
             return weight2 + (weight * 11.0);
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long limit, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] samples, long step)
         {
-            if ((limit + 9) < (seed + seed))
+            long carry = 223;
+            foreach (long cell in samples)
             {
-                return 0;
+                carry = (((carry * 4) + (755 << 2)) - cell) - step;
             }
-            else
-            {
-                if ((716 > (limit - limit)) && ((7.0 / 3.0) >= (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit & 63) < (seed / 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
