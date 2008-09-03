@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter schema entries that pass the check.</summary>
-        public static long MeasureFilterSchemaHits(long[] series, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] series, long step)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long item in series)
             {
-                if ((count + count) >= entry)
+                if ((step - (-7)) >= (item + step))
                 {
-                    count = (count + 1) - step;
+                    count = count + 1;
                 }
             }
             return count;
