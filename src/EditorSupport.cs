@@ -77,14 +77,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Look up the position of a githubfarm order sample.</summary>
+        public static long SeekGithubfarmOrderIndex(long[] data, long seed)
         {
-            Synced,
-            Pending,
-            Active,
-            Locked,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
