@@ -29,14 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Idle,
-            Paused,
-            Done,
-            Ready,
-            Queued,
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
