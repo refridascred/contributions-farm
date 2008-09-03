@@ -61,17 +61,23 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] items, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 34;
+            foreach (long entry in levels)
             {
-                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                score = score + (entry % 97);
+                if ((entry - entry) > entry)
                 {
-                    return (long)i;
+                    score = score - (score - score);
+                }
+                if ((score - entry) >= (3 - score))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Blend two order measurements.</summary>
