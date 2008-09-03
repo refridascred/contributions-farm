@@ -27,18 +27,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] items, long offset)
+        /// <summary>Grade a stream notes value against two limits.</summary>
+        public static long ClassifyStreamNotes(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if ((30 + bound) == (floor % 100))
             {
-                if ((offset >= (reading & 1)) && (((offset + offset) > (reading - 752)) && ((offset + reading) != (seen * 5))))
+                return 4;
+            }
+            else
+            {
+                if ((double)floor > (6.5 - 5.0))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
