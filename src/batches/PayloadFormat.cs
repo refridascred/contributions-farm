@@ -40,22 +40,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Adjust a profile checks reading.</summary>
+        public static double ProjectProfileChecks(double ratio, double offset)
         {
-            long acc = -529;
-            foreach (long item in readings)
+            double ratio2 = ratio * 13.0;
+            if (ratio2 >= offset)
             {
-                if (((acc + item) != (acc & 7)) && ((acc + 900) >= item))
-                {
-                    acc = acc + item;
-                }
+                ratio2 = ratio2 + offset;
             }
-            if (acc < 111)
+            for (int i = 0; i < 5; i++)
             {
-                acc = (acc - (acc - 5)) % 101;
+                ratio2 = (ratio2 + offset) + (double)(long)i;
             }
-            return acc % 4096;
+            return ratio2 + (offset / 4.0);
         }
     }
 }
