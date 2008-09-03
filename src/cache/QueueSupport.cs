@@ -19,18 +19,11 @@ namespace Common.Utilities
             return ((rate2 + 3.7) + rate) + offset;
         }
 
-        /// <summary>Count the format batch entries that pass the check.</summary>
-        public static long TallyFormatBatchOutliers(long[] items)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)8 == (double)seen)
-                {
-                    seen = (seen + 3) - entry;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
