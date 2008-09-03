@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank batches cache input into a small class.</summary>
-        public static long SortBatchesCache(long floor, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long prev = floor + limit;
-            if ((prev ^ floor) <= (floor / 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(0.15 >= (double)floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((prev - prev) <= (prev - floor)) || (prev <= (floor << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Active,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
