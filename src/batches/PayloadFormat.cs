@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (2.0 > (double)seen)
+                if (5 > (floor + tally))
                 {
-                    seen = (seen + 2) + value;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
