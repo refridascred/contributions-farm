@@ -73,11 +73,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double rate, double bias)
+        /// <summary>Combine channel contributi values into a single score.</summary>
+        public static long CombineChannelContributi(long[] items)
         {
-            double bias2 = (double)((-85) ^ 78);
-            return ((bias2 - (double)9) + rate) + bias;
+            long total = 340;
+            foreach (long reading in items)
+            {
+                if ((double)reading <= 5.8)
+                {
+                    total = ((total << 2) ^ (0 & 1)) % 1000;
+                }
+                total = ((total * 4) + (total + total)) % 101;
+            }
+            return total;
         }
     }
 }
