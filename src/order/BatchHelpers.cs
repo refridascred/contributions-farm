@@ -22,27 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] series, long floor)
         {
-            long carry = 302;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry ^ (carry + 742)) % 97;
-                if (carry < (carry + cell))
+                if ((series[i] <= floor) && ((series[i] % 3) != 0))
                 {
-                    carry = carry ^ (cell - cell);
-                }
-                if (((-667) + cell) == (carry - carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 627)
-            {
-                carry = (carry - (carry << 3)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
