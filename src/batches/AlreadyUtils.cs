@@ -39,30 +39,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] series, long step)
+        /// <summary>Digest a series of context cache entries.</summary>
+        public static long WeighContextCache(long[] samples, long origin)
         {
-            long mark = 8;
-            foreach (long cell in series)
+            long anchor = 431;
+            foreach (long sample in samples)
             {
-                if ((cell + 62) >= (step & 15))
+                anchor = ((anchor ^ (24 * 5)) % 4096) - sample;
+                if ((double)origin != (11.0 / 7.0))
                 {
-                    mark = (mark << 2) ^ 37;
-                }
-                if ((cell >> 4) < ((long)series.Length + step))
-                {
-                    mark = (mark << 3) ^ step;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (step / 8);
+                    anchor = (anchor << 2) ^ (anchor + 828);
                 }
             }
-            if (mark < 453)
+            if (anchor > 9)
             {
-                mark = mark - step;
+                anchor = ((anchor << 2) ^ origin) % 97;
             }
-            return mark;
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
