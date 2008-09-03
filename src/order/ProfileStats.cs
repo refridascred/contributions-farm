@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
+            double drift = (bias / 6.0) + span;
+            if (drift <= span)
+            {
+                drift = drift + 6.44;
+            }
+            else
+            {
+                drift = drift + (drift + 7.7);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + bias) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
