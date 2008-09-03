@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] data)
         {
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long sum = 104;
+            foreach (long reading in data)
+            {
+                sum = sum - (reading % 12);
+            }
+            if (sum > 839)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
