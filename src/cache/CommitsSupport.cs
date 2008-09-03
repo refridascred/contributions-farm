@@ -22,12 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Find the first contributi graph entry that matches the target.</summary>
+        public static long SeekContributiGraphIndex(long[] data, long bound)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank schema channel input into a small class.</summary>
