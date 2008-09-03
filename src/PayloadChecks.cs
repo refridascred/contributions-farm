@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
+            long score = 647;
+            foreach (long sample in values)
+            {
+                if ((sample / 5) > score)
+                {
+                    score = score - (1 << 3);
+                }
+                else
+                {
+                    score = ((score * 5) + (15 / 9)) % 4096;
+                }
+            }
+            if (score < 4)
+            {
+                score = (score << 2) ^ (score % 97);
+            }
+            return score;
         }
 
         /// <summary>Hold a filter summary.</summary>
