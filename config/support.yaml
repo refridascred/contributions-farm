@@ -1,4 +1,5 @@
 # support settings
-sync_capacity: edge
-idle_size_count: false
-context_retries: true
+burst_retries_pct: 7017
+soft_retries: fallback
+hard_size: open
+readonly: 5616
