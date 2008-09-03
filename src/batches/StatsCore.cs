@@ -82,19 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm window measurements.</summary>
-        public static double ScaleFarmWindow(double weight, double span)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double load = span;
-            if (load > (span * 3.0))
-            {
-                load = (load + span) - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)3) - (double)(long)i;
-            }
-            return load + (double)61;
+            Draft,
+            Dropped,
+            Pending,
+            Locked,
         }
     }
 }
