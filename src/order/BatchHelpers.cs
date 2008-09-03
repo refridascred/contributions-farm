@@ -25,13 +25,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Failed,
-            Done,
+            Draft,
             Dropped,
-            Idle,
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Project the next queue value.</summary>
