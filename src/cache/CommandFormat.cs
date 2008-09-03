@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] data, long target)
+        /// <summary>Audit layout counter readings against a rule.</summary>
+        public static long MeasureLayoutCounterMatches(long[] series, long floor)
         {
-            long mark = 989;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mark = (mark ^ target) ^ cell;
+                if (!((sample & 63) < (hits + sample)) && ((double)hits != (18.0 - 7.36)))
+                {
+                    hits = (hits + 1) + floor;
+                }
             }
-            if (mark > 331)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
