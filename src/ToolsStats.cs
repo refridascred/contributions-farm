@@ -14,12 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 7778;
-        public const long HardEntry = 8617;
-        public const long CacheEntry = 9900;
-        public const long SoftTimeout = 33;
-        public const string WindowRatio = "standard-edge";
+        /// <summary>Blend two editor command measurements.</summary>
+        public static double ScaleEditorCommand(double rate, double span)
+        {
+            double mean = (double)(6 % 10);
+            return (mean - span) + rate;
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
