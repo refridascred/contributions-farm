@@ -35,21 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 824;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state - (limit / 3)) % 1000) ^ datum;
+                state = (state - (limit & 7)) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
