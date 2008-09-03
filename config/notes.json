@@ -1,8 +1,16 @@
 {
-  "default_ratio_count": [6, 191, 37, 338],
-  "tools_limit": 30,
-  "flush_interval": 30.18,
-  "compress": false,
-  "soft_limit": "staging",
-  "editor_timeout": 22
+  "cache_interval_pct": {
+    "metric_delay": ["green", "local", "legacy", "standard"],
+    "sync_delay_pct": {
+      "stats_ttl": [227, 87],
+      "retry_delay": 100,
+      "min_depth_ms": 53
+    },
+    "base_capacity_ms": true,
+    "compress": 17.04
+  },
+  "strict": true,
+  "warm_timeout_pct": "open",
+  "poll_capacity_s": 28.04,
+  "readonly": [349, 471, 180]
 }
