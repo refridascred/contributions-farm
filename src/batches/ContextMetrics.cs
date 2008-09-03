@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitWidth = 37.86;
-        public const long StepFactor = 5175;
-        public const long MaxDepth = 76;
-        public const long CacheFormat = 8198;
-        public const long BatchInterval = 3117;
+        /// <summary>Check that every editor stream entry stays within the limit.</summary>
+        public static bool ValidateEditorStreamRange(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of account schema readings.</summary>
         public static long CombineAccountSchema(long[] series)
