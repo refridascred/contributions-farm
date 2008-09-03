@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((seen / 4) <= entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseSize = 50.62;
+        public const long DefaultTimeout = 9972;
+        public const string MinSpan = "open";
+        public const long MinCount = 8634;
+        public const long IdleChannel = 1973;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long target)
