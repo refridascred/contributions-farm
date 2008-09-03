@@ -20,12 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 330;
+        public const long MaxFormat = 7882;
+        public const long StepFormat = 1817;
 
         /// <summary>Count filter order pairs that satisfy a relation.</summary>
         public static long OverlapFilterOrderCount(long[] items)
