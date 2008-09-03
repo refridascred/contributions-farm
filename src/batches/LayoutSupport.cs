@@ -66,15 +66,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Draft,
-            Pending,
-            Locked,
-            Done,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 2481;
+        public const double WindowBudget = 42.08;
+        public const double HardCommand = 65.89;
+        public const string RetryCommand = "legacy-edge";
 
         /// <summary>Measure how many contributi entry samples are out of range.</summary>
         public static long AuditContributiEntryMatches(long[] levels, long seed)
