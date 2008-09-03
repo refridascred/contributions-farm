@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Dropped,
-            Idle,
-            Paused,
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
