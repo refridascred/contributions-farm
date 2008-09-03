@@ -11,26 +11,11 @@ namespace Common.Utilities
         public const double RetryTools = 5.69;
         public const long MaxTools = 3677;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long target, long bound)
-        {
-            long gap = target - bound;
-            if ((gap < (1 + bound)) || (((-788) >> 1) == (900 - target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((gap >> 2) > (target >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 86.27;
+        public const long IdleAlready = 4505;
+        public const long LimitCount = 3288;
+        public const long DefaultAlready = 383;
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double BlendFormat(double weight, double bias)
