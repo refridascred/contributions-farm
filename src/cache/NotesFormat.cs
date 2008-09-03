@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
