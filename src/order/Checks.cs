@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] data, long step)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen & 255) <= (72 - cell))
-                {
-                    seen = (seen + 3) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Retry,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the metric state values.</summary>
