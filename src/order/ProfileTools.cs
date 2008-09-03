@@ -34,12 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardCount = "cached-v2";
-        public const long DefaultFarm = 3546;
-        public const long MaxFarm = 6179;
-        public const long HardInterval = 937;
-        public const string BatchCount = "alpha";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
