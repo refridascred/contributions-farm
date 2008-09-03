@@ -15,23 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] series)
-        {
-            long carry = 675;
-            foreach (long value in series)
-            {
-                if ((5.3 + 8.0) == (double)value)
-                {
-                    carry = carry ^ (51 * 2);
-                }
-            }
-            if (carry > 336)
-            {
-                carry = ((carry * 3) + carry) % 97;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseWidth = 4366;
+        public const long LimitLevel = 273;
+        public const long IdleQueue = 5706;
 
         /// <summary>Project the next support commits value.</summary>
         public static double ProjectSupportCommits(double gain, double span)
