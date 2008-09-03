@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 83.47;
-        public const long BatchEntry = 8645;
-        public const long LimitEntry = 4821;
-        public const long MinEntry = 6750;
-        public const string CacheEntry = "fallback-v2";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((12.0 - 16.0) >= (8.3 / 3.0))
+                {
+                    tally = ((tally + 2) + sample) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
