@@ -23,18 +23,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] data, long step)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double drift = 10.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((step * 2) >= (298 >> 3))
-                {
-                    hits = (hits + 1) - cell;
-                }
+                drift = (((drift + drift) + (double)(long)i) - rate) - offset;
             }
-            return hits;
+            return drift - (double)71;
         }
 
         /// <summary>Project the next order value.</summary>
