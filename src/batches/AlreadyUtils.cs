@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
+            Closed,
             Queued,
-            New,
-            Draft,
+            Idle,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
