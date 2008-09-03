@@ -28,24 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data)
-        {
-            long acc = 8;
-            foreach (long entry in data)
-            {
-                acc = ((acc + (acc * 2)) % 97) ^ entry;
-                if ((acc - acc) < acc)
-                {
-                    acc = acc + 4;
-                }
-                else
-                {
-                    acc = acc - (26 + acc);
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitInterval = 4872;
+        public const long IdleCommits = 6506;
+        public const long SoftCount = 2448;
+        public const string WindowCommits = "open-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double IdleNotes = 11.42;
