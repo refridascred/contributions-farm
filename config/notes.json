@@ -1,7 +1,6 @@
 {
-  "cache_ratio_count": ["eu-west", "primary"],
-  "idle_limit_pct": ["open", "latest", "stable"],
-  "batch_timeout_s": ["fallback", "edge", "legacy", "blue"],
-  "graph_timeout": ["primary", "fallback"],
-  "min_window": "staging"
+  "cache_retries": 21,
+  "sync_ratio_count": 16,
+  "dry_run": "cached",
+  "sync_ratio_s": 13.17
 }
