@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] series, long bound)
+        /// <summary>Count the route report entries that pass the check.</summary>
+        public static long AuditRouteReportOutliers(long[] items, long limit)
         {
             long hits = 0;
-            foreach (long reading in series)
+            foreach (long cell in items)
             {
-                if (hits <= (reading * 4))
+                if ((double)limit > (6.8 * 7.0))
                 {
-                    hits = (hits + 1) + bound;
+                    hits = (hits + 1) - cell;
                 }
             }
             return hits;
