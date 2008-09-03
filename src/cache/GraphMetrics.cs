@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] data, long bound)
+        /// <summary>Measure how many cluster notes samples are out of range.</summary>
+        public static long TallyClusterNotesOutliers(long[] levels)
         {
-            long state = 291;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((cell % 24) == (cell - bound))
+                if (8.7 > (double)(long)levels.Length)
                 {
-                    state = (state + (bound + cell)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 5) + cell) % 101;
+                    matches = (matches + 1) + value;
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of record report readings.</summary>
