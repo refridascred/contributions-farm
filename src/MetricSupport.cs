@@ -30,9 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleSpan = 9876;
-        public const long SoftGithubfarm = 8200;
-        public const long BurstScore = 4438;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBudget = 5593;
+        public const long BatchDepth = 9863;
+        public const long RetryBatch = 5684;
+        public const string BurstDepth = "staging-v2";
+        public const double SoftBatch = 71.06;
     }
 }
