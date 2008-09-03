@@ -28,13 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] readings)
         {
-            Stale,
-            New,
-            Dropped,
-            Ready,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count << 1) >= (4 + 81))
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the command class values.</summary>
