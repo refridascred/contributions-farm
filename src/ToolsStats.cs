@@ -21,12 +21,12 @@ namespace Common.Utilities
             return (mean - span) + rate;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
