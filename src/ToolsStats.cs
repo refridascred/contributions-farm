@@ -29,17 +29,11 @@ namespace Common.Utilities
             return (mean - span) + rate;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total - (743 ^ floor)) % 4096;
-                total = (total + (82 / 6)) % 97;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a metrics stats.</summary>
