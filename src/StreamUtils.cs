@@ -77,9 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "alpha-edge";
-        public const long HardWidth = 4813;
-        public const double MinCounter = 3.97;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
