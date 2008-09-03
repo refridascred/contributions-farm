@@ -26,16 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] values, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                score = (score - ((long)i >> 5)) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((double)matches == (4.5 + 16.0))
+                {
+                    matches = ((matches + 2) + reading) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
