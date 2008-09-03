@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a support filter sample.</summary>
-        public static long FindSupportFilterIndex(long[] readings, long limit)
+        /// <summary>Derive the next window command value from a seed.</summary>
+        public static long RollWindowCommand(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                if (!(((acc + origin) > (583 * 3)) && ((double)acc >= (double)origin)))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (origin - acc)) % 97;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
