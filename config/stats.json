@@ -1,8 +1,6 @@
 {
-  "support_capacity": 7053,
-  "tools_timeout": 100,
-  "warm_retries_s": "open",
-  "order_ttl": 41.3,
-  "record_depth": ["staging", "stable", "latest"],
-  "record_threshold": false
+  "cache_limit_ms": 100,
+  "retry_ttl": 30,
+  "soft_retries": "latest",
+  "idle_interval_count": "green"
 }
