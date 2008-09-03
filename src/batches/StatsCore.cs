@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] series, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long mark = 848;
+            foreach (long reading in levels)
             {
-                if ((limit + matches) > matches)
+                if (!((reading + mark) <= (mark - mark)))
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = ((mark << 2) ^ (reading + 975)) % 255;
                 }
             }
-            return matches;
+            if (mark > 12)
+            {
+                mark = ((mark << 2) ^ (mark << 1)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
