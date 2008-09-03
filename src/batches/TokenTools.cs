@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every counter layout entry stays within the limit.</summary>
-        public static bool VerifyCounterLayoutBounds(long[] levels, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum >= offset)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    ready = false;
-                    break;
+                    result = ((result << 2) ^ (result - origin)) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
