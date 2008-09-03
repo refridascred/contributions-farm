@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count filter batches pairs that satisfy a relation.</summary>
-        public static long MatchFilterBatchesCount(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry != target)
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
