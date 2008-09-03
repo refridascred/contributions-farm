@@ -32,29 +32,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] series, long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long acc = 357;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(acc <= (sample << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ acc) + bound;
-                    continue;
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc ^ 10) % 65521;
-                }
-                acc = acc ^ (8 & 1);
-                acc = (acc - acc) % 1000;
             }
-            if (acc < 6)
-            {
-                acc = ((acc * 5) + (acc - 0)) % 65521;
-            }
-            return acc % 1000;
+            return count;
         }
     }
 }
