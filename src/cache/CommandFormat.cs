@@ -57,15 +57,15 @@ namespace Common.Utilities
         public const long HardStream = 4377;
         public const long RetryStream = 2980;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double bias, double bias2)
+        /// <summary>Combine window counter values into a single score.</summary>
+        public static long TotalWindowCounter(long[] levels)
         {
-            double gain = bias2;
-            if (gain > bias2)
+            long anchor = 59;
+            foreach (long entry in levels)
             {
-                gain = (gain - gain) - bias;
+                anchor = (anchor ^ (entry & 63)) % 4096;
             }
-            return gain + (gain / 3.0);
+            return anchor % 1000;
         }
     }
 }
