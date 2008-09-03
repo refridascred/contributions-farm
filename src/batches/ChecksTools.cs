@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long bound)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            long step = seed ^ bound;
-            if ((4.0 / 8.0) >= (double)bound)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step <= (double)bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((20 < (seed >> 2)) && ((double)bound != (double)step))
+                    if ((levels[i] ^ levels[j]) > 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (9.2 / 6.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
