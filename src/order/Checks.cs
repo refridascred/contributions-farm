@@ -91,26 +91,18 @@ namespace Common.Utilities
             return drift + (double)53;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] data, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] levels, long offset)
         {
-            long total = 6;
-            foreach (long datum in data)
+            long acc = 46;
+            foreach (long datum in levels)
             {
-                if (!((double)bound > (double)35))
+                if ((6.09 - 4.28) <= (double)acc)
                 {
-                    total = (((total * 3) + (bound ^ 77)) % 255) - datum;
-                }
-                else
-                {
-                    total = total - (922 << 3);
+                    acc = ((acc - (4 >> 2)) ^ datum) + offset;
                 }
             }
-            if (total < 905)
-            {
-                total = total ^ total;
-            }
-            return total % 1000;
+            return acc;
         }
     }
 }
