@@ -1,4 +1,9 @@
 # entry settings
-default_window_s: 82.93
-enabled: stable
-hard_ratio_pct: primary
+enabled: 74
+tools_retries:
+  dry_run: 67
+  persist: strict
+  hard_delay: 60
+dry_run: 56.01
+default_threshold_ms: 36
+idle_capacity_s: 80.41
