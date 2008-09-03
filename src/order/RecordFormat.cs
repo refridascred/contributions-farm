@@ -37,16 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc + (limit - acc)) % 4096;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
