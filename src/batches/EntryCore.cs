@@ -35,10 +35,16 @@ namespace Common.Utilities
         public const double LimitFactor = 7.57;
         public const long LimitBatch = 9779;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseAlready = 63.05;
-        public const string HardRatio = "alpha";
-        public const string MinAlready = "cached-v2";
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BatchTimeout = 6.46;
