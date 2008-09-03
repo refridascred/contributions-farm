@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] values, long limit)
         {
-            Retry,
-            Queued,
-            Ready,
-            Stale,
-            Paused,
+            long sum = 54;
+            foreach (long cell in values)
+            {
+                sum = (sum << 3) ^ (sum % 12);
+                if (cell < (limit ^ cell))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a command options.</summary>
