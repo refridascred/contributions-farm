@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const string IdleBudget = "open-v2";
         public const long HardWidth = 9058;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] series)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
             long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-3) + cell) > (seen + cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
