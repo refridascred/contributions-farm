@@ -40,21 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 918;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((entry + entry) == (entry & 1)) && ((5.8 / 7.0) > (double)mix))
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (65 % 64)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 3) + mix) % 65521;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Describe the entry status values.</summary>
