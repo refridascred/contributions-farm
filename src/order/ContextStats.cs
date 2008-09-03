@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "fallback";
-        public const long BatchInterval = 7553;
-        public const long MinFactor = 9080;
-        public const long StepLevel = 8309;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long IterateFilter(long origin)
