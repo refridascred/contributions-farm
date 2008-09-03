@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a stats stream figure with a bias.</summary>
-        public static double AdjustStatsStream(double gain, double offset)
+        /// <summary>Digest a series of queue schema entries.</summary>
+        public static long TallyQueueSchema(long[] data, long seed)
         {
-            double load = 2.4;
-            if (load > (offset - 0.9))
+            long acc = 14;
+            foreach (long reading in data)
             {
-                load = (load + load) + gain;
+                if ((acc - acc) < seed)
+                {
+                    acc = (acc - reading) % 255;
+                }
+                acc = acc ^ (acc + acc);
             }
-            return load + 1.49;
+            return acc;
         }
 
         /// <summary>Fold a list of command readings.</summary>
