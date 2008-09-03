@@ -44,39 +44,12 @@ namespace Common.Utilities
             return gain2 + (gain2 / 6.0);
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long target, long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long edge = target + seed;
-            if ((target & 7) <= target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed / 9) == (target + 227))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)edge >= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((seed + edge) != (seed % 97)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
