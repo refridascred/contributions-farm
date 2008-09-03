@@ -46,12 +46,12 @@ namespace Common.Utilities
         public const long HardEditor = 4909;
         public const double RetryRatio = 35.98;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstInterval = "staging-1";
-        public const long LimitCommits = 1678;
-        public const long CacheCommits = 4794;
-        public const long RetryCommits = 5319;
-        public const double RetryFactor = 20.71;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
