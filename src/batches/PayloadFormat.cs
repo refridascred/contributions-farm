@@ -33,12 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Closed,
-            Synced,
-            Stale,
+            New,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Fold a list of support readings.</summary>
