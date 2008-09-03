@@ -1,8 +1,9 @@
 {
-  "sync_threshold_s": [69, 324, 386, 290],
-  "retry_timeout_s": 3268,
-  "flush_size_s": [33, 279, 483, 447],
-  "max_ttl_pct": 59,
-  "min_retries_count": 6508,
-  "poll_ratio_ms": ["open", "blue", "primary", "local"]
+  "max_limit_count": "eu-west",
+  "hard_ttl_s": "strict",
+  "hard_delay_s": {
+    "flush_interval_s": "legacy",
+    "strict": 89.17,
+    "cache_retries": 8
+  }
 }
