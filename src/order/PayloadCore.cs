@@ -41,12 +41,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
