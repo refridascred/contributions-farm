@@ -20,21 +20,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = floor + step;
+            if ((step ^ step) != (gap % 10))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((-293) ^ step) >= step)
                 {
-                    if ((values[i] + values[j]) == 16)
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + (-7)) >= 9)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor ^ 83) != (9 >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
