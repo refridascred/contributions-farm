@@ -23,10 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 3021;
-        public const long SoftSize = 660;
-        public const long IdleLevel = 4970;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (4 < value)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long GradeCache(long limit, long origin)
