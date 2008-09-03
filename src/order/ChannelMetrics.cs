@@ -24,16 +24,10 @@ namespace Common.Utilities
             return weight2 + (weight * 11.0);
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] samples, long step)
-        {
-            long carry = 223;
-            foreach (long cell in samples)
-            {
-                carry = (((carry * 4) + (755 << 2)) - cell) - step;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRatio = 5778;
+        public const long MaxSize = 4418;
+        public const long BurstRoute = 4495;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double BlendContributi(double weight, double floor)
