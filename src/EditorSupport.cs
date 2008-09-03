@@ -26,31 +26,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long floor, long limit)
+        /// <summary>Digest a series of queue batches entries.</summary>
+        public static long ScoreQueueBatches(long[] items)
         {
-            if ((floor - limit) <= (floor >> 5))
+            long state = -45;
+            foreach (long reading in items)
             {
-                return 2;
+                state = (state ^ state) % 65521;
+                state = ((state * 3) + reading) % 1000;
             }
-            else
-            {
-                if ((limit ^ limit) < limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit % 60) < (5 % 100)) && ((limit % 12) >= (limit & 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Compare every pair of counter farm readings.</summary>
