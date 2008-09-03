@@ -33,11 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
             public long Label { get; set; }
         }
     }
