@@ -49,12 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 7.6;
-        public const long DefaultRecord = 3063;
-        public const string WindowBudget = "stable-1";
-        public const double WindowTimeout = 69.47;
-        public const long BurstRecord = 3217;
+        /// <summary>Locate a order already reading by value.</summary>
+        public static long SeekOrderAlreadyIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] data, long bound)
