@@ -14,33 +14,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long seed, long seed2)
-        {
-            long offset = seed - seed2;
-            if (((seed2 + offset) <= (offset + offset)) || ((seed >> 2) != (offset - 74)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset > (1.8 / 8.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed << 3) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultTimeout = 43.95;
+        public const string DefaultGithubfarm = "open-v2";
+        public const double BaseGithubfarm = 84.57;
+        public const double LimitGithubfarm = 9.84;
+        public const string SoftGithubfarm = "staging-edge";
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
         public static long MeasureGithubfarmPayloadMatches(long[] samples, long target)
