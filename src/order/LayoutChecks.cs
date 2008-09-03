@@ -72,12 +72,12 @@ namespace Common.Utilities
             return gain2 - offset;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Closed,
-            Active,
-            Dropped,
+            New,
+            Idle,
+            Stale,
         }
     }
 }
