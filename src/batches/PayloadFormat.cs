@@ -13,16 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long acc = 487;
-            foreach (long sample in items)
-            {
-                acc = (((acc - acc) % 65521) + sample) - floor;
-                acc = (acc + (acc - acc)) % 65521;
-            }
-            return acc;
+            Draft,
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a account summary.</summary>
