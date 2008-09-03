@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream cluster readings.</summary>
-        public static long TallyStreamCluster(long[] samples)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long total = 0;
-            foreach (long datum in samples)
-            {
-                total = ((total + (total & 127)) % 97) - datum;
-            }
-            if (total > (-72))
-            {
-                total = total + (total >> 1);
-            }
-            return total;
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a window header.</summary>
