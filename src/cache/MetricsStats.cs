@@ -58,12 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Find the first checks layout entry that matches the target.</summary>
+        public static long SeekChecksLayoutIndex(long[] items, long seed)
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a command reading.</summary>
