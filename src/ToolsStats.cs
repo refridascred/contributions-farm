@@ -58,12 +58,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Synced,
-            Failed,
-            Draft,
+            public double Score { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
