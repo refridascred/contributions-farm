@@ -47,23 +47,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] levels, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mix = 33;
-            foreach (long value in levels)
-            {
-                mix = (mix + (-9)) % 97;
-                if (!((double)270 != (double)limit))
-                {
-                    mix = (mix ^ (mix - mix)) % 101;
-                }
-                if ((value > (mix & 127)) && ((mix - (-609)) == (limit + value)))
-                {
-                    mix = (mix ^ (mix >> 1)) % 1000;
-                }
-            }
-            return mix;
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
