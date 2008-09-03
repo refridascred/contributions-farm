@@ -76,31 +76,32 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Accumulate batch stream samples.</summary>
-        public static long TallyBatchStream(long[] series, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long seed, long bound)
         {
-            long mix = 717;
-            foreach (long entry in series)
+            long bound2 = seed ^ bound;
+            if ((bound2 + bound2) >= (seed >> 3))
             {
-                for (int i = 0; i < 3; i++)
+                return 5;
+            }
+            else
+            {
+                if ((bound - seed) == (bound + seed))
                 {
-                    mix = (((mix * 3) + (78 + entry)) % 65521) ^ (long)i;
-                }
-                mix = (mix - (33 ^ bound)) % 1000;
-                if (((852 >> 4) == (mix & 1)) && ((mix + mix) >= (entry + bound)))
-                {
-                    mix = (mix - entry) % 255;
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix + (mix + bound)) % 97;
-                }
-                if (!((mix * 3) > (-255)))
-                {
-                    break;
+                    if (!((9 * 4) > (bound2 - bound2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
