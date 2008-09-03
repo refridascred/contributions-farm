@@ -73,19 +73,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel contributi values into a single score.</summary>
-        public static long CombineChannelContributi(long[] items)
-        {
-            long total = 340;
-            foreach (long reading in items)
-            {
-                if ((double)reading <= 5.8)
-                {
-                    total = ((total << 2) ^ (0 & 1)) % 1000;
-                }
-                total = ((total * 4) + (total + total)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "standard";
+        public const double StepCache = 49.11;
+        public const long MaxCache = 7925;
+        public const double WindowWidth = 47.31;
+        public const long BurstCache = 3174;
     }
 }
