@@ -31,22 +31,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            long state = 63;
-            foreach (long sample in items)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((sample - state) < (state >> 1))
-                {
-                    state = (state - 854) % 1000;
-                }
+                carry = ((carry * 5) + ((long)i << 2)) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            if (state > 992)
-            {
-                state = (state - (state >> 2)) % 65521;
-            }
-            return state;
+            return carry;
         }
     }
 }
