@@ -41,12 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
