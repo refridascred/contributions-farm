@@ -16,17 +16,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a report tools sample.</summary>
-        public static long SeekReportToolsIndex(long[] series, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long step, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((step & 255) == (bound + step)))
             {
-                if ((series[i] < target) && ((series[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((1.0 + 17.0) <= (double)bound)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + bound) <= (bound & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch header.</summary>
