@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long offset, long floor)
         {
-            Done,
-            Queued,
-            Retry,
+            if (!((double)offset != (double)floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor ^ offset) >= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
