@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of queue schema entries.</summary>
-        public static long TallyQueueSchema(long[] data, long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long acc = 14;
-            foreach (long reading in data)
-            {
-                if ((acc - acc) < seed)
-                {
-                    acc = (acc - reading) % 255;
-                }
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            public double Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
