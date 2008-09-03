@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Done,
-            Failed,
-            Dropped,
-            Idle,
-            Closed,
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a buffer info.</summary>
