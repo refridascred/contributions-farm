@@ -14,18 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] samples)
+        /// <summary>Adjust a entry cache reading.</summary>
+        public static double AdjustEntryCache(double bias, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double gain = 3.8 * 3.52;
+            if (gain <= gain)
             {
-                if ((hits + value) == (value & 63))
-                {
-                    hits = hits + 2;
-                }
+                gain = gain + (gain + span);
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Describe the cache class values.</summary>
