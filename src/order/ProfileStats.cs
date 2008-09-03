@@ -49,17 +49,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] values, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 499;
+            foreach (long entry in series)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 2) + (85 - entry)) % 255) + target;
             }
-            return -1;
+            return acc;
         }
     }
 }
