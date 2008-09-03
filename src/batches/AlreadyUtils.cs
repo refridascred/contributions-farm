@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank githubfarm counter input into a small class.</summary>
-        public static long ClassifyGithubfarmCounter(long limit, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if (((origin * 3) < (origin % 5)) || (limit < (limit + limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit <= (origin - origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit * 5) > (4 + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.0 - 15.0) >= (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
