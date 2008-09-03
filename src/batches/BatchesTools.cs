@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Check that every farm metric entry stays within the limit.</summary>
