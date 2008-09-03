@@ -27,11 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 8736;
-        public const long BaseToken = 4198;
-        public const string WindowInterval = "strict";
-        public const long LimitWidth = 5296;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] items)
