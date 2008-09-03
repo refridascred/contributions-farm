@@ -23,17 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] series, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(3 % 24);
+            if (weight > weight)
             {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (floor - floor)) - rate;
             }
-            return -1;
+            return weight - floor;
         }
 
         /// <summary>Hold a commits record.</summary>
