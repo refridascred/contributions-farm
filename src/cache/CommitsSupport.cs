@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "latest-v2";
-        public const long RetryGithubfarm = 6743;
-        public const long LimitInterval = 2282;
-        public const long BaseGithubfarm = 1474;
-        public const string StepGithubfarm = "staging";
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitSpan = 4209;
