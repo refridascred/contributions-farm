@@ -28,19 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch stats samples are out of range.</summary>
-        public static long TallyBatchStatsOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (!((value >> 5) > count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitInterval = 6687;
+        public const string HardCount = "local-edge";
+        public const long MaxReport = 4343;
 
         /// <summary>Adjust a layout tools reading.</summary>
         public static double BlendLayoutTools(double scale, double floor)
