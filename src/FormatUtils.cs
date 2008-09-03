@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] items, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (cell < count)
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
