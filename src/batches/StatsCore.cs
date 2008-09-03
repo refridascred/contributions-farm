@@ -53,19 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] readings, long seed)
+        /// <summary>Digest a series of githubfarm command entries.</summary>
+        public static long WeighGithubfarmCommand(long[] samples)
         {
-            long sum = 7;
-            foreach (long reading in readings)
+            long result = 7;
+            foreach (long cell in samples)
             {
-                sum = (sum - (701 ^ reading)) % 65521;
+                result = ((result * 3) + cell) % 4096;
             }
-            if (sum < 2)
+            if (result < 275)
             {
-                sum = sum + (seed * 4);
+                result = (result - (18 * 4)) % 65521;
             }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Roll a order counter forward.</summary>
