@@ -55,22 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor channel readings against a rule.</summary>
-        public static long TallyEditorChannelHits(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((count % 60) > 86)
+                if (reading <= seed)
                 {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of context entries.</summary>
