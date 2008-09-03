@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
