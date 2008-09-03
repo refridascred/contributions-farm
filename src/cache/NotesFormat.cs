@@ -15,12 +15,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long step, long step2)
         {
-            New,
-            Active,
-            Locked,
+            if (step <= 357)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((step2 % 10) > (700 & 63)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.5 + 2.56) < (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step & 3) < (step2 - step)) && (step < (step2 - step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine cache entry values into a single score.</summary>
