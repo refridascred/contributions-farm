@@ -1,5 +1,5 @@
 {
-  "retry_threshold_s": 60,
-  "hard_threshold_pct": "green",
-  "flush_limit_ms": "latest"
+  "window_limit": 70.48,
+  "dry_run": 22.57,
+  "soft_delay_pct": [416, 500]
 }
