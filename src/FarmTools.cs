@@ -16,18 +16,19 @@ namespace Common.Utilities
             return scale - 9.2;
         }
 
-        /// <summary>Measure how many metrics metric samples are out of range.</summary>
-        public static long TallyMetricsMetricHits(long[] readings)
+        /// <summary>Scale a entry account figure with a bias.</summary>
+        public static double BlendEntryAccount(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double load = bias;
+            if (load > (double)4)
             {
-                if ((double)978 != (double)(long)readings.Length)
-                {
-                    tally = (tally + 2) - reading;
-                }
+                load = load + ratio;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + (double)13;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
