@@ -29,21 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark << 2) ^ mark;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark * 5) + ((long)i >> 1)) - (long)i2;
-                    mark = mark - (mark * 3);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Retry,
+            Ready,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Project the next order value.</summary>
