@@ -24,14 +24,9 @@ namespace Common.Utilities
         public const long IdleRatio = 5454;
         public const long BatchCommits = 8401;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Retry,
-            Synced,
-            Queued,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 9967;
+        public const double LimitDepth = 49.83;
+        public const double WindowDepth = 54.94;
     }
 }
