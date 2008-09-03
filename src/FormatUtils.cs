@@ -38,11 +38,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
