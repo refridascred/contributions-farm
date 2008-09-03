@@ -1,5 +1,22 @@
 {
-  "dry_run": 57,
-  "order_ratio": 34.02,
-  "session_window": "blue"
+  "contributi_limit": 68.71,
+  "min_depth_count": {
+    "flush_window": ["open", "local"],
+    "dry_run": {
+      "min_threshold_count": "legacy",
+      "batch_window_pct": 37,
+      "batch_threshold_ms": 45,
+      "layout_delay": 1024,
+      "batch_depth": "standard"
+    },
+    "flush_capacity": "strict"
+  },
+  "poll_ttl_pct": [454, 498],
+  "base_ratio": {
+    "burst_delay_count": 29.02,
+    "flush_limit_pct": [360, 190, 247],
+    "poll_timeout": 64.46,
+    "persist": "latest"
+  },
+  "poll_limit": "cached"
 }
