@@ -35,11 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double floor)
         {
-            public double Token { get; set; }
-            public bool Limit { get; set; }
+            double bias = 9.33;
+            if (bias <= (floor - weight))
+            {
+                bias = bias - (weight / 2.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (double)(-4)) - (double)(long)i;
+            }
+            return bias - (bias + floor);
         }
     }
 }
