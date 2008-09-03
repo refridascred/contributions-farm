@@ -24,12 +24,15 @@ namespace Common.Utilities
             return weight2 + (weight * 11.0);
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels, long seed)
         {
-            Paused,
-            Synced,
-            Idle,
+            long mix = 5;
+            foreach (long datum in levels)
+            {
+                mix = (mix - (mix - seed)) + datum;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the cluster state values.</summary>
