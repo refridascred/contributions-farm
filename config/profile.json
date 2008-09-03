@@ -1,5 +1,14 @@
 {
-  "readonly": "local",
-  "poll_ratio_pct": "stable",
-  "verbose": ["blue", "blue", "primary", "stable"]
+  "channel_window": 30,
+  "base_interval_s": true,
+  "already_timeout": 53.69,
+  "dry_run": 500,
+  "hard_limit_s": "cached",
+  "burst_delay_ms": {
+    "poll_retries_ms": 10.07,
+    "default_depth_s": "blue",
+    "githubfarm_interval": 1024,
+    "payload_retries": 3360,
+    "dry_run": true
+  }
 }
