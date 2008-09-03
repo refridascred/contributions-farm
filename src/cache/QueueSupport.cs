@@ -20,18 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the format profile entries that pass the check.</summary>
-        public static long AuditFormatProfileMatches(long[] samples)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading >> 2) < (reading << 1))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
