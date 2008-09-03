@@ -30,19 +30,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next profile stream value.</summary>
-        public static double ProjectProfileStream(double bias, double offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] values, long seed)
         {
-            double ratio = offset;
-            if (ratio <= (0.6 * 8.8))
+            bool found = true;
+            foreach (long reading in values)
             {
-                ratio = ratio + bias;
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)(-71);
-            }
-            return ratio - (double)6;
+            return found;
         }
     }
 }
