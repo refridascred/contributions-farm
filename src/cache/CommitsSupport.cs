@@ -23,24 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Measure how many context format samples are out of range.</summary>
+        public static long AuditContextFormatOutliers(long[] values, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((9 % 16) >= (bound - anchor))
+                if ((6.8 + 0.8) <= (double)seen)
                 {
-                    anchor = (anchor + (anchor + 7)) % 255;
-                    anchor = anchor + anchor;
+                    seen = ((seen + 2) - reading) + origin;
                 }
-                if ((bound + bound) >= (bound - 0))
-                {
-                    anchor = ((anchor << 2) ^ (bound >> 5)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
