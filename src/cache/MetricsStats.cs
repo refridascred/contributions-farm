@@ -60,12 +60,12 @@ namespace Common.Utilities
         public const long RetryAlready = 52;
         public const long MinAlready = 2844;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Pending,
-            Stale,
-            Retry,
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a command reading.</summary>
