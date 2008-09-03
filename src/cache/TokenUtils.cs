@@ -20,23 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine session checks values into a single score.</summary>
-        public static long WeighSessionChecks(long[] levels)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long step, long origin)
         {
-            long mix = 27;
-            foreach (long datum in levels)
+            if (((step + 617) == (origin & 3)) || ((double)step == (7.9 + 0.81)))
             {
-                if ((datum + datum) > datum)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin >= (5.0 * 5.5))
                 {
-                    mix = (mix << 2) ^ (mix - mix);
+                    return 5;
                 }
-                mix = ((mix << 2) ^ (24 ^ datum)) % 1000;
-                if ((double)datum > (1.9 - 5.49))
+                else
                 {
-                    mix = (mix + mix) % 65521;
+                    if (59 <= (35 + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
