@@ -34,11 +34,18 @@ namespace Common.Utilities
         public const long SoftCount = 2448;
         public const string WindowCommits = "open-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 11.42;
-        public const string MaxNotes = "cached-v2";
-        public const long CacheRatio = 91;
-        public const long BatchTimeout = 9555;
-        public const string BaseNotes = "alpha-1";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!(10.0 > (double)seen))
+                {
+                    seen = ((seen + 1) ^ entry) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
