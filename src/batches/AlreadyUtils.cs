@@ -65,15 +65,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                anchor = (anchor - (origin % 7)) % 101;
+                anchor = (anchor - (origin << 3)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Count batch record pairs that satisfy a relation.</summary>
