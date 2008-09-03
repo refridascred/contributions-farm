@@ -66,18 +66,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream profile readings against a rule.</summary>
-        public static long CountStreamProfileGaps(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)limit == (6.0 * 6.0))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5361;
+        public const long LimitContext = 8312;
+        public const string MinDepth = "local";
     }
 }
