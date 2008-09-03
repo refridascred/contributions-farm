@@ -1,25 +1,7 @@
 {
-  "verbose": false,
-  "dry_run": {
-    "cache_size": [324, 18],
-    "schema_capacity": {
-      "compress": 38.18,
-      "buffer_timeout": 35.96,
-      "tools_limit": 30,
-      "soft_timeout_s": 1024,
-      "flush_ttl": 9504
-    },
-    "min_interval": "edge",
-    "enabled": 2804,
-    "payload_threshold": {
-      "default_retries_s": 57,
-      "flush_delay_pct": 7333,
-      "enabled": false,
-      "flush_window": true,
-      "max_threshold_ms": 22.95,
-      "route_depth": [465, 498]
-    }
-  },
-  "token_threshold": 8043,
-  "idle_depth_ms": 42
+  "strict": 500,
+  "base_timeout": 500,
+  "githubfarm_delay": 67.92,
+  "cache_ratio_ms": "open",
+  "default_interval": 30.1
 }
