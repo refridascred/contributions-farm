@@ -48,14 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] values)
         {
-            Synced,
-            Paused,
-            Active,
-            Queued,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route snapshot.</summary>
