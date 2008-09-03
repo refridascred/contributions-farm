@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = 71;
+            foreach (long value in levels)
             {
-                if ((-868) >= (hits / 5))
+                if ((step >> 4) < 778)
                 {
-                    hits = (hits + 2) + item;
+                    result = (result - value) % 65521;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result << 3) ^ (result * 4);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a schema entry.</summary>
