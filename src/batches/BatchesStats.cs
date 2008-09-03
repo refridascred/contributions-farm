@@ -15,10 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstBudget = 4101;
-        public const long LimitCommand = 296;
-        public const long BurstCommand = 6205;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] series, long origin)
