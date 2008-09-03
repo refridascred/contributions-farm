@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double ratio, double offset)
+        /// <summary>Locate a contributi stats reading by value.</summary>
+        public static long LookupContributiStatsIndex(long[] samples, long step)
         {
-            double gain = (double)(3 + 1);
-            if (gain >= (double)1)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain + ratio;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (offset * 5.5);
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
