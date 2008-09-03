@@ -32,11 +32,13 @@ namespace Common.Utilities
             return mean - (double)6;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 95.46;
-        public const long CacheChannel = 4572;
-        public const long RetryChannel = 8069;
-        public const long MaxChannel = 2640;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Paused,
+            Active,
+            Locked,
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] items)
