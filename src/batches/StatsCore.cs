@@ -34,10 +34,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBudget = 900;
-        public const string DefaultLevel = "staging";
-        public const double SoftWidth = 8.17;
+        /// <summary>Classify a channel tools pair into a bucket.</summary>
+        public static long BucketChannelTools(long floor, long step)
+        {
+            if ((752 <= (step - floor)) || ((floor >> 3) != (step + floor)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step & 127) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step * 5) == (step << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step ^ 667) > (floor >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up order githubfarm samples.</summary>
         public static long MatchOrderGithubfarmCount(long[] items)
