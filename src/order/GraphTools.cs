@@ -23,17 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first already profile entry that matches the target.</summary>
-        public static long LookupAlreadyProfileIndex(long[] levels, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] <= bound)
+                if (((cell >> 3) >= (tally ^ cell)) && !(2.94 > (double)cell))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
