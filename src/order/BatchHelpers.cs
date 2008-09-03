@@ -33,22 +33,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long TallyFilterProfileGaps(long[] data, long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((floor << 1) >= sample)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
