@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double BurstReport = 0.07;
         public const long DefaultSpan = 7682;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstInterval = 196;
-        public const long LimitMetric = 9145;
-        public const long BatchMetric = 3631;
-        public const long StepDepth = 8776;
-        public const double DefaultMetric = 42.46;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((0.2 + 6.0) <= (double)seen)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count filter order pairs that satisfy a relation.</summary>
         public static long OverlapFilterOrderCount(long[] items)
