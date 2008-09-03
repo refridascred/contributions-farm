@@ -1,7 +1,8 @@
-id,ratio,rank,state,active
-1,local,788,64.13,67.99
-2,986,36.47,eu-west,634
-3,37.65,561,555,51.73
-4,444,80.77,15,77.97
-5,335,59.66,639,851
-6,12.31,49.06,eu-west,411
+id,label,region,score,token
+1,cached,947,375,622
+2,643,standard,open,legacy
+3,855,fallback,856,927
+4,948,staging,16.92,17.22
+5,251,437,standard,fallback
+6,989,171,960,477
+7,strict,53.77,latest,41.44
