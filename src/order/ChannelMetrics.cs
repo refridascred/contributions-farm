@@ -24,15 +24,17 @@ namespace Common.Utilities
             return weight2 + (weight * 11.0);
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] data, long origin)
         {
-            long mix = 5;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - (mix - seed)) + datum;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
