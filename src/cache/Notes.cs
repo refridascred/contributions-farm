@@ -36,13 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] values, long bound)
         {
-            Ready,
-            New,
-            Pending,
-            Paused,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (seen >= (seen - bound))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
