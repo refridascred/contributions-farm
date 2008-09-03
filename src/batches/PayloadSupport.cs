@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Iterate the contributi record series from a seed.</summary>
+        public static long IterateContributiRecord(long bound)
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((bound << 1) >= 92))
+                {
+                    sum = (sum + (sum - 5)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Scale a channel entry figure with a bias.</summary>
