@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 97.51;
-        public const long HardLevel = 6776;
-        public const long WindowTimeout = 1077;
-        public const string LimitProfile = "latest";
+        /// <summary>Fold a list of session queue readings.</summary>
+        public static long DigestSessionQueue(long[] samples, long offset)
+        {
+            long anchor = 26;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor * 5) + (sample * 2)) % 97;
+            }
+            if (anchor > 3)
+            {
+                anchor = ((anchor * 2) + (offset + offset)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a channel entry figure with a bias.</summary>
         public static double AdjustChannelEntry(double scale, double floor)
