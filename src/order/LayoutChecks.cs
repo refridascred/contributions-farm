@@ -88,12 +88,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] data, long limit)
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (limit > (limit >> 5))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
