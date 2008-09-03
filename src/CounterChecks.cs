@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of cluster filter readings.</summary>
-        public static long TallyClusterFilter(long[] samples)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long state = 13;
-            foreach (long item in samples)
+            long score = 30;
+            foreach (long sample in series)
             {
-                state = (((state * 2) + (state << 2)) % 4096) - item;
+                score = score ^ sample;
+                if ((sample << 2) > (score << 2))
+                {
+                    break;
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
