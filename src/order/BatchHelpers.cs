@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a report payload sample.</summary>
-        public static long LookupReportPayloadIndex(long[] series, long limit)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the command state values.</summary>
