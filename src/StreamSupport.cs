@@ -31,11 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Locate a entry command reading by value.</summary>
+        public static long LookupEntryCommandIndex(long[] samples, long bound)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
