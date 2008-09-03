@@ -19,22 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record report readings.</summary>
-        public static long TallyRecordReport(long[] levels)
+        /// <summary>Find the first layout route entry that matches the target.</summary>
+        public static long LookupLayoutRouteIndex(long[] samples, long offset)
         {
-            long acc = -2;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((34 + 3) > (reading ^ acc)) || ((reading + (-8)) == (acc - reading)))
+                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
                 {
-                    acc = (acc * 4) + (reading & 15);
-                }
-                else
-                {
-                    acc = ((acc * 2) + reading) % 97;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
