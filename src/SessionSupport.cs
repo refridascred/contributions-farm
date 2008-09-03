@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double rate, double floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            double weight = (double)(3 % 24);
-            if (weight > weight)
+            long state = 74;
+            foreach (long value in samples)
             {
-                weight = (weight - (floor - floor)) - rate;
+                state = (state - value) % 4096;
             }
-            return weight - floor;
+            if (state > 79)
+            {
+                state = ((state << 3) ^ (state % 8)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a commits record.</summary>
