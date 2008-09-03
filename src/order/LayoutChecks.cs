@@ -47,11 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Check that every payload already entry stays within the limit.</summary>
+        public static bool ValidatePayloadAlreadyRange(long[] samples, long target)
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the cluster state values.</summary>
