@@ -37,31 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long floor, long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            if (((0.96 / 8.0) > (double)bound) && ((20.0 + 8.0) != (double)bound))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound % 3) >= (bound + floor)) && ((9 - floor) < (bound >> 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) <= (bound - floor))
+                    if ((items[i] ^ items[j]) > 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
