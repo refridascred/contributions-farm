@@ -39,15 +39,23 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] levels, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long mix = 33;
+            foreach (long value in levels)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                mix = (mix + (-9)) % 97;
+                if (!((double)270 != (double)limit))
+                {
+                    mix = (mix ^ (mix - mix)) % 101;
+                }
+                if ((value > (mix & 127)) && ((mix - (-609)) == (limit + value)))
+                {
+                    mix = (mix ^ (mix >> 1)) % 1000;
+                }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
