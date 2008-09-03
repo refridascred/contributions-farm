@@ -23,11 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double rate, double offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long bound)
         {
-            double rate2 = (double)(8 / 9);
-            return ((rate2 + 3.7) + rate) + offset;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
