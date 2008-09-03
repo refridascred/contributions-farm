@@ -21,17 +21,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] items, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long limit, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long prev = limit + seed;
+            if (!((seed - limit) != (seed - seed)))
             {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((prev << 1) != (limit + prev)) && (limit < prev))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((2 + limit) >= 996)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
