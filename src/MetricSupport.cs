@@ -30,11 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBudget = 5593;
-        public const long BatchDepth = 9863;
-        public const long RetryBatch = 5684;
-        public const string BurstDepth = "staging-v2";
-        public const double SoftBatch = 71.06;
+        /// <summary>Project the next profile stream value.</summary>
+        public static double ProjectProfileStream(double bias, double offset)
+        {
+            double ratio = offset;
+            if (ratio <= (0.6 * 8.8))
+            {
+                ratio = ratio + bias;
+            }
+            else
+            {
+                ratio = ratio + (double)(-71);
+            }
+            return ratio - (double)6;
+        }
     }
 }
