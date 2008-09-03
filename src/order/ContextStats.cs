@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the graph checks series from a seed.</summary>
-        public static long RollGraphChecks(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (carry ^ (limit & 7)) + (long)i2;
-                    carry = (carry + (limit + limit)) % 4096;
-                }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    carry = ((carry - (limit + carry)) % 4096) - (long)i3;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "fallback";
+        public const long BatchInterval = 7553;
+        public const long MinFactor = 9080;
+        public const long StepLevel = 8309;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long limit, long bound)
