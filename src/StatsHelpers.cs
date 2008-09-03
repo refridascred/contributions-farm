@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardRatio = 60.22;
+        public const string RetrySchema = "standard-1";
+        public const string BurstInterval = "staging-1";
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
