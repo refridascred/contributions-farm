@@ -52,23 +52,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double bias)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double drift = (gain * 2.1) * 18.0;
-            if (drift > bias)
-            {
-                drift = drift + bias;
-            }
-            else
-            {
-                drift = drift - (double)62;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)485) + (double)(long)i;
-            }
-            return drift + (double)53;
+            Ready,
+            Failed,
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
