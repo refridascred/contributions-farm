@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a cache notes counter forward.</summary>
-        public static long RollCacheNotes(long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((total << 2) == (offset - offset))
-                {
-                    total = total + offset;
-                    total = ((total << 2) ^ (total + (long)i)) % 4096;
-                }
-                total = ((total * 3) + (total >> 2)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Queued,
+            Synced,
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
