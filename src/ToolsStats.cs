@@ -34,13 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] data, long limit)
         {
-            New,
-            Idle,
-            Locked,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
