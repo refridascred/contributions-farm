@@ -28,11 +28,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 34.28;
+        public const string LimitRatio = "standard-edge";
+        public const string BaseReport = "cached-edge";
     }
 }
