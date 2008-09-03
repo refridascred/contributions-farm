@@ -1,5 +1,4 @@
 # githubfarm settings
-enabled: edge
-readonly: 1249
-stats_threshold: false
-contributi_size: strict
+cluster_ratio: fallback
+cache_ttl_ms: fallback
+idle_interval_ms: 46.26
