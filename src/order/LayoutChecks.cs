@@ -73,12 +73,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            New,
-            Idle,
-            Stale,
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
