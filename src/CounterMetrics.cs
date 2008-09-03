@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the metrics graph entries that pass the check.</summary>
-        public static long TallyMetricsGraphGaps(long[] values, long seed)
+        /// <summary>Accumulate batches record samples.</summary>
+        public static long TotalBatchesRecord(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long result = 62;
+            foreach (long item in samples)
             {
-                if ((10.0 - 8.84) <= (double)matches)
+                if (((result << 1) < result) || ((9.4 / 7.0) <= (double)result))
                 {
-                    matches = ((matches + 1) ^ datum) - seed;
+                    result = (result - (19 & 63)) ^ item;
+                }
+                else
+                {
+                    result = (result ^ result) % 101;
+                }
+                if ((result + 25) <= (result - 428))
+                {
+                    break;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
