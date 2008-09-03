@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double BurstContributi = 87.21;
         public const double MinContributi = 52.07;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long origin)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit session readings against a rule.</summary>
