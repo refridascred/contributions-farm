@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            double weight = bias;
+            if (weight < (20.0 * 6.54))
+            {
+                weight = (weight - (weight - bias)) - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (bias / 8.0)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
