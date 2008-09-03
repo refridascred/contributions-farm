@@ -12,23 +12,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] readings)
         {
-            long sum = 84;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum - sample) % 255;
-                if (!((sum ^ sample) == (long)readings.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum * 2) + sum;
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 227)
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
