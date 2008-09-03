@@ -56,25 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long floor, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long lane = floor - bound;
-            if (lane < bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((9.1 / 9.0) >= (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
