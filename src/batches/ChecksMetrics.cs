@@ -86,19 +86,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
