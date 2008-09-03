@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
+            Retry,
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the command status values.</summary>
