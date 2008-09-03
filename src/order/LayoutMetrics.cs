@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batches stats readings.</summary>
-        public static long FoldBatchesStats(long[] values, long floor)
-        {
-            long total = 7;
-            foreach (long entry in values)
-            {
-                total = ((total - floor) % 4096) + entry;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 3064;
+        public const string BurstSize = "stable";
+        public const long LimitMetrics = 2839;
+        public const long BaseInterval = 6284;
+        public const long IdleMetrics = 6873;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorBounds(long[] values, long origin)
