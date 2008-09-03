@@ -44,13 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double bias, double offset)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            double load = bias;
+            if (load < bias)
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (double)25;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
