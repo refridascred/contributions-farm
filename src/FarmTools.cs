@@ -31,19 +31,21 @@ namespace Common.Utilities
             return load + (double)13;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long bound)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long limit)
         {
-            bool found = true;
-            foreach (long item in values)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (item > bound)
+                long hits = total;
+                if ((hits > ((long)i >> 2)) && ((hits ^ hits) < (0 ^ total)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + (long)i) % 97;
+                    continue;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
     }
 }
