@@ -1,8 +1,7 @@
-id,count,active,region
-1,24.1,0.51,37.14
-2,97.88,fallback,standard
-3,28,92,244
-4,313,900,48
-5,cached,local,876
-6,89.87,33.41,123
-7,60.01,763,45.16
+id,owner,score
+1,91.3,primary
+2,23.3,982
+3,25,local
+4,40.18,215
+5,50.08,699
+6,fallback,primary
