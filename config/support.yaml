@@ -1,7 +1,7 @@
 # support settings
-burst_interval:
-  min_interval: true
-  idle_interval: staging
-  retry_window: 10.51
-dry_run: local
-notes_retries: 89
+enabled: open
+order_limit: latest
+notes_ratio: 36.5
+dry_run: 33.96
+min_window: 98
+strict: 31.48
