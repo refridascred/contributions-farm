@@ -1,8 +1,13 @@
 {
-  "base_delay_ms": "open",
-  "poll_capacity": 7138,
-  "verbose": "open",
-  "idle_interval_pct": 4.13,
-  "audit": 13.68,
-  "farm_threshold": ["cached", "green", "eu-west"]
+  "burst_ratio_count": {
+    "readonly": false,
+    "flush_interval_count": 3211,
+    "idle_delay_ms": ["cached", "strict", "standard"],
+    "idle_capacity_pct": 29.18,
+    "base_timeout_ms": 60
+  },
+  "verbose": 43.42,
+  "min_interval_count": 84,
+  "batch_ttl_pct": 41.5,
+  "idle_depth_ms": "open"
 }
