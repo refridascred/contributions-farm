@@ -63,16 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] readings, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                carry = (carry + (long)i) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (sample != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
     }
 }
