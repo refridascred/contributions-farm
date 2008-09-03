@@ -1,6 +1,7 @@
 {
-  "persist": "local",
-  "cache_depth_count": 52.68,
-  "command_threshold": [398, 152],
-  "default_depth": 11
+  "editor_delay": "local",
+  "default_limit": 95,
+  "max_delay": "local",
+  "persist": [219, 413],
+  "base_ttl_pct": ["strict", "blue", "open"]
 }
