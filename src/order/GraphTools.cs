@@ -49,19 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two support context measurements.</summary>
-        public static double ProjectSupportContext(double gain, double floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double gain2 = gain;
-            if (gain2 >= (double)856)
-            {
-                gain2 = (gain2 - (double)35) - floor;
-            }
-            else
-            {
-                gain2 = gain2 - (double)0;
-            }
-            return gain2 + (gain * 1.46);
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
