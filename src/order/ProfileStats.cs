@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Measure how many stats batches samples are out of range.</summary>
+        public static long MeasureStatsBatchesOutliers(long[] items, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((step << 2) == (matches - step))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format stats.</summary>
