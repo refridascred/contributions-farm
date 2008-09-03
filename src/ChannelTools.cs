@@ -24,17 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batches record entry that matches the target.</summary>
-        public static long SeekBatchesRecordIndex(long[] readings, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Locate a report reading by value.</summary>
