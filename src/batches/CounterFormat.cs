@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long BaseCount = 6575;
         public const string BaseInterval = "latest-v2";
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Dropped,
-            Draft,
-            Synced,
-            Retry,
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
