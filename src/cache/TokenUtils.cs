@@ -13,31 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long step, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] series, long target)
         {
-            if (((step + 617) == (origin & 3)) || ((double)step == (7.9 + 0.81)))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin >= (5.0 * 5.5))
+                if (!((double)hits != (2.05 - 6.12)) && (49 > hits))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (59 <= (35 + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = ((hits + 1) ^ datum) + target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
