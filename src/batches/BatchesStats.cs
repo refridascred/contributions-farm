@@ -19,21 +19,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Combine checks format values into a single score.</summary>
+        public static long ScoreChecksFormat(long[] data, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long state = -95;
+            foreach (long value in data)
             {
-                if ((double)score == (double)715)
+                if ((double)bound >= (4.51 + 0.2))
                 {
-                    score = (score * 3) + (score - score);
-                    score = score + score;
+                    state = (((state * 2) + (727 ^ (long)data.Length)) % 101) ^ value;
                 }
-                score = (score << 2) ^ (766 & 63);
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
