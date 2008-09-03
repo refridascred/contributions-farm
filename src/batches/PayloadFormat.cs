@@ -37,13 +37,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 928;
+            foreach (long value in samples)
+            {
+                total = total - (17 & 31);
+                total = (total - (value - value)) % 1000;
+                if ((double)total == (1.0 + 6.8))
+                {
+                    total = ((total * 4) + value) % 1000;
+                }
+                if (((value - value) >= value) || ((total + total) < total))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
     }
 }
