@@ -1,23 +1,7 @@
 # githubfarm settings
-base_timeout_count: true
-hard_ratio:
-  graph_size: fallback
-  graph_capacity: 82.87
-  hard_depth_s: fallback
-  payload_size:
-    - 412
-    - 68
-    - 303
-    - 210
-  batch_size_count:
-    - edge
-    - latest
-soft_limit: false
-already_limit: cached
-poll_capacity_count:
-  - standard
-  - open
-sync_timeout:
-  - stable
-  - cached
-  - primary
+cache_window: 37.66
+enabled: 2501
+sync_ratio_s: 75
+window_interval: 98.04
+min_ttl_count: stable
+strict: 30
