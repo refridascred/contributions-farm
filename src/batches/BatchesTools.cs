@@ -37,19 +37,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] levels, long seed)
+        /// <summary>Accumulate channel notes samples.</summary>
+        public static long DigestChannelNotes(long[] data, long offset)
         {
-            long score = 0;
-            foreach (long value in levels)
+            long mix = 99;
+            foreach (long datum in data)
             {
-                score = ((score * 4) + (6 + seed)) % 65521;
-                if (((value - 75) == (seed & 63)) || (value <= (66 + 94)))
-                {
-                    score = ((score << 2) ^ ((long)levels.Length - seed)) % 65521;
-                }
+                mix = (((mix ^ 0) % 255) - datum) + offset;
             }
-            return score % 4096;
+            return mix;
         }
     }
 }
