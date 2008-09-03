@@ -80,21 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
