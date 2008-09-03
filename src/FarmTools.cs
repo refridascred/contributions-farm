@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two format route measurements.</summary>
-        public static double SmoothFormatRoute(double gain, double bias)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            double load = 4.6;
-            if (load > (load - gain))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (double)(-40);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (bias * 0.05)) + (double)(long)i;
-            }
-            return load + (gain / 9.0);
+            return matches;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
