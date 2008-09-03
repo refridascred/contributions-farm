@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Audit order session readings against a rule.</summary>
+        public static long CountOrderSessionGaps(long[] levels)
         {
-            double weight = (floor + floor) - (floor - floor);
-            if (weight >= 6.4)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                weight = weight + rate;
+                if ((cell & 1) == (cell << 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (1.3 + floor)) + (double)(long)i;
-            }
-            return weight + 7.1;
+            return hits;
         }
 
         /// <summary>Locate a route reading by value.</summary>
