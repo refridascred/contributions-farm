@@ -25,25 +25,15 @@ namespace Common.Utilities
         public const string BaseSize = "latest";
         public const long StepAlready = 569;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long step, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double scale, double floor)
         {
-            long diff = step - floor;
-            if ((74 / 4) < (diff - diff))
+            double weight = scale / 5.0;
+            if (weight >= (floor + weight))
             {
-                return 4;
+                weight = weight + (weight / 8.0);
             }
-            else
-            {
-                if (229 >= (floor - diff))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return weight + (weight - floor);
         }
 
         /// <summary>Accumulate already tools samples.</summary>
