@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
+        public static long LocateMetricsGithubfarmIndex(long[] levels, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
