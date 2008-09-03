@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const long CacheLevel = 4992;
         public const long MaxAccount = 5131;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Scale a notes already figure with a bias.</summary>
+        public static double SmoothNotesAlready(double gain, double span)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            double rate = (double)(36 * 4);
+            if (rate > (gain - rate))
             {
-                mix = mix ^ (mix + target);
-                long tally = mix * 2;
-                mix = (mix - (tally & 255)) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
+                rate = rate + 9.27;
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (span * 4.1)) - (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
