@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long WindowDepth = 8250;
         public const long StepScore = 844;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Blend two contributi githubfarm measurements.</summary>
+        public static double ScaleContributiGithubfarm(double weight, double floor)
         {
-            Done,
-            Locked,
-            Paused,
-            Ready,
+            double ratio = (double)7 - 7.0;
+            if (ratio < weight)
+            {
+                ratio = (ratio + (weight + ratio)) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (weight + ratio);
         }
 
         /// <summary>Classify a route account pair into a bucket.</summary>
