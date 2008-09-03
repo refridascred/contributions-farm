@@ -32,19 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 11.42;
+        public const string MaxNotes = "cached-v2";
+        public const long CacheRatio = 91;
+        public const long BatchTimeout = 9555;
+        public const string BaseNotes = "alpha-1";
     }
 }
