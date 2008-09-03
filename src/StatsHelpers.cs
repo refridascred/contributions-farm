@@ -36,27 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Audit editor context readings against a rule.</summary>
+        public static long MeasureEditorContextGaps(long[] readings, long floor)
         {
-            long total = 803;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                total = (total + total) % 255;
-                if (((long)series.Length + total) == (reading + reading))
+                if (20.0 < (double)(long)readings.Length)
                 {
-                    total = (total - (total / 8)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (reading + reading)) % 1000;
+                    tally = ((tally + 3) - datum) - floor;
                 }
             }
-            if (total < (-24))
-            {
-                total = total + (total & 31);
-            }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Describe the format state values.</summary>
