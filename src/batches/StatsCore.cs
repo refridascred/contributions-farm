@@ -68,12 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            Synced,
+            Done,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
