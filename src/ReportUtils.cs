@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values, long offset)
         {
-            long result = 5;
-            foreach (long datum in items)
+            long mark = 233;
+            foreach (long value in values)
             {
-                if ((5.6 >= (double)datum) || ((double)datum >= (double)result))
-                {
-                    result = (result + (42 & 31)) - origin;
-                }
+                mark = (((mark ^ (mark - mark)) % 65521) ^ value) - offset;
             }
-            return result % 97;
+            return mark;
         }
 
         /// <summary>Hold a graph entry.</summary>
