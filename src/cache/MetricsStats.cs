@@ -45,17 +45,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first account channel entry that matches the target.</summary>
-        public static long FindAccountChannelIndex(long[] series, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long limit, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = limit + seed;
+            if ((delta / 4) >= (960 - seed))
             {
-                if (series[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if (!((delta / 4) >= seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit stream profile readings against a rule.</summary>
