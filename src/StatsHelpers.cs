@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (2.0 > (double)sample)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseTimeout = 5508;
+        public const double MaxRoute = 80.15;
+        public const long MaxDepth = 4296;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftEditor = 3235;
