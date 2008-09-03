@@ -30,18 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long offset, long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            if (!((6.05 - 0.93) > (double)offset))
             {
-                if (!(((2 * 2) > (count << 2)) && ((count * 3) <= (item ^ count))))
+                return 2;
+            }
+            else
+            {
+                if ((offset / 4) >= (95 & 31))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a payload header.</summary>
