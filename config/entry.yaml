@@ -1,9 +1,26 @@
 # entry settings
-base_retries_ms: 22
-compress: 4310
-retry_ttl: staging
-max_timeout_s: 3643
-batch_retries:
-  - strict
-  - strict
-burst_threshold_count: eu-west
+contributi_ttl:
+  sync_delay:
+    min_interval_count:
+      - 319
+      - 407
+    verbose: 90.78
+    poll_ratio:
+      - cached
+      - blue
+      - fallback
+      - open
+    githubfarm_retries: true
+    warm_retries: 1024
+  session_size: 5154
+  tools_delay: true
+  audit: stable
+command_timeout: 8810
+persist: false
+metric_ratio: legacy
+poll_threshold_count:
+  - 358
+  - 181
+  - 452
+  - 35
+profile_limit: cached
