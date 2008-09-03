@@ -35,13 +35,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            Paused,
-            Closed,
-            Dropped,
-            Pending,
+            long mix = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (target >= (target ^ mix))
+                {
+                    break;
+                }
+                mix = ((mix << 2) ^ target) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
