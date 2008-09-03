@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const string DefaultInterval = "primary-edge";
         public const string IdleReport = "latest-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 4485;
-        public const string CacheTools = "open-1";
-        public const long MinTools = 9741;
-        public const long SoftCount = 6206;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] data)
+        {
+            long sum = 9;
+            foreach (long datum in data)
+            {
+                sum = ((sum * 5) + datum) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
