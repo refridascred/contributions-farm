@@ -66,18 +66,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor queue entries that pass the check.</summary>
-        public static long AuditEditorQueueMatches(long[] samples, long origin)
+        /// <summary>Fold a list of githubfarm editor readings.</summary>
+        public static long FoldGithubfarmEditor(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long state = 75;
+            foreach (long cell in values)
             {
-                if ((long)samples.Length < entry)
+                if ((cell << 3) < (limit * 5))
                 {
-                    matches = (matches + 2) + origin;
+                    state = state - limit;
+                }
+                else
+                {
+                    state = state - (26 % 97);
                 }
             }
-            return matches;
+            if (state > 10)
+            {
+                state = (state * 2) + (limit & 255);
+            }
+            return state;
         }
     }
 }
