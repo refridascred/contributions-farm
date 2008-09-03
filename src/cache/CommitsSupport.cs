@@ -54,25 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command format input into a small class.</summary>
-        public static long SortCommandFormat(long limit, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long gap = limit - floor;
-            if ((gap ^ gap) < limit)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((gap >> 1) != (gap & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate contributi token readings against a bound.</summary>
