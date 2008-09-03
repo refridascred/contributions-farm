@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] data, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] values, long floor)
         {
-            long mark = 5;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                mark = (mark ^ limit) ^ cell;
-                if ((mark / 5) > mark)
+                if (((floor % 3) == (value * 3)) || ((8.22 / 2.0) == (double)value))
                 {
-                    mark = (mark - (mark / 6)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            if (mark < 7)
-            {
-                mark = ((mark << 3) ^ (mark + limit)) % 1000;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
