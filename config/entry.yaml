@@ -1,10 +1,18 @@
 # entry settings
-sync_delay_ms: fallback
-cache_ratio:
-  - 137
-  - 180
-  - 181
-  - 290
-batch_ratio_count: local
-poll_timeout_count: 3.83
-idle_timeout: blue
+report_depth:
+  persist: 4682
+  format_window: 11.6
+  filter_window: 16.08
+verbose:
+  warm_interval_count:
+    - 358
+    - 128
+    - 17
+    - 493
+  dry_run: edge
+  flush_retries: 2852
+payload_limit: 23
+report_capacity:
+  - 382
+  - 59
+warm_limit_ms: fallback
