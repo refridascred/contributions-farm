@@ -73,12 +73,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] readings, long limit)
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch entry.</summary>
