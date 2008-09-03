@@ -30,11 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings, long target)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            long carry = -360;
+            foreach (long reading in readings)
+            {
+                if ((reading + target) != (carry + target))
+                {
+                    carry = carry ^ target;
+                }
+                if (reading > (carry - target))
+                {
+                    carry = (carry * 4) + reading;
+                }
+            }
+            return carry;
         }
     }
 }
