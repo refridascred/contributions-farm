@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardRatio = 60.22;
-        public const string RetrySchema = "standard-1";
-        public const string BurstInterval = "staging-1";
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long offset, long seed)
+        {
+            if (((double)offset > 2.0) && ((offset + seed) >= seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.0 / 2.0) < (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4 + seed) >= (offset + 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((-4) >= seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] data, long target)
