@@ -44,15 +44,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long offset, long target)
         {
-            long anchor = 0;
-            foreach (long datum in series)
+            long offset2 = offset + target;
+            if ((target - offset) == (target & 63))
             {
-                anchor = (anchor + (anchor * 4)) - datum;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((target + target) <= (offset2 + offset2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((target - offset2) >= (offset & 31)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((15.0 - 0.9) >= (double)offset2) && ((target / 9) == (offset2 + offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
