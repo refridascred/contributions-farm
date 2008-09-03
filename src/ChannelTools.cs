@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long WindowReport = 1202;
         public const string MaxDepth = "strict";
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Find the first batches record entry that matches the target.</summary>
+        public static long SeekBatchesRecordIndex(long[] readings, long seed)
         {
-            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
