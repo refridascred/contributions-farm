@@ -15,19 +15,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two editor profile measurements.</summary>
-        public static double AdjustEditorProfile(double gain, double bias)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long offset, long floor)
         {
-            double scale = (double)(79 ^ (-3));
-            if (scale > (gain + bias))
+            if (!((floor + floor) < 57))
             {
-                scale = scale + bias;
+                return 6;
             }
             else
             {
-                scale = scale + (scale / 3.0);
+                if ((double)offset != (double)755)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((9 + floor) > (offset % 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor > 4.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return scale - scale;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
