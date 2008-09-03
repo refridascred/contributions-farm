@@ -23,12 +23,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
+            Queued,
+            Locked,
+            Stale,
+            Dropped,
         }
     }
 }
