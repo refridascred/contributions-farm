@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next report metrics value from a seed.</summary>
-        public static long DeriveReportMetrics(long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] readings, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((offset + anchor) != (anchor % 3))
+                if (((hits * 4) == (3 ^ sample)) || (((hits * 5) > hits) || ((sample ^ 0) <= (sample & 1))))
                 {
-                    anchor = (anchor + (offset << 2)) % 97;
-                    continue;
+                    hits = (hits + 2) + offset;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
