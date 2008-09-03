@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftScore = 2118;
-        public const double MaxRecord = 79.61;
-        public const long BaseRecord = 2159;
-        public const string HardRecord = "standard-v2";
+        /// <summary>Match up metric session samples.</summary>
+        public static long CompareMetricSessionCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long WeighGraph(long[] items, long seed)
