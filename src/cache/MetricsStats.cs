@@ -45,19 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next session cluster value from a seed.</summary>
-        public static long RollSessionCluster(long step)
+        /// <summary>Find the first account channel entry that matches the target.</summary>
+        public static long FindAccountChannelIndex(long[] series, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (7 > (long)i)
+                if (series[i] > origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit stream profile readings against a rule.</summary>
