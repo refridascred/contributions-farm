@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long step, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] series)
         {
-            if ((floor ^ floor) <= floor)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + floor) <= 5)
+                if (((tally % 100) == (datum + tally)) || ((datum / 4) >= (datum - tally)))
                 {
-                    return 8;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((floor % 3) < floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor / 7) < step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
