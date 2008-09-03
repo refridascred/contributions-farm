@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 7;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading & 7) >= (592 ^ reading))
                 {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ (862 & 127)) % 65521;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
