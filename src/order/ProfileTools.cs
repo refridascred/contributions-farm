@@ -34,13 +34,18 @@ namespace Common.Utilities
         public const long BaseInterval = 9688;
         public const long LimitLevel = 8267;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] values, long bound)
         {
-            Failed,
-            Active,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (bound <= (844 / 2))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a githubfarm format value against two limits.</summary>
