@@ -30,16 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double weight, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            double load = span;
+            if (load <= (double)(-3))
             {
-                carry = ((carry * 5) + ((long)i << 2)) % 255;
-                carry = ((carry * 5) + (long)i) % 4093;
+                load = load + (double)(-24);
             }
-            return carry;
+            else
+            {
+                load = load - (load + span);
+            }
+            return load + (weight + weight);
         }
     }
 }
