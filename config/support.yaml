@@ -1,4 +1,11 @@
 # support settings
-soft_delay: open
-context_limit: 30.22
-sync_interval: 40.76
+warm_timeout:
+  retry_interval_pct: 1024
+  filter_timeout:
+    - edge
+    - strict
+    - standard
+  retry_limit: open
+soft_ttl: 79.77
+base_retries_s: 90.59
+max_ttl: local
