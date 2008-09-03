@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double ratio, double floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            double mean = floor;
-            if (mean > (mean + mean))
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean - floor;
+                if ((mark / 6) > 746)
+                {
+                    mark = (mark ^ (972 ^ (long)i)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mean + (ratio * 15.0);
+            return mark;
         }
 
         /// <summary>Project the next queue value.</summary>
