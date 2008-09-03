@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] levels, long target)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)target != (double)seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
