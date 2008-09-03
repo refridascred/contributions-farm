@@ -12,14 +12,10 @@ namespace Common.Utilities
             return rate + (weight - offset);
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 76;
+        public const string DefaultCount = "open-v2";
+        public const long MaxBudget = 5165;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowMatches(long[] data, long offset)
