@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Fold a list of cluster filter readings.</summary>
+        public static long TallyClusterFilter(long[] samples)
         {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            long state = 13;
+            foreach (long item in samples)
+            {
+                state = (((state * 2) + (state << 2)) % 4096) - item;
+            }
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
