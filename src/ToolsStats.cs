@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowFactor = 6928;
-        public const long DefaultCommand = 5942;
-        public const string CacheDepth = "latest-edge";
-        public const long RetryInterval = 9928;
-        public const long LimitCommand = 6822;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)seed > (5.7 + 12.0)) || (((reading * 2) > (reading + reading)) || ((hits * 3) <= (reading ^ reading))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
