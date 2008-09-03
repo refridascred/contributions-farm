@@ -23,25 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long floor)
-        {
-            if ((double)782 == (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)floor != (1.32 + 10.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepScore = 24.86;
+        public const string LimitSize = "cached-v2";
+        public const long BurstStats = 3081;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 8040;
