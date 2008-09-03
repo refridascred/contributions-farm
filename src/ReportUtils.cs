@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Stale,
-            Done,
-            Failed,
-            Idle,
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count route order pairs that satisfy a relation.</summary>
