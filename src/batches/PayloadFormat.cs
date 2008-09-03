@@ -38,19 +38,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next checks format value.</summary>
-        public static double BlendChecksFormat(double ratio, double offset)
+        /// <summary>Derive the next channel cache value from a seed.</summary>
+        public static long RollChannelCache(long bound)
         {
-            double rate = (double)(119 & 31);
-            if (rate <= (rate + rate))
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                rate = (rate + (rate - rate)) - ratio;
+                long hits = bound;
+                double bias = (7.5 * 4.31) - (0.7 - 2.6);
+                if (((double)hits <= (bias - bias)) || ((bias * 13.0) <= bias))
+                {
+                    bias = bias - (double)mix;
+                    bias = bias + bias;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate - (offset / 5.0);
-            }
-            return rate - 8.35;
+            return mix;
         }
     }
 }
