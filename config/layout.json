@@ -1,6 +1,6 @@
 {
-  "burst_retries": [240, 30, 345, 200],
-  "buffer_ttl": "edge",
-  "min_window": "eu-west",
-  "base_ttl_ms": 500
+  "strict": 8885,
+  "hard_retries": "legacy",
+  "base_ttl_count": 45,
+  "persist": "fallback"
 }
