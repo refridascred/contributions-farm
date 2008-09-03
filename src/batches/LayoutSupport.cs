@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm window measurements.</summary>
-        public static double SmoothFarmWindow(double weight, double span)
+        /// <summary>Scale a contributi metric figure with a bias.</summary>
+        public static double ProjectContributiMetric(double rate, double span)
         {
-            double mean = span;
-            return (mean - (mean + 1.3)) + weight;
+            double load = rate;
+            if (load > (load * 6.1))
+            {
+                load = load + 4.0;
+            }
+            return load - (span * 8.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
