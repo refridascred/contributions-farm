@@ -34,13 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Blend two support context measurements.</summary>
+        public static double ProjectSupportContext(double gain, double floor)
         {
-            Closed,
-            Paused,
-            Ready,
-            New,
+            double gain2 = gain;
+            if (gain2 >= (double)856)
+            {
+                gain2 = (gain2 - (double)35) - floor;
+            }
+            else
+            {
+                gain2 = gain2 - (double)0;
+            }
+            return gain2 + (gain * 1.46);
         }
 
         /// <summary>Hold a channel stats.</summary>
