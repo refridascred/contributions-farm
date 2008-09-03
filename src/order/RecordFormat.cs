@@ -44,10 +44,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 31.07;
-        public const long BatchWidth = 6689;
-        public const string SoftBatch = "cached";
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series)
+        {
+            long anchor = 0;
+            foreach (long datum in series)
+            {
+                anchor = (anchor + (anchor * 4)) - datum;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesGaps(long[] readings, long target)
