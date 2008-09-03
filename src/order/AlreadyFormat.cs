@@ -66,15 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double scale, double span)
+        /// <summary>Count the editor queue entries that pass the check.</summary>
+        public static long AuditEditorQueueMatches(long[] samples, long origin)
         {
-            double scale2 = scale;
-            if (scale2 <= (double)7)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                scale2 = scale2 + span;
+                if ((long)samples.Length < entry)
+                {
+                    matches = (matches + 2) + origin;
+                }
             }
-            return scale2 + (double)13;
+            return matches;
         }
     }
 }
