@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] items, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = -51;
+            foreach (long reading in items)
             {
-                if ((seen > (seen & 255)) && ((2 & 255) <= seen))
+                if ((total * 2) < (reading + total))
                 {
-                    seen = ((seen + 2) + entry) - floor;
+                    total = ((total << 3) ^ ((long)items.Length / 4)) % 101;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
