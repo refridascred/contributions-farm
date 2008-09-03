@@ -1,9 +1,8 @@
 # support settings
-default_ratio: legacy
-default_capacity_s: green
-poll_capacity_s: legacy
-compress:
-  - 316
-  - 202
-  - 28
-cache_delay_count: primary
+batch_timeout_s: 500
+buffer_interval: 35.67
+poll_limit_count: staging
+dry_run: 14.21
+burst_capacity_pct:
+  - latest
+  - strict
