@@ -50,10 +50,22 @@ namespace Common.Utilities
             return load - (span * 8.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinWidth = 4142;
-        public const double LimitQueue = 74.26;
-        public const long CacheBudget = 3290;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
