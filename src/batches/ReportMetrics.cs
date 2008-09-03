@@ -21,23 +21,19 @@ namespace Common.Utilities
             return (scale - (scale / 5.0)) + bias;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Check that every batches profile entry stays within the limit.</summary>
+        public static bool VerifyBatchesProfileLimits(long[] values, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((long)i ^ result) <= (70 ^ (long)i))
+                if (sample != step)
                 {
-                    result = (result ^ result) % 65521;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    result = result - (offset & 127);
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return stale;
         }
     }
 }
