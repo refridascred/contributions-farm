@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=213
+log "limit is ${RECORD_LIMIT}"
 
-for item in latest open; do
+for item in edge eu-west fallback; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=165
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
