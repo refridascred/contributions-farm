@@ -28,19 +28,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] items, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long step, long bound)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long offset = step - bound;
+            if (!((2.77 * 6.2) < (double)step))
             {
-                if (item >= origin)
+                return 1;
+            }
+            else
+            {
+                if ((double)step < (18.0 - 3.0))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((step - offset) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
