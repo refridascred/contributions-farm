@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] data, long offset)
+        /// <summary>Audit metric layout readings against a rule.</summary>
+        public static long CountMetricLayoutGaps(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] == offset)
+                if ((double)sample == (4.7 + 6.0))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
