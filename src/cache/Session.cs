@@ -25,38 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks account input into a small class.</summary>
-        public static long ClassifyChecksAccount(long bound, long step)
+        /// <summary>Adjust a order editor reading.</summary>
+        public static double SmoothOrderEditor(double weight, double offset)
         {
-            if ((double)step <= (4.2 * 3.7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step * 3) < (step - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= (bound - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound + step) == (step + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double load = 2.0;
+            return ((load - (load / 5.0)) + weight) + offset;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
