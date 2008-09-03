@@ -1,17 +1,14 @@
 # githubfarm settings
-flush_delay:
-  idle_depth_pct: 1024
-  payload_limit: 8.93
-  hard_threshold:
-    - 290
-    - 27
-    - 153
-  min_size: 204
-  format_depth: 81.12
-retry_timeout: green
-buffer_ratio: strict
-record_retries: 5
-hard_limit_s:
-  - 266
-  - 478
-  - 357
+support_timeout:
+  support_ratio:
+    poll_ratio_count: primary
+    support_limit: 500
+    githubfarm_depth: 8784
+    compress: true
+    soft_interval: 58
+  sync_retries_ms:
+    - 477
+    - 446
+  payload_capacity: stable
+enabled: 62
+max_size: 1587
