@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitSpan = 4209;
-        public const double SoftWindow = 26.97;
-        public const long RetryScore = 2617;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((9 % 16) >= (bound - anchor))
+                {
+                    anchor = (anchor + (anchor + 7)) % 255;
+                    anchor = anchor + anchor;
+                }
+                if ((bound + bound) >= (bound - 0))
+                {
+                    anchor = ((anchor << 2) ^ (bound >> 5)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsGaps(long[] data, long limit)
