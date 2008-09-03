@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "local";
-        public const string BurstFactor = "primary";
-        public const long BaseRatio = 4664;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Ready,
+            Stale,
+            Done,
+            New,
+            Idle,
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
