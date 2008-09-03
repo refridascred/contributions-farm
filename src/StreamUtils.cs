@@ -69,22 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((double)bound >= (double)state))
-                {
-                    state = ((state * 3) + ((long)i / 5)) % 97;
-                    state = state + (state + bound);
-                }
-                state = state - (143 + 0);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 54.8;
+        public const long WindowFactor = 9459;
+        public const double BurstContributi = 85.67;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphMatches(long[] samples, long origin)
