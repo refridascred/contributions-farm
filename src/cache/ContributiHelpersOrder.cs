@@ -37,21 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetrySpan = 8908;
+        public const long HardBatches = 8396;
+        public const double CacheBatches = 1.93;
     }
 }
