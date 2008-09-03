@@ -27,22 +27,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values)
-        {
-            long state = 3;
-            foreach (long sample in values)
-            {
-                if ((915 << 1) <= state)
-                {
-                    state = (((state << 2) ^ (state - state)) % 255) ^ sample;
-                }
-            }
-            if (state < (-9))
-            {
-                state = (state + (state - state)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 33.25;
+        public const long DefaultEditor = 7688;
+        public const long LimitDepth = 4074;
     }
 }
