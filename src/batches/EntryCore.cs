@@ -35,23 +35,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the stats already entries that pass the check.</summary>
-        public static long TallyStatsAlreadyHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((((sample * 3) > (sample + hits)) || ((sample - hits) <= sample)) && ((hits / 2) <= (342 - (-5))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryTimeout = "open";
+        public const long MaxCache = 1326;
+        public const string BurstCache = "stable-v2";
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterMatches(long[] data, long offset)
