@@ -1,6 +1,5 @@
 {
-  "flush_timeout": 60,
-  "editor_capacity": "fallback",
-  "min_ratio_pct": "eu-west",
-  "hard_ratio": 77
+  "base_ratio_ms": 4051,
+  "report_ttl": "fallback",
+  "graph_threshold": 27.23
 }
