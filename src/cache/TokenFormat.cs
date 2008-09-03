@@ -20,24 +20,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] samples, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((sum + 23) == (sum >> 4)) && ((4.8 * 7.0) <= (double)(long)i))
+                if ((origin >> 3) == (origin + origin))
                 {
-                    sum = ((sum << 2) ^ (60 << 3)) % 255;
+                    matches = (matches + 1) + sample;
                 }
-                if ((double)474 <= (double)limit)
-                {
-                    sum = (sum - sum) % 65521;
-                    sum = ((sum * 5) + sum) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
