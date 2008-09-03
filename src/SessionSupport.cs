@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowScore = 7645;
-        public const long BatchGraph = 161;
-        public const string IdleSpan = "local-v2";
-        public const long MaxGraph = 6473;
-        public const long DefaultGraph = 1534;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Done,
+            Retry,
+            New,
+        }
 
         /// <summary>Count the already record entries that pass the check.</summary>
         public static long MeasureAlreadyRecordOutliers(long[] items)
