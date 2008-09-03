@@ -29,9 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxCount = 19.63;
-        public const double RetryOrder = 90.03;
-        public const long LimitFactor = 6025;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
