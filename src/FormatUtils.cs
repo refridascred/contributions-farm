@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a checks counter sample.</summary>
-        public static long FindChecksCounterIndex(long[] samples, long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
