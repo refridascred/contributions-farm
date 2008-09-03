@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
