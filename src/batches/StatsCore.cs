@@ -95,13 +95,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Blend two farm window measurements.</summary>
+        public static double ScaleFarmWindow(double weight, double span)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            double load = span;
+            if (load > (span * 3.0))
+            {
+                load = (load + span) - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)3) - (double)(long)i;
+            }
+            return load + (double)61;
         }
     }
 }
