@@ -79,11 +79,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a stats profile figure with a bias.</summary>
-        public static double ScaleStatsProfile(double weight, double floor)
+        /// <summary>Blend two checks route measurements.</summary>
+        public static double ScaleChecksRoute(double rate, double span)
         {
-            double rate = weight;
-            return (rate + (double)2) + floor;
+            double mean = span;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (rate + mean)) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
