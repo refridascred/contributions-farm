@@ -14,19 +14,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a channel entry figure with a bias.</summary>
-        public static double AdjustChannelEntry(double scale, double floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double bias = (double)((-31) % 12);
-            if (bias <= scale)
-            {
-                bias = (bias - scale) - floor;
-            }
-            else
-            {
-                bias = bias + (bias - bias);
-            }
-            return bias + scale;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
