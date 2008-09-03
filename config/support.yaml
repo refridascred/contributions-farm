@@ -1,7 +1,18 @@
 # support settings
-max_interval: latest
-audit: 3895
-persist: staging
-batch_limit_pct: 7433
-flush_timeout: 30
-min_limit_ms: 91
+notes_size:
+  default_retries: 89.8
+  channel_capacity: staging
+  verbose:
+    - 265
+    - 236
+    - 137
+    - 381
+  retry_retries: open
+  max_depth_pct: 68
+retry_retries: primary
+batch_retries_pct: staging
+min_interval: 733
+buffer_limit: 97
+contributi_capacity:
+  - 278
+  - 144
