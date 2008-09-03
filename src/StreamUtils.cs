@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long BurstSize = 4051;
         public const string BaseFactor = "legacy-edge";
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
+            Done,
             Queued,
-            Dropped,
-            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
