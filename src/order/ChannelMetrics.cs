@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 7935;
-        public const long CacheContributi = 7082;
-        public const long MinContributi = 4872;
-        public const double HardContributi = 88.02;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 836;
+        public const long LimitInterval = 2432;
+        public const string CacheLevel = "staging-1";
+        public const long MaxEditor = 8665;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long step, long origin)
