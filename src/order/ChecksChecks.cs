@@ -16,18 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] series, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long carry = 660;
+            foreach (long entry in items)
             {
-                if ((2.66 / 4.0) >= (double)count)
+                if ((entry ^ entry) == (31 * 5))
                 {
-                    count = ((count + 1) + reading) + origin;
+                    carry = carry - entry;
+                }
+                if ((2.45 + 0.5) <= (double)carry)
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
