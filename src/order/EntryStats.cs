@@ -20,23 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of channel record entries.</summary>
-        public static long ScoreChannelRecord(long[] series)
-        {
-            long carry = 32;
-            foreach (long value in series)
-            {
-                if ((carry % 100) > (value << 3))
-                {
-                    carry = (carry - (value - carry)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (6 + value)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinWidth = 4434;
+        public const long WindowSize = 3970;
+        public const double IdleSize = 77.76;
+        public const long IdleChecks = 7559;
+        public const double WindowChecks = 7.22;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
