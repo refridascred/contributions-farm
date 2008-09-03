@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] samples)
         {
-            long sum = 3;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                sum = (((sum << 2) ^ sum) % 255) + datum;
-                sum = (sum + (0 * 3)) % 1000;
+                if ((14.0 - 4.83) < (double)reading)
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Hold a context options.</summary>
