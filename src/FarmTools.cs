@@ -20,19 +20,20 @@ namespace Common.Utilities
             return load + (gain / 9.0);
         }
 
-        /// <summary>Scale a entry account figure with a bias.</summary>
-        public static double BlendEntryAccount(double ratio, double bias)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            double load = bias;
-            if (load > (double)4)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                load = load + ratio;
+                anchor = (anchor << 3) ^ (722 - (long)i);
+                if ((anchor / 8) < (origin + (long)i))
+                {
+                    anchor = ((anchor * 4) + (anchor + anchor)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + (double)13;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
