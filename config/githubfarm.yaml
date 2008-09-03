@@ -1,7 +1,4 @@
 # githubfarm settings
-cache_window: 37.66
-enabled: 2501
-sync_ratio_s: 75
-window_interval: 98.04
-min_ttl_count: stable
-strict: 30
+flush_window_count: latest
+warm_window_count: false
+retry_retries_count: blue
