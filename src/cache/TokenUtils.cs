@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] samples, long target)
         {
-            long score = 2;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((score % 97) < (score + 93))
+                if (reading < target)
                 {
-                    score = (score - (entry + entry)) % 4096;
-                    score = (score - (score ^ score)) % 255;
-                }
-                else
-                {
-                    score = (score << 2) ^ (entry + score);
-                }
-                if (score < (entry + entry))
-                {
-                    score = (score + (score & 1)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (score < (-157))
-            {
-                score = score - (score * 5);
-            }
-            return score % 1000;
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
