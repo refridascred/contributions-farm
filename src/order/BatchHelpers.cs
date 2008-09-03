@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinRatio = 5926;
+        public const long MaxCount = 5756;
+        public const long RetryStream = 3991;
+        public const long LimitScore = 1445;
+        public const long StepStream = 7593;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long PairGraphCount(long[] data)
