@@ -28,10 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitInterval = 6687;
-        public const string HardCount = "local-edge";
-        public const long MaxReport = 4343;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitSize = "cached-edge";
+        public const long CacheChecks = 1377;
+        public const string SoftChecks = "legacy-edge";
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] levels, long limit)
