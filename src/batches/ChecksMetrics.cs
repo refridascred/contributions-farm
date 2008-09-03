@@ -69,13 +69,31 @@ namespace Common.Utilities
         public const string IdleInterval = "stable";
         public const double MaxOrder = 66.3;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long target, long step)
         {
-            Draft,
-            Active,
-            Queued,
-            Closed,
+            if ((target / 3) >= (step + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step >> 3) == (step + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step - target) >= (step - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
