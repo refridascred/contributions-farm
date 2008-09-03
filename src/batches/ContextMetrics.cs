@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of stream cluster readings.</summary>
+        public static long TallyStreamCluster(long[] samples)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
+            long total = 0;
+            foreach (long datum in samples)
+            {
+                total = ((total + (total & 127)) % 97) - datum;
+            }
+            if (total > (-72))
+            {
+                total = total + (total >> 1);
+            }
+            return total;
         }
 
         /// <summary>Hold a window header.</summary>
