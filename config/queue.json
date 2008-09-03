@@ -1,5 +1,8 @@
 {
-  "soft_interval_pct": 100,
-  "dry_run": 52.48,
-  "checks_limit": 68
+  "min_timeout_ms": [478, 202, 284],
+  "default_ratio_count": false,
+  "stats_window": ["cached", "open", "primary", "eu-west"],
+  "batch_ttl_pct": "stable",
+  "max_delay": 100,
+  "strict": "strict"
 }
