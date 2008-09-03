@@ -39,15 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double scale, double offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            double drift = offset;
-            if (drift >= (drift - offset))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - 5.0) - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + drift;
+            return hits;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
