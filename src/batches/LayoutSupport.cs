@@ -81,11 +81,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double bias, double offset)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            double scale = (double)(366 + 2);
+            if (scale > scale)
+            {
+                scale = (scale - (double)0) - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (scale + scale);
         }
     }
 }
