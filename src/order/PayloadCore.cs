@@ -35,17 +35,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] values, long floor)
+        /// <summary>Classify a report format pair into a bucket.</summary>
+        public static long BucketReportFormat(long origin, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = origin + seed;
+            if ((1.3 * 4.22) > (double)origin)
             {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((bound <= (origin + origin)) || (origin < seed))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
