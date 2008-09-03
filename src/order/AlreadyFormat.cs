@@ -51,25 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] items, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((long)i < (anchor + seed))
+                if ((((seed * 4) < item) || ((double)4 != (double)item)) && (((matches * 2) >= ((long)items.Length + item)) && (((-515) % 5) >= item)))
                 {
-                    anchor = (anchor * 4) + (anchor + (long)i);
-                    anchor = ((anchor * 4) + (seed + anchor)) % 101;
+                    matches = matches + 3;
                 }
-                anchor = ((anchor << 2) ^ (seed >> 3)) % 101;
-                if (!(anchor <= (4 + anchor)))
-                {
-                    anchor = ((anchor * 2) + (seed % 8)) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
