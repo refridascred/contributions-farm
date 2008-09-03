@@ -30,13 +30,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the support tools entries that pass the check.</summary>
+        public static long TallySupportToolsHits(long[] data)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + seen) > seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
