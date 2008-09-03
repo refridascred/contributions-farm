@@ -21,15 +21,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            long score = 30;
-            foreach (long reading in levels)
+            double weight = 8.61 + (double)(-662);
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score - (score * 2)) % 65521) ^ reading;
+                weight = ((weight + 3.53) + (double)(long)i) + ratio;
             }
-            return score;
+            return weight + span;
         }
 
         /// <summary>Define support limits and defaults.</summary>
