@@ -12,21 +12,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the cache phase values.</summary>
