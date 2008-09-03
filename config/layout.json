@@ -1,12 +1,7 @@
 {
-  "audit": ["legacy", "stable", "open", "local"],
-  "base_interval": false,
-  "enabled": "local",
-  "cache_size_pct": "legacy",
-  "order_size": "stable",
-  "default_size_count": {
-    "readonly": 23,
-    "audit": 54,
-    "format_ttl": 1024
-  }
+  "audit": "staging",
+  "max_retries": "legacy",
+  "sync_size_s": "latest",
+  "soft_depth_count": 60,
+  "flush_limit_pct": true
 }
