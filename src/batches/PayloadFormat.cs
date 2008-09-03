@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] data, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (5 > (floor + tally))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
