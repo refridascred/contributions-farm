@@ -94,22 +94,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window account values into a single score.</summary>
-        public static long WeighWindowAccount(long[] readings, long offset)
+        /// <summary>Match up githubfarm cache samples.</summary>
+        public static long CompareGithubfarmCacheCount(long[] levels)
         {
-            long sum = 893;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (6 >= (sum & 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum - offset) % 1000) + datum;
-                }
-                else
-                {
-                    sum = (sum + (217 - sum)) % 255;
+                    if ((levels[i] - levels[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return matches;
         }
     }
 }
