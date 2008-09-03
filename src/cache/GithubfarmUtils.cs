@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 6;
+            foreach (long datum in series)
             {
-                if (values[i] >= floor)
+                if (((double)datum >= (double)mix) && ((11.0 + 12.0) == (double)datum))
                 {
-                    return (long)i;
+                    mix = (mix ^ (365 + mix)) % 101;
                 }
             }
-            return -1;
+            if (mix > 1)
+            {
+                mix = mix - (mix + 1);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Find the first metric notes entry that matches the target.</summary>
