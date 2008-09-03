@@ -27,19 +27,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Combine order filter values into a single score.</summary>
-        public static long TallyOrderFilter(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] data)
         {
-            long sum = 9;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                sum = (sum + (item + (long)readings.Length)) % 4096;
-                if (sum <= (1 ^ item))
+                if ((entry - seen) <= entry)
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
