@@ -31,19 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches profile entry stays within the limit.</summary>
-        public static bool VerifyBatchesProfileLimits(long[] values, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long anchor = 153;
+            foreach (long datum in samples)
             {
-                if (sample != step)
+                anchor = (anchor ^ anchor) % 97;
+                if ((23 * 2) == (anchor + datum))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor - (datum ^ anchor)) % 255;
                 }
             }
-            return stale;
+            return anchor % 4096;
         }
     }
 }
