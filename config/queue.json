@@ -1,5 +1,5 @@
 {
-  "strict": 87,
-  "burst_delay": "blue",
-  "audit": 53
+  "retry_threshold_s": 60,
+  "hard_threshold_pct": "green",
+  "flush_limit_ms": "latest"
 }
