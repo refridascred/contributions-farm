@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public double Level { get; set; }
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitBudget = 2500;
+        public const long MaxReport = 5275;
+        public const string StepBudget = "staging";
+        public const long RetryReport = 1652;
+        public const string BaseTimeout = "fallback";
 
         /// <summary>Grade a stream notes value against two limits.</summary>
         public static long ClassifyStreamNotes(long bound, long floor)
