@@ -26,19 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(result <= (result - result)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result + result;
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Blend two support context measurements.</summary>
