@@ -20,11 +20,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
+            New,
+            Stale,
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Project the next profile stream value.</summary>
