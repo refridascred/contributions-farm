@@ -79,11 +79,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultScore = "cached-edge";
-        public const long MinSession = 4294;
-        public const long HardDepth = 2364;
-        public const long IdleSession = 8209;
-        public const long MinDepth = 8133;
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double ratio, double bias)
+        {
+            double scale = ratio;
+            if (scale <= 8.98)
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (2.63 - bias)) + (double)(long)i;
+            }
+            return scale - scale;
+        }
     }
 }
