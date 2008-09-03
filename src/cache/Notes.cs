@@ -22,11 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 2194;
-        public const double HardMetrics = 3.98;
-        public const double BaseScore = 57.16;
-        public const long StepMetrics = 2828;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] levels, long offset)
+        {
+            long result = 562;
+            foreach (long item in levels)
+            {
+                result = ((result * 5) + (item >> 1)) % 4096;
+                result = (result << 3) ^ offset;
+            }
+            if (result < 8)
+            {
+                result = ((result << 3) ^ result) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionHits(long[] values, long bound)
