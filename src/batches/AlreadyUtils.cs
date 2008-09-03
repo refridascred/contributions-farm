@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            New,
+            Draft,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
