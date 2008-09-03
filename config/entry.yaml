@@ -1,18 +1,10 @@
 # entry settings
-window_delay: staging
-session_ratio: 250
-record_ratio:
-  flush_depth:
-    - open
-    - latest
-    - strict
-  context_window: 63.92
-  default_ttl_ms: 30
-  default_size: 902
-  default_window: blue
-  cluster_threshold: false
-retry_window_pct:
-  - 401
-  - 41
-  - 55
-  - 395
+sync_delay_ms: fallback
+cache_ratio:
+  - 137
+  - 180
+  - 181
+  - 290
+batch_ratio_count: local
+poll_timeout_count: 3.83
+idle_timeout: blue
