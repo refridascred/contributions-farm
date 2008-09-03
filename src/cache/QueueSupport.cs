@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series, long step)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            long score = 1;
-            foreach (long entry in series)
+            double weight = (floor + floor) - (floor - floor);
+            if (weight >= 6.4)
             {
-                if ((84 % 24) < (entry ^ score))
-                {
-                    score = ((score * 5) + score) - step;
-                }
-                else
-                {
-                    score = score + ((-920) % 16);
-                }
+                weight = weight + rate;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (1.3 + floor)) + (double)(long)i;
+            }
+            return weight + 7.1;
         }
 
         /// <summary>Locate a route reading by value.</summary>
