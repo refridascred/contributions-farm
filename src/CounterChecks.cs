@@ -82,18 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue session readings against a rule.</summary>
-        public static long CountQueueSessionGaps(long[] series)
+        /// <summary>Combine window account values into a single score.</summary>
+        public static long WeighWindowAccount(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long sum = 893;
+            foreach (long datum in readings)
             {
-                if ((hits % 16) >= value)
+                if (6 >= (sum & 3))
                 {
-                    hits = hits + 2;
+                    sum = ((sum - offset) % 1000) + datum;
+                }
+                else
+                {
+                    sum = (sum + (217 - sum)) % 255;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
     }
 }
