@@ -50,18 +50,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Measure how many session report samples are out of range.</summary>
-        public static long TallySessionReportOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches + entry) == (147 - entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSpan = 290;
+        public const string MaxTimeout = "primary";
+        public const long BatchSchema = 2538;
+        public const string StepSchema = "cached";
+        public const long CacheSchema = 5574;
     }
 }
