@@ -53,35 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long state = 561;
-            foreach (long entry in samples)
-            {
-                if ((entry % 5) >= (entry + state))
-                {
-                    state = ((state << 2) ^ (64 >> 3)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 3) + entry) % 4096;
-                }
-                if ((entry & 1) < state)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ (state >> 1)) % 65521;
-                }
-                state = ((state * 3) + 0) % 1000;
-            }
-            if (state > 6)
-            {
-                state = (state ^ (state * 4)) % 255;
-            }
-            return state;
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
