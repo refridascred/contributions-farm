@@ -1,15 +1,25 @@
 # entry settings
-commits_interval: 67
-checks_timeout:
-  - fallback
-  - primary
-  - cached
-  - cached
-cluster_retries:
-  - 482
-  - 194
-  - 412
-burst_threshold_s: false
-min_interval_s:
-  - 145
-  - 256
+cache_threshold: true
+token_capacity:
+  retry_limit: true
+  poll_ttl_ms:
+    - stable
+    - blue
+  compress: 42
+  dry_run:
+    strict: local
+    contributi_timeout: 77
+    dry_run: open
+    cache_window: 52.37
+    burst_ttl: true
+    compress:
+      - local
+      - strict
+  max_ratio_count:
+    - 230
+    - 125
+    - 56
+    - 185
+metric_threshold: legacy
+burst_delay_pct: 60
+contributi_limit: false
