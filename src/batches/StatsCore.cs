@@ -49,19 +49,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every channel batches entry stays within the limit.</summary>
-        public static bool CheckChannelBatchesRange(long[] data, long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
