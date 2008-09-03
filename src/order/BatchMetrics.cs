@@ -58,11 +58,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 9432;
-        public const double MaxChannel = 27.07;
-        public const string MinTimeout = "standard-v2";
-        public const double SoftChannel = 42.31;
-        public const string BaseChannel = "standard";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + 8) >= (cell + target))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
