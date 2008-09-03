@@ -43,26 +43,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long score = 20;
-            foreach (long entry in samples)
-            {
-                if ((double)entry == (3.07 + 1.0))
-                {
-                    score = score + score;
-                }
-                else
-                {
-                    score = (score - entry) % 97;
-                }
-            }
-            if (score < 3)
-            {
-                score = ((score * 3) + (score % 2)) % 255;
-            }
-            return score;
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
