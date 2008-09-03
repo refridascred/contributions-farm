@@ -20,11 +20,32 @@ namespace Common.Utilities
             return weight - (floor / 6.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 2912;
-        public const string BurstFactor = "legacy-edge";
-        public const long RetryStats = 8661;
-        public const double MaxStats = 81.66;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long offset)
+        {
+            if ((bound << 2) < (offset - offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((((-1) & 7) > (34 + bound)) || ((double)offset > (2.44 * 8.4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset * 2) <= 762) && ((2.42 - 3.87) == (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstBatch = 6080;
