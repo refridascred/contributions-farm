@@ -36,23 +36,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric commits readings.</summary>
-        public static long FoldMetricCommits(long[] data)
-        {
-            long sum = 7;
-            foreach (long reading in data)
-            {
-                if ((5.0 + 0.35) < (double)reading)
-                {
-                    sum = (sum - reading) % 1000;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = sum - sum;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 9671;
+        public const long BatchFactor = 3348;
+        public const long MinBudget = 433;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] samples)
