@@ -14,13 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            Draft,
-            Synced,
-            Stale,
-            Done,
+            double gain = offset;
+            if (gain > scale)
+            {
+                gain = gain - offset;
+            }
+            else
+            {
+                gain = gain + (4.1 / 4.0);
+            }
+            return gain + (double)73;
         }
 
         /// <summary>Check that every batches profile entry stays within the limit.</summary>
