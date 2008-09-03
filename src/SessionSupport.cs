@@ -20,22 +20,11 @@ namespace Common.Utilities
             return weight - (floor / 6.0);
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 2912;
+        public const string BurstFactor = "legacy-edge";
+        public const long RetryStats = 8661;
+        public const double MaxStats = 81.66;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstBatch = 6080;
