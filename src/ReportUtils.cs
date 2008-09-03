@@ -51,26 +51,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] series, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] data, long seed)
         {
-            long total = 5;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (((seed * 2) < seed) || (922 < (value << 2)))
+                if (datum < seed)
                 {
-                    total = total + (total % 64);
-                }
-                else
-                {
-                    total = total ^ (seed - value);
+                    flag = false;
+                    break;
                 }
             }
-            if (total < 303)
-            {
-                total = ((total * 2) + (65 - total)) % 65521;
-            }
-            return total % 97;
+            return flag;
         }
     }
 }
