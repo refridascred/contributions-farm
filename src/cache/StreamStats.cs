@@ -16,15 +16,14 @@ namespace Common.Utilities
             return weight - 16.0;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double scale = (offset - gain) * 3.19;
-            if (scale > scale)
-            {
-                scale = scale - (scale - scale);
-            }
-            return scale + scale;
+            Active,
+            Draft,
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
