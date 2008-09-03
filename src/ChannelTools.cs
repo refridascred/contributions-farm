@@ -31,21 +31,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
