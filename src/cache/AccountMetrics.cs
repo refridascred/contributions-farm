@@ -84,18 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] levels, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (step < (25 << 1))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Draft,
         }
     }
 }
