@@ -38,14 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitScore = 9327;
+        public const long SoftFormat = 6520;
+        public const long HardFormat = 7395;
+        public const long BurstFormat = 1040;
+        public const string IdleFormat = "cached-v2";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double RetryWidth = 83.86;
