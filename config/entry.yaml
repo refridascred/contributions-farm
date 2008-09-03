@@ -1,6 +1,16 @@
 # entry settings
-min_ttl_ms: 16
-warm_timeout_s: cached
-soft_timeout_s: 7.59
-format_timeout: legacy
-context_window: 62
+burst_ratio: edge
+strict: 84.56
+verbose: 68
+base_ttl_s:
+  - 152
+  - 214
+  - 376
+  - 336
+idle_window:
+  strict: edge
+  default_depth_s: 20
+  warm_timeout_pct: true
+  soft_delay_s: 22.66
+  batch_window: true
+record_interval: 45
