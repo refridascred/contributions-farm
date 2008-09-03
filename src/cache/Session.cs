@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 67.71;
-        public const long CacheLevel = 2387;
-        public const long HardRoute = 4895;
-        public const double MinBudget = 34.96;
-        public const long BurstRoute = 3875;
+        /// <summary>Iterate the channel route series from a seed.</summary>
+        public static long SeriesChannelRoute(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (sum ^ ((long)i2 - (long)i)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheAlready = 86.27;
