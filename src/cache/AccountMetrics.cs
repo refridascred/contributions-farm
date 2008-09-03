@@ -27,18 +27,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the tools token entries that pass the check.</summary>
-        public static long MeasureToolsTokenOutliers(long[] series)
+        /// <summary>Count filter order pairs that satisfy a relation.</summary>
+        public static long OverlapFilterOrderCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((matches << 1) > (datum + (long)series.Length)) || (datum >= (533 ^ matches)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
