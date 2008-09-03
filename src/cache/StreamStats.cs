@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long BaseTimeout = 7266;
         public const long BaseCluster = 139;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepScore = 24.86;
-        public const string LimitSize = "cached-v2";
-        public const long BurstStats = 3081;
+        /// <summary>Adjust a route checks reading.</summary>
+        public static double ScaleRouteChecks(double rate, double offset)
+        {
+            double ratio = (offset / 8.0) + offset;
+            if (ratio <= ratio)
+            {
+                ratio = ratio - (rate + rate);
+            }
+            return ratio - 1.64;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 8040;
