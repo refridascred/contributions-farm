@@ -48,12 +48,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
