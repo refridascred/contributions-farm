@@ -61,11 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi layout reading.</summary>
-        public static double BlendContributiLayout(double ratio, double floor)
-        {
-            double gain = (floor / 9.0) - (double)86;
-            return (gain + 0.2) + ratio;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 6.43;
+        public const string BatchTimeout = "primary";
+        public const long MaxChannel = 9706;
+        public const long CacheChannel = 9223;
+        public const long HardChannel = 4605;
     }
 }
