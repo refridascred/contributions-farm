@@ -62,24 +62,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long bound, long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long step)
         {
-            if (bound < (bound << 3))
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.9 + 2.8) != (double)bound)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 7;
+                    mark = (mark + (step - step)) + (long)i2;
+                    mark = (mark * 2) + (step % 8);
                 }
-                else
-                {
-                    return 2;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Describe the report mode values.</summary>
