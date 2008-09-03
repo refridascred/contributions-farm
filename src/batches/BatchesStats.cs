@@ -15,12 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches & 15) > (reading * 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count queue command pairs that satisfy a relation.</summary>
