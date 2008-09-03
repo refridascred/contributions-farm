@@ -38,12 +38,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double bias, double bias2)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            double drift = bias2;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - bias2;
         }
 
         /// <summary>Describe the batches class values.</summary>
