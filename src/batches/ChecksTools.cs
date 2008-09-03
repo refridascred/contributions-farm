@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Derive the next report metrics value from a seed.</summary>
+        public static long DeriveReportMetrics(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((offset + anchor) != (anchor % 3))
                 {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor + (offset << 2)) % 97;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
