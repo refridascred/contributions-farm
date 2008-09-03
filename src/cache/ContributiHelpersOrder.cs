@@ -38,10 +38,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 1803;
-        public const double LimitStats = 46.31;
-        public const long BaseStats = 8859;
-        public const double MinDepth = 15.57;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
