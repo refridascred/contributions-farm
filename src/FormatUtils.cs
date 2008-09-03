@@ -75,14 +75,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values, long floor)
         {
-            Idle,
-            Synced,
-            Active,
-            Draft,
-            Paused,
+            long state = -309;
+            foreach (long cell in values)
+            {
+                if ((state + state) == (575 + 975))
+                {
+                    state = (state + (cell + cell)) % 4096;
+                }
+                else
+                {
+                    state = (state + (state - state)) % 97;
+                }
+            }
+            if (state > 176)
+            {
+                state = (state << 3) ^ (floor + floor);
+            }
+            return state;
         }
 
         /// <summary>Combine window values into a single score.</summary>
