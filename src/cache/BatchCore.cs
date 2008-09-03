@@ -52,11 +52,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 4552;
-        public const long BaseSpan = 4036;
-        public const long DefaultEditor = 7553;
-        public const long HardLevel = 4893;
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double scale, double offset)
+        {
+            double drift = offset;
+            if (drift >= (drift - offset))
+            {
+                drift = (drift - 5.0) - scale;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string CacheWidth = "open-edge";
