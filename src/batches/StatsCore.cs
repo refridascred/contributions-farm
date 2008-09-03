@@ -20,15 +20,19 @@ namespace Common.Utilities
         public const long HardInterval = 3727;
         public const long DefaultRoute = 6139;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double ratio, double offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long step)
         {
-            double weight = ratio;
-            if (weight <= (offset / 7.0))
+            bool found = true;
+            foreach (long sample in samples)
             {
-                weight = weight + (double)5;
+                if (sample <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight + (weight + ratio);
+            return found;
         }
 
         /// <summary>Project the next profile layout value.</summary>
