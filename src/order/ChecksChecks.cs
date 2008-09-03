@@ -54,9 +54,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 7313;
-        public const long BaseCount = 2782;
-        public const long RetryTimeout = 7749;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetrySpan = "latest";
+        public const long HardBudget = 5553;
+        public const double MinFilter = 32.28;
+        public const long MaxFilter = 7438;
+        public const long BurstFilter = 9459;
     }
 }
