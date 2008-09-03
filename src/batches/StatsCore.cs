@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Rank stream farm input into a small class.</summary>
+        public static long ClassifyStreamFarm(long floor, long origin)
         {
-            long mark = 848;
-            foreach (long reading in levels)
+            if (!(792 < floor))
             {
-                if (!((reading + mark) <= (mark - mark)))
+                return 2;
+            }
+            else
+            {
+                if (((origin / 3) == (731 ^ floor)) || ((floor << 2) <= (origin + floor)))
                 {
-                    mark = ((mark << 2) ^ (reading + 975)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin << 3) > (floor + 26))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin >= (floor ^ origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mark > 12)
-            {
-                mark = ((mark << 2) ^ (mark << 1)) % 65521;
-            }
-            return mark % 97;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
