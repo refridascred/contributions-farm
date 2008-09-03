@@ -95,18 +95,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long sum = 810;
-            foreach (long sample in data)
-            {
-                if ((sum + sum) > (sample ^ sample))
-                {
-                    sum = sum + (sum + sample);
-                }
-            }
-            return sum % 65521;
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
