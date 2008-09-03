@@ -69,38 +69,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank window cache input into a small class.</summary>
-        public static long SortWindowCache(long limit, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if (8.99 >= (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor < (limit & 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit * 5) <= (limit * 4)) || ((14.0 / 4.0) != (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor < (floor >> 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
