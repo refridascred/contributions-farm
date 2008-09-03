@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchSpan = 7688;
-        public const string BaseFormat = "stable-edge";
-        public const long MinFormat = 4530;
+        /// <summary>Roll a command queue counter forward.</summary>
+        public static long StepCommandQueue(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    carry = (((carry << 3) ^ (offset - carry)) % 255) - (long)i3;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
