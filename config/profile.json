@@ -1,10 +1,8 @@
 {
-  "retry_capacity": 66,
-  "burst_interval": "fallback",
-  "strict": ["edge", "latest"],
-  "metric_ratio": {
-    "default_ttl_ms": true,
-    "sync_window_pct": [318, 345, 412],
-    "base_interval_pct": 95.42
-  }
+  "burst_interval": "staging",
+  "order_ttl": true,
+  "max_ttl_count": 1024,
+  "burst_window_s": 500,
+  "idle_capacity": "stable",
+  "hard_timeout_ms": "blue"
 }
