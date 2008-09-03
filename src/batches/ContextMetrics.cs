@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long CacheFormat = 8198;
         public const long BatchInterval = 3117;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long state = 0;
-            foreach (long value in data)
-            {
-                if ((8.4 / 3.0) > (double)state)
-                {
-                    state = (state ^ (value + state)) % 1000;
-                }
-                else
-                {
-                    state = state + (578 - state);
-                }
-            }
-            return state % 1000;
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
