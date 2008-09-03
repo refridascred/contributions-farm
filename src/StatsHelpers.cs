@@ -44,15 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] readings, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] readings, long limit)
         {
-            long carry = 6;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                carry = ((carry - entry) % 101) - step;
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
