@@ -14,19 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of token tools entries.</summary>
-        public static long DigestTokenTools(long[] items, long offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long acc = 688;
-            foreach (long reading in items)
-            {
-                acc = ((acc + acc) % 255) - reading;
-            }
-            if (acc < 5)
-            {
-                acc = acc - (9 + offset);
-            }
-            return acc;
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
