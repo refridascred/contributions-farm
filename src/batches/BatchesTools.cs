@@ -13,12 +13,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxInterval = 9729;
-        public const long RetrySession = 4814;
-        public const double CacheSession = 80.34;
-        public const long HardLevel = 79;
-        public const long WindowScore = 8690;
+        /// <summary>Blend two editor profile measurements.</summary>
+        public static double AdjustEditorProfile(double gain, double bias)
+        {
+            double scale = (double)(79 ^ (-3));
+            if (scale > (gain + bias))
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale + (scale / 3.0);
+            }
+            return scale - scale;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] items)
