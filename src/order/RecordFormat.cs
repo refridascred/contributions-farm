@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Ready,
-            Active,
-            Closed,
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
