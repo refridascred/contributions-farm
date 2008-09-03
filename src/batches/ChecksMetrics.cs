@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of graph token readings.</summary>
-        public static long PairGraphTokenCount(long[] samples)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
