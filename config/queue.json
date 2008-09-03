@@ -1,7 +1,6 @@
 {
-  "verbose": "edge",
-  "batch_timeout": 1024,
-  "window_limit": 38.35,
-  "default_ratio_s": 7,
-  "batch_delay_pct": "standard"
+  "cache_ratio": 91,
+  "retry_ttl_ms": 250,
+  "dry_run": ["green", "strict"],
+  "retry_limit_ms": "eu-west"
 }
