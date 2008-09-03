@@ -15,19 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double rate, double bias)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] series)
         {
-            double bias2 = (double)(719 * 3);
-            if (bias2 < (double)0)
+            long carry = 675;
+            foreach (long value in series)
             {
-                bias2 = bias2 - (bias - bias);
+                if ((5.3 + 8.0) == (double)value)
+                {
+                    carry = carry ^ (51 * 2);
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (carry > 336)
             {
-                bias2 = (bias2 + rate) + (double)(long)i;
+                carry = ((carry * 3) + carry) % 97;
             }
-            return bias2 + 14.0;
+            return carry % 97;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
