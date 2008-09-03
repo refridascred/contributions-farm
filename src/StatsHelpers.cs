@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a channel contributi pair into a bucket.</summary>
-        public static long SortChannelContributi(long seed, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] values)
         {
-            long step = seed - origin;
-            if (!((origin + seed) <= origin))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.6 + 5.4) < (double)origin)
+                if ((790 + entry) >= 801)
                 {
-                    return 7;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((double)origin == (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((19 % 64) < step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a token snapshot.</summary>
