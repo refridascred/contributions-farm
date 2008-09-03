@@ -62,18 +62,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long bound, long offset)
         {
-            long mark = 4;
-            foreach (long datum in samples)
+            if (bound < (bound << 3))
             {
-                if ((mark + datum) >= (datum % 2))
+                return 6;
+            }
+            else
+            {
+                if ((4.9 + 2.8) != (double)bound)
                 {
-                    mark = ((mark ^ (datum % 8)) % 65521) + offset;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return mark;
         }
 
         /// <summary>Blend two farm window measurements.</summary>
