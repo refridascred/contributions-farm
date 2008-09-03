@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long origin)
+        /// <summary>Iterate the graph checks series from a seed.</summary>
+        public static long RollGraphChecks(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] > origin)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    carry = (carry ^ (limit & 7)) + (long)i2;
+                    carry = (carry + (limit + limit)) % 4096;
                 }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    carry = ((carry - (limit + carry)) % 4096) - (long)i3;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
