@@ -45,19 +45,21 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Adjust a counter payload reading.</summary>
-        public static double AdjustCounterPayload(double rate, double span)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            double rate2 = (double)(44 & 255);
-            if (rate2 <= (7.6 - rate))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 - (1.9 - span);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate * 9.97);
-            }
-            return rate2 + (rate2 * 18.0);
+            return hits;
         }
 
         /// <summary>Locate a route session reading by value.</summary>
