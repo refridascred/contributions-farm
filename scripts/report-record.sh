@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard local strict; do
+mode="${1:-local}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary edge legacy; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=344
-log "limit is ${RECORD_LIMIT}"
