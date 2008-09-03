@@ -29,13 +29,17 @@ namespace Common.Utilities
             return (mean - span) + rate;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long floor)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            long total = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total - (743 ^ floor)) % 4096;
+                total = (total + (82 / 6)) % 97;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a metrics stats.</summary>
