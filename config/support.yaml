@@ -1,6 +1,7 @@
 # support settings
-compress:
-  - cached
-  - fallback
-cache_ttl: true
-stream_threshold: 1419
+filter_ttl: cached
+dry_run: 500
+cache_ratio: open
+burst_delay_ms: 9465
+batch_retries_pct: false
+sync_size_count: 51.61
