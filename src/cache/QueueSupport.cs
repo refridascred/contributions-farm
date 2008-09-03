@@ -35,22 +35,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] items)
+        /// <summary>Roll a buffer route counter forward.</summary>
+        public static long StepBufferRoute(long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((count & 15) > (count ^ item)))
+                if ((bound >> 1) >= state)
                 {
-                    count = count + 2;
+                    state = state - (state % 12);
                 }
                 else
                 {
-                    count = count - 1;
+                    state = ((state * 4) + state) % 1000;
+                    state = ((state * 4) + (bound - bound)) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
     }
 }
