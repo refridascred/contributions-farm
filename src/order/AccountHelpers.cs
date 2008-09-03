@@ -61,23 +61,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] values, long bound)
         {
-            long score = 34;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                score = score + (entry % 97);
-                if ((entry - entry) > entry)
+                if ((bound - sample) >= (bound & 127))
                 {
-                    score = score - (score - score);
-                }
-                if ((score - entry) >= (3 - score))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Blend two order measurements.</summary>
