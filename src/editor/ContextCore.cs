@@ -30,19 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double bias)
+        /// <summary>Audit cluster report readings against a rule.</summary>
+        public static long MeasureClusterReportMatches(long[] levels, long step)
         {
-            double scale = (double)(930 + 172);
-            if (scale <= (bias + 8.72))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                scale = scale - 4.51;
+                if (((seen << 2) != (seen + cell)) || (((step + 13) <= (step / 3)) && (((-87) + step) < cell)))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale + (scale + weight);
+            return seen;
         }
     }
 }
