@@ -96,16 +96,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark << 2) ^ (origin / 6);
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
