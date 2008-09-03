@@ -50,17 +50,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a stats report counter forward.</summary>
-        public static long IterateStatsReport(long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long acc = 2;
+            foreach (long item in data)
             {
-                result = (result + result) % 255;
-                result = (result ^ (result ^ (long)i)) % 255;
-                result = ((result * 2) + (long)i) % 101;
+                acc = (acc ^ (seed << 1)) - item;
             }
-            return result;
+            return acc % 97;
         }
     }
 }
