@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "primary-v2";
+        public const string BaseSpan = "primary-v2";
+        public const long WindowProfile = 835;
+        public const long MinProfile = 4719;
 
         /// <summary>Measure how many window notes samples are out of range.</summary>
         public static long MeasureWindowNotesMatches(long[] values)
