@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Grade a stats checks value against two limits.</summary>
+        public static long GradeStatsChecks(long target, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long delta = target + seed;
+            if ((double)75 <= (double)target)
             {
-                score = ((score * 3) + (long)i) % 101;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (2 > (40 + delta))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (6 <= (seed * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)seed >= (18.0 - 6.3)) && ((seed * 3) < seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
