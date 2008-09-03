@@ -34,19 +34,39 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double ratio, double offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long seed, long limit)
         {
-            double mean = ratio / 2.0;
-            if (mean >= (double)422)
+            long edge = seed + limit;
+            if ((double)limit < (1.6 + 18.0))
             {
-                mean = mean - mean;
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean + (double)2) - (double)(long)i;
+                if (4 >= (limit % 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((edge << 2) < (seed % 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((limit - seed) > seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return mean + (offset - ratio);
         }
     }
 }
