@@ -12,21 +12,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Failed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the farm phase values.</summary>
