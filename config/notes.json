@@ -1,5 +1,5 @@
 {
-  "burst_limit_ms": 26,
-  "already_depth": 17.63,
-  "readonly": "staging"
+  "base_capacity": 1991,
+  "burst_interval": 250,
+  "idle_window_s": false
 }
