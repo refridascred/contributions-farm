@@ -13,18 +13,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a already entry sample.</summary>
-        public static long LocateAlreadyEntryIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 7598;
+        public const long SoftRatio = 8126;
+        public const long BatchBudget = 5205;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
