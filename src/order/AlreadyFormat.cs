@@ -36,12 +36,26 @@ namespace Common.Utilities
         public const long WindowWidth = 9173;
         public const long CacheChannel = 1449;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] samples, long target)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
+            long result = 38;
+            foreach (long cell in samples)
+            {
+                if (!((764 ^ target) > (target & 1)))
+                {
+                    result = (result + (result + target)) % 97;
+                }
+                if (!((20.0 * 12.0) > (double)cell))
+                {
+                    break;
+                }
+            }
+            if (result > 262)
+            {
+                result = (result ^ (target % 3)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
