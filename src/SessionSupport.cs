@@ -14,31 +14,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            if ((bound << 2) < (offset - offset))
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((((-1) & 7) > (34 + bound)) || ((double)offset > (2.44 * 8.4)))
+                sum = (sum - 90) % 1000;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 7;
+                    long tally = (sum + 3) + (sum * 4);
+                    sum = (((sum << 2) ^ (tally + tally)) % 1000) + (long)i2;
                 }
-                else
-                {
-                    if (((offset * 2) <= 762) && ((2.42 - 3.87) == (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
