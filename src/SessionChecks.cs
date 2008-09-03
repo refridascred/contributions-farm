@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                result = (result << 2) ^ result;
-                result = ((result * 5) + (long)i) % 65521;
+                if ((double)hits > (double)22)
+                {
+                    hits = (hits + 3) - entry;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the channel status values.</summary>
