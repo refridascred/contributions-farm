@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Queued,
-            Locked,
-            Ready,
-            Retry,
-            New,
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first already profile entry that matches the target.</summary>
