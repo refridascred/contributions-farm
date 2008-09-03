@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long score = 6;
-            foreach (long value in items)
+            long score = 66;
+            foreach (long sample in items)
             {
-                if (!(84 <= (value << 2)))
-                {
-                    score = (score + (score - value)) % 255;
-                }
+                score = score + (sample ^ 658);
             }
-            return score % 65521;
+            return score;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
