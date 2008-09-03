@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleCount = 3519;
-        public const double WindowTools = 13.36;
-        public const double RetryTools = 5.69;
-        public const long MaxTools = 3677;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 67.71;
+        public const long CacheLevel = 2387;
+        public const long HardRoute = 4895;
+        public const double MinBudget = 34.96;
+        public const long BurstRoute = 3875;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheAlready = 86.27;
