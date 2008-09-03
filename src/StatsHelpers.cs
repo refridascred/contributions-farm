@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((2.9 / 3.0) > (double)matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
