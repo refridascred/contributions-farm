@@ -22,32 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token already samples.</summary>
-        public static long DigestTokenAlready(long[] levels)
-        {
-            long anchor = 763;
-            foreach (long cell in levels)
-            {
-                anchor = (anchor * 3) + (cell * 4);
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = ((anchor ^ anchor) % 4096) - (long)i;
-                }
-                if ((cell >> 1) == (anchor / 9))
-                {
-                    anchor = anchor + (8 ^ 295);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 6)) % 101;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = anchor ^ (0 - anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardDepth = 64.59;
+        public const string IdleScore = "fallback-1";
+        public const double BaseStats = 82.92;
+        public const string StepStats = "fallback-1";
+        public const long RetryLevel = 3131;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxSupport = 7640;
