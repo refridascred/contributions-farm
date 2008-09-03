@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long BurstSize = 4051;
         public const string BaseFactor = "legacy-edge";
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] series, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
