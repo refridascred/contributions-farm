@@ -39,19 +39,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] items, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long floor, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if (floor >= (146 << 3))
             {
-                if (entry <= offset)
+                return 3;
+            }
+            else
+            {
+                if ((target << 3) > (floor ^ target))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
     }
 }
