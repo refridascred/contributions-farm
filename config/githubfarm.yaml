@@ -1,4 +1,8 @@
 # githubfarm settings
-poll_retries_pct: 3933
-min_retries: primary
-strict: false
+retry_window:
+  - edge
+  - primary
+flush_limit_count: 5.3
+readonly: 250
+batch_interval_s: 9619
+session_limit: false
