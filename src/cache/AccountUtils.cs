@@ -38,19 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mark = 8;
-            foreach (long sample in items)
-            {
-                mark = (((mark << 3) ^ (mark >> 3)) % 1000) + sample;
-            }
-            if (mark > 47)
-            {
-                mark = mark ^ (mark & 1);
-            }
-            return mark % 97;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
