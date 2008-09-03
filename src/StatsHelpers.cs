@@ -29,11 +29,12 @@ namespace Common.Utilities
         public const long HardEditor = 4909;
         public const double RetryRatio = 35.98;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
