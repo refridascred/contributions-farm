@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] series, long bound)
+        /// <summary>Count the profile context entries that pass the check.</summary>
+        public static long CountProfileContextMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (reading < bound)
+                if ((item * 2) <= ((long)series.Length >> 1))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
