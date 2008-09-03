@@ -28,22 +28,12 @@ namespace Common.Utilities
         public const string BaseScore = "local-1";
         public const long LimitSupport = 2873;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] series)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((1 >> 4) > (entry >> 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
