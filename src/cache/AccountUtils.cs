@@ -28,11 +28,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Derive the next tools record value from a seed.</summary>
+        public static long StepToolsRecord(long bound)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                long count = bound + bound;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = (acc ^ (count % 60)) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
