@@ -53,39 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch record input into a small class.</summary>
-        public static long SortBatchRecord(long step, long bound)
-        {
-            if (((step / 2) <= (-970)) || (bound <= (bound >> 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((79 - bound) == (bound & 31))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.0 / 8.0) > (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step < (step << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 54.96;
+        public const string WindowContext = "stable";
+        public const double BatchRatio = 63.79;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] series, long target)
