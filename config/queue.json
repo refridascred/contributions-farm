@@ -1,8 +1,8 @@
 {
-  "min_timeout_ms": [478, 202, 284],
-  "default_ratio_count": false,
-  "stats_window": ["cached", "open", "primary", "eu-west"],
-  "batch_ttl_pct": "stable",
-  "max_delay": 100,
-  "strict": "strict"
+  "cache_delay": 62.37,
+  "max_ratio_s": 1024,
+  "audit": "eu-west",
+  "compress": true,
+  "base_retries_count": 90,
+  "batch_window_s": 5548
 }
