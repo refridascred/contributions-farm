@@ -41,17 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] readings, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = rate;
+            if (ratio < rate)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (double)544) - span;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a metrics stats.</summary>
