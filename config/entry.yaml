@@ -1,21 +1,6 @@
 # entry settings
-warm_limit_pct: 250
-batch_retries_ms: 6455
-support_depth: eu-west
-retry_window_ms:
-  queue_ratio: false
-  compress: blue
-  batch_window_s: standard
-  stats_depth:
-    - primary
-    - edge
-    - blue
-    - local
-  enabled: true
-  retry_threshold_ms:
-    - 481
-    - 28
-burst_delay_ms:
-  - 48
-  - 444
-  - 81
+min_ttl_ms: 16
+warm_timeout_s: cached
+soft_timeout_s: 7.59
+format_timeout: legacy
+context_window: 62
