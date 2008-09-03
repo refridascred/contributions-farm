@@ -21,13 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Idle,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseRatio = 8223;
+        public const long IdleTimeout = 6603;
+        public const long IdleToken = 8976;
+        public const long BurstToken = 6281;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordLimits(long[] samples, long limit)
