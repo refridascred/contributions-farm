@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long BaseTimeout = 7266;
         public const long BaseCluster = 139;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] levels, long bound)
         {
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
