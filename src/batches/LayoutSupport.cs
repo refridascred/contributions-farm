@@ -57,13 +57,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Scale a buffer session figure with a bias.</summary>
+        public static double ScaleBufferSession(double bias, double offset)
         {
-            Locked,
-            Paused,
-            Idle,
-            Closed,
+            double weight = offset;
+            if (weight < (weight * 1.05))
+            {
+                weight = weight + (double)62;
+            }
+            else
+            {
+                weight = weight + 1.3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight - (13.0 * 0.8);
         }
 
         /// <summary>Fold a list of notes readings.</summary>
