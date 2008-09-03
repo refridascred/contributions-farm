@@ -31,11 +31,18 @@ namespace Common.Utilities
             return weight + (weight + ratio);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 1329;
-        public const long HardChannel = 7096;
-        public const long DefaultSize = 7547;
-        public const long DefaultChannel = 3112;
+        /// <summary>Locate a stats metrics reading by value.</summary>
+        public static long FindStatsMetricsIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
