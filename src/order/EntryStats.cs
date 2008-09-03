@@ -12,13 +12,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            New,
-            Draft,
-            Queued,
+            Stale,
+            Dropped,
             Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
