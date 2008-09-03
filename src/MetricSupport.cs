@@ -13,12 +13,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheWidth = "open";
-        public const double MinWidth = 29.91;
-        public const double HardPayload = 66.11;
-        public const long RetryTimeout = 4559;
-        public const long MinPayload = 1348;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleSpan = 9876;
