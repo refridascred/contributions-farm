@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Dropped,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
