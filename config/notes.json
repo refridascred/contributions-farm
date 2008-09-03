@@ -1,5 +1,8 @@
 {
-  "order_interval": 250,
-  "sync_ratio": ["standard", "stable", "latest"],
-  "flush_limit_s": 8061
+  "warm_size_ms": [214, 68],
+  "contributi_delay": 30,
+  "buffer_ratio": "blue",
+  "order_retries": 1024,
+  "context_depth": "latest",
+  "editor_window": false
 }
