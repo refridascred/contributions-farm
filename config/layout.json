@@ -1,5 +1,8 @@
 {
-  "strict": false,
-  "cache_limit_pct": 63.27,
-  "hard_timeout": false
+  "idle_delay": 250,
+  "poll_retries_s": "open",
+  "base_retries": 49,
+  "cache_ratio_pct": "latest",
+  "retry_capacity_pct": "legacy",
+  "notes_ratio": ["green", "primary"]
 }
