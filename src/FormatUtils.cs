@@ -55,32 +55,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long floor, long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long lane = floor - target;
-            if (((double)lane <= (1.0 / 8.0)) || ((double)lane == (double)floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((lane * 2) < (target << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)target > (double)(-579)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
