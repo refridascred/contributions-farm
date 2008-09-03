@@ -14,22 +14,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum - 90) % 1000;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    long tally = (sum + 3) + (sum * 4);
-                    sum = (((sum << 2) ^ (tally + tally)) % 1000) + (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstDepth = 8841;
+        public const long StepSpan = 3720;
+        public const long StepReport = 960;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
