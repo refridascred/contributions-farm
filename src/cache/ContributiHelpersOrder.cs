@@ -20,23 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double rate, double span)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples, long step)
         {
-            double mean = rate;
-            if (mean > (span + mean))
+            long result = 440;
+            foreach (long entry in samples)
             {
-                mean = mean - span;
+                if ((double)5 > (double)entry)
+                {
+                    result = ((result ^ 8) % 1000) - step;
+                }
+                if (!((long)samples.Length != (entry - 40)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 8.4) + (double)(long)i;
-            }
-            return mean + (mean - rate);
+            return result % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
