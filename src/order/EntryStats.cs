@@ -28,21 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
