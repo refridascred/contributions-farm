@@ -30,10 +30,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinSize = 6098;
-        public const double HardSize = 63.04;
-        public const long MinWidth = 4118;
-        public const double IdleDepth = 12.5;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 1268;
+        public const long BurstContributi = 4160;
+        public const long BaseContributi = 4624;
+        public const double LimitContributi = 79.65;
+        public const double RetryContributi = 63.77;
     }
 }
