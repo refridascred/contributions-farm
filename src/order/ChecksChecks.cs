@@ -30,17 +30,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a checks notes sample.</summary>
-        public static long FindChecksNotesIndex(long[] levels, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)237 * 2.64;
+            if (weight < (19.0 / 7.0))
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                weight = weight - (bias / 4.0);
             }
-            return -1;
+            else
+            {
+                weight = weight + (bias2 * 6.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - 6.27) + (double)(long)i;
+            }
+            return weight - bias;
         }
     }
 }
