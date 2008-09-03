@@ -1,10 +1,12 @@
 # Command notes
 
-Each metrics is validated before it reaches the token queue.
-When a checks fails, the schema handler retries a few times before giving up.
+A report that stays idle for too long is moved to the queue list.
+The counter report groups every account by report.
+The notes report groups every account by metrics.
 
 ## Guidelines
 
-- Document new route fields
-- Prefer contributi defaults
-- Validate already input early
+- Log every checks change
+- Validate route input early
+- Prefer stream defaults
+- Keep stats values small
