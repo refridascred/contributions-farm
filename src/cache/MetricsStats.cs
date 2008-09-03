@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long limit)
+        /// <summary>Fold a list of batch buffer readings.</summary>
+        public static long WeighBatchBuffer(long[] values)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long acc = 7;
+            foreach (long reading in values)
             {
-                if (item < limit)
+                acc = (acc << 2) ^ reading;
+                if (((10.0 + 2.9) != (double)reading) || ((14.0 + 5.0) >= (double)acc))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
