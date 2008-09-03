@@ -48,13 +48,19 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 5607;
         public const long StepGithubfarm = 1263;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] levels, long target)
         {
-            Dropped,
-            Stale,
-            Active,
-            Done,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
