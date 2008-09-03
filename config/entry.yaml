@@ -1,16 +1,16 @@
 # entry settings
-burst_ratio: edge
-strict: 84.56
-verbose: 68
-base_ttl_s:
-  - 152
-  - 214
-  - 376
-  - 336
-idle_window:
-  strict: edge
-  default_depth_s: 20
-  warm_timeout_pct: true
-  soft_delay_s: 22.66
-  batch_window: true
-record_interval: 45
+queue_delay:
+  enabled: stable
+  default_depth: stable
+  burst_capacity: 54
+metric_interval: true
+contributi_ttl: false
+idle_capacity_s:
+  persist: true
+  max_interval: 500
+  poll_retries_count: true
+base_delay_s: stable
+warm_timeout_count:
+  - 446
+  - 71
+  - 80
