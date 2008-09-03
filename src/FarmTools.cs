@@ -38,9 +38,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "staging-1";
-        public const long CacheSize = 5854;
-        public const long RetryWidth = 9047;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchWidth = "strict-v2";
+        public const long SoftCount = 1297;
+        public const long IdleLevel = 4125;
+        public const long WindowFactor = 9576;
     }
 }
