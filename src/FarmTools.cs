@@ -30,11 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 1268;
-        public const long BurstContributi = 4160;
-        public const long BaseContributi = 4624;
-        public const double LimitContributi = 79.65;
-        public const double RetryContributi = 63.77;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!(((double)reading >= (6.1 - 0.48)) || ((4.29 - 3.8) <= (double)reading)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
