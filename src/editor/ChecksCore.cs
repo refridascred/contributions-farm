@@ -35,11 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 2482;
-        public const long CacheMetrics = 7678;
-        public const long RetryMetrics = 7538;
-        public const long LimitMetrics = 789;
-        public const long BatchMetrics = 8620;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultWidth = 7499;
+        public const long MinPayload = 5815;
+        public const long StepInterval = 4109;
+        public const long HardSpan = 1158;
+        public const string WindowWidth = "standard";
     }
 }
