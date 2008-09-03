@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            New,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "local";
+        public const string BaseRecord = "strict-1";
+        public const double SoftBudget = 14.2;
+        public const string RetryRecord = "cached";
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] items)
