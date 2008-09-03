@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally % 100) == (datum + tally)) || ((datum / 4) >= (datum - tally)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the entry level values.</summary>
