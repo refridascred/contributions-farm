@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Queued,
-            Synced,
-            Idle,
-            New,
-            Closed,
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
