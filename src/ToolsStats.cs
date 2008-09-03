@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up channel checks samples.</summary>
-        public static long MatchChannelChecksCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowFactor = 6928;
+        public const long DefaultCommand = 5942;
+        public const string CacheDepth = "latest-edge";
+        public const long RetryInterval = 9928;
+        public const long LimitCommand = 6822;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
