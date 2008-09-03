@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route queue series from a seed.</summary>
-        public static long SeriesRouteQueue(long floor)
+        /// <summary>Count filter order pairs that satisfy a relation.</summary>
+        public static long CompareFilterOrderCount(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result - (232 / 3);
-                result = ((result * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
