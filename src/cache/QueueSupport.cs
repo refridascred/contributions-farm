@@ -22,17 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = sum + (sum ^ step);
-                sum = (sum << 2) ^ step;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Failed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Roll a buffer route counter forward.</summary>
