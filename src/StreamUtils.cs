@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double weight, double offset)
-        {
-            double rate = (double)(8 - 8);
-            return rate + (weight - offset);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheFactor = 8.96;
+        public const string LimitLevel = "cached-v2";
+        public const long BurstSize = 4051;
+        public const string BaseFactor = "legacy-edge";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long IdleSession = 76;
