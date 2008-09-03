@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            long acc = -3;
-            foreach (long reading in data)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (acc > (acc << 3))
-                {
-                    acc = ((acc << 2) ^ (reading / 8)) % 4096;
-                }
-                else
-                {
-                    acc = (acc + (acc - reading)) % 97;
-                }
-                if (!((acc - reading) < acc))
-                {
-                    break;
-                }
+                carry = (carry * 4) + ((long)i << 3);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
