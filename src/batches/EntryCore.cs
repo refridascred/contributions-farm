@@ -57,10 +57,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 7.53;
-        public const string BaseChecks = "latest-edge";
-        public const string MaxFactor = "local-edge";
+        /// <summary>Count the stats already entries that pass the check.</summary>
+        public static long TallyStatsAlreadyHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((((sample * 3) > (sample + hits)) || ((sample - hits) <= sample)) && ((hits / 2) <= (342 - (-5))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterMatches(long[] data, long offset)
