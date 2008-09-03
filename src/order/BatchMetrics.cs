@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long SoftSize = 660;
         public const long IdleLevel = 4970;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] values, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
