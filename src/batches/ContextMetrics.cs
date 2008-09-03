@@ -49,18 +49,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] readings)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((tally << 1) <= (datum % 64)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
