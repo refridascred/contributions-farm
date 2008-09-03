@@ -1,24 +1,12 @@
 # githubfarm settings
-record_delay:
-  context_window: 500
-  poll_interval:
-    - strict
-    - primary
-  warm_retries: stable
-  compress: 30
-  persist:
-    - 303
-    - 71
-    - 462
-  commits_delay: 98.93
-retry_retries_s: 2777
-schema_ratio:
-  commits_interval: 99
-  command_ratio: 9299
-  poll_size_ms: 68.8
-  idle_ratio: cached
-  enabled: 78.79
-  retry_retries:
-    - 428
-    - 438
-    - 368
+enabled: 73.52
+dry_run:
+  - edge
+  - standard
+  - fallback
+buffer_timeout: fallback
+max_ratio_pct: 2256
+persist:
+  enabled: 36.75
+  token_depth: 14.22
+  verbose: 30.63
