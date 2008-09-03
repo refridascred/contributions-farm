@@ -1,24 +1,6 @@
 {
-  "enabled": 1386,
-  "min_window": false,
-  "metric_size": 1024,
-  "warm_size_count": {
-    "audit": 6657,
-    "min_depth": {
-      "schema_timeout": 8485,
-      "cache_limit_ms": "standard",
-      "batch_delay": 1705,
-      "sync_ratio_pct": true
-    },
-    "idle_depth_s": {
-      "warm_ratio_ms": true,
-      "readonly": 6254,
-      "poll_timeout_s": "fallback",
-      "account_timeout": 500,
-      "max_ratio_ms": true,
-      "min_delay_ms": true
-    }
-  },
-  "hard_window": "staging",
-  "strict": 47
+  "burst_retries": [240, 30, 345, 200],
+  "buffer_ttl": "edge",
+  "min_window": "eu-west",
+  "base_ttl_ms": 500
 }
