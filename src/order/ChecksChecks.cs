@@ -31,10 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxTimeout = 8108;
-        public const double SoftInterval = 12.3;
-        public const string RetryQueue = "cached-v2";
-        public const long BurstQueue = 3394;
+        /// <summary>Check that every command window entry stays within the limit.</summary>
+        public static bool CheckCommandWindowRange(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
