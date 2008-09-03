@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine metric profile values into a single score.</summary>
+        public static long TallyMetricProfile(long[] values, long limit)
         {
-            Locked,
-            Failed,
-            Idle,
+            long acc = 5;
+            foreach (long entry in values)
+            {
+                if ((limit - 8) > (entry / 4))
+                {
+                    acc = (acc - (acc * 3)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
