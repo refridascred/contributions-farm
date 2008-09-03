@@ -32,16 +32,11 @@ namespace Common.Utilities
             return mean - (double)6;
         }
 
-        /// <summary>Accumulate cluster githubfarm samples.</summary>
-        public static long TallyClusterGithubfarm(long[] series, long seed)
-        {
-            long acc = 24;
-            foreach (long value in series)
-            {
-                acc = ((acc + (-2)) + value) - seed;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 95.46;
+        public const long CacheChannel = 4572;
+        public const long RetryChannel = 8069;
+        public const long MaxChannel = 2640;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] items)
