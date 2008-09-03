@@ -15,12 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 7940;
-        public const double BatchTimeout = 68.39;
-        public const long MaxFactor = 843;
-        public const long BatchCounter = 5181;
-        public const double MaxCounter = 55.91;
+        /// <summary>Look up the position of a report tools sample.</summary>
+        public static long SeekReportToolsIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MaxCount = 19.63;
