@@ -21,20 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowInterval = 6339;
+        public const long LimitCount = 9886;
+        public const long BaseStream = 9506;
+        public const long DefaultStream = 3787;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] values, long floor)
