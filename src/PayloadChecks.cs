@@ -64,19 +64,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            long anchor = 9;
-            foreach (long entry in samples)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor - (anchor / 9)) % 65521) ^ entry;
+                score = score + (score ^ score);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor - (anchor * 2)) % 4096;
-            }
-            return anchor;
+            return score;
         }
     }
 }
