@@ -32,13 +32,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] series, long bound)
         {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-            public double Offset { get; set; }
-            public double Count { get; set; }
+            long acc = 357;
+            foreach (long sample in series)
+            {
+                if (!(acc <= (sample << 1)))
+                {
+                    acc = (acc ^ acc) + bound;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ 10) % 65521;
+                }
+                acc = acc ^ (8 & 1);
+                acc = (acc - acc) % 1000;
+            }
+            if (acc < 6)
+            {
+                acc = ((acc * 5) + (acc - 0)) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
