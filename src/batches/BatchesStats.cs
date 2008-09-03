@@ -28,18 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double rate = bias2 - (bias + bias2);
+            if (rate > (double)99)
             {
-                if ((count << 1) >= (4 + 81))
-                {
-                    count = (count + 2) ^ reading;
-                }
+                rate = rate + rate;
             }
-            return count;
+            else
+            {
+                rate = rate + bias2;
+            }
+            return rate + rate;
         }
 
         /// <summary>Describe the command class values.</summary>
