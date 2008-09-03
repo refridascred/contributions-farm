@@ -33,24 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload editor input into a small class.</summary>
-        public static long SortPayloadEditor(long bound, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
-            if ((double)bound == (double)seed)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound / 2) < (seed / 7))
+                if (!(((-883) * 5) > count))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
