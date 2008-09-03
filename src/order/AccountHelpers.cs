@@ -28,18 +28,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] series, long seed)
+        /// <summary>Compare every pair of support order readings.</summary>
+        public static long PairSupportOrderCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches + matches) >= (seed + matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) + item;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate batches samples.</summary>
