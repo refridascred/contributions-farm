@@ -1,8 +1,9 @@
 # entry settings
-idle_size_count:
-  - 58
-  - 246
-checks_size: false
-cache_interval_ms: 6145
-burst_delay_count: staging
-sync_delay: 8020
+burst_capacity: 49
+audit: edge
+min_size_count:
+  - standard
+  - legacy
+  - eu-west
+  - stable
+soft_ttl_s: 8415
