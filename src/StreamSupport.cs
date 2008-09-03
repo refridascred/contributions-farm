@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] levels, long seed)
         {
-            Paused,
-            Closed,
-            Stale,
-            Locked,
-            Idle,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up token samples.</summary>
