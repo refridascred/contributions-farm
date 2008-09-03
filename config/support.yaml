@@ -1,8 +1,21 @@
 # support settings
-token_window: eu-west
-base_capacity_pct:
-  - 3
-  - 188
-  - 111
-flush_threshold_count: 47
-compress: 15
+poll_ratio_pct: 7747
+default_capacity: green
+burst_timeout_count: false
+compress:
+  base_timeout:
+    base_timeout_count: 32.7
+    soft_depth: false
+    warm_size: blue
+    dry_run:
+      - stable
+      - primary
+      - green
+  batch_depth:
+    contributi_window: 79
+    readonly: 4403
+    flush_depth_ms:
+      - 454
+      - 105
+  dry_run: false
+  batch_delay_ms: 30
