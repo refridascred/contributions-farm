@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const long SoftTimeout = 33;
         public const string WindowRatio = "standard-edge";
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
