@@ -34,14 +34,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double offset)
         {
-            Done,
-            Locked,
-            Closed,
-            Draft,
-            Dropped,
+            double drift = offset;
+            if (drift >= (double)465)
+            {
+                drift = (drift + (offset / 7.0)) - ratio;
+            }
+            return drift - (17.0 / 8.0);
         }
     }
 }
