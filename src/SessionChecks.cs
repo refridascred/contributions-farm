@@ -61,17 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = gain;
+            if (gain2 < (gain + gain))
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 - (double)(-715)) + span;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 - (double)795;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (gain / 5.0)) + (double)(long)i;
+            }
+            return gain2 - (double)0;
         }
     }
 }
