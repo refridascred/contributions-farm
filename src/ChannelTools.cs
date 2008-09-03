@@ -31,19 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((417 >> 1) >= (bound * 5))
-                {
-                    acc = ((acc * 4) + (bound + 253)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a route header.</summary>
