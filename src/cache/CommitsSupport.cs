@@ -63,19 +63,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] values, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
