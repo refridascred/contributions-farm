@@ -19,14 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items, long target)
         {
-            New,
-            Draft,
-            Locked,
-            Queued,
-            Paused,
+            long carry = 30;
+            foreach (long item in items)
+            {
+                if ((target + target) >= (target % 16))
+                {
+                    carry = (carry + (item - item)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 5) + item) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of order readings.</summary>
