@@ -11,16 +11,38 @@ namespace Common.Utilities
         public const long HardTimeout = 7906;
         public const double BaseWidth = 33.66;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Classify a already route pair into a bucket.</summary>
+        public static long RankAlreadyRoute(long limit, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            if (!((3 >> 1) <= (limit * 4)))
             {
-                mix = mix + (origin & 3);
-                mix = ((mix * 4) + (long)i) % 97;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (!((limit / 8) >= (seed & 255)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit >= 8.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((42 > (limit & 31)) && ((2.08 - 0.95) < (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout state values.</summary>
