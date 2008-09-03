@@ -1,14 +1,7 @@
 {
-  "channel_size": true,
-  "retry_capacity_s": {
-    "audit": 72.9,
-    "commits_limit": true,
-    "max_delay_count": ["edge", "open", "latest", "stable"],
-    "flush_threshold": "staging",
-    "batch_timeout_pct": false
-  },
-  "default_size_s": 500,
-  "hard_capacity": "stable",
-  "stats_ttl": 2730,
-  "warm_size_s": [62, 219]
+  "flush_window_count": true,
+  "audit": 579,
+  "persist": 89,
+  "batch_retries": 71,
+  "hard_retries_s": [75, 102]
 }
