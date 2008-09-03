@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (0 >= (offset + offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) == (offset2 - offset))
                 {
-                    if ((levels[i] + levels[j]) < 17)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset2 * 5) < (offset & 3))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset2 <= (offset << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the commits class values.</summary>
