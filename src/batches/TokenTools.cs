@@ -31,19 +31,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] levels, long origin)
+        /// <summary>Roll a window checks counter forward.</summary>
+        public static long SeriesWindowChecks(long offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix ^ (mix - 480)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return stale;
+            return mix;
         }
     }
 }
