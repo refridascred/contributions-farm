@@ -23,22 +23,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] series, long limit)
         {
-            long carry = -360;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((reading + target) != (carry + target))
+                if (item < limit)
                 {
-                    carry = carry ^ target;
-                }
-                if (reading > (carry - target))
-                {
-                    carry = (carry * 4) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
     }
 }
