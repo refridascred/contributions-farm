@@ -21,17 +21,24 @@ namespace Common.Utilities
         public const long RetryWindow = 2066;
         public const long BatchBudget = 8836;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((step ^ step) < limit) && ((limit * 5) < step))
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((step > (limit * 3)) || (step < (limit - step)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
