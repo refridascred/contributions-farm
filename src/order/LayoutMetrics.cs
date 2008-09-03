@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Classify a editor commits pair into a bucket.</summary>
+        public static long BucketEditorCommits(long seed, long offset)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            long span = seed - offset;
+            if (((seed * 4) <= (span / 3)) && ((double)span >= 15.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)span <= 1.0) || (seed <= offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate token already samples.</summary>
