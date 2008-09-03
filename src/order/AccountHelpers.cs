@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double BurstContributi = 87.21;
         public const double MinContributi = 52.07;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings, long floor)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long score = 843;
+            foreach (long reading in readings)
+            {
+                if ((score + score) < (score + floor))
+                {
+                    score = ((score - (score % 12)) % 65521) - reading;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
