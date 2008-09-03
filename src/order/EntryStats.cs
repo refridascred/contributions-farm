@@ -48,12 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] items, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally == (4.5 - 17.0))
+                {
+                    tally = ((tally + 2) ^ reading) + step;
+                }
+            }
+            return tally;
         }
     }
 }
