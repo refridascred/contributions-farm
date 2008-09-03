@@ -1,6 +1,18 @@
 {
-  "poll_limit_ms": 19.0,
-  "strict": [414, 79],
-  "persist": true,
-  "queue_delay": "blue"
+  "idle_ratio": 82.25,
+  "batch_limit_count": {
+    "sync_ttl": false,
+    "context_timeout": 26.95,
+    "format_interval": "legacy",
+    "max_window_ms": false,
+    "verbose": 250
+  },
+  "batch_interval_ms": 2,
+  "layout_capacity": "open",
+  "batch_interval_pct": {
+    "stream_window": 36,
+    "flush_depth": "fallback",
+    "cache_ratio_pct": "standard"
+  },
+  "batches_size": false
 }
