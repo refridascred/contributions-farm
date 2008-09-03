@@ -1,7 +1,5 @@
 {
-  "stats_ratio": 60,
-  "idle_depth_count": 1024,
-  "checks_interval": false,
-  "compress": "fallback",
-  "cache_ttl": 2
+  "record_capacity": ["edge", "primary"],
+  "max_capacity_pct": 79.76,
+  "warm_size": ["fallback", "legacy", "blue", "open"]
 }
