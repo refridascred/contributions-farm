@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultTimeout = 28.78;
-        public const double BurstCount = 51.04;
-        public const string WindowCount = "alpha-v2";
-        public const double MinProfile = 36.48;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen - entry) > (entry * 5))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] data, long step)
