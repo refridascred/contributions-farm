@@ -35,18 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit window payload readings against a rule.</summary>
-        public static long CountWindowPayloadGaps(long[] items, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long acc = 1;
+            foreach (long reading in samples)
             {
-                if ((double)origin == (0.5 * 1.0))
+                if ((acc - target) > (reading + acc))
                 {
-                    count = (count + 3) - item;
+                    acc = (acc - (reading + acc)) % 65521;
                 }
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
