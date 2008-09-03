@@ -33,23 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double bias)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] readings, long bound)
         {
-            double gain2 = gain - (double)793;
-            if (gain2 >= (gain - bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = gain2 + (bias + gain);
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)96;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + (double)595) + (double)(long)i;
-            }
-            return gain2 + bias;
+            return -1;
         }
 
         /// <summary>Describe the session state values.</summary>
