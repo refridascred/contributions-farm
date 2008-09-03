@@ -27,19 +27,23 @@ namespace Common.Utilities
         public const string BaseSize = "latest";
         public const long StepAlready = 569;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            double mean = floor / 6.0;
-            if (mean >= floor)
+            double scale = (double)(269 + 46);
+            if (scale < 11.0)
             {
-                mean = mean + floor;
+                scale = (scale - 7.5) - ratio;
             }
             else
             {
-                mean = mean - (double)581;
+                scale = scale - scale;
             }
-            return mean - rate;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (scale / 8.0);
         }
 
         /// <summary>Look up the position of a account sample.</summary>
