@@ -16,26 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long sum = 340;
-            foreach (long sample in samples)
-            {
-                if (((6.0 * 9.69) < (double)sample) && ((sum ^ sum) == (sample + sample)))
-                {
-                    sum = sum - sum;
-                }
-                else
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                if ((4 & 31) >= sum)
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Classify a entry commits pair into a bucket.</summary>
