@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double floor)
         {
-            Stale,
-            Retry,
-            Ready,
-            Failed,
+            double scale = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + floor) - (double)(long)i;
+            }
+            return scale - (3.0 * 6.7);
         }
 
         /// <summary>Hold a commits options.</summary>
