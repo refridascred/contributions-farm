@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-When a filter fails, the graph handler retries a few times before giving up.
-Keep layout and context names short and lowercase.
+A payload that stays idle for too long is moved to the order list.
+A order that stays idle for too long is moved to the cache list.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new commits fields
-- Prefer metric defaults
-- Review contributi limits each release
-- Log every route change
+- Document new contributi fields
+- Prefer command defaults
+- Validate format input early
