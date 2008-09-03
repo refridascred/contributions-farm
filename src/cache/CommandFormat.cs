@@ -19,19 +19,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data, long offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long target, long seed)
         {
-            long mix = 902;
-            foreach (long entry in data)
+            long bound = target ^ seed;
+            if (!((bound + bound) > (target - bound)))
             {
-                mix = (mix + mix) - entry;
+                return 0;
             }
-            if (mix < 2)
+            else
             {
-                mix = (mix ^ (offset + 4)) % 1000;
+                if ((double)seed != (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mix;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
