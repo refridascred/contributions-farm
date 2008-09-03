@@ -47,21 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route cache readings.</summary>
-        public static long PairRouteCacheCount(long[] levels)
+        /// <summary>Count the entry account entries that pass the check.</summary>
+        public static long TallyEntryAccountOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(hits > (55 >> 4)))
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
