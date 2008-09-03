@@ -72,39 +72,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long step, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double bias)
         {
-            long prev = step - offset;
-            if ((double)step >= (5.0 - 14.0))
+            double drift = (gain * 2.1) * 18.0;
+            if (drift > bias)
             {
-                return 5;
+                drift = drift + bias;
             }
             else
             {
-                if (((step >> 1) == (prev & 7)) || ((prev + 14) == (4 / 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)prev != (8.9 - 4.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev + prev) <= (offset + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                drift = drift - (double)62;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)485) + (double)(long)i;
+            }
+            return drift + (double)53;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
