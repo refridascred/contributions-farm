@@ -33,21 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue command pairs that satisfy a relation.</summary>
-        public static long PairQueueCommandCount(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((cell ^ origin) == (cell ^ cell)) || ((origin & 31) > count))
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a schema stats.</summary>
