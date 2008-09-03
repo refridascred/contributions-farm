@@ -1,11 +1,5 @@
 {
-  "enabled": 70,
-  "dry_run": true,
-  "flush_size": "blue",
-  "default_ttl_s": {
-    "idle_ratio_count": 60,
-    "retry_ttl": 500,
-    "batch_limit": false
-  },
-  "idle_window_pct": "staging"
+  "strict": false,
+  "cache_limit_pct": 63.27,
+  "hard_timeout": false
 }
