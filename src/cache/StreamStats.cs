@@ -42,21 +42,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of channel checks readings.</summary>
-        public static long PairChannelChecksCount(long[] values)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Stale,
+            Active,
+            Done,
         }
     }
 }
