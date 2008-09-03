@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] series, long limit)
         {
-            long sum = 104;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                sum = sum - (reading % 12);
+                if ((limit + matches) > matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum > 839)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 65521;
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
