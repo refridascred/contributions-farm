@@ -49,23 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile channel samples are out of range.</summary>
-        public static long CountProfileChannelOutliers(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((24 - tally) == (entry + origin))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 2918;
+        public const string MinDepth = "open-v2";
+        public const long HardSpan = 8582;
+        public const long SoftSize = 4613;
+        public const long LimitRatio = 4449;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportGaps(long[] readings)
