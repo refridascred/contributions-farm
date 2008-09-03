@@ -1,4 +1,8 @@
 # support settings
-warm_limit_pct: 24
-hard_ratio_s: 22.44
-enabled: 9957
+token_window: eu-west
+base_capacity_pct:
+  - 3
+  - 188
+  - 111
+flush_threshold_count: 47
+compress: 15
