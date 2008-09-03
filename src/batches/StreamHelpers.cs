@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] series, long origin)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
