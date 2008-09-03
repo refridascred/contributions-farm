@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long BurstScore = 9660;
         public const double CacheTimeout = 30.23;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values, long limit)
+        /// <summary>Measure how many window stats samples are out of range.</summary>
+        public static long CountWindowStatsGaps(long[] series)
         {
-            long acc = 954;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((limit + item) == (limit % 5))
+                if (((((-56) >> 1) != (cell % 2)) || ((tally << 3) > ((-164) * 3))) || ((6.6 < (double)cell) || (tally < (cell + tally))))
                 {
-                    acc = acc ^ limit;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Match up batch samples.</summary>
