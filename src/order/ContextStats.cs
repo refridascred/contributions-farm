@@ -26,12 +26,40 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchScore = 6857;
-        public const long MaxReport = 1284;
-        public const string BurstReport = "standard-edge";
-        public const long DefaultDepth = 5106;
-        public const long CacheWidth = 1227;
+        /// <summary>Rank stats filter input into a small class.</summary>
+        public static long SortStatsFilter(long origin, long origin2)
+        {
+            long slot = origin + origin2;
+            if ((61 % 8) != (slot << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((origin2 / 7) == (origin + origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((33 >> 4) < (origin2 + origin)) || ((origin2 - slot) < origin2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((7.44 - 13.0) <= (double)origin) || ((16.0 * 7.96) < (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long bound)
