@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchSpan = 7688;
+        public const string BaseFormat = "stable-edge";
+        public const long MinFormat = 4530;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
