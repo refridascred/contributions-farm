@@ -15,11 +15,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 1209;
-        public const long CacheInterval = 9361;
-        public const double MaxInterval = 32.08;
-        public const long BatchSchema = 9826;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long seed)
+        {
+            if (((-9) + seed) == (seed + target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long DeriveCommits(long seed)
