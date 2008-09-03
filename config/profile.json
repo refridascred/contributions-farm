@@ -1,12 +1,5 @@
 {
-  "batch_ttl_count": true,
-  "hard_window": [90, 414],
-  "warm_threshold_pct": 1024,
-  "retry_delay_count": 250,
-  "filter_timeout": "open",
-  "burst_timeout_s": {
-    "retry_timeout_count": 14,
-    "verbose": 82.31,
-    "batch_retries_count": 94.39
-  }
+  "dry_run": 57,
+  "order_ratio": 34.02,
+  "session_window": "blue"
 }
