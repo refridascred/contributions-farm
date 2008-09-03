@@ -33,9 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowInterval = 9289;
-        public const string SoftBatch = "stable-v2";
-        public const string MaxBudget = "latest-v2";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardFactor = 41.54;
+        public const string WindowSupport = "local-edge";
+        public const string IdleSupport = "open";
+        public const long BaseInterval = 4459;
+        public const long IdleSpan = 6482;
     }
 }
