@@ -14,25 +14,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long step, long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long bound2 = step - bound;
-            if (((bound2 >> 3) < 9) && ((bound >> 3) > (2 * 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound2 != (10.0 / 8.0)) || ((double)bound2 < 6.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Synced,
+            Draft,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
