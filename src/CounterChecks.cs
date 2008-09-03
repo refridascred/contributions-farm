@@ -66,9 +66,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseRatio = 2385;
-        public const double StepQueue = 57.58;
-        public const string RetryQueue = "staging-v2";
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
