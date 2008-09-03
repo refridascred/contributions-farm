@@ -23,22 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] values)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (4 < value)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
