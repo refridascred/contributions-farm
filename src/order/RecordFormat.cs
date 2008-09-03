@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] samples, long target)
+        /// <summary>Rank batches cache input into a small class.</summary>
+        public static long SortBatchesCache(long floor, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = floor + limit;
+            if ((prev ^ floor) <= (floor / 5))
             {
-                if (samples[i] > target)
+                return 7;
+            }
+            else
+            {
+                if (!(0.15 >= (double)floor))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((prev - prev) <= (prev - floor)) || (prev <= (floor << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank payload editor input into a small class.</summary>
