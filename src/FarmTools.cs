@@ -30,18 +30,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] values)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!(((double)reading >= (6.1 - 0.48)) || ((4.29 - 3.8) <= (double)reading)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
