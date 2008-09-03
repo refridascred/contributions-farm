@@ -48,15 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
         {
             long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum < (hits << 2)) || (step <= (52 - datum)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
