@@ -79,19 +79,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long floor)
+        /// <summary>Scale a stats profile figure with a bias.</summary>
+        public static double ScaleStatsProfile(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate = weight;
+            return (rate + (double)2) + floor;
         }
     }
 }
