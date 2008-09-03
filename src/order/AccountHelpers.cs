@@ -38,15 +38,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Active,
-            Failed,
-            Idle,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "local-1";
+        public const long BatchTimeout = 1687;
+        public const double SoftFarm = 57.13;
+        public const long RetryScore = 591;
+        public const long BurstBudget = 2782;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileHits(long[] values, long limit)
