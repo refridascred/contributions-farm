@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long seed, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long step = seed - bound;
-            if (bound < (step - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 3) > (bound ^ bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
