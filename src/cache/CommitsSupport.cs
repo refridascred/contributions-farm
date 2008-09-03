@@ -22,18 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first contributi graph entry that matches the target.</summary>
-        public static long SeekContributiGraphIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitSpan = 4209;
+        public const double SoftWindow = 26.97;
+        public const long RetryScore = 2617;
 
         /// <summary>Rank schema channel input into a small class.</summary>
         public static long ClassifySchemaChannel(long bound, long limit)
