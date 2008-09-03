@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] series, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 17;
+            foreach (long value in values)
             {
-                if (series[i] < step)
+                if (((double)value < (6.8 * 18.0)) && ((double)(-4) <= (double)value))
                 {
-                    return (long)i;
+                    anchor = (anchor * 5) + (anchor - anchor);
+                }
+                else
+                {
+                    anchor = (anchor - (value / 4)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
