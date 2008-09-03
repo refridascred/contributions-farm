@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit layout commits readings against a rule.</summary>
-        public static long CountLayoutCommitsGaps(long[] readings, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (!((2.5 * 7.38) < 7.2))
+                if ((count + count) != (origin & 127))
                 {
-                    seen = ((seen + 2) - reading) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) + sample;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
