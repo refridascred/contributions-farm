@@ -13,12 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of context cache entries.</summary>
