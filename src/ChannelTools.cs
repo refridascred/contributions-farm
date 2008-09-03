@@ -46,17 +46,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stream format entry that matches the target.</summary>
-        public static long LookupStreamFormatIndex(long[] items, long target)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
