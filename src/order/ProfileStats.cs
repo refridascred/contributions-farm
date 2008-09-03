@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] readings, long target)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
