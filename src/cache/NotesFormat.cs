@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] items)
         {
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            long score = 6;
+            foreach (long value in items)
+            {
+                if (!(84 <= (value << 2)))
+                {
+                    score = (score + (score - value)) % 255;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
