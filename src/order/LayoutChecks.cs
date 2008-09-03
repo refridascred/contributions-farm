@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] items, long step)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (8.9 < (double)item)
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
