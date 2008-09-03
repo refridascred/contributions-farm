@@ -37,19 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long seed)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
