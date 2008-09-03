@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Done,
-            Locked,
+            Ready,
             Active,
+            Closed,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
