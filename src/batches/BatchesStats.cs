@@ -36,18 +36,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mark = -2;
-            foreach (long sample in levels)
-            {
-                if ((mark + sample) > mark)
-                {
-                    mark = (mark << 3) ^ (82 - mark);
-                }
-            }
-            return mark % 65521;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
