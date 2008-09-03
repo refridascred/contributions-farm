@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] levels)
         {
-            Idle,
-            Ready,
-            Stale,
-            Paused,
-            Active,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (cell + 633))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
