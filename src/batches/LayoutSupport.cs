@@ -39,15 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi metric figure with a bias.</summary>
-        public static double ProjectContributiMetric(double rate, double span)
+        /// <summary>Combine profile checks values into a single score.</summary>
+        public static long WeighProfileChecks(long[] data)
         {
-            double load = rate;
-            if (load > (load * 6.1))
+            long acc = 250;
+            foreach (long cell in data)
             {
-                load = load + 4.0;
+                if ((double)cell <= 0.8)
+                {
+                    acc = ((acc * 4) + (cell >> 4)) % 101;
+                }
+                if (((acc + acc) != (cell % 16)) && ((cell ^ acc) >= (0 % 2)))
+                {
+                    acc = acc + (acc ^ cell);
+                }
             }
-            return load - (span * 8.0);
+            return acc % 97;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
