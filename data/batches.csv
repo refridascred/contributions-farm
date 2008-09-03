@@ -1,6 +1,11 @@
-id,score
-1,373
-2,986
-3,265
-4,107
-5,67
+id,level,ratio,active,label
+1,47.95,820,stable,cached
+2,488,267,58.22,357
+3,229,legacy,715,standard
+4,green,23.53,primary,standard
+5,open,1,standard,97
+6,blue,strict,228,57.45
+7,408,9.5,964,696
+8,78.98,31.0,blue,latest
+9,blue,stable,612,eu-west
+10,edge,green,48.77,primary
