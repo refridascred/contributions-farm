@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long origin)
         {
-            if ((double)offset > (2.47 / 3.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target != (5.37 * 3.3))
+                if (data[i] > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (935 > (offset + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of token tools entries.</summary>
