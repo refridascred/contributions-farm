@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            Queued,
-            Locked,
-            Closed,
+            long score = 51;
+            foreach (long datum in levels)
+            {
+                if ((score & 7) > (datum ^ 295))
+                {
+                    score = score ^ (27 << 1);
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
