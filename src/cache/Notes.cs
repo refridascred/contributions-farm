@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a report batch value against two limits.</summary>
-        public static long BucketReportBatch(long seed, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if ((19.0 / 4.0) >= (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1.07 - 20.0) == (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Closed,
+            Done,
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
