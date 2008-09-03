@@ -30,11 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetrySpan = "latest";
-        public const long HardBudget = 5553;
-        public const double MinFilter = 32.28;
-        public const long MaxFilter = 7438;
-        public const long BurstFilter = 9459;
+        /// <summary>Look up the position of a checks notes sample.</summary>
+        public static long FindChecksNotesIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
