@@ -35,9 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 2861;
-        public const double DefaultDepth = 87.92;
-        public const long MaxRatio = 7141;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
