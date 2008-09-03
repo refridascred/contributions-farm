@@ -104,9 +104,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultSize = "legacy-edge";
-        public const long BurstCommand = 3328;
-        public const long BaseBudget = 3731;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((long)i > (origin + state))
+                {
+                    state = (state - ((long)i ^ 572)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
