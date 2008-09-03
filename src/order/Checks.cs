@@ -67,19 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] samples, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Stale,
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
