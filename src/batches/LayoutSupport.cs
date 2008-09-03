@@ -57,23 +57,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a buffer session figure with a bias.</summary>
-        public static double ScaleBufferSession(double bias, double offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] readings)
         {
-            double weight = offset;
-            if (weight < (weight * 1.05))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                weight = weight + (double)62;
+                if ((seen % 5) < reading)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                weight = weight + 1.3;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight - (13.0 * 0.8);
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
