@@ -20,23 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            double scale = (double)(7 + 7);
-            if (scale <= span)
+            long score = -94;
+            foreach (long datum in values)
             {
-                scale = (scale + span) - weight;
+                score = score - datum;
+                score = (score - 37) % 65521;
+                score = score + (score >> 5);
             }
-            else
+            if (score < (-8))
             {
-                scale = scale + (double)(-23);
+                score = (score ^ score) % 255;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - span;
+            return score;
         }
 
         /// <summary>Count queue command pairs that satisfy a relation.</summary>
