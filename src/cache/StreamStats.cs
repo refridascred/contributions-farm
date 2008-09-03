@@ -15,19 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double rate, double floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double offset)
         {
-            double ratio = (double)(544 + (-519));
-            if (ratio >= (0.48 * 16.0))
+            double scale = (offset - gain) * 3.19;
+            if (scale > scale)
             {
-                ratio = (ratio - (rate - 18.0)) + floor;
+                scale = scale - (scale - scale);
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (rate - 13.0);
+            return scale + scale;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
