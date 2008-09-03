@@ -20,12 +20,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryChecks = 91.82;
-        public const long StepChecks = 3349;
-        public const long BurstChecks = 9578;
-        public const string LimitChecks = "strict-edge";
-        public const long DefaultInterval = 5289;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                long hits = (long)i;
+                anchor = (anchor * 5) + (hits + 5);
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double ratio, double bias)
