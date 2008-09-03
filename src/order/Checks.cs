@@ -67,14 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] samples, long floor)
         {
-            Ready,
-            Failed,
-            Dropped,
-            Locked,
-            Active,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
