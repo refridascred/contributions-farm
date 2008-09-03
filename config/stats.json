@@ -1,18 +1,5 @@
 {
-  "persist": 2,
-  "audit": {
-    "persist": ["eu-west", "fallback"],
-    "enabled": ["primary", "fallback", "fallback", "cached"],
-    "default_capacity": "standard",
-    "audit": 36.77
-  },
-  "sync_limit_ms": {
-    "retry_retries_s": [207, 269],
-    "cache_interval_ms": "stable",
-    "persist": "edge",
-    "flush_capacity_pct": "staging",
-    "retry_ratio_s": false
-  },
-  "sync_delay": "latest",
-  "buffer_depth": "legacy"
+  "warm_size_ms": "legacy",
+  "warm_limit_count": true,
+  "min_size": false
 }
