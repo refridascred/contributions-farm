@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] data, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample & 1) > (3 / 2))
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
