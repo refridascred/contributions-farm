@@ -66,11 +66,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 2481;
-        public const double WindowBudget = 42.08;
-        public const double HardCommand = 65.89;
-        public const string RetryCommand = "legacy-edge";
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels)
+        {
+            long acc = 121;
+            foreach (long datum in levels)
+            {
+                acc = (acc + (acc & 63)) % 255;
+                if ((6.4 + 13.0) >= (double)datum)
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
