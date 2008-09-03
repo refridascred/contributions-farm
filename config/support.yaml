@@ -1,7 +1,4 @@
 # support settings
-enabled: open
-order_limit: latest
-notes_ratio: 36.5
-dry_run: 33.96
-min_window: 98
-strict: 31.48
+soft_delay: open
+context_limit: 30.22
+sync_interval: 40.76
