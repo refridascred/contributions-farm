@@ -1,16 +1,5 @@
 {
-  "hard_window_pct": "eu-west",
-  "idle_window": {
-    "stream_interval": true,
-    "retry_size_pct": {
-      "checks_interval": "green",
-      "default_threshold": "primary",
-      "warm_retries_s": true,
-      "warm_interval": true,
-      "default_capacity_count": "cached"
-    },
-    "cache_interval": 44,
-    "min_interval_count": ["latest", "eu-west", "stable"]
-  },
-  "cache_capacity_s": 1024
+  "metrics_timeout": 74,
+  "persist": "fallback",
+  "flush_threshold_s": "strict"
 }
