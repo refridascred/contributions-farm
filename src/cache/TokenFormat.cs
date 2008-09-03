@@ -24,14 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] items)
         {
-            Idle,
-            Retry,
-            Failed,
-            Done,
-            Locked,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches << 1) < item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a profile summary.</summary>
