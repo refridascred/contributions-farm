@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the route report entries that pass the check.</summary>
-        public static long AuditRouteReportOutliers(long[] items, long limit)
+        /// <summary>Measure how many payload route samples are out of range.</summary>
+        public static long AuditPayloadRouteOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)limit > (6.8 * 7.0))
+                if ((reading + seen) == (reading & 255))
                 {
-                    hits = (hits + 1) - cell;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
