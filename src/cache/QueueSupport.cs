@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] items, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long mix = 63;
+            foreach (long cell in items)
             {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix + (cell ^ 69)) - bound;
             }
-            return found;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
