@@ -1,30 +1,7 @@
 {
-  "enabled": 30,
-  "farm_size": true,
-  "flush_ratio_ms": {
-    "min_interval_pct": 43.13,
-    "dry_run": 80.97,
-    "max_timeout_ms": 1024,
-    "flush_capacity_pct": ["strict", "green", "local", "primary"],
-    "persist": {
-      "max_depth_pct": "staging",
-      "verbose": 55.23,
-      "cache_threshold_count": 250,
-      "flush_depth_s": 74,
-      "audit": 651
-    },
-    "readonly": 88.92
-  },
-  "commits_window": {
-    "base_ttl_pct": "standard",
-    "default_retries_s": "local",
-    "cache_retries_ms": {
-      "graph_size": 25,
-      "hard_delay": true,
-      "retry_timeout": 86
-    },
-    "notes_retries": false
-  },
-  "base_ratio_s": 50.22,
-  "idle_capacity_s": 26
+  "retry_threshold_count": "stable",
+  "sync_size": 30,
+  "soft_capacity_pct": 46,
+  "flush_limit": 27,
+  "farm_window": true
 }
