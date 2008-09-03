@@ -1,10 +1,17 @@
 {
-  "flush_delay": {
-    "dry_run": 91.56,
-    "compress": "strict",
-    "editor_threshold": "green"
+  "route_timeout": "standard",
+  "max_timeout_ms": "local",
+  "persist": 4282,
+  "min_threshold_pct": {
+    "account_timeout": false,
+    "warm_ttl_pct": 21.87,
+    "stats_ttl": "eu-west",
+    "filter_retries": "staging",
+    "order_ttl": {
+      "poll_size_pct": 8554,
+      "hard_size_s": 1024,
+      "order_window": "eu-west"
+    }
   },
-  "verbose": ["legacy", "edge"],
-  "soft_ratio_pct": "stable",
-  "dry_run": "green"
+  "cluster_interval": 2735
 }
