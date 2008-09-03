@@ -1,14 +1,8 @@
 # support settings
-idle_threshold_pct:
-  - 127
-  - 452
-burst_capacity: standard
-burst_window_ms:
-  retry_depth_ms: fallback
-  flush_capacity_pct: 9.79
-  warm_ttl_ms:
-    warm_threshold_ms: 30
-    flush_interval_s: 97.3
-    readonly: 16
-    cache_retries_pct: cached
-batch_size_pct: open
+max_window_pct: true
+strict:
+  - local
+  - latest
+  - edge
+hard_threshold_s: blue
+burst_interval_ms: eu-west
