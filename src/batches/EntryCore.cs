@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] values, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Queued,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a record options.</summary>
