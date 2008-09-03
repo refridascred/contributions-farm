@@ -12,17 +12,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] items, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (items[i] >= limit)
+                if (value != origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
