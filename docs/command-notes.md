@@ -1,11 +1,12 @@
 # Command notes
 
-Run the already check before changing any editor limits.
-The route module keeps session values in sync with the channel cache.
+The queue report groups every contributi by window.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The cluster report groups every buffer by graph.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate counter input early
-- Review graph limits each release
-- Log every batches change
+- Prefer queue defaults
+- Keep channel values small
+- Document new notes fields
+- Log every queue change
