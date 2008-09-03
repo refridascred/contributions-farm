@@ -32,22 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload notes readings.</summary>
-        public static long TotalPayloadNotes(long[] samples)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            long sum = 3;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sum != (9.77 - 2.45))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (((sum * 3) + (96 % 24)) % 65521) + cell;
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 76)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
