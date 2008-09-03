@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 64.19;
-        public const string BurstDepth = "staging-v2";
-        public const long RetryEditor = 9310;
-        public const double BurstInterval = 71.94;
-        public const string WindowInterval = "local-1";
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] items, long origin)
