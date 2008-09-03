@@ -1,13 +1,9 @@
 # githubfarm settings
-route_capacity: 60
-support_delay: 8.23
-githubfarm_interval:
-  warm_threshold: 3919
-  stream_window: staging
-  hard_limit:
-    - strict
-    - primary
-  report_ratio: 9147
-  already_size: 29.61
-flush_delay: true
-idle_window: 500
+readonly: 1684
+cache_capacity_ms: 94.19
+verbose: 60
+max_threshold: 100
+session_delay:
+  - latest
+  - primary
+retry_ttl_count: 17.96
