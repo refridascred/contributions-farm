@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 7372;
+        public const double WindowGraph = 85.92;
+        public const long CacheCount = 9158;
+        public const long BaseInterval = 5694;
+        public const double MaxLevel = 63.11;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextRange(long[] series, long floor)
