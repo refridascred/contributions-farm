@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] readings, long step)
         {
-            if ((double)seed != (19.0 / 9.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed * 3) >= (bound & 7))
+                if (readings[i] > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.0 * 0.33) < (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (double)seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
