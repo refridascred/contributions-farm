@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Count the command metrics entries that pass the check.</summary>
+        public static long TallyCommandMetricsHits(long[] levels, long step)
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > (8.3 * 19.0))
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
