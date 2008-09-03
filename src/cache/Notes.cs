@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] items, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)matches < 4.29)
-                {
-                    matches = ((matches + 2) - sample) - offset;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a schema entry.</summary>
