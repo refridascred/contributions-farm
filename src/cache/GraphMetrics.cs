@@ -35,11 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "latest-v2";
-        public const long SoftRatio = 5471;
-        public const long RetryWidth = 9545;
-        public const string CacheWindow = "stable-edge";
+        /// <summary>Audit window payload readings against a rule.</summary>
+        public static long CountWindowPayloadGaps(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)origin == (0.5 * 1.0))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many profile channel samples are out of range.</summary>
         public static long CountProfileChannelOutliers(long[] readings, long origin)
