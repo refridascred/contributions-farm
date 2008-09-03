@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] items, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            if (origin <= (origin - offset))
             {
-                if (cell >= offset)
+                return 7;
+            }
+            else
+            {
+                if (origin < (29 * 4))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
