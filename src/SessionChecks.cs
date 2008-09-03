@@ -29,39 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long target, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] readings)
         {
-            long step = target ^ origin;
-            if ((target / 3) < (target - 436))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((89 + target) <= (54 ^ step))
+                if (!((value > seen) || ((double)seen <= 10.0)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin <= (6.37 * 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + 9) != (origin * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
