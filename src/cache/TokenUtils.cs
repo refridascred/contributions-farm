@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)sample >= (9.82 + 4.8)))
-                {
-                    tally = (tally + 1) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardTimeout = 7754;
+        public const string CacheCount = "local-1";
+        public const long BatchDepth = 2465;
+        public const long WindowInterval = 328;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long step, long origin)
