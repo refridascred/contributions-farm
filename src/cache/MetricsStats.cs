@@ -66,9 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 5361;
-        public const long LimitContext = 8312;
-        public const string MinDepth = "local";
+        /// <summary>Count batches channel pairs that satisfy a relation.</summary>
+        public static long MatchBatchesChannelCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
