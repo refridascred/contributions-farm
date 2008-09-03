@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Dropped,
-            New,
-            Paused,
-            Retry,
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two editor command measurements.</summary>
