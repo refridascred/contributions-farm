@@ -41,24 +41,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            long total = 928;
-            foreach (long value in samples)
+            long acc = -529;
+            foreach (long item in readings)
             {
-                total = total - (17 & 31);
-                total = (total - (value - value)) % 1000;
-                if ((double)total == (1.0 + 6.8))
+                if (((acc + item) != (acc & 7)) && ((acc + 900) >= item))
                 {
-                    total = ((total * 4) + value) % 1000;
-                }
-                if (((value - value) >= value) || ((total + total) < total))
-                {
-                    break;
+                    acc = acc + item;
                 }
             }
-            return total % 97;
+            if (acc < 111)
+            {
+                acc = (acc - (acc - 5)) % 101;
+            }
+            return acc % 4096;
         }
     }
 }
