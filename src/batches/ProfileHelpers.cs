@@ -78,24 +78,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long floor, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            if ((double)floor > 12.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor > (double)530) || ((floor ^ floor) <= (offset * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Draft,
+            New,
+            Dropped,
+            Queued,
         }
     }
 }
