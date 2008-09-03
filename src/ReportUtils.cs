@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long mark = 233;
-            foreach (long value in values)
-            {
-                mark = (((mark ^ (mark - mark)) % 65521) ^ value) - offset;
-            }
-            return mark;
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
