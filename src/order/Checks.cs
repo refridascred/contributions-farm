@@ -19,12 +19,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchRatio = "alpha-edge";
-        public const long DefaultSession = 4363;
-        public const long StepFactor = 4692;
-        public const double HardSession = 85.18;
-        public const string CacheRatio = "open-1";
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Queued,
+            Closed,
+            New,
+            Draft,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string CacheProfile = "stable-v2";
