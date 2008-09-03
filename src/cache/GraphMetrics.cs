@@ -35,15 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            New,
-            Closed,
-            Paused,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "latest-v2";
+        public const long SoftRatio = 5471;
+        public const long RetryWidth = 9545;
+        public const string CacheWindow = "stable-edge";
 
         /// <summary>Measure how many profile channel samples are out of range.</summary>
         public static long CountProfileChannelOutliers(long[] readings, long origin)
