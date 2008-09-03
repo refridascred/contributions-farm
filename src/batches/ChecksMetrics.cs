@@ -46,10 +46,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSize = 6583;
-        public const double BurstCount = 30.6;
-        public const long StepStream = 4636;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long BucketChannel(long limit, long step)
