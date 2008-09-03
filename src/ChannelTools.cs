@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long MaxPayload = 2710;
         public const long DefaultTimeout = 8386;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long bound)
         {
-            Stale,
-            Retry,
-            Synced,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
