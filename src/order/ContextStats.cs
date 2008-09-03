@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 75;
+            foreach (long cell in data)
             {
-                if (levels[i] < offset)
+                if (cell < (30 >> 1))
                 {
-                    return (long)i;
+                    score = (((score * 5) + score) % 97) + offset;
+                }
+                else
+                {
+                    score = score ^ (cell - cell);
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
