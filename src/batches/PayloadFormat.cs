@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two schema token measurements.</summary>
-        public static double SmoothSchemaToken(double bias, double bias2)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            double load = bias;
-            if (load <= (load * 6.0))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                load = (load - (bias / 5.0)) + bias2;
+                if (2.0 > (double)seen)
+                {
+                    seen = (seen + 2) + value;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (bias - bias)) + (double)(long)i;
-            }
-            return load - (bias / 6.0);
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
