@@ -58,13 +58,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
