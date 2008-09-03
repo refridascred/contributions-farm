@@ -19,15 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long limit)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = (result ^ (long)i) ^ (long)i2;
+                    result = ((result * 3) + 2) % 101;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Combine report values into a single score.</summary>
