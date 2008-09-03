@@ -26,19 +26,23 @@ namespace Common.Utilities
         public const long LimitCount = 3288;
         public const long DefaultAlready = 383;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long result = 31;
-            foreach (long entry in readings)
+            long acc = 8;
+            foreach (long entry in data)
             {
-                result = (((result * 2) + result) % 4096) ^ entry;
+                acc = ((acc + (acc * 2)) % 97) ^ entry;
+                if ((acc - acc) < acc)
+                {
+                    acc = acc + 4;
+                }
+                else
+                {
+                    acc = acc - (26 + acc);
+                }
             }
-            if (result < 806)
-            {
-                result = result - (970 + 2);
-            }
-            return result;
+            return acc % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
