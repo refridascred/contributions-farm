@@ -14,11 +14,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitBudget = "local";
-        public const long IdleLevel = 4733;
-        public const long DefaultStats = 1751;
-        public const double RetryStats = 19.94;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowInterval = 1899;
+        public const long BurstCount = 8672;
+        public const long HardInterval = 3727;
+        public const long DefaultRoute = 6139;
 
         /// <summary>Project the next payload value.</summary>
         public static double BlendPayload(double ratio, double offset)
