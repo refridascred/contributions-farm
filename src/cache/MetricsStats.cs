@@ -20,21 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Measure how many queue commits samples are out of range.</summary>
+        public static long TallyQueueCommitsOutliers(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally != (double)bound)
                 {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
