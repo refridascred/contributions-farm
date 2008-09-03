@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const double RetrySchema = 85.63;
         public const long IdleSchema = 5304;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultBudget = 7546;
+        public const double MinSupport = 84.89;
+        public const string DefaultScore = "standard-edge";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitAccount = 2709;
