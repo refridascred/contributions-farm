@@ -51,11 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchTimeout = 6.46;
-        public const double WindowNotes = 26.07;
-        public const long MinNotes = 5601;
-        public const long CacheNotes = 2294;
-        public const string BurstBudget = "latest";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item * 3) >= (offset + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
