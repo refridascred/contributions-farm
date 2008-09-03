@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((790 + entry) >= 801)
+                if ((2.9 / 3.0) > (double)matches)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
