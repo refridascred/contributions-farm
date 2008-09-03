@@ -43,22 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile notes values into a single score.</summary>
-        public static long TallyProfileNotes(long[] series, long limit)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long acc = 120;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (((acc * 3) + (acc + limit)) % 255) ^ (long)i;
-                }
-                if ((32 + limit) == (limit & 127))
-                {
-                    acc = acc - (item ^ item);
-                }
-            }
-            return acc;
+            Ready,
+            Stale,
+            Pending,
+            Retry,
+            Draft,
         }
     }
 }
