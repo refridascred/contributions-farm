@@ -47,21 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 2262;
+        public const long LimitWidth = 1423;
+        public const long StepDepth = 1930;
+        public const long BurstScore = 814;
     }
 }
