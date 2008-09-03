@@ -27,28 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] items, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (floor >= (3 - floor))
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
                 {
-                    score = (score * 4) + floor;
-                    break;
+                    return (long)i;
                 }
-                if ((score >> 1) < (score & 255))
-                {
-                    score = (score * 3) + (long)i;
-                }
-                else
-                {
-                    score = (score ^ (score << 3)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
