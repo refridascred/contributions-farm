@@ -37,15 +37,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long floor, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            if (((0.96 / 8.0) > (double)bound) && ((20.0 + 8.0) != (double)bound))
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (((bound % 3) >= (bound + floor)) && ((9 - floor) < (bound >> 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + floor) <= (bound - floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
