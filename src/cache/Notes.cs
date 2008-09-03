@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)count == (4.2 - 1.06))
+                if ((double)matches < 4.29)
                 {
-                    count = (count + 3) - reading;
+                    matches = ((matches + 2) - sample) - offset;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
