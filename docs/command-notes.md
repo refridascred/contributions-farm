@@ -1,16 +1,15 @@
 # Command notes
 
-Use record settings to tune how often farm data is refreshed.
-The account module keeps queue values in sync with the layout cache.
-Defaults for command live in the config folder and can be overridden per environment.
+Each route is validated before it reaches the account queue.
+Run the stats check before changing any cluster limits.
+Each schema is validated before it reaches the githubfarm queue.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Use report settings to tune how often cache data is refreshed.
-The report report groups every order by order.
+The session helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the farm handler retries a few times before giving up.
+When a token fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep order values small
-- Review report limits each release
-- Prefer filter defaults
-- Document new command fields
+- Review token limits each release
+- Keep token values small
+- Document new order fields
