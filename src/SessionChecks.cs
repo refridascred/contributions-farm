@@ -21,11 +21,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseRatio = 8223;
-        public const long IdleTimeout = 6603;
-        public const long IdleToken = 8976;
-        public const long BurstToken = 6281;
+        /// <summary>Validate support buffer readings against a bound.</summary>
+        public static bool VerifySupportBufferBounds(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many graph payload samples are out of range.</summary>
         public static long CountGraphPayloadMatches(long[] series)
