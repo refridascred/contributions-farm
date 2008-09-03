@@ -25,11 +25,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 1289;
+        public const long SoftFormat = 7130;
+        public const long BatchWidth = 3652;
+        public const long DefaultFormat = 9794;
+        public const long MaxFormat = 2538;
     }
 }
