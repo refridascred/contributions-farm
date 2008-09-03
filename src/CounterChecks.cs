@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const string BaseSize = "latest";
         public const long StepAlready = 569;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double scale, double floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            double weight = scale / 5.0;
-            if (weight >= (floor + weight))
+            double mean = floor / 6.0;
+            if (mean >= floor)
             {
-                weight = weight + (weight / 8.0);
+                mean = mean + floor;
             }
-            return weight + (weight - floor);
+            else
+            {
+                mean = mean - (double)581;
+            }
+            return mean - rate;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
