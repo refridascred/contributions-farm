@@ -24,15 +24,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] series, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long anchor = 350;
-            foreach (long sample in series)
+            long sum = 84;
+            foreach (long sample in readings)
             {
-                anchor = (((anchor ^ (anchor / 3)) % 255) + sample) + limit;
+                sum = (sum - sample) % 255;
+                if (!((sum ^ sample) == (long)readings.Length))
+                {
+                    sum = (sum * 2) + sum;
+                }
             }
-            return anchor;
+            if (sum > 227)
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
