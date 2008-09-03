@@ -1,7 +1,8 @@
 {
-  "default_limit": "standard",
-  "hard_retries_pct": "strict",
-  "stream_threshold": [246, 17, 37, 106],
-  "cache_size": 500,
-  "max_interval_pct": "edge"
+  "retry_limit_ms": "staging",
+  "retry_depth_pct": 60,
+  "support_depth": 89,
+  "hard_timeout_count": false,
+  "channel_size": "green",
+  "warm_threshold_pct": 1024
 }
