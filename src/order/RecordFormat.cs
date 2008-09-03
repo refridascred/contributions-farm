@@ -30,10 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 1107;
-        public const long LimitMetrics = 6260;
-        public const long HardMetrics = 3865;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (!(((2 * 2) > (count << 2)) && ((count * 3) <= (item ^ count))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
