@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] data, long floor)
+        /// <summary>Count the profile format entries that pass the check.</summary>
+        public static long MeasureProfileFormatHits(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] <= floor)
+                if ((sample << 1) > (limit + limit))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate filter batch samples.</summary>
