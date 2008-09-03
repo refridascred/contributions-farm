@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Check that every profile filter entry stays within the limit.</summary>
+        public static bool CheckProfileFilterRange(long[] series, long step)
         {
-            long acc = 565;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                acc = (acc * 3) + (entry + entry);
-                if ((acc ^ entry) != (entry >> 3))
+                if (cell < step)
                 {
-                    acc = (acc ^ (6 >> 3)) % 101;
-                }
-                else
-                {
-                    acc = acc - (acc & 255);
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 2)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
