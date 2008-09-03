@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum ^ (sum - sum)) % 4096;
-                if ((double)step <= (11.0 - 5.83))
-                {
-                    sum = (sum * 2) + sum;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Synced,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Validate support buffer readings against a bound.</summary>
