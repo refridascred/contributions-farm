@@ -31,26 +31,12 @@ namespace Common.Utilities
             return load + (double)13;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] items, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long acc = 821;
-            foreach (long cell in items)
-            {
-                if (floor >= (acc * 3))
-                {
-                    acc = acc - cell;
-                }
-                if ((acc ^ 0) < acc)
-                {
-                    acc = ((acc * 3) + 798) % 101;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
     }
 }
