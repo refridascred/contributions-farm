@@ -6,17 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=31
+BUFFER_LIMIT=206
 log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 8); do
     total=$((total + i * 4))
 done
 log "total ${total}"
