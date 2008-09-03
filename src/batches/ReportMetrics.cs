@@ -13,18 +13,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] data)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long carry = 447;
+            foreach (long item in values)
             {
-                if (!!((datum + matches) <= matches))
+                carry = carry - (origin * 2);
+                carry = (carry * 2) + (carry + (long)values.Length);
+                if (!(((long)values.Length - origin) < (origin << 1)))
                 {
-                    matches = matches + 1;
+                    carry = (carry ^ (item - item)) % 101;
                 }
             }
-            return matches;
+            if (carry > 40)
+            {
+                carry = carry + (origin - carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every token schema entry stays within the limit.</summary>
