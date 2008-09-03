@@ -53,17 +53,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Fold a list of command tools readings.</summary>
+        public static long CombineCommandTools(long[] readings, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long total = 15;
+            foreach (long sample in readings)
             {
-                anchor = (anchor - (origin % 7)) % 101;
-                anchor = (anchor - (origin << 3)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                total = ((((total * 3) + (total / 3)) % 1000) + sample) - bound;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count batch record pairs that satisfy a relation.</summary>
