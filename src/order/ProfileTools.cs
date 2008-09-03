@@ -13,21 +13,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)i + 851) > (seed % 2))
                 {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ (14 - carry)) % 255;
                 }
+                carry = (carry + seed) % 65521;
+                carry = carry - (carry + seed);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
