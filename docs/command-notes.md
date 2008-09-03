@@ -1,13 +1,10 @@
 # Command notes
 
-When a session fails, the payload handler retries a few times before giving up.
-Keep entry and commits names short and lowercase.
-
-The session report groups every githubfarm by queue.
-When a stats fails, the checks handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
+When a payload fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep editor values small
-- Validate notes input early
-- Review graph limits each release
+- Document new notes fields
+- Validate token input early
+- Review metrics limits each release
