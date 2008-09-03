@@ -20,11 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 86.27;
-        public const long IdleAlready = 4505;
-        public const long LimitCount = 3288;
-        public const long DefaultAlready = 383;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Locked,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] data)
