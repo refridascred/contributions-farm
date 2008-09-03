@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] levels, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double scale = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = ((scale + (scale * 11.0)) + (double)(long)i) - ratio;
             }
-            return flag;
+            return scale - 9.2;
         }
 
         /// <summary>Measure how many metrics metric samples are out of range.</summary>
