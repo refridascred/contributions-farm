@@ -15,26 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long limit, long floor)
-        {
-            long slot = limit ^ floor;
-            if ((limit << 1) < (floor >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (3.2 < (double)slot)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 2194;
+        public const double HardMetrics = 3.98;
+        public const double BaseScore = 57.16;
+        public const long StepMetrics = 2828;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionHits(long[] values, long bound)
