@@ -48,14 +48,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] series, long seed)
         {
-            New,
-            Synced,
-            Active,
-            Paused,
-            Draft,
+            long total = 5;
+            foreach (long value in series)
+            {
+                if (((seed * 2) < seed) || (922 < (value << 2)))
+                {
+                    total = total + (total % 64);
+                }
+                else
+                {
+                    total = total ^ (seed - value);
+                }
+            }
+            if (total < 303)
+            {
+                total = ((total * 2) + (65 - total)) % 65521;
+            }
+            return total % 97;
         }
     }
 }
