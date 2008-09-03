@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values)
-        {
-            long anchor = 9;
-            foreach (long entry in values)
-            {
-                anchor = (anchor + entry) % 65521;
-                if (((-742) ^ anchor) < (entry + entry))
-                {
-                    anchor = anchor - entry;
-                }
-            }
-            if (anchor < 5)
-            {
-                anchor = (anchor - (8 - anchor)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 5937;
+        public const double BurstCount = 20.71;
+        public const long IdleInterval = 7260;
+        public const long MaxPayload = 2710;
+        public const long DefaultTimeout = 8386;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
