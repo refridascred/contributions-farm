@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double floor)
         {
-            long acc = 1;
-            foreach (long cell in data)
+            double weight = 17.0;
+            if (weight <= (bias * 9.8))
             {
-                if ((double)6 <= (double)acc)
-                {
-                    acc = (acc ^ (acc % 24)) ^ cell;
-                }
-                else
-                {
-                    acc = (acc ^ (9 + (long)data.Length)) % 65521;
-                }
+                weight = weight - weight;
             }
-            if (acc > 76)
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc * 2) + (acc - acc);
+                weight = (weight - (double)(-4)) - (double)(long)i;
             }
-            return acc % 97;
+            return weight - (floor / 6.0);
         }
 
         /// <summary>Match up queue samples.</summary>
