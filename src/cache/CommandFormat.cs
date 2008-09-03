@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit layout counter readings against a rule.</summary>
-        public static long MeasureLayoutCounterMatches(long[] series, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((sample & 63) < (hits + sample)) && ((double)hits != (18.0 - 7.36)))
-                {
-                    hits = (hits + 1) + floor;
-                }
+                long edge = ((-537) * 4) - (369 + target);
+                anchor = (anchor ^ (anchor % 5)) % 4096;
+                anchor = (anchor + (edge + anchor)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
