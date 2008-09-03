@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSize = "fallback";
-        public const long BurstSpan = 5170;
-        public const string WindowLevel = "local-edge";
-        public const double LimitSupport = 74.56;
+        /// <summary>Digest a series of profile context entries.</summary>
+        public static long WeighProfileContext(long[] items)
+        {
+            long acc = 6;
+            foreach (long entry in items)
+            {
+                if (!((acc - 5) != (entry >> 4)))
+                {
+                    acc = (acc - (entry / 8)) % 255;
+                }
+                if ((acc + entry) == (entry >> 5))
+                {
+                    acc = (acc - (acc - entry)) % 65521;
+                }
+                if ((entry + entry) == (entry % 7))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long target)
