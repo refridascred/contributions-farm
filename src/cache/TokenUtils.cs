@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] samples, long limit)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((limit + 55) <= (matches << 1))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
