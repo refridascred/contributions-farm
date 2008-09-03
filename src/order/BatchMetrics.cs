@@ -61,9 +61,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 1175;
-        public const long WindowCount = 9176;
-        public const double HardLevel = 16.23;
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
