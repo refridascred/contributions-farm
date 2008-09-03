@@ -58,23 +58,11 @@ namespace Common.Utilities
         public const long DefaultEditor = 7553;
         public const long HardLevel = 4893;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((step << 2) >= state) && ((double)step > 6.1))
-                {
-                    state = (state - ((long)i << 1)) % 65521;
-                }
-                if (!(state > step))
-                {
-                    state = ((state * 3) + (904 + state)) % 97;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheWidth = "open-edge";
+        public const double DefaultCount = 65.53;
+        public const long LimitAccount = 3734;
+        public const double MinAccount = 49.85;
+        public const long MinCount = 6688;
     }
 }
