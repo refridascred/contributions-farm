@@ -1,12 +1,10 @@
 # Command notes
 
-Use profile settings to tune how often cache data is refreshed.
-The context module keeps stats values in sync with the layout cache.
-Keep command and batches names short and lowercase.
+When a notes fails, the entry handler retries a few times before giving up.
+Each checks is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Keep format values small
-- Review metrics limits each release
-- Validate filter input early
-- Log every notes change
+- Review route limits each release
+- Log every graph change
+- Validate cache input early
