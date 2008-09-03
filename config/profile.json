@@ -1,6 +1,7 @@
 {
-  "cache_threshold_pct": "stable",
-  "dry_run": 82.58,
-  "farm_threshold": 85.58,
-  "flush_window": [181, 404]
+  "checks_delay": 31.9,
+  "metric_size": true,
+  "profile_ratio": 1273,
+  "cluster_capacity": "strict",
+  "enabled": 1236
 }
