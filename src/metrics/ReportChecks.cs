@@ -96,25 +96,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long offset, long target)
+        /// <summary>Validate cluster stats readings against a bound.</summary>
+        public static bool CheckClusterStatsBounds(long[] readings, long bound)
         {
-            long lane = offset + target;
-            if ((lane >= (target + lane)) && (target < (target - lane)))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3 + offset) < (721 + offset))
+                if (entry > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
