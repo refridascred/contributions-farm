@@ -1,16 +1,10 @@
 # entry settings
-tools_ratio: legacy
-burst_interval_pct:
-  retry_window: fallback
-  batch_retries: 62.84
-  min_size_count:
-    filter_limit: 250
-    entry_size:
-      - 476
-      - 25
-      - 118
-      - 99
-    hard_interval: fallback
-  sync_depth: latest
-soft_capacity: fallback
-cluster_capacity: 54.24
+readonly: 31.11
+githubfarm_window: 63
+stream_capacity:
+  - legacy
+  - fallback
+  - green
+soft_ratio_pct: 67
+audit: 50.72
+strict: 1024
