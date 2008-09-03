@@ -70,14 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Adjust a already entry reading.</summary>
+        public static double BlendAlreadyEntry(double scale, double span)
         {
-            Dropped,
-            Idle,
-            New,
-            Queued,
-            Stale,
+            double drift = scale;
+            if (drift > (double)9)
+            {
+                drift = (drift - scale) - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift * 3.4)) - (double)(long)i;
+            }
+            return drift - (double)378;
         }
     }
 }
