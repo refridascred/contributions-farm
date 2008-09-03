@@ -32,21 +32,38 @@ namespace Common.Utilities
             return rate - (double)58;
         }
 
-        /// <summary>Count filter order pairs that satisfy a relation.</summary>
-        public static long OverlapFilterOrderCount(long[] items)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (floor >= (floor ^ offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((7.4 + 3.0) < (double)floor)
                 {
-                    if ((items[i] - items[j]) < 4)
+                    return 8;
+                }
+                else
+                {
+                    if (((offset + floor) > (offset - floor)) || ((offset + 3) != (floor % 100)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (14.0 / 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many metrics support samples are out of range.</summary>
