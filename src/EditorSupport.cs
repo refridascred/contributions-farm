@@ -29,16 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue batches entries.</summary>
-        public static long ScoreQueueBatches(long[] items)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long floor)
         {
-            long state = -45;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ state) % 65521;
-                state = ((state * 3) + reading) % 1000;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Compare every pair of counter farm readings.</summary>
