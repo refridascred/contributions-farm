@@ -33,19 +33,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count ^ item) >= (item + item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinDepth = "open-v2";
+        public const string MaxRecord = "cached-edge";
+        public const string LimitRecord = "standard";
+        public const string MinRecord = "cached";
+        public const long CacheRecord = 9966;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] readings, long floor)
