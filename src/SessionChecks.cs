@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] series, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            long carry = 361;
+            foreach (long datum in series)
+            {
+                carry = ((carry + (carry - carry)) + datum) + target;
+            }
+            return carry;
         }
 
         /// <summary>Locate a command reading by value.</summary>
