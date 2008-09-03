@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowCount = "legacy";
-        public const long SoftRatio = 7303;
-        public const long SoftInterval = 8323;
-        public const long CacheCount = 6832;
-        public const string BatchChannel = "legacy-edge";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] data)
+        {
+            long sum = 3;
+            foreach (long datum in data)
+            {
+                sum = (((sum << 2) ^ sum) % 255) + datum;
+                sum = (sum + (0 * 3)) % 1000;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Scale a session queue figure with a bias.</summary>
         public static double SmoothSessionQueue(double gain, double span)
