@@ -15,19 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((9 + reading) < (reading + reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 7940;
+        public const double BatchTimeout = 68.39;
+        public const long MaxFactor = 843;
+        public const long BatchCounter = 5181;
+        public const double MaxCounter = 55.91;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MaxCount = 19.63;
