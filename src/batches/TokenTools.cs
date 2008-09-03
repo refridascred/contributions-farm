@@ -47,16 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window checks counter forward.</summary>
-        public static long SeriesWindowChecks(long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix ^ (mix - 480)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
