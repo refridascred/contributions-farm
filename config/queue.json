@@ -1,16 +1,5 @@
 {
-  "burst_delay": {
-    "checks_ratio": 24.21,
-    "strict": {
-      "base_threshold_pct": 8090,
-      "base_size_ms": 2407,
-      "max_ttl_pct": "standard",
-      "burst_ratio_pct": 62.6,
-      "strict": 11.21,
-      "poll_ttl_s": "standard"
-    },
-    "soft_threshold_ms": "standard"
-  },
-  "sync_threshold_pct": "primary",
-  "strict": "green"
+  "soft_interval_pct": 100,
+  "dry_run": 52.48,
+  "checks_limit": 68
 }
