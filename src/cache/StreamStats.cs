@@ -23,21 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches stream samples.</summary>
-        public static long OverlapBatchesStreamCount(long[] readings)
+        /// <summary>Compare every pair of format token readings.</summary>
+        public static long CompareFormatTokenCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 3)
+                    if ((items[i] + items[j]) > 16)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the payload status values.</summary>
