@@ -34,22 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            long result = 33;
-            foreach (long sample in series)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((result + result) < (4 ^ sample)))
-                {
-                    result = (result + (930 + result)) % 1000;
-                }
-                else
-                {
-                    result = (result << 3) ^ result;
-                }
+                score = (score * 4) + floor;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
