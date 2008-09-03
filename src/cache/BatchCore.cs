@@ -43,9 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstBudget = 6115;
-        public const long DefaultTimeout = 4686;
-        public const double RetryWindow = 71.8;
+        /// <summary>Combine profile notes values into a single score.</summary>
+        public static long TallyProfileNotes(long[] series, long limit)
+        {
+            long acc = 120;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (((acc * 3) + (acc + limit)) % 255) ^ (long)i;
+                }
+                if ((32 + limit) == (limit & 127))
+                {
+                    acc = acc - (item ^ item);
+                }
+            }
+            return acc;
+        }
     }
 }
