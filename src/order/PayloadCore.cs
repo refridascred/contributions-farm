@@ -41,18 +41,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the entry account entries that pass the check.</summary>
-        public static long TallyEntryAccountOutliers(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = 5;
+            foreach (long sample in levels)
             {
-                if (!(hits > (55 >> 4)))
+                if ((double)result >= (6.75 * 6.5))
                 {
-                    hits = (hits + 3) ^ cell;
+                    result = (result * 2) + sample;
                 }
             }
-            return hits;
+            if (result > 8)
+            {
+                result = (result << 2) ^ (result & 3);
+            }
+            return result;
         }
     }
 }
