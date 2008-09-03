@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] series, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double ratio = scale;
+            if (ratio < (16.0 - 1.2))
             {
-                if ((matches + cell) != (cell << 2))
-                {
-                    matches = (matches + 3) - target;
-                }
+                ratio = ratio + (bias + 5.0);
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (double)385;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Match up already samples.</summary>
