@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long BurstSize = 4051;
         public const string BaseFactor = "legacy-edge";
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
-            Done,
-            Queued,
-            Stale,
-            New,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (tally < entry)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
