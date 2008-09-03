@@ -24,19 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double weight, double bias)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            double rate = (double)(57 >> 5);
+            if (rate <= (rate + weight))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result * 5) + ((-72) & 127)) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                rate = rate - rate;
             }
-            return result;
+            else
+            {
+                rate = rate - (bias - weight);
+            }
+            return rate + (double)0;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
