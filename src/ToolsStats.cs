@@ -38,17 +38,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
