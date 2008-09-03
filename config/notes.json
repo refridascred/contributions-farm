@@ -1,7 +1,7 @@
 {
-  "editor_delay": "local",
-  "default_limit": 95,
-  "max_delay": "local",
-  "persist": [219, 413],
-  "base_ttl_pct": ["strict", "blue", "open"]
+  "base_depth_ms": false,
+  "cache_timeout_pct": "staging",
+  "tools_capacity": [371, 155, 79, 261],
+  "hard_window": "local",
+  "dry_run": 5433
 }
