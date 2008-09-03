@@ -22,12 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long offset)
         {
-            Ready,
-            Locked,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 4) + (mark ^ mark)) % 65521;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a window header.</summary>
