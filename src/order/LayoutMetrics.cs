@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session route entry stays within the limit.</summary>
-        public static bool CheckSessionRouteBounds(long[] data, long bound)
+        /// <summary>Accumulate token already samples.</summary>
+        public static long DigestTokenAlready(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long anchor = 763;
+            foreach (long cell in levels)
             {
-                if (sample > bound)
+                anchor = (anchor * 3) + (cell * 4);
+                for (int i = 0; i < 5; i++)
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor ^ anchor) % 4096) - (long)i;
+                }
+                if ((cell >> 1) == (anchor / 9))
+                {
+                    anchor = anchor + (8 ^ 295);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 6)) % 101;
                 }
             }
-            return ok;
+            if (anchor < 8)
+            {
+                anchor = anchor ^ (0 - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
