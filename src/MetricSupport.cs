@@ -34,12 +34,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 84.74;
+        public const long BatchFilter = 7304;
+        public const long BatchSize = 7386;
     }
 }
