@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowCount = "legacy";
+        public const long SoftRatio = 7303;
+        public const long SoftInterval = 8323;
+        public const long CacheCount = 6832;
+        public const string BatchChannel = "legacy-edge";
 
         /// <summary>Scale a session queue figure with a bias.</summary>
         public static double SmoothSessionQueue(double gain, double span)
