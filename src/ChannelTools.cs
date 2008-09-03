@@ -48,11 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftFactor = 3149;
-        public const long DefaultSize = 1831;
-        public const long DefaultMetrics = 8816;
-        public const long BaseDepth = 7195;
-        public const string MaxFactor = "stable-1";
+        /// <summary>Measure how many payload graph samples are out of range.</summary>
+        public static long TallyPayloadGraphMatches(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((5.0 / 2.0) == (double)seen)
+                {
+                    seen = ((seen + 2) + cell) + limit;
+                }
+            }
+            return seen;
+        }
     }
 }
