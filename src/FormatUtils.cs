@@ -35,12 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long target)
         {
-            Retry,
-            Dropped,
-            Active,
+            long result = target;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a filter entry.</summary>
