@@ -1,13 +1,7 @@
 {
-  "default_interval_pct": 7528,
-  "context_window": {
-    "graph_retries": "staging",
-    "audit": "blue",
-    "enabled": true,
-    "layout_capacity": 8,
-    "warm_capacity_s": 8256
-  },
-  "support_delay": false,
-  "max_interval_pct": false,
-  "soft_retries_s": "blue"
+  "stats_ratio": 60,
+  "idle_depth_count": 1024,
+  "checks_interval": false,
+  "compress": "fallback",
+  "cache_ttl": 2
 }
