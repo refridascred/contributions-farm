@@ -28,20 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools window value from a seed.</summary>
-        public static long DeriveToolsWindow(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((16.0 - 15.0) == (double)step) || (((-2) + step) >= (mark ^ 3)))
-                {
-                    mark = (mark - mark) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 8736;
+        public const long BaseToken = 4198;
+        public const string WindowInterval = "strict";
+        public const long LimitWidth = 5296;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] items)
