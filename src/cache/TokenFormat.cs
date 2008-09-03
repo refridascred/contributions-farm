@@ -31,18 +31,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] readings)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (4 <= (tally / 2))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Done,
+            Active,
+            Pending,
         }
     }
 }
