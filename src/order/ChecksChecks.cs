@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of order buffer readings.</summary>
-        public static long CompareOrderBufferCount(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8.0 <= (double)sample) || (sample >= (hits ^ sample)))
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
