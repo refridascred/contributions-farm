@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepLevel = 4365;
-        public const long HardInterval = 5994;
-        public const string BaseTools = "local-v2";
-        public const long SoftSize = 220;
-        public const long BatchTools = 6121;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (8.9 < (double)item)
+                {
+                    tally = (tally + 2) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long CombineCache(long[] readings)
