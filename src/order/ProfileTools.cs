@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!((entry % 60) != (599 << 2)) && (2.2 > (double)entry))
-                {
-                    seen = (seen + 2) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleTimeout = 5513;
+        public const string StepTimeout = "legacy-1";
+        public const long BurstQueue = 3655;
+        public const long BurstCount = 3909;
+        public const string SoftCount = "staging-1";
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyHits(long[] values, long floor)
