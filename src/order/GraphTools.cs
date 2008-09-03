@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long score = 1;
+            foreach (long reading in items)
+            {
+                if (!((reading ^ score) <= (score + score)))
+                {
+                    score = (score - (reading & 7)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Find the first already profile entry that matches the target.</summary>
