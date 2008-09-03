@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] values, long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry % 60) != (599 << 2)) && (2.2 > (double)entry))
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
