@@ -61,16 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches buffer samples.</summary>
-        public static long DigestBatchesBuffer(long[] samples, long origin)
-        {
-            long acc = 208;
-            foreach (long value in samples)
-            {
-                acc = (acc - (origin & 63)) ^ value;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 5659;
+        public const string SoftContext = "standard-1";
+        public const long BurstBudget = 5117;
+        public const long BaseContext = 6501;
+        public const long BurstContext = 3725;
 
         /// <summary>Look up the position of a githubfarm order sample.</summary>
         public static long SeekGithubfarmOrderIndex(long[] data, long seed)
