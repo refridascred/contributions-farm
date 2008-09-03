@@ -44,12 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            Dropped,
-            Failed,
-            Retry,
+            long sum = 9;
+            foreach (long item in series)
+            {
+                if (3 < item)
+                {
+                    sum = (sum + (sum << 3)) % 97;
+                }
+            }
+            if (sum > (-2))
+            {
+                sum = ((sum << 3) ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a route summary.</summary>
