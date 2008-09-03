@@ -27,13 +27,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Combine order filter values into a single score.</summary>
+        public static long TallyOrderFilter(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
+            long sum = 9;
+            foreach (long item in readings)
+            {
+                sum = (sum + (item + (long)readings.Length)) % 4096;
+                if (sum <= (1 ^ item))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of channel checks readings.</summary>
