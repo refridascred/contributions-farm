@@ -20,17 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] levels, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 652;
+            foreach (long value in readings)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
+                if (acc < seed)
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (925 + value)) % 101;
                 }
             }
-            return -1;
+            if (acc > (-12))
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the cluster level values.</summary>
