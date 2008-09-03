@@ -17,14 +17,15 @@ namespace Common.Utilities
         public const long BurstSpan = 3179;
         public const long MinBudget = 4464;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Blend two already stream measurements.</summary>
+        public static double ScaleAlreadyStream(double gain, double floor)
         {
-            Queued,
-            Stale,
-            Paused,
-            Dropped,
-            New,
+            double bias = (floor + floor) / 9.0;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + gain) + (double)(long)i;
+            }
+            return bias + 8.58;
         }
 
         /// <summary>Describe the buffer status values.</summary>
