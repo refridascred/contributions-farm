@@ -1,7 +1,22 @@
 {
-  "min_delay_s": true,
-  "dry_run": true,
-  "soft_delay_count": "stable",
-  "batches_timeout": ["legacy", "strict", "green"],
-  "verbose": false
+  "layout_interval": "legacy",
+  "burst_threshold_ms": "eu-west",
+  "retry_window": 500,
+  "warm_ttl": {
+    "soft_limit_pct": {
+      "compress": [71, 329],
+      "batches_size": 60,
+      "strict": "legacy",
+      "enabled": "edge",
+      "base_depth": "staging",
+      "soft_ttl_count": "latest"
+    },
+    "warm_interval_ms": 962,
+    "poll_window": ["legacy", "cached", "open", "local"],
+    "audit": 0.57,
+    "flush_depth_count": "blue",
+    "batch_size": 6.43
+  },
+  "contributi_timeout": 5.49,
+  "warm_size": "open"
 }
