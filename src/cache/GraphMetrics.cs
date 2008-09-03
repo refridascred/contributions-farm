@@ -41,12 +41,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 4165;
-        public const long WindowRatio = 383;
-        public const long BurstInterval = 2744;
-        public const long StepInterval = 268;
-        public const long SoftTimeout = 7940;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((-33) << 3) == (seed & 63))
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamGaps(long[] data)
