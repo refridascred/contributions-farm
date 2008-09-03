@@ -46,15 +46,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result ^ (target % 10)) % 65521) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
     }
 }
