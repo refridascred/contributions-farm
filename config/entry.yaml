@@ -1,8 +1,5 @@
 # entry settings
-soft_interval_ms:
-  - 72
-  - 305
-  - 181
-order_capacity: true
-idle_ttl_pct: fallback
-layout_timeout: edge
+min_threshold: 250
+base_threshold_s: 33
+idle_ratio: green
+cache_delay: true
