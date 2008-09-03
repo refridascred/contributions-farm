@@ -29,24 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] data, long floor)
         {
-            long total = 98;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (sample < (sample + total))
+                if (datum > floor)
                 {
-                    total = (total << 3) ^ sample;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                total = (total ^ (seed - sample)) % 97;
             }
-            if (total < 69)
-            {
-                total = ((total * 3) + total) % 97;
-            }
-            return total % 65521;
+            return valid;
         }
     }
 }
