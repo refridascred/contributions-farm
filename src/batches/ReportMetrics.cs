@@ -14,21 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 261;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                acc = (acc << 2) ^ (entry + 448);
+                if (!((86 + acc) > entry))
                 {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + (entry << 3)) % 255;
                 }
             }
-            return hits;
+            if (acc > 701)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
