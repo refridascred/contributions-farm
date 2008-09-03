@@ -58,18 +58,10 @@ namespace Common.Utilities
         public const long CacheChecks = 1377;
         public const string SoftChecks = "legacy-edge";
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstTimeout = 87.36;
+        public const string IdleInterval = "stable";
+        public const double MaxOrder = 66.3;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
