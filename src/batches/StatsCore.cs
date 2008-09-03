@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] values, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((tally % 12) == (sample & 15))
+                if ((cell ^ cell) <= origin)
                 {
-                    tally = (tally + 2) + bound;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
