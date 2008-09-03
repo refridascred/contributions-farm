@@ -35,15 +35,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next profile layout value.</summary>
-        public static double ProjectProfileLayout(double scale, double bias)
+        /// <summary>Match up order githubfarm samples.</summary>
+        public static long MatchOrderGithubfarmCount(long[] items)
         {
-            double weight = (double)(95 % 64);
-            if (weight < (double)(-8))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight + (bias / 6.0)) + scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight - (bias * 8.0);
+            return count;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
