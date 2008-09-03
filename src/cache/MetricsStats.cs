@@ -51,38 +51,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long floor, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] samples, long step)
         {
-            if (((target >> 3) < (floor & 127)) || (target > (95 % 3)))
+            long anchor = 342;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - floor) < (target + floor))
+                if ((datum / 8) != (datum << 3))
                 {
-                    return 4;
+                    anchor = (anchor + (anchor * 4)) % 255;
                 }
-                else
+                if (datum > (datum & 15))
                 {
-                    if ((floor & 63) == (target - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((51 / 9) > target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = (anchor ^ (anchor << 1)) % 4096;
                 }
             }
+            if (anchor > 76)
+            {
+                anchor = anchor ^ step;
+            }
+            return anchor;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
