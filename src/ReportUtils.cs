@@ -29,13 +29,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count route order pairs that satisfy a relation.</summary>
+        public static long CompareRouteOrderCount(long[] series)
         {
-            Closed,
-            Failed,
-            Active,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
