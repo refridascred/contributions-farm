@@ -43,15 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long sum = 0;
-            foreach (long item in series)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (((sum << 2) ^ (item - item)) % 1000) - offset;
+                if ((908 - bound) == (bound + bound))
+                {
+                    acc = acc + (acc % 12);
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
     }
 }
