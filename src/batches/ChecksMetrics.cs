@@ -48,12 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Locate a payload layout reading by value.</summary>
+        public static long SeekPayloadLayoutIndex(long[] values, long origin)
         {
-            Done,
-            Dropped,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
