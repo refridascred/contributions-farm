@@ -39,22 +39,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long offset)
         {
-            long carry = 196;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)samples.Length % 60) != (value / 7))
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
                 {
-                    carry = (carry - (carry - value)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry < 41)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Project the next graph value.</summary>
