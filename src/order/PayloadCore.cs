@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double bias2 = bias;
+            return (bias2 + (double)675) + offset;
         }
 
         /// <summary>Look up the position of a already entry sample.</summary>
