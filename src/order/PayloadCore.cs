@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double bias, double offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double bias2 = bias;
-            return (bias2 + (double)675) + offset;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a already entry sample.</summary>
