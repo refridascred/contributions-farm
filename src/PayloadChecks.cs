@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long CacheRoute = 4832;
         public const string CacheFactor = "latest-1";
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] readings, long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
