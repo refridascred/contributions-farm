@@ -40,18 +40,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] items, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((((seed * 4) < item) || ((double)4 != (double)item)) && (((matches * 2) >= ((long)items.Length + item)) && (((-515) % 5) >= item)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two githubfarm commits measurements.</summary>
