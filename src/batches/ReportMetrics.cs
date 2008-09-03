@@ -14,11 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double rate, double bias)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double scale = rate / 3.0;
-            return (scale - (scale / 5.0)) + bias;
+            Draft,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Check that every batches profile entry stays within the limit.</summary>
