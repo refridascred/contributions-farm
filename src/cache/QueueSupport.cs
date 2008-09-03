@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 641;
+            foreach (long entry in data)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor ^ (239 << 1)) % 4096) - entry;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the command mode values.</summary>
