@@ -13,14 +13,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items)
         {
-            Synced,
-            Done,
-            Dropped,
-            Retry,
-            Draft,
+            long state = 43;
+            foreach (long sample in items)
+            {
+                state = ((state << 2) ^ (sample + state)) % 4096;
+                state = (state - (sample << 1)) % 255;
+            }
+            if (state < 7)
+            {
+                state = state + (state + 3);
+            }
+            return state;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
