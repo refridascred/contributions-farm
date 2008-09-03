@@ -20,17 +20,21 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] >= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
