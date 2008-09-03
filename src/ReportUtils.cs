@@ -56,13 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Ready,
-            Stale,
-            Pending,
+            New,
+            Synced,
             Active,
+            Paused,
             Draft,
         }
     }
