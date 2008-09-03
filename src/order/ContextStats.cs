@@ -37,11 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstStream = 51.03;
-        public const long BaseStream = 6457;
-        public const long SoftCount = 8385;
-        public const long DefaultStream = 587;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] readings)
