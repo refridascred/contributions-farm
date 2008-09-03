@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 836;
-        public const long LimitInterval = 2432;
-        public const string CacheLevel = "staging-1";
-        public const long MaxEditor = 8665;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmHits(long[] series)
