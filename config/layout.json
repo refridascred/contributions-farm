@@ -1,6 +1,11 @@
 {
-  "max_limit_ms": true,
-  "persist": 60,
-  "warm_timeout_count": "open",
-  "min_window_pct": 1024
+  "enabled": 70,
+  "dry_run": true,
+  "flush_size": "blue",
+  "default_ttl_s": {
+    "idle_ratio_count": 60,
+    "retry_ttl": 500,
+    "batch_limit": false
+  },
+  "idle_window_pct": "staging"
 }
