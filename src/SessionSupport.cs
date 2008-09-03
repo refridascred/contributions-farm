@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count stats window pairs that satisfy a relation.</summary>
-        public static long CompareStatsWindowCount(long[] values)
+        /// <summary>Scale a farm session figure with a bias.</summary>
+        public static double ProjectFarmSession(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (bias * 1.5) - (offset + bias);
+            if (drift > (drift + drift))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + (offset / 8.0);
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - (double)56;
         }
 
         /// <summary>Define report limits and defaults.</summary>
