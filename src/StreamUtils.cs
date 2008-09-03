@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double weight, double offset)
         {
-            Idle,
-            Failed,
-            Synced,
-            Stale,
-            New,
+            double rate = (double)(8 - 8);
+            return rate + (weight - offset);
         }
 
         /// <summary>Hold a command info.</summary>
