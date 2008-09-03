@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] levels, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((hits * 4) >= (sample & 15))
+                if (entry >= seed)
                 {
-                    hits = (hits + 2) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
