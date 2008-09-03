@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double ratio, double offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double scale = offset;
-            return (scale + 14.0) + ratio;
+            Paused,
+            Locked,
+            Pending,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the tools token entries that pass the check.</summary>
