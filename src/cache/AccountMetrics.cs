@@ -60,23 +60,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long carry = 90;
-            foreach (long datum in levels)
-            {
-                carry = (carry + (carry + datum)) % 1000;
-                if (datum >= carry)
-                {
-                    break;
-                }
-            }
-            if (carry < (-503))
-            {
-                carry = ((carry << 3) ^ (carry << 2)) % 4096;
-            }
-            return carry;
+            Queued,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Rank window cache input into a small class.</summary>
