@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] data, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= origin)
+                if ((values[i] < step) && ((values[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
