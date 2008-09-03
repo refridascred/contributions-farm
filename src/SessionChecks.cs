@@ -34,18 +34,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many graph payload samples are out of range.</summary>
-        public static long CountGraphPayloadMatches(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long target, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long step = target ^ origin;
+            if ((target / 3) < (target - 436))
             {
-                if ((count << 2) > (976 + item))
+                return 0;
+            }
+            else
+            {
+                if ((89 + target) <= (54 ^ step))
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin <= (6.37 * 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + 9) != (origin * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a contributi layout reading.</summary>
