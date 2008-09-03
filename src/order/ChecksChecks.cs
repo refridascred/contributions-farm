@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a channel metrics counter forward.</summary>
-        public static long IterateChannelMetrics(long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Accumulate stream samples.</summary>
