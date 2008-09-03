@@ -72,19 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double rate, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            double bias = 4.0 * 1.53;
-            if (bias < (bias + 6.39))
+            long score = 41;
+            foreach (long cell in samples)
             {
-                bias = (bias + (2.0 / 6.0)) + offset;
+                score = (score + (cell & 255)) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (6.86 + rate)) + (double)(long)i;
-            }
-            return bias + (double)311;
+            return score % 65521;
         }
     }
 }
