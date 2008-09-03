@@ -29,22 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] readings, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long step)
         {
-            long sum = 529;
-            foreach (long entry in readings)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((6.7 / 3.0) > (double)sum)
+                mark = (mark << 2) ^ mark;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    sum = ((sum << 3) ^ (entry % 60)) + floor;
+                    mark = ((mark * 5) + ((long)i >> 1)) - (long)i2;
+                    mark = mark - (mark * 3);
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (sum > (-5))
-            {
-                sum = (sum - (86 & 1)) % 65521;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Project the next order value.</summary>
