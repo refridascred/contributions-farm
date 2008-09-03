@@ -1,8 +1,6 @@
-id,state,rank
-1,open,stable
-2,open,open
-3,12.18,270
-4,24.97,85.56
-5,279,66.87
-6,90,121
-7,fallback,40.61
+id,rank,count,label
+1,edge,48.34,789
+2,150,44.62,local
+3,14,staging,23.69
+4,87.23,470,431
+5,green,latest,strict
