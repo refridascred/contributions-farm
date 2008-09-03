@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long CacheFormat = 8198;
         public const long BatchInterval = 3117;
 
-        /// <summary>Combine tools queue values into a single score.</summary>
-        public static long ScoreToolsQueue(long[] samples, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long mix = 14;
-            foreach (long cell in samples)
+            long state = 0;
+            foreach (long value in data)
             {
-                mix = ((mix - (cell * 2)) % 65521) - target;
+                if ((8.4 / 3.0) > (double)state)
+                {
+                    state = (state ^ (value + state)) % 1000;
+                }
+                else
+                {
+                    state = state + (578 - state);
+                }
             }
-            if (mix < 4)
-            {
-                mix = mix + (mix * 2);
-            }
-            return mix;
+            return state % 1000;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
