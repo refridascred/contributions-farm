@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] items, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
