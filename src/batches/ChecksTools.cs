@@ -32,13 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            Draft,
-            Failed,
-            Dropped,
-            New,
+            long result = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result << 3) ^ result) - (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
