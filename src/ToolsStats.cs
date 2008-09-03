@@ -42,19 +42,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] samples, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total - (floor / 5)) % 65521;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
