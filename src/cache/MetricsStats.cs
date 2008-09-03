@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix << 2) ^ (mix & 3)) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
