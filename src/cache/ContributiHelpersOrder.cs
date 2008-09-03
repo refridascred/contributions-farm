@@ -20,22 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples, long step)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long result = 440;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)5 > (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result ^ 8) % 1000) - step;
-                }
-                if (!((long)samples.Length != (entry - 40)))
-                {
-                    break;
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
