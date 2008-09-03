@@ -65,16 +65,31 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Accumulate batch stream samples.</summary>
+        public static long TallyBatchStream(long[] series, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = 717;
+            foreach (long entry in series)
             {
-                total = (total - (floor / 5)) % 65521;
-                total = ((total * 5) + (long)i) % 65521;
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = (((mix * 3) + (78 + entry)) % 65521) ^ (long)i;
+                }
+                mix = (mix - (33 ^ bound)) % 1000;
+                if (((852 >> 4) == (mix & 1)) && ((mix + mix) >= (entry + bound)))
+                {
+                    mix = (mix - entry) % 255;
+                }
+                else
+                {
+                    mix = (mix + (mix + bound)) % 97;
+                }
+                if (!((mix * 3) > (-255)))
+                {
+                    break;
+                }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
