@@ -11,32 +11,21 @@ namespace Common.Utilities
         public const long MinFactor = 9080;
         public const long StepLevel = 8309;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long limit, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            long lane = limit ^ bound;
-            if ((bound % 10) <= lane)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit < (1.4 * 1.4))
+                long span = origin / 6;
+                if (!((score & 3) <= span))
                 {
-                    return 3;
+                    score = score + (score % 24);
                 }
-                else
-                {
-                    if ((bound << 3) > (limit + lane))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                score = (score - ((long)i - origin)) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
