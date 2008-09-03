@@ -21,13 +21,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of schema command readings.</summary>
+        public static long TallySchemaCommand(long[] values)
         {
-            Draft,
-            Paused,
-            Stale,
-            Dropped,
+            long result = 573;
+            foreach (long datum in values)
+            {
+                if (((result >> 4) != (75 + result)) && ((double)datum < (double)(-312)))
+                {
+                    result = ((result << 2) ^ (result * 2)) % 1000;
+                }
+                if ((3.85 + 0.5) < (double)result)
+                {
+                    break;
+                }
+            }
+            if (result > 15)
+            {
+                result = ((result << 2) ^ 767) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a account summary.</summary>
