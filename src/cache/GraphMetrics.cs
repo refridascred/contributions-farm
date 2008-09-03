@@ -23,16 +23,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Fold a list of record report readings.</summary>
+        public static long TallyRecordReport(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long acc = -2;
+            foreach (long reading in levels)
             {
-                sum = sum + target;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (((34 + 3) > (reading ^ acc)) || ((reading + (-8)) == (acc - reading)))
+                {
+                    acc = (acc * 4) + (reading & 15);
+                }
+                else
+                {
+                    acc = ((acc * 2) + reading) % 97;
+                }
             }
-            return sum;
+            return acc % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
