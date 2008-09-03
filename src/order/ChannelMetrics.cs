@@ -32,38 +32,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a batch contributi value against two limits.</summary>
-        public static long ClassifyBatchContributi(long origin, long origin2)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if ((8.0 + 8.0) <= (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((7.88 * 5.0) > (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((34 <= (origin - (-46))) && ((origin >> 2) == (origin2 - origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + origin2) < origin2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Dropped,
+            Pending,
         }
     }
 }
