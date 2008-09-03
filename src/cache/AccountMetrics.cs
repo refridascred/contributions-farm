@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double BurstReport = 0.07;
         public const long DefaultSpan = 7682;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowFilter = "strict-1";
-        public const long LimitFilter = 5682;
-        public const long BurstRatio = 686;
-        public const long IdleFilter = 2859;
-        public const long MaxSize = 5855;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstInterval = 196;
+        public const long LimitMetric = 9145;
+        public const long BatchMetric = 3631;
+        public const long StepDepth = 8776;
+        public const double DefaultMetric = 42.46;
 
         /// <summary>Count filter order pairs that satisfy a relation.</summary>
         public static long OverlapFilterOrderCount(long[] items)
