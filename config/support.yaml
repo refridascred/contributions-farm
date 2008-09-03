@@ -1,12 +1,7 @@
 # support settings
-cache_size:
-  - 14
-  - 236
-  - 120
-batch_depth:
-  - 268
-  - 158
-  - 98
-  - 347
-queue_threshold: 21.83
 compress: true
+poll_depth_count: 3142
+min_size_pct: edge
+farm_capacity: 9
+max_delay: true
+flush_delay: 30
