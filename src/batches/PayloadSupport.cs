@@ -30,19 +30,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] samples, long offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > offset)
+                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
