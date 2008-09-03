@@ -1,11 +1,10 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the order list.
-A order that stays idle for too long is moved to the cache list.
-Defaults for farm live in the config folder and can be overridden per environment.
+Defaults for support live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Document new contributi fields
-- Prefer command defaults
-- Validate format input early
+- Keep farm values small
+- Prefer format defaults
+- Log every metric change
