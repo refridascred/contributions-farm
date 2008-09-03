@@ -1,5 +1,34 @@
 # support settings
-burst_retries_pct: 7017
-soft_retries: fallback
-hard_size: open
-readonly: 5616
+schema_depth:
+  flush_limit_count: 34.2
+  batch_window: 6970
+  readonly: fallback
+  schema_interval:
+    channel_delay: strict
+    metrics_delay: 78.21
+    min_size_count: 986
+    soft_delay_ms: 70
+    order_limit: 98
+    default_capacity_count: false
+  min_capacity_ms: latest
+  verbose: 4749
+notes_capacity:
+  - 117
+  - 283
+  - 365
+  - 269
+sync_retries_s:
+  poll_window: 54.59
+  profile_window: legacy
+  poll_depth_count: false
+  context_threshold: 85
+  hard_limit_pct: cached
+  poll_delay_pct:
+    retry_depth: 73.49
+    poll_ttl_s: 60
+    audit: legacy
+    idle_threshold:
+      - green
+      - blue
+      - standard
+poll_delay_ms: 30
