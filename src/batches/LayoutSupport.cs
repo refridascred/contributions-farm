@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile checks values into a single score.</summary>
-        public static long WeighProfileChecks(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] data, long limit)
         {
-            long acc = 250;
+            long seen = 0;
             foreach (long cell in data)
             {
-                if ((double)cell <= 0.8)
+                if ((cell % 3) < (3 >> 3))
                 {
-                    acc = ((acc * 4) + (cell >> 4)) % 101;
-                }
-                if (((acc + acc) != (cell % 16)) && ((cell ^ acc) >= (0 % 2)))
-                {
-                    acc = acc + (acc ^ cell);
+                    seen = (seen + 3) + limit;
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
