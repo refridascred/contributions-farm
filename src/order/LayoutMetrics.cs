@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a editor commits pair into a bucket.</summary>
-        public static long BucketEditorCommits(long seed, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            long span = seed - offset;
-            if (((seed * 4) <= (span / 3)) && ((double)span >= 15.0))
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)span <= 1.0) || (seed <= offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Accumulate token already samples.</summary>
