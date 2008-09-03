@@ -1,18 +1,24 @@
 # entry settings
-min_interval: 3853
-enabled:
-  window_interval:
-    warm_window_s: 3407
-    idle_delay: open
-    verbose: 60
-  readonly: 72
-  report_retries: primary
-  poll_size: true
-min_interval_count:
-  - blue
-  - stable
-  - cached
-  - staging
-verbose: true
-default_limit_pct: 1024
-default_size_count: staging
+queue_ratio:
+  - 481
+  - 212
+min_interval: 88
+tools_retries:
+  warm_timeout: 62
+  min_size:
+    entry_retries: 50
+    dry_run: 47.29
+    max_ttl_s: 1024
+    flush_interval_ms: true
+  dry_run: blue
+  readonly: 26.1
+checks_ratio: 64.21
+audit:
+  poll_retries_ms: staging
+  base_depth_s: 41
+  enabled: cached
+  readonly: latest
+  base_window: eu-west
+route_depth:
+  - 111
+  - 42
