@@ -1,6 +1,8 @@
 {
-  "notes_threshold": 21,
-  "context_depth": 30,
-  "default_ratio_s": "primary",
-  "batch_limit": 68
+  "min_capacity": 14,
+  "commits_window": 100,
+  "max_ratio_pct": ["eu-west", "stable"],
+  "default_interval_pct": 1372,
+  "compress": 250,
+  "notes_delay": 79
 }
