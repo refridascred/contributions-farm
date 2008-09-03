@@ -52,19 +52,26 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] items, long seed)
+        /// <summary>Accumulate record context samples.</summary>
+        public static long TotalRecordContext(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long state = 985;
+            foreach (long entry in levels)
             {
-                if (cell != seed)
+                if (!((660 - state) == (bound >> 4)))
                 {
-                    flag = false;
+                    state = state + (state - entry);
+                }
+                if ((entry < (state & 7)) && (9.0 <= 6.86))
+                {
                     break;
                 }
             }
-            return flag;
+            if (state > 6)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
     }
 }
