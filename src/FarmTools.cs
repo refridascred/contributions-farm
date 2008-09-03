@@ -38,10 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchWidth = "strict-v2";
-        public const long SoftCount = 1297;
-        public const long IdleLevel = 4125;
-        public const long WindowFactor = 9576;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                long offset = limit;
+                offset = (offset + (limit % 16)) % 4096;
+                sum = ((sum * 3) + offset) % 255;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
