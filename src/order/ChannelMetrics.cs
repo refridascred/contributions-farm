@@ -34,19 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] items, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long state = 3;
+            foreach (long sample in values)
             {
-                if (value > offset)
+                if ((915 << 1) <= state)
                 {
-                    ok = false;
-                    break;
+                    state = (((state << 2) ^ (state - state)) % 255) ^ sample;
                 }
             }
-            return ok;
+            if (state < (-9))
+            {
+                state = (state + (state - state)) % 4096;
+            }
+            return state;
         }
     }
 }
