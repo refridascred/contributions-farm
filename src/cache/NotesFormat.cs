@@ -23,12 +23,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine cache entry values into a single score.</summary>
+        public static long TotalCacheEntry(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            long carry = 700;
+            foreach (long value in readings)
+            {
+                carry = ((carry ^ carry) % 1000) ^ value;
+            }
+            return carry;
         }
     }
 }
