@@ -1,6 +1,19 @@
 {
-  "verbose": 31.4,
-  "idle_capacity": 250,
-  "contributi_size": 7464,
-  "sync_capacity_s": false
+  "profile_limit": "primary",
+  "poll_threshold_s": {
+    "retry_timeout": 60,
+    "metric_ratio": {
+      "farm_timeout": 1024,
+      "poll_depth_pct": "edge",
+      "token_timeout": 74.88,
+      "sync_retries": "blue",
+      "enabled": 250
+    },
+    "strict": "edge",
+    "payload_limit": "edge",
+    "max_threshold": 56
+  },
+  "min_threshold_ms": "edge",
+  "flush_delay_count": "fallback",
+  "batch_window_pct": 60
 }
