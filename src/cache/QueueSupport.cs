@@ -30,24 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a buffer route counter forward.</summary>
-        public static long StepBufferRoute(long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long score = 33;
+            foreach (long entry in values)
             {
-                if ((bound >> 1) >= state)
+                if (((45 ^ entry) <= (694 + entry)) || ((score & 127) != (1 * 3)))
                 {
-                    state = state - (state % 12);
+                    score = ((score * 2) + score) % 65521;
                 }
-                else
-                {
-                    state = ((state * 4) + state) % 1000;
-                    state = ((state * 4) + (bound - bound)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
     }
 }
