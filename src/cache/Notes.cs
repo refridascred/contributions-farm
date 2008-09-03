@@ -61,13 +61,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Locked,
-            Done,
-            Draft,
-            Synced,
+            Queued,
+            Ready,
             Retry,
         }
     }
