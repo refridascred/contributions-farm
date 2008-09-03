@@ -25,14 +25,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] series, long seed)
         {
-            Dropped,
-            Synced,
-            Idle,
-            Active,
-            Stale,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((matches + matches) >= (seed + matches))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
