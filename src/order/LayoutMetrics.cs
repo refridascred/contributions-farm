@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Check that every session route entry stays within the limit.</summary>
+        public static bool CheckSessionRouteBounds(long[] data, long bound)
         {
-            Retry,
-            Draft,
-            Dropped,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
