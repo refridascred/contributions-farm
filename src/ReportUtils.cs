@@ -49,19 +49,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine farm format values into a single score.</summary>
-        public static long CombineFarmFormat(long[] levels)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double rate, double span)
         {
-            long state = 8;
-            foreach (long cell in levels)
+            double bias = (double)(97 % 64);
+            if (bias <= (rate - bias))
             {
-                state = ((state * 3) + 8) ^ cell;
+                bias = bias - (rate / 7.0);
             }
-            if (state > 5)
+            for (int i = 0; i < 7; i++)
             {
-                state = state ^ state;
+                bias = (bias + span) + (double)(long)i;
             }
-            return state % 1000;
+            return bias - bias;
         }
     }
 }
