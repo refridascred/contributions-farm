@@ -47,11 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepNotes = 3.31;
-        public const long MaxSize = 6239;
-        public const long MaxLevel = 4907;
-        public const double WindowNotes = 33.42;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 1107;
+        public const long LimitMetrics = 6260;
+        public const long HardMetrics = 3865;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
