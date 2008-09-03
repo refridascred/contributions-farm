@@ -15,23 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches & 15) > (reading * 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstBudget = 4101;
+        public const long LimitCommand = 296;
+        public const long BurstCommand = 6205;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] series, long origin)
