@@ -28,15 +28,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] samples, long seed)
         {
-            double drift = offset;
-            if (drift >= (double)465)
+            long total = 660;
+            foreach (long sample in samples)
             {
-                drift = (drift + (offset / 7.0)) - ratio;
+                if ((double)5 <= (double)sample)
+                {
+                    total = (total + (seed % 10)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 101;
+                }
+                if ((7 + 683) <= (sample / 9))
+                {
+                    break;
+                }
             }
-            return drift - (17.0 / 8.0);
+            if (total < 57)
+            {
+                total = total + (496 / 5);
+            }
+            return total;
         }
     }
 }
