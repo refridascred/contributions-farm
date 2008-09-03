@@ -45,20 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] levels, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            long sum = 9;
-            foreach (long cell in levels)
+            long state = 8;
+            foreach (long item in levels)
             {
-                sum = (sum + (cell & 63)) % 1000;
-                sum = sum + cell;
+                if ((double)item == (double)state)
+                {
+                    state = state - state;
+                }
             }
-            if (sum > (-539))
-            {
-                sum = (sum + (bound - sum)) % 1000;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
