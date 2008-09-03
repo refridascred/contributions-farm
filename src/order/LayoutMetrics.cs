@@ -43,12 +43,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 7640;
+        public const long WindowSupport = 5981;
+        public const long BaseDepth = 777;
     }
 }
