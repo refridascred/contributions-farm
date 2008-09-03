@@ -51,13 +51,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] readings)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell & 1) <= cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
