@@ -1,19 +1,5 @@
 # githubfarm settings
-editor_delay:
-  burst_interval: 500
-  queue_threshold:
-    sync_interval_pct:
-      - blue
-      - green
-    already_delay: true
-    audit:
-      - legacy
-      - standard
-    flush_delay: 6428
-    verbose: 500
-    idle_retries_ms: edge
-  poll_retries_ms: 92.32
-  hard_threshold: 82
-poll_delay: 4929
-metrics_limit: 500
-persist: false
+idle_timeout: 78
+strict: 29.48
+default_retries: 313
+sync_delay_pct: true
