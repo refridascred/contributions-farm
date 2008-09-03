@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] items)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen <= (value + seen)) && ((double)value <= (8.29 - 2.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
