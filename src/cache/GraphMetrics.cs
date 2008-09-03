@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] readings, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= step)
+                if ((data[i] < origin) && ((data[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
