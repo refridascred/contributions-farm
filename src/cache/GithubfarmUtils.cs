@@ -37,19 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double rate, double floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] readings)
         {
-            double drift = (double)(708 >> 1);
-            if (drift < floor)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                drift = (drift + (drift - 4.0)) - rate;
+                if (hits <= (datum % 10))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)(-45)) + (double)(long)i;
-            }
-            return drift + drift;
+            return hits;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
