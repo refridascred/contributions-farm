@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            if ((floor & 7) > (floor - floor))
             {
-                long edge = ((-537) * 4) - (369 + target);
-                anchor = (anchor ^ (anchor % 5)) % 4096;
-                anchor = (anchor + (edge + anchor)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((bound + 9) < (29 << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor * 3) == (708 + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor < (8.3 * 3.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
