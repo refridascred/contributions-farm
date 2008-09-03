@@ -30,30 +30,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] samples, long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long total = 660;
-            foreach (long sample in samples)
-            {
-                if ((double)5 <= (double)sample)
-                {
-                    total = (total + (seed % 10)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 101;
-                }
-                if ((7 + 683) <= (sample / 9))
-                {
-                    break;
-                }
-            }
-            if (total < 57)
-            {
-                total = total + (496 / 5);
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
