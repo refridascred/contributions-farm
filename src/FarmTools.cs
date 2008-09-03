@@ -30,21 +30,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 99;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (((total << 3) ^ (total ^ 256)) % 255) ^ entry;
+                    total = ((total << 3) ^ ((long)i >> 4)) % 65521;
                 }
+                total = total - (total + floor);
+                total = (total - (floor / 7)) % 4096;
             }
-            return hits;
+            if (total > 69)
+            {
+                total = total - (floor >> 2);
+            }
+            return total % 4096;
         }
     }
 }
