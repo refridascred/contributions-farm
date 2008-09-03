@@ -38,39 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a window contributi pair into a bucket.</summary>
-        public static long GradeWindowContributi(long limit, long floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long cur = limit - floor;
-            if ((floor & 1) >= (limit >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((7 % 5) == (floor - 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((0 ^ cur) > (floor << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor % 100) < limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
