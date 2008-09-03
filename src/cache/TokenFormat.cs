@@ -20,19 +20,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((origin >> 3) == (origin + origin))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftSize = 4927;
+        public const long LimitCount = 927;
+        public const string BatchRatio = "strict";
+        public const long RetryWidth = 6912;
+        public const long DefaultBudget = 8305;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] readings, long seed)
