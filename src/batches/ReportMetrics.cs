@@ -20,19 +20,23 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] levels, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            double load = rate;
+            if (load > (offset + load))
             {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - (offset - rate);
             }
-            return stale;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + rate) - (double)(long)i;
+            }
+            return load + (rate + rate);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
