@@ -55,23 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window commits samples.</summary>
-        public static long FoldWindowCommits(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] readings)
         {
-            long total = 7;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                total = (((total << 3) ^ total) % 1000) ^ datum;
-                if (total >= (total >> 2))
+                if (!((seen - 61) > (477 - seen)))
                 {
-                    total = (total * 3) + total;
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total > 2)
-            {
-                total = ((total * 5) + total) % 255;
-            }
-            return total;
+            return seen;
         }
     }
 }
