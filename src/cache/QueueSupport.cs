@@ -27,13 +27,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long offset, long floor)
         {
-            Idle,
-            Retry,
-            Done,
-            Queued,
+            if ((3.3 * 3.1) < (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((floor & 127) <= (offset + offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor >> 5) <= 2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset >= (offset ^ floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a context notes counter forward.</summary>
