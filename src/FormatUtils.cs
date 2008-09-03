@@ -38,15 +38,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double bias, double bias2)
+        /// <summary>Count the buffer schema entries that pass the check.</summary>
+        public static long MeasureBufferSchemaGaps(long[] values, long step)
         {
-            double drift = bias2;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                drift = (drift - bias) + (double)(long)i;
+                if ((0.3 + 1.4) >= (double)step)
+                {
+                    seen = (seen + 3) ^ value;
+                }
             }
-            return drift - bias2;
+            return seen;
         }
 
         /// <summary>Describe the batches class values.</summary>
