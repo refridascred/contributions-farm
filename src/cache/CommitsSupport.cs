@@ -23,14 +23,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Paused,
-            Closed,
-            Idle,
-            Active,
-            Done,
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank schema channel input into a small class.</summary>
