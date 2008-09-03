@@ -55,23 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window tools series from a seed.</summary>
-        public static long SeriesWindowTools(long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] items, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((31 % 24) >= origin))
+                if ((items[i] == floor) && ((items[i] % 3) == 0))
                 {
-                    anchor = (anchor * 2) + (origin + anchor);
+                    return (long)i;
                 }
-                if (!((33 * 4) > (origin / 9)))
-                {
-                    anchor = (anchor << 2) ^ (origin - anchor);
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
