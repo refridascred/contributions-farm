@@ -37,39 +37,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long offset, long target)
+        /// <summary>Derive the next session githubfarm value from a seed.</summary>
+        public static long StepSessionGithubfarm(long limit)
         {
-            long offset2 = offset + target;
-            if ((target - offset) == (target & 63))
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) <= (offset2 + offset2))
+                if ((double)result < 4.0)
                 {
-                    return 2;
+                    result = (result << 3) ^ (limit ^ (long)i);
                 }
-                else
-                {
-                    if (!((target - offset2) >= (offset & 31)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((15.0 - 0.9) >= (double)offset2) && ((target / 9) == (offset2 + offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                result = (result << 3) ^ (limit + limit);
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
