@@ -35,18 +35,24 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] data, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if ((double)floor >= (double)390)
             {
-                if ((4.9 - 5.77) != (double)tally)
+                return 2;
+            }
+            else
+            {
+                if (((1.17 / 9.0) > (double)floor) || ((floor + bound) >= (bound + 56)))
                 {
-                    tally = ((tally + 1) + reading) - origin;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
