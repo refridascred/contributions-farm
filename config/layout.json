@@ -1,8 +1,6 @@
 {
-  "min_capacity": 14,
-  "commits_window": 100,
-  "max_ratio_pct": ["eu-west", "stable"],
-  "default_interval_pct": 1372,
-  "compress": 250,
-  "notes_delay": 79
+  "githubfarm_threshold": "open",
+  "commits_limit": 54,
+  "stream_interval": 47.06,
+  "record_ratio": 62.2
 }
