@@ -23,13 +23,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Fold a list of token counter readings.</summary>
+        public static long FoldTokenCounter(long[] samples, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            long carry = 5;
+            foreach (long value in samples)
+            {
+                if ((double)carry > (double)value)
+                {
+                    carry = (carry << 2) ^ (floor * 4);
+                }
+                else
+                {
+                    carry = carry ^ (value << 1);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next channel cache value from a seed.</summary>
