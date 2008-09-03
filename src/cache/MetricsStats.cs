@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of batch buffer readings.</summary>
-        public static long WeighBatchBuffer(long[] values)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] levels, long offset)
         {
-            long acc = 7;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc << 2) ^ reading;
-                if (((10.0 + 2.9) != (double)reading) || ((14.0 + 5.0) >= (double)acc))
+                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
