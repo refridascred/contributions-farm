@@ -23,11 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            New,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a session snapshot.</summary>
