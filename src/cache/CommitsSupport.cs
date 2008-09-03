@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const double SoftWindow = 26.97;
         public const long RetryScore = 2617;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] series, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long carry = 8;
-            foreach (long sample in series)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                carry = ((carry ^ step) % 1000) + sample;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
