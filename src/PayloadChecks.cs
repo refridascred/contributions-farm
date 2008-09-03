@@ -14,11 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
+            Active,
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
