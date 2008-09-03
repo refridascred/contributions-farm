@@ -72,18 +72,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many order contributi samples are out of range.</summary>
-        public static long CountOrderContributiGaps(long[] items)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double span)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double bias = weight;
+            if (bias < (span * 1.5))
             {
-                if (0.5 > (double)datum)
-                {
-                    matches = matches + 2;
-                }
+                bias = bias - span;
             }
-            return matches;
+            else
+            {
+                bias = bias + (double)721;
+            }
+            return bias - weight;
         }
 
         /// <summary>Describe the entry state values.</summary>
