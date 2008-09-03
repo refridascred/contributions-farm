@@ -47,13 +47,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Synced,
-            Ready,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 7.53;
+        public const string BaseChecks = "latest-edge";
+        public const string MaxFactor = "local-edge";
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterMatches(long[] data, long offset)
