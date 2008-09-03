@@ -13,21 +13,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit editor context readings against a rule.</summary>
