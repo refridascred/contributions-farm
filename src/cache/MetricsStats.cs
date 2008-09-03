@@ -60,19 +60,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Audit stream profile readings against a rule.</summary>
+        public static long CountStreamProfileGaps(long[] values, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (limit >= (limit + 14))
+                if ((double)limit == (6.0 * 6.0))
                 {
-                    state = ((state * 3) + (limit / 6)) % 65521;
+                    matches = (matches + 3) - sample;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
     }
 }
