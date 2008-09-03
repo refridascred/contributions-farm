@@ -47,27 +47,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of layout record entries.</summary>
-        public static long FoldLayoutRecord(long[] series)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] items, long origin)
         {
-            long state = 4;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state << 2) != (reading >> 4))
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
                 {
-                    state = (state ^ (reading * 2)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state + (reading + reading)) % 101;
-                }
-                state = (state - ((-33) + state)) % 97;
             }
-            if (state > 2)
-            {
-                state = state ^ (state % 2);
-            }
-            return state % 65521;
+            return -1;
         }
     }
 }
