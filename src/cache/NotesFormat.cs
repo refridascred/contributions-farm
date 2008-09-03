@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 7948;
-        public const long StepTimeout = 2007;
-        public const long MinLevel = 2719;
-        public const string BatchSpan = "primary-1";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!((seen / 4) <= entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenOutliers(long[] items)
