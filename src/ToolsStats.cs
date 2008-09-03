@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] items, long origin)
+        /// <summary>Match up channel checks samples.</summary>
+        public static long MatchChannelChecksCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count + count) != (origin & 127))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + sample;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
