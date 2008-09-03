@@ -23,21 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Fold a list of window stream readings.</summary>
+        public static long TallyWindowStream(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 549;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = state - datum;
+                if (((-90) * 4) < ((long)readings.Length / 2))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state ^ (floor / 7);
+                }
+                else
+                {
+                    state = ((state << 3) ^ (6 - floor)) % 97;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
