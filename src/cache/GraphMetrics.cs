@@ -45,12 +45,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepSpan = 5902;
-        public const long RetryCount = 8454;
-        public const long RetryFactor = 4043;
-        public const long StepTools = 7972;
-        public const long IdleTools = 1333;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples, long limit)
+        {
+            long result = -39;
+            foreach (long item in samples)
+            {
+                if (limit > (limit + (-198)))
+                {
+                    result = (result + (14 % 64)) + item;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportGaps(long[] readings)
