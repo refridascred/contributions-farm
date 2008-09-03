@@ -80,12 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many order contributi samples are out of range.</summary>
+        public static long CountOrderContributiGaps(long[] items)
         {
-            Stale,
-            Retry,
-            Active,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (0.5 > (double)datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
