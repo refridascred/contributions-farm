@@ -24,23 +24,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of context cache entries.</summary>
-        public static long WeighContextCache(long[] samples, long origin)
+        /// <summary>Digest a series of token already entries.</summary>
+        public static long TotalTokenAlready(long[] readings)
         {
-            long anchor = 431;
-            foreach (long sample in samples)
+            long mix = -633;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor ^ (24 * 5)) % 4096) - sample;
-                if ((double)origin != (11.0 / 7.0))
+                for (int i = 0; i < 10; i++)
                 {
-                    anchor = (anchor << 2) ^ (anchor + 828);
+                    mix = ((mix << 3) ^ ((-21) ^ (long)i)) % 97;
+                }
+                if ((double)mix > (2.6 + 0.7))
+                {
+                    mix = (mix + (mix + mix)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (9 + cell)) % 65521;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = ((anchor << 2) ^ origin) % 97;
-            }
-            return anchor % 65521;
+            return mix % 1000;
         }
 
         /// <summary>Describe the notes mode values.</summary>
