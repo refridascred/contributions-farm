@@ -53,10 +53,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowSpan = 380;
-        public const long CacheLevel = 4992;
-        public const long MaxAccount = 5131;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitDepth = 6217;
+        public const string DefaultDepth = "open-v2";
+        public const long BatchCounter = 7110;
+        public const long MaxSize = 7510;
 
         /// <summary>Scale a notes already figure with a bias.</summary>
         public static double SmoothNotesAlready(double gain, double span)
