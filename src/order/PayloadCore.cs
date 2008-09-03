@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] values, long origin)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!(((long)values.Length << 2) >= (449 % 60)))
+                {
+                    tally = ((tally + 3) + entry) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the filter schema entries that pass the check.</summary>
