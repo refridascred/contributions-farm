@@ -61,38 +61,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Classify a cache tools pair into a bucket.</summary>
-        public static long SortCacheTools(long origin, long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if (!((limit / 8) >= (origin % 60)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.0 - 8.0) == (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.0 - 4.0) <= (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((14.0 * 15.0) != (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a route session reading by value.</summary>
