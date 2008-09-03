@@ -48,11 +48,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheWidth = "open-edge";
-        public const double DefaultCount = 65.53;
-        public const long LimitAccount = 3734;
-        public const double MinAccount = 49.85;
-        public const long MinCount = 6688;
+        /// <summary>Measure how many session report samples are out of range.</summary>
+        public static long TallySessionReportOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches + entry) == (147 - entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
