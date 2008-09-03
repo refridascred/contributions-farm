@@ -1,27 +1,15 @@
 # entry settings
-dry_run:
-  record_ratio: 23.77
-  enabled: stable
-  retry_window_s: eu-west
-  default_interval: 40.16
-  retry_timeout: 24.02
-  hard_threshold_count:
-    idle_interval_pct: 4.18
-    channel_interval: local
-    githubfarm_capacity: staging
-audit: false
-verbose:
-  counter_retries: 88
-  min_depth:
-    base_retries_s: fallback
-    strict: 1.31
-    flush_ttl_s: 84.55
-    cluster_timeout: 29
-  report_depth: 56.07
-  hard_ratio_pct: 84.17
-sync_window_ms: 100
-soft_timeout_pct:
-  - 304
-  - 233
-  - 212
-sync_size_count: 80
+burst_timeout_s: fallback
+max_capacity:
+  default_depth: staging
+  idle_capacity_ms:
+    default_delay_count: 10.37
+    checks_capacity: edge
+    hard_window_ms:
+      - strict
+      - eu-west
+    compress: false
+    retry_delay: 12
+  context_threshold: true
+  cache_ttl_pct: 250
+strict: 7151
