@@ -67,32 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer already input into a small class.</summary>
-        public static long GradeBufferAlready(long limit, long step)
-        {
-            if ((limit + 451) == (step >> 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 3) <= 777)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 2) >= (3 - 378))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepScore = 6510;
+        public const long BurstSize = 2120;
+        public const long DefaultCount = 8426;
+        public const long SoftSchema = 6922;
+        public const long MaxSchema = 657;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LocateFarmIndex(long[] levels, long origin)
