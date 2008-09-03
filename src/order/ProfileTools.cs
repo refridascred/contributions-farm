@@ -50,21 +50,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up contributi order samples.</summary>
-        public static long OverlapContributiOrderCount(long[] items)
+        /// <summary>Roll a stats report counter forward.</summary>
+        public static long IterateStatsReport(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result + result) % 255;
+                result = (result ^ (result ^ (long)i)) % 255;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
