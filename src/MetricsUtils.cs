@@ -12,14 +12,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            Synced,
-            Ready,
-            Idle,
-            Draft,
-            Stale,
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = mix + (origin & 3);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
