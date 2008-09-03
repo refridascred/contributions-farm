@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] values)
+        /// <summary>Match up report notes samples.</summary>
+        public static long OverlapReportNotesCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum << 3) == (datum + hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
