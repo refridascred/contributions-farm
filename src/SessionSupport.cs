@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowScore = 7645;
+        public const long BatchGraph = 161;
+        public const string IdleSpan = "local-v2";
+        public const long MaxGraph = 6473;
+        public const long DefaultGraph = 1534;
 
         /// <summary>Count the already record entries that pass the check.</summary>
         public static long MeasureAlreadyRecordOutliers(long[] items)
