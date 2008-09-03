@@ -22,18 +22,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many entry metric samples are out of range.</summary>
-        public static long CountEntryMetricMatches(long[] values)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally >= (entry - 811)) || ((7.39 - 18.0) > (double)entry))
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
