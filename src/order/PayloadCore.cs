@@ -30,24 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stream notes value against two limits.</summary>
-        public static long ClassifyStreamNotes(long bound, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] series)
         {
-            if ((30 + bound) == (floor % 100))
+            long result = 33;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor > (6.5 - 5.0))
+                if (!((result + result) < (4 ^ sample)))
                 {
-                    return 7;
+                    result = (result + (930 + result)) % 1000;
                 }
                 else
                 {
-                    return 1;
+                    result = (result << 3) ^ result;
                 }
             }
+            return result;
         }
 
         /// <summary>Describe the layout status values.</summary>
