@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleBudget = 49.11;
-        public const long MinSession = 7707;
-        public const long LimitSession = 431;
-        public const double LimitCount = 75.32;
-        public const long WindowSession = 1756;
+        /// <summary>Project the next contributi window value.</summary>
+        public static double AdjustContributiWindow(double ratio, double span)
+        {
+            double gain = span;
+            if (gain > (gain + ratio))
+            {
+                gain = gain - ratio;
+            }
+            else
+            {
+                gain = gain - (double)2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (span - gain)) - (double)(long)i;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
