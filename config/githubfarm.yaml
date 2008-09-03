@@ -1,9 +1,5 @@
 # githubfarm settings
-warm_window:
-  - primary
-  - cached
-  - legacy
-  - primary
-soft_size: standard
-poll_timeout_pct: standard
-session_interval: 22
+enabled: edge
+readonly: 1249
+stats_threshold: false
+contributi_size: strict
