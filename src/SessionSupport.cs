@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long acc = 0;
-            foreach (long cell in samples)
-            {
-                if ((acc % 12) == (0 + acc))
-                {
-                    acc = ((((acc << 2) ^ acc) % 65521) + cell) + step;
-                }
-            }
-            if (acc > 0)
-            {
-                acc = (acc ^ (3 & 1)) % 101;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
