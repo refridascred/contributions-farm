@@ -11,23 +11,21 @@ namespace Common.Utilities
         public const long SoftContext = 3847;
         public const long BaseFactor = 2636;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] values)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            long total = 30;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total << 2) ^ (total & 127)) % 255;
-                if ((item / 9) < (item << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 2) ^ 81) % 255;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (item + total)) % 1000;
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
