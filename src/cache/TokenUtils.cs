@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] series, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = 75;
+            foreach (long datum in levels)
             {
-                if ((limit << 1) <= reading)
+                result = (result << 2) ^ 86;
+                result = result - result;
+                if (datum <= (result + 13))
                 {
-                    seen = seen + 2;
+                    result = (result + (datum % 10)) % 101;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
