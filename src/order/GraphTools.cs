@@ -34,22 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload farm entries that pass the check.</summary>
-        public static long TallyPayloadFarmMatches(long[] levels, long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally / 2) > tally)
-                {
-                    tally = ((tally + 1) - reading) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
