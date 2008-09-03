@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count entry stream pairs that satisfy a relation.</summary>
-        public static long PairEntryStreamCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 982;
+        public const long BatchSize = 722;
+        public const long WindowStream = 6774;
 
         /// <summary>Match up metric samples.</summary>
         public static long OverlapMetricCount(long[] values)
