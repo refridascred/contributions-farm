@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes already entry that matches the target.</summary>
-        public static long FindNotesAlreadyIndex(long[] series, long seed)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of order readings.</summary>
