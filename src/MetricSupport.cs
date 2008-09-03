@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long score = 51;
-            foreach (long datum in levels)
-            {
-                if ((score & 7) > (datum ^ 295))
-                {
-                    score = score ^ (27 << 1);
-                }
-            }
-            return score % 4096;
+            Retry,
+            Queued,
+            Ready,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a command options.</summary>
