@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const long BaseInterval = 9688;
         public const long LimitLevel = 8267;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] values, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (bound <= (844 / 2))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Grade a githubfarm format value against two limits.</summary>
