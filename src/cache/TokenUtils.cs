@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample >= (9.82 + 4.8)))
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
