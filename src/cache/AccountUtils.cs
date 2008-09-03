@@ -20,12 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Fold a list of profile commits readings.</summary>
+        public static long TotalProfileCommits(long[] readings, long step)
         {
-            New,
-            Pending,
-            Draft,
+            long result = 7;
+            foreach (long sample in readings)
+            {
+                if (((result * 4) == (result >> 4)) || (result <= step))
+                {
+                    result = (result + (step / 6)) + sample;
+                }
+            }
+            if (result < 39)
+            {
+                result = (result ^ (result & 31)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
