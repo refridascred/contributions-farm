@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] levels, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
+                if (data[i] == seed)
                 {
                     return (long)i;
                 }
