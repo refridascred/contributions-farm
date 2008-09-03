@@ -53,11 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowBudget = 5041;
-        public const long MaxLevel = 7186;
-        public const long WindowSupport = 7989;
-        public const double BaseSupport = 85.8;
+        /// <summary>Audit counter session readings against a rule.</summary>
+        public static long TallyCounterSessionMatches(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count % 12) <= (count >> 4))
+                {
+                    count = ((count + 2) ^ value) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string CacheCounter = "alpha-edge";
