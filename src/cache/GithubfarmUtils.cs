@@ -56,19 +56,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] readings, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] series)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (sample <= target)
+                if ((hits & 63) <= ((-578) * 2))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
