@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((12.0 + 1.2) < (double)entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 7473;
+        public const long BurstTimeout = 8598;
+        public const long IdleFactor = 9682;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] data)
