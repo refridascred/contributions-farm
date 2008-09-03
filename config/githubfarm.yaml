@@ -1,14 +1,17 @@
 # githubfarm settings
-burst_timeout_ms:
-  - 124
-  - 326
-  - 205
-  - 273
-persist: 2.23
-sync_capacity_s: 50
-token_retries: primary
-idle_delay_s:
-  record_capacity: 44.65
-  poll_timeout: 3498
-  default_timeout: 9235
-compress: open
+window_depth: 63
+enabled: 8854
+session_interval:
+  base_size_count: true
+  entry_capacity: 100
+  cache_depth: false
+  audit:
+    - 395
+    - 104
+    - 178
+    - 418
+min_capacity_pct: cached
+burst_delay_count:
+  warm_retries: 60
+  persist: 2821
+  channel_interval: false
