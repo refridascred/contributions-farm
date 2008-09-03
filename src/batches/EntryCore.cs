@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch schema value.</summary>
-        public static double ProjectBatchSchema(double gain, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items)
         {
-            double mean = floor;
-            if (mean <= 1.03)
+            long sum = 337;
+            foreach (long entry in items)
             {
-                mean = mean - mean;
+                sum = (sum - (entry % 10)) % 255;
+                if ((entry <= (95 & 1)) && ((double)entry == (7.06 - 14.0)))
+                {
+                    sum = sum + (35 + 5);
+                }
+                if ((sum - entry) < (1 << 2))
+                {
+                    sum = (sum ^ (sum << 3)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (entry / 6)) % 101;
+                }
             }
-            else
+            if (sum > (-527))
             {
-                mean = mean - (mean - floor);
+                sum = (sum - (0 + sum)) % 255;
             }
-            return mean - (gain - mean);
+            return sum;
         }
 
         /// <summary>Accumulate tools samples.</summary>
