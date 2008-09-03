@@ -47,14 +47,27 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Digest a series of layout record entries.</summary>
+        public static long FoldLayoutRecord(long[] series)
         {
-            Stale,
-            Done,
-            Synced,
-            Failed,
-            Draft,
+            long state = 4;
+            foreach (long reading in series)
+            {
+                if ((state << 2) != (reading >> 4))
+                {
+                    state = (state ^ (reading * 2)) % 101;
+                }
+                else
+                {
+                    state = (state + (reading + reading)) % 101;
+                }
+                state = (state - ((-33) + state)) % 97;
+            }
+            if (state > 2)
+            {
+                state = state ^ (state % 2);
+            }
+            return state % 65521;
         }
     }
 }
