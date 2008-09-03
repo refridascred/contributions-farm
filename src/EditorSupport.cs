@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long carry = 10;
+            foreach (long entry in data)
             {
-                if (!!(41 < (acc + (-63))))
-                {
-                    acc = acc ^ acc;
-                    acc = acc ^ (step ^ acc);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                carry = (carry - (entry - entry)) % 255;
             }
-            return acc;
+            if (carry > 51)
+            {
+                carry = (carry * 5) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
