@@ -45,14 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double rate, double bias)
         {
-            Ready,
-            Stale,
-            Pending,
-            Retry,
-            Draft,
+            double drift = bias;
+            if (drift >= (drift * 1.38))
+            {
+                drift = drift + (rate - rate);
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + (5.4 + bias);
         }
     }
 }
