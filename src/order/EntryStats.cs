@@ -25,13 +25,20 @@ namespace Common.Utilities
         public const long BaseScore = 1369;
         public const long BatchSpan = 5741;
 
-        /// <summary>Roll a tools stats counter forward.</summary>
-        public static long DeriveToolsStats(long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long score = 81;
+            foreach (long entry in data)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (((2 + 7) < (score * 5)) && ((entry / 3) >= (score + entry)))
+                {
+                    score = (score + score) % 4096;
+                }
+            }
+            if (score > 387)
+            {
+                score = score ^ (score ^ 71);
             }
             return score;
         }
