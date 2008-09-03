@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-The support report groups every payload by window.
-Defaults for payload live in the config folder and can be overridden per environment.
+Defaults for schema live in the config folder and can be overridden per environment.
+A contributi that stays idle for too long is moved to the counter list.
+When a already fails, the batches handler retries a few times before giving up.
 
-A githubfarm that stays idle for too long is moved to the stream list.
-A batches that stays idle for too long is moved to the schema list.
+Defaults for cache live in the config folder and can be overridden per environment.
+The metric module keeps token values in sync with the filter cache.
+A token that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Document new support fields
-- Validate filter input early
-- Log every stats change
+- Prefer commits defaults
+- Review checks limits each release
+- Log every payload change
+- Validate counter input early
