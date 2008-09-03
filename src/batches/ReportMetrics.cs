@@ -21,15 +21,23 @@ namespace Common.Utilities
             return (scale - (scale / 5.0)) + bias;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            long mix = limit;
+            long result = offset;
             for (int i = 0; i < 21; i++)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (((long)i ^ result) <= (70 ^ (long)i))
+                {
+                    result = (result ^ result) % 65521;
+                }
+                else
+                {
+                    result = result - (offset & 127);
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
     }
 }
