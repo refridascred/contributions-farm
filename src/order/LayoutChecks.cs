@@ -55,19 +55,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double gain, double offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double gain2 = offset / 8.0;
-            if (gain2 >= gain2)
-            {
-                gain2 = gain2 + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 - offset;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
