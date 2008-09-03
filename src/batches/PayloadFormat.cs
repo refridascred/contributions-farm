@@ -31,15 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] samples, long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long carry = 723;
-            foreach (long reading in samples)
-            {
-                carry = (((carry << 2) ^ (carry - 862)) ^ reading) - target;
-            }
-            return carry % 65521;
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of support readings.</summary>
