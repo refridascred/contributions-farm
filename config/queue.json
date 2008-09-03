@@ -1,17 +1,14 @@
 {
-  "token_ttl": {
-    "base_size_pct": 100,
-    "min_ratio_pct": 30,
-    "min_threshold_ms": false,
-    "strict": 60
-  },
-  "batch_threshold": true,
-  "metrics_ratio": "standard",
-  "soft_interval": {
-    "graph_threshold": "edge",
-    "batch_interval_ms": 72,
-    "tools_ttl": 8407,
-    "sync_capacity_pct": ["primary", "cached"],
-    "max_window": 13
+  "default_delay_s": ["cached", "standard", "staging"],
+  "record_capacity": [288, 126, 227, 371],
+  "audit": [313, 111],
+  "hard_interval_count": ["staging", "fallback", "green", "stable"],
+  "tools_size": {
+    "hard_ttl_ms": 23.27,
+    "checks_limit": "standard",
+    "channel_depth": "strict",
+    "idle_timeout_pct": [107, 93],
+    "poll_timeout_count": 21.77,
+    "poll_delay_ms": true
   }
 }
