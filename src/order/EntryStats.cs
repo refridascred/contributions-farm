@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultScore = "legacy";
-        public const long StepFactor = 5136;
-        public const double StepCount = 95.0;
+        /// <summary>Scale a stats stream figure with a bias.</summary>
+        public static double AdjustStatsStream(double gain, double offset)
+        {
+            double load = 2.4;
+            if (load > (offset - 0.9))
+            {
+                load = (load + load) + gain;
+            }
+            return load + 1.49;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TotalCommand(long[] values)
