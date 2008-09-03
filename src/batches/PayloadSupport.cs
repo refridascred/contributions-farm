@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Scale a channel entry figure with a bias.</summary>
+        public static double AdjustChannelEntry(double scale, double floor)
         {
-            Failed,
-            Pending,
-            Retry,
-            Stale,
+            double bias = (double)((-31) % 12);
+            if (bias <= scale)
+            {
+                bias = (bias - scale) - floor;
+            }
+            else
+            {
+                bias = bias + (bias - bias);
+            }
+            return bias + scale;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
