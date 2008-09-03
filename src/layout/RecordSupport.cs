@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double bias, double span)
+        /// <summary>Locate a profile counter reading by value.</summary>
+        public static long LookupProfileCounterIndex(long[] items, long floor)
         {
-            double scale = bias;
-            if (scale < (3.16 / 8.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (double)128;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (scale + bias)) + (double)(long)i;
-            }
-            return scale - (double)8;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
