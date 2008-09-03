@@ -54,10 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstWidth = "fallback-edge";
-        public const long MaxBatch = 6172;
-        public const long RetryBatch = 978;
-        public const long WindowFactor = 7322;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
+        }
     }
 }
