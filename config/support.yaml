@@ -1,7 +1,4 @@
 # support settings
-cache_capacity: fallback
-base_threshold:
-  - stable
-  - green
-  - open
-idle_limit: 500
+warm_limit_pct: 24
+hard_ratio_s: 22.44
+enabled: 9957
