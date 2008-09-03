@@ -79,17 +79,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] levels, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 6;
+            foreach (long datum in data)
             {
-                if (levels[i] <= origin)
+                if (!((double)bound > (double)35))
                 {
-                    return (long)i;
+                    total = (((total * 3) + (bound ^ 77)) % 255) - datum;
+                }
+                else
+                {
+                    total = total - (922 << 3);
                 }
             }
-            return -1;
+            if (total < 905)
+            {
+                total = total ^ total;
+            }
+            return total % 1000;
         }
     }
 }
