@@ -29,32 +29,22 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Audit githubfarm payload readings against a rule.</summary>
+        public static long MeasureGithubfarmPayloadMatches(long[] samples, long target)
         {
-            long carry = 1;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry - (carry + carry)) % 97) ^ value;
-                if ((carry >> 2) > (1 - carry))
+                if ((15.0 <= (double)hits) || (((double)entry == (double)target) && ((double)entry != (4.66 / 2.0))))
                 {
-                    carry = carry ^ carry;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry * 5)) % 1000;
-                }
-                carry = carry ^ carry;
-                if ((carry + carry) != (63 - (long)data.Length))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (carry < 81)
-            {
-                carry = ((carry * 2) + (carry + carry)) % 65521;
-            }
-            return carry;
+            return hits;
         }
     }
 }
