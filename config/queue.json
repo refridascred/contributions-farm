@@ -1,12 +1,8 @@
 {
-  "compress": ["blue", "primary", "fallback", "primary"],
-  "counter_capacity": false,
-  "verbose": "standard",
-  "notes_limit": false,
-  "batch_limit_count": 5,
-  "soft_window": {
-    "retry_retries_s": "fallback",
-    "batch_limit_count": 72.1,
-    "default_depth_s": 17
-  }
+  "max_interval_pct": 48,
+  "idle_limit_ms": [424, 69, 218],
+  "default_window": 74,
+  "batch_ratio_ms": "stable",
+  "dry_run": "open",
+  "enabled": "blue"
 }
