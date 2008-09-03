@@ -45,18 +45,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples, long limit)
+        /// <summary>Measure how many profile channel samples are out of range.</summary>
+        public static long CountProfileChannelOutliers(long[] readings, long origin)
         {
-            long result = -39;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (limit > (limit + (-198)))
+                if ((24 - tally) == (entry + origin))
                 {
-                    result = (result + (14 % 64)) + item;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
