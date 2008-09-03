@@ -27,38 +27,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] values, long seed)
         {
-            if (floor >= (floor ^ offset))
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.4 + 3.0) < (double)floor)
+                if (value < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset + floor) > (offset - floor)) || ((offset + 3) != (floor % 100)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (14.0 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
