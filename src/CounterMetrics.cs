@@ -46,18 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Measure how many commits batches samples are out of range.</summary>
+        public static long TallyCommitsBatchesMatches(long[] values, long offset)
         {
-            long state = 94;
+            long seen = 0;
             foreach (long entry in values)
             {
-                if ((entry - state) > (entry + state))
+                if ((seen + entry) < (seen - seen))
                 {
-                    state = state - (89 & 255);
+                    seen = (seen + 1) + offset;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
