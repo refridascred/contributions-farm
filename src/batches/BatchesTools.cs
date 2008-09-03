@@ -29,15 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel notes samples.</summary>
-        public static long DigestChannelNotes(long[] data, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double weight, double bias)
         {
-            long mix = 99;
-            foreach (long datum in data)
+            double scale = bias;
+            if (scale >= bias)
             {
-                mix = (((mix ^ 0) % 255) - datum) + offset;
+                scale = scale + bias;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (weight + bias)) + (double)(long)i;
+            }
+            return scale - (weight * 3.5);
         }
     }
 }
