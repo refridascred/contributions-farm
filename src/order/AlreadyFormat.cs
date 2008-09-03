@@ -21,24 +21,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine session report values into a single score.</summary>
-        public static long TallySessionReport(long[] series)
-        {
-            long sum = 8;
-            foreach (long datum in series)
-            {
-                if (datum >= (datum - datum))
-                {
-                    long tally2 = sum - (sum ^ sum);
-                    sum = ((sum * 3) + (datum - tally2)) % 65521;
-                }
-                if ((datum + datum) >= (sum - sum))
-                {
-                    sum = (sum ^ (sum - datum)) % 101;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 901;
+        public const long WindowWidth = 9173;
+        public const long CacheChannel = 1449;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
