@@ -22,23 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)bound < (6.08 - 9.46))
-                {
-                    result = (result * 2) + (bound + 26);
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (((result << 3) ^ (result - bound)) % 101) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
