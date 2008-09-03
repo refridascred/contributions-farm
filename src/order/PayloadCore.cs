@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next window command value from a seed.</summary>
-        public static long RollWindowCommand(long origin)
+        /// <summary>Combine token command values into a single score.</summary>
+        public static long ScoreTokenCommand(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long score = 1;
+            foreach (long entry in data)
             {
-                if (!(((acc + origin) > (583 * 3)) && ((double)acc >= (double)origin)))
-                {
-                    acc = ((acc << 2) ^ (origin - acc)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                score = (score << 3) ^ (entry + 41);
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
