@@ -54,19 +54,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double rate, double bias)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double rate, double bias)
         {
-            double load = (rate - bias) + (double)602;
-            if (load >= (rate / 2.0))
-            {
-                load = load - (rate / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - rate) + (double)(long)i;
-            }
-            return load - (9.0 / 6.0);
+            double bias2 = (double)((-85) ^ 78);
+            return ((bias2 - (double)9) + rate) + bias;
         }
     }
 }
