@@ -36,13 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            long result = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    result = result + (long)i3;
+                }
+                if (!!(result <= ((-97) << 1)))
+                {
+                    result = ((result * 2) + (result - (long)i)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
