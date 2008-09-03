@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] series, long bound)
         {
-            long carry = -91;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (9.54 <= (double)reading)
+                if ((double)item < (5.6 + 6.04))
                 {
-                    carry = (carry ^ (reading + carry)) % 255;
+                    hits = (hits + 2) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (carry < 390)
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
