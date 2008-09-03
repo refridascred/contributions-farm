@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of profile context entries.</summary>
-        public static long WeighProfileContext(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items)
         {
-            long acc = 6;
-            foreach (long entry in items)
+            long mix = 7;
+            foreach (long item in items)
             {
-                if (!((acc - 5) != (entry >> 4)))
+                if (mix < (item + item))
                 {
-                    acc = (acc - (entry / 8)) % 255;
-                }
-                if ((acc + entry) == (entry >> 5))
-                {
-                    acc = (acc - (acc - entry)) % 65521;
-                }
-                if ((entry + entry) == (entry % 7))
-                {
-                    break;
+                    mix = (mix + 0) % 1000;
                 }
             }
-            return acc % 1000;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
