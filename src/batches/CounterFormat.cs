@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Synced,
-            Locked,
-            Done,
-            Active,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 38.33;
+        public const long HardAlready = 7535;
+        public const long DefaultScore = 8497;
+        public const long SoftSize = 9143;
+        public const double LimitRatio = 12.5;
 
         /// <summary>Digest a series of counter buffer entries.</summary>
         public static long DigestCounterBuffer(long[] levels, long target)
