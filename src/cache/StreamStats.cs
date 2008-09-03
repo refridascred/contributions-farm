@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a contributi account counter forward.</summary>
-        public static long DeriveContributiAccount(long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (mix ^ ((long)i2 >> 3)) % 4096;
-                    mix = (mix * 5) + 991;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
