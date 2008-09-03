@@ -40,35 +40,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] samples, long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long result = 2;
-            foreach (long cell in samples)
-            {
-                if ((result + result) == (result * 4))
-                {
-                    result = result + ((-16) / 3);
-                    result = (result * 5) + (offset >> 3);
-                }
-                if (!((offset & 127) > (18 / 5)))
-                {
-                    result = ((result * 4) + result) % 65521;
-                }
-                else
-                {
-                    result = result - (cell / 5);
-                }
-                if ((cell + result) > offset)
-                {
-                    break;
-                }
-            }
-            if (result > (-84))
-            {
-                result = (result * 2) + (offset >> 2);
-            }
-            return result % 97;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
