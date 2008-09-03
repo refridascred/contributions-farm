@@ -43,18 +43,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter session readings against a rule.</summary>
-        public static long TallyCounterSessionMatches(long[] samples, long floor)
+        /// <summary>Classify a route account pair into a bucket.</summary>
+        public static long BucketRouteAccount(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if ((offset - 8) < (52 ^ 4))
             {
-                if ((count % 12) <= (count >> 4))
+                return 2;
+            }
+            else
+            {
+                if ((offset << 3) <= offset)
                 {
-                    count = ((count + 2) ^ value) + floor;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset2 - offset2) <= (99 & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
