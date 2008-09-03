@@ -35,14 +35,10 @@ namespace Common.Utilities
         public const double LimitFactor = 7.57;
         public const long LimitBatch = 9779;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseAlready = 63.05;
+        public const string HardRatio = "alpha";
+        public const string MinAlready = "cached-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BatchTimeout = 6.46;
