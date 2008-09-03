@@ -14,13 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            Ready,
+            Retry,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a account record.</summary>
