@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const string WindowLevel = "local-edge";
         public const double LimitSupport = 74.56;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)score == (double)715)
                 {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score * 3) + (score - score);
+                    score = score + score;
                 }
+                score = (score << 2) ^ (766 & 63);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
