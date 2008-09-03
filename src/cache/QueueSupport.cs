@@ -20,16 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values)
-        {
-            long mark = -756;
-            foreach (long sample in values)
-            {
-                mark = (mark * 2) + (sample & 7);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "stable-edge";
+        public const long SoftScore = 7048;
+        public const long BurstSchema = 8900;
+        public const long SoftLevel = 2581;
+        public const long WindowSchema = 8590;
 
         /// <summary>Roll a context notes counter forward.</summary>
         public static long StepContextNotes(long bound)
