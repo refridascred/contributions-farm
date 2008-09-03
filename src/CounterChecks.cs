@@ -25,22 +25,23 @@ namespace Common.Utilities
         public const string BaseSize = "latest";
         public const long StepAlready = 569;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long step, long floor)
         {
-            if (target < (target + target))
+            long diff = step - floor;
+            if ((74 / 4) < (diff - diff))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((double)target <= (double)floor)
+                if (229 >= (floor - diff))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    return 8;
                 }
             }
         }
