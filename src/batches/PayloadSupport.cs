@@ -35,19 +35,32 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] levels, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] data)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long carry = 1;
+            foreach (long value in data)
             {
-                if (item > offset)
+                carry = ((carry - (carry + carry)) % 97) ^ value;
+                if ((carry >> 2) > (1 - carry))
                 {
-                    stale = false;
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry * 5)) % 1000;
+                }
+                carry = carry ^ carry;
+                if ((carry + carry) != (63 - (long)data.Length))
+                {
                     break;
                 }
             }
-            return stale;
+            if (carry < 81)
+            {
+                carry = ((carry * 2) + (carry + carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
