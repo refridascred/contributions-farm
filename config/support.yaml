@@ -1,8 +1,6 @@
 # support settings
-batch_timeout_s: 500
-buffer_interval: 35.67
-poll_limit_count: staging
-dry_run: 14.21
-burst_capacity_pct:
-  - latest
-  - strict
+compress:
+  - cached
+  - fallback
+cache_ttl: true
+stream_threshold: 1419
