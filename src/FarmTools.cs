@@ -20,22 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] values, long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches - limit) != ((-631) + limit))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
