@@ -76,12 +76,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Idle,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultSize = "legacy-edge";
+        public const long BurstCommand = 3328;
+        public const long BaseBudget = 3731;
     }
 }
