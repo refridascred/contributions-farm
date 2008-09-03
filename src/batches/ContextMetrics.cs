@@ -41,17 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] data, long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
