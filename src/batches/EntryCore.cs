@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Project the next batch schema value.</summary>
+        public static double ProjectBatchSchema(double gain, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            double mean = floor;
+            if (mean <= 1.03)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                mean = mean - mean;
             }
-            return anchor;
+            else
+            {
+                mean = mean - (mean - floor);
+            }
+            return mean - (gain - mean);
         }
 
         /// <summary>Combine schema values into a single score.</summary>
