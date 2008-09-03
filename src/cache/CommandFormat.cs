@@ -24,19 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] levels, long floor)
+        /// <summary>Validate account entry readings against a bound.</summary>
+        public static bool GuardAccountEntryLimits(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (reading > floor)
+                if (sample > limit)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
