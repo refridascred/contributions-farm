@@ -27,13 +27,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Closed,
-            Retry,
+            Idle,
             Pending,
-            Failed,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
