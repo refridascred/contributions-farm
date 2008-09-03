@@ -21,11 +21,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowInterval = 6339;
-        public const long LimitCount = 9886;
-        public const long BaseStream = 9506;
-        public const long DefaultStream = 3787;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long floor)
+        {
+            if ((double)782 == (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)floor != (1.32 + 10.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MinDepth = 63.86;
