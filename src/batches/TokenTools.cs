@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Idle,
-            Closed,
-            Draft,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 22;
+        public const long MinWidth = 9549;
+        public const long SoftFactor = 4547;
+        public const long IdleTimeout = 208;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
