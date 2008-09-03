@@ -20,12 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowRatio = 3084;
-        public const string MaxAlready = "local-1";
-        public const string SoftAlready = "latest-edge";
-        public const string BaseSize = "latest";
-        public const long StepAlready = 569;
+        /// <summary>Fold a list of cluster tools readings.</summary>
+        public static long TotalClusterTools(long[] data)
+        {
+            long score = 759;
+            foreach (long value in data)
+            {
+                score = (score - (value + value)) % 255;
+            }
+            if (score < 45)
+            {
+                score = score ^ (score << 1);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double ratio, double bias)
