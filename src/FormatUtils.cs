@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] samples, long step)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the token mode values.</summary>
