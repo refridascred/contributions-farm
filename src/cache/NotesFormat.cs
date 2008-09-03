@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchRatio = "alpha-1";
+        public const long BatchSpan = 571;
+        public const double MaxLayout = 0.79;
+        public const long HardSpan = 2480;
+        public const long RetryInterval = 4850;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string MaxSupport = "alpha-1";
