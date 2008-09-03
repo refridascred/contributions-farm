@@ -36,21 +36,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Count buffer window pairs that satisfy a relation.</summary>
+        public static long PairBufferWindowCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 16)
+                    if ((samples[i] - samples[j]) == 14)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
