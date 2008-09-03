@@ -1,9 +1,18 @@
 # entry settings
-burst_capacity: 49
-audit: edge
-min_size_count:
-  - standard
-  - legacy
-  - eu-west
-  - stable
-soft_ttl_s: 8415
+window_delay: staging
+session_ratio: 250
+record_ratio:
+  flush_depth:
+    - open
+    - latest
+    - strict
+  context_window: 63.92
+  default_ttl_ms: 30
+  default_size: 902
+  default_window: blue
+  cluster_threshold: false
+retry_window_pct:
+  - 401
+  - 41
+  - 55
+  - 395
