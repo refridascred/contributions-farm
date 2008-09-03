@@ -56,32 +56,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long origin, long origin2)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] data, long step)
         {
-            long step = origin + origin2;
-            if ((step + origin2) >= origin)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > (81 - step))
+                if ((data[i] < step) && ((data[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin2 <= (step / 6)) || (318 < (origin - origin2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
