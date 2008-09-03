@@ -33,13 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long bound, long floor)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long prev = bound + floor;
+            if ((floor / 4) < 87)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 1) <= (prev << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor > (double)prev)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
