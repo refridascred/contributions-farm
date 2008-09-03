@@ -80,20 +80,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] data, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (data[i] >= bound)
                 {
-                    mark = (mark + (step - step)) + (long)i2;
-                    mark = (mark * 2) + (step % 8);
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
