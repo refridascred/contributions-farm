@@ -13,19 +13,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items, long offset)
+        /// <summary>Rank payload route input into a small class.</summary>
+        public static long GradePayloadRoute(long limit, long bound)
         {
-            long sum = 7;
-            foreach (long entry in items)
+            if ((limit + limit) > (76 * 4))
             {
-                sum = (((sum * 3) + (offset >> 2)) % 101) + entry;
+                return 0;
             }
-            if (sum < 32)
+            else
             {
-                sum = (sum + sum) % 101;
+                if ((bound + bound) <= (bound % 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((limit + limit) >= (62 << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return sum % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
