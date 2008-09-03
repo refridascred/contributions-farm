@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Size { get; set; }
+            long result = 481;
+            foreach (long reading in series)
+            {
+                if ((reading + 10) >= (reading + result))
+                {
+                    result = (result - reading) % 101;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
