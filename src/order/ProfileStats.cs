@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long SoftTools = 5568;
         public const string CacheTools = "legacy-edge";
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Adjust a window notes reading.</summary>
+        public static double ScaleWindowNotes(double bias, double span)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
+            double drift = 1.0;
+            if (drift > (double)520)
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (bias - span)) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
