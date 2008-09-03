@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long acc = 0;
-            foreach (long value in samples)
+            long mix = -514;
+            foreach (long reading in items)
             {
-                acc = acc - (acc + value);
-                if (origin >= (acc * 4))
+                for (int i = 0; i < 8; i++)
                 {
-                    break;
+                    mix = (((mix * 4) + (mix + reading)) % 1000) ^ (long)i;
+                }
+                if ((double)reading != (6.82 - 7.0))
+                {
+                    mix = mix ^ mix;
                 }
             }
-            return acc;
+            if (mix < 442)
+            {
+                mix = ((mix * 5) + (2 - mix)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the channel status values.</summary>
