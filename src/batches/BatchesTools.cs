@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardFactor = 5554;
-        public const double StepEntry = 61.99;
-        public const long SoftRatio = 9787;
-        public const long HardCount = 983;
-        public const long BaseSize = 9087;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Failed,
+            Retry,
+            Ready,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Blend two editor profile measurements.</summary>
         public static double AdjustEditorProfile(double gain, double bias)
