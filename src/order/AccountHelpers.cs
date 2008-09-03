@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema payload figure with a bias.</summary>
-        public static double ProjectSchemaPayload(double scale, double bias)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long origin)
         {
-            double rate = scale;
-            return (rate + (double)964) + bias;
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the command mode values.</summary>
