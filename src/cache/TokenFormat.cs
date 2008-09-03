@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] items, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] items)
         {
-            long state = 2;
-            foreach (long value in items)
+            long mix = 526;
+            foreach (long sample in items)
             {
-                state = state + (92 >> 1);
-                if (((double)bound > (0.89 - 4.04)) || ((value - state) <= state))
+                if ((double)mix <= (0.9 * 1.45))
                 {
-                    break;
+                    mix = (mix + mix) + sample;
                 }
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
