@@ -14,11 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit report readings against a rule.</summary>
