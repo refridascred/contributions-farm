@@ -1,12 +1,4 @@
 # githubfarm settings
-enabled: 73.52
-dry_run:
-  - edge
-  - standard
-  - fallback
-buffer_timeout: fallback
-max_ratio_pct: 2256
-persist:
-  enabled: 36.75
-  token_depth: 14.22
-  verbose: 30.63
+poll_retries_pct: 3933
+min_retries: primary
+strict: false
