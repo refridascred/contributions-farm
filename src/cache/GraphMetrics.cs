@@ -37,22 +37,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] readings, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] readings, long bound)
         {
-            long hits = 0;
+            long result = 4;
             foreach (long item in readings)
             {
-                if (!(hits >= (floor - hits)))
+                result = (result * 3) + (bound + result);
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = (hits + 3) ^ item;
+                    result = (((result * 5) + bound) % 4096) - (long)i;
+                    result = ((result << 3) ^ (result ^ item)) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = result - result;
             }
-            return hits;
+            if (result < 84)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of format entries.</summary>
