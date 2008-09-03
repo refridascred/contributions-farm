@@ -64,21 +64,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count batch record pairs that satisfy a relation.</summary>
-        public static long MatchBatchRecordCount(long[] data)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public double Region { get; set; }
         }
     }
 }
