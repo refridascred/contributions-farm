@@ -45,18 +45,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count buffer window pairs that satisfy a relation.</summary>
-        public static long PairBufferWindowCount(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry >> 3) > (seen + entry))
                 {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
