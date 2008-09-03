@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next tools payload value from a seed.</summary>
-        public static long IterateToolsPayload(long seed)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((acc >= seed) && ((acc << 2) != (1 >> 1)))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
