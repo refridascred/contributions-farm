@@ -32,13 +32,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] samples, long target)
         {
-            New,
-            Paused,
-            Retry,
-            Queued,
+            long carry = 723;
+            foreach (long reading in samples)
+            {
+                carry = (((carry << 2) ^ (carry - 862)) ^ reading) - target;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of support readings.</summary>
