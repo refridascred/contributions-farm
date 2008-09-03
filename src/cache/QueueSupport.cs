@@ -30,11 +30,10 @@ namespace Common.Utilities
             return ((rate2 + 3.7) + rate) + offset;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstInterval = 297;
+        public const long CacheAlready = 4807;
+        public const long StepTimeout = 7847;
+        public const double HardAlready = 37.61;
     }
 }
