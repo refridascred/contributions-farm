@@ -1,52 +1,35 @@
 # support settings
-readonly:
-  batch_depth_pct: 1.9
-  retry_ttl: standard
-  sync_timeout_count:
-    sync_delay: stable
-    payload_retries: true
-    sync_threshold: 36
-    compress: true
-  sync_threshold:
-    retry_timeout_pct: fallback
-    enabled:
-      - 375
-      - 382
-      - 124
-    metric_depth: cached
-    sync_depth_pct: fallback
-    flush_size_pct:
-      - eu-west
-      - standard
-      - eu-west
-    command_timeout: 64.06
-  editor_timeout:
-    - blue
-    - staging
-    - primary
-    - fallback
-  warm_capacity_count:
-    batch_depth: 52.22
-    min_capacity:
-      - green
-      - cached
-      - cached
-    poll_interval_count: true
-    entry_depth: false
-    idle_threshold_pct:
-      - 256
-      - 47
-      - 288
-      - 44
-    cache_ttl_count:
-      - legacy
-      - blue
-      - legacy
-      - eu-west
-base_timeout_s: 4510
-min_delay_count: true
-strict: false
-soft_limit_ms:
-  - 495
-  - 90
-  - 259
+burst_timeout_ms:
+  - local
+  - cached
+  - primary
+  - cached
+schema_ttl: green
+layout_delay:
+  compress: true
+  poll_interval_pct: primary
+  soft_ratio_ms:
+    compress:
+      - 453
+      - 111
+      - 467
+    verbose: false
+    readonly: 31.4
+  layout_ratio:
+    retry_timeout_s: stable
+    account_size:
+      - 421
+      - 97
+      - 331
+      - 443
+    persist: local
+    retry_limit_ms: edge
+    queue_capacity: strict
+  persist: primary
+flush_ttl_count: 73
+cache_interval_pct:
+  - cached
+  - standard
+  - fallback
+  - green
+enabled: 81.8
