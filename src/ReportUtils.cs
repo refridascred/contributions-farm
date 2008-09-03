@@ -50,19 +50,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] levels, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items)
         {
             long seen = 0;
-            foreach (long value in levels)
+            foreach (long entry in items)
             {
-                if (((451 * 2) <= (value + step)) || ((665 ^ step) > (322 - step)))
+                if ((5.44 / 4.0) < (double)seen)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) ^ entry;
                 }
             }
             return seen;
