@@ -28,12 +28,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 4105;
-        public const string DefaultWidth = "alpha-v2";
-        public const long HardBudget = 9245;
-        public const double LimitFactor = 7.57;
-        public const long LimitBatch = 9779;
+        /// <summary>Blend two contributi stats measurements.</summary>
+        public static double ProjectContributiStats(double scale, double offset)
+        {
+            double gain = offset;
+            if (gain >= (double)0)
+            {
+                gain = gain + (double)88;
+            }
+            return gain - scale;
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long DeriveRoute(long floor)
