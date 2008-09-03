@@ -1,8 +1,7 @@
 {
-  "sync_delay_ms": 8628,
-  "stream_ratio": 53,
-  "batch_ttl": "blue",
-  "batches_delay": "local",
-  "poll_window_ms": true,
-  "flush_interval_ms": "blue"
+  "checks_timeout": "primary",
+  "cache_depth_count": 91,
+  "default_limit": 3353,
+  "editor_delay": 5146,
+  "enabled": 79
 }
