@@ -31,21 +31,26 @@ namespace Common.Utilities
             return load + (double)13;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] items, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = 821;
+            foreach (long cell in items)
             {
-                long hits = total;
-                if ((hits > ((long)i >> 2)) && ((hits ^ hits) < (0 ^ total)))
+                if (floor >= (acc * 3))
                 {
-                    hits = (hits + (long)i) % 97;
-                    continue;
+                    acc = acc - cell;
                 }
-                total = ((total * 3) + (long)i) % 101;
+                if ((acc ^ 0) < acc)
+                {
+                    acc = ((acc * 3) + 798) % 101;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
+                }
             }
-            return total;
+            return acc;
         }
     }
 }
