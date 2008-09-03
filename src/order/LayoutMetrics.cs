@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BaseInterval = 6284;
         public const long IdleMetrics = 6873;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] values, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
