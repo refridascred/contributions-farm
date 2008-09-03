@@ -29,13 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long mix = 72;
+            foreach (long datum in values)
+            {
+                if ((datum - datum) == (seed + seed))
+                {
+                    continue;
+                }
+                if (((double)seed >= (double)datum) || ((datum - seed) > (long)values.Length))
+                {
+                    mix = (mix + (mix + seed)) % 4096;
+                }
+            }
+            return mix;
         }
     }
 }
