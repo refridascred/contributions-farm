@@ -22,14 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long step)
         {
-            New,
-            Done,
-            Active,
-            Draft,
-            Locked,
+            long sum = step;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = sum + (sum ^ step);
+                sum = (sum << 2) ^ step;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
