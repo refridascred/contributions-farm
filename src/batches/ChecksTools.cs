@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long span = floor - target;
-            if (!((double)floor != (6.2 - 9.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)span < (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
