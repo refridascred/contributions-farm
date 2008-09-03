@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = sum ^ seed;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a account options.</summary>
