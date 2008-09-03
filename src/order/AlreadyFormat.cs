@@ -51,26 +51,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] samples, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            long result = 38;
-            foreach (long cell in samples)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((764 ^ target) > (target & 1)))
+                if ((long)i < (anchor + seed))
                 {
-                    result = (result + (result + target)) % 97;
+                    anchor = (anchor * 4) + (anchor + (long)i);
+                    anchor = ((anchor * 4) + (seed + anchor)) % 101;
                 }
-                if (!((20.0 * 12.0) > (double)cell))
+                anchor = ((anchor << 2) ^ (seed >> 3)) % 101;
+                if (!(anchor <= (4 + anchor)))
                 {
-                    break;
+                    anchor = ((anchor * 2) + (seed % 8)) % 101;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            if (result > 262)
-            {
-                result = (result ^ (target % 3)) % 1000;
-            }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
