@@ -20,12 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of channel record entries.</summary>
+        public static long ScoreChannelRecord(long[] series)
         {
-            New,
-            Synced,
-            Draft,
+            long carry = 32;
+            foreach (long value in series)
+            {
+                if ((carry % 100) > (value << 3))
+                {
+                    carry = (carry - (value - carry)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (6 + value)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a payload summary.</summary>
