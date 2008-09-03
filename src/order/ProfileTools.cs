@@ -28,18 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRatio = 4230;
+        public const double DefaultRoute = 74.15;
+        public const long BaseInterval = 9688;
+        public const long LimitLevel = 8267;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
