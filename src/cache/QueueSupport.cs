@@ -20,12 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "stable-edge";
-        public const long SoftScore = 7048;
-        public const long BurstSchema = 8900;
-        public const long SoftLevel = 2581;
-        public const long WindowSchema = 8590;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Idle,
+            Retry,
+            Done,
+            Queued,
+        }
 
         /// <summary>Roll a context notes counter forward.</summary>
         public static long StepContextNotes(long bound)
