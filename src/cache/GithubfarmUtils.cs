@@ -23,18 +23,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] items, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry >= (count % 100))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    count = (count + 3) + limit;
+                    score = ((score ^ (offset << 3)) % 97) - (long)i2;
+                    score = (score - score) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
