@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Closed,
-            Done,
-            Locked,
-            Draft,
-            Synced,
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
