@@ -25,22 +25,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 33;
         public const string WindowRatio = "standard-edge";
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleSize = 54.83;
+        public const double BurstDepth = 23.85;
+        public const double RetryAccount = 5.24;
+        public const long WindowAccount = 1195;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
