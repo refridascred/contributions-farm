@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((tally >> 5) != (datum % 7)) || ((389 + datum) >= datum))
+                if ((count ^ reading) <= reading)
                 {
-                    tally = tally + 2;
+                    count = (count + 2) + seed;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
