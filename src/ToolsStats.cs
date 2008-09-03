@@ -43,19 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Scale a tools window figure with a bias.</summary>
+        public static double AdjustToolsWindow(double weight, double offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            double mean = 7.3 / 7.0;
+            if (mean > weight)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (mix + ((long)i / 6)) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                mean = mean - (double)8;
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean + (offset + weight);
         }
 
         /// <summary>Hold a stream entry.</summary>
