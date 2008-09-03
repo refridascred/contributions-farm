@@ -13,12 +13,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 420;
-        public const long IdleTimeout = 4882;
-        public const string IdleWidth = "local-edge";
-        public const long HardAccount = 6661;
-        public const long BaseScore = 5180;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] data, long limit)
+        {
+            long mark = 5;
+            foreach (long cell in data)
+            {
+                mark = (mark ^ limit) ^ cell;
+                if ((mark / 5) > mark)
+                {
+                    mark = (mark - (mark / 6)) % 4096;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = ((mark << 3) ^ (mark + limit)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double gain, double bias)
