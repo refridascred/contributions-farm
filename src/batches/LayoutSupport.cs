@@ -76,17 +76,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long floor)
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long AuditContributiEntryMatches(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (data[i] == floor)
+                if (((seed + count) != (5 % 7)) && ((double)seed > 20.0))
                 {
-                    return (long)i;
+                    count = (count + 3) - item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
