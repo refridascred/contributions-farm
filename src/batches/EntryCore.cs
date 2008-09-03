@@ -23,17 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series, long floor)
-        {
-            long total = 44;
-            foreach (long entry in series)
-            {
-                total = ((total - (total >> 3)) - entry) - floor;
-                total = total ^ 854;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheTimeout = "primary-edge";
+        public const string DefaultLevel = "standard-v2";
+        public const long StepInterval = 6130;
+        public const long BaseScore = 365;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string RetryTimeout = "open";
