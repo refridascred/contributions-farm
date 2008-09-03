@@ -1,7 +1,8 @@
 {
-  "idle_size_ms": 2203,
-  "format_depth": 5895,
-  "idle_interval_ms": "latest",
-  "route_retries": [237, 57, 45],
-  "burst_ttl_count": 23
+  "base_interval": "legacy",
+  "readonly": "open",
+  "verbose": ["stable", "blue"],
+  "max_timeout_pct": "primary",
+  "min_threshold": "open",
+  "max_timeout": 94.09
 }
