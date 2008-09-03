@@ -68,21 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order githubfarm samples.</summary>
-        public static long MatchOrderGithubfarmCount(long[] items)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
