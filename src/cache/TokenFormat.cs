@@ -33,39 +33,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long origin, long offset)
+        /// <summary>Count the metrics order entries that pass the check.</summary>
+        public static long AuditMetricsOrderHits(long[] items, long step)
         {
-            long span = origin ^ offset;
-            if ((span + offset) < (span % 24))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin ^ origin) <= (offset + span)) || (span < offset))
+                if ((tally / 2) <= ((long)items.Length % 12))
                 {
-                    return 3;
+                    tally = ((tally + 1) ^ datum) - step;
                 }
                 else
                 {
-                    if ((origin ^ 9) > (span - span))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)offset >= (1.0 - 1.5)) || ((origin & 15) > (span + offset)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
