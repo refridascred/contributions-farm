@@ -1,38 +1,9 @@
 # githubfarm settings
-counter_depth: stable
-audit:
-  max_ttl_count: 1024
-  strict:
-    - blue
-    - green
-    - edge
-    - primary
-  dry_run: true
-hard_capacity_ms:
-  - 349
-  - 352
-  - 465
-  - 27
-verbose:
-  stream_ttl:
-    - 102
-    - 383
-    - 81
-  sync_size_count: open
-  buffer_interval: 100
-  retry_retries_pct:
-    githubfarm_delay: 1024
-    min_timeout: standard
-    sync_capacity_pct: 87.43
-  sync_size:
-    min_timeout: eu-west
-    warm_interval_ms: 38.56
-    warm_retries_ms: local
-    readonly: false
-    enabled: cached
-    stats_threshold: 500
-sync_ratio_pct:
-  - 120
-  - 332
-  - 337
-farm_threshold: false
+schema_interval:
+  - 365
+  - 124
+  - 228
+  - 65
+queue_timeout: 27.39
+stats_window: 7726
+counter_retries: 2818
