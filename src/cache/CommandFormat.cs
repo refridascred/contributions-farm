@@ -39,25 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long target, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] items)
         {
-            long bound = target ^ seed;
-            if (!((bound + bound) > (target - bound)))
+            long state = -82;
+            foreach (long value in items)
             {
-                return 0;
+                state = ((state ^ (784 / 6)) % 97) - value;
             }
-            else
-            {
-                if ((double)seed != (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state;
         }
 
         /// <summary>Combine format values into a single score.</summary>
