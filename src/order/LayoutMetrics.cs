@@ -26,19 +26,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > origin)
+                if (readings[i] == limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
