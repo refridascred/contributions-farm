@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] readings, long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches / 9) < (matches - target))
+                if (samples[i] == floor)
                 {
-                    matches = (matches + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next support value.</summary>
