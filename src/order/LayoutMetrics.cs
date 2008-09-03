@@ -53,10 +53,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardTimeout = 1.9;
-        public const long RetryDepth = 6999;
-        public const string IdleSpan = "latest-1";
-        public const long BatchLevel = 3310;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 9504;
+        public const long RetryWidth = 1323;
+        public const double LimitScore = 62.04;
+        public const double BaseStats = 39.11;
     }
 }
