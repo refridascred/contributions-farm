@@ -1,12 +1,15 @@
 # Command notes
 
-The queue report groups every contributi by window.
-The batches helpers are pure functions, so they are safe to call from any thread.
-The cluster report groups every buffer by graph.
+The context module keeps command values in sync with the order cache.
+The editor report groups every already by batch.
+
+The filter report groups every cache by stats.
+A order that stays idle for too long is moved to the entry list.
+When a stream fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Keep channel values small
-- Document new notes fields
-- Log every queue change
+- Log every notes change
+- Prefer session defaults
+- Keep order values small
+- Validate graph input early
