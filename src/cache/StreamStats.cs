@@ -30,13 +30,24 @@ namespace Common.Utilities
             return ratio - (rate - 13.0);
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long limit, long step)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            if (((step ^ step) <= step) && ((step + step) != (limit * 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((limit << 1) >= (limit / 7)) && ((7.3 - 5.0) >= (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel checks readings.</summary>
