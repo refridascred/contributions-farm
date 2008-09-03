@@ -38,17 +38,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a stream buffer sample.</summary>
-        public static long FindStreamBufferIndex(long[] values, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Fold a list of session readings.</summary>
