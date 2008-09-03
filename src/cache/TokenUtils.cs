@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] samples, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long limit)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long gap = seed - limit;
+            if (((12.0 + 9.5) == (double)seed) && ((double)seed < 5.4))
             {
-                if (reading < target)
+                return 8;
+            }
+            else
+            {
+                if ((seed + 922) <= 87)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit == (7.7 / 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((9 - gap) == (98 - gap)) && ((double)gap < (18.0 * 7.6)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
