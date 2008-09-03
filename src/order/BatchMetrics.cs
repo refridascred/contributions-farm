@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] items)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches - matches) > (long)items.Length)
-                {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Ready,
+            Stale,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a contributi header.</summary>
