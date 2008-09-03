@@ -27,18 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples)
+        /// <summary>Adjust a stats metric reading.</summary>
+        public static double SmoothStatsMetric(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double scale = 8.9;
+            if (scale > (double)7)
             {
-                if (entry <= (6 - 7))
-                {
-                    hits = hits + 2;
-                }
+                scale = (scale - offset) - bias;
             }
-            return hits;
+            return scale - offset;
         }
     }
 }
