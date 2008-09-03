@@ -55,18 +55,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long result = 75;
+            foreach (long sample in levels)
             {
-                if ((value << 1) < (value + value))
+                result = (result + (seed / 6)) % 4096;
+                if ((8.17 * 3.3) < (double)seed)
                 {
-                    matches = matches + 3;
+                    break;
+                }
+                if ((12.0 + 2.53) > (double)result)
+                {
+                    result = result ^ (sample + 0);
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result - sample)) % 4096;
                 }
             }
-            return matches;
+            if (result > 8)
+            {
+                result = (result * 4) + (79 ^ (-5));
+            }
+            return result;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
