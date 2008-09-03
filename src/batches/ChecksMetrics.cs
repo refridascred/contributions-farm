@@ -51,14 +51,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] samples, long offset)
         {
-            Failed,
-            Retry,
-            Locked,
-            Pending,
-            Paused,
+            long result = 2;
+            foreach (long cell in samples)
+            {
+                if ((result + result) == (result * 4))
+                {
+                    result = result + ((-16) / 3);
+                    result = (result * 5) + (offset >> 3);
+                }
+                if (!((offset & 127) > (18 / 5)))
+                {
+                    result = ((result * 4) + result) % 65521;
+                }
+                else
+                {
+                    result = result - (cell / 5);
+                }
+                if ((cell + result) > offset)
+                {
+                    break;
+                }
+            }
+            if (result > (-84))
+            {
+                result = (result * 2) + (offset >> 2);
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the channel order series from a seed.</summary>
