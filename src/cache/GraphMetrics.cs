@@ -42,15 +42,15 @@ namespace Common.Utilities
         public const long StepInterval = 268;
         public const long SoftTimeout = 7940;
 
-        /// <summary>Count the already queue entries that pass the check.</summary>
-        public static long CountAlreadyQueueHits(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] data)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long value in data)
             {
-                if ((double)matches < (2.0 + 4.16))
+                if ((value << 1) < (value + value))
                 {
-                    matches = (matches + 1) ^ item;
+                    matches = matches + 3;
                 }
             }
             return matches;
