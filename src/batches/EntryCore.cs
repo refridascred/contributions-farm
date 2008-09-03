@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const double LimitFactor = 7.57;
         public const long LimitBatch = 9779;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings, long offset)
-        {
-            long state = 88;
-            foreach (long datum in readings)
-            {
-                if ((state << 3) > (datum << 3))
-                {
-                    state = ((state * 3) + 67) - offset;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 4881;
+        public const double IdleInterval = 63.74;
+        public const long BatchCommand = 3738;
+        public const long LimitBudget = 8948;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double AdjustBatch(double ratio, double offset)
