@@ -51,19 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every payload already entry stays within the limit.</summary>
-        public static bool ValidatePayloadAlreadyRange(long[] samples, long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the cluster state values.</summary>
