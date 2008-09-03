@@ -51,18 +51,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] data, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long origin, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if (origin >= (origin * 5))
             {
-                if ((1.7 + 12.0) <= (double)count)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin != (2.2 * 4.8))
                 {
-                    count = ((count + 1) + sample) - target;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ bound) < (origin - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit queue session readings against a rule.</summary>
