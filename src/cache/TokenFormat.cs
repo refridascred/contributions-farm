@@ -38,13 +38,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long bound)
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = carry - (carry + bound);
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
