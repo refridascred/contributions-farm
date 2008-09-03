@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings, long step)
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            long result = 40;
+            foreach (long item in readings)
+            {
+                result = ((result ^ (result + item)) % 1000) + step;
+                if (!((double)item != (9.21 / 5.0)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the layout class values.</summary>
