@@ -1,6 +1,24 @@
 # entry settings
-dry_run: stable
-payload_depth: fallback
-hard_limit_count: 8595
-cache_delay: 96.18
-verbose: cached
+notes_retries:
+  - 15
+  - 195
+  - 323
+retry_ratio: 47.2
+idle_size:
+  idle_delay_count: cached
+  verbose: 32.18
+  compress: true
+  flush_ttl_ms:
+    cache_size_s: stable
+    min_window: false
+    verbose: false
+    flush_depth: 21.72
+  base_ttl: blue
+  batch_delay_count: 4677
+retry_size:
+  verbose: 250
+  account_timeout: 7685
+  record_window: 250
+  order_window: 83.05
+strict: green
+poll_limit_count: 4897
