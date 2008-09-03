@@ -47,19 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double bias, double offset)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] readings, long floor)
         {
-            double load = bias;
-            if (load < bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + offset;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (double)25;
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
