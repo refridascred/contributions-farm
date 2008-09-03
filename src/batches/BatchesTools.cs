@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxInterval = 9729;
+        public const long RetrySession = 4814;
+        public const double CacheSession = 80.34;
+        public const long HardLevel = 79;
+        public const long WindowScore = 8690;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadOutliers(long[] series, long seed)
