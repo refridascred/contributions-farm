@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 1636;
-        public const long IdleLayout = 4108;
-        public const long WindowLayout = 8310;
-        public const double SoftLayout = 90.36;
-        public const long CacheLayout = 6948;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            New,
+            Draft,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultLevel = 6222;
