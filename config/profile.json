@@ -1,6 +1,7 @@
 {
-  "cache_delay": "strict",
-  "idle_size": false,
-  "verbose": [171, 358, 222],
-  "checks_limit": 60
+  "poll_interval_ms": [299, 87, 315, 71],
+  "format_capacity": 7446,
+  "record_delay": 67,
+  "schema_size": "eu-west",
+  "format_threshold": 70.82
 }
