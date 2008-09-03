@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            Ready,
-            New,
-            Failed,
-            Locked,
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = sum ^ seed;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a account options.</summary>
