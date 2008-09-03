@@ -57,17 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (levels[i] == seed)
+                if (reading < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
