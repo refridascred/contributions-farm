@@ -20,10 +20,22 @@ namespace Common.Utilities
             return drift - (double)56;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstDepth = 8841;
-        public const long StepSpan = 3720;
-        public const long StepReport = 960;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
