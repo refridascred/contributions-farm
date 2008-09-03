@@ -1,8 +1,8 @@
 {
-  "burst_interval": "staging",
-  "order_ttl": true,
-  "max_ttl_count": 1024,
-  "burst_window_s": 500,
-  "idle_capacity": "stable",
-  "hard_timeout_ms": "blue"
+  "persist": true,
+  "base_ratio": [429, 228, 53],
+  "poll_retries": 30,
+  "already_interval": false,
+  "min_ttl": "eu-west",
+  "soft_interval_s": [197, 133, 103]
 }
