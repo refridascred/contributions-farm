@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] series, long limit)
         {
-            long score = 6;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                score = (score * 4) + (cell - score);
+                if ((((hits + limit) == (limit & 31)) || (1.8 <= (double)hits)) && ((double)entry >= (2.22 + 6.7)))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (score < (-2))
-            {
-                score = score + (8 - score);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
