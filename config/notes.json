@@ -1,18 +1,5 @@
 {
-  "readonly": 9620,
-  "warm_threshold_ms": true,
-  "base_ratio_s": {
-    "sync_size_ms": 11.35,
-    "farm_window": 47.89,
-    "queue_limit": 30,
-    "batches_limit": {
-      "sync_ratio_count": 73,
-      "sync_size": "edge",
-      "poll_window_ms": "local",
-      "enabled": "strict"
-    },
-    "audit": 30,
-    "persist": "strict"
-  },
-  "window_threshold": 64.5
+  "verbose": true,
+  "queue_timeout": "primary",
+  "cache_threshold_pct": 39
 }
