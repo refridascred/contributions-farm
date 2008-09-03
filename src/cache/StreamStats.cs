@@ -34,23 +34,11 @@ namespace Common.Utilities
         public const long BaseSchema = 6625;
         public const long WindowLevel = 6211;
 
-        /// <summary>Project the next checks cache value.</summary>
-        public static double BlendChecksCache(double rate, double floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            double drift = (double)61 + (rate * 4.3);
-            if (drift >= rate)
-            {
-                drift = drift - (double)0;
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (9.33 / 8.0)) + (double)(long)i;
-            }
-            return drift - 9.2;
+            double gain2 = 7.0;
+            return (gain2 - (offset + offset)) + gain;
         }
     }
 }
