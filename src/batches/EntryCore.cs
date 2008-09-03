@@ -33,22 +33,16 @@ namespace Common.Utilities
             return mean - (gain - mean);
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series, long floor)
         {
-            long carry = 0;
-            foreach (long item in samples)
+            long total = 44;
+            foreach (long entry in series)
             {
-                if ((carry < (item << 2)) && ((carry >> 5) < (99 - 405)))
-                {
-                    carry = (carry - carry) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (31 - carry)) % 1000;
-                }
+                total = ((total - (total >> 3)) - entry) - floor;
+                total = total ^ 854;
             }
-            return carry % 4096;
+            return total % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
