@@ -1,10 +1,17 @@
 {
-  "hard_interval_pct": {
-    "retry_ratio": true,
-    "cache_window": "edge",
-    "stream_limit": "standard"
+  "min_interval": {
+    "record_limit": {
+      "flush_limit": "cached",
+      "verbose": "legacy",
+      "warm_ttl_s": "cached",
+      "counter_size": 100,
+      "dry_run": [130, 393, 471]
+    },
+    "burst_timeout": "strict",
+    "cache_ttl": ["legacy", "edge", "legacy"],
+    "compress": 82.41
   },
-  "compress": "eu-west",
-  "warm_depth_ms": ["latest", "strict", "stable"],
-  "account_threshold": ["standard", "stable", "fallback", "primary"]
+  "editor_size": ["staging", "edge"],
+  "soft_capacity_ms": true,
+  "notes_window": 84.74
 }
