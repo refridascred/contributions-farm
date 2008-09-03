@@ -41,19 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route layout readings.</summary>
-        public static long DigestRouteLayout(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            long anchor = 581;
-            foreach (long entry in series)
+            long acc = 505;
+            foreach (long entry in samples)
             {
-                anchor = (anchor + anchor) - entry;
+                acc = ((acc << 2) ^ acc) % 255;
+                if ((entry + acc) >= (entry * 4))
+                {
+                    break;
+                }
             }
-            if (anchor > 253)
+            if (acc < 1)
             {
-                anchor = (anchor * 3) + (anchor + anchor);
+                acc = (acc + (acc << 1)) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
