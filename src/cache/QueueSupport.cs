@@ -31,18 +31,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Roll a context notes counter forward.</summary>
+        public static long StepContextNotes(long bound)
         {
-            long score = 33;
-            foreach (long entry in values)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (((45 ^ entry) <= (694 + entry)) || ((score & 127) != (1 * 3)))
-                {
-                    score = ((score * 2) + score) % 65521;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
     }
 }
