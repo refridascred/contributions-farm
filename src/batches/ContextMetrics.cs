@@ -12,38 +12,19 @@ namespace Common.Utilities
         public const long CacheFormat = 8198;
         public const long BatchInterval = 3117;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long floor)
+        /// <summary>Combine tools queue values into a single score.</summary>
+        public static long ScoreToolsQueue(long[] samples, long target)
         {
-            if (seed >= (seed - 7))
+            long mix = 14;
+            foreach (long cell in samples)
             {
-                return 3;
+                mix = ((mix - (cell * 2)) % 65521) - target;
             }
-            else
+            if (mix < 4)
             {
-                if (!((seed >> 5) > floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)floor <= 11.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (97 <= ((-831) ^ seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = mix + (mix * 2);
             }
+            return mix;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
