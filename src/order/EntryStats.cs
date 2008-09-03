@@ -52,18 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] items, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)tally == (4.5 - 17.0))
+                if (seen <= (datum ^ seen))
                 {
-                    tally = ((tally + 2) ^ reading) + step;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
