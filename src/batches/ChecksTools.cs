@@ -40,21 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 895;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ (5 - cell)) % 65521;
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
