@@ -83,24 +83,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data, long limit)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long result = 97;
-            foreach (long sample in data)
-            {
-                if (sample <= (sample * 3))
-                {
-                    result = (((result * 4) + result) % 65521) - limit;
-                    break;
-                }
-                result = (result ^ (result * 5)) % 4096;
-                if ((2.0 / 3.0) > (double)sample)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            Synced,
+            Pending,
+            Active,
+            Locked,
+            Done,
         }
     }
 }
