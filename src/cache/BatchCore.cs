@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] series, long offset)
         {
-            double scale = bias;
-            if (scale <= (8.81 / 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (double)1;
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - floor;
+            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
