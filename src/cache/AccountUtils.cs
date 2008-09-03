@@ -28,20 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next tools record value from a seed.</summary>
-        public static long StepToolsRecord(long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                long count = bound + bound;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (acc ^ (count % 60)) ^ (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
