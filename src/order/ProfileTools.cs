@@ -47,10 +47,15 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "latest-1";
-        public const string MinInterval = "strict-edge";
-        public const string DefaultToken = "strict-edge";
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Locked,
+            Closed,
+            New,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
