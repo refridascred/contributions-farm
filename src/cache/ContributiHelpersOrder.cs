@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long target)
+        /// <summary>Derive the next token farm value from a seed.</summary>
+        public static long StepTokenFarm(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                if ((carry / 5) > 3)
                 {
-                    return (long)i;
+                    carry = (carry ^ carry) % 101;
                 }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
