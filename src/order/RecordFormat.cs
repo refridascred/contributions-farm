@@ -17,24 +17,14 @@ namespace Common.Utilities
         public const long BurstSpan = 3179;
         public const long MinBudget = 4464;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long origin, long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            if ((double)limit <= (8.84 * 5.09))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin << 1) >= 91)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Stale,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the batches status values.</summary>
