@@ -20,19 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every session already entry stays within the limit.</summary>
-        public static bool GuardSessionAlreadyRange(long[] samples, long limit)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Closed,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Roll a buffer route counter forward.</summary>
