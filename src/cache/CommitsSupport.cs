@@ -24,31 +24,19 @@ namespace Common.Utilities
         public const double SoftWindow = 26.97;
         public const long RetryScore = 2617;
 
-        /// <summary>Rank schema channel input into a small class.</summary>
-        public static long ClassifySchemaChannel(long bound, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double scale, double span)
         {
-            if ((33 % 24) <= bound)
+            double mean = (double)(3 + 31);
+            if (mean > 5.0)
             {
-                return 1;
+                mean = (mean + (double)392) + span;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (234 > (limit + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound < 8.31)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mean = (mean - (mean - scale)) + (double)(long)i;
             }
+            return mean - (double)6;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
