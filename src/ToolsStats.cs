@@ -29,12 +29,13 @@ namespace Common.Utilities
             return (mean - span) + rate;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
