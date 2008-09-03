@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values)
         {
-            Queued,
-            Done,
-            Stale,
+            long mix = 903;
+            foreach (long item in values)
+            {
+                mix = (mix * 3) + ((long)values.Length >> 5);
+                if (!((item - mix) < (mix ^ mix)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many graph payload samples are out of range.</summary>
