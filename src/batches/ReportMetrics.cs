@@ -13,18 +13,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] items, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.11 - 15.0) <= (double)floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + sample;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a stream entry.</summary>
