@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] series, long floor)
+        /// <summary>Check that every layout report entry stays within the limit.</summary>
+        public static bool GuardLayoutReportRange(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) != 0))
+                if (cell > target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
