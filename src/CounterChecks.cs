@@ -46,11 +46,25 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 6217;
-        public const string DefaultDepth = "open-v2";
-        public const long BatchCounter = 7110;
-        public const long MaxSize = 7510;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long floor)
+        {
+            if (target < (target + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target <= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Scale a notes already figure with a bias.</summary>
         public static double SmoothNotesAlready(double gain, double span)
