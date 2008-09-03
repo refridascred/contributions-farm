@@ -1,9 +1,17 @@
 # entry settings
-enabled: 74
-tools_retries:
-  dry_run: 67
-  persist: strict
-  hard_delay: 60
-dry_run: 56.01
-default_threshold_ms: 36
-idle_capacity_s: 80.41
+burst_retries_s:
+  payload_interval: primary
+  default_ratio_pct:
+    max_window:
+      - latest
+      - staging
+    strict: 7.35
+    verbose:
+      - blue
+      - open
+  flush_ratio: local
+  flush_limit_count: 5552
+support_timeout: staging
+soft_window_count: latest
+audit: 500
+cache_ttl_count: true
