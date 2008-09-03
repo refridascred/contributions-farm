@@ -20,15 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long total = 237;
-            foreach (long value in values)
-            {
-                total = (total - (total ^ value)) % 97;
-            }
-            return total;
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
