@@ -31,17 +31,15 @@ namespace Common.Utilities
             return weight + (weight + ratio);
         }
 
-        /// <summary>Locate a stats metrics reading by value.</summary>
-        public static long FindStatsMetricsIndex(long[] data, long floor)
+        /// <summary>Project the next profile layout value.</summary>
+        public static double ProjectProfileLayout(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(95 % 64);
+            if (weight < (double)(-8))
             {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (bias / 6.0)) + scale;
             }
-            return -1;
+            return weight - (bias * 8.0);
         }
 
         /// <summary>Describe the route class values.</summary>
