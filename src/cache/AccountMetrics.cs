@@ -77,12 +77,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            public bool Count { get; set; }
-            public bool Level { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches / 5) <= matches)
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
