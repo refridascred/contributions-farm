@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry - ((long)i >> 1)) % 4096) ^ (long)i2;
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (((long)i / 2) <= 22)
-                {
-                    carry = (carry << 3) ^ (offset % 24);
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
