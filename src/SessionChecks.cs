@@ -61,12 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long seed)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
