@@ -14,12 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 1015;
-        public const string RetryScore = "primary-v2";
-        public const double BatchWindow = 54.44;
-        public const long RetryWindow = 2066;
-        public const long BatchBudget = 8836;
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
