@@ -57,19 +57,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] items, long offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
