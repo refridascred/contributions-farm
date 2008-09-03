@@ -35,26 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of token already entries.</summary>
-        public static long TotalTokenAlready(long[] readings)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] data)
         {
-            long mix = -633;
-            foreach (long cell in readings)
+            long mix = 74;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 10; i++)
+                if ((cell - cell) != (644 - mix))
                 {
-                    mix = ((mix << 3) ^ ((-21) ^ (long)i)) % 97;
-                }
-                if ((double)mix > (2.6 + 0.7))
-                {
-                    mix = (mix + (mix + mix)) % 1000;
+                    mix = ((mix << 2) ^ (mix + cell)) % 101;
                 }
                 else
                 {
-                    mix = ((mix * 5) + (9 + cell)) % 65521;
+                    mix = (mix ^ (mix - cell)) % 1000;
                 }
             }
-            return mix % 1000;
+            return mix % 65521;
         }
 
         /// <summary>Describe the notes mode values.</summary>
