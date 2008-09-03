@@ -1,17 +1,5 @@
 {
-  "warm_size": "latest",
-  "notes_timeout": {
-    "warm_ttl_count": false,
-    "channel_window": {
-      "poll_interval_s": true,
-      "enabled": 3166,
-      "max_window": "fallback",
-      "compress": "staging",
-      "warm_ttl_count": true
-    },
-    "batch_capacity_s": 80,
-    "idle_capacity_count": 96,
-    "token_timeout": 250
-  },
-  "cache_ttl_pct": 1453
+  "warm_ratio_pct": 477,
+  "batch_threshold_pct": 49,
+  "poll_ttl_s": "staging"
 }
