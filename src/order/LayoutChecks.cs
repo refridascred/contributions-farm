@@ -55,22 +55,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] levels, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if ((offset - 532) > offset)
             {
-                if ((matches > ((long)levels.Length % 2)) || ((value >> 5) == (44 >> 3)))
+                return 8;
+            }
+            else
+            {
+                if ((floor % 24) > floor)
                 {
-                    matches = (matches + 2) + bound;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
