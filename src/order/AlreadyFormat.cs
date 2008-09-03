@@ -28,22 +28,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double gain, double floor)
         {
-            long anchor = -60;
-            foreach (long reading in items)
+            double gain2 = floor;
+            if (gain2 <= (gain + 20.0))
             {
-                if ((reading * 5) <= anchor)
-                {
-                    anchor = (anchor ^ (reading & 31)) % 4096;
-                }
+                gain2 = gain2 + gain;
             }
-            if (anchor < 402)
+            else
             {
-                anchor = anchor ^ (1 ^ anchor);
+                gain2 = gain2 + (16.0 * 2.8);
             }
-            return anchor % 97;
+            return gain2 + (gain2 / 6.0);
         }
 
         /// <summary>Rank report input into a small class.</summary>
