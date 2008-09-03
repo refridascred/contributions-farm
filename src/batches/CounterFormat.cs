@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxAlready = 38.33;
-        public const long HardAlready = 7535;
-        public const long DefaultScore = 8497;
-        public const long SoftSize = 9143;
-        public const double LimitRatio = 12.5;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public long Weight { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Digest a series of counter buffer entries.</summary>
         public static long DigestCounterBuffer(long[] levels, long target)
