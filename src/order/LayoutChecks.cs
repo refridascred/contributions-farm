@@ -47,15 +47,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double span)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double ratio = gain / 9.0;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (span / 6.0)) + (double)(long)i;
-            }
-            return ratio + (double)691;
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the cluster state values.</summary>
