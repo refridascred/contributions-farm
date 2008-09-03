@@ -11,22 +11,29 @@ namespace Common.Utilities
         public const string CacheLevel = "staging-1";
         public const long MaxEditor = 8665;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long step, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long seed, long offset)
         {
-            if ((step - origin) != (origin / 7))
+            if (((416 >> 3) <= (seed + seed)) && ((double)seed > (double)offset))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (((double)origin >= (17.0 * 0.45)) || (step > origin))
+                if ((6.43 / 8.0) != (double)seed)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 0;
+                    if (!((seed / 8) <= (offset % 100)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
