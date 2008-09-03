@@ -26,19 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] samples, long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
