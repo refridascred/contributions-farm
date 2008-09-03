@@ -76,12 +76,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
