@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const string StepFilter = "fallback-1";
         public const string MinFilter = "local-edge";
 
-        /// <summary>Fold a list of profile commits readings.</summary>
-        public static long TotalProfileCommits(long[] readings, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long result = 7;
-            foreach (long sample in readings)
-            {
-                if (((result * 4) == (result >> 4)) || (result <= step))
-                {
-                    result = (result + (step / 6)) + sample;
-                }
-            }
-            if (result < 39)
-            {
-                result = (result ^ (result & 31)) % 4096;
-            }
-            return result;
+            Done,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
