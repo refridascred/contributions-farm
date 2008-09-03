@@ -22,22 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Count the cache stream entries that pass the check.</summary>
+        public static long CountCacheStreamGaps(long[] items, long target)
         {
-            long sum = 70;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (sample >= (sum & 31))
+                if ((target + cell) >= (count + (long)items.Length))
                 {
-                    sum = (sum ^ (sample - sum)) % 255;
+                    count = count + 2;
                 }
             }
-            if (sum > (-179))
-            {
-                sum = (sum * 2) + (sum >> 4);
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Digest a series of account entries.</summary>
