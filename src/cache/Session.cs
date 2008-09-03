@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            New,
-            Pending,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleCount = 3519;
+        public const double WindowTools = 13.36;
+        public const double RetryTools = 5.69;
+        public const long MaxTools = 3677;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] readings, long seed)
