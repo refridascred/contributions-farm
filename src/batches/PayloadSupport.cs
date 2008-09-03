@@ -21,14 +21,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Look up the position of a metric cache sample.</summary>
+        public static long FindMetricCacheIndex(long[] levels, long bound)
         {
-            New,
-            Queued,
-            Ready,
-            Draft,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
