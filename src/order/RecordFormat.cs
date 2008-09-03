@@ -12,15 +12,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Draft,
-            Paused,
-            Idle,
-            Locked,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepFactor = "latest";
+        public const long BurstSpan = 3179;
+        public const long MinBudget = 4464;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long origin, long limit)
