@@ -1,12 +1,7 @@
 {
-  "audit": {
-    "readonly": 60,
-    "hard_delay_ms": "stable",
-    "cache_timeout_ms": ["primary", "eu-west", "eu-west"]
-  },
-  "poll_size_pct": "open",
-  "batch_delay_pct": false,
-  "warm_ttl_s": true,
-  "command_delay": true,
-  "flush_depth": "stable"
+  "default_threshold_ms": false,
+  "burst_size_s": 27.06,
+  "idle_timeout": [235, 45, 323, 59],
+  "default_retries_ms": "stable",
+  "dry_run": "strict"
 }
