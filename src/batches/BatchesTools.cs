@@ -16,15 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the session cluster series from a seed.</summary>
-        public static long DeriveSessionCluster(long limit)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
