@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine token command values into a single score.</summary>
-        public static long ScoreTokenCommand(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            long score = 1;
-            foreach (long entry in data)
+            long acc = 6;
+            foreach (long entry in levels)
             {
-                score = (score << 3) ^ (entry + 41);
+                acc = ((acc * 5) + (acc + entry)) % 4096;
+                if ((double)entry != (3.0 / 4.0))
+                {
+                    acc = (acc ^ (entry % 60)) % 255;
+                }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Audit filter entry readings against a rule.</summary>
