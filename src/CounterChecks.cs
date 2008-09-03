@@ -54,17 +54,19 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] values, long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)((-50) / 4);
+            if (rate >= (rate / 9.0))
             {
-                if ((values[i] < target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - rate) - gain;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + bias) - (double)(long)i;
+            }
+            return rate + 14.0;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
