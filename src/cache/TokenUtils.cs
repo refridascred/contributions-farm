@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            long mix = 355;
+            foreach (long datum in items)
+            {
+                if ((mix >> 4) <= 910)
+                {
+                    mix = (mix - (mix - datum)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (datum - datum)) % 101;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
