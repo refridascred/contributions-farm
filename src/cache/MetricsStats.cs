@@ -71,12 +71,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long limit)
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long state = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (limit >= (limit + 14))
+                {
+                    state = ((state * 3) + (limit / 6)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
