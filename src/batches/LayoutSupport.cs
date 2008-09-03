@@ -39,11 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            Draft,
+            Pending,
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
