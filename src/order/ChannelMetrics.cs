@@ -11,31 +11,18 @@ namespace Common.Utilities
         public const string CacheLevel = "staging-1";
         public const long MaxEditor = 8665;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long seed, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] series)
         {
-            if (((416 >> 3) <= (seed + seed)) && ((double)seed > (double)offset))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.43 / 8.0) != (double)seed)
+                if (((3.43 - 5.8) == (double)tally) || ((tally / 6) <= datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((seed / 8) <= (offset % 100)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a payload summary.</summary>
