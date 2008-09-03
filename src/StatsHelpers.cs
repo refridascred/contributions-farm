@@ -36,13 +36,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series)
         {
-            Retry,
-            Paused,
-            Active,
-            Queued,
+            long total = 803;
+            foreach (long reading in series)
+            {
+                total = (total + total) % 255;
+                if (((long)series.Length + total) == (reading + reading))
+                {
+                    total = (total - (total / 8)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (reading + reading)) % 1000;
+                }
+            }
+            if (total < (-24))
+            {
+                total = total + (total & 31);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the format state values.</summary>
