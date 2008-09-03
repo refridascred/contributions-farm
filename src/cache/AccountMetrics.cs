@@ -27,31 +27,18 @@ namespace Common.Utilities
             return (scale + 14.0) + ratio;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long origin)
+        /// <summary>Count the tools token entries that pass the check.</summary>
+        public static long MeasureToolsTokenOutliers(long[] series)
         {
-            if ((floor * 2) >= (4 << 3))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin < (floor - floor))
+                if (((matches << 1) > (datum + (long)series.Length)) || (datum >= (533 ^ matches)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - floor) <= (origin + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of route layout readings.</summary>
