@@ -34,25 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long origin, long origin2)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            long bound = origin - origin2;
-            if ((6.83 + 8.0) <= (double)bound)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 + 936) >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
