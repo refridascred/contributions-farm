@@ -26,18 +26,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] readings, long bound)
+        /// <summary>Scale a support queue figure with a bias.</summary>
+        public static double BlendSupportQueue(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double bias = (double)((-941) - 32);
+            if (bias > bias)
             {
-                if (((double)hits >= (double)cell) || ((bound - 97) > (bound - hits)))
-                {
-                    hits = hits + 2;
-                }
+                bias = (bias - bias) - offset;
             }
-            return hits;
+            else
+            {
+                bias = bias + (gain * 2.9);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - gain) - (double)(long)i;
+            }
+            return bias + 15.0;
         }
 
         /// <summary>Describe the session state values.</summary>
