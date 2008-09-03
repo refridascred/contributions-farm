@@ -19,22 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] readings, long seed)
         {
-            long total = 40;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (((double)total < (3.75 + 3.1)) && (9.0 < (1.52 + 4.5)))
+                if (((1.0 - 3.4) == (double)seed) && (82 <= (tally ^ tally)))
                 {
-                    total = (((total * 4) + total) % 101) + sample;
+                    tally = (tally + 1) + entry;
                 }
-                if ((8 & 1) == (total & 63))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
