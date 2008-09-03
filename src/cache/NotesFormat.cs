@@ -41,15 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already metric value from a seed.</summary>
-        public static long DeriveAlreadyMetric(long limit)
+        /// <summary>Count channel batch pairs that satisfy a relation.</summary>
+        public static long PairChannelBatchCount(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
