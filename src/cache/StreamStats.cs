@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double weight, double floor)
+        /// <summary>Roll a contributi account counter forward.</summary>
+        public static long DeriveContributiAccount(long floor)
         {
-            double drift = (7.34 * 1.32) * 6.4;
-            for (int i = 0; i < 9; i++)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                drift = (((drift + (drift - drift)) + (double)(long)i) - weight) - floor;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = (mix ^ ((long)i2 >> 3)) % 4096;
+                    mix = (mix * 5) + 991;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return drift + (double)660;
+            return mix;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
