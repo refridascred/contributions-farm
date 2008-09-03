@@ -1,17 +1,14 @@
 {
-  "min_interval": {
-    "record_limit": {
-      "flush_limit": "cached",
-      "verbose": "legacy",
-      "warm_ttl_s": "cached",
-      "counter_size": 100,
-      "dry_run": [130, 393, 471]
-    },
-    "burst_timeout": "strict",
-    "cache_ttl": ["legacy", "edge", "legacy"],
-    "compress": 82.41
+  "already_delay": {
+    "audit": 100,
+    "batch_interval": "green",
+    "buffer_delay": 9873,
+    "entry_threshold": 53,
+    "cache_threshold_ms": 89
   },
-  "editor_size": ["staging", "edge"],
-  "soft_capacity_ms": true,
-  "notes_window": 84.74
+  "persist": [259, 367, 325, 181],
+  "cache_capacity_pct": 41.92,
+  "warm_depth_count": "eu-west",
+  "tools_interval": ["fallback", "blue"],
+  "warm_threshold": true
 }
