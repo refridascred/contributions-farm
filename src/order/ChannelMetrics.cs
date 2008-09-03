@@ -33,32 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long bound, long floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] items, long offset)
         {
-            long prev = bound + floor;
-            if ((floor / 4) < 87)
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 1) <= (prev << 2))
+                if (value > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor > (double)prev)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
