@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up report notes samples.</summary>
-        public static long OverlapReportNotesCount(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 8;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = ((carry * 3) + (carry & 3)) ^ cell;
+                if ((carry / 4) > carry)
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (carry > 7)
+            {
+                carry = (carry + (carry ^ carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Project the next batch value.</summary>
