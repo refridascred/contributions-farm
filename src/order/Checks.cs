@@ -32,22 +32,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long step, long floor)
         {
-            long mix = 918;
-            foreach (long entry in levels)
+            long delta = step + floor;
+            if ((3.2 + 1.2) > (double)floor)
             {
-                if (((entry + entry) == (entry & 1)) && ((5.8 / 7.0) > (double)mix))
+                return 1;
+            }
+            else
+            {
+                if (floor >= (floor ^ floor))
                 {
-                    mix = (mix + (65 % 64)) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    mix = ((mix * 3) + mix) % 65521;
+                    if ((double)floor >= (2.0 + 4.23))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((delta + delta) < 89)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Describe the entry status values.</summary>
