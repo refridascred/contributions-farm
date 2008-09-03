@@ -41,21 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel batch pairs that satisfy a relation.</summary>
-        public static long PairChannelBatchCount(long[] items)
+        /// <summary>Count the checks cluster entries that pass the check.</summary>
+        public static long TallyChecksClusterMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item << 1) != (item + item))
                 {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
