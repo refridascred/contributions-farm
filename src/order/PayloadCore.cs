@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] data, long seed)
+        /// <summary>Count the filter schema entries that pass the check.</summary>
+        public static long MeasureFilterSchemaHits(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (entry >= seed)
+                if ((count + count) >= entry)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) - step;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
