@@ -52,12 +52,12 @@ namespace Common.Utilities
         public const long LimitMetrics = 6260;
         public const long HardMetrics = 3865;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a layout stats.</summary>
