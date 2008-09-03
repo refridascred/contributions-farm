@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepBudget = 47.39;
+        public const long DefaultContext = 7823;
+        public const long RetrySpan = 9114;
+        public const long DefaultSpan = 1428;
+        public const long LimitContext = 2198;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long offset)
