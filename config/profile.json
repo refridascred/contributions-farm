@@ -1,8 +1,7 @@
 {
-  "cache_depth_pct": "fallback",
-  "cache_timeout": 38.47,
-  "hard_ratio_pct": 6154,
-  "min_window_pct": 60.28,
-  "compress": 21.63,
-  "stream_ratio": "stable"
+  "stream_window": "eu-west",
+  "max_window": "open",
+  "max_timeout_count": 6167,
+  "batch_interval": 62.79,
+  "base_depth_ms": "local"
 }
