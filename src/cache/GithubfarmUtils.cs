@@ -37,21 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
-        public static long CompareGraphToolsCount(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8.0 - 13.0) == (double)count)
                 {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
