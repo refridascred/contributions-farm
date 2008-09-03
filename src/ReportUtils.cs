@@ -42,13 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Queued,
-            Dropped,
-            Stale,
-            Locked,
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
