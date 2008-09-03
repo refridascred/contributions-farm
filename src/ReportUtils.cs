@@ -50,19 +50,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] data, long seed)
+        /// <summary>Combine farm format values into a single score.</summary>
+        public static long CombineFarmFormat(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long state = 8;
+            foreach (long cell in levels)
             {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 3) + 8) ^ cell;
             }
-            return flag;
+            if (state > 5)
+            {
+                state = state ^ state;
+            }
+            return state % 1000;
         }
     }
 }
