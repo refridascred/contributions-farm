@@ -58,18 +58,12 @@ namespace Common.Utilities
         public const long StepOrder = 6200;
         public const long RetryInterval = 8127;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long carry = 2;
-            foreach (long value in series)
-            {
-                if (((carry >> 2) != (carry % 3)) || ((carry + value) != (value >> 1)))
-                {
-                    carry = (carry * 4) + (-478);
-                }
-            }
-            return carry;
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
