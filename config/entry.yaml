@@ -1,10 +1,18 @@
 # entry settings
-cache_size_ms: true
-dry_run: 60
-audit: true
-warm_ratio_ms: 21.95
-burst_ratio: 69.23
-commits_ttl:
-  - staging
-  - edge
-  - local
+min_ttl: 45.17
+max_timeout_pct: stable
+default_limit: 36
+compress: false
+account_ratio:
+  poll_window_s: 46
+  poll_delay:
+    min_size: standard
+    report_interval:
+      - 463
+      - 67
+      - 476
+      - 45
+    persist: open
+  compress: 70.21
+  channel_limit: local
+  idle_timeout_ms: local
