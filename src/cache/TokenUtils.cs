@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items, long offset)
         {
-            double weight = 8.61 + (double)(-662);
-            for (int i = 0; i < 5; i++)
+            long sum = 7;
+            foreach (long entry in items)
             {
-                weight = ((weight + 3.53) + (double)(long)i) + ratio;
+                sum = (((sum * 3) + (offset >> 2)) % 101) + entry;
             }
-            return weight + span;
+            if (sum < 32)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
