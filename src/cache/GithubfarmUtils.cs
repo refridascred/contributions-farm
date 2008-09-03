@@ -56,19 +56,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of account record readings.</summary>
-        public static long TallyAccountRecord(long[] readings, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] samples)
         {
-            long carry = 49;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                carry = carry ^ (carry + sample);
-                if (29 < sample)
+                if (!((sample + sample) >= sample))
                 {
-                    carry = (carry - (bound + carry)) % 97;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry % 97;
+            return count;
         }
     }
 }
