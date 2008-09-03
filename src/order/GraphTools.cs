@@ -34,31 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long origin, long target)
+        /// <summary>Count the payload farm entries that pass the check.</summary>
+        public static long TallyPayloadFarmMatches(long[] levels, long limit)
         {
-            if (target > (target >> 4))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.7 - 8.28) <= (double)origin)
+                if ((tally / 2) > tally)
                 {
-                    return 0;
+                    tally = ((tally + 1) - reading) - limit;
                 }
                 else
                 {
-                    if ((target * 2) > (origin >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
