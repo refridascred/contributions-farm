@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((352 % 64) < (seen >> 1))
-                {
-                    seen = ((seen + 3) + value) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardFactor = 1752;
+        public const long WindowReport = 1202;
+        public const string MaxDepth = "strict";
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] readings)
