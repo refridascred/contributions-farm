@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] readings, long limit)
         {
-            long mark = 54;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark << 2) ^ (value * 5)) % 4096;
+                if (count < limit)
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the route state values.</summary>
