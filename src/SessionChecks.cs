@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const long IdleToken = 8976;
         public const long BurstToken = 6281;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] samples, long limit)
+        /// <summary>Measure how many graph payload samples are out of range.</summary>
+        public static long CountGraphPayloadMatches(long[] series)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (cell <= limit)
+                if ((count << 2) > (976 + item))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a queue record.</summary>
