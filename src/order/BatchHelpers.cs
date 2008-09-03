@@ -34,12 +34,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            Done,
+            Locked,
+            Closed,
+            Draft,
+            Dropped,
         }
     }
 }
