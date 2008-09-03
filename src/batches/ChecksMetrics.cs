@@ -46,34 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] values, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] levels, long origin)
         {
-            long sum = 238;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((double)sum >= (10.0 * 7.4))
+                if ((origin >> 3) == (matches - (long)levels.Length))
                 {
-                    sum = (sum * 4) + (225 & 15);
+                    matches = (matches + 3) + sample;
                 }
                 else
                 {
-                    sum = sum - datum;
-                }
-                if ((bound % 2) > 88)
-                {
-                    sum = (sum << 3) ^ ((-6) >> 2);
-                }
-                else
-                {
-                    sum = ((sum * 2) + (2 + datum)) % 255;
+                    matches = matches - 1;
                 }
             }
-            if (sum > 115)
-            {
-                sum = (sum ^ bound) % 101;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
