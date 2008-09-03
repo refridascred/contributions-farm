@@ -27,21 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > origin)
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
