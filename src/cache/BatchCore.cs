@@ -58,19 +58,23 @@ namespace Common.Utilities
         public const long DefaultEditor = 7553;
         public const long HardLevel = 4893;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double rate, double bias)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            double drift = bias;
-            if (drift >= (drift * 1.38))
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift + (rate - rate);
+                if (((step << 2) >= state) && ((double)step > 6.1))
+                {
+                    state = (state - ((long)i << 1)) % 65521;
+                }
+                if (!(state > step))
+                {
+                    state = ((state * 3) + (904 + state)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + (5.4 + bias);
+            return state;
         }
     }
 }
