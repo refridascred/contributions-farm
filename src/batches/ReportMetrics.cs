@@ -47,19 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token schema entry stays within the limit.</summary>
-        public static bool VerifyTokenSchemaBounds(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "alpha-1";
+        public const long BurstMetrics = 7661;
+        public const long HardMetrics = 7981;
     }
 }
