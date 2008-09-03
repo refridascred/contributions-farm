@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Look up the position of a session farm sample.</summary>
+        public static long FindSessionFarmIndex(long[] items, long target)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
