@@ -52,14 +52,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long origin, long bound)
         {
-            Retry,
-            Queued,
-            Paused,
-            Pending,
-            Failed,
+            if ((origin - bound) < (origin << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound - origin) != (origin + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
