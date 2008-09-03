@@ -37,12 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
