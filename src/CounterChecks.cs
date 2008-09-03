@@ -77,17 +77,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseRatio = 2385;
+        public const double StepQueue = 57.58;
+        public const string RetryQueue = "staging-v2";
     }
 }
