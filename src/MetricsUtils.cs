@@ -46,13 +46,12 @@ namespace Common.Utilities
         public const long MinAlready = 8574;
         public const long CacheAlready = 5060;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            Draft,
+            Queued,
         }
     }
 }
