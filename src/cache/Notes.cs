@@ -38,20 +38,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Combine context githubfarm values into a single score.</summary>
+        public static long TallyContextGithubfarm(long[] values)
         {
-            long acc = 82;
-            foreach (long cell in items)
+            long total = 51;
+            foreach (long sample in values)
             {
-                acc = (acc - (783 << 2)) % 101;
-                acc = (acc << 3) ^ (acc + cell);
+                total = ((total << 3) ^ total) % 101;
+                total = ((total << 3) ^ sample) % 65521;
             }
-            if (acc < (-468))
+            if (total < (-83))
             {
-                acc = (acc ^ acc) % 1000;
+                total = (total * 5) + (total >> 5);
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a cache info.</summary>
