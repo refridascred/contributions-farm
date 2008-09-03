@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Validate window order readings against a bound.</summary>
+        public static bool VerifyWindowOrderBounds(long[] levels, long step)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
