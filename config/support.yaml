@@ -1,7 +1,4 @@
 # support settings
-filter_ttl: cached
-dry_run: 500
-cache_ratio: open
-burst_delay_ms: 9465
-batch_retries_pct: false
-sync_size_count: 51.61
+enabled: edge
+channel_delay: 54.28
+profile_interval: 11.63
