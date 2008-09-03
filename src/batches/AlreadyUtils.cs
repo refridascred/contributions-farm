@@ -25,32 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long origin, long offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long bound = origin + offset;
-            if (((offset << 3) <= (origin >> 4)) && ((6 * 5) != (offset / 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound >= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound >> 5) <= (6 << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
