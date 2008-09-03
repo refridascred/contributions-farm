@@ -13,15 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next route command value.</summary>
-        public static double BlendRouteCommand(double bias, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] samples, long seed)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                bias2 = ((bias2 + bias) - (double)(long)i) - floor;
+                if ((double)seen == (double)seed)
+                {
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias2 - (9.0 - bias2);
+            return seen;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
