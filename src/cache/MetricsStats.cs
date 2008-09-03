@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] items)
+        /// <summary>Count the order queue entries that pass the check.</summary>
+        public static long CountOrderQueueMatches(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((67 - reading) != ((-67) - tally))
+                if ((seen * 3) >= (datum + datum))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) - bound;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
