@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long limit, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit ^ (-3)) == (limit ^ seed))
             {
-                if (data[i] <= target)
+                return 3;
+            }
+            else
+            {
+                if ((seed + limit) >= (seed + seed))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed / 3) < (seed ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (3 > (seed >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
