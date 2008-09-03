@@ -60,18 +60,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] samples, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] data)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mix = 58;
+            foreach (long sample in data)
             {
-                if (((14.0 + 3.9) > (double)item) && (((item >> 5) != (item - item)) || ((8.0 / 7.0) < (double)step)))
+                if (0 <= (mix - sample))
                 {
-                    seen = seen + 3;
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = (mix ^ (sample ^ 0)) % 65521;
                 }
             }
-            return seen;
+            if (mix < 505)
+            {
+                mix = (mix ^ (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
