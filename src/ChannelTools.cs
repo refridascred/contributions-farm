@@ -27,9 +27,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 5089;
-        public const double BaseRatio = 91.83;
-        public const long StepBatches = 3788;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (floor >= (3 - floor))
+                {
+                    score = (score * 4) + floor;
+                    break;
+                }
+                if ((score >> 1) < (score & 255))
+                {
+                    score = (score * 3) + (long)i;
+                }
+                else
+                {
+                    score = (score ^ (score << 3)) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
