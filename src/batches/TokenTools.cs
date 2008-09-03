@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string SoftStream = "standard-1";
         public const double WindowStream = 61.58;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] readings, long step)
         {
-            Done,
-            Queued,
-            New,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading > (4.2 + 0.2))
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the command state values.</summary>
