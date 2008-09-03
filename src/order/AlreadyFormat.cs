@@ -13,12 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] values, long step)
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
