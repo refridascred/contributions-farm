@@ -75,17 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] readings, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
