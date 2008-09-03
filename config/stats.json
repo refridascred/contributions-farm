@@ -1,22 +1,8 @@
 {
-  "batch_size": [260, 487],
-  "flush_window_pct": [310, 74, 364],
-  "hard_limit_s": {
-    "farm_window": [393, 283, 352],
-    "audit": 25.02,
-    "window_ratio": 1811,
-    "soft_depth": {
-      "readonly": 38,
-      "contributi_interval": 30,
-      "base_ttl": 1010,
-      "hard_size_ms": 35,
-      "warm_limit_count": 39.53,
-      "metric_window": "open"
-    },
-    "batch_interval_pct": [452, 277],
-    "strict": [89, 184]
-  },
-  "entry_ttl": 48.68,
-  "flush_capacity": false,
-  "schema_retries": 1024
+  "base_delay_ms": "open",
+  "poll_capacity": 7138,
+  "verbose": "open",
+  "idle_interval_pct": 4.13,
+  "audit": 13.68,
+  "farm_threshold": ["cached", "green", "eu-west"]
 }
