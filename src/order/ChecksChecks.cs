@@ -48,19 +48,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] levels, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return flag;
+            return mix;
         }
     }
 }
