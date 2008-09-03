@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of cache command entries.</summary>
