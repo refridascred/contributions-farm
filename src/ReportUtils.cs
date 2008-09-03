@@ -39,18 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((5.44 / 4.0) < (double)seen)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            Queued,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the entry status values.</summary>
