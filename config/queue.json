@@ -1,8 +1,6 @@
 {
-  "cache_delay": 62.37,
-  "max_ratio_s": 1024,
-  "audit": "eu-west",
-  "compress": true,
-  "base_retries_count": 90,
-  "batch_window_s": 5548
+  "poll_limit_ms": 19.0,
+  "strict": [414, 79],
+  "persist": true,
+  "queue_delay": "blue"
 }
