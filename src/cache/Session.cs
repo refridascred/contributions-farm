@@ -11,23 +11,25 @@ namespace Common.Utilities
         public const double RetryTools = 5.69;
         public const long MaxTools = 3677;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long target, long bound)
         {
-            double load = scale;
-            if (load < (load - scale))
+            long gap = target - bound;
+            if ((gap < (1 + bound)) || (((-788) >> 1) == (900 - target)))
             {
-                load = load + 9.0;
+                return 3;
             }
             else
             {
-                load = load + (scale + 7.8);
+                if ((gap >> 2) > (target >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - 3.83) + (double)(long)i;
-            }
-            return load + (14.0 + span);
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
