@@ -13,38 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long floor, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] levels, long target)
         {
-            if ((target ^ floor) > (floor ^ target))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.0 * 7.38) < (double)target)
+                if (cell != target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - floor) >= (target + 689))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((7.08 + 9.3) == (double)floor) && ((5.0 + 8.01) != (double)floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
