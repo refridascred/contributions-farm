@@ -39,22 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long state = 33;
-            foreach (long item in data)
-            {
-                if ((item ^ 35) >= (item & 1))
-                {
-                    state = state ^ (item * 4);
-                }
-            }
-            if (state > 9)
-            {
-                state = state ^ (2 % 12);
-            }
-            return state % 4096;
+            public bool Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
