@@ -1,8 +1,8 @@
 # entry settings
-sync_window: green
-readonly: eu-west
-counter_delay:
-  - fallback
-  - stable
-  - edge
-  - green
+soft_interval_ms:
+  - 72
+  - 305
+  - 181
+order_capacity: true
+idle_ttl_pct: fallback
+layout_timeout: edge
