@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            Idle,
+            Failed,
+            Synced,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a command info.</summary>
