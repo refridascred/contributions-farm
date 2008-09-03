@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Dropped,
-            Queued,
-            Pending,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSize = "fallback";
+        public const long BurstSpan = 5170;
+        public const string WindowLevel = "local-edge";
+        public const double LimitSupport = 74.56;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
