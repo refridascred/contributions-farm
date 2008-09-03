@@ -22,19 +22,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit editor context readings against a rule.</summary>
-        public static long MeasureEditorContextGaps(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (20.0 < (double)(long)readings.Length)
-                {
-                    tally = ((tally + 3) - datum) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseInterval = "cached-1";
+        public const double BaseCounter = 36.41;
+        public const long RetryTimeout = 8666;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteLimits(long[] readings, long limit)
