@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] levels, long floor)
         {
-            long state = -82;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                state = ((state ^ (784 / 6)) % 97) - value;
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
