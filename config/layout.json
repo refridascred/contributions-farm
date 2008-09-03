@@ -1,6 +1,12 @@
 {
-  "warm_limit_ms": true,
-  "max_retries_count": false,
-  "min_size_count": 53.68,
-  "warm_ttl_pct": true
+  "readonly": {
+    "compress": 30,
+    "poll_interval_pct": true,
+    "hard_ttl_pct": false,
+    "batch_window_count": "strict",
+    "soft_timeout": false
+  },
+  "batch_window": "standard",
+  "warm_ratio_ms": 60,
+  "schema_depth": "primary"
 }
