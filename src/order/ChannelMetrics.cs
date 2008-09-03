@@ -35,20 +35,9 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if (target >= (target ^ mix))
-                {
-                    break;
-                }
-                mix = ((mix << 2) ^ target) % 65521;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 2861;
+        public const double DefaultDepth = 87.92;
+        public const long MaxRatio = 7141;
     }
 }
