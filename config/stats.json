@@ -1,6 +1,20 @@
 {
-  "readonly": 7551,
-  "default_window_s": "stable",
-  "default_depth": 74.0,
-  "verbose": "stable"
+  "max_window": [112, 192, 289, 331],
+  "min_delay_ms": "cached",
+  "compress": {
+    "audit": 36.1,
+    "already_interval": "staging",
+    "hard_threshold": [135, 219, 96, 2],
+    "cluster_ratio": ["primary", "standard", "primary"]
+  },
+  "token_threshold": 63.32,
+  "order_ttl": {
+    "dry_run": "standard",
+    "max_ratio": 250,
+    "default_limit_count": false,
+    "command_threshold": true,
+    "burst_interval_s": 45,
+    "farm_interval": 45.64
+  },
+  "soft_size_s": true
 }
