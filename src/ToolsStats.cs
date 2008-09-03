@@ -58,12 +58,15 @@ namespace Common.Utilities
             return mean + (offset + weight);
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Digest a series of commits payload entries.</summary>
+        public static long TotalCommitsPayload(long[] levels, long floor)
         {
-            public double Score { get; set; }
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = 332;
+            foreach (long item in levels)
+            {
+                anchor = (anchor - (floor + anchor)) - item;
+            }
+            return anchor;
         }
     }
 }
