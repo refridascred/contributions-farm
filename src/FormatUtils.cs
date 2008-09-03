@@ -54,26 +54,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] levels, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long offset)
         {
-            long anchor = 875;
-            foreach (long cell in levels)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seed ^ 7) == (seed - (-172)))
-                {
-                    anchor = ((anchor << 2) ^ seed) % 97;
-                }
-                if ((double)cell >= (1.9 - 15.0))
-                {
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor;
+            return carry;
         }
     }
 }
