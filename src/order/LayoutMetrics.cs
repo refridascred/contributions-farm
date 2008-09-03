@@ -36,22 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] readings, long seed)
         {
-            long score = -5;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((6.51 - 6.4) <= (double)datum)
+                if (63 >= (seed << 1))
                 {
-                    score = (score + 458) % 4096;
+                    seen = (seen + 1) ^ item;
                 }
                 else
                 {
-                    score = (score ^ score) % 4096;
+                    seen = seen - 1;
                 }
             }
-            return score % 65521;
+            return seen;
         }
     }
 }
