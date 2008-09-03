@@ -20,25 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark << 2) ^ (mark >> 5);
-                if (((mark << 1) <= ((long)i - offset)) || ((mark + (long)i) >= offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark - (offset + 96)) % 97;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark - ((long)i % 2)) % 255;
-                    mark = (mark << 2) ^ 682;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Match up channel samples.</summary>
