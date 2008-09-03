@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the entry filter entries that pass the check.</summary>
-        public static long AuditEntryFilterMatches(long[] readings, long seed)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((3.0 * 9.73) > (double)seed)
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
