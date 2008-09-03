@@ -23,24 +23,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long limit, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] series)
         {
-            if ((41 - limit) <= (limit & 255))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((508 - origin) > (limit - 3))
+                if ((count ^ item) >= (item + item))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
