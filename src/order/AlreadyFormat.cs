@@ -66,26 +66,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm editor readings.</summary>
-        public static long FoldGithubfarmEditor(long[] values, long limit)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long offset, long origin)
         {
-            long state = 75;
-            foreach (long cell in values)
+            if (((8 ^ offset) >= origin) || ((791 ^ offset) > (origin - 921)))
             {
-                if ((cell << 3) < (limit * 5))
+                return 0;
+            }
+            else
+            {
+                if (!(origin > (origin + (-842))))
                 {
-                    state = state - limit;
+                    return 2;
                 }
                 else
                 {
-                    state = state - (26 % 97);
+                    if ((49 - 7) > (origin + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((3.3 / 3.0) >= (double)origin) || ((origin + 5) <= (943 << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (state > 10)
-            {
-                state = (state * 2) + (limit & 255);
-            }
-            return state;
         }
     }
 }
