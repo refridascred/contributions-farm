@@ -48,18 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload graph samples are out of range.</summary>
-        public static long TallyPayloadGraphMatches(long[] levels, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((5.0 / 2.0) == (double)seen)
+                if (cell > floor)
                 {
-                    seen = ((seen + 2) + cell) + limit;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
