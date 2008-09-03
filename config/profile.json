@@ -1,5 +1,6 @@
 {
-  "warm_limit": false,
-  "audit": 91.92,
-  "enabled": 96.95
+  "cluster_window": 20,
+  "entry_retries": "open",
+  "max_retries_s": "local",
+  "burst_depth_s": true
 }
