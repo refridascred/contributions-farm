@@ -47,15 +47,39 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long target, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long slot = target + seed;
+            if ((double)slot > (double)target)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (((seed + target) > (slot - seed)) && ((slot - 312) >= (seed + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed > slot)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed > 0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
