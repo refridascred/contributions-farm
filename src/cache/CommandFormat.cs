@@ -19,11 +19,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "cached-1";
-        public const string SoftSize = "fallback-edge";
-        public const long MinSession = 1643;
-        public const long RetrySession = 7697;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data, long offset)
+        {
+            long mix = 902;
+            foreach (long entry in data)
+            {
+                mix = (mix + mix) - entry;
+            }
+            if (mix < 2)
+            {
+                mix = (mix ^ (offset + 4)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadHits(long[] levels, long target)
