@@ -33,12 +33,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinDepth = "open-v2";
-        public const string MaxRecord = "cached-edge";
-        public const string LimitRecord = "standard";
-        public const string MinRecord = "cached";
-        public const long CacheRecord = 9966;
+        /// <summary>Project the next support commits value.</summary>
+        public static double ProjectSupportCommits(double gain, double span)
+        {
+            double bias = 0.71;
+            if (bias <= (span / 3.0))
+            {
+                bias = bias - (14.0 + gain);
+            }
+            else
+            {
+                bias = bias + span;
+            }
+            return bias - (14.0 / 9.0);
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] readings, long floor)
