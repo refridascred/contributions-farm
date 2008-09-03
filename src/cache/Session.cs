@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long LimitCount = 3288;
         public const long DefaultAlready = 383;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double weight, double bias)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] series)
         {
-            double rate = (double)(57 >> 5);
-            if (rate <= (rate + weight))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                rate = rate - rate;
+                if ((double)sample != (2.8 - 1.61))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                rate = rate - (bias - weight);
-            }
-            return rate + (double)0;
+            return matches;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
