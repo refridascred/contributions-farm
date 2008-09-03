@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long BurstSize = 4051;
         public const string BaseFactor = "legacy-edge";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 76;
-        public const string DefaultCount = "open-v2";
-        public const long MaxBudget = 5165;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstBatches = 95.87;
