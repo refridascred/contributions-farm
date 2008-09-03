@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of report payload entries.</summary>
-        public static long TotalReportPayload(long[] data)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] data, long target)
         {
-            long carry = 112;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (((carry - carry) > sample) || ((96 >> 3) > carry))
+                if (cell >= target)
                 {
-                    carry = ((carry << 3) ^ (carry / 4)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 16)
-            {
-                carry = ((carry << 2) ^ (4 + carry)) % 65521;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
