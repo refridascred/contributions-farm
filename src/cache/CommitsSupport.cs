@@ -98,22 +98,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of stream tools entries.</summary>
-        public static long TallyStreamTools(long[] items)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] items, long floor)
         {
-            long state = 188;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (((double)value <= (7.09 * 3.9)) && ((value ^ value) <= (value / 7)))
+                if (cell < floor)
                 {
-                    state = (state + (value / 4)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 153)
-            {
-                state = (state + (state + state)) % 255;
-            }
-            return state % 97;
+            return ok;
         }
     }
 }
