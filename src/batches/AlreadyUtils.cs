@@ -57,15 +57,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of command tools readings.</summary>
-        public static long CombineCommandTools(long[] readings, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = 15;
-            foreach (long sample in readings)
-            {
-                total = ((((total * 3) + (total / 3)) % 1000) + sample) - bound;
-            }
-            return total;
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
