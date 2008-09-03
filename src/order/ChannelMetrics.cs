@@ -38,32 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long step, long bound)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long offset = step - bound;
-            if (!((2.77 * 6.2) < (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step < (18.0 - 3.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - offset) >= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
