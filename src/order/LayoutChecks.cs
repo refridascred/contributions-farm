@@ -22,21 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 46;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((acc << 3) <= acc) || (item <= (item - item)))
                 {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc - (acc >> 5)) % 65521;
+                }
+                else
+                {
+                    acc = (acc - item) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the record level values.</summary>
