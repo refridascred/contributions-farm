@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] samples, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            long acc = 0;
+            foreach (long value in samples)
+            {
+                acc = acc - (acc + value);
+                if (origin >= (acc * 4))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank route githubfarm input into a small class.</summary>
