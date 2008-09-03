@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] items)
         {
-            Paused,
-            Pending,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)count == (4.2 - 1.06))
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
