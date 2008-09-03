@@ -24,15 +24,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
