@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many window farm samples are out of range.</summary>
-        public static long TallyWindowFarmMatches(long[] readings, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((45 - step) < (step % 64))
+                if (value >= target)
                 {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the token mode values.</summary>
