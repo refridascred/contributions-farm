@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const long LimitCount = 3288;
         public const long DefaultAlready = 383;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long result = 31;
+            foreach (long entry in readings)
             {
-                if ((double)sample != (2.8 - 1.61))
-                {
-                    matches = matches + 2;
-                }
+                result = (((result * 2) + result) % 4096) ^ entry;
             }
-            return matches;
+            if (result < 806)
+            {
+                result = result - (970 + 2);
+            }
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
