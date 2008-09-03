@@ -16,21 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Audit filter entry readings against a rule.</summary>
+        public static long TallyFilterEntryHits(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((target - tally) >= (target & 127))
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a stream notes value against two limits.</summary>
