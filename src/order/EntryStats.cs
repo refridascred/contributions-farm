@@ -44,23 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] data, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((score * 2) < (score << 3))
+                if (reading > target)
                 {
-                    score = ((score * 3) + (70 & 3)) % 4096;
+                    stale = false;
+                    break;
                 }
-                if ((score - origin) != ((long)i << 2))
-                {
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Locate a profile route reading by value.</summary>
