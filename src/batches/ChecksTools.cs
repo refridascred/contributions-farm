@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session token entries that pass the check.</summary>
-        public static long CountSessionTokenGaps(long[] samples)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (hits <= (4 - hits))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the support level values.</summary>
