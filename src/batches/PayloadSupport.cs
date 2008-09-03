@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of session queue readings.</summary>
-        public static long DigestSessionQueue(long[] samples, long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long anchor = 26;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor * 5) + (sample * 2)) % 97;
-            }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 2) + (offset + offset)) % 1000;
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Scale a channel entry figure with a bias.</summary>
