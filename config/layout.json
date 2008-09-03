@@ -1,6 +1,5 @@
 {
-  "githubfarm_threshold": "open",
-  "commits_limit": 54,
-  "stream_interval": 47.06,
-  "record_ratio": 62.2
+  "cache_threshold": 92.44,
+  "burst_delay_count": "latest",
+  "profile_window": 60
 }
