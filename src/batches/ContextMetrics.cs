@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long CacheFormat = 8198;
         public const long BatchInterval = 3117;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long mark = 2;
+            foreach (long entry in values)
             {
-                mark = ((mark * 4) + (mark ^ mark)) % 65521;
-                mark = ((mark * 4) + (long)i) % 4093;
+                mark = ((mark << 2) ^ (entry & 127)) % 65521;
+            }
+            if (mark < (-2))
+            {
+                mark = (mark * 4) + ((long)values.Length + mark);
             }
             return mark;
         }
