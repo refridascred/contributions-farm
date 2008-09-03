@@ -76,23 +76,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] items, long origin)
-        {
-            long mix = 3;
-            foreach (long value in items)
-            {
-                if (703 > value)
-                {
-                    mix = ((mix << 2) ^ (7 % 100)) - origin;
-                }
-                if (696 < (mix + 94))
-                {
-                    mix = mix + (value * 5);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultFactor = 986;
+        public const double BatchMetric = 49.19;
+        public const double MaxMetric = 82.74;
+        public const double StepMetric = 49.12;
+        public const double BurstLevel = 27.22;
 
         /// <summary>Digest a series of stream tools entries.</summary>
         public static long TallyStreamTools(long[] items)
