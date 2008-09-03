@@ -28,14 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Stale,
-            Ready,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 3601;
+        public const long MinInterval = 42;
+        public const double RetryLevel = 80.03;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxAlready = 4674;
