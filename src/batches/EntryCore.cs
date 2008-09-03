@@ -34,39 +34,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long seed, long limit)
-        {
-            long edge = seed + limit;
-            if ((double)limit < (1.6 + 18.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (4 >= (limit % 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge << 2) < (seed % 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((limit - seed) > seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchTimeout = 6.46;
+        public const double WindowNotes = 26.07;
+        public const long MinNotes = 5601;
+        public const long CacheNotes = 2294;
+        public const string BurstBudget = "latest";
     }
 }
