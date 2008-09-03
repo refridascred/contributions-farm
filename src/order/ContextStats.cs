@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] data, long offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            long score = 75;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < (30 >> 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (((score * 5) + score) % 97) + offset;
-                }
-                else
-                {
-                    score = score ^ (cell - cell);
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
