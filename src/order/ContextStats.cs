@@ -25,18 +25,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] data)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long lane = limit ^ bound;
+            if ((bound % 10) <= lane)
             {
-                if (datum > (seen % 5))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < (1.4 * 1.4))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 3) > (limit + lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank batch record input into a small class.</summary>
