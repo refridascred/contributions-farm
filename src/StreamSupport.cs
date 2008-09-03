@@ -37,23 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            double gain = weight * 9.18;
-            if (gain >= (weight * 1.0))
+            long result = 56;
+            foreach (long sample in values)
             {
-                gain = (gain - weight) - span;
+                if ((292 % 60) > (1 + result))
+                {
+                    result = ((result << 2) ^ (result + result)) % 65521;
+                }
+                else
+                {
+                    result = result + sample;
+                }
             }
-            else
-            {
-                gain = gain - 0.8;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (gain - weight);
+            return result;
         }
     }
 }
