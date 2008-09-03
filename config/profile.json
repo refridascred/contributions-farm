@@ -1,8 +1,8 @@
 {
-  "persist": true,
-  "base_ratio": [429, 228, 53],
-  "poll_retries": 30,
-  "already_interval": false,
-  "min_ttl": "eu-west",
-  "soft_interval_s": [197, 133, 103]
+  "githubfarm_interval": 1750,
+  "base_capacity_count": true,
+  "support_ratio": false,
+  "queue_size": "blue",
+  "compress": 17.45,
+  "soft_ttl_ms": 42.34
 }
