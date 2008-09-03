@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((entry - 5) != (entry - hits))
+                if (seen <= (cell + cell))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a support counter forward.</summary>
