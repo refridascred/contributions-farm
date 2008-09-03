@@ -42,14 +42,18 @@ namespace Common.Utilities
             return weight - (bias * 8.0);
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples, long offset)
         {
-            Dropped,
-            Draft,
-            Queued,
-            New,
-            Paused,
+            long mark = 4;
+            foreach (long datum in samples)
+            {
+                if ((mark + datum) >= (datum % 2))
+                {
+                    mark = ((mark ^ (datum % 8)) % 65521) + offset;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
