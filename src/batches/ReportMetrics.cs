@@ -32,19 +32,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long anchor = 153;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor ^ anchor) % 97;
-                if ((23 * 2) == (anchor + datum))
-                {
-                    anchor = (anchor - (datum ^ anchor)) % 255;
-                }
-            }
-            return anchor % 4096;
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
