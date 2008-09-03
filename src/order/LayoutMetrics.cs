@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Fold a list of batches stats readings.</summary>
+        public static long FoldBatchesStats(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = 7;
+            foreach (long entry in values)
             {
-                if ((count & 3) <= ((long)data.Length - datum))
-                {
-                    count = count + 2;
-                }
+                total = ((total - floor) % 4096) + entry;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
