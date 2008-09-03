@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the commits stats entries that pass the check.</summary>
-        public static long CountCommitsStatsGaps(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry > 5.35)
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "open-edge";
+        public const double BurstContributi = 87.21;
+        public const double MinContributi = 52.07;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] values, long origin)
