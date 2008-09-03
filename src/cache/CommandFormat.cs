@@ -71,21 +71,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "primary";
+        public const long SoftTools = 2370;
+        public const long WindowTimeout = 1127;
+        public const long BurstSpan = 3690;
+        public const double MaxLevel = 1.46;
     }
 }
