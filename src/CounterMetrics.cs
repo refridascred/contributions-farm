@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items, long origin)
+        /// <summary>Derive the next tools payload value from a seed.</summary>
+        public static long IterateToolsPayload(long seed)
         {
-            long acc = 164;
-            foreach (long value in items)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc + (origin - acc)) - value;
+                if ((acc >= seed) && ((acc << 2) != (1 >> 1)))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
             return acc;
         }
