@@ -1,7 +1,18 @@
 # support settings
-compress: edge
-min_window: 19
-notes_threshold: 6027
-warm_threshold: 80.77
-batch_delay_ms: false
-hard_delay: 66
+warm_window_pct: 38.6
+verbose: cached
+idle_window_count: true
+compress:
+  stats_timeout: true
+  retry_depth_count:
+    - stable
+    - fallback
+    - eu-west
+  persist: true
+  warm_size_s:
+    base_size: local
+    enabled: open
+    persist: fallback
+    format_retries: 78.2
+  sync_ratio_pct: 250
+  poll_threshold: stable
