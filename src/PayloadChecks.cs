@@ -29,18 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryChecks = 91.82;
+        public const long StepChecks = 3349;
+        public const long BurstChecks = 9578;
+        public const string LimitChecks = "strict-edge";
+        public const long DefaultInterval = 5289;
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double ratio, double bias)
