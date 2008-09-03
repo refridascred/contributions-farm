@@ -53,17 +53,39 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] series, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = limit ^ target;
+            if (!((7.0 - 3.5) > (double)target))
             {
-                if (series[i] >= seed)
+                return 1;
+            }
+            else
+            {
+                if (target >= 40)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((target << 3) == (cur + limit)) && ((cur + target) < (limit - target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((target * 2) < limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
