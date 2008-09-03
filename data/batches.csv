@@ -1,8 +1,6 @@
-id,label,region,score,token
-1,cached,947,375,622
-2,643,standard,open,legacy
-3,855,fallback,856,927
-4,948,staging,16.92,17.22
-5,251,437,standard,fallback
-6,989,171,960,477
-7,strict,53.77,latest,41.44
+id,count,label,score,ratio
+1,open,strict,151,latest
+2,867,46.6,140,legacy
+3,staging,852,34.24,973
+4,81.05,open,983,476
+5,28.47,319,primary,46.4
