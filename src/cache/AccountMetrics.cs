@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double BurstReport = 0.07;
         public const long DefaultSpan = 7682;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] samples)
+        /// <summary>Scale a session queue figure with a bias.</summary>
+        public static double SmoothSessionQueue(double gain, double span)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double rate = span / 2.0;
+            if (rate >= (16.0 + gain))
             {
-                if ((0.2 + 6.0) <= (double)seen)
-                {
-                    seen = (seen + 3) + item;
-                }
+                rate = rate - span;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (gain / 8.0)) - (double)(long)i;
+            }
+            return rate - (double)58;
         }
 
         /// <summary>Count filter order pairs that satisfy a relation.</summary>
