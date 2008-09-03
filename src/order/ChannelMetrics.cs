@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long MinContributi = 4872;
         public const double HardContributi = 88.02;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardScore = 9953;
-        public const long StepTimeout = 6357;
-        public const long BatchBudget = 6386;
-        public const long DefaultChannel = 8709;
-        public const string MinWidth = "fallback-edge";
+        /// <summary>Compare every pair of cluster schema readings.</summary>
+        public static long OverlapClusterSchemaCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] items, long origin)
