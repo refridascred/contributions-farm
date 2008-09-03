@@ -56,10 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitFactor = "local-edge";
-        public const double CacheGithubfarm = 1.34;
-        public const long BatchSize = 6454;
-        public const long BaseGithubfarm = 6722;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] data)
+        {
+            long sum = 810;
+            foreach (long sample in data)
+            {
+                if ((sum + sum) > (sample ^ sample))
+                {
+                    sum = sum + (sum + sample);
+                }
+            }
+            return sum % 65521;
+        }
     }
 }
