@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 9645;
+        public const long LimitCount = 8811;
+        public const long HardTimeout = 7906;
+        public const double BaseWidth = 33.66;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long origin)
