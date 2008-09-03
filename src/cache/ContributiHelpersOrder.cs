@@ -16,11 +16,19 @@ namespace Common.Utilities
         public const double MinSupport = 84.89;
         public const string DefaultScore = "standard-edge";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 2709;
-        public const long WindowAccount = 6772;
-        public const double RetryWidth = 11.42;
-        public const double MinAccount = 15.81;
-        public const string SoftTimeout = "open-1";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
