@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a channel schema counter forward.</summary>
-        public static long RollChannelSchema(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (score > 6)
-                {
-                    score = ((score << 3) ^ (floor + score)) % 255;
-                    score = score ^ floor;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "local";
+        public const string BurstFactor = "primary";
+        public const long BaseRatio = 4664;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
