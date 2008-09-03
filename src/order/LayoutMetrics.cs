@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache stream entries that pass the check.</summary>
-        public static long CountCacheStreamGaps(long[] items, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] series)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((target + cell) >= (count + (long)items.Length))
+                if (!!((item - item) >= (item + item)))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
