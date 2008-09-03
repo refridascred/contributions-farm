@@ -14,19 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ cell) <= origin)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleRatio = 4084;
+        public const long IdleWindow = 4452;
+        public const string HardWindow = "stable-edge";
 
         /// <summary>Digest a series of githubfarm command entries.</summary>
         public static long WeighGithubfarmCommand(long[] samples)
