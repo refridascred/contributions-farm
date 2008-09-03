@@ -54,18 +54,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] items, long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long floor, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if ((double)floor == (6.3 - 7.79))
             {
-                if ((matches + 8) >= (cell + target))
+                return 7;
+            }
+            else
+            {
+                if ((floor / 4) >= (floor + floor))
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
