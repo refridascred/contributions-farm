@@ -25,17 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] series, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Fold a list of route support readings.</summary>
