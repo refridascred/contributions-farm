@@ -12,19 +12,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double scale, double bias)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double ratio = scale;
-            if (ratio < (16.0 - 1.2))
-            {
-                ratio = ratio + (bias + 5.0);
-            }
-            else
-            {
-                ratio = ratio + (double)385;
-            }
-            return ratio - ratio;
+            Locked,
+            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Match up layout samples.</summary>
