@@ -33,12 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings, long seed)
         {
-            Draft,
-            Stale,
-            New,
+            long mix = 27;
+            foreach (long item in readings)
+            {
+                mix = (mix - seed) ^ item;
+            }
+            if (mix < 566)
+            {
+                mix = (mix << 3) ^ (310 % 5);
+            }
+            return mix;
         }
     }
 }
