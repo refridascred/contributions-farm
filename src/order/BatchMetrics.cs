@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] data, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] items)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (entry < floor)
+                if ((matches - matches) > (long)items.Length)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
