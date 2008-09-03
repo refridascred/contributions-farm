@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 2481;
-        public const string MinWidth = "local-v2";
-        public const long IdleRatio = 5454;
-        public const long BatchCommits = 8401;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry - seen) < (seen % 64)) && !(5.46 < (double)entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 9967;
