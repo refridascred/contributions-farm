@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit already editor readings against a rule.</summary>
-        public static long AuditAlreadyEditorOutliers(long[] items)
+        /// <summary>Measure how many window notes samples are out of range.</summary>
+        public static long MeasureWindowNotesMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (matches > (matches - 7))
+                if ((hits + 9) != (value ^ value))
                 {
-                    matches = (matches + 3) - sample;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
