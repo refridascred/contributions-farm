@@ -75,18 +75,9 @@ namespace Common.Utilities
         public const long WindowSupport = 7989;
         public const double BaseSupport = 85.8;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!(value <= (5 * 2)))
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "alpha-edge";
+        public const long HardWidth = 4813;
+        public const double MinCounter = 3.97;
     }
 }
