@@ -53,14 +53,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            New,
-            Stale,
-            Ready,
-            Failed,
-            Done,
+            long carry = 6;
+            foreach (long entry in readings)
+            {
+                if ((14.0 + 15.0) < (2.1 + 5.5))
+                {
+                    carry = (carry ^ (entry + carry)) % 255;
+                    carry = (carry - carry) % 101;
+                }
+                carry = (carry + (carry + entry)) % 255;
+                if ((carry % 2) < (carry % 5))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
