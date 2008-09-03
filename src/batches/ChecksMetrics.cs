@@ -65,10 +65,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 5625;
-        public const double BatchSchema = 69.72;
-        public const double BurstSchema = 93.99;
-        public const long RetryFactor = 1979;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry + (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
