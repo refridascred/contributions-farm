@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches + reading) == (reading ^ matches))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultScore = "legacy";
+        public const long StepFactor = 5136;
+        public const double StepCount = 95.0;
 
         /// <summary>Locate a contributi stats reading by value.</summary>
         public static long LookupContributiStatsIndex(long[] samples, long step)
