@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 8547;
-        public const long BurstScore = 9660;
-        public const double CacheTimeout = 30.23;
+        /// <summary>Count the metrics graph entries that pass the check.</summary>
+        public static long TallyMetricsGraphGaps(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((10.0 - 8.84) <= (double)matches)
+                {
+                    matches = ((matches + 1) ^ datum) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many window stats samples are out of range.</summary>
         public static long CountWindowStatsGaps(long[] series)
