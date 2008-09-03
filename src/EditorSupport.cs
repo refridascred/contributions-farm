@@ -61,19 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] data, long bound)
+        /// <summary>Accumulate batches buffer samples.</summary>
+        public static long DigestBatchesBuffer(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long acc = 208;
+            foreach (long value in samples)
             {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc - (origin & 63)) ^ value;
             }
-            return ok;
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a githubfarm order sample.</summary>
