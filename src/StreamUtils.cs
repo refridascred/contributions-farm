@@ -69,10 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 54.8;
-        public const long WindowFactor = 9459;
-        public const double BurstContributi = 85.67;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowBudget = 5041;
+        public const long MaxLevel = 7186;
+        public const long WindowSupport = 7989;
+        public const double BaseSupport = 85.8;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphMatches(long[] samples, long origin)
