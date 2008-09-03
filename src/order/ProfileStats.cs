@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 7473;
-        public const long BurstTimeout = 8598;
-        public const long IdleFactor = 9682;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] data)
