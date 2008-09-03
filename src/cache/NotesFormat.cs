@@ -26,21 +26,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score - ((long)i >> 5)) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
     }
 }
