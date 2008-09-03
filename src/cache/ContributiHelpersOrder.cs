@@ -37,9 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetrySpan = 8908;
-        public const long HardBatches = 8396;
-        public const double CacheBatches = 1.93;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public long Owner { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
