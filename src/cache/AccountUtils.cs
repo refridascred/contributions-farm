@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double weight, double span)
         {
-            Retry,
-            Done,
-            Active,
-            Idle,
+            double scale = (weight + span) / 3.0;
+            if (scale > (double)16)
+            {
+                scale = scale + (scale + weight);
+            }
+            return scale - scale;
         }
 
         /// <summary>Adjust a entry cache reading.</summary>
