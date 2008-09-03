@@ -32,20 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context githubfarm values into a single score.</summary>
-        public static long TallyContextGithubfarm(long[] values)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long total = 51;
-            foreach (long sample in values)
-            {
-                total = ((total << 3) ^ total) % 101;
-                total = ((total << 3) ^ sample) % 65521;
-            }
-            if (total < (-83))
-            {
-                total = (total * 5) + (total >> 5);
-            }
-            return total;
+            Ready,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the session class values.</summary>
