@@ -64,11 +64,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Label { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 32.91;
+        public const long WindowInterval = 5375;
+        public const string IdleBuffer = "cached-1";
+        public const long RetryFactor = 6990;
     }
 }
