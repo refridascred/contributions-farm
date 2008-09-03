@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long StepFactor = 5136;
         public const double StepCount = 95.0;
 
-        /// <summary>Locate a contributi stats reading by value.</summary>
-        public static long LookupContributiStatsIndex(long[] samples, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 237;
+            foreach (long value in values)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                total = (total - (total ^ value)) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
