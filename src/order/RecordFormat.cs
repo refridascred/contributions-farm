@@ -52,19 +52,22 @@ namespace Common.Utilities
         public const long BatchWidth = 6689;
         public const string SoftBatch = "cached";
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] readings, long target)
         {
-            double bias = (double)(8 * 2);
-            if (bias < (double)306)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                bias = (bias - (gain / 9.0)) - span;
+                if (datum > (matches + target))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)4) + (double)(long)i;
-            }
-            return bias + (double)54;
+            return matches;
         }
     }
 }
