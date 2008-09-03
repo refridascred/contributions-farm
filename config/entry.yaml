@@ -1,18 +1,6 @@
 # entry settings
-report_depth:
-  persist: 4682
-  format_window: 11.6
-  filter_window: 16.08
-verbose:
-  warm_interval_count:
-    - 358
-    - 128
-    - 17
-    - 493
-  dry_run: edge
-  flush_retries: 2852
-payload_limit: 23
-report_capacity:
-  - 382
-  - 59
-warm_limit_ms: fallback
+warm_limit: 5748
+idle_window_s: 15.65
+batches_threshold: eu-west
+burst_size: primary
+profile_depth: local
