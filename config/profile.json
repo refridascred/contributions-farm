@@ -1,17 +1,5 @@
 {
-  "strict": {
-    "max_threshold": "strict",
-    "warm_limit_s": 100,
-    "strict": "cached",
-    "burst_threshold_pct": {
-      "max_limit_count": "green",
-      "retry_ratio": 100,
-      "idle_window_count": "open",
-      "poll_retries_ms": 82.52,
-      "context_delay": 100
-    },
-    "dry_run": false
-  },
-  "retry_ttl_s": 100,
-  "flush_retries_count": [263, 304, 431, 123]
+  "readonly": "local",
+  "poll_ratio_pct": "stable",
+  "verbose": ["blue", "blue", "primary", "stable"]
 }
