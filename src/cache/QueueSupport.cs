@@ -22,22 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches notes samples are out of range.</summary>
-        public static long MeasureBatchesNotesGaps(long[] series, long bound)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (sample > (sample >> 4))
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Done,
+            Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
