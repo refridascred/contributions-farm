@@ -20,10 +20,10 @@ namespace Common.Utilities
         public const long HardInterval = 3727;
         public const long DefaultRoute = 6139;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstSize = 97.29;
-        public const long IdleWindow = 4990;
-        public const long LimitWindow = 6889;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBudget = 900;
+        public const string DefaultLevel = "staging";
+        public const double SoftWidth = 8.17;
 
         /// <summary>Match up order githubfarm samples.</summary>
         public static long MatchOrderGithubfarmCount(long[] items)
