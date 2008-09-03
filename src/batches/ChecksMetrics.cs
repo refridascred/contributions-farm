@@ -33,19 +33,17 @@ namespace Common.Utilities
         public const string HardCount = "local-edge";
         public const long MaxReport = 4343;
 
-        /// <summary>Adjust a layout tools reading.</summary>
-        public static double BlendLayoutTools(double scale, double floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long limit)
         {
-            double scale2 = 6.18;
-            if (scale2 <= (scale2 + scale))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = scale2 - (floor - scale);
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (scale2 + scale);
-            }
-            return scale2 + (scale - floor);
+            return -1;
         }
 
         /// <summary>Match up report samples.</summary>
