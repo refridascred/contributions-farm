@@ -36,22 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] readings, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long carry = 21;
+            foreach (long entry in data)
             {
-                if (63 >= (seed << 1))
+                if ((entry >> 3) < (carry ^ bound))
                 {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = carry + (entry ^ entry);
                 }
             }
-            return seen;
+            return carry % 1000;
         }
     }
 }
