@@ -33,16 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                acc = (acc << 2) ^ (seed * 3);
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((616 - 63) <= ((long)series.Length - (long)series.Length))
+                {
+                    count = (count + 2) - entry;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Roll a window checks counter forward.</summary>
