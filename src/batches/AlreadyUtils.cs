@@ -39,17 +39,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] series, long step)
         {
-            long mix = 68;
-            foreach (long item in items)
+            long mark = 8;
+            foreach (long cell in series)
             {
-                mix = ((mix << 3) ^ (mix & 15)) ^ item;
-                mix = ((mix * 3) + mix) % 255;
-                mix = (mix << 2) ^ 181;
+                if ((cell + 62) >= (step & 15))
+                {
+                    mark = (mark << 2) ^ 37;
+                }
+                if ((cell >> 4) < ((long)series.Length + step))
+                {
+                    mark = (mark << 3) ^ step;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (step / 8);
+                }
             }
-            return mix;
+            if (mark < 453)
+            {
+                mark = mark - step;
+            }
+            return mark;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
