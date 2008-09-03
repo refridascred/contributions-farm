@@ -1,6 +1,7 @@
-id,count,label,score,ratio
-1,open,strict,151,latest
-2,867,46.6,140,legacy
-3,staging,852,34.24,973
-4,81.05,open,983,476
-5,28.47,319,primary,46.4
+id,rank,token,state,active
+1,staging,fallback,71.43,282
+2,standard,82.26,233,803
+3,legacy,537,staging,blue
+4,standard,589,413,412
+5,695,fallback,eu-west,17.15
+6,strict,97.64,793,1.43
