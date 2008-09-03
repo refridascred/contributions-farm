@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] series, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((((hits + limit) == (limit & 31)) || (1.8 <= (double)hits)) && ((double)entry >= (2.22 + 6.7)))
+                if (!((4 & 63) > tally))
                 {
-                    hits = hits + 1;
+                    tally = ((tally + 1) ^ reading) + seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
