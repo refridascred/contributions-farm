@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 4186;
+        public const long CacheOrder = 2069;
+        public const long DefaultRatio = 3128;
+        public const string WindowLevel = "legacy";
+        public const long IdleOrder = 7053;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
