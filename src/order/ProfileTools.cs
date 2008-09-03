@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every account format entry stays within the limit.</summary>
-        public static bool ValidateAccountFormatLimits(long[] samples, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
