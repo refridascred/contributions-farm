@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long floor, long floor2)
         {
-            Pending,
-            Active,
-            Closed,
-            Done,
+            if (13.0 >= (double)floor2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - floor2) <= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
