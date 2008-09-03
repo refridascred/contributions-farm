@@ -18,12 +18,11 @@ namespace Common.Utilities
         public const long MinTools = 9741;
         public const long SoftCount = 6206;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public double Label { get; set; }
             public long Owner { get; set; }
-            public long Region { get; set; }
+            public double Total { get; set; }
         }
     }
 }
