@@ -13,18 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] readings, long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((4.1 - 6.4) > (double)cell)
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
