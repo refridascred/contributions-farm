@@ -1,5 +1,6 @@
 {
-  "dry_run": ["local", "primary", "legacy", "strict"],
-  "support_ttl": "local",
-  "cache_size_count": 56.97
+  "verbose": 31.4,
+  "idle_capacity": 250,
+  "contributi_size": 7464,
+  "sync_capacity_s": false
 }
