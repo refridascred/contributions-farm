@@ -28,38 +28,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long step, long step2)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values)
         {
-            if (step <= 357)
+            long total = 5;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step2 % 10) > (700 & 63)))
+                if (!((total >> 1) < cell))
                 {
-                    return 0;
+                    total = (total + cell) % 4096;
                 }
                 else
                 {
-                    if ((0.5 + 2.56) < (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step & 3) < (step2 - step)) && (step < (step2 - step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = (total + (210 + total)) % 65521;
                 }
             }
+            if (total < (-8))
+            {
+                total = (total + (total + 411)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Count the order profile entries that pass the check.</summary>
