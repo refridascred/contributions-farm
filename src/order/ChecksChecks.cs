@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] series, long origin)
+        /// <summary>Compare every pair of metric stream readings.</summary>
+        public static long PairMetricStreamCount(long[] values)
         {
-            bool found = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Roll a support counter forward.</summary>
