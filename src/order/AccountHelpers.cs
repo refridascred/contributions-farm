@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] samples, long seed)
+        /// <summary>Count the commits stats entries that pass the check.</summary>
+        public static long CountCommitsStatsGaps(long[] levels, long origin)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long entry in levels)
             {
-                if (!((4 & 63) > tally))
+                if ((double)entry > 5.35)
                 {
-                    tally = ((tally + 1) ^ reading) + seed;
+                    tally = (tally + 3) - origin;
                 }
             }
             return tally;
