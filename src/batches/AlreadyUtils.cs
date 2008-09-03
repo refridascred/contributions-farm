@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double rate, double span)
+        /// <summary>Rank githubfarm counter input into a small class.</summary>
+        public static long ClassifyGithubfarmCounter(long limit, long origin)
         {
-            double load = rate;
-            if (load > (span / 9.0))
+            if (((origin * 3) < (origin % 5)) || (limit < (limit + limit)))
             {
-                load = load - rate;
+                return 3;
             }
             else
             {
-                load = load + load;
+                if (limit <= (origin - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit * 5) > (4 + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((2.0 - 15.0) >= (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (9.58 + span)) + (double)(long)i;
-            }
-            return load + 2.73;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
