@@ -24,11 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
