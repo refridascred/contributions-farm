@@ -61,21 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Audit queue session readings against a rule.</summary>
+        public static long CountQueueSessionGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits % 16) >= value)
                 {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
