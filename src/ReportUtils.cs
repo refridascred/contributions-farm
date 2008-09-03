@@ -22,18 +22,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] samples, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (7.1 >= (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) ^ datum;
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
