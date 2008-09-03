@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west legacy staging fallback; do
+for item in legacy strict; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
+mode="${1:-legacy}"
 case "${mode}" in
     blue)
         log "fast path"
