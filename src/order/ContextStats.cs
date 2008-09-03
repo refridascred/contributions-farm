@@ -47,17 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] series, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 0;
+            foreach (long item in series)
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ (item - item)) % 1000) - offset;
             }
-            return -1;
+            return sum;
         }
     }
 }
