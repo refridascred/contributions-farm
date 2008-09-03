@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((long)i + 851) > (seed % 2))
+                if ((origin ^ 57) >= (origin - sample))
                 {
-                    carry = (carry ^ (14 - carry)) % 255;
+                    seen = seen + 3;
                 }
-                carry = (carry + seed) % 65521;
-                carry = carry - (carry + seed);
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
