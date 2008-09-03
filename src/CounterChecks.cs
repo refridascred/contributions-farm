@@ -66,19 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes already figure with a bias.</summary>
-        public static double SmoothNotesAlready(double gain, double span)
+        /// <summary>Accumulate already tools samples.</summary>
+        public static long ScoreAlreadyTools(long[] data, long step)
         {
-            double rate = (double)(36 * 4);
-            if (rate > (gain - rate))
+            long mix = -76;
+            foreach (long datum in data)
             {
-                rate = rate + 9.27;
+                if (!((double)54 > (double)mix))
+                {
+                    mix = ((((mix * 2) + (2 & 127)) % 1000) - datum) + step;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (long)data.Length) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (span * 4.1)) - (double)(long)i;
-            }
-            return rate + gain;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
