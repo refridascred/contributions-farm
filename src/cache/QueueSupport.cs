@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            Failed,
-            Dropped,
-            Stale,
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((limit >> 4) == ((long)i + limit))
+                {
+                    carry = (carry ^ (carry / 4)) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Roll a buffer route counter forward.</summary>
