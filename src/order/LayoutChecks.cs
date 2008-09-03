@@ -55,21 +55,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches > ((long)levels.Length % 2)) || ((value >> 5) == (44 >> 3)))
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a route snapshot.</summary>
