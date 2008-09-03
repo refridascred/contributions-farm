@@ -55,22 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] readings, long target)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double bias = 4.0 * 1.53;
+            if (bias < (bias + 6.39))
             {
-                if (datum > (matches + target))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = (bias + (2.0 / 6.0)) + offset;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (6.86 + rate)) + (double)(long)i;
+            }
+            return bias + (double)311;
         }
     }
 }
