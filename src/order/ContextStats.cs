@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] items, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                long span = origin / 6;
-                if (!((score & 3) <= span))
+                if ((seen > (seen & 255)) && ((2 & 255) <= seen))
                 {
-                    score = score + (score % 24);
+                    seen = ((seen + 2) + entry) - floor;
                 }
-                score = (score - ((long)i - origin)) % 1000;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Match up support samples.</summary>
