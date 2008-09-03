@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                double mean = (4.7 + 2.5) - (10.0 - 13.0);
-                score = ((score * 4) + (origin & 127)) % 4096;
-                if ((mean < (1.99 / 5.0)) && ((mean * 0.03) != (mean / 3.0)))
-                {
-                    score = (score * 3) + (origin + (long)i);
-                    mean = mean - (9.6 / 9.0);
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count graph tools pairs that satisfy a relation.</summary>
