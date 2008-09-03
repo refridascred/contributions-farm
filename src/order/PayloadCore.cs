@@ -26,25 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report format pair into a bucket.</summary>
-        public static long BucketReportFormat(long origin, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] samples, long bound)
         {
-            long bound = origin + seed;
-            if ((1.3 * 4.22) > (double)origin)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound <= (origin + origin)) || (origin < seed))
+                if (value >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the entry account entries that pass the check.</summary>
