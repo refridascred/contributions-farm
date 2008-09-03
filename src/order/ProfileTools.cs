@@ -61,9 +61,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 9018;
-        public const long CacheFilter = 3514;
-        public const long BaseScore = 8932;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((carry < 118) || (origin > carry))
+                {
+                    carry = (carry ^ (origin + carry)) % 101;
+                    carry = (carry - ((long)i << 3)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (origin + carry)) % 1000;
+                    carry = ((carry * 5) + (9 + 37)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
