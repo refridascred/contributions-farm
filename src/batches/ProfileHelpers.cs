@@ -49,18 +49,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] series, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long total = 29;
-            foreach (long entry in series)
+            long result = 86;
+            foreach (long item in items)
             {
-                if (entry >= (floor % 100))
+                if ((result * 4) <= (item & 255))
                 {
-                    total = (total << 3) ^ (floor % 24);
+                    result = ((result << 2) ^ (result + 339)) % 97;
+                }
+                else
+                {
+                    result = result + (item / 5);
                 }
             }
-            return total;
+            if (result < 52)
+            {
+                result = ((result * 3) + (result + result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
