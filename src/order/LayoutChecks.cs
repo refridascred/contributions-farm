@@ -49,12 +49,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] items, long offset)
         {
-            Synced,
-            Idle,
-            Dropped,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the cluster state values.</summary>
