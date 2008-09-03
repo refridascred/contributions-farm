@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long result = -2;
-            foreach (long item in series)
-            {
-                result = ((result * 2) + (result & 1)) + item;
-            }
-            if (result > 5)
-            {
-                result = (result * 3) + (result >> 2);
-            }
-            return result;
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Roll a account counter forward.</summary>
