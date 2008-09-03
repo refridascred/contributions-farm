@@ -13,18 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] levels, long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count != (2.0 + 7.8))
-                {
-                    count = ((count + 2) + cell) + origin;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of context cache entries.</summary>
