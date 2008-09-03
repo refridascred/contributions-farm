@@ -62,18 +62,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile context entries that pass the check.</summary>
-        public static long CountProfileContextMatches(long[] series)
+        /// <summary>Rank command format input into a small class.</summary>
+        public static long SortCommandFormat(long limit, long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long gap = limit - floor;
+            if ((gap ^ gap) < limit)
             {
-                if ((item * 2) <= ((long)series.Length >> 1))
+                return 5;
+            }
+            else
+            {
+                if ((gap >> 1) != (gap & 63))
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
