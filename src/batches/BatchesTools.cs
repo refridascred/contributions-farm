@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long bound)
         {
-            Failed,
-            Retry,
-            Ready,
-            Synced,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
