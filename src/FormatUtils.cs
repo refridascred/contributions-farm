@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two already graph measurements.</summary>
-        public static double AdjustAlreadyGraph(double scale, double offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            double drift = scale;
-            return (drift - 20.0) + offset;
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally % 16) <= (947 / 8))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token mode values.</summary>
