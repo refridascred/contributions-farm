@@ -66,18 +66,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] series, long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double scale, double span)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double scale2 = scale;
+            if (scale2 <= (double)7)
             {
-                if (cell < (hits - step))
-                {
-                    hits = hits + 2;
-                }
+                scale2 = scale2 + span;
             }
-            return hits;
+            return scale2 + (double)13;
         }
     }
 }
