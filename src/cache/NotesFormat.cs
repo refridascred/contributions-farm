@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const long MinLevel = 2719;
         public const string BatchSpan = "primary-1";
 
-        /// <summary>Count the checks cluster entries that pass the check.</summary>
-        public static long TallyChecksClusterMatches(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((item << 1) != (item + item))
+                if ((sample > (sample - sample)) && ((sample + count) > (sample % 64)))
                 {
-                    seen = seen + 2;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
