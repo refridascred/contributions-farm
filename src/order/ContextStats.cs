@@ -42,16 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchScore = 6857;
+        public const long MaxReport = 1284;
+        public const string BurstReport = "standard-edge";
+        public const long DefaultDepth = 5106;
+        public const long CacheWidth = 1227;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long bound)
