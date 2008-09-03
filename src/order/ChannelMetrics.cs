@@ -19,18 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (((3.43 - 5.8) == (double)tally) || ((tally / 6) <= datum))
+                if (cell >= offset)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
