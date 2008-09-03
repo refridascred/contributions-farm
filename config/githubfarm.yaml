@@ -1,8 +1,14 @@
 # githubfarm settings
-retry_window:
-  - edge
-  - primary
-flush_limit_count: 5.3
-readonly: 250
-batch_interval_s: 9619
-session_limit: false
+retry_timeout_ms: 48
+editor_capacity: 250
+strict:
+  - 37
+  - 202
+  - 79
+  - 364
+default_size_count: 72
+hard_depth_count:
+  base_capacity: 72.27
+  dry_run: open
+  min_ttl_s: fallback
+  metrics_limit: true
