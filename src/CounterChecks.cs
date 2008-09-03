@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long offset)
+        /// <summary>Audit queue layout readings against a rule.</summary>
+        public static long TallyQueueLayoutOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (values[i] >= offset)
+                if ((cell + limit) != (cell / 9))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the metric status values.</summary>
