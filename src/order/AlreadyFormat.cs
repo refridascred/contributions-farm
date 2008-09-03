@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate support filter samples.</summary>
