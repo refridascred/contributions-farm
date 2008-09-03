@@ -75,26 +75,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] values, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] levels, long origin)
         {
-            long state = -309;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((state + state) == (575 + 975))
+                if (entry <= origin)
                 {
-                    state = (state + (cell + cell)) % 4096;
-                }
-                else
-                {
-                    state = (state + (state - state)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 176)
-            {
-                state = (state << 3) ^ (floor + floor);
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Combine window values into a single score.</summary>
