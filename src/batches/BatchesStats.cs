@@ -23,22 +23,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] series, long origin)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((cell ^ origin) == (cell ^ cell)) || ((origin & 31) > count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
