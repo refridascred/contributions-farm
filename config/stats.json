@@ -1,8 +1,10 @@
 {
-  "burst_ttl_ms": 5395,
-  "audit": 52,
-  "batch_capacity_count": ["stable", "primary"],
-  "already_interval": "blue",
-  "readonly": "cached",
-  "batch_threshold_s": "legacy"
+  "dry_run": 7.49,
+  "base_ratio_s": {
+    "poll_retries_ms": [74, 147],
+    "dry_run": 28.92,
+    "sync_timeout": 58.3,
+    "idle_interval": 1024
+  },
+  "report_interval": "latest"
 }
