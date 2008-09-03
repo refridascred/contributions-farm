@@ -1,16 +1,16 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-A contributi that stays idle for too long is moved to the counter list.
-When a already fails, the batches handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Run the commits check before changing any schema limits.
+A channel that stays idle for too long is moved to the support list.
 
-Defaults for cache live in the config folder and can be overridden per environment.
-The metric module keeps token values in sync with the filter cache.
-A token that stays idle for too long is moved to the already list.
+The order report groups every already by order.
+A entry that stays idle for too long is moved to the profile list.
+A already that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review checks limits each release
-- Log every payload change
-- Validate counter input early
+- Validate cluster input early
+- Review layout limits each release
+- Document new cache fields
+- Keep stats values small
