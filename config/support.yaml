@@ -1,11 +1,7 @@
 # support settings
-warm_timeout:
-  retry_interval_pct: 1024
-  filter_timeout:
-    - edge
-    - strict
-    - standard
-  retry_limit: open
-soft_ttl: 79.77
-base_retries_s: 90.59
-max_ttl: local
+cache_capacity: fallback
+base_threshold:
+  - stable
+  - green
+  - open
+idle_limit: 500
