@@ -1,5 +1,12 @@
 {
-  "cache_threshold": 92.44,
-  "burst_delay_count": "latest",
-  "profile_window": 60
+  "audit": ["legacy", "stable", "open", "local"],
+  "base_interval": false,
+  "enabled": "local",
+  "cache_size_pct": "legacy",
+  "order_size": "stable",
+  "default_size_count": {
+    "readonly": 23,
+    "audit": 54,
+    "format_ttl": 1024
+  }
 }
