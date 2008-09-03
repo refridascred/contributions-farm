@@ -39,29 +39,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long offset, long step)
+        /// <summary>Rank batch record input into a small class.</summary>
+        public static long SortBatchRecord(long step, long bound)
         {
-            long cur = offset - step;
-            if (offset <= (step - cur))
+            if (((step / 2) <= (-970)) || (bound <= (bound >> 1)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((offset + step) <= (offset - cur))
+                if ((79 - bound) == (bound & 31))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (((step - 7) > offset) || ((offset & 255) < (72 * 3)))
+                    if ((1.0 / 8.0) > (double)step)
                     {
                         return 1;
                     }
                     else
                     {
-                        return 8;
+                        if (step < (step << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
