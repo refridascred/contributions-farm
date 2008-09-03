@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items)
-        {
-            long anchor = 7;
-            foreach (long reading in items)
-            {
-                if ((reading & 7) >= (592 ^ reading))
-                {
-                    anchor = (anchor ^ (862 & 127)) % 65521;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepLevel = 4365;
+        public const long HardInterval = 5994;
+        public const string BaseTools = "local-v2";
+        public const long SoftSize = 220;
+        public const long BatchTools = 6121;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long CombineCache(long[] readings)
