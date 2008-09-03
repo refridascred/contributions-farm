@@ -50,19 +50,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi token readings against a bound.</summary>
-        public static bool VerifyContributiTokenRange(long[] values, long origin)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
