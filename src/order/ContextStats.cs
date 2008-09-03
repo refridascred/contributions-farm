@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] readings, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
