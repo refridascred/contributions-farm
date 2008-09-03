@@ -1,18 +1,8 @@
 # entry settings
-min_ttl: 45.17
-max_timeout_pct: stable
-default_limit: 36
-compress: false
-account_ratio:
-  poll_window_s: 46
-  poll_delay:
-    min_size: standard
-    report_interval:
-      - 463
-      - 67
-      - 476
-      - 45
-    persist: open
-  compress: 70.21
-  channel_limit: local
-  idle_timeout_ms: local
+idle_size_count:
+  - 58
+  - 246
+checks_size: false
+cache_interval_ms: 6145
+burst_delay_count: staging
+sync_delay: 8020
