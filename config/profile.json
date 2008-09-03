@@ -1,7 +1,12 @@
 {
-  "poll_interval_ms": [299, 87, 315, 71],
-  "format_capacity": 7446,
-  "record_delay": 67,
-  "schema_size": "eu-west",
-  "format_threshold": 70.82
+  "batch_ttl_count": true,
+  "hard_window": [90, 414],
+  "warm_threshold_pct": 1024,
+  "retry_delay_count": 250,
+  "filter_timeout": "open",
+  "burst_timeout_s": {
+    "retry_timeout_count": 14,
+    "verbose": 82.31,
+    "batch_retries_count": 94.39
+  }
 }
