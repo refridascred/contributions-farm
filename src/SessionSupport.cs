@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long limit, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            if ((limit ^ (-3)) == (limit ^ seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + limit) >= (seed + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed / 3) < (seed ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (3 > (seed >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
