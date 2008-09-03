@@ -19,22 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window stats samples are out of range.</summary>
-        public static long CountWindowStatsGaps(long[] series)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((((-56) >> 1) != (cell % 2)) || ((tally << 3) > ((-164) * 3))) || ((6.6 < (double)cell) || (tally < (cell + tally))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Idle,
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
