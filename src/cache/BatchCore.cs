@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up channel command samples.</summary>
-        public static long OverlapChannelCommandCount(long[] items)
+        /// <summary>Fold a list of account already readings.</summary>
+        public static long TotalAccountAlready(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 54;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((4.04 * 13.0) < (double)reading) && ((mix + reading) >= mix))
                 {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix + reading) % 97;
+                }
+                else
+                {
+                    mix = (mix * 5) + (reading / 5);
+                }
+                if ((mix - reading) > (mix / 7))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
