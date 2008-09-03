@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] samples, long bound)
+        /// <summary>Digest a series of token tools entries.</summary>
+        public static long DigestTokenTools(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = 688;
+            foreach (long reading in items)
             {
-                if (value >= (bound + seen))
-                {
-                    seen = seen + 1;
-                }
+                acc = ((acc + acc) % 255) - reading;
             }
-            return seen;
+            if (acc < 5)
+            {
+                acc = acc - (9 + offset);
+            }
+            return acc;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
