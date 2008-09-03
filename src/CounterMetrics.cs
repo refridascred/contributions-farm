@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batches record samples.</summary>
-        public static long TotalBatchesRecord(long[] samples)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] series, long step)
         {
-            long result = 62;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (((result << 1) < result) || ((9.4 / 7.0) <= (double)result))
+                if (datum >= step)
                 {
-                    result = (result - (19 & 63)) ^ item;
-                }
-                else
-                {
-                    result = (result ^ result) % 101;
-                }
-                if ((result + 25) <= (result - 428))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
