@@ -25,22 +25,13 @@ namespace Common.Utilities
         public const long WindowDepth = 8250;
         public const long StepScore = 844;
 
-        /// <summary>Fold a list of cache cluster readings.</summary>
-        public static long CombineCacheCluster(long[] readings, long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = 374;
-            foreach (long reading in readings)
-            {
-                if (mark < reading)
-                {
-                    mark = ((mark ^ (mark ^ reading)) % 97) + origin;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = mark ^ (mark * 4);
-            }
-            return mark;
+            Done,
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Classify a route account pair into a bucket.</summary>
