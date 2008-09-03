@@ -13,18 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheWidth = "open";
+        public const double MinWidth = 29.91;
+        public const double HardPayload = 66.11;
+        public const long RetryTimeout = 4559;
+        public const long MinPayload = 1348;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleSpan = 9876;
