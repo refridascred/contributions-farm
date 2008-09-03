@@ -1,10 +1,12 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-When a payload fails, the buffer handler retries a few times before giving up.
+Defaults for buffer live in the config folder and can be overridden per environment.
+When a filter fails, the graph handler retries a few times before giving up.
+Keep layout and context names short and lowercase.
 
 ## Guidelines
 
-- Document new notes fields
-- Validate token input early
-- Review metrics limits each release
+- Document new commits fields
+- Prefer metric defaults
+- Review contributi limits each release
+- Log every route change
