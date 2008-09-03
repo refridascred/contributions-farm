@@ -30,13 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Draft,
-            Synced,
-            New,
             Stale,
+            Ready,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define already limits and defaults.</summary>
