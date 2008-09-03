@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryRatio = 14.03;
-        public const double BaseSize = 1.31;
-        public const string MinFilter = "stable";
-        public const long DefaultFilter = 7968;
-        public const long BatchInterval = 7382;
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the session token entries that pass the check.</summary>
         public static long CountSessionTokenGaps(long[] samples)
