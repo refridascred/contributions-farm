@@ -37,25 +37,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the queue batches series from a seed.</summary>
-        public static long IterateQueueBatches(long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] readings, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (!((floor + score) < (47 * 2)))
+                if (!(hits >= (floor - hits)))
                 {
-                    score = ((score * 4) + ((long)i << 3)) % 101;
-                    continue;
+                    hits = (hits + 3) ^ item;
                 }
-                if ((long)i != (67 + score))
+                else
                 {
-                    score = (score - (score >> 3)) % 97;
-                    score = (score - (40 ^ floor)) % 97;
+                    hits = hits - 1;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
