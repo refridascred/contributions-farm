@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 5927;
-        public const string CacheTimeout = "legacy-edge";
-        public const long RetrySize = 7564;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 69.46;
+        public const long CacheCount = 283;
+        public const string StepFilter = "fallback-1";
+        public const string MinFilter = "local-edge";
 
         /// <summary>Fold a list of profile commits readings.</summary>
         public static long TotalProfileCommits(long[] readings, long step)
