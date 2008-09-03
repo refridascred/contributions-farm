@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const long CacheFormat = 8198;
         public const long BatchInterval = 3117;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinQueue = "alpha-1";
-        public const long SoftQueue = 8640;
-        public const long HardQueue = 7403;
-        public const string CacheFactor = "local-edge";
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long floor)
+        {
+            if (seed >= (seed - 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((seed >> 5) > floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)floor <= 11.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (97 <= ((-831) ^ seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] series, long floor)
