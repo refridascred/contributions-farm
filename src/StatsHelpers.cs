@@ -22,10 +22,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseInterval = "cached-1";
-        public const double BaseCounter = 36.41;
-        public const long RetryTimeout = 8666;
+        /// <summary>Measure how many entry metric samples are out of range.</summary>
+        public static long CountEntryMetricMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally >= (entry - 811)) || ((7.39 - 18.0) > (double)entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteLimits(long[] readings, long limit)
