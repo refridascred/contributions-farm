@@ -32,15 +32,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long offset, long step)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long cur = offset - step;
+            if (offset <= (step - cur))
             {
-                state = ((state * 2) + (long)i) % 65521;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((offset + step) <= (offset - cur))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step - 7) > offset) || ((offset & 255) < (72 * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
