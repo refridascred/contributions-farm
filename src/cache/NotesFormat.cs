@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseSize = 50.62;
-        public const long DefaultTimeout = 9972;
-        public const string MinSpan = "open";
-        public const long MinCount = 8634;
-        public const long IdleChannel = 1973;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((0.4 / 8.0) >= (double)seen))
+                {
+                    seen = ((seen + 1) - datum) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long target)
