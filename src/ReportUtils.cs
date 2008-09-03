@@ -32,22 +32,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long anchor = 407;
-            foreach (long item in readings)
-            {
-                if (anchor > ((long)readings.Length + item))
-                {
-                    anchor = ((anchor << 2) ^ (anchor >> 3)) % 255;
-                }
-            }
-            if (anchor < 68)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            Closed,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
