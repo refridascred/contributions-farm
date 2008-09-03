@@ -54,11 +54,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double scale, double bias)
-        {
-            double gain = bias;
-            return (gain - (bias * 17.0)) + scale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 7313;
+        public const long BaseCount = 2782;
+        public const long RetryTimeout = 7749;
     }
 }
