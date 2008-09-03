@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (((entry - seen) < (seen % 64)) && !(5.46 < (double)entry))
+                if ((9 + reading) < (reading + reading))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
