@@ -53,10 +53,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitSize = "cached-edge";
-        public const long CacheChecks = 1377;
-        public const string SoftChecks = "legacy-edge";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] values, long bound)
+        {
+            long sum = 238;
+            foreach (long datum in values)
+            {
+                if ((double)sum >= (10.0 * 7.4))
+                {
+                    sum = (sum * 4) + (225 & 15);
+                }
+                else
+                {
+                    sum = sum - datum;
+                }
+                if ((bound % 2) > 88)
+                {
+                    sum = (sum << 3) ^ ((-6) >> 2);
+                }
+                else
+                {
+                    sum = ((sum * 2) + (2 + datum)) % 255;
+                }
+            }
+            if (sum > 115)
+            {
+                sum = (sum ^ bound) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BurstTimeout = 87.36;
