@@ -6,10 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=202
+RECORD_LIMIT=243
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-strict}"
+mode="${1:-green}"
 case "${mode}" in
     strict)
         log "fast path"
@@ -18,3 +18,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest strict; do
+    log "checking ${item}"
+done
