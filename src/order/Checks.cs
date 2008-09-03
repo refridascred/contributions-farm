@@ -32,39 +32,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long step, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double bias)
         {
-            long delta = step + floor;
-            if ((3.2 + 1.2) > (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor >= (floor ^ floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor >= (2.0 + 4.23))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((delta + delta) < 89)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double load = (double)(8 + (-99));
+            return ((load - 8.78) + ratio) + bias;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
