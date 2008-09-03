@@ -38,12 +38,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "local-1";
-        public const long BatchTimeout = 1687;
-        public const double SoftFarm = 57.13;
-        public const long RetryScore = 591;
-        public const long BurstBudget = 2782;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] data)
+        {
+            long sum = 205;
+            foreach (long datum in data)
+            {
+                sum = ((sum - (0 >> 3)) % 4096) - datum;
+            }
+            if (sum > (-80))
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileHits(long[] values, long limit)
