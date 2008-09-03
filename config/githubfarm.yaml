@@ -1,9 +1,16 @@
 # githubfarm settings
-readonly: 1684
-cache_capacity_ms: 94.19
-verbose: 60
-max_threshold: 100
-session_delay:
-  - latest
-  - primary
-retry_ttl_count: 17.96
+base_ttl_count:
+  - 143
+  - 20
+  - 121
+  - 356
+filter_delay: 60
+idle_retries: 4254
+base_ttl:
+  max_capacity_count: 55.91
+  default_ratio_count: stable
+  idle_retries: 4102
+  readonly: 5914
+  batch_size: false
+dry_run: 46.76
+queue_window: 40.75
