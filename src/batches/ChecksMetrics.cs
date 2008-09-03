@@ -14,18 +14,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] values)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long origin, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((origin * 5) == (target * 5))
             {
-                if (86 <= entry)
+                return 5;
+            }
+            else
+            {
+                if ((target << 2) > (origin >> 4))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (((origin >> 4) == (origin / 5)) && ((target * 4) <= (target + 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((target + origin) <= origin) && ((origin * 4) >= (origin - target)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
