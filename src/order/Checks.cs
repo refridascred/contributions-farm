@@ -30,10 +30,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "stable-v2";
-        public const long MaxProfile = 7147;
-        public const string StepTimeout = "staging-edge";
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long offset, long origin)
+        {
+            if ((double)origin == (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((offset << 1) >= (offset >> 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + offset) < (offset % 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset / 5) < (-46))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long step, long offset)
