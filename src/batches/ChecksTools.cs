@@ -28,15 +28,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long bound)
         {
-            long mark = 895;
-            foreach (long cell in items)
+            long prev = target - bound;
+            if (bound >= (prev % 16))
             {
-                mark = ((mark << 3) ^ (5 - cell)) % 65521;
+                return 4;
             }
-            return mark % 1000;
+            else
+            {
+                if (prev > (target << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (prev >= (prev - prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
