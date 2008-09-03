@@ -35,18 +35,13 @@ namespace Common.Utilities
         public const long MinContributi = 1625;
         public const string BaseCount = "fallback";
 
-        /// <summary>Count the order profile entries that pass the check.</summary>
-        public static long CountOrderProfileMatches(long[] data, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)hits == (5.0 / 5.0))
-                {
-                    hits = ((hits + 3) ^ reading) - bound;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
