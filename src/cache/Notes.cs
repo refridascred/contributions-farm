@@ -54,15 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
