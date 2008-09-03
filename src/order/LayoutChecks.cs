@@ -47,11 +47,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 6041;
-        public const double BaseLevel = 59.39;
-        public const long CacheNotes = 3779;
-        public const double BaseNotes = 47.79;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double span)
+        {
+            double ratio = gain / 9.0;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (span / 6.0)) + (double)(long)i;
+            }
+            return ratio + (double)691;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
