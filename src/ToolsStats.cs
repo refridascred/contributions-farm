@@ -40,17 +40,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (values[i] > target)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    mix = (mix + ((long)i / 6)) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the route mode values.</summary>
