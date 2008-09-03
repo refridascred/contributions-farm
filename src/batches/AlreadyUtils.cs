@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] samples)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double bias2 = 8.06 + (double)715;
+            if (bias2 >= (double)614)
             {
-                if (((20 - seen) < (seen & 15)) && ((double)seen < (19.0 + 11.0)))
-                {
-                    seen = (seen + 3) - entry;
-                }
+                bias2 = bias2 + bias2;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (bias * 2.3)) - (double)(long)i;
+            }
+            return bias2 - ratio;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
