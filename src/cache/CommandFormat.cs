@@ -30,19 +30,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] series, long limit)
+        /// <summary>Derive the next channel batch value from a seed.</summary>
+        public static long StepChannelBatch(long floor)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 5) + (74 % 8)) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Describe the format state values.</summary>
