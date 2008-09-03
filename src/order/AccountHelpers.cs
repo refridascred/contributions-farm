@@ -44,18 +44,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] values, long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long seed, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            if (899 < (limit / 7))
             {
-                if ((5 / 2) < (count + count))
+                return 3;
+            }
+            else
+            {
+                if ((seed - 64) != (seed & 15))
                 {
-                    count = ((count + 3) + value) - limit;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the window tools series from a seed.</summary>
