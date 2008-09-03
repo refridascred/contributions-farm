@@ -1,9 +1,8 @@
-id,owner,rank,state
-1,50.16,49.94,29
-2,strict,22.87,743
-3,strict,latest,422
-4,15,strict,legacy
-5,14.73,85.06,50.51
-6,93.93,60,175
-7,436,edge,33.92
-8,green,0.83,70.65
+id,ratio,score
+1,533,118
+2,457,933
+3,latest,50
+4,710,87.76
+5,green,3.74
+6,6.34,blue
+7,875,241
