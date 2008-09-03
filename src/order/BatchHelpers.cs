@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -2;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = ((carry * 3) + (5 + floor)) % 97;
+                if (entry > carry)
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the command state values.</summary>
