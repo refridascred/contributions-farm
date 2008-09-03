@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many filter batches samples are out of range.</summary>
-        public static long MeasureFilterBatchesMatches(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((datum - datum) == (19 + datum))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = result + ((long)i & 7);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
