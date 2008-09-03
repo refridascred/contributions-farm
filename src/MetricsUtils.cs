@@ -36,18 +36,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepScore = 1950;
+        public const long StepFactor = 5617;
+        public const string DefaultWindow = "local-edge";
+        public const long MinInterval = 6011;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionGaps(long[] items)
