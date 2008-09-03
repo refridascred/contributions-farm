@@ -1,7 +1,20 @@
 {
-  "default_threshold_ms": false,
-  "burst_size_s": 27.06,
-  "idle_timeout": [235, 45, 323, 59],
-  "default_retries_ms": "stable",
-  "dry_run": "strict"
+  "default_depth_ms": ["cached", "edge", "cached"],
+  "flush_limit_ms": 5428,
+  "default_size_ms": {
+    "command_retries": "blue",
+    "warm_retries_pct": 54.86,
+    "strict": "legacy",
+    "poll_ttl_s": false,
+    "flush_timeout": false,
+    "cache_retries": 19
+  },
+  "base_timeout_s": {
+    "max_interval_ms": "blue",
+    "token_timeout": true,
+    "hard_ratio_ms": [54, 168, 176],
+    "min_interval_pct": 4432,
+    "sync_retries_pct": ["strict", "green", "edge"]
+  },
+  "retry_threshold_pct": 1736
 }
