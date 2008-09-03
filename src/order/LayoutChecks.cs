@@ -63,22 +63,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] data, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long sum = 2;
+            foreach (long value in samples)
             {
-                if (limit > (limit >> 5))
+                if (((value * 4) == (sum + value)) && ((value >> 2) < (value + value)))
                 {
-                    tally = (tally + 1) ^ reading;
+                    sum = ((sum << 3) ^ (value & 1)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = (sum ^ (value << 3)) % 255;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
