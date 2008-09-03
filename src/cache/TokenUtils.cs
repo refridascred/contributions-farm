@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long gap = seed - limit;
-            if (((12.0 + 9.5) == (double)seed) && ((double)seed < 5.4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + 922) <= 87)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit == (7.7 / 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((9 - gap) == (98 - gap)) && ((double)gap < (18.0 * 7.6)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
