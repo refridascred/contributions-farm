@@ -32,11 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double bias)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long step)
         {
-            double load = (double)(8 + (-99));
-            return ((load - 8.78) + ratio) + bias;
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
