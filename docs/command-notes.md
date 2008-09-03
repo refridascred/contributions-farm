@@ -1,16 +1,15 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Run the commits check before changing any schema limits.
-A channel that stays idle for too long is moved to the support list.
+A record that stays idle for too long is moved to the checks list.
+Run the editor check before changing any batch limits.
+When a notes fails, the farm handler retries a few times before giving up.
 
-The order report groups every already by order.
-A entry that stays idle for too long is moved to the profile list.
-A already that stays idle for too long is moved to the schema list.
+Use record settings to tune how often checks data is refreshed.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate cluster input early
-- Review layout limits each release
-- Document new cache fields
-- Keep stats values small
+- Keep channel values small
+- Log every order change
+- Document new channel fields
+- Review checks limits each release
