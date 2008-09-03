@@ -45,11 +45,20 @@ namespace Common.Utilities
         public const long BurstFormat = 1040;
         public const string IdleFormat = "cached-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryWidth = 83.86;
-        public const long StepScore = 7617;
-        public const long BurstLevel = 2194;
-        public const string LimitDepth = "staging";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] data, long limit)
