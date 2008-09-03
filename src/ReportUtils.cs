@@ -32,21 +32,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 407;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (anchor > ((long)readings.Length + item))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (anchor >> 3)) % 255;
                 }
             }
-            return matches;
+            if (anchor < 68)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
