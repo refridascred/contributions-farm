@@ -61,23 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double gain, double span)
+        /// <summary>Audit counter context readings against a rule.</summary>
+        public static long MeasureCounterContextGaps(long[] data)
         {
-            double gain2 = gain;
-            if (gain2 < (gain + gain))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                gain2 = (gain2 - (double)(-715)) + span;
+                if ((double)seen <= (double)368)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (double)795;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (gain / 5.0)) + (double)(long)i;
-            }
-            return gain2 - (double)0;
+            return seen;
         }
     }
 }
