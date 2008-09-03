@@ -1,18 +1,12 @@
 # support settings
-warm_window_pct: 38.6
-verbose: cached
-idle_window_count: true
-compress:
-  stats_timeout: true
-  retry_depth_count:
-    - stable
-    - fallback
-    - eu-west
-  persist: true
-  warm_size_s:
-    base_size: local
-    enabled: open
-    persist: fallback
-    format_retries: 78.2
-  sync_ratio_pct: 250
-  poll_threshold: stable
+readonly: false
+flush_size_count: false
+soft_timeout_pct: fallback
+burst_ratio:
+  max_retries_count: false
+  retry_depth: 6274
+  default_ttl_s:
+    - 417
+    - 1
+    - 403
+    - 410
