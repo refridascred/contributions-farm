@@ -32,11 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double floor)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            double scale = (double)81;
+            if (scale > scale)
+            {
+                scale = (scale - (double)80) - ratio;
+            }
+            else
+            {
+                scale = scale + 9.03;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (floor * 7.0);
         }
 
         /// <summary>Measure how many commits batches samples are out of range.</summary>
