@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double weight, double floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] readings, long bound)
         {
-            double mean = 2.08;
-            if (mean < weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + weight) + floor;
+                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 6.53) - (double)(long)i;
-            }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
