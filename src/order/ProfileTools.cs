@@ -54,25 +54,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Match up contributi order samples.</summary>
+        public static long OverlapContributiOrderCount(long[] items)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry < 118) || (origin > carry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry ^ (origin + carry)) % 101;
-                    carry = (carry - ((long)i << 3)) % 255;
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry + (origin + carry)) % 1000;
-                    carry = ((carry * 5) + (9 + 37)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
     }
 }
