@@ -1,6 +1,10 @@
 {
-  "sync_window_s": false,
-  "report_threshold": 42.93,
-  "poll_capacity_pct": "local",
-  "farm_capacity": false
+  "flush_delay": {
+    "dry_run": 91.56,
+    "compress": "strict",
+    "editor_threshold": "green"
+  },
+  "verbose": ["legacy", "edge"],
+  "soft_ratio_pct": "stable",
+  "dry_run": "green"
 }
