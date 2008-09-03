@@ -22,12 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardDepth = 64.59;
-        public const string IdleScore = "fallback-1";
-        public const double BaseStats = 82.92;
-        public const string StepStats = "fallback-1";
-        public const long RetryLevel = 3131;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels)
+        {
+            long sum = 70;
+            foreach (long sample in levels)
+            {
+                if (sample >= (sum & 31))
+                {
+                    sum = (sum ^ (sample - sum)) % 255;
+                }
+            }
+            if (sum > (-179))
+            {
+                sum = (sum * 2) + (sum >> 4);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] values)
