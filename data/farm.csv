@@ -1,8 +1,9 @@
-id,rank,active,owner,ratio
-1,51.68,970,32.5,166
-2,cached,latest,fallback,14.66
-3,open,611,69.12,0.37
-4,stable,255,strict,886
-5,354,633,eu-west,eu-west
-6,547,staging,58.33,91.44
-7,blue,279,59.74,865
+id,rank,ratio
+1,582,stable
+2,18.23,green
+3,strict,89.6
+4,139,487
+5,46,eu-west
+6,85.29,55
+7,430,21
+8,231,stable
