@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every queue checks entry stays within the limit.</summary>
-        public static bool CheckQueueChecksBounds(long[] series, long step)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a checks header.</summary>
