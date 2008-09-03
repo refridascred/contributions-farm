@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long floor, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            if (((floor & 255) <= offset) || ((floor * 4) == (offset - offset)))
             {
-                total = ((total << 3) ^ ((long)i & 15)) % 1000;
-                total = (total - (origin % 10)) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (!((floor + floor) < (offset << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2 ^ floor) != (offset - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor - offset) != (floor + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two farm window measurements.</summary>
