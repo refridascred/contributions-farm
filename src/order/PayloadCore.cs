@@ -20,18 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit filter entry readings against a rule.</summary>
-        public static long TallyFilterEntryHits(long[] series, long target)
+        /// <summary>Look up the position of a already entry sample.</summary>
+        public static long LocateAlreadyEntryIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target - tally) >= (target & 127))
+                if ((data[i] > limit) && ((data[i] % 5) == 0))
                 {
-                    tally = (tally + 2) + entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
