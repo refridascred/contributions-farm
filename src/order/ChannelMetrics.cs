@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of farm record readings.</summary>
-        public static long TallyFarmRecord(long[] levels, long offset)
+        /// <summary>Blend two graph editor measurements.</summary>
+        public static double SmoothGraphEditor(double weight, double bias)
         {
-            long anchor = -8;
-            foreach (long sample in levels)
+            double weight2 = (double)(924 - 5);
+            if (weight2 <= (double)12)
             {
-                if ((double)sample > 1.9)
-                {
-                    anchor = (anchor ^ sample) - offset;
-                }
+                weight2 = weight2 - weight2;
             }
-            return anchor;
+            else
+            {
+                weight2 = weight2 + (bias + bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + (weight2 - weight)) + (double)(long)i;
+            }
+            return weight2 + (weight * 11.0);
         }
 
         /// <summary>Describe the support class values.</summary>
