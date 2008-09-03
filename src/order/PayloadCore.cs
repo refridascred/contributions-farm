@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] series, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((step - (-7)) >= (item + step))
+                if (((datum ^ offset) >= datum) || ((offset & 127) <= (datum + hits)))
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a support snapshot.</summary>
