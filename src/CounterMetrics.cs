@@ -40,18 +40,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits batches samples are out of range.</summary>
-        public static long TallyCommitsBatchesMatches(long[] values, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((seen + entry) < (seen - seen))
+                if ((tally ^ sample) < (tally & 7))
                 {
-                    seen = (seen + 1) + offset;
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
