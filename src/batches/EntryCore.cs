@@ -15,12 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long origin)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the window class values.</summary>
