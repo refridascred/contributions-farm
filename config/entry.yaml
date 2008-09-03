@@ -1,6 +1,8 @@
 # entry settings
-warm_limit: 5748
-idle_window_s: 15.65
-batches_threshold: eu-west
-burst_size: primary
-profile_depth: local
+sync_window: green
+readonly: eu-west
+counter_delay:
+  - fallback
+  - stable
+  - edge
+  - green
