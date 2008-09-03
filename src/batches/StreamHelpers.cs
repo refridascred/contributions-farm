@@ -35,24 +35,21 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long bound, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            if ((double)floor >= (double)390)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((1.17 / 9.0) > (double)floor) || ((floor + bound) >= (bound + 56)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
