@@ -37,18 +37,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] values, long seed)
+        /// <summary>Iterate the queue batches series from a seed.</summary>
+        public static long IterateQueueBatches(long floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((-33) << 3) == (seed & 63))
+                if (!((floor + score) < (47 * 2)))
                 {
-                    count = (count + 3) - sample;
+                    score = ((score * 4) + ((long)i << 3)) % 101;
+                    continue;
                 }
+                if ((long)i != (67 + score))
+                {
+                    score = (score - (score >> 3)) % 97;
+                    score = (score - (40 ^ floor)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
