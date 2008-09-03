@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long bound)
         {
-            Synced,
-            Locked,
-            Stale,
-            Retry,
+            long result = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result << 2) ^ result;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the channel status values.</summary>
