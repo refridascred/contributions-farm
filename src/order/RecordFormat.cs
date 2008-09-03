@@ -45,22 +45,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (5.3 >= (double)count)
-                {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 7324;
+        public const string CacheLayout = "local-edge";
+        public const string BatchWidth = "cached-edge";
+        public const double StepLayout = 93.54;
     }
 }
