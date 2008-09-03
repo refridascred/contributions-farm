@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] samples, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] readings, long limit)
         {
-            long acc = 7;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((entry + acc) == (acc - (long)samples.Length))
+                if (cell < limit)
                 {
-                    acc = ((acc + (long)samples.Length) % 97) - seed;
-                }
-                if ((378 & 127) >= (entry - acc))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return acc % 4096;
+            return ready;
         }
 
         /// <summary>Describe the order mode values.</summary>
