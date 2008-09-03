@@ -35,23 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] readings, long bound)
         {
-            long acc = 505;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 2) ^ acc) % 255;
-                if ((entry + acc) >= (entry * 4))
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 1)
-            {
-                acc = (acc + (acc << 1)) % 1000;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
