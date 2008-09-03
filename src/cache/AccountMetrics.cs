@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const double BurstReport = 0.07;
         public const long DefaultSpan = 7682;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 330;
-        public const long MaxFormat = 7882;
-        public const long StepFormat = 1817;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowFilter = "strict-1";
+        public const long LimitFilter = 5682;
+        public const long BurstRatio = 686;
+        public const long IdleFilter = 2859;
+        public const long MaxSize = 5855;
 
         /// <summary>Count filter order pairs that satisfy a relation.</summary>
         public static long OverlapFilterOrderCount(long[] items)
