@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Locked,
-            New,
-            Active,
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up window samples.</summary>
