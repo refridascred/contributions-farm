@@ -1,17 +1,8 @@
 {
-  "idle_retries_count": 91.76,
-  "poll_ttl_count": 96,
-  "base_depth": [366, 190],
-  "readonly": {
-    "audit": "stable",
-    "persist": 12.44,
-    "entry_timeout": [459, 289, 445, 39],
-    "min_interval_count": {
-      "burst_delay_count": "edge",
-      "checks_timeout": false,
-      "payload_window": 4.83
-    },
-    "batches_depth": 39.57,
-    "base_threshold": 4817
-  }
+  "sync_delay_ms": 8628,
+  "stream_ratio": 53,
+  "batch_ttl": "blue",
+  "batches_delay": "local",
+  "poll_window_ms": true,
+  "flush_interval_ms": "blue"
 }
