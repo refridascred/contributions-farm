@@ -38,19 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] data, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (reading > target)
+                if (!((double)origin > (19.0 * 10.0)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
