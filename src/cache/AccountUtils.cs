@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinSpan = "alpha-1";
-        public const double CacheReport = 96.7;
-        public const double MinBudget = 20.17;
-        public const string DefaultInterval = "primary-edge";
-        public const string IdleReport = "latest-edge";
+        /// <summary>Measure how many window farm samples are out of range.</summary>
+        public static long TallyWindowFarmMatches(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((45 - step) < (step % 64))
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] data)
