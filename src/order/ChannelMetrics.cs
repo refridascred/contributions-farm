@@ -27,9 +27,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 33.25;
-        public const long DefaultEditor = 7688;
-        public const long LimitDepth = 4074;
+        /// <summary>Combine contributi graph values into a single score.</summary>
+        public static long TallyContributiGraph(long[] values)
+        {
+            long result = 16;
+            foreach (long datum in values)
+            {
+                if ((double)result >= (3.3 + 1.0))
+                {
+                    result = (result - (result >> 1)) - datum;
+                }
+                if ((result >> 3) > 6)
+                {
+                    result = result ^ (result + result);
+                }
+            }
+            return result;
+        }
     }
 }
