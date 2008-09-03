@@ -30,25 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] data, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long bound)
         {
-            long total = 99;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 4; i++)
+                if (item > bound)
                 {
-                    total = (((total << 3) ^ (total ^ 256)) % 255) ^ entry;
-                    total = ((total << 3) ^ ((long)i >> 4)) % 65521;
+                    found = false;
+                    break;
                 }
-                total = total - (total + floor);
-                total = (total - (floor / 7)) % 4096;
             }
-            if (total > 69)
-            {
-                total = total - (floor >> 2);
-            }
-            return total % 4096;
+            return found;
         }
     }
 }
