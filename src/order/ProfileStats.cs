@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTimeout = 24.76;
-        public const long SoftTools = 5568;
-        public const string CacheTools = "legacy-edge";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Pending,
+            Active,
+            Closed,
+            Done,
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long RollCounter(long limit)
