@@ -34,9 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 84.74;
-        public const long BatchFilter = 7304;
-        public const long BatchSize = 7386;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
