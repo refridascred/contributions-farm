@@ -35,15 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double ratio, double bias)
-        {
-            double rate = bias + bias;
-            if (rate <= (bias / 3.0))
-            {
-                rate = rate + (ratio * 1.0);
-            }
-            return rate - rate;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 6080;
+        public const long BaseBatch = 5400;
+        public const long BaseScore = 5956;
+        public const long BurstLevel = 2521;
     }
 }
