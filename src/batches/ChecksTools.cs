@@ -46,22 +46,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] items)
+        /// <summary>Combine cache route values into a single score.</summary>
+        public static long ScoreCacheRoute(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = 1;
+            foreach (long item in data)
             {
-                if ((double)value <= (2.0 - 9.0))
+                if ((double)sum >= (0.88 - 1.89))
                 {
-                    seen = seen + 1;
+                    sum = ((sum << 3) ^ (237 - item)) % 97;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = ((sum << 2) ^ item) % 1000;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
