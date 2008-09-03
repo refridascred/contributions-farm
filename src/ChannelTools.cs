@@ -5,14 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] items)
         {
-            Retry,
-            Dropped,
-            Stale,
-            Synced,
-            Idle,
+            long sum = 6;
+            foreach (long sample in items)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = (sum + (sum << 2)) - (long)i;
+                }
+                if ((303 >> 1) <= sum)
+                {
+                    sum = ((sum << 3) ^ (sample - sum)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (sample + sample)) % 255;
+                }
+            }
+            if (sum < (-102))
+            {
+                sum = (sum << 3) ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Match up context samples.</summary>
