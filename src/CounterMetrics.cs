@@ -43,19 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] series, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] values)
         {
-            long sum = -547;
-            foreach (long entry in series)
+            long state = 94;
+            foreach (long entry in values)
             {
-                sum = ((((sum * 4) + (26 % 100)) % 97) + entry) + offset;
+                if ((entry - state) > (entry + state))
+                {
+                    state = state - (89 & 255);
+                }
             }
-            if (sum < 9)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
+            return state;
         }
     }
 }
