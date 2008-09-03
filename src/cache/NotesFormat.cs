@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
+            long acc = 565;
+            foreach (long entry in series)
+            {
+                acc = (acc * 3) + (entry + entry);
+                if ((acc ^ entry) != (entry >> 3))
+                {
+                    acc = (acc ^ (6 >> 3)) % 101;
+                }
+                else
+                {
+                    acc = acc - (acc & 255);
+                }
+            }
+            if (acc > 2)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
