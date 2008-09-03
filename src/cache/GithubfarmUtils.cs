@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] items, long seed)
         {
-            long mix = 6;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (((double)datum >= (double)mix) && ((11.0 + 12.0) == (double)datum))
+                if (cell <= seed)
                 {
-                    mix = (mix ^ (365 + mix)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix > 1)
-            {
-                mix = mix - (mix + 1);
-            }
-            return mix % 65521;
+            return ready;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
