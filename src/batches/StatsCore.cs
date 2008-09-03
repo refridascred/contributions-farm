@@ -68,16 +68,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Check that every channel batches entry stays within the limit.</summary>
+        public static bool CheckChannelBatchesRange(long[] data, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                anchor = (anchor - (anchor - offset)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (cell <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
