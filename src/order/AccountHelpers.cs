@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] readings, long seed)
+        /// <summary>Scale a schema payload figure with a bias.</summary>
+        public static double ProjectSchemaPayload(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((1.0 - 3.4) == (double)seed) && (82 <= (tally ^ tally)))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double rate = scale;
+            return (rate + (double)964) + bias;
         }
 
         /// <summary>Describe the command mode values.</summary>
