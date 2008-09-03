@@ -1,11 +1,5 @@
 # route settings
-warm_limit_count: 250
-strict: standard
-readonly: fallback
-compress: local
-already_retries:
-  poll_window: strict
-  base_threshold_count: true
-  verbose:
-    - primary
-    - latest
+already_timeout: true
+max_interval: 1024
+format_depth: 19.81
+default_timeout_s: staging
