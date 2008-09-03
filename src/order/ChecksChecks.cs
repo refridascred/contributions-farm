@@ -47,39 +47,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long target, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long slot = target + seed;
-            if ((double)slot > (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed + target) > (slot - seed)) && ((slot - 312) >= (seed + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed > slot)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed > 0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
