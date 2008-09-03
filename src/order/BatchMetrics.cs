@@ -52,39 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long target)
+        /// <summary>Fold a list of metric route readings.</summary>
+        public static long DigestMetricRoute(long[] items, long seed)
         {
-            long cur = limit ^ target;
-            if (!((7.0 - 3.5) > (double)target))
+            long total = 85;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (target >= 40)
+                total = total + (325 + seed);
+                total = (total << 2) ^ (0 / 5);
+                if ((item >> 4) >= total)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target << 3) == (cur + limit)) && ((cur + target) < (limit - target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((target * 2) < limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = (total << 2) ^ (item << 2);
                 }
             }
+            if (total > 408)
+            {
+                total = (total - 1) % 255;
+            }
+            return total;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
