@@ -21,13 +21,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit filter profile readings against a rule.</summary>
+        public static long TallyFilterProfileGaps(long[] data, long floor)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((floor << 1) >= sample)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
