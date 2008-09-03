@@ -1,7 +1,7 @@
 {
-  "max_retries_ms": [285, 86, 201, 438],
-  "strict": 38,
-  "enabled": 66.14,
-  "burst_delay": [175, 370],
-  "warm_threshold": 25.27
+  "idle_size_ms": 2203,
+  "format_depth": 5895,
+  "idle_interval_ms": "latest",
+  "route_retries": [237, 57, 45],
+  "burst_ttl_count": 23
 }
