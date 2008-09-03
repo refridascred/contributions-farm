@@ -16,18 +16,12 @@ namespace Common.Utilities
         public const string DefaultCount = "open-v2";
         public const long MaxBudget = 5165;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] data, long offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (549 > (offset + item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Fold a list of cache cluster readings.</summary>
