@@ -94,12 +94,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] values, long floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] <= floor) && ((values[i] % 3) != 0))
+                if (levels[i] == step)
                 {
                     return (long)i;
                 }
