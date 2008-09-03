@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const long HardQueue = 7403;
         public const string CacheFactor = "local-edge";
 
-        /// <summary>Count the profile support entries that pass the check.</summary>
-        public static long MeasureProfileSupportMatches(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!(((double)cell > (9.0 * 10.0)) && ((seen / 9) > cell)))
+                if ((double)tally != (1.0 + 7.96))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
