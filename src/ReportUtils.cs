@@ -22,17 +22,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] samples, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                anchor = (anchor - (long)i) % 97;
-                anchor = (anchor ^ (72 >> 3)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (7.1 >= (double)offset)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
