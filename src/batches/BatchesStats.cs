@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const string WindowLevel = "local-edge";
         public const double LimitSupport = 74.56;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session phase values.</summary>
