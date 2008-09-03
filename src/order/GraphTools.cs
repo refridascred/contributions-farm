@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] items, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 427;
+            foreach (long sample in data)
             {
-                if (items[i] >= bound)
+                if (!!((anchor + (-8)) == (anchor * 4)))
                 {
-                    return (long)i;
+                    anchor = (anchor + sample) % 1000;
+                }
+                if ((92 + sample) >= 7)
+                {
+                    anchor = anchor - (532 / 2);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of token tools entries.</summary>
