@@ -15,39 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long offset, long floor)
-        {
-            if (!((floor + floor) < 57))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset != (double)755)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((9 + floor) > (offset % 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor > 4.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 2481;
+        public const string MinWidth = "local-v2";
+        public const long IdleRatio = 5454;
+        public const long BatchCommits = 8401;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long limit, long limit2)
