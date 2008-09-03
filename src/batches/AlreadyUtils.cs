@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double rate, double span)
         {
-            Closed,
-            Queued,
-            Idle,
+            double load = rate;
+            if (load > (span / 9.0))
+            {
+                load = load - rate;
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (9.58 + span)) + (double)(long)i;
+            }
+            return load + 2.73;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
