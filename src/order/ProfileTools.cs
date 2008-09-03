@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = -361;
+            foreach (long entry in levels)
             {
-                if ((origin ^ 57) >= (origin - sample))
-                {
-                    seen = seen + 3;
-                }
+                state = ((state - limit) % 65521) - entry;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
