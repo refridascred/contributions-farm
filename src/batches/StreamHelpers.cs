@@ -72,17 +72,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = bound - seed;
+            if ((double)cur != (5.18 + 1.0))
             {
-                if (items[i] >= offset)
+                return 7;
+            }
+            else
+            {
+                if ((8.0 / 5.0) >= (double)cur)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric level values.</summary>
