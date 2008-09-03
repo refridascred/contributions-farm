@@ -66,16 +66,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Locate a route session reading by value.</summary>
+        public static long LookupRouteSessionIndex(long[] data, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = score + (score ^ score);
-                score = ((score * 5) + (long)i) % 1000;
+                if ((data[i] <= floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
