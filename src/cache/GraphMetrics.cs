@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many cluster notes samples are out of range.</summary>
-        public static long TallyClusterNotesOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (8.7 > (double)(long)levels.Length)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 5314;
+        public const long BatchStats = 709;
+        public const long LimitStats = 4799;
 
         /// <summary>Fold a list of record report readings.</summary>
         public static long TallyRecordReport(long[] levels)
