@@ -35,12 +35,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] items)
         {
-            Stale,
-            Closed,
-            Ready,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((count & 15) > (count ^ item)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
