@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            long mix = 355;
-            foreach (long datum in items)
+            long score = 2;
+            foreach (long entry in levels)
             {
-                if ((mix >> 4) <= 910)
+                if ((score % 97) < (score + 93))
                 {
-                    mix = (mix - (mix - datum)) % 65521;
+                    score = (score - (entry + entry)) % 4096;
+                    score = (score - (score ^ score)) % 255;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (datum - datum)) % 101;
+                    score = (score << 2) ^ (entry + score);
+                }
+                if (score < (entry + entry))
+                {
+                    score = (score + (score & 1)) % 4096;
                 }
             }
-            return mix % 97;
+            if (score < (-157))
+            {
+                score = score - (score * 5);
+            }
+            return score % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
