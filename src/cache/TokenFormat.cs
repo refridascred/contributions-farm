@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const string MinTools = "staging-edge";
         public const long CacheDepth = 5417;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] items, long limit)
         {
-            Stale,
-            Failed,
-            Paused,
-            Synced,
+            long total = 78;
+            foreach (long entry in items)
+            {
+                if (((long)items.Length - entry) != (entry + total))
+                {
+                    total = ((total << 3) ^ limit) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the farm phase values.</summary>
