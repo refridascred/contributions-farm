@@ -37,19 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double weight, double span)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double load = span;
-            if (load <= (double)(-3))
-            {
-                load = load + (double)(-24);
-            }
-            else
-            {
-                load = load - (load + span);
-            }
-            return load + (weight + weight);
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
