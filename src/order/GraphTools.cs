@@ -48,21 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
