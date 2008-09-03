@@ -26,23 +26,10 @@ namespace Common.Utilities
         public const double HardSession = 85.18;
         public const string CacheRatio = "open-1";
 
-        /// <summary>Digest a series of metrics token entries.</summary>
-        public static long TallyMetricsToken(long[] samples, long bound)
-        {
-            long result = 7;
-            foreach (long sample in samples)
-            {
-                if ((bound >> 3) >= bound)
-                {
-                    result = ((result - (result & 1)) % 97) - sample;
-                }
-            }
-            if (result < 145)
-            {
-                result = ((result * 2) + (bound + result)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "stable-v2";
+        public const long MaxProfile = 7147;
+        public const string StepTimeout = "staging-edge";
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long step, long offset)
