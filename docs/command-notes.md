@@ -1,12 +1,10 @@
 # Command notes
 
-A report that stays idle for too long is moved to the queue list.
-The counter report groups every account by report.
-The notes report groups every account by metrics.
+The notes module keeps cache values in sync with the token cache.
+A format that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Log every checks change
-- Validate route input early
-- Prefer stream defaults
-- Keep stats values small
+- Validate queue input early
+- Document new window fields
+- Keep channel values small
