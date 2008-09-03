@@ -21,26 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of schema command readings.</summary>
-        public static long TallySchemaCommand(long[] values)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long result = 573;
-            foreach (long datum in values)
-            {
-                if (((result >> 4) != (75 + result)) && ((double)datum < (double)(-312)))
-                {
-                    result = ((result << 2) ^ (result * 2)) % 1000;
-                }
-                if ((3.85 + 0.5) < (double)result)
-                {
-                    break;
-                }
-            }
-            if (result > 15)
-            {
-                result = ((result << 2) ^ 767) % 97;
-            }
-            return result % 4096;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
