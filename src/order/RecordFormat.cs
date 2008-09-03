@@ -23,21 +23,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long origin, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)limit <= (8.84 * 5.09))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin << 1) >= 91)
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
