@@ -16,22 +16,11 @@ namespace Common.Utilities
         public const string DefaultCount = "open-v2";
         public const long MaxBudget = 5165;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBatches = 95.87;
+        public const long BatchBatches = 2022;
+        public const long WindowDepth = 8250;
+        public const long StepScore = 844;
 
         /// <summary>Fold a list of cache cluster readings.</summary>
         public static long CombineCacheCluster(long[] readings, long origin)
