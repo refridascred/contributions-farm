@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] items, long floor)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((5 >= floor) || ((0 & 3) >= (seen - datum)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
