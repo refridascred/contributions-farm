@@ -27,22 +27,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long result = 5;
-            foreach (long sample in levels)
-            {
-                if ((double)result >= (6.75 * 6.5))
-                {
-                    result = (result * 2) + sample;
-                }
-            }
-            if (result > 8)
-            {
-                result = (result << 2) ^ (result & 3);
-            }
-            return result;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
