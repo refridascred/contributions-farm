@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] levels, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
