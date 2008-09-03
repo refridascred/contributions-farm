@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public string Weight { get; set; } = "";
             public long Score { get; set; }
-            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
