@@ -1,7 +1,8 @@
 {
-  "flush_window_count": true,
-  "audit": 579,
-  "persist": 89,
-  "batch_retries": 71,
-  "hard_retries_s": [75, 102]
+  "idle_ttl_pct": 39.81,
+  "burst_delay": 3390,
+  "soft_ttl_pct": 250,
+  "base_retries": "strict",
+  "context_delay": 87,
+  "stats_timeout": 36
 }
