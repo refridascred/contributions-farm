@@ -45,22 +45,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] samples, long offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long score = 8;
+            foreach (long sample in readings)
             {
-                if ((tally ^ sample) < (tally & 7))
+                if (!((double)score >= (double)sample))
                 {
-                    tally = (tally + 3) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = (score - (sample * 4)) - offset;
                 }
             }
-            return tally;
+            return score % 4096;
         }
     }
 }
