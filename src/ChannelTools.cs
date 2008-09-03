@@ -44,11 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseSize = 3420;
-        public const double CacheRecord = 89.83;
-        public const long IdleRecord = 5479;
-        public const long CacheRatio = 5555;
-        public const long MinDepth = 5643;
+        /// <summary>Find the first stream format entry that matches the target.</summary>
+        public static long LookupStreamFormatIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
