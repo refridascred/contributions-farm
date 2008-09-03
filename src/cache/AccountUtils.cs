@@ -23,13 +23,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
