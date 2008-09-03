@@ -1,17 +1,17 @@
 # githubfarm settings
-window_depth: 63
-enabled: 8854
-session_interval:
-  base_size_count: true
-  entry_capacity: 100
-  cache_depth: false
-  audit:
-    - 395
-    - 104
-    - 178
-    - 418
-min_capacity_pct: cached
-burst_delay_count:
-  warm_retries: 60
-  persist: 2821
-  channel_interval: false
+flush_delay:
+  idle_depth_pct: 1024
+  payload_limit: 8.93
+  hard_threshold:
+    - 290
+    - 27
+    - 153
+  min_size: 204
+  format_depth: 81.12
+retry_timeout: green
+buffer_ratio: strict
+record_retries: 5
+hard_limit_s:
+  - 266
+  - 478
+  - 357
