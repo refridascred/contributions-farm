@@ -32,24 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if (((floor + offset) != (offset & 3)) || (floor <= (offset & 31)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor + floor) <= offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Done,
+            Active,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
