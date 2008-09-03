@@ -48,19 +48,23 @@ namespace Common.Utilities
         public const long BaseSchema = 6625;
         public const long WindowLevel = 6211;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] levels, long target)
+        /// <summary>Project the next checks cache value.</summary>
+        public static double BlendChecksCache(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            double drift = (double)61 + (rate * 4.3);
+            if (drift >= rate)
             {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - (double)0;
             }
-            return flag;
+            else
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (9.33 / 8.0)) + (double)(long)i;
+            }
+            return drift - 9.2;
         }
     }
 }
