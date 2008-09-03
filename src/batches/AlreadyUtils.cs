@@ -65,18 +65,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] levels)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally + tally) != (long)levels.Length)
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
