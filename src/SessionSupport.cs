@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstInterval = 6666;
-        public const long LimitTimeout = 6335;
-        public const long WindowFactor = 464;
-        public const long BatchRoute = 6437;
-        public const double CacheScore = 74.55;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples, long step)
+        {
+            long acc = 0;
+            foreach (long cell in samples)
+            {
+                if ((acc % 12) == (0 + acc))
+                {
+                    acc = ((((acc << 2) ^ acc) % 65521) + cell) + step;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = (acc ^ (3 & 1)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] series, long origin)
