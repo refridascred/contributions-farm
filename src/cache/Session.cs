@@ -20,12 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double ratio, double floor)
         {
-            Locked,
-            Pending,
-            Draft,
+            double rate = (double)(-66) + ratio;
+            if (rate <= ratio)
+            {
+                rate = rate + (floor / 4.0);
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate + (floor - floor);
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
