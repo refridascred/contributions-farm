@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double gain, double floor)
-        {
-            double scale = gain;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + floor) - (double)(long)i;
-            }
-            return scale - (3.0 * 6.7);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 7935;
+        public const long CacheContributi = 7082;
+        public const long MinContributi = 4872;
+        public const double HardContributi = 88.02;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long HardScore = 9953;
