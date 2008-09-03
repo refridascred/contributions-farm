@@ -51,14 +51,13 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
+            Failed,
+            Active,
             Locked,
-            Closed,
-            New,
-            Stale,
-            Idle,
+            Queued,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
