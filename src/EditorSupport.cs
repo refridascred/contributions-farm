@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] levels, long offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum ^ datum) > (seen * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) + offset;
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of queue batches entries.</summary>
