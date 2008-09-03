@@ -20,37 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long bound, long offset)
         {
-            long delta = bound + floor;
-            if (bound >= (bound + floor))
+            long lane = bound ^ offset;
+            if ((lane - offset) < bound)
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((delta + bound) > (delta - floor))
+                if ((offset - bound) <= (lane + bound))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((bound - floor) <= (floor * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor ^ 5) <= (delta + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
