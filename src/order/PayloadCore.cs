@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            long acc = 6;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 5) + (acc + entry)) % 4096;
-                if ((double)entry != (3.0 / 4.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc ^ (entry % 60)) % 255;
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a already entry sample.</summary>
