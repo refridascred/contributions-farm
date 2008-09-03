@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] readings, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long state = -692;
+            foreach (long entry in readings)
             {
-                if ((12.0 - 16.0) >= (8.3 / 3.0))
+                if ((entry + state) <= (8 & 7))
                 {
-                    tally = ((tally + 2) + sample) - bound;
+                    state = (state - state) % 1000;
+                }
+                else
+                {
+                    state = (state - entry) % 4096;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
