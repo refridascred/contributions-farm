@@ -13,22 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (!(((long)levels.Length - item) == (tally >> 2)))
+                if ((double)count != (2.0 + 7.8))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 2) + cell) + origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of context cache entries.</summary>
