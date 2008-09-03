@@ -25,13 +25,24 @@ namespace Common.Utilities
         public const long SoftSize = 660;
         public const long IdleLevel = 4970;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long limit, long origin)
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
+            if ((41 - limit) <= (limit & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((508 - origin) > (limit - 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
