@@ -41,11 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
+            public long Count { get; set; }
             public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
