@@ -84,12 +84,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepScore = 6510;
-        public const long BurstSize = 2120;
-        public const long DefaultCount = 8426;
-        public const long SoftSchema = 6922;
-        public const long MaxSchema = 657;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LocateFarmIndex(long[] levels, long origin)
