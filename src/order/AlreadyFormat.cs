@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit metric layout readings against a rule.</summary>
-        public static long CountMetricLayoutGaps(long[] samples)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample == (4.7 + 6.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
