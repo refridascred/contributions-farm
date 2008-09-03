@@ -31,19 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)limit <= (16.0 * 19.0))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 4552;
+        public const long BaseSpan = 4036;
+        public const long DefaultEditor = 7553;
+        public const long HardLevel = 4893;
 
         /// <summary>Adjust a already reading.</summary>
         public static double ProjectAlready(double rate, double bias)
