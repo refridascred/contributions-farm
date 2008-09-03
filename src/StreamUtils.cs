@@ -16,12 +16,21 @@ namespace Common.Utilities
         public const string DefaultCount = "open-v2";
         public const long MaxBudget = 5165;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            Synced,
-            Paused,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of cache cluster readings.</summary>
