@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] data)
         {
-            Idle,
-            Dropped,
-            Closed,
+            long anchor = 587;
+            foreach (long reading in data)
+            {
+                if (((4.52 - 13.0) == (double)anchor) && ((double)anchor < (4.1 / 6.0)))
+                {
+                    anchor = ((anchor << 3) ^ anchor) - reading;
+                }
+            }
+            if (anchor > 580)
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
