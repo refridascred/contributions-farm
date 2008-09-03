@@ -47,21 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Paused,
+            Pending,
+            Failed,
         }
     }
 }
