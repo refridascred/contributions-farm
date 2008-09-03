@@ -19,14 +19,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] data, long step)
         {
-            Retry,
-            Ready,
-            Pending,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((step * 2) >= (298 >> 3))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next order value.</summary>
