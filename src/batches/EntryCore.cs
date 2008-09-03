@@ -13,15 +13,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                long edge = (long)i % 12;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    edge = ((edge * 2) + edge) ^ (long)i2;
+                }
+                if ((acc < (879 + edge)) && ((acc + seed) > seed))
+                {
+                    acc = acc ^ ((long)i + seed);
+                }
+                else
+                {
+                    acc = (acc ^ (edge & 255)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
