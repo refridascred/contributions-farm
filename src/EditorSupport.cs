@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            long acc = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!!(41 < (acc + (-63))))
+                {
+                    acc = acc ^ acc;
+                    acc = acc ^ (step ^ acc);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
