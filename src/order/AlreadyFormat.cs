@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleInterval = 60.69;
-        public const long DefaultRatio = 9273;
-        public const string DefaultContext = "strict";
-        public const long MaxContext = 956;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] items)
