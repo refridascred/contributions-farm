@@ -55,20 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryWidth = 83.86;
+        public const long StepScore = 7617;
+        public const long BurstLevel = 2194;
+        public const string LimitDepth = "staging";
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] data, long limit)
