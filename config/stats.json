@@ -1,5 +1,5 @@
 {
-  "command_limit": 51.05,
-  "channel_window": 100,
-  "min_size_ms": 2
+  "account_capacity": "green",
+  "filter_retries": "open",
+  "min_interval_count": ["legacy", "green", "green", "blue"]
 }
