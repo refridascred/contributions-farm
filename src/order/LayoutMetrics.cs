@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Compare every pair of commits metric readings.</summary>
+        public static long MatchCommitsMetricCount(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate token already samples.</summary>
