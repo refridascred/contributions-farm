@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] samples, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((bound + bound) <= (long)i)
+                if (((14.0 + 3.9) > (double)item) && (((item >> 5) != (item - item)) || ((8.0 / 7.0) < (double)step)))
                 {
-                    mix = (mix - (bound * 3)) % 101;
+                    seen = seen + 3;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
