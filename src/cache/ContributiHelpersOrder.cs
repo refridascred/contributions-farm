@@ -30,19 +30,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 2709;
+        public const long WindowAccount = 6772;
+        public const double RetryWidth = 11.42;
+        public const double MinAccount = 15.81;
+        public const string SoftTimeout = "open-1";
     }
 }
