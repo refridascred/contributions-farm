@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 5937;
-        public const double BurstCount = 20.71;
-        public const long IdleInterval = 7260;
-        public const long MaxPayload = 2710;
-        public const long DefaultTimeout = 8386;
+        /// <summary>Blend two channel session measurements.</summary>
+        public static double AdjustChannelSession(double weight, double span)
+        {
+            double load = span;
+            if (load < weight)
+            {
+                load = load + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)41) - (double)(long)i;
+            }
+            return load + (double)9;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long SeekAlreadyIndex(long[] readings, long bound)
