@@ -19,15 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] items)
         {
-            long anchor = 641;
-            foreach (long entry in data)
+            long total = 14;
+            foreach (long reading in items)
             {
-                anchor = ((anchor ^ (239 << 1)) % 4096) - entry;
+                total = ((total * 3) + total) % 255;
+                total = (total + reading) % 4096;
             }
-            return anchor;
+            if (total > 6)
+            {
+                total = (total * 4) + (8 + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the command mode values.</summary>
