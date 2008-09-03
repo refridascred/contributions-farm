@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const double SoftWindow = 26.97;
         public const long RetryScore = 2617;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] data, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (!(((seen - seen) > limit) || ((double)seen != (6.3 - 9.7))))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the command status values.</summary>
