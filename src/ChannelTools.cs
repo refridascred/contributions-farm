@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 9;
+            foreach (long entry in values)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) != 0))
+                anchor = (anchor + entry) % 65521;
+                if (((-742) ^ anchor) < (entry + entry))
                 {
-                    return (long)i;
+                    anchor = anchor - entry;
                 }
             }
-            return -1;
+            if (anchor < 5)
+            {
+                anchor = (anchor - (8 - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first batches record entry that matches the target.</summary>
