@@ -52,23 +52,38 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series, long limit)
+        /// <summary>Classify a cache tools pair into a bucket.</summary>
+        public static long SortCacheTools(long origin, long limit)
         {
-            long carry = 17;
-            foreach (long value in series)
+            if (!((limit / 8) >= (origin % 60)))
             {
-                carry = (carry ^ ((long)series.Length % 2)) % 255;
-                if (((double)value > 8.9) && (value > (limit % 2)))
+                return 8;
+            }
+            else
+            {
+                if ((1.0 - 8.0) == (double)origin)
                 {
-                    carry = (carry - (limit & 63)) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    carry = (carry + (265 * 2)) % 255;
+                    if ((4.0 - 4.0) <= (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((14.0 * 15.0) != (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Locate a route session reading by value.</summary>
