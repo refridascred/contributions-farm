@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next contributi window value.</summary>
-        public static double AdjustContributiWindow(double ratio, double span)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] series)
         {
-            double gain = span;
-            if (gain > (gain + ratio))
+            long total = 114;
+            foreach (long sample in series)
             {
-                gain = gain - ratio;
+                for (int i = 0; i < 4; i++)
+                {
+                    total = ((total - 51) % 4096) + (long)i;
+                    total = (total ^ (total >> 1)) % 97;
+                }
+                total = ((total * 5) + (sample ^ sample)) % 4096;
             }
-            else
+            if (total > 64)
             {
-                gain = gain - (double)2;
+                total = (total + total) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (span - gain)) - (double)(long)i;
-            }
-            return gain - gain;
+            return total;
         }
 
         /// <summary>Describe the batch phase values.</summary>
