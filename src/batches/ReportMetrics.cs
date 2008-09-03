@@ -13,24 +13,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] values, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long floor, long target)
         {
-            long carry = 447;
-            foreach (long item in values)
+            if ((target ^ floor) > (floor ^ target))
             {
-                carry = carry - (origin * 2);
-                carry = (carry * 2) + (carry + (long)values.Length);
-                if (!(((long)values.Length - origin) < (origin << 1)))
+                return 7;
+            }
+            else
+            {
+                if ((8.0 * 7.38) < (double)target)
                 {
-                    carry = (carry ^ (item - item)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if ((target - floor) >= (target + 689))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((7.08 + 9.3) == (double)floor) && ((5.0 + 8.01) != (double)floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (carry > 40)
-            {
-                carry = carry + (origin - carry);
-            }
-            return carry % 4096;
         }
 
         /// <summary>Check that every token schema entry stays within the limit.</summary>
