@@ -54,26 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route metrics entries.</summary>
-        public static long WeighRouteMetrics(long[] samples)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = 344;
-            foreach (long entry in samples)
-            {
-                if (entry > (523 + entry))
-                {
-                    acc = ((acc << 2) ^ (7 / 9)) % 97;
-                }
-                if ((acc * 5) >= acc)
-                {
-                    acc = ((acc * 4) + (entry + entry)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (entry - acc)) % 4096;
-                }
-            }
-            return acc % 4096;
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
