@@ -24,10 +24,14 @@ namespace Common.Utilities
         public const double MaxRoute = 80.15;
         public const long MaxDepth = 4296;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 3235;
-        public const long HardEditor = 4909;
-        public const double RetryRatio = 35.98;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Retry,
+            Paused,
+            Active,
+            Queued,
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
