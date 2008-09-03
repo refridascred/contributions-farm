@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] readings)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((8.0 <= (double)sample) || (sample >= (hits ^ sample)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate stream samples.</summary>
