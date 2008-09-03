@@ -39,22 +39,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long seed, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long offset, long step)
         {
-            if (899 < (limit / 7))
+            if ((double)step >= (14.0 + 1.01))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((seed - 64) != (seed & 15))
+                if ((step - offset) > offset)
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    if (step < (offset - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
