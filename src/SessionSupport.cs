@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Count already cluster pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyClusterCount(long[] values)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
