@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of commits schema readings.</summary>
-        public static long CompareCommitsSchemaCount(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 1;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((38 - total) >= (82 % 3))
                 {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total << 3) ^ (sample - total);
+                    total = total - 3;
+                }
+                if ((sample - total) > (sample + 7))
+                {
+                    total = ((total * 2) + sample) % 101;
+                }
+                if (!((total + total) == (sample + total)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
