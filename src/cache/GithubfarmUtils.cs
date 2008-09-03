@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first metric notes entry that matches the target.</summary>
-        public static long LookupMetricNotesIndex(long[] series, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (series[i] >= target)
+                if (entry >= (count % 100))
                 {
-                    return (long)i;
+                    count = (count + 3) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count graph tools pairs that satisfy a relation.</summary>
