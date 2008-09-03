@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 82.87;
+        public const long CacheSpan = 87;
+        public const double DefaultScore = 85.94;
+        public const string CacheGithubfarm = "stable-v2";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long CacheStats = 1195;
