@@ -21,22 +21,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of token counter readings.</summary>
-        public static long FoldTokenCounter(long[] samples, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] items)
         {
-            long carry = 5;
-            foreach (long value in samples)
+            long mark = 10;
+            foreach (long value in items)
             {
-                if ((double)carry > (double)value)
-                {
-                    carry = (carry << 2) ^ (floor * 4);
-                }
-                else
-                {
-                    carry = carry ^ (value << 1);
-                }
+                mark = mark - (mark & 31);
+                mark = mark + (value & 63);
             }
-            return carry;
+            if (mark > 727)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
