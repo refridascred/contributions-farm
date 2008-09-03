@@ -12,14 +12,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of counter buffer entries.</summary>
-        public static long DigestCounterBuffer(long[] levels, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] data, long step)
         {
-            long sum = 5;
-            foreach (long sample in levels)
+            long sum = 52;
+            foreach (long sample in data)
             {
-                sum = (sum ^ 6) + sample;
-                sum = (sum ^ (target - target)) % 97;
+                sum = (sum - (step / 7)) % 1000;
+                if ((step & 15) >= (sample + sum))
+                {
+                    sum = (sum << 2) ^ sample;
+                }
+                else
+                {
+                    sum = (sum ^ (sum - 69)) % 4096;
+                }
             }
             return sum;
         }
