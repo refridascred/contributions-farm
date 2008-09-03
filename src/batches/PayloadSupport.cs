@@ -13,10 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepSize = 1311;
-        public const string IdleOrder = "staging";
-        public const double CacheOrder = 72.48;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Synced,
+            Done,
+            Dropped,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] samples)
