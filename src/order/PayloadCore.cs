@@ -16,12 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitBudget = 2500;
-        public const long MaxReport = 5275;
-        public const string StepBudget = "staging";
-        public const long RetryReport = 1652;
-        public const string BaseTimeout = "fallback";
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a stream notes value against two limits.</summary>
         public static long ClassifyStreamNotes(long bound, long floor)
