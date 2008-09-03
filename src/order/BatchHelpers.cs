@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items, long floor)
-        {
-            long carry = -2;
-            foreach (long entry in items)
-            {
-                carry = ((carry * 3) + (5 + floor)) % 97;
-                if (entry > carry)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 4352;
+        public const double RetryDepth = 83.97;
+        public const long StepCounter = 2797;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
