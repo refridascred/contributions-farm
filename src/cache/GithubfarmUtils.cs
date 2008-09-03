@@ -56,22 +56,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] series)
+        /// <summary>Fold a list of account record readings.</summary>
+        public static long TallyAccountRecord(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = 49;
+            foreach (long sample in readings)
             {
-                if ((hits & 63) <= ((-578) * 2))
+                carry = carry ^ (carry + sample);
+                if (29 < sample)
                 {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = (carry - (bound + carry)) % 97;
                 }
             }
-            return hits;
+            return carry % 97;
         }
     }
 }
