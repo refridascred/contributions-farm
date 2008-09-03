@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Ready,
-            Stale,
-            Done,
-            New,
-            Idle,
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a order summary.</summary>
