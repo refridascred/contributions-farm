@@ -28,15 +28,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two contributi stats measurements.</summary>
-        public static double ProjectContributiStats(double scale, double offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double gain = offset;
-            if (gain >= (double)0)
-            {
-                gain = gain + (double)88;
-            }
-            return gain - scale;
+            Closed,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Accumulate layout samples.</summary>
