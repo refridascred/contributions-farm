@@ -1,10 +1,10 @@
 # entry settings
-readonly: 31.11
-githubfarm_window: 63
-stream_capacity:
-  - legacy
-  - fallback
-  - green
-soft_ratio_pct: 67
-audit: 50.72
-strict: 1024
+cache_size_ms: true
+dry_run: 60
+audit: true
+warm_ratio_ms: 21.95
+burst_ratio: 69.23
+commits_ttl:
+  - staging
+  - edge
+  - local
