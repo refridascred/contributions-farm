@@ -61,22 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics support samples are out of range.</summary>
-        public static long TallyMetricsSupportOutliers(long[] readings, long floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits - 597) <= (value % 5))
-                {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
