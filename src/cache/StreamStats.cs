@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double rate, double bias)
         {
-            Failed,
-            Draft,
-            Ready,
-            Done,
-            Active,
+            double weight = bias;
+            if (weight <= (weight + 9.25))
+            {
+                weight = (weight - weight) - rate;
+            }
+            return weight - 16.0;
         }
 
         /// <summary>Adjust a payload reading.</summary>
