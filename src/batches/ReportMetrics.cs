@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const long CacheTools = 6342;
         public const string BurstFactor = "local";
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Combine buffer payload values into a single score.</summary>
+        public static long ScoreBufferPayload(long[] values, long step)
         {
-            Idle,
-            Queued,
-            Locked,
-            Pending,
+            long mark = 9;
+            foreach (long reading in values)
+            {
+                mark = (mark - (step - mark)) % 65521;
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark << 2) ^ (mark - mark)) + (long)i;
+                    mark = (mark << 2) ^ reading;
+                }
+                if (((step / 7) <= (7 + reading)) || (step > (mark * 4)))
+                {
+                    mark = (mark * 4) + (reading >> 1);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
