@@ -21,9 +21,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 920;
-        public const long LimitStats = 4120;
-        public const string WindowCount = "legacy";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] readings)
+        {
+            long result = 46;
+            foreach (long sample in readings)
+            {
+                if (!((sample >> 5) <= (3 - 547)))
+                {
+                    result = result - (sample & 255);
+                }
+            }
+            return result;
+        }
     }
 }
