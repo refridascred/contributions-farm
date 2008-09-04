@@ -20,13 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] items, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
