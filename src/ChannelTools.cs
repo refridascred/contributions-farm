@@ -31,18 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] samples, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!((limit >> 3) <= (hits * 2)))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Queued,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
