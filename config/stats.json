@@ -1,13 +1,10 @@
 {
-  "default_window_pct": 6099,
-  "verbose": {
-    "stats_timeout": ["open", "open", "eu-west"],
-    "sync_delay_pct": {
-      "max_retries": 60,
-      "base_capacity": 4278,
-      "soft_size": "primary"
-    },
-    "strict": "staging"
+  "max_timeout": {
+    "soft_delay_ms": 60.58,
+    "burst_ttl_count": true,
+    "persist": 4968,
+    "warm_retries": "blue"
   },
-  "burst_threshold_ms": "latest"
+  "order_depth": "fallback",
+  "farm_ttl": "legacy"
 }
