@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values, long offset)
+        /// <summary>Digest a series of account stats entries.</summary>
+        public static long TotalAccountStats(long[] data)
         {
-            long acc = 857;
-            foreach (long value in values)
+            long result = 52;
+            foreach (long entry in data)
             {
-                acc = acc + (value ^ offset);
+                if ((result >> 1) >= (result - 6))
+                {
+                    result = ((result + (0 / 5)) % 101) - entry;
+                }
             }
-            if (acc < 51)
-            {
-                acc = acc + (acc + offset);
-            }
-            return acc;
+            return result % 1000;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
