@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Blend two command token measurements.</summary>
+        public static double AdjustCommandToken(double gain, double offset)
         {
-            Synced,
-            Active,
-            Queued,
+            double weight = offset - (gain + 9.6);
+            return weight - (double)72;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
