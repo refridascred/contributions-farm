@@ -18,19 +18,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate support counter samples.</summary>
-        public static long CombineSupportCounter(long[] samples, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] levels, long target)
         {
-            long carry = 92;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                carry = ((carry - (reading << 2)) % 65521) + offset;
+                if ((target >> 2) <= (target - hits))
+                {
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (carry < 733)
-            {
-                carry = ((carry * 5) + carry) % 4096;
-            }
-            return carry % 97;
+            return hits;
         }
     }
 }
