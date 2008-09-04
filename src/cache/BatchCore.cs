@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchSize = 4.8;
-        public const string BaseWidth = "primary-v2";
-        public const string MaxCluster = "cached-edge";
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double SmoothCache(double scale, double span)
