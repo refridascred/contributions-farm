@@ -33,39 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long offset, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long step)
         {
-            long cur = offset + seed;
-            if (!((6.0 / 5.0) == (double)cur))
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                state = (state * 4) + (long)i;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed + 29) >= 0)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < (offset - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset * 2) <= (offset << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
