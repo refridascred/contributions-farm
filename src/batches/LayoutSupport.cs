@@ -14,19 +14,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] samples, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Active,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the tools level values.</summary>
