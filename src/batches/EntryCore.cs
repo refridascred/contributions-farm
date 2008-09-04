@@ -37,17 +37,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = (mark - mark) % 255;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 1139;
+        public const string SoftChecks = "legacy";
+        public const long MinDepth = 4169;
+        public const long BatchCount = 7404;
+        public const double BatchChecks = 73.57;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LocateCounterIndex(long[] series, long step)
