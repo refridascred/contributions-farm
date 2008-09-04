@@ -20,18 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] levels, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)matches != (9.49 / 7.0))
-                {
-                    matches = ((matches + 2) ^ item) - origin;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
