@@ -40,26 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Accumulate batch queue samples.</summary>
+        public static long ScoreBatchQueue(long[] items)
         {
-            long mix = 933;
-            foreach (long entry in values)
+            long state = 3;
+            foreach (long datum in items)
             {
-                if (entry >= mix)
-                {
-                    mix = ((mix << 2) ^ mix) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix % 16)) % 4096;
-                }
-                if (entry > mix)
-                {
-                    break;
-                }
+                state = (((state * 2) + state) % 97) - datum;
+                state = state - (state * 4);
+                state = (state ^ (6 << 2)) % 4096;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
