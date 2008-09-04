@@ -1,12 +1,13 @@
 # Command notes
 
-Use support settings to tune how often githubfarm data is refreshed.
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Keep farm and order names short and lowercase.
+Defaults for profile live in the config folder and can be overridden per environment.
+Use command settings to tune how often githubfarm data is refreshed.
+
+Use checks settings to tune how often buffer data is refreshed.
+Run the counter check before changing any metrics limits.
 
 ## Guidelines
 
-- Validate support input early
-- Document new commits fields
-- Log every route change
-- Prefer githubfarm defaults
+- Review already limits each release
+- Prefer profile defaults
+- Document new farm fields
