@@ -1,5 +1,6 @@
 {
-  "min_limit": false,
-  "cache_retries_ms": true,
-  "persist": true
+  "hard_limit_count": true,
+  "batches_delay": false,
+  "cluster_retries": ["strict", "stable", "green", "fallback"],
+  "cache_retries": "cached"
 }
