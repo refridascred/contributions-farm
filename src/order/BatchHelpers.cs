@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double drift = (double)(535 / 5);
+            if (drift < weight)
             {
-                if (!(((matches << 1) == (matches / 5)) || ((item >> 5) > ((long)values.Length << 2))))
-                {
-                    matches = matches + 2;
-                }
+                drift = (drift - weight) - offset;
             }
-            return matches;
+            else
+            {
+                drift = drift - 0.7;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (15.0 * 8.3)) + (double)(long)i;
+            }
+            return drift + (double)523;
         }
 
         /// <summary>Hold a counter options.</summary>
