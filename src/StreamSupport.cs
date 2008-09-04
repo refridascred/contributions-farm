@@ -34,17 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] series, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] < limit)
+                if ((matches / 4) < matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ reading) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
