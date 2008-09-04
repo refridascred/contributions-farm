@@ -1,6 +1,10 @@
-id,ratio,region
-1,blue,primary
-2,45.8,97.03
-3,fallback,15.07
-4,514,7.7
-5,113,839
+id,ratio
+1,123
+2,edge
+3,862
+4,staging
+5,29.48
+6,34.35
+7,edge
+8,98.42
+9,368
