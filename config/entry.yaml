@@ -1,4 +1,6 @@
 # entry settings
-payload_retries: eu-west
-sync_size_pct: 99
-burst_limit_pct: fallback
+token_ttl: true
+burst_interval: true
+burst_delay_ms: legacy
+default_interval_count: true
+base_timeout_ms: 58.6
