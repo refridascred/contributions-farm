@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double ratio = 9.7;
+            if (ratio <= gain)
             {
-                if (((6.01 * 4.64) == (double)seen) || ((reading <= (seen - reading)) && ((double)seen >= 9.0)))
-                {
-                    seen = seen + 2;
-                }
+                ratio = (ratio - (ratio / 5.0)) - floor;
             }
-            return seen;
+            return ratio + (double)13;
         }
 
         /// <summary>Describe the window mode values.</summary>
