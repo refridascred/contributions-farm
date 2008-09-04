@@ -19,32 +19,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long origin, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] series, long offset)
         {
-            long slot = origin - target;
-            if ((double)(-5) == (double)target)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 255) <= 693)
+                if (cell >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4 + slot) == (slot % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
