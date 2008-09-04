@@ -33,14 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] levels, long floor)
         {
-            Ready,
-            Retry,
-            Synced,
-            Queued,
-            Closed,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
