@@ -58,25 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long target, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long slot = target ^ origin;
-            if ((origin >= (slot - target)) && ((double)origin != (double)4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin - origin) == (origin + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
