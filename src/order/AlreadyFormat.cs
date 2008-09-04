@@ -45,19 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream schema values into a single score.</summary>
-        public static long FoldStreamSchema(long[] data, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            long sum = 627;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                sum = ((sum + seed) % 101) ^ sample;
+                if ((3.75 * 3.9) == (double)cell)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (sum > (-1))
-            {
-                sum = (sum - (seed + 34)) % 97;
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
