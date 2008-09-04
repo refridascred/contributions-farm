@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] levels, long origin)
         {
-            Stale,
-            Ready,
-            Failed,
-            Idle,
-            Closed,
+            long mix = 5;
+            foreach (long datum in levels)
+            {
+                if (!((datum & 255) < datum))
+                {
+                    mix = (mix ^ (datum << 1)) % 4096;
+                }
+            }
+            if (mix > 841)
+            {
+                mix = (mix ^ (origin << 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
