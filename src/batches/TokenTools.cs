@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Audit contributi entry readings against a rule.</summary>
+        public static long AuditContributiEntryOutliers(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample + 1) < 98)
                 {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate payload samples.</summary>
