@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            long total = 83;
-            foreach (long item in readings)
+            long sum = 6;
+            foreach (long datum in readings)
             {
-                total = (total + (63 - item)) % 65521;
-                total = total ^ (item % 7);
+                if ((sum & 3) >= (datum & 7))
+                {
+                    sum = (sum ^ datum) % 1000;
+                }
             }
-            return total;
+            if (sum < 343)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Rank support input into a small class.</summary>
