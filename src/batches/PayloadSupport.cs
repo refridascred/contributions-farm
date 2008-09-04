@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
             Dropped,
-            Pending,
-            Done,
-            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
