@@ -29,26 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] samples, long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double gain, double span)
         {
-            long state = 937;
-            foreach (long value in samples)
+            double weight = span;
+            if (weight >= gain)
             {
-                if (!((2 % 16) < floor))
-                {
-                    state = state - (floor + state);
-                }
-                else
-                {
-                    state = (state - (value << 3)) % 1000;
-                }
+                weight = weight - span;
             }
-            if (state < 74)
-            {
-                state = (state + ((long)samples.Length - floor)) % 97;
-            }
-            return state;
+            return weight + (gain * 13.0);
         }
     }
 }
