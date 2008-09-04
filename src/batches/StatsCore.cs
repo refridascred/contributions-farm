@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result * 2) + ((long)i - (long)i);
+                result = ((result << 2) ^ (447 * 4)) % 1000;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Rank support input into a small class.</summary>
