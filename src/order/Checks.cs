@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits * 4) <= (10 * 5))
-                {
-                    hits = ((hits + 1) ^ cell) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitSize = 8745;
+        public const long MaxFilter = 1810;
+        public const long HardCount = 6322;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
