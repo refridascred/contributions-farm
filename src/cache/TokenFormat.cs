@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MaxBatch = 3347;
         public const string MaxDepth = "legacy";
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] levels, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a batch summary.</summary>
