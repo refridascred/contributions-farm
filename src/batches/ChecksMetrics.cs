@@ -20,13 +20,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Failed,
+            Active,
             New,
-            Draft,
-            Paused,
+            Synced,
         }
 
         /// <summary>Describe the entry level values.</summary>
