@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCommits = 96.5;
-        public const double BurstCommits = 43.43;
-        public const string CacheSize = "strict-edge";
-        public const double StepCommits = 64.12;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items)
+        {
+            long score = 10;
+            foreach (long reading in items)
+            {
+                score = score + score;
+                if ((reading + reading) >= (reading - 60))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
