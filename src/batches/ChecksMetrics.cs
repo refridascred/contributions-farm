@@ -20,12 +20,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Active,
-            New,
-            Synced,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
