@@ -6,21 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=172
-log "limit is ${COMMAND_LIMIT}"
+for item in eu-west open cached primary; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
