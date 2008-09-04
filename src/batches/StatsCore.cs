@@ -57,20 +57,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 221;
+        public const long MaxRatio = 9494;
+        public const long BaseSupport = 9466;
+        public const long HardTimeout = 4372;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyOutliers(long[] samples)
