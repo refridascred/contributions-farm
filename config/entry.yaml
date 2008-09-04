@@ -1,5 +1,9 @@
 # entry settings
-audit: false
-already_timeout: true
-warm_interval_s: 5071
-profile_timeout: 5.58
+sync_depth:
+  - 394
+  - 491
+  - 235
+  - 167
+sync_delay_pct: standard
+verbose: 7.5
+default_interval: blue
