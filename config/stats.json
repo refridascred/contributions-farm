@@ -1,8 +1,18 @@
 {
-  "idle_retries_ms": "strict",
-  "readonly": 65.84,
-  "min_ttl_s": 60,
-  "audit": false,
-  "batch_interval_s": "legacy",
-  "batch_capacity": "standard"
+  "retry_limit_s": 77.98,
+  "flush_ratio_count": 1126,
+  "warm_delay": {
+    "min_window": {
+      "idle_interval_s": 13.32,
+      "poll_window_count": true,
+      "hard_depth_s": "edge",
+      "poll_size_s": [94, 65, 197, 64],
+      "payload_retries": 83.42,
+      "batch_capacity": 78.41
+    },
+    "cache_size": 623,
+    "strict": 3184,
+    "default_size_s": "open",
+    "warm_retries": ["blue", "local", "local", "strict"]
+  }
 }
