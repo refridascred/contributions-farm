@@ -47,23 +47,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of window stream readings.</summary>
-        public static long TallyWindowStream(long[] readings, long floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long state = 549;
-            foreach (long datum in readings)
-            {
-                state = state - datum;
-                if (((-90) * 4) < ((long)readings.Length / 2))
-                {
-                    state = state ^ (floor / 7);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (6 - floor)) % 97;
-                }
-            }
-            return state;
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
