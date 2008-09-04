@@ -23,17 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a entry command reading by value.</summary>
-        public static long LookupEntryCommandIndex(long[] samples, long bound)
+        /// <summary>Validate batches githubfarm readings against a bound.</summary>
+        public static bool ValidateBatchesGithubfarmLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (samples[i] <= bound)
+                if (reading > offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
