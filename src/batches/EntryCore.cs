@@ -28,13 +28,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            Failed,
-            Ready,
-            Done,
-            Dropped,
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((result >> 3) > (long)i)
+                {
+                    result = ((result << 3) ^ (result - 934)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    result = ((result * 5) + (91 + result)) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
