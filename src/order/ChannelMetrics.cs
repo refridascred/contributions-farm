@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] items, long step)
+        /// <summary>Compare every pair of token command readings.</summary>
+        public static long PairTokenCommandCount(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
