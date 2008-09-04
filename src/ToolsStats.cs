@@ -60,13 +60,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
