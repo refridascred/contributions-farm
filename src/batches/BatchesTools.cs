@@ -24,38 +24,12 @@ namespace Common.Utilities
         public const long MinLevel = 3047;
         public const string BatchBudget = "alpha-1";
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long offset, long target)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if ((offset >> 5) >= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset / 6) < (offset >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) <= (offset ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((-83) >= (target - offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
