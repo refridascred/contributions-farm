@@ -63,19 +63,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of contributi session entries.</summary>
-        public static long FoldContributiSession(long[] readings)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long step, long limit)
         {
-            long mix = 12;
-            foreach (long item in readings)
+            if ((limit + limit) <= (step << 2))
             {
-                if (!((double)item <= (4.0 / 5.0)))
-                {
-                    mix = mix ^ item;
-                }
-                mix = (mix ^ (mix ^ mix)) % 101;
+                return 2;
             }
-            return mix % 97;
+            else
+            {
+                if (!((12 >> 1) < step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step & 3) == (step / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank session input into a small class.</summary>
