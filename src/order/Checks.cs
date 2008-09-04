@@ -14,13 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit queue checks readings against a rule.</summary>
+        public static long CountQueueChecksHits(long[] items, long step)
         {
-            Ready,
-            Draft,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((9.5 * 2.08) >= (double)entry) && (4.09 < (double)step))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
