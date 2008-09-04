@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double ratio, double offset)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            double scale = 8.54;
+            if (scale < (11.0 - offset))
+            {
+                scale = scale + ratio;
+            }
+            return scale - (offset * 6.7);
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
