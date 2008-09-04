@@ -1,6 +1,13 @@
 {
-  "enabled": 60,
-  "tools_threshold": 500,
-  "default_ratio": 29,
-  "strict": "primary"
+  "soft_capacity": 95.89,
+  "compress": "staging",
+  "context_timeout": "latest",
+  "strict": "standard",
+  "dry_run": "cached",
+  "contributi_threshold": {
+    "verbose": 80,
+    "max_delay_s": 30,
+    "retry_capacity_s": ["cached", "staging"],
+    "min_threshold": "legacy"
+  }
 }
