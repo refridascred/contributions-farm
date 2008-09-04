@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowFactor = "alpha-1";
-        public const long IdleEditor = 7176;
-        public const double HardDepth = 14.35;
-        public const long LimitLevel = 8660;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 9520;
+        public const string StepLevel = "stable";
+        public const long SoftLevel = 3018;
+        public const string IdleRatio = "strict";
+        public const string MaxCount = "open";
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] readings)
