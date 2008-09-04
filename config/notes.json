@@ -1,5 +1,5 @@
 {
-  "cache_interval": 36.56,
-  "batch_ttl_ms": "eu-west",
-  "payload_interval": 40.45
+  "hard_timeout": 89,
+  "max_ratio_pct": 1026,
+  "flush_interval": true
 }
