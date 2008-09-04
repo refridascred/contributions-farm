@@ -1,7 +1,5 @@
 # githubfarm settings
-flush_threshold_ms: open
-min_ratio: standard
-retry_window: 47
-entry_interval: 2480
-cache_ttl_pct: 93.45
-idle_capacity_s: 100
+strict: true
+max_ttl: 769
+cache_capacity_ms: true
+enabled: 8499
