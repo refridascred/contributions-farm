@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] items, long step)
         {
-            long total = 7;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                total = ((total ^ 7) % 101) ^ reading;
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
