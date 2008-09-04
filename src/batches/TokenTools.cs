@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of account stats entries.</summary>
-        public static long TotalAccountStats(long[] data)
+        /// <summary>Find the first commits metrics entry that matches the target.</summary>
+        public static long LookupCommitsMetricsIndex(long[] levels, long limit)
         {
-            long result = 52;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result >> 1) >= (result - 6))
+                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
                 {
-                    result = ((result + (0 / 5)) % 101) - entry;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
