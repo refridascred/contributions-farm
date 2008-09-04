@@ -52,11 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 255;
-        public const string BurstContext = "cached";
-        public const string BurstTimeout = "strict";
-        public const long BatchContext = 5759;
-        public const long IdleSpan = 7566;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches - matches) != (matches & 1))
+                {
+                    matches = ((matches + 2) + sample) + seed;
+                }
+            }
+            return matches;
+        }
     }
 }
