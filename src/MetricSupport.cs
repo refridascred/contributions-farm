@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long carry = 37;
+            foreach (long datum in readings)
+            {
+                carry = ((carry << 3) ^ datum) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
