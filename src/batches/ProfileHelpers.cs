@@ -29,11 +29,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 505;
-        public const long BatchCache = 785;
-        public const long LimitCache = 5013;
-        public const long SoftWidth = 5967;
+        /// <summary>Measure how many metric format samples are out of range.</summary>
+        public static long CountMetricFormatMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)41 != (double)matches) && !((1.45 / 6.0) <= (double)datum))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of graph order entries.</summary>
         public static long TallyGraphOrder(long[] items)
