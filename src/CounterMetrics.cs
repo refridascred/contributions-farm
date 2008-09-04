@@ -17,18 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] series, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] items, long offset)
         {
-            long carry = 859;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (sample > (7 >> 5))
+                if (reading >= (matches / 8))
                 {
-                    carry = (carry - 10) + bound;
+                    matches = (matches + 3) - offset;
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
