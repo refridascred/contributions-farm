@@ -32,11 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 2888;
-        public const double IdleToken = 5.22;
-        public const double MaxRatio = 96.31;
-        public const long WindowLevel = 9723;
-        public const long HardTimeout = 4196;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
