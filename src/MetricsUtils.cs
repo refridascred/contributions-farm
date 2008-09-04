@@ -33,18 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] samples, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mark = 663;
+            foreach (long datum in series)
             {
-                if (seen > limit)
+                if ((bound & 7) > (long)series.Length)
                 {
-                    seen = (seen + 3) + sample;
+                    mark = ((mark << 3) ^ (datum & 7)) % 101;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Audit graph report readings against a rule.</summary>
