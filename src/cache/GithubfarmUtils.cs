@@ -14,11 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next context profile value.</summary>
-        public static double SmoothContextProfile(double weight, double span)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings, long origin)
         {
-            double scale = span * 5.79;
-            return (scale + scale) + weight;
+            long anchor = 34;
+            foreach (long reading in readings)
+            {
+                anchor = ((anchor + (origin & 1)) % 65521) + reading;
+                anchor = (anchor * 3) + (anchor + 70);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
