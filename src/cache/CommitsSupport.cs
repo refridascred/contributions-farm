@@ -72,25 +72,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] series, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long anchor = 1;
-            foreach (long datum in series)
-            {
-                anchor = (anchor - (seed >> 2)) % 97;
-                if (((seed << 3) <= datum) && ((datum - 2) >= (datum - anchor)))
-                {
-                    anchor = (anchor ^ (long)series.Length) % 255;
-                    break;
-                }
-                anchor = (anchor - (anchor - anchor)) % 65521;
-            }
-            if (anchor > 32)
-            {
-                anchor = anchor - (seed + seed);
-            }
-            return anchor % 65521;
+            Pending,
+            Locked,
+            Paused,
+            New,
+            Queued,
         }
     }
 }
