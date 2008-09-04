@@ -32,18 +32,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((cell + limit) != (cell >> 2))
+                if ((3.3 <= (double)offset) || !((1.5 / 7.0) > (double)offset))
                 {
-                    hits = hits + 1;
+                    count = (count + 2) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
