@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many layout tools samples are out of range.</summary>
-        public static long AuditLayoutToolsOutliers(long[] levels, long limit)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4 >> 4) == (reading + (-8)))
+                if (values[i] > bound)
                 {
-                    matches = (matches + 3) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
