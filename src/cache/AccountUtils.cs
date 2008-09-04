@@ -25,18 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            long total = 500;
-            foreach (long sample in data)
+            long state = 7;
+            foreach (long value in levels)
             {
-                if (((total * 2) > (origin & 15)) || ((origin ^ 75) == (total + total)))
+                if ((double)value > (3.0 * 17.0))
                 {
-                    total = ((total << 3) ^ (total + total)) + sample;
+                    state = ((state * 5) + ((-410) * 5)) % 97;
+                }
+                else
+                {
+                    state = state - (value >> 5);
                 }
             }
-            return total;
+            return state % 1000;
         }
     }
 }
