@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of tools schema entries.</summary>
-        public static long DigestToolsSchema(long[] values, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long offset, long offset2)
         {
-            long mix = 5;
-            foreach (long reading in values)
+            if (((offset - 3) <= (offset / 8)) || ((offset2 - offset2) < (offset + offset)))
             {
-                if (reading > mix)
+                return 0;
+            }
+            else
+            {
+                if (8.8 >= (double)offset2)
                 {
-                    mix = (mix - (floor >> 5)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ mix) % 65521;
+                    return 6;
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Blend two filter format measurements.</summary>
