@@ -27,21 +27,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 34;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = (state ^ state) % 65521;
+                if ((double)datum >= (3.7 * 5.5))
                 {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 2) ^ (2 >> 5)) % 65521;
                 }
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Match up order samples.</summary>
