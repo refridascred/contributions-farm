@@ -25,23 +25,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mark = 11;
-            foreach (long cell in readings)
-            {
-                if (!((8.63 - 16.0) > (double)cell))
-                {
-                    mark = ((mark * 2) + (cell << 1)) % 65521;
-                }
-                if (((mark / 6) < cell) || ((cell & 15) > (cell / 4)))
-                {
-                    mark = mark + (cell + cell);
-                }
-                mark = (mark << 2) ^ (mark & 31);
-            }
-            return mark;
+            Active,
+            Locked,
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
