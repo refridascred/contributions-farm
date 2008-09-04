@@ -70,19 +70,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double ratio, double bias)
-        {
-            double scale = ratio;
-            if (scale <= 8.98)
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (2.63 - bias)) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 6998;
+        public const string BurstFactor = "strict-v2";
+        public const long BurstCounter = 3496;
+        public const long SoftTimeout = 4759;
     }
 }
