@@ -63,32 +63,11 @@ namespace Common.Utilities
         public const long RetrySize = 4249;
         public const string BurstDepth = "latest-v2";
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long origin, long bound)
-        {
-            if (origin >= (origin * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin != (2.2 * 4.8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin ^ bound) < (origin - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxScore = 91.2;
+        public const string LimitContributi = "stable-edge";
+        public const long CacheFactor = 9710;
+        public const long MaxCount = 6867;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] items)
