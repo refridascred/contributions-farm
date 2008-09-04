@@ -1,7 +1,6 @@
 {
-  "min_ratio_ms": 9017,
-  "batch_interval_pct": false,
-  "compress": 1024,
-  "metrics_size": false,
-  "burst_ttl_s": "stable"
+  "strict": false,
+  "contributi_delay": 31.46,
+  "token_ratio": true,
+  "persist": 100
 }
