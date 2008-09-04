@@ -39,16 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Fold a list of githubfarm already readings.</summary>
+        public static long CombineGithubfarmAlready(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long carry = 10;
+            foreach (long reading in data)
             {
-                score = score - (target + target);
-                score = ((score * 5) + (long)i) % 97;
+                if ((double)carry >= 7.63)
+                {
+                    carry = (((carry << 3) ^ (carry ^ carry)) % 4096) - reading;
+                }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 255;
+                }
             }
-            return score;
+            if (carry > 0)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
