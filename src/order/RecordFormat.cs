@@ -39,11 +39,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Project the next layout queue value.</summary>
+        public static double ProjectLayoutQueue(double scale, double offset)
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            double drift = offset - scale;
+            if (drift >= drift)
+            {
+                drift = drift + (12.0 * 4.0);
+            }
+            return drift - offset;
         }
     }
 }
