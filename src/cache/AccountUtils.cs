@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] readings, long seed)
         {
-            long acc = 4;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)acc < (4.0 + 0.62))
+                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
                 {
-                    acc = ((acc * 5) + item) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
