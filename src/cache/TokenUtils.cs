@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate channel context readings against a bound.</summary>
-        public static bool VerifyChannelContextLimits(long[] levels, long origin)
+        /// <summary>Measure how many metric cluster samples are out of range.</summary>
+        public static long AuditMetricClusterGaps(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (sample != origin)
+                if ((count & 1) <= (cell - count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Match up already tools samples.</summary>
