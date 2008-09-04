@@ -1,6 +1,7 @@
 {
-  "warm_window_s": 97,
-  "batch_limit_s": false,
-  "metric_depth": 61.8,
-  "hard_depth_pct": "eu-west"
+  "verbose": 9.32,
+  "default_ratio": 589,
+  "format_window": false,
+  "cache_size": "latest",
+  "warm_ttl_pct": false
 }
