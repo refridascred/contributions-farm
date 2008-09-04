@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a queue already value against two limits.</summary>
-        public static long ClassifyQueueAlready(long limit, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] series, long step)
         {
-            if ((limit + limit) >= (55 + limit))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((51 >> 2) >= limit)
+                if (series[i] == step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit > (542 % 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit & 63) >= 4) && ((double)90 < (double)step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm already readings.</summary>
