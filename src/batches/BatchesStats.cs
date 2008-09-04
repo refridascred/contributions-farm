@@ -19,18 +19,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine checks format values into a single score.</summary>
-        public static long ScoreChecksFormat(long[] data, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long offset)
         {
-            long state = -95;
-            foreach (long value in data)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)bound >= (4.51 + 0.2))
+                if (!((double)(long)i <= (double)anchor))
                 {
-                    state = (((state * 2) + (727 ^ (long)data.Length)) % 101) ^ value;
+                    anchor = ((anchor * 4) + (75 << 1)) % 255;
+                    anchor = (anchor << 3) ^ anchor;
+                    break;
                 }
+                if ((offset - offset) <= ((long)i % 12))
+                {
+                    anchor = (anchor - offset) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
