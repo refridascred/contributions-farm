@@ -33,14 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] levels, long limit)
         {
-            New,
-            Paused,
-            Active,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches + entry) != (limit + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
