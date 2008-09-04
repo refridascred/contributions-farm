@@ -15,15 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double drift = floor;
-            if (drift > (bias + 7.81))
-            {
-                drift = drift + 1.2;
-            }
-            return drift + floor;
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
