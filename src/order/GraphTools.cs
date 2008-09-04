@@ -32,11 +32,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 10.49;
-        public const long CacheSpan = 1922;
-        public const long RetryTimeout = 3592;
-        public const long IdleCommand = 1026;
+        /// <summary>Classify a counter profile pair into a bucket.</summary>
+        public static long ClassifyCounterProfile(long step, long target)
+        {
+            if (((66 + (-688)) > (target & 15)) && ((step * 2) > (target / 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((5.0 / 4.0) < (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step + step) >= (step + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] series)
