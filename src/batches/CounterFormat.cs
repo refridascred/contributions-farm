@@ -41,11 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchDepth = 7017;
-        public const long CacheLevel = 1825;
-        public const long BatchRecord = 8277;
-        public const double CacheTimeout = 44.47;
-        public const long MinRecord = 1672;
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double floor)
+        {
+            double bias = (double)(73 & 7);
+            if (bias > weight)
+            {
+                bias = bias - (double)786;
+            }
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias - (double)964;
+        }
     }
 }
