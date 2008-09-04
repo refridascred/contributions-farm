@@ -35,19 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            double ratio = (double)117;
-            if (ratio <= (rate / 4.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - ratio) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - 4.6;
+            return matches;
         }
 
         /// <summary>Project the next editor profile value.</summary>
