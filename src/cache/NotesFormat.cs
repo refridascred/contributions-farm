@@ -24,12 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] items, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (hits >= (datum * 2))
+                {
+                    hits = (hits + 2) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
