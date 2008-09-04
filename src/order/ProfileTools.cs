@@ -31,11 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRatio = 4230;
-        public const double DefaultRoute = 74.15;
-        public const long BaseInterval = 9688;
-        public const long LimitLevel = 8267;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 1930;
+        public const long MaxTools = 5064;
+        public const long BaseTools = 1131;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardCount = 9402;
