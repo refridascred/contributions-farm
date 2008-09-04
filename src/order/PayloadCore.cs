@@ -13,24 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long target, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] items, long bound)
         {
-            if ((target - offset) <= (target / 4))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((2.1 - 14.0) != (double)target) && ((target - 997) >= offset))
+                if ((items[i] <= bound) && ((items[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of tools report readings.</summary>
