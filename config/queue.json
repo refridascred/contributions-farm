@@ -1,11 +1,5 @@
 {
-  "token_interval": 100,
-  "min_timeout_ms": 51.05,
-  "contributi_delay": 60,
-  "warm_threshold_s": {
-    "persist": true,
-    "min_threshold_pct": false,
-    "soft_depth_pct": 500
-  },
-  "base_window_count": "edge"
+  "batch_window_s": [372, 421, 103, 47],
+  "route_size": "latest",
+  "readonly": "green"
 }
