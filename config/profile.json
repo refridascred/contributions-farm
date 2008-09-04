@@ -1,6 +1,5 @@
 {
-  "session_ratio": "strict",
-  "readonly": true,
-  "order_ratio": 49.62,
-  "metrics_threshold": [276, 287]
+  "hard_window_s": [152, 395, 41, 17],
+  "retry_timeout_pct": 66.75,
+  "batch_timeout": [396, 191]
 }
