@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const double StepRatio = 41.14;
         public const long HardTimeout = 3944;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values, long step)
+        /// <summary>Find the first contributi queue entry that matches the target.</summary>
+        public static long LocateContributiQueueIndex(long[] samples, long limit)
         {
-            long result = -338;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)step >= 6.96) || ((reading & 3) < reading))
+                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
                 {
-                    result = result - (step - 595);
+                    return (long)i;
                 }
             }
-            if (result < (-30))
-            {
-                result = ((result << 3) ^ (step >> 4)) % 65521;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
