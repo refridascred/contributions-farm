@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many report graph samples are out of range.</summary>
-        public static long AuditReportGraphMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (reading >= (tally + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 5722;
+        public const long BurstSupport = 893;
+        public const long SoftSupport = 5146;
+        public const long StepSupport = 3847;
+        public const long WindowDepth = 5119;
 
         /// <summary>Fold a list of githubfarm report readings.</summary>
         public static long TotalGithubfarmReport(long[] readings)
