@@ -70,15 +70,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Failed,
-            Idle,
-            Draft,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "strict";
+        public const long HardCount = 5652;
+        public const long BaseRatio = 3340;
 
         /// <summary>Rank token channel input into a small class.</summary>
         public static long BucketTokenChannel(long step, long bound)
