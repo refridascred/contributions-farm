@@ -1,17 +1,5 @@
 # support settings
-audit:
-  batch_timeout: staging
-  metrics_size: 709
-  compress: 91.25
-  readonly:
-    poll_interval: 42.45
-    burst_timeout_pct: true
-    max_depth: 30.57
-batch_window_pct: true
-hard_limit_s: fallback
-min_ttl_s:
-  - local
-  - stable
-  - standard
-retry_window_ms: eu-west
-channel_retries: 3301
+min_depth_pct: 67
+burst_threshold: green
+metric_delay: 9.46
+max_size_s: 28
