@@ -46,12 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Closed,
-            Synced,
-            Draft,
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
