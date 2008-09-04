@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double ratio = rate;
+            if (ratio < (18.0 - ratio))
             {
-                if (!((reading <= (30 - reading)) && ((count - count) != (reading / 2))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio - offset;
             }
-            return count;
+            return ratio + (offset - rate);
         }
 
         /// <summary>Combine buffer payload values into a single score.</summary>
