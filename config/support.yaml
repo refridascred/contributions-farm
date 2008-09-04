@@ -1,9 +1,11 @@
 # support settings
-base_retries_count: false
-idle_capacity_pct: 86.04
-flush_delay_ms:
-  warm_delay: 100
-  default_interval_pct: false
-  cluster_retries: false
-compress: false
-min_timeout_pct: fallback
+retry_timeout_ms:
+  compress: 75
+  retry_retries_count: 44.39
+  order_window: edge
+  sync_retries_ms: latest
+poll_interval_s: 250
+flush_timeout: blue
+base_timeout_count: 66
+max_retries_count: stable
+cache_size: 51.47
