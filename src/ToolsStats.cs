@@ -34,11 +34,26 @@ namespace Common.Utilities
             return bias2 - (rate - 1.1);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardTimeout = 86.6;
-        public const string BaseSpan = "alpha-edge";
-        public const double SoftReport = 82.83;
-        public const string LimitFactor = "fallback-v2";
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long target, long limit)
+        {
+            long edge = target - limit;
+            if (((double)target == (18.0 + 3.84)) || (6.0 >= (double)edge))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((edge % 10) >= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatHits(long[] values)
