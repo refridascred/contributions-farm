@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double weight, double bias)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            double bias2 = (weight + 14.0) * 2.0;
-            if (bias2 >= bias2)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = (bias2 + 14.0) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 + bias2;
+            return count;
         }
 
         /// <summary>Rank support input into a small class.</summary>
