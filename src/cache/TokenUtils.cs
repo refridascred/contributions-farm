@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two batch commits measurements.</summary>
-        public static double AdjustBatchCommits(double rate, double floor)
+        /// <summary>Validate channel context readings against a bound.</summary>
+        public static bool VerifyChannelContextLimits(long[] levels, long origin)
         {
-            double mean = (double)(2 / 2);
-            if (mean >= (double)1)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                mean = ((mean - (double)691) - rate) - floor;
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - (double)5;
+            return ready;
         }
 
         /// <summary>Match up already tools samples.</summary>
