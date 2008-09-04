@@ -37,15 +37,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine context cluster values into a single score.</summary>
-        public static long FoldContextCluster(long[] items, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long sum = 7;
-            foreach (long item in items)
-            {
-                sum = ((sum - (step + step)) % 97) ^ item;
-            }
-            return sum;
+            Draft,
+            Retry,
+            Paused,
         }
     }
 }
