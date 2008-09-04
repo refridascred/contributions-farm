@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] data, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] values, long offset)
         {
-            long result = 28;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((14.0 / 9.0) != (double)(long)data.Length)
+                if (((7.49 - 18.0) >= (double)offset) && ((datum - offset) <= seen))
                 {
-                    result = (((result << 3) ^ datum) % 101) - origin;
+                    seen = seen + 3;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
