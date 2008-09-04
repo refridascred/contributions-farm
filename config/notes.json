@@ -1,16 +1,6 @@
 {
-  "burst_window": ["local", "staging", "primary", "legacy"],
-  "stream_threshold": {
-    "route_interval": [447, 177, 17],
-    "burst_timeout": 94,
-    "enabled": 99,
-    "warm_retries": {
-      "enabled": 62.56,
-      "idle_threshold_count": 60,
-      "compress": "latest"
-    },
-    "poll_size_pct": 22.99,
-    "retry_retries_count": true
-  },
-  "cluster_limit": 5435
+  "audit": 28,
+  "batch_window_pct": 46,
+  "verbose": 61,
+  "warm_delay_s": true
 }
