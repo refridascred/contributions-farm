@@ -1,11 +1,24 @@
 {
-  "enabled": 70,
-  "batch_capacity": [483, 95],
-  "flush_interval_s": {
-    "dry_run": [245, 174, 413],
-    "default_retries_s": "cached",
-    "idle_timeout_ms": "local"
-  },
-  "farm_threshold": 57.13,
-  "warm_limit": "strict"
+  "flush_capacity_count": 44.51,
+  "format_ratio": true,
+  "verbose": {
+    "flush_delay_pct": {
+      "sync_capacity_count": 3275,
+      "githubfarm_delay": 100,
+      "compress": [437, 382, 34],
+      "metrics_retries": 100,
+      "sync_depth": 1024,
+      "max_size": false
+    },
+    "hard_threshold_count": [125, 345, 87, 407],
+    "sync_threshold_count": "eu-west",
+    "max_ratio_ms": {
+      "command_retries": "latest",
+      "format_limit": "staging",
+      "window_limit": "legacy",
+      "max_delay": "stable",
+      "enabled": 39.24,
+      "cache_interval_count": 1024
+    }
+  }
 }
