@@ -29,22 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            long score = 106;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sample < 9.8)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score - (sample + score);
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 70)
-            {
-                score = (score + (score % 5)) % 101;
-            }
-            return score;
+            return matches;
         }
     }
 }
