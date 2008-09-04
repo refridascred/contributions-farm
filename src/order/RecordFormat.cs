@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Fold a list of context report readings.</summary>
+        public static long CombineContextReport(long[] data)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long total = -94;
+            foreach (long value in data)
+            {
+                if ((value * 5) != (total >> 3))
+                {
+                    total = ((total * 4) + (value + value)) % 65521;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
