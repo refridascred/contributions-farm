@@ -19,11 +19,40 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleSize = 3660;
-        public const long StepWindow = 2828;
-        public const long IdleFactor = 9974;
-        public const long WindowBudget = 8860;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long target, long offset)
+        {
+            long lane = target + offset;
+            if (!((target + 75) < (target % 8)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((851 + lane) > offset) || ((6.3 * 17.0) > (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ offset) > (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(lane < (68 << 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 9671;
