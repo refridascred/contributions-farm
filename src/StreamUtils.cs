@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((entry / 3) <= (entry / 4))
+                if ((double)target == (1.9 - 5.37))
                 {
-                    count = count + 1;
+                    total = total + (19 - total);
                 }
+                else
+                {
+                    total = ((total * 5) + (target + target)) % 101;
+                }
+                if (((target - total) <= (total - total)) && ((double)total == (double)179))
+                {
+                    total = total ^ (2 & 127);
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Find the first metrics checks entry that matches the target.</summary>
