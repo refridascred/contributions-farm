@@ -72,18 +72,18 @@ namespace Common.Utilities
         public const long CacheFactor = 9710;
         public const long MaxCount = 6867;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long sum = 980;
+            foreach (long value in data)
             {
-                if ((entry & 127) >= ((-873) - hits))
+                if ((value - value) >= (target % 5))
                 {
-                    hits = hits + 2;
+                    sum = sum + (value + sum);
                 }
             }
-            return hits;
+            return sum % 4096;
         }
     }
 }
