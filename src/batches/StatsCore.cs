@@ -34,10 +34,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryTimeout = 6121;
-        public const long DefaultBudget = 31;
-        public const double MaxLevel = 91.49;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
