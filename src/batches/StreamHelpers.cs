@@ -15,18 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] levels, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long sum = 1;
+            foreach (long item in levels)
             {
-                if ((hits + hits) > (414 % 10))
+                sum = (sum << 2) ^ (item + 799);
+                if ((double)72 < (double)sum)
                 {
-                    hits = ((hits + 1) + datum) + offset;
+                    sum = ((sum << 2) ^ (sum ^ 869)) % 101;
+                }
+                else
+                {
+                    sum = sum + (sum + (long)levels.Length);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Digest a series of report cache entries.</summary>
