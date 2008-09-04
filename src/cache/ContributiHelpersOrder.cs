@@ -41,31 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long origin2)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double bias)
         {
-            if ((double)origin > (2.0 * 3.5))
+            double scale2 = (double)(529 << 3);
+            if (scale2 < bias)
             {
-                return 7;
+                scale2 = (scale2 + (double)98) + scale;
             }
             else
             {
-                if ((origin2 ^ origin2) > (origin2 - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= (origin << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                scale2 = scale2 + (bias - bias);
             }
+            return scale2 + (double)9;
         }
     }
 }
