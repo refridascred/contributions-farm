@@ -41,21 +41,25 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long target, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long offset = target - seed;
+            if ((double)target <= 6.8)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (offset >= target)
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
