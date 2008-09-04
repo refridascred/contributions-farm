@@ -37,31 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter profile pair into a bucket.</summary>
-        public static long ClassifyCounterProfile(long step, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long seed)
         {
-            if (((66 + (-688)) > (target & 15)) && ((step * 2) > (target / 5)))
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.0 / 4.0) < (double)target)
+                if (datum <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + step) >= (step + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
