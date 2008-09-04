@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long floor, long seed)
+        /// <summary>Check that every schema command entry stays within the limit.</summary>
+        public static bool VerifySchemaCommandRange(long[] items, long limit)
         {
-            if (((floor - floor) == (seed >> 3)) && ((seed / 4) >= (floor / 9)))
+            bool stale = true;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= (floor >> 4))
+                if (reading > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
