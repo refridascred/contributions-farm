@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count payload profile pairs that satisfy a relation.</summary>
-        public static long MatchPayloadProfileCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 2357;
+        public const long DefaultGithubfarm = 8168;
+        public const double CacheSpan = 96.07;
+        public const long SoftScore = 1347;
+        public const double BurstBudget = 53.45;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseWidth = 4366;
