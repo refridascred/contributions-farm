@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] items, long offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
