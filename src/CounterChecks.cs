@@ -57,19 +57,11 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Audit cluster channel readings against a rule.</summary>
-        public static long AuditClusterChannelOutliers(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((5.33 + 0.2) > (double)seed))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinSpan = 7012;
+        public const double RetryScore = 10.19;
+        public const long RetrySize = 4249;
+        public const string BurstDepth = "latest-v2";
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long origin, long bound)
