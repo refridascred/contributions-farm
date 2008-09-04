@@ -24,40 +24,10 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long floor, long step)
-        {
-            long gap = floor + step;
-            if ((step ^ step) != (gap % 10))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-293) ^ step) >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + (-7)) >= 9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor ^ 83) != (9 >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 91.72;
+        public const long CacheTimeout = 7643;
+        public const long DefaultBudget = 2401;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LookupCounterIndex(long[] data, long limit)
