@@ -39,13 +39,17 @@ namespace Common.Utilities
         public const long BatchFactor = 3348;
         public const long MinBudget = 433;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] data, long seed)
         {
-            Active,
-            Idle,
-            Locked,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
