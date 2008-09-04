@@ -1,7 +1,10 @@
 {
-  "idle_depth": ["local", "legacy", "local", "primary"],
-  "warm_interval_s": false,
-  "audit": true,
-  "hard_threshold": "strict",
-  "soft_threshold": false
+  "min_retries": "legacy",
+  "hard_ttl_count": {
+    "cache_ttl_pct": "legacy",
+    "filter_ttl": 7310,
+    "sync_retries_pct": ["latest", "latest"]
+  },
+  "warm_size_ms": ["primary", "staging", "standard", "local"],
+  "audit": "open"
 }
