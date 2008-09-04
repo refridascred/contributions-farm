@@ -62,11 +62,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheTimeout = 5593;
-        public const double StepFilter = 75.41;
-        public const long LimitDepth = 1438;
-        public const long WindowSpan = 2063;
-        public const double SoftSize = 61.93;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 6387;
+        public const long BaseSize = 9114;
+        public const double MaxRatio = 94.81;
+        public const long StepSchema = 1486;
     }
 }
