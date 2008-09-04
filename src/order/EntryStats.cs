@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long CacheScore = 3121;
         public const long LimitChannel = 1636;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] samples, long offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mix = 265;
-            foreach (long reading in samples)
-            {
-                mix = (((mix << 2) ^ (offset >> 1)) % 65521) - reading;
-            }
-            return mix % 1000;
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Fold a list of support readings.</summary>
