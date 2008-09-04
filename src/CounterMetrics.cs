@@ -57,19 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] values, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (cell != seed)
+                if (((datum - datum) <= datum) || (matches < (4 * 2)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
