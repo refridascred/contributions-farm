@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of account already readings.</summary>
-        public static long TotalAccountAlready(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            long mix = 54;
-            foreach (long reading in series)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (((4.04 * 13.0) < (double)reading) && ((mix + reading) >= mix))
-                {
-                    mix = (mix + reading) % 97;
-                }
-                else
-                {
-                    mix = (mix * 5) + (reading / 5);
-                }
-                if ((mix - reading) > (mix / 7))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return mix % 1000;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
