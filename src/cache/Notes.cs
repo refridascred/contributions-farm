@@ -53,12 +53,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a filter stats value against two limits.</summary>
+        public static long SortFilterStats(long step, long bound)
         {
-            Failed,
-            Synced,
-            Queued,
+            if ((bound << 3) < step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound - step) >= (-23))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
