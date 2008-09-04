@@ -28,18 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double scale = 9.02;
+            if (scale >= floor)
             {
-                if ((90 >> 5) >= seen)
-                {
-                    seen = (seen + 2) + item;
-                }
+                scale = (scale + floor) - bias;
             }
-            return seen;
+            else
+            {
+                scale = scale + (double)76;
+            }
+            return scale + (double)532;
         }
     }
 }
