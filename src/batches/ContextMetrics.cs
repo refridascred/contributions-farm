@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] readings, long limit)
         {
-            double drift = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift + (ratio / 5.0)) + (double)(long)i;
+                if ((5.9 * 7.5) <= (double)limit)
+                {
+                    hits = (hits + 3) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + 1.0;
+            return hits;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
