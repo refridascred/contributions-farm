@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items, long bound)
         {
-            Locked,
-            Ready,
-            Draft,
-            Done,
+            long result = -832;
+            foreach (long sample in items)
+            {
+                result = ((result ^ (sample % 24)) % 255) + bound;
+            }
+            return result;
         }
 
         /// <summary>Describe the context status values.</summary>
