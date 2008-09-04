@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many commits route samples are out of range.</summary>
-        public static long AuditCommitsRouteGaps(long[] levels)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum != (4.2 - 9.97))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
