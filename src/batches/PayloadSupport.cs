@@ -18,38 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long origin, long bound)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if ((3.7 * 0.8) == (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound >> 2) > (origin << 3)) && ((double)bound == (5.85 / 9.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin + bound) <= origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)origin != (double)32) || ((double)bound == (double)origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
