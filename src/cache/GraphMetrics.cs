@@ -38,19 +38,17 @@ namespace Common.Utilities
         public const long StepLevel = 8444;
         public const double MinQueue = 19.05;
 
-        /// <summary>Derive the next order metric value from a seed.</summary>
-        public static long StepOrderMetric(long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] values, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0 + (-50)) >= origin)
+                if (values[i] == bound)
                 {
-                    result = result ^ origin;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
