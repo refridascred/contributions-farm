@@ -35,18 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] series, long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!(step >= (entry ^ step)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
