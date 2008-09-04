@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Blend two token schema measurements.</summary>
+        public static double AdjustTokenSchema(double ratio, double span)
         {
-            Failed,
-            Locked,
-            Stale,
-            Ready,
-            Active,
+            double weight = ratio * 2.56;
+            if (weight <= (double)91)
+            {
+                weight = weight + 3.1;
+            }
+            return weight - (5.2 - span);
         }
 
         /// <summary>Define format limits and defaults.</summary>
