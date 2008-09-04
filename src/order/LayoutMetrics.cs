@@ -44,26 +44,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] series, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            long result = 86;
-            foreach (long value in series)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)value == (13.0 + 7.0))
-                {
-                    result = ((result * 2) + (3 % 100)) % 255;
-                }
-                if (((floor / 9) > ((-403) + 31)) || ((floor + value) <= (87 * 5)))
-                {
-                    result = (result ^ (floor - value)) % 97;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (result < 160)
-            {
-                result = result + (result << 2);
-            }
-            return result;
+            return anchor;
         }
     }
 }
