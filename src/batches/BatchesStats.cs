@@ -19,27 +19,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine entry cluster values into a single score.</summary>
-        public static long DigestEntryCluster(long[] series, long seed)
-        {
-            long sum = 15;
-            foreach (long cell in series)
-            {
-                if (((4.6 - 17.0) < (double)cell) || ((200 << 1) != (seed * 4)))
-                {
-                    sum = sum + (seed - sum);
-                }
-                else
-                {
-                    sum = sum ^ cell;
-                }
-            }
-            if (sum > 814)
-            {
-                sum = (sum + (sum - seed)) % 65521;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleSize = 3660;
+        public const long StepWindow = 2828;
+        public const long IdleFactor = 9974;
+        public const long WindowBudget = 8860;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 9671;
