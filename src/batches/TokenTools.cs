@@ -21,13 +21,32 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 4024;
         public const long MinGithubfarm = 1912;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long floor, long step)
         {
-            Stale,
-            Paused,
-            Draft,
-            Closed,
+            long lane = floor ^ step;
+            if ((double)floor < 4.5)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step % 100) <= step) && (lane < step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) <= (lane ^ step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
