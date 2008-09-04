@@ -20,31 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] values, long step)
         {
-            long state = 86;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (!(entry < (8 + (long)levels.Length)))
+                if ((double)step <= (18.0 * 7.24))
                 {
-                    long diff = (entry + entry) % 64;
-                    state = ((state * 5) + diff) % 65521;
-                }
-                if ((entry / 3) <= (entry << 3))
-                {
-                    state = (state + (entry / 8)) % 255;
-                }
-                if ((603 <= (state >> 1)) && ((19.0 / 9.0) > (double)entry))
-                {
-                    break;
+                    seen = (seen + 3) + value;
                 }
             }
-            if (state < 757)
-            {
-                state = (state - (state * 2)) % 97;
-            }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Hold a queue record.</summary>
