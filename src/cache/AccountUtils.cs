@@ -32,12 +32,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] data, long seed)
         {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a filter reading.</summary>
