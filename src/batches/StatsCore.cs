@@ -34,17 +34,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] data, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] < floor)
+                if ((double)datum <= (7.06 * 15.0))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the layout mode values.</summary>
