@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long total = 368;
+            foreach (long reading in values)
             {
-                if ((8.88 + 14.0) <= (double)(long)i)
+                total = (total - (total & 63)) % 65521;
+                total = total ^ ((-25) + reading);
+                if (((reading + reading) >= reading) && (reading > (total * 3)))
                 {
-                    acc = (acc * 4) + offset;
+                    total = (total << 2) ^ (total % 3);
                 }
-                if ((double)offset >= (6.5 - 5.6))
-                {
-                    acc = ((acc << 3) ^ (long)i) % 97;
-                    acc = ((acc * 2) + (offset / 7)) % 101;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            if (total < 155)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Accumulate order samples.</summary>
