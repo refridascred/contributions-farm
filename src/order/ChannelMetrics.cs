@@ -22,20 +22,15 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (((long)i > (mix + limit)) || ((limit << 1) == (limit - limit)))
-                {
-                    mix = ((mix * 5) + (mix >> 4)) % 255;
-                    mix = mix ^ (mix + mix);
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return mix;
+            return anchor;
         }
     }
 }
