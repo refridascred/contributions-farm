@@ -33,18 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support tools entries that pass the check.</summary>
-        public static long TallySupportToolsHits(long[] data)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + seen) > seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Ready,
+            Pending,
         }
     }
 }
