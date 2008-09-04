@@ -51,21 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < limit)
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
