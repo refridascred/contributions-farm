@@ -16,14 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Count profile payload pairs that satisfy a relation.</summary>
+        public static long OverlapProfilePayloadCount(long[] series)
         {
-            Stale,
-            Paused,
-            Closed,
-            Retry,
-            New,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
