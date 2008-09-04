@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            long acc = -21;
-            foreach (long value in data)
+            long state = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(acc >= (acc % 16)))
-                {
-                    acc = (acc + (acc << 2)) ^ value;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
