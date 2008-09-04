@@ -1,5 +1,13 @@
 # entry settings
-retry_size: 83.59
-poll_timeout: 6143
-format_size: 60
-idle_size: 8974
+commits_ratio: 83
+flush_interval_s:
+  burst_retries: 6.22
+  poll_interval_pct: false
+  min_depth_count: strict
+  dry_run:
+    - 489
+    - 140
+  context_delay: 4964
+  channel_ttl: 8.35
+commits_delay: fallback
+layout_retries: 64.36
