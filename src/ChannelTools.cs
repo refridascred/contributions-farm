@@ -44,12 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Closed,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheWidth = 8870;
+        public const long RetryLevel = 9835;
+        public const long BaseRatio = 3554;
+        public const string BaseEntry = "alpha-1";
     }
 }
