@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] levels, long origin)
-        {
-            long mix = 5;
-            foreach (long datum in levels)
-            {
-                if (!((datum & 255) < datum))
-                {
-                    mix = (mix ^ (datum << 1)) % 4096;
-                }
-            }
-            if (mix > 841)
-            {
-                mix = (mix ^ (origin << 2)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxWidth = 2020;
+        public const long SoftEntry = 5854;
+        public const double MinFactor = 81.63;
+        public const long LimitRatio = 5614;
+        public const string BatchEntry = "alpha";
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmCount(long[] items)
