@@ -48,18 +48,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] levels, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long acc = 46;
-            foreach (long datum in levels)
-            {
-                if ((6.09 - 4.28) <= (double)acc)
-                {
-                    acc = ((acc - (4 >> 2)) ^ datum) + offset;
-                }
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
