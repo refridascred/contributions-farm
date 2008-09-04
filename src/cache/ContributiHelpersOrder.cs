@@ -39,25 +39,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long bound, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double bias, double bias2)
         {
-            long cur = bound + origin;
-            if ((cur + bound) != (bound * 2))
+            double scale = bias2;
+            if (scale < scale)
             {
-                return 1;
+                scale = (scale - (bias2 + 0.5)) - bias;
             }
-            else
-            {
-                if (!((origin / 2) >= (cur + origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return scale + (double)326;
         }
     }
 }
