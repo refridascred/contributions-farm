@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] data, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((81 + 28) <= (bound + hits))
+                if (entry < target)
                 {
-                    hits = (hits + 2) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a context options.</summary>
