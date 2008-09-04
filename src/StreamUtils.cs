@@ -47,17 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] readings, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) != 0))
+                if (((long)samples.Length / 7) > sample)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
