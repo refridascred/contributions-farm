@@ -1,5 +1,15 @@
 {
-  "checks_retries": 52.37,
-  "strict": "eu-west",
-  "farm_ratio": "staging"
+  "route_timeout": ["stable", "stable", "primary"],
+  "poll_capacity_s": [79, 249],
+  "flush_size_s": false,
+  "compress": {
+    "poll_size_pct": false,
+    "compress": 60,
+    "hard_retries_count": 100,
+    "max_capacity": 1024,
+    "base_interval_count": "primary",
+    "soft_ratio": 85.63
+  },
+  "idle_retries": "fallback",
+  "cache_ratio": 60
 }
