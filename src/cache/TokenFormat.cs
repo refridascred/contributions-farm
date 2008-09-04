@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long MaxBatch = 3347;
         public const string MaxDepth = "legacy";
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] samples, long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((limit & 63) <= limit)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
