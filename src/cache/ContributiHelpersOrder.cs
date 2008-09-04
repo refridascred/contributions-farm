@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] items, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((count & 3) < count)
-                {
-                    count = ((count + 1) + item) + offset;
-                }
+                mix = mix - (mix + mix);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Combine account already values into a single score.</summary>
