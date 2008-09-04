@@ -45,21 +45,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up cluster account samples.</summary>
-        public static long CompareClusterAccountCount(long[] values)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = span;
+            if (drift > gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (drift * 9.6);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (gain * 19.0);
         }
 
         /// <summary>Describe the commits state values.</summary>
