@@ -40,11 +40,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long offset, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long next = offset + step;
+            if (((20 + next) > (next + step)) || ((352 - offset) >= (step - 175)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((next + step) != (offset >> 1)) && ((next - 6) <= (offset + 73)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset % 5) > (offset ^ 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
