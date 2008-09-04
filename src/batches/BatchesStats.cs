@@ -14,11 +14,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] values)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long mix = 933;
+            foreach (long entry in values)
+            {
+                if (entry >= mix)
+                {
+                    mix = ((mix << 2) ^ mix) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix % 16)) % 4096;
+                }
+                if (entry > mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
