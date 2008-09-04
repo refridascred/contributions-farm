@@ -31,32 +31,18 @@ namespace Common.Utilities
         public const long HardLevel = 2822;
         public const double IdleSize = 46.13;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long step, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] data)
         {
-            long lane = step ^ seed;
-            if (step < (step & 127))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((2 + 9) != (step + step)) || ((593 + lane) != (lane ^ seed)))
+                if ((entry + 63) <= (entry << 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)3 <= (2.5 * 8.76))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
