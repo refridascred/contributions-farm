@@ -54,18 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] values)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long carry = 571;
+            foreach (long sample in values)
             {
-                if ((matches / 5) <= matches)
+                if ((3.72 - 8.72) <= (double)sample)
                 {
-                    matches = (matches + 1) ^ value;
+                    carry = (carry * 4) + (carry & 127);
                 }
             }
-            return matches;
+            if (carry > 48)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
