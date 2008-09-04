@@ -39,19 +39,17 @@ namespace Common.Utilities
             return rate + (floor - floor);
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] items, long offset)
+        /// <summary>Look up the position of a commits cache sample.</summary>
+        public static long LocateCommitsCacheIndex(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= offset)
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
