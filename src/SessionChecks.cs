@@ -29,18 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((value > seen) || ((double)seen <= 10.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
