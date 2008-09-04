@@ -1,13 +1,6 @@
 {
-  "soft_capacity": 95.89,
-  "compress": "staging",
-  "context_timeout": "latest",
-  "strict": "standard",
-  "dry_run": "cached",
-  "contributi_threshold": {
-    "verbose": 80,
-    "max_delay_s": 30,
-    "retry_capacity_s": ["cached", "staging"],
-    "min_threshold": "legacy"
-  }
+  "warm_window_s": 97,
+  "batch_limit_s": false,
+  "metric_depth": 61.8,
+  "hard_depth_pct": "eu-west"
 }
