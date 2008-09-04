@@ -12,14 +12,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            New,
-            Active,
-            Pending,
-            Failed,
-            Synced,
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every window contributi entry stays within the limit.</summary>
