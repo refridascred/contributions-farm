@@ -32,11 +32,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next layout queue value.</summary>
