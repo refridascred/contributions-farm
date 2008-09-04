@@ -14,38 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long floor, long bound)
+        /// <summary>Validate editor filter readings against a bound.</summary>
+        public static bool CheckEditorFilterRange(long[] levels, long floor)
         {
-            if ((bound / 5) != (bound & 1))
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 63) >= (bound - floor))
+                if (entry <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound > (30 << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (2.0 > (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
