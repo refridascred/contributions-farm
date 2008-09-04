@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the schema commits entries that pass the check.</summary>
+        public static long MeasureSchemaCommitsMatches(long[] readings, long target)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((target * 3) <= (target >> 2))
+                {
+                    tally = (tally + 1) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the entry status values.</summary>
