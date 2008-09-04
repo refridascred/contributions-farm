@@ -22,22 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] levels, long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long sum = 1;
-            foreach (long datum in levels)
-            {
-                if ((double)target > (double)6)
-                {
-                    sum = ((sum << 2) ^ (datum - 995)) % 97;
-                }
-            }
-            if (sum < 966)
-            {
-                sum = (sum << 3) ^ (target / 8);
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
