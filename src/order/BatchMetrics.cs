@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 564;
-        public const long CacheRoute = 9364;
-        public const double WindowBudget = 32.47;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
