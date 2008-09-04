@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long mark = 588;
+            foreach (long cell in data)
             {
-                sum = (sum ^ (sum / 4)) % 4096;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (!((95 + mark) == (872 << 3)))
+                {
+                    mark = ((mark * 4) + (limit - 574)) % 101;
+                }
+                if (((cell - mark) <= limit) || (7.4 < (double)cell))
+                {
+                    mark = ((mark * 3) + (mark % 12)) % 65521;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
