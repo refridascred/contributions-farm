@@ -46,12 +46,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            New,
-            Idle,
             Failed,
+            Done,
+            Pending,
         }
     }
 }
