@@ -55,21 +55,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count batches context pairs that satisfy a relation.</summary>
-        public static long CompareBatchesContextCount(long[] samples)
+        /// <summary>Classify a layout already pair into a bucket.</summary>
+        public static long GradeLayoutAlready(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = step ^ floor;
+            if (((double)step > 17.0) || ((4.1 - 9.8) == (double)floor))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((1.0 / 9.0) >= (double)7)
                 {
-                    if ((samples[i] - samples[j]) < 19)
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + cur) < (cur / 2))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the farm class values.</summary>
