@@ -1,5 +1,8 @@
 {
-  "retry_capacity_pct": [429, 157, 486, 483],
-  "idle_capacity_count": 97,
-  "support_threshold": [110, 454, 322, 218]
+  "buffer_retries": true,
+  "warm_retries_count": false,
+  "stream_window": 3829,
+  "cache_depth": true,
+  "batch_delay_ms": "eu-west",
+  "hard_depth_s": "staging"
 }
