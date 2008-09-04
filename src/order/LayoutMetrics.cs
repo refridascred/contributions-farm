@@ -51,13 +51,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] series, long floor)
         {
-            Retry,
-            Pending,
-            Draft,
-            Stale,
+            long result = 86;
+            foreach (long value in series)
+            {
+                if ((double)value == (13.0 + 7.0))
+                {
+                    result = ((result * 2) + (3 % 100)) % 255;
+                }
+                if (((floor / 9) > ((-403) + 31)) || ((floor + value) <= (87 * 5)))
+                {
+                    result = (result ^ (floor - value)) % 97;
+                }
+            }
+            if (result < 160)
+            {
+                result = result + (result << 2);
+            }
+            return result;
         }
     }
 }
