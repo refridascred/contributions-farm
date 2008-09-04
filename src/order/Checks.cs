@@ -60,15 +60,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm stream readings.</summary>
-        public static long DigestFarmStream(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data, long seed)
         {
-            long acc = 396;
-            foreach (long cell in items)
+            long anchor = 696;
+            foreach (long value in data)
             {
-                acc = (acc << 3) ^ cell;
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (anchor - ((long)i * 4)) % 1000;
+                }
+                if (seed <= (value - anchor))
+                {
+                    anchor = anchor ^ seed;
+                }
             }
-            return acc;
+            if (anchor > 316)
+            {
+                anchor = (anchor + (seed + seed)) % 65521;
+            }
+            return anchor;
         }
     }
 }
