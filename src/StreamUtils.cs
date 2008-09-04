@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] series, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (reading >= bound)
+                if ((entry / 3) <= (entry / 4))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Find the first metrics checks entry that matches the target.</summary>
