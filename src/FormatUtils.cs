@@ -33,11 +33,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double weight, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] data, long target)
         {
-            double rate = (offset + offset) / 3.0;
-            return (rate + (double)980) + weight;
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
