@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Measure how many report graph samples are out of range.</summary>
+        public static long AuditReportGraphMatches(long[] data)
         {
-            long mix = -514;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 8; i++)
+                if (reading >= (tally + tally))
                 {
-                    mix = (((mix * 4) + (mix + reading)) % 1000) ^ (long)i;
-                }
-                if ((double)reading != (6.82 - 7.0))
-                {
-                    mix = mix ^ mix;
+                    tally = tally + 2;
                 }
             }
-            if (mix < 442)
-            {
-                mix = ((mix * 5) + (2 - mix)) % 97;
-            }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Match up batches samples.</summary>
