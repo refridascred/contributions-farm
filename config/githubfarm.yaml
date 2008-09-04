@@ -1,21 +1,24 @@
 # githubfarm settings
-default_capacity_s: 4.13
-base_threshold_pct: legacy
-editor_depth: false
-soft_capacity: 96.39
-flush_threshold_count:
-  warm_ratio_ms: open
-  session_interval:
-    channel_threshold: 8793
-    session_retries: 57.05
-    poll_capacity_s:
-      - 417
-      - 386
-      - 93
-      - 154
-  dry_run:
-    - staging
-    - strict
-    - strict
-    - open
-enabled: 6.55
+stats_size: 80.99
+verbose:
+  default_retries_s: blue
+  contributi_limit: 1024
+  persist: 40.97
+metric_size: 1449
+token_capacity:
+  enabled:
+    - green
+    - eu-west
+  contributi_capacity: stable
+  strict: 89.46
+poll_delay_ms: true
+stream_ttl:
+  verbose: false
+  audit:
+    - 272
+    - 86
+    - 364
+  sync_retries_s: staging
+  soft_delay_ms: 8875
+  soft_ratio_pct: 60
+  min_retries_s: 38.88
