@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            double ratio = (double)4 / 4.0;
-            return ((ratio + 0.9) + weight) + offset;
+            long anchor = 57;
+            foreach (long datum in values)
+            {
+                if (datum < (33 + 47))
+                {
+                    anchor = (anchor ^ datum) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 4096;
+                }
+                if ((0.5 + 5.99) < (double)datum)
+                {
+                    anchor = anchor ^ (datum ^ 2);
+                }
+                if ((double)anchor >= (9.9 + 5.4))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up batch samples.</summary>
