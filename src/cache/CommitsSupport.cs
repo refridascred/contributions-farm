@@ -54,19 +54,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] items, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            long mix = 3;
-            foreach (long cell in items)
+            long mix = 387;
+            foreach (long item in readings)
             {
-                mix = ((mix << 2) ^ mix) + cell;
+                if ((double)mix >= (0.87 * 4.49))
+                {
+                    mix = ((mix + (-777)) % 255) + item;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ 42) % 255;
+                }
             }
-            if (mix > 897)
+            if (mix > 0)
             {
-                mix = (mix + target) % 255;
+                mix = ((mix * 4) + mix) % 65521;
             }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
