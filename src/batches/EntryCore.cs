@@ -30,12 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
