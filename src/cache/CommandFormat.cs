@@ -14,31 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long origin, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data, long bound)
         {
-            if ((origin + origin) >= (origin * 5))
+            long carry = 93;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= (target + origin))
+                if (84 <= (bound ^ cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin % 3) > 256)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = ((carry * 4) + (bound + bound)) % 65521;
                 }
             }
+            return carry;
         }
 
         /// <summary>Hold a token header.</summary>
