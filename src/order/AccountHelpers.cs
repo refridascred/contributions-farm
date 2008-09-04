@@ -51,18 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long state = 8;
-            foreach (long item in levels)
-            {
-                if ((double)item == (double)state)
-                {
-                    state = state - state;
-                }
-            }
-            return state;
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
