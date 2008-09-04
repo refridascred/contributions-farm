@@ -34,15 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long score = 111;
-            foreach (long reading in readings)
-            {
-                score = ((score - (score % 16)) % 255) - reading;
-            }
-            return score;
+            Stale,
+            Paused,
+            Draft,
+            Closed,
         }
     }
 }
