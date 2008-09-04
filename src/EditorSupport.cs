@@ -65,12 +65,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 5659;
-        public const string SoftContext = "standard-1";
-        public const long BurstBudget = 5117;
-        public const long BaseContext = 6501;
-        public const long BurstContext = 3725;
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a githubfarm order sample.</summary>
         public static long SeekGithubfarmOrderIndex(long[] data, long seed)
