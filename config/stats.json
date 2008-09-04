@@ -1,6 +1,18 @@
 {
-  "poll_interval_pct": false,
-  "command_size": true,
-  "audit": ["staging", "cached", "edge"],
-  "commits_depth": ["open", "primary"]
+  "cache_depth_s": [380, 497],
+  "batches_size": 83,
+  "strict": false,
+  "metric_size": {
+    "hard_window": "green",
+    "verbose": 35.85,
+    "idle_threshold_pct": 8423,
+    "sync_ratio_s": ["green", "fallback"],
+    "persist": {
+      "persist": 69.11,
+      "retry_limit": 21,
+      "already_limit": 1951,
+      "enabled": "staging"
+    }
+  },
+  "default_ttl": [97, 341, 121]
 }
