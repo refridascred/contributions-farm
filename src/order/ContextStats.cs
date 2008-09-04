@@ -15,24 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] readings, long seed)
         {
-            if (((double)limit >= (double)1) && ((origin >> 3) > 898))
+            long anchor = 7;
+            foreach (long sample in readings)
             {
-                return 1;
+                anchor = ((anchor * 2) + (77 - sample)) + seed;
             }
-            else
-            {
-                if ((origin / 4) < (70 << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
