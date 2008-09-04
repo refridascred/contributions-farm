@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double bias, double floor)
         {
-            long score = 8;
-            foreach (long sample in data)
+            double mean = 9.0;
+            if (mean < mean)
             {
-                score = (score + (score + score)) % 65521;
-                if ((double)sample > (6.71 * 1.0))
-                {
-                    break;
-                }
+                mean = mean + bias;
             }
-            if (score > 42)
+            else
             {
-                score = (score ^ (long)data.Length) % 65521;
+                mean = mean - floor;
             }
-            return score % 4096;
+            return mean - mean;
         }
 
         /// <summary>Hold a report snapshot.</summary>
