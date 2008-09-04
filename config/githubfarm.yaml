@@ -1,7 +1,7 @@
 # githubfarm settings
-cache_ttl_s: true
-payload_limit: legacy
-cache_depth: 67
-session_capacity: 60
-idle_capacity: fallback
-counter_capacity: strict
+account_retries: false
+soft_ttl_ms: latest
+compress: 60
+audit: 2850
+schema_capacity: 250
+report_threshold: 63.29
