@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Failed,
-            Closed,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryWidth = 68.64;
+        public const long LimitAccount = 5370;
+        public const long IdleAccount = 5817;
+        public const string MaxAccount = "primary-edge";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long floor, long limit)
