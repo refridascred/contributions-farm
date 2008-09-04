@@ -72,12 +72,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] items, long target)
         {
-            Pending,
-            New,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
