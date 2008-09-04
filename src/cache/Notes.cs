@@ -62,13 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate farm queue readings against a bound.</summary>
+        public static bool VerifyFarmQueueLimits(long[] series, long seed)
         {
-            Paused,
-            Queued,
-            New,
-            Locked,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
