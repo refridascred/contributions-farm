@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series)
-        {
-            long sum = -50;
-            foreach (long value in series)
-            {
-                if (sum <= (sum + value))
-                {
-                    sum = (sum + (value + sum)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum ^ 78)) % 101;
-                }
-            }
-            if (sum > 9)
-            {
-                sum = (sum * 5) + (sum << 3);
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 2858;
+        public const string MinBudget = "latest-1";
+        public const double IdleBudget = 10.33;
+        public const long HardPayload = 9746;
 
         /// <summary>Find the first schema batches entry that matches the target.</summary>
         public static long LocateSchemaBatchesIndex(long[] data, long seed)
