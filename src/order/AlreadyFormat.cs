@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many cluster buffer samples are out of range.</summary>
-        public static long CountClusterBufferMatches(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (tally > (cell << 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
