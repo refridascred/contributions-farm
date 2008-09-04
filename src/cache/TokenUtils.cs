@@ -13,12 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "fallback-v2";
-        public const string BaseTimeout = "latest-edge";
-        public const double LimitScore = 53.71;
-        public const long WindowContext = 1663;
-        public const double BurstDepth = 19.17;
+        /// <summary>Match up already tools samples.</summary>
+        public static long MatchAlreadyToolsCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BatchSupport = 4133;
