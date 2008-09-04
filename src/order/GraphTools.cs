@@ -23,18 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits << 2) < (hits % 2))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    hits = (hits + 3) ^ entry;
+                    carry = (carry ^ (carry + origin)) + (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
