@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "staging-v2";
+        public const double BatchWidth = 12.27;
+        public const long LimitSize = 7570;
+        public const long CacheContext = 440;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] data)
