@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((step / 3) <= step)
-                {
-                    total = total + (step % 12);
-                }
-                if (!((1.0 / 9.0) != (double)step))
-                {
-                    total = total + (step - total);
-                }
-                else
-                {
-                    total = ((total * 2) + ((long)i % 97)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6927;
+        public const long LimitContributi = 9582;
+        public const long SoftSpan = 9337;
+        public const long DefaultContributi = 1627;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
