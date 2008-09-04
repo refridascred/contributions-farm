@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] series, long target)
+        /// <summary>Count the cache payload entries that pass the check.</summary>
+        public static long AuditCachePayloadHits(long[] readings)
         {
-            long carry = 361;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry + (carry - carry)) + datum) + target;
+                if (((-28) / 7) >= hits)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Locate a command reading by value.</summary>
