@@ -41,17 +41,12 @@ namespace Common.Utilities
         public const long WindowBatch = 7421;
         public const double IdleBatch = 13.34;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] data, long seed)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the metrics mode values.</summary>
