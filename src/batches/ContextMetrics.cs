@@ -31,12 +31,33 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardWidth = 9895;
-        public const double MaxStats = 97.45;
-        public const long LimitStats = 6779;
-        public const long HardCount = 3973;
-        public const double DefaultRatio = 33.74;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long origin, long floor)
+        {
+            long cur = origin - floor;
+            if (((cur - cur) <= (cur << 3)) || ((3.0 / 7.0) == (double)cur))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin >= (origin - origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin >= (92 * 5)) || (floor >= (floor * 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long offset)
