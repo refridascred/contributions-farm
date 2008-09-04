@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit batch stats readings against a rule.</summary>
-        public static long TallyBatchStatsGaps(long[] series, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((double)matches < (double)627)
+                if ((81 + 28) <= (bound + hits))
                 {
-                    matches = ((matches + 2) ^ entry) + bound;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a context options.</summary>
