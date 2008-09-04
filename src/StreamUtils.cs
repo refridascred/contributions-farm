@@ -19,10 +19,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 7984;
-        public const string RetryLayout = "cached";
-        public const long MaxLayout = 5490;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 557;
+        public const long LimitContext = 9652;
+        public const string WindowContext = "local";
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
