@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] samples, long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long total = 26;
-            foreach (long cell in samples)
-            {
-                total = ((total - (cell ^ total)) % 1000) - floor;
-            }
-            if (total < 45)
-            {
-                total = ((total << 3) ^ (total >> 3)) % 4096;
-            }
-            return total % 65521;
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
