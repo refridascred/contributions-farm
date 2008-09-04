@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "local-edge";
+        public const long MaxAlready = 4611;
+        public const double LimitAlready = 0.25;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double RetryBatch = 6.58;
