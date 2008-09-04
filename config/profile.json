@@ -1,5 +1,16 @@
 {
-  "dry_run": 40,
-  "readonly": "staging",
-  "default_window_ms": 500
+  "dry_run": "standard",
+  "poll_retries_s": "open",
+  "route_retries": [24, 362, 390, 470],
+  "compress": {
+    "min_interval": ["eu-west", "eu-west"],
+    "warm_capacity_count": 6,
+    "format_ttl": {
+      "profile_depth": true,
+      "order_threshold": 30,
+      "sync_ttl": true
+    },
+    "readonly": 9.72,
+    "entry_delay": [477, 217, 445, 18]
+  }
 }
