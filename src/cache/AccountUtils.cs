@@ -31,13 +31,18 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] series)
         {
-            Queued,
-            Locked,
-            Stale,
-            Dropped,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((90 >> 5) >= seen)
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
     }
 }
