@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats account entries that pass the check.</summary>
-        public static long AuditStatsAccountOutliers(long[] series)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)seen < (1.4 - 5.3))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Done,
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
