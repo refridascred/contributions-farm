@@ -51,13 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
