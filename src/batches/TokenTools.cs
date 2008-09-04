@@ -14,12 +14,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 2694;
-        public const string IdleRecord = "legacy-1";
-        public const long RetryRecord = 8331;
-        public const long BatchDepth = 6551;
-        public const long WindowRecord = 9095;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Active,
+            Locked,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double SmoothStats(double gain, double span)
