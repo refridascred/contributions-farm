@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] data)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((((tally + value) >= tally) && ((tally + tally) >= (30 ^ value))) || (9.38 <= (double)value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count record format pairs that satisfy a relation.</summary>
