@@ -39,11 +39,12 @@ namespace Common.Utilities
         public const long MaxBudget = 5676;
         public const long MaxScore = 9170;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftCount = 9575;
-        public const long SoftBatches = 718;
-        public const string LimitBatches = "latest-edge";
-        public const long BurstLevel = 4216;
-        public const double LimitTimeout = 33.61;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+        }
     }
 }
