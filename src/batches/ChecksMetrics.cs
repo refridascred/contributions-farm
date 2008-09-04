@@ -28,18 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the support schema entries that pass the check.</summary>
-        public static long CountSupportSchemaOutliers(long[] samples, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((matches & 15) <= (9 * 3))
+                if (value <= target)
                 {
-                    matches = ((matches + 3) - sample) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a buffer header.</summary>
