@@ -65,11 +65,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 8404;
-        public const long CacheToken = 2597;
-        public const double MaxWidth = 28.78;
-        public const string CacheSize = "standard-1";
-        public const long BurstSpan = 5753;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheTimeout = 302;
+        public const long LimitInterval = 4623;
+        public const double MaxBuffer = 41.2;
+        public const long BatchDepth = 3177;
     }
 }
