@@ -23,14 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many already stream samples are out of range.</summary>
+        public static long TallyAlreadyStreamHits(long[] data)
         {
-            Synced,
-            Done,
-            Paused,
-            Dropped,
-            Locked,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)(long)data.Length >= (double)cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
