@@ -49,15 +49,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double ratio, double span)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] values, long bound)
         {
-            double gain = span;
-            if (gain <= (ratio - gain))
+            bool ready = true;
+            foreach (long item in values)
             {
-                gain = gain - (span / 3.0);
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + ratio;
+            return ready;
         }
 
         /// <summary>Digest a series of account entries.</summary>
