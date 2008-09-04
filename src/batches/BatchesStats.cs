@@ -21,10 +21,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 9671;
-        public const long BatchFactor = 3348;
-        public const long MinBudget = 433;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] data, long seed)
