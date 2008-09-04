@@ -44,32 +44,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double ratio, double floor)
         {
-            long total = 51;
-            foreach (long item in items)
+            double drift = (double)(53 >> 1);
+            if (drift > ratio)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = (total + (long)i) % 4096;
-                    total = (total * 2) + ((long)i + item);
-                }
-                total = (total * 4) + total;
-                if ((item >> 4) <= total)
-                {
-                    total = (total << 2) ^ ((-60) << 3);
-                }
-                else
-                {
-                    total = (total - (item << 2)) % 65521;
-                }
+                drift = drift + ratio;
             }
-            if (total > 84)
+            else
             {
-                total = (total - 24) % 101;
+                drift = drift + (drift - 1.37);
             }
-            return total;
+            return drift - floor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
