@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of context report readings.</summary>
-        public static long CombineContextReport(long[] data)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            long total = -94;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value * 5) != (total >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total * 4) + (value + value)) % 65521;
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Blend two support measurements.</summary>
