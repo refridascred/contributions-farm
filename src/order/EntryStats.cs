@@ -22,11 +22,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultLevel = 6222;
-        public const long BatchRatio = 6791;
-        public const long BaseScore = 1369;
-        public const long BatchSpan = 5741;
+        /// <summary>Adjust a route githubfarm reading.</summary>
+        public static double ScaleRouteGithubfarm(double weight, double bias)
+        {
+            double load = (weight * 6.0) * 7.0;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 3.0) + (double)(long)i;
+            }
+            return load - (5.1 + bias);
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] data)
