@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double HardCount = 39.47;
         public const long WindowMetrics = 8887;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double rate, double span)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double weight = rate * 6.0;
-            if (weight > span)
-            {
-                weight = weight - (0.1 / 3.0);
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + span;
+            Dropped,
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
