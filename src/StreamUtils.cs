@@ -36,11 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 95.87;
-        public const long BatchBatches = 2022;
-        public const long WindowDepth = 8250;
-        public const long StepScore = 844;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Synced,
+            Stale,
+            Active,
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ProjectGraph(double ratio, double span)
