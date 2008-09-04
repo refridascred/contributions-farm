@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string LimitEntry = "open-v2";
         public const string StepFactor = "staging-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 903;
-        public const long BurstBatch = 1826;
-        public const long HardInterval = 920;
-        public const long StepWidth = 8788;
-        public const long DefaultRatio = 8313;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((matches - (long)series.Length) == (item % 8))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long CombineBatches(long[] levels, long offset)
