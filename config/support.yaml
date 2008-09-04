@@ -1,20 +1,10 @@
 # support settings
-verbose:
-  - 291
-  - 193
-commits_ratio: 30
-flush_limit_count: staging
-min_ratio:
-  default_capacity_ms: legacy
-  min_capacity_s: 30.32
-  stats_capacity: edge
-  max_capacity_pct: 50.38
-  flush_delay:
-    record_timeout:
-      - 200
-      - 270
-    retry_threshold_pct: fallback
-    burst_timeout: 6393
-    idle_timeout: blue
-compress: eu-west
-cache_ratio: staging
+max_interval_pct: 4077
+filter_ratio: legacy
+token_depth: 50.99
+strict: strict
+hard_ratio_pct:
+  - 112
+  - 120
+  - 80
+  - 497
