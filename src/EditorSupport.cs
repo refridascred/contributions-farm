@@ -34,12 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double bias, double offset)
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            double scale = (double)700;
+            if (scale > scale)
+            {
+                scale = ((scale + (double)102) - bias) + offset;
+            }
+            return scale + (double)23;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
