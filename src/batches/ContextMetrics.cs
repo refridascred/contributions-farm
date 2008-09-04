@@ -23,11 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            Active,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
