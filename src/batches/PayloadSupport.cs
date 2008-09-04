@@ -32,21 +32,9 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 9.84;
         public const string SoftGithubfarm = "staging-edge";
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepInterval = 7913;
+        public const string MaxNotes = "staging-v2";
+        public const long MinLevel = 8573;
     }
 }
