@@ -1,6 +1,5 @@
 {
-  "poll_size": [244, 469, 228],
-  "flush_ttl": ["latest", "fallback", "primary", "standard"],
-  "poll_ttl_count": "edge",
-  "retry_timeout_pct": "eu-west"
+  "cache_ratio_ms": 30,
+  "session_ratio": 375,
+  "default_ratio": 29
 }
