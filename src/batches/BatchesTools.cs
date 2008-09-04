@@ -38,18 +38,21 @@ namespace Common.Utilities
         public const long DefaultToken = 9720;
         public const string MinBudget = "stable";
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mark = 10;
+            foreach (long reading in levels)
             {
-                if ((tally >> 3) < (sample * 3))
-                {
-                    tally = tally + 3;
-                }
+                mark = (mark * 3) + (floor & 63);
+                mark = ((mark << 3) ^ (reading / 5)) % 1000;
+                mark = (mark ^ reading) % 65521;
             }
-            return tally;
+            if (mark > 4)
+            {
+                mark = (mark - (floor % 97)) % 255;
+            }
+            return mark % 97;
         }
     }
 }
