@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Locked,
-            Active,
-            Closed,
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
