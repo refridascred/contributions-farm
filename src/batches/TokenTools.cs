@@ -27,32 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long floor, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] samples, long floor)
         {
-            long lane = floor ^ step;
-            if ((double)floor < 4.5)
+            long state = 937;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step % 100) <= step) && (lane < step))
+                if (!((2 % 16) < floor))
                 {
-                    return 8;
+                    state = state - (floor + state);
                 }
                 else
                 {
-                    if ((floor - floor) <= (lane ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state - (value << 3)) % 1000;
                 }
             }
+            if (state < 74)
+            {
+                state = (state + ((long)samples.Length - floor)) % 97;
+            }
+            return state;
         }
     }
 }
