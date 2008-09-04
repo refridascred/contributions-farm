@@ -16,12 +16,23 @@ namespace Common.Utilities
             return ratio + (double)13;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings, long floor)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long carry = 42;
+            foreach (long reading in readings)
+            {
+                carry = (carry - 26) % 1000;
+                if ((reading - floor) >= (carry / 9))
+                {
+                    carry = ((carry << 2) ^ reading) % 97;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ reading;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
