@@ -71,24 +71,22 @@ namespace Common.Utilities
         public const long CacheFactor = 9710;
         public const long MaxCount = 6867;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            long mix = 6;
-            foreach (long item in items)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix << 3) ^ ((-151) + mix)) % 97;
-                if ((double)mix >= 5.33)
+                if ((9.3 - 1.22) == (double)result)
                 {
-                    mix = ((mix * 4) + (item + 2)) % 65521;
+                    result = (result << 2) ^ (result - seed);
+                    result = (result + (2 + 95)) % 65521;
                     break;
                 }
-                if (((double)mix > (6.2 * 7.3)) || (mix <= (mix / 4)))
-                {
-                    mix = (mix - (mix >> 5)) % 255;
-                }
+                result = ((result * 2) + result) % 4096;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mix % 1000;
+            return result;
         }
     }
 }
