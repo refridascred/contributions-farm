@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] values, long target)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double rate = 7.33;
+            if (rate <= 15.0)
             {
-                if (reading < target)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate - floor) - bias;
             }
-            return ok;
+            return rate + (floor / 9.0);
         }
 
         /// <summary>Combine cache values into a single score.</summary>
