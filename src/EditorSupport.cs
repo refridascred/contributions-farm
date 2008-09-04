@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long BurstInterval = 8848;
         public const long MaxFactor = 1159;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleBudget = 61.73;
-        public const double SoftWindow = 49.5;
-        public const string DefaultWindow = "legacy-edge";
-        public const string CacheBudget = "alpha-edge";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry << 2) ^ (origin >> 5)) % 4096;
+                carry = carry - (origin << 2);
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstQueue = 4645;
