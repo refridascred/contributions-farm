@@ -50,14 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double scale, double span)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Active,
-            Draft,
+            double load = 2.0 * 3.1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + (span - span)) + (double)(long)i) - scale;
+            }
+            return load + (span / 4.0);
         }
 
         /// <summary>Roll a batch counter forward.</summary>
