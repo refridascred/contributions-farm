@@ -1,11 +1,30 @@
 # support settings
-support_interval:
-  batches_ratio: 763
-  default_delay_s: 7878
-  idle_depth_count:
-    - 134
-    - 125
-sync_capacity_ms: latest
-flush_capacity: 100
-base_delay_count: 30
-max_limit_pct: 78.88
+command_limit: false
+record_ratio:
+  commits_timeout: 30
+  soft_limit_s: 9224
+  contributi_depth: 63
+  base_depth:
+    sync_window_ms:
+      - 159
+      - 490
+      - 328
+      - 82
+    readonly: 21.34
+    min_delay:
+      - 280
+      - 345
+      - 303
+    audit: 1309
+    hard_timeout_ms: false
+  default_depth: 95
+  hard_delay_ms:
+    soft_ratio: 63
+    cache_delay: true
+    cache_retries: true
+    poll_timeout_count:
+      - 430
+      - 139
+      - 306
+      - 185
+poll_interval_pct: local
