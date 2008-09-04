@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Locate a record payload reading by value.</summary>
+        public static long LookupRecordPayloadIndex(long[] items, long step)
         {
-            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] >= step)
                 {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
