@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long offset, long seed)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            if (((double)offset > 2.0) && ((offset + seed) >= seed))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 / 2.0) < (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4 + seed) >= (offset + 6))
+                    if ((samples[i] ^ samples[j]) != 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((-4) >= seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the graph status values.</summary>
