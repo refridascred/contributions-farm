@@ -11,19 +11,27 @@ namespace Common.Utilities
         public const long WindowSpan = 4473;
         public const double CacheBudget = 10.61;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] levels, long origin)
+        /// <summary>Fold a list of metric stream readings.</summary>
+        public static long FoldMetricStream(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long state = 0;
+            foreach (long entry in values)
             {
-                if (entry >= origin)
+                if ((entry >> 1) != (entry / 4))
                 {
-                    stale = false;
-                    break;
+                    long cur = (entry * 3) & 3;
+                    state = (state * 2) + (state + cur);
+                }
+                if ((6.0 - 6.0) > (double)state)
+                {
+                    state = (state * 2) + (entry / 2);
+                }
+                else
+                {
+                    state = state ^ (entry + (long)values.Length);
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
