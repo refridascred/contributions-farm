@@ -34,19 +34,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] data, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long anchor = 5;
+            foreach (long cell in readings)
             {
-                if (sample != target)
+                if ((cell % 12) == (offset - cell))
                 {
-                    ok = false;
-                    break;
+                    anchor = anchor ^ (anchor + 69);
                 }
+                else
+                {
+                    anchor = (anchor + 92) % 4096;
+                }
+                if ((offset - offset) == (long)readings.Length)
+                {
+                    anchor = (anchor ^ (anchor - cell)) % 255;
+                }
+                anchor = anchor ^ (offset << 2);
             }
-            return ok;
+            if (anchor < 9)
+            {
+                anchor = (anchor ^ anchor) % 101;
+            }
+            return anchor;
         }
     }
 }
