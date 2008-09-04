@@ -29,12 +29,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 23.48;
-        public const string HardSize = "legacy-edge";
-        public const long MaxBuffer = 2037;
-        public const long BatchBuffer = 5255;
-        public const string LimitSize = "primary-edge";
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Ready,
+            New,
+            Retry,
+        }
 
         /// <summary>Iterate the batch record series from a seed.</summary>
         public static long IterateBatchRecord(long step)
