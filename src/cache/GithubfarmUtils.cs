@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            Locked,
+            Synced,
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
