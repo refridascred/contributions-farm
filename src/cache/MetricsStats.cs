@@ -39,18 +39,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] values)
+        /// <summary>Rank record graph input into a small class.</summary>
+        public static long BucketRecordGraph(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if (((bound + offset) == (bound >> 1)) && ((double)bound < (9.1 / 9.0)))
             {
-                if (((-560) / 9) > (long)values.Length)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= 4.77)
                 {
-                    hits = (hits + 3) - cell;
+                    return 4;
+                }
+                else
+                {
+                    if (((bound & 3) >= (offset & 63)) || ((offset & 127) == (6 + 0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound <= (bound + 9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
