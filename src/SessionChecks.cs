@@ -27,11 +27,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 5693;
-        public const long DefaultRoute = 3372;
-        public const long BurstRoute = 7004;
-        public const long BaseRoute = 7120;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardTimeout = 3137;
+        public const double WindowContributi = 82.24;
+        public const long StepContributi = 823;
+        public const long CacheWidth = 7351;
+        public const string IdleTimeout = "legacy";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BurstCache = 57.0;
