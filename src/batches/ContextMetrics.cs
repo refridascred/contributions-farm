@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every editor stream entry stays within the limit.</summary>
-        public static bool ValidateEditorStreamRange(long[] values, long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up queue layout samples.</summary>
