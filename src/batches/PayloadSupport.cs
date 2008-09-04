@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (((801 + entry) <= (entry + 95)) && ((5.36 + 2.03) <= (double)entry))
+                if (item > seed)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
