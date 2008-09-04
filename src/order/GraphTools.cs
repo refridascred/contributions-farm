@@ -53,21 +53,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = origin - target;
+            if (4.9 <= (double)origin)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((lane << 3) > (origin & 3))
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
