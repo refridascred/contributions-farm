@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] data, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long carry = 1;
+            foreach (long item in readings)
             {
-                if ((cell % 3) < (3 >> 3))
+                if (((long)readings.Length >> 3) < (carry >> 5))
                 {
-                    seen = (seen + 3) + limit;
+                    carry = ((carry + (step >> 3)) % 65521) + item;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the tools level values.</summary>
