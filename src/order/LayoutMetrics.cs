@@ -21,18 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] data, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)value == (8.0 - 2.8))
+                if ((20 / 9) == (sample + hits))
                 {
-                    count = (count + 2) + offset;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
