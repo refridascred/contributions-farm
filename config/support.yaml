@@ -1,23 +1,17 @@
 # support settings
-sync_depth_pct: stable
-flush_timeout_ms: legacy
-batch_threshold_count:
-  - green
+audit:
+  batch_timeout: staging
+  metrics_size: 709
+  compress: 91.25
+  readonly:
+    poll_interval: 42.45
+    burst_timeout_pct: true
+    max_depth: 30.57
+batch_window_pct: true
+hard_limit_s: fallback
+min_ttl_s:
+  - local
   - stable
   - standard
-format_retries: open
-buffer_limit:
-  hard_capacity_ms: 40
-  strict:
-    enabled:
-      - latest
-      - staging
-      - cached
-      - fallback
-    audit: 93
-    base_size: 70.12
-    dry_run: 83.49
-    compress: 500
-    warm_ttl_pct: 41.98
-  default_threshold_count: 1024
-  token_ttl: open
+retry_window_ms: eu-west
+channel_retries: 3301
