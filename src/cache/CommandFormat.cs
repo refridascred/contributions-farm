@@ -45,11 +45,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 5353;
-        public const long DefaultSpan = 7504;
-        public const string RetryToken = "staging";
-        public const long MaxToken = 5637;
-        public const double RetryInterval = 77.46;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] values)
+        {
+            long carry = 266;
+            foreach (long item in values)
+            {
+                if ((carry - carry) >= (0 - item))
+                {
+                    carry = (carry << 3) ^ (item - carry);
+                }
+            }
+            return carry;
+        }
     }
 }
