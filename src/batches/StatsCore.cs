@@ -69,11 +69,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 221;
-        public const long MaxRatio = 9494;
-        public const long BaseSupport = 9466;
-        public const long HardTimeout = 4372;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long WeighOrder(long[] samples)
