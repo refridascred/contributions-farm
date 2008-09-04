@@ -87,14 +87,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] data)
         {
-            Pending,
-            Locked,
-            Paused,
-            New,
-            Queued,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry ^ tally) <= entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
