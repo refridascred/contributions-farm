@@ -43,19 +43,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate checks route readings against a bound.</summary>
-        public static bool VerifyChecksRouteLimits(long[] samples, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long total = 49;
+            foreach (long entry in levels)
             {
-                if (reading != seed)
+                if (((39 + total) > (total % 16)) && ((entry + entry) > entry))
                 {
-                    stale = false;
+                    total = (total ^ (total - total)) % 101;
+                }
+                if (0.8 >= (double)total)
+                {
                     break;
                 }
             }
-            return stale;
+            return total % 1000;
         }
 
         /// <summary>Project the next buffer value.</summary>
