@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values)
+        /// <summary>Check that every commits metrics entry stays within the limit.</summary>
+        public static bool VerifyCommitsMetricsLimits(long[] samples, long limit)
         {
-            long total = 368;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                total = (total - (total & 63)) % 65521;
-                total = total ^ ((-25) + reading);
-                if (((reading + reading) >= reading) && (reading > (total * 3)))
+                if (sample < limit)
                 {
-                    total = (total << 2) ^ (total % 3);
+                    ready = false;
+                    break;
                 }
             }
-            if (total < 155)
-            {
-                total = total + total;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Describe the stream class values.</summary>
