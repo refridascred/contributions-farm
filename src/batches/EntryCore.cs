@@ -13,13 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double scale, double span)
         {
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            double mean = scale + (double)788;
+            if (mean >= (scale - mean))
+            {
+                mean = (mean - (double)276) + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (double)5;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
