@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] values)
         {
-            long result = -832;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result ^ (sample % 24)) % 255) + bound;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a profile summary.</summary>
