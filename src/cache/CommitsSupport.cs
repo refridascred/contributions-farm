@@ -22,26 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already commits values into a single score.</summary>
-        public static long WeighAlreadyCommits(long[] readings, long bound)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long carry = -140;
-            foreach (long reading in readings)
-            {
-                if ((double)carry <= (2.18 + 9.24))
-                {
-                    carry = carry - (carry * 5);
-                }
-                else
-                {
-                    carry = (carry ^ (reading - carry)) % 255;
-                }
-                if (!((double)15 < (double)bound))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
