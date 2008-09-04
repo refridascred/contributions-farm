@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const long HardCache = 8644;
         public const string SoftCache = "local-v2";
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double gain, double floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long limit)
         {
-            double scale = floor;
-            if (scale >= 8.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - (floor + gain);
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (floor + scale);
-            }
-            return scale - (scale / 5.0);
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
