@@ -71,10 +71,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 6998;
-        public const string BurstFactor = "strict-v2";
-        public const long BurstCounter = 3496;
-        public const long SoftTimeout = 4759;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((6.28 / 9.0) == (double)reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
