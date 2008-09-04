@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double bias, double floor)
-        {
-            double mean = 9.0;
-            if (mean < mean)
-            {
-                mean = mean + bias;
-            }
-            else
-            {
-                mean = mean - floor;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowCount = 4628;
+        public const double IdleSize = 48.53;
+        public const long MaxEditor = 5297;
+        public const long HardEditor = 1977;
+        public const double BaseEditor = 5.76;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
