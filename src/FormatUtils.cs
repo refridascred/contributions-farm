@@ -49,11 +49,13 @@ namespace Common.Utilities
             return gain + (double)66;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
