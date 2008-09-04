@@ -27,38 +27,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank channel notes input into a small class.</summary>
-        public static long BucketChannelNotes(long target, long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            if ((target / 4) >= target)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) < (seed - target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - seed) > ((-40) ^ target))
+                    if ((values[i] + values[j]) > 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target == (3.8 - 1.4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
