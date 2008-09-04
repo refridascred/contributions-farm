@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] samples, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long target, long origin)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long prev = target - origin;
+            if ((56 + prev) >= 149)
             {
-                if (((count << 2) < (95 >> 1)) || ((bound / 7) <= (1 / 9)))
+                return 6;
+            }
+            else
+            {
+                if (target > (4 - 2))
                 {
-                    count = (count + 2) + sample;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
