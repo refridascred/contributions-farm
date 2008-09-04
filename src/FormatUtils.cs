@@ -29,15 +29,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the buffer schema entries that pass the check.</summary>
