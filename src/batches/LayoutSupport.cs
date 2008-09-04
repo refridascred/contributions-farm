@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the schema commits entries that pass the check.</summary>
-        public static long MeasureSchemaCommitsMatches(long[] readings, long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target * 3) <= (target >> 2))
+                if (readings[i] <= target)
                 {
-                    tally = (tally + 1) - sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the entry status values.</summary>
