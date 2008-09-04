@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 3368;
-        public const long LimitWidth = 1702;
-        public const double SoftBudget = 6.08;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepTimeout = 7276;
