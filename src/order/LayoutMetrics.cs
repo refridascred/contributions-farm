@@ -44,15 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] data, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((double)value == (8.0 - 2.8))
+                {
+                    count = (count + 2) + offset;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
