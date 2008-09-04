@@ -23,13 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate support counter samples.</summary>
+        public static long CombineSupportCounter(long[] samples, long offset)
         {
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long carry = 92;
+            foreach (long reading in samples)
+            {
+                carry = ((carry - (reading << 2)) % 65521) + offset;
+            }
+            if (carry < 733)
+            {
+                carry = ((carry * 5) + carry) % 4096;
+            }
+            return carry % 97;
         }
     }
 }
