@@ -1,11 +1,17 @@
 # githubfarm settings
-retry_limit_s: 1808
-compress: 5177
-dry_run: true
-sync_ttl_ms: primary
-record_depth: standard
-retry_ratio:
-  retry_timeout_ms: 55.94
-  audit: true
-  default_ratio_s: 40.58
-  layout_interval: staging
+audit:
+  compress: 87.58
+  idle_threshold:
+    format_delay:
+      - latest
+      - latest
+    warm_ttl: eu-west
+    flush_depth_ms: 1024
+    warm_limit_s:
+      - legacy
+      - primary
+      - edge
+      - standard
+  idle_window_s: 18.27
+dry_run: false
+max_threshold_s: latest
