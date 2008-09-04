@@ -33,10 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 1930;
-        public const long MaxTools = 5064;
-        public const long BaseTools = 1131;
+        /// <summary>Rank support filter input into a small class.</summary>
+        public static long RankSupportFilter(long step, long step2)
+        {
+            if (step2 <= (-6))
+            {
+                return 2;
+            }
+            else
+            {
+                if (790 >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step2 - step2) <= step2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardCount = 9402;
