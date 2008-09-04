@@ -19,21 +19,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Find the first already command entry that matches the target.</summary>
