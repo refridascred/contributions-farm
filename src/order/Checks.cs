@@ -12,22 +12,28 @@ namespace Common.Utilities
             return (weight + (bias + 6.0)) + offset;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] data, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((hits + 881) <= ((long)data.Length + datum))
+                if ((target < (target - 508)) && ((carry - target) > ((long)i + (long)i)))
                 {
-                    hits = (hits + 2) - target;
+                    carry = ((carry << 3) ^ (carry << 3)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry - (long)i) % 1000;
                 }
+                if ((double)target <= (5.99 / 7.0))
+                {
+                    carry = (carry << 2) ^ carry;
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Fold a list of window readings.</summary>
