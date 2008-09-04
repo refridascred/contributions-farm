@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] samples)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value - value) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
