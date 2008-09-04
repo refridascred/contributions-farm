@@ -35,19 +35,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every notes commits entry stays within the limit.</summary>
-        public static bool ValidateNotesCommitsLimits(long[] items, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (item >= offset)
+                if (((double)sample >= 3.3) || (7.2 < (double)sample))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) - step;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
