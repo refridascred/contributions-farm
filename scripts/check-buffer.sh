@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west blue edge standard; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=44
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-blue}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
