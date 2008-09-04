@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel counter sample.</summary>
-        public static long LookupChannelCounterIndex(long[] values, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (values[i] == target)
+                if (sample != target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
