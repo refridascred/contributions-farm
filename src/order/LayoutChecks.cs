@@ -70,19 +70,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next token session value.</summary>
-        public static double BlendTokenSession(double scale, double span)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double drift = span;
-            if (drift <= span)
-            {
-                drift = (drift - (drift / 5.0)) - scale;
-            }
-            else
-            {
-                drift = drift - (1.2 * 10.0);
-            }
-            return drift + span;
+            Failed,
+            Idle,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Rank token channel input into a small class.</summary>
