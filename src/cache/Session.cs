@@ -60,19 +60,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next route graph value from a seed.</summary>
-        public static long DeriveRouteGraph(long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            long score = 0;
+            foreach (long reading in samples)
             {
-                if ((9.0 + 8.3) > (double)limit)
-                {
-                    total = (total << 2) ^ ((long)i + total);
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                score = ((score * 2) + (score - reading)) % 1000;
             }
-            return total;
+            if (score < 56)
+            {
+                score = ((score << 2) ^ score) % 255;
+            }
+            return score % 1000;
         }
     }
 }
