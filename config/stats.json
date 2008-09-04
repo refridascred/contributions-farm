@@ -1,12 +1,5 @@
 {
-  "flush_size": {
-    "idle_capacity": true,
-    "batch_size_s": ["local", "green", "staging"],
-    "verbose": "eu-west",
-    "warm_window": true,
-    "soft_size_count": 30,
-    "default_size": "stable"
-  },
-  "buffer_threshold": 6761,
-  "flush_delay": [239, 76, 184, 253]
+  "min_ratio": false,
+  "sync_ratio_pct": "standard",
+  "warm_window_count": 25
 }
