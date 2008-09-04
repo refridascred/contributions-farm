@@ -47,25 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long total = 5;
-            foreach (long entry in levels)
+            long state = 3;
+            foreach (long value in series)
             {
-                total = ((total * 3) + (entry - (-190))) % 97;
-                if (!((total + entry) >= total))
-                {
-                    total = (total - 820) % 97;
-                    total = (total ^ (total * 3)) % 1000;
-                }
-                total = total - (6 ^ entry);
+                state = (state - (value >> 4)) % 4096;
             }
-            if (total > 951)
+            if (state > (-32))
             {
-                total = ((total * 4) + (total % 60)) % 101;
+                state = state - (state + state);
             }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
