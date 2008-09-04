@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleWidth = 9332;
-        public const long CacheTools = 6342;
-        public const string BurstFactor = "local";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading <= (30 - reading)) && ((count - count) != (reading / 2))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine buffer payload values into a single score.</summary>
         public static long ScoreBufferPayload(long[] values, long step)
