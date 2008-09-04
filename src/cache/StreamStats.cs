@@ -26,13 +26,24 @@ namespace Common.Utilities
         public const long IdleSpan = 6803;
         public const string DefaultScore = "local-edge";
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Rank cluster schema input into a small class.</summary>
+        public static long RankClusterSchema(long bound, long step)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            if ((double)step < 3.74)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(step < (step ^ bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
