@@ -31,15 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double gain, double span)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            double weight = span;
-            if (weight >= gain)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + (gain * 13.0);
+            return tally;
         }
     }
 }
