@@ -1,13 +1,17 @@
 # support settings
-batch_capacity_s:
-  - 264
-  - 260
-tools_ratio:
-  - 302
-  - 393
-checks_depth: 6223
-cache_ratio_pct:
-  - 331
-  - 264
-  - 252
-  - 198
+compress: 72
+verbose:
+  cache_limit:
+    - 360
+    - 342
+  editor_limit: 100
+  default_limit_pct: 73
+  hard_window_s: staging
+  default_delay:
+    - strict
+    - edge
+  payload_window: 1.7
+filter_threshold: 8207
+flush_ratio:
+  - fallback
+  - open
