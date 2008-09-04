@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long BatchLevel = 3309;
         public const long MinAccount = 9022;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 4855;
-        public const double StepBudget = 11.82;
-        public const long DefaultTimeout = 3575;
-        public const long WindowSize = 6883;
-        public const long WindowTimeout = 8556;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] series)
