@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
+            Draft,
             Retry,
+            Ready,
             Failed,
-            New,
+            Synced,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
