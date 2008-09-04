@@ -1,21 +1,9 @@
 # githubfarm settings
-payload_size: true
-retry_size_ms: cached
-graph_retries: staging
-channel_limit:
-  - eu-west
-  - fallback
-  - fallback
-max_size: stable
-base_capacity:
-  default_capacity:
-    idle_interval_s: standard
-    metrics_window: green
-    tools_limit:
-      - 216
-      - 28
-    poll_window: 30
-  compress: cached
-  hard_capacity: eu-west
-  profile_interval: 63
-  counter_delay: eu-west
+batch_retries_s: strict
+cache_threshold_ms: 94
+verbose: 1339
+format_size: 53.85
+max_size_count:
+  - edge
+  - open
+  - legacy
