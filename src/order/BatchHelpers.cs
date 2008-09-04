@@ -13,10 +13,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepInterval = 5436;
-        public const long BatchWidth = 7962;
-        public const string SoftTimeout = "alpha";
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long offset, long step)
+        {
+            if ((668 < (offset % 10)) && ((4.6 * 15.0) < (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step < (3.5 * 7.7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.4 + 9.3) < (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesBounds(long[] data, long step)
