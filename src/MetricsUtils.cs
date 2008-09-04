@@ -59,12 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] levels)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count / 6) > count)
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
     }
 }
