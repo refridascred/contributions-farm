@@ -1,17 +1,25 @@
 # support settings
-compress: 72
-verbose:
-  cache_limit:
-    - 360
-    - 342
-  editor_limit: 100
-  default_limit_pct: 73
-  hard_window_s: staging
-  default_delay:
+metric_timeout:
+  - 410
+  - 335
+  - 279
+  - 392
+session_retries:
+  max_threshold: 250
+  soft_interval: 96.01
+  idle_interval_ms:
+    - 449
+    - 340
+base_delay_s: 58
+command_retries: edge
+cache_size: standard
+burst_threshold_s:
+  already_retries: false
+  warm_delay:
+    - fallback
     - strict
-    - edge
-  payload_window: 1.7
-filter_threshold: 8207
-flush_ratio:
-  - fallback
-  - open
+    - stable
+    - open
+  already_delay: 105
+  payload_retries: false
+  sync_limit: true
