@@ -45,14 +45,18 @@ namespace Common.Utilities
             return (drift - bias2) + bias;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] items, long seed)
         {
-            Pending,
-            Stale,
-            Idle,
-            Draft,
-            Synced,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (seed < (hits >> 4))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
