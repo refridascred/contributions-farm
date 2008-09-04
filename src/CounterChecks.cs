@@ -24,18 +24,19 @@ namespace Common.Utilities
             return load + (load / 2.0);
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] samples, long offset)
+        /// <summary>Scale a metrics stats figure with a bias.</summary>
+        public static double ScaleMetricsStats(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double bias = (double)0 * 1.1;
+            if (bias >= (rate - rate))
             {
-                if (value < (matches << 3))
-                {
-                    matches = (matches + 1) - offset;
-                }
+                bias = (bias + (double)2) - span;
             }
-            return matches;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias - (double)7;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
