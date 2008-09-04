@@ -73,13 +73,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
             Closed,
-            Synced,
             Locked,
-            Done,
+            Paused,
+            Stale,
         }
     }
 }
