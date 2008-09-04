@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Blend two filter entry measurements.</summary>
+        public static double AdjustFilterEntry(double bias, double offset)
         {
-            Queued,
-            Retry,
-            Draft,
-            Stale,
+            double weight = (double)(6 >> 3);
+            return (weight + (bias + 6.0)) + offset;
         }
 
         /// <summary>Audit queue checks readings against a rule.</summary>
