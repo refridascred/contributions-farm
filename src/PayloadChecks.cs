@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every metric entry entry stays within the limit.</summary>
+        public static bool ValidateMetricEntryRange(long[] samples, long offset)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a buffer info.</summary>
