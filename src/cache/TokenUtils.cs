@@ -37,12 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
