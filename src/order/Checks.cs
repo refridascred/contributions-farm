@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSize = 8745;
-        public const long MaxFilter = 1810;
-        public const long HardCount = 6322;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate token session readings against a bound.</summary>
         public static bool ValidateTokenSessionLimits(long[] readings, long target)
