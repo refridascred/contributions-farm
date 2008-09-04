@@ -34,9 +34,13 @@ namespace Common.Utilities
         public const long CacheWidth = 7351;
         public const string IdleTimeout = "legacy";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 57.0;
-        public const long MaxLevel = 6042;
-        public const double MinCache = 67.46;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
