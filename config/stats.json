@@ -1,7 +1,20 @@
 {
-  "audit": true,
-  "batch_timeout": 6098,
-  "retry_size_ms": 4171,
-  "default_limit": "staging",
-  "default_threshold_pct": 82.75
+  "max_threshold_count": false,
+  "retry_threshold_count": "green",
+  "soft_limit_pct": 33.84,
+  "soft_size": {
+    "contributi_threshold": {
+      "max_ratio": 250,
+      "flush_delay_pct": "standard",
+      "audit": ["primary", "open", "stable", "open"],
+      "sync_ratio_s": 89,
+      "hard_ratio": false
+    },
+    "metric_ttl": 500,
+    "compress": "open",
+    "enabled": false,
+    "verbose": 4212
+  },
+  "warm_timeout_count": "strict",
+  "notes_interval": [359, 281]
 }
