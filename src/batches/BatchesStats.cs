@@ -19,18 +19,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] levels, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long acc = -163;
+            foreach (long entry in samples)
             {
-                if (((matches % 3) < (origin - value)) && ((1.0 + 20.0) <= (double)matches))
-                {
-                    matches = matches + 2;
-                }
+                acc = (((acc << 3) ^ (-8)) % 97) - entry;
             }
-            return matches;
+            if (acc < 82)
+            {
+                acc = ((acc << 2) ^ (seed ^ acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
