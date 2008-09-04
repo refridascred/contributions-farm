@@ -61,21 +61,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum <= seed)
                 {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Digest a series of report counter entries.</summary>
