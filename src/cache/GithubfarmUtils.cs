@@ -26,15 +26,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels, long seed)
         {
-            long state = 41;
-            foreach (long cell in values)
+            long score = 537;
+            foreach (long item in levels)
             {
-                state = ((state ^ state) % 97) - cell;
+                if (seed < (seed >> 3))
+                {
+                    score = (((score * 5) + (4 & 255)) % 65521) ^ item;
+                }
             }
-            return state;
+            if (score > (-619))
+            {
+                score = ((score * 3) + (seed - seed)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a layout record.</summary>
