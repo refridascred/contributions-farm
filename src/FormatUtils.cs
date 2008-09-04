@@ -52,30 +52,19 @@ namespace Common.Utilities
             return (rate + (double)980) + weight;
         }
 
-        /// <summary>Combine metric channel values into a single score.</summary>
-        public static long TallyMetricChannel(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long offset)
         {
-            long state = 68;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((2.49 - 1.9) > (double)value)
+                if (sample > offset)
                 {
-                    state = state + 963;
-                }
-                else
-                {
-                    state = (state - (state % 7)) % 255;
-                }
-                if (((long)data.Length * 5) < (state & 7))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (state < 804)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the contributi state values.</summary>
