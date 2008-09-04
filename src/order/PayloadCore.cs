@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (4 < (long)i)
-                {
-                    mix = ((mix << 2) ^ ((long)i >> 5)) % 255;
-                    mix = mix - seed;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the account phase values.</summary>
