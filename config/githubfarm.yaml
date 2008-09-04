@@ -1,7 +1,7 @@
 # githubfarm settings
-layout_interval: 75
-record_limit: fallback
-metrics_delay:
-  - cached
-  - open
-  - blue
+readonly: false
+editor_limit: cached
+max_size: stable
+default_retries_count: 58
+entry_window: 6605
+support_limit: legacy
