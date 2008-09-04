@@ -43,18 +43,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] samples)
+        /// <summary>Locate a graph buffer reading by value.</summary>
+        public static long SeekGraphBufferIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.0 + 4.95) == (double)value)
+                if (items[i] <= seed)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
