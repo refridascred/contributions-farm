@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((10.0 * 6.0) <= (double)matches)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 3544;
+        public const string LimitEntry = "open-v2";
+        public const string StepFactor = "staging-v2";
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
