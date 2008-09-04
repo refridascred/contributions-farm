@@ -1,6 +1,10 @@
 {
-  "strict": false,
-  "contributi_delay": 31.46,
-  "token_ratio": true,
-  "persist": 100
+  "max_depth_s": "fallback",
+  "farm_ttl": "stable",
+  "audit": true,
+  "default_interval_s": {
+    "support_threshold": 500,
+    "flush_depth_s": "local",
+    "verbose": "blue"
+  }
 }
