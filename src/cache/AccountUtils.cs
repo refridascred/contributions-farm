@@ -40,22 +40,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double ratio, double offset)
         {
-            long anchor = 398;
-            foreach (long entry in values)
+            double bias = (double)(-350);
+            if (bias <= (ratio * 4.0))
             {
-                if (((anchor - (long)values.Length) <= anchor) && (anchor <= (entry % 24)))
-                {
-                    anchor = (anchor - (entry - anchor)) % 4096;
-                }
+                bias = bias - (offset * 1.7);
             }
-            if (anchor < 62)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 255;
-            }
-            return anchor % 97;
+            return bias + (offset * 7.7);
         }
     }
 }
