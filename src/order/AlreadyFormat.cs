@@ -59,11 +59,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long limit, long target)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            if (target > (76 & 31))
+            {
+                return 2;
+            }
+            else
+            {
+                if (0.84 <= (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((10.0 / 2.0) <= (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
