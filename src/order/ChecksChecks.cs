@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string LimitEntry = "open-v2";
         public const string StepFactor = "staging-v2";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] series, long origin)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches - (long)series.Length) == (item % 8))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
