@@ -36,17 +36,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                score = (score + (score + (long)i)) % 255;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
