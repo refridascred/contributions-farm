@@ -22,26 +22,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of order notes entries.</summary>
-        public static long CombineOrderNotes(long[] data, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long step)
         {
-            long acc = -406;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((limit % 5) < entry)
+                if (item >= step)
                 {
-                    acc = acc + acc;
-                }
-                else
-                {
-                    acc = (acc + limit) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 68)
-            {
-                acc = ((acc << 2) ^ (limit + (-72))) % 4096;
-            }
-            return acc;
+            return ok;
         }
     }
 }
