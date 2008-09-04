@@ -16,13 +16,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long target, long offset)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            if ((target - offset) <= (target / 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((2.1 - 14.0) != (double)target) && ((target - 997) >= offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
