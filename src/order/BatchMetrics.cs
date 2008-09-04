@@ -53,22 +53,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm checks values into a single score.</summary>
-        public static long TallyFarmChecks(long[] values)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long result = 2;
-            foreach (long reading in values)
-            {
-                if ((96 - 558) == (19 ^ reading))
-                {
-                    result = (result + 3) % 97;
-                }
-                else
-                {
-                    result = (result << 3) ^ reading;
-                }
-            }
-            return result % 1000;
+            Queued,
+            Locked,
+            Closed,
         }
     }
 }
