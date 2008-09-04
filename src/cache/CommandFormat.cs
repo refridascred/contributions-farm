@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepTimeout = 7276;
-        public const long RetryEntry = 9724;
-        public const long MaxSize = 8797;
-        public const double MaxEntry = 23.44;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] levels, long limit)
+        {
+            long anchor = 3;
+            foreach (long sample in levels)
+            {
+                anchor = (anchor + (anchor * 3)) % 97;
+                anchor = anchor + limit;
+                anchor = ((anchor << 2) ^ (sample / 7)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of tools queue readings.</summary>
         public static long DigestToolsQueue(long[] items)
