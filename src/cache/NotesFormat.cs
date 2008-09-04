@@ -48,15 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats metric reading.</summary>
-        public static double SmoothStatsMetric(double bias, double offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double scale = 8.9;
-            if (scale > (double)7)
-            {
-                scale = (scale - offset) - bias;
-            }
-            return scale - offset;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
