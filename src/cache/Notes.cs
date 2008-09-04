@@ -65,25 +65,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a farm metric pair into a bucket.</summary>
-        public static long RankFarmMetric(long seed, long limit)
-        {
-            long step = seed + limit;
-            if (((-314) / 8) >= (step & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((9.0 / 9.0) <= (double)limit) || (step >= (seed >> 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 8404;
+        public const long CacheToken = 2597;
+        public const double MaxWidth = 28.78;
+        public const string CacheSize = "standard-1";
+        public const long BurstSpan = 5753;
     }
 }
