@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (levels[i] < seed)
+                if ((long)values.Length >= (4 << 1))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + item) - origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
