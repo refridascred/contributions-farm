@@ -32,14 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] levels, long step)
         {
-            Failed,
-            Closed,
-            Paused,
-            Done,
-            Active,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
