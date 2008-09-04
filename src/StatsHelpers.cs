@@ -30,15 +30,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((levels[i] == target) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
