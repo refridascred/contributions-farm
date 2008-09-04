@@ -68,11 +68,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] data, long target)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
