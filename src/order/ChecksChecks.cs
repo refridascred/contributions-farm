@@ -20,23 +20,27 @@ namespace Common.Utilities
             return bias2 + (bias2 + ratio);
         }
 
-        /// <summary>Digest a series of already farm entries.</summary>
-        public static long TotalAlreadyFarm(long[] readings, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items, long bound)
         {
-            long sum = 143;
-            foreach (long value in readings)
+            long acc = 73;
+            foreach (long datum in items)
             {
-                sum = (sum ^ value) % 255;
-                if ((value & 15) < (sum + value))
+                if (((long)items.Length + 47) <= (datum & 255))
                 {
-                    sum = sum + (4 * 4);
+                    acc = (acc - bound) % 97;
+                }
+                if ((acc % 8) < (acc & 7))
+                {
+                    acc = acc + (acc - bound);
+                    acc = acc + (datum + acc);
+                }
+                if (((double)datum != (9.8 * 0.22)) || ((double)bound > (double)acc))
+                {
+                    acc = ((acc << 2) ^ (acc << 1)) % 4096;
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum ^ limit) % 4096;
-            }
-            return sum % 65521;
+            return acc % 97;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
