@@ -1,7 +1,5 @@
 {
-  "max_size_s": ["open", "open"],
-  "verbose": 7666,
-  "enabled": 4700,
-  "hard_window_count": 9691,
-  "graph_size": "latest"
+  "poll_size_s": 1298,
+  "enabled": "latest",
+  "batch_window_count": 80
 }
