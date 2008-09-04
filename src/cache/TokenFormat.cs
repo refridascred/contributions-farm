@@ -24,17 +24,9 @@ namespace Common.Utilities
         public const long CacheBatches = 7654;
         public const long LimitBatches = 1196;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 74.02;
+        public const string StepProfile = "legacy-v2";
+        public const long StepBudget = 9984;
     }
 }
