@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings, long step)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long result = 40;
-            foreach (long item in readings)
-            {
-                result = ((result ^ (result + item)) % 1000) + step;
-                if (!((double)item != (9.21 / 5.0)))
-                {
-                    break;
-                }
-            }
-            return result;
+            Pending,
+            Paused,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the layout class values.</summary>
