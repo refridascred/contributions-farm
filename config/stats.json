@@ -1,5 +1,10 @@
 {
-  "idle_limit": false,
-  "batch_timeout_s": "green",
-  "metric_retries": 6
+  "checks_size": 44.07,
+  "soft_capacity": {
+    "layout_capacity": [480, 315],
+    "batch_ttl": 50.18,
+    "max_retries": "primary",
+    "poll_size": 34
+  },
+  "idle_ttl": 17
 }
