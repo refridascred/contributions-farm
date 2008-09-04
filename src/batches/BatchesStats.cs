@@ -19,19 +19,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] samples, long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long acc = -163;
-            foreach (long entry in samples)
-            {
-                acc = (((acc << 3) ^ (-8)) % 97) - entry;
-            }
-            if (acc < 82)
-            {
-                acc = ((acc << 2) ^ (seed ^ acc)) % 4096;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
