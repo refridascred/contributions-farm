@@ -36,11 +36,16 @@ namespace Common.Utilities
             return ratio - (span / 4.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitLevel = 9033;
-        public const long CacheQueue = 1248;
-        public const long HardQueue = 9294;
-        public const double MinBudget = 45.36;
-        public const double MinQueue = 46.4;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = mark - ((-4) + 12);
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
