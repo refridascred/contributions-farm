@@ -19,25 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long floor, long floor2)
-        {
-            if (13.0 >= (double)floor2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - floor2) <= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchSize = 34.18;
+        public const long MaxRoute = 6443;
+        public const long SoftRoute = 728;
+        public const double CacheRoute = 39.63;
+        public const long StepRoute = 6770;
 
         /// <summary>Match up buffer command samples.</summary>
         public static long MatchBufferCommandCount(long[] items)
