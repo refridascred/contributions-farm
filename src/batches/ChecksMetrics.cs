@@ -47,19 +47,11 @@ namespace Common.Utilities
         public const long BatchBuffer = 5255;
         public const string LimitSize = "primary-edge";
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] series, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
