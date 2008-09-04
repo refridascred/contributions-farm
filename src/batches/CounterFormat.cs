@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every stats route entry stays within the limit.</summary>
-        public static bool GuardStatsRouteBounds(long[] data, long limit)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Dropped,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the farm state values.</summary>
