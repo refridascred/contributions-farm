@@ -1,7 +1,5 @@
 {
-  "base_limit": "green",
-  "compress": 85.15,
-  "idle_window_pct": 32,
-  "enabled": 8257,
-  "support_ttl": 4829
+  "format_ttl": 1024,
+  "base_window_pct": 97.07,
+  "sync_capacity": 4937
 }
