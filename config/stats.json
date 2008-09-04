@@ -1,8 +1,15 @@
 {
-  "readonly": ["local", "standard", "edge", "open"],
-  "sync_retries_pct": "standard",
-  "base_size_count": "standard",
-  "cache_ratio_s": [349, 241, 225, 461],
-  "sync_delay_s": true,
-  "min_size": 41
+  "audit": false,
+  "compress": {
+    "warm_delay_s": ["latest", "eu-west"],
+    "channel_depth": 3218,
+    "min_ratio": 31.87,
+    "base_ttl_ms": "local",
+    "graph_interval": "eu-west",
+    "graph_ratio": 98
+  },
+  "cache_window": [316, 371, 315, 59],
+  "warm_limit_count": true,
+  "warm_size": 38,
+  "sync_depth": ["eu-west", "standard", "legacy"]
 }
