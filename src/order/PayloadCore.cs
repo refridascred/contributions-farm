@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long limit, long limit2)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels, long target)
         {
-            long span = limit + limit2;
-            if ((double)span == (15.0 - 3.0))
+            long total = -5;
+            foreach (long value in levels)
             {
-                return 7;
+                total = ((total + (total - 8)) ^ value) - target;
             }
-            else
-            {
-                if ((span + 49) >= (12 + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit2 * 4) >= limit2) && ((6.28 / 6.0) <= (double)limit2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((limit2 + limit) == (limit * 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total % 65521;
         }
 
         /// <summary>Describe the order class values.</summary>
