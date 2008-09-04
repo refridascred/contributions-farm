@@ -20,18 +20,14 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] data, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((19.0 / 5.0) < (double)step)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the batch phase values.</summary>
