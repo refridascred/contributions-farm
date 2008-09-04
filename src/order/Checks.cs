@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate token session readings against a bound.</summary>
-        public static bool ValidateTokenSessionLimits(long[] readings, long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= target)
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
