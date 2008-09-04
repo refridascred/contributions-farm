@@ -39,18 +39,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] items)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry >> 3) > (seen + entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
