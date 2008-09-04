@@ -14,23 +14,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate already metrics samples.</summary>
-        public static long TallyAlreadyMetrics(long[] values)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long score = 43;
-            foreach (long datum in values)
-            {
-                score = (score << 3) ^ (689 & 255);
-                if ((datum & 63) <= datum)
-                {
-                    score = (score << 2) ^ (score / 4);
-                }
-                if (((score + score) >= (datum + (-7))) && (0.71 < (double)score))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Idle,
+            Synced,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
