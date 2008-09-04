@@ -53,16 +53,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next already channel value from a seed.</summary>
-        public static long RollAlreadyChannel(long seed)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double rate, double floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            double bias = (double)12 - (double)146;
+            if (bias < bias)
             {
-                anchor = anchor - (anchor - seed);
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                bias = bias + floor;
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + floor) - (double)(long)i;
+            }
+            return bias + (rate + floor);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
