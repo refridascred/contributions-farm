@@ -51,18 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm payload samples.</summary>
-        public static long TotalFarmPayload(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] samples, long seed)
         {
-            long mix = 85;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((mix - reading) <= (reading ^ mix))
+                if (((seed - 8) < count) && (((long)samples.Length - count) != (datum - datum)))
                 {
-                    mix = ((mix << 3) ^ (reading >> 5)) % 255;
+                    count = count + 1;
                 }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Match up entry samples.</summary>
