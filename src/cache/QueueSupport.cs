@@ -36,13 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
