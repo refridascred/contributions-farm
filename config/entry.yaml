@@ -1,42 +1,4 @@
 # entry settings
-idle_capacity:
-  idle_size: false
-  persist: legacy
-  token_depth: primary
-  burst_delay:
-    idle_ratio_count: 6979
-    support_interval: open
-    verbose:
-      - 226
-      - 260
-      - 115
-    report_retries: open
-    persist: 1024
-    max_timeout_s: 250
-default_ttl:
-  format_retries:
-    - primary
-    - primary
-  poll_ratio_count:
-    - 183
-    - 318
-    - 358
-    - 304
-  retry_size_s: legacy
-  max_ratio: 86.68
-  sync_window: cached
-githubfarm_timeout:
-  tools_interval: staging
-  compress:
-    githubfarm_capacity: 62.32
-    hard_ttl_ms: 88
-    sync_depth:
-      - green
-      - eu-west
-      - staging
-    verbose: 39.64
-    retry_ttl_pct: 14.31
-  base_window_pct: 6952
-  flush_interval_count: 9889
-  entry_delay: local
-  verbose: 250
+filter_delay: false
+compress: blue
+cache_retries: 38.29
