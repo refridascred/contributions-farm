@@ -39,22 +39,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of buffer cluster entries.</summary>
-        public static long TallyBufferCluster(long[] data)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = 507;
-            foreach (long sample in data)
-            {
-                if (((long)data.Length % 16) < (28 / 6))
-                {
-                    sum = sum ^ (sample & 31);
-                }
-                else
-                {
-                    sum = (sum ^ (sum % 10)) % 1000;
-                }
-            }
-            return sum;
+            public double Level { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
