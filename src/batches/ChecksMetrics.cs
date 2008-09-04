@@ -81,13 +81,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Retry,
-            Dropped,
-            New,
-            Closed,
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
     }
 }
