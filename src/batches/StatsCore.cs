@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double gain, double bias)
         {
-            New,
-            Draft,
-            Done,
-            Idle,
+            double rate = (double)(86 + 92);
+            return ((rate - (double)631) + gain) + bias;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
