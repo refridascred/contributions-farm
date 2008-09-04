@@ -39,23 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long score = 0;
-            foreach (long item in readings)
-            {
-                score = (score ^ score) % 255;
-                if ((score << 3) <= (score + item))
-                {
-                    score = score + score;
-                }
-            }
-            if (score < 75)
-            {
-                score = (score ^ score) % 1000;
-            }
-            return score % 4096;
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
