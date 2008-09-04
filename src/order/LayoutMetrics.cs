@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Active,
-            Done,
-            New,
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
