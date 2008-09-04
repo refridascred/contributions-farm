@@ -43,22 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] values, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = 586;
-            foreach (long datum in values)
-            {
-                if ((limit + (-3)) <= 989)
-                {
-                    anchor = anchor + (305 + datum);
-                }
-                if (((58 - datum) >= anchor) && ((double)anchor == (16.0 * 18.0)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            New,
+            Paused,
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
