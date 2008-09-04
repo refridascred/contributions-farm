@@ -33,21 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((((long)i - (long)i) >= ((long)i + floor)) || ((floor ^ floor) > ((long)i + (-51))))
-                {
-                    carry = (carry - (floor + floor)) % 101;
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxScore = "open-1";
+        public const long StepLevel = 8444;
+        public const double MinQueue = 19.05;
 
         /// <summary>Derive the next order metric value from a seed.</summary>
         public static long StepOrderMetric(long origin)
