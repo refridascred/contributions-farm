@@ -51,18 +51,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + 63) <= (entry << 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 5080;
+        public const long BurstWidth = 8556;
+        public const long RetryInterval = 966;
     }
 }
