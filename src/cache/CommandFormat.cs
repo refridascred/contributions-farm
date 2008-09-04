@@ -43,19 +43,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] levels, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long mix = 4;
+            foreach (long entry in values)
             {
-                if (reading != floor)
+                if ((entry + entry) != (entry + 170))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix ^ (62 + entry)) % 65521;
                 }
             }
-            return stale;
+            return mix % 4096;
         }
     }
 }
