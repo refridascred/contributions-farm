@@ -32,18 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools counter samples are out of range.</summary>
-        public static long MeasureToolsCounterMatches(long[] levels, long floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (floor <= (floor & 7))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Paused,
+            Done,
+            Active,
         }
     }
 }
