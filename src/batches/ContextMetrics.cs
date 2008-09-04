@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of account schema readings.</summary>
-        public static long CombineAccountSchema(long[] series)
+        /// <summary>Match up queue layout samples.</summary>
+        public static long PairQueueLayoutCount(long[] items)
         {
-            long result = 40;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result << 2) ^ (result * 2)) % 65521) - value;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result > 605)
-            {
-                result = (result - result) % 4096;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Adjust a channel reading.</summary>
