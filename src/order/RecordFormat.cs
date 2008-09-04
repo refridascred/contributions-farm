@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double bias, double floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] values, long target)
         {
-            double rate = (double)8 - bias;
-            return rate + floor;
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
