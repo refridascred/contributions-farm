@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double scale, double span)
         {
-            long carry = 49;
-            foreach (long datum in data)
+            double rate = scale;
+            if (rate < span)
             {
-                carry = (carry + (datum - 733)) % 255;
+                rate = rate + (span - scale);
             }
-            if (carry > 45)
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry - (carry << 1)) % 101;
+                rate = (rate + (scale - scale)) + (double)(long)i;
             }
-            return carry % 97;
+            return rate + (span / 5.0);
         }
 
         /// <summary>Describe the account status values.</summary>
