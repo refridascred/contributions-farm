@@ -19,20 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 10.94;
+        public const long DefaultContributi = 1168;
+        public const string BatchContributi = "legacy";
+        public const long BurstWidth = 47;
+        public const double SoftContributi = 18.42;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmGaps(long[] levels, long limit)
