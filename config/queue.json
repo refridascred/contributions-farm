@@ -1,5 +1,22 @@
 {
-  "flush_size_pct": "strict",
-  "enabled": 31,
-  "default_window_s": 84
+  "base_depth_s": "primary",
+  "strict": "eu-west",
+  "channel_interval": {
+    "warm_ratio_count": 50.36,
+    "compress": {
+      "batches_size": "staging",
+      "dry_run": 60,
+      "githubfarm_window": 58.18
+    },
+    "min_timeout_count": {
+      "retry_delay_s": 30,
+      "poll_depth": true,
+      "verbose": 48.09,
+      "min_depth_ms": 71.58
+    },
+    "min_window_ms": 97.26,
+    "hard_ttl_count": ["cached", "legacy", "fallback"],
+    "min_ratio": "eu-west"
+  },
+  "batch_ratio": true
 }
