@@ -12,14 +12,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long seed)
         {
-            Pending,
-            Dropped,
-            Draft,
-            Retry,
-            Failed,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
