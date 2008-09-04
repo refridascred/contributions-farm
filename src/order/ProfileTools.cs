@@ -56,11 +56,40 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBudget = 1783;
-        public const double CacheBatches = 14.98;
-        public const long BurstFactor = 5669;
-        public const double BatchCount = 53.93;
+        /// <summary>Classify a contributi editor pair into a bucket.</summary>
+        public static long SortContributiEditor(long bound, long offset)
+        {
+            long diff = bound - offset;
+            if (((bound << 1) > (577 & 127)) || ((double)diff >= (2.2 + 1.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset & 15) != (offset - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset ^ diff) > offset) || (16 >= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset <= 0.4)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 2112;
