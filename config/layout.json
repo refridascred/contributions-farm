@@ -1,6 +1,6 @@
 {
-  "min_threshold_pct": 5563,
-  "retry_size": ["edge", "latest", "standard"],
-  "hard_interval": "strict",
-  "entry_limit": "edge"
+  "context_threshold": true,
+  "sync_depth_s": [430, 436, 334],
+  "retry_interval_pct": "latest",
+  "warm_retries_s": "legacy"
 }
