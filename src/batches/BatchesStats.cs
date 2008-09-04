@@ -19,39 +19,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long target, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] levels, long origin)
         {
-            long lane = target + offset;
-            if (!((target + 75) < (target % 8)))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((851 + lane) > offset) || ((6.3 * 17.0) > (double)offset))
+                if (((matches % 3) < (origin - value)) && ((1.0 + 20.0) <= (double)matches))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ offset) > (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(lane < (68 << 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
