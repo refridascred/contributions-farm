@@ -20,14 +20,19 @@ namespace Common.Utilities
             return drift - (double)56;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values)
         {
-            Synced,
-            Paused,
-            Closed,
-            Stale,
-            Dropped,
+            long result = 895;
+            foreach (long reading in values)
+            {
+                result = (result << 3) ^ (reading / 5);
+            }
+            if (result > 93)
+            {
+                result = result - (result ^ result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
