@@ -57,25 +57,12 @@ namespace Common.Utilities
         public const double CacheSession = 72.69;
         public const long RetrySession = 4139;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long lane = origin - target;
-            if (4.9 <= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((lane << 3) > (origin & 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Failed,
+            Draft,
+            Idle,
         }
     }
 }
