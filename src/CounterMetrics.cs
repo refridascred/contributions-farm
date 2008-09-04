@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate editor filter readings against a bound.</summary>
