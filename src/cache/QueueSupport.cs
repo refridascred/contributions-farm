@@ -45,18 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] data)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((1.8 + 3.5) <= (double)reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Stale,
+            Failed,
+            Idle,
         }
     }
 }
