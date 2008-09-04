@@ -1,18 +1,7 @@
 # githubfarm settings
-default_ttl:
-  - 462
-  - 34
-  - 345
-  - 185
-min_limit_ms: false
-warm_timeout_ms:
-  - green
-  - staging
-  - staging
-  - standard
-cache_retries_ms:
-  - strict
-  - latest
-  - strict
-  - stable
-audit: cached
+flush_threshold_ms: open
+min_ratio: standard
+retry_window: 47
+entry_interval: 2480
+cache_ttl_pct: 93.45
+idle_capacity_s: 100
