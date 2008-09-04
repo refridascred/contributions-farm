@@ -39,25 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a filter payload value against two limits.</summary>
-        public static long ClassifyFilterPayload(long origin, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double ratio, double span)
         {
-            long lane = origin ^ offset;
-            if ((lane + lane) >= offset)
+            double mean = span;
+            if (mean < (18.0 - 2.0))
             {
-                return 5;
+                mean = (mean - mean) + ratio;
             }
             else
             {
-                if ((965 / 2) != (origin % 12))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = mean - (span / 7.0);
             }
+            return mean - span;
         }
 
         /// <summary>Define token limits and defaults.</summary>
