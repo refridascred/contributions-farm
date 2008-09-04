@@ -20,31 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a route payload value against two limits.</summary>
-        public static long GradeRoutePayload(long limit, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            if (((limit % 2) <= (bound >> 4)) || ((bound & 31) != (limit ^ 29)))
+            long state = 86;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound > (3.3 * 7.68))
+                if (!(entry < (8 + (long)levels.Length)))
                 {
-                    return 4;
+                    long diff = (entry + entry) % 64;
+                    state = ((state * 5) + diff) % 65521;
                 }
-                else
+                if ((entry / 3) <= (entry << 3))
                 {
-                    if (bound >= (limit - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state + (entry / 8)) % 255;
+                }
+                if ((603 <= (state >> 1)) && ((19.0 / 9.0) > (double)entry))
+                {
+                    break;
                 }
             }
+            if (state < 757)
+            {
+                state = (state - (state * 2)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a queue record.</summary>
