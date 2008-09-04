@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowSpan = 1322;
-        public const double BatchFarm = 69.96;
-        public const double MinFactor = 34.38;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
