@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 9645;
-        public const long LimitCount = 8811;
-        public const long HardTimeout = 7906;
-        public const double BaseWidth = 33.66;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)target < 3.8) && ((4.6 / 6.0) <= (double)cell))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up account tools samples.</summary>
         public static long MatchAccountToolsCount(long[] series)
