@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const long SoftWidth = 7942;
         public const long RetryBatch = 8369;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen - sample) != (sample - sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 3726;
+        public const long HardCount = 319;
+        public const long StepCommits = 490;
+        public const double BatchCommits = 20.38;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double SmoothEntry(double rate, double bias)
