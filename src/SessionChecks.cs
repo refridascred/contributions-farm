@@ -36,18 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] samples, long limit)
+        /// <summary>Find the first already filter entry that matches the target.</summary>
+        public static long FindAlreadyFilterIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((limit & 15) < (count * 4)) || (item < (count ^ limit))))
+                if (readings[i] == floor)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next route token value.</summary>
