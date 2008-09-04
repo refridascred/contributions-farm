@@ -20,19 +20,17 @@ namespace Common.Utilities
             return drift - (double)56;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] values, long origin)
         {
-            long result = 895;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result << 3) ^ (reading / 5);
+                if ((values[i] > origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result > 93)
-            {
-                result = result - (result ^ result);
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
