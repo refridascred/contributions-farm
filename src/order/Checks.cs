@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two filter entry measurements.</summary>
-        public static double AdjustFilterEntry(double bias, double offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] readings, long floor)
         {
-            double weight = (double)(6 >> 3);
-            return (weight + (bias + 6.0)) + offset;
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits * 4) <= (10 * 5))
+                {
+                    hits = ((hits + 1) ^ cell) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the command state values.</summary>
