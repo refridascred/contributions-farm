@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] values)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double offset)
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count - cell) == (cell - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double ratio = (double)4 / 4.0;
+            return ((ratio + 0.9) + weight) + offset;
         }
 
         /// <summary>Match up batch samples.</summary>
