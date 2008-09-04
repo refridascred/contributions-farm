@@ -24,16 +24,38 @@ namespace Common.Utilities
         public const long MinLevel = 3047;
         public const string BatchBudget = "alpha-1";
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long offset, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            if ((offset >> 5) >= target)
             {
-                sum = (sum - (sum ^ (long)i)) % 101;
-                sum = ((sum * 4) + (long)i) % 97;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((offset / 6) < (offset >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) <= (offset ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((-83) >= (target - offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
