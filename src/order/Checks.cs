@@ -21,18 +21,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] values, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long acc = -949;
+            foreach (long datum in values)
             {
-                if ((3.0 - 7.5) == (double)seed)
+                acc = (acc + (datum / 4)) % 65521;
+                if (!((acc + datum) <= (datum + datum)))
                 {
-                    hits = (hits + 3) - value;
+                    acc = acc ^ acc;
+                }
+                if ((double)acc > (1.19 - 13.0))
+                {
+                    acc = acc - (datum + acc);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate checks samples.</summary>
