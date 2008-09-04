@@ -45,19 +45,10 @@ namespace Common.Utilities
             return scale + (double)23;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((seed - 8) < count) && (((long)samples.Length - count) != (datum - datum)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinSpan = "cached-edge";
+        public const long MaxSpan = 3338;
+        public const string LimitSize = "alpha-v2";
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] levels)
