@@ -1,24 +1,6 @@
 {
-  "cluster_threshold": "primary",
-  "idle_retries": {
-    "default_retries_ms": "local",
-    "order_interval": true,
-    "audit": {
-      "strict": 29.01,
-      "hard_delay_pct": false,
-      "already_delay": "latest",
-      "counter_interval": false,
-      "cache_window": ["fallback", "edge", "legacy", "edge"]
-    },
-    "batches_threshold": "standard",
-    "record_delay": {
-      "hard_limit_pct": "standard",
-      "audit": "green",
-      "default_ratio_s": 31.8,
-      "idle_limit_count": "green",
-      "max_timeout_pct": 52
-    }
-  },
-  "record_threshold": "strict",
-  "audit": "fallback"
+  "strict": 42,
+  "counter_timeout": 32,
+  "compress": "legacy",
+  "filter_interval": "latest"
 }
