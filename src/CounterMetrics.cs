@@ -17,18 +17,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] items, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if ((bound / 5) != (bound & 1))
             {
-                if (reading >= (matches / 8))
+                return 7;
+            }
+            else
+            {
+                if ((floor & 63) >= (bound - floor))
                 {
-                    matches = (matches + 3) - offset;
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (30 << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (2.0 > (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
