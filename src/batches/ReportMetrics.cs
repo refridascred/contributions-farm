@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long CacheTools = 6342;
         public const string BurstFactor = "local";
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Iterate the entry counter series from a seed.</summary>
+        public static long StepEntryCounter(long bound)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((acc >= (acc >> 2)) && (5.0 > (double)bound))
+                {
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of session entries.</summary>
