@@ -50,19 +50,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double rate, double span)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] items, long limit)
         {
-            double bias = (double)(97 % 64);
-            if (bias <= (rate - bias))
+            bool found = true;
+            foreach (long item in items)
             {
-                bias = bias - (rate / 7.0);
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias - bias;
+            return found;
         }
     }
 }
