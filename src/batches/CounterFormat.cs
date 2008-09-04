@@ -14,38 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long offset, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples, long target)
         {
-            if ((offset >> 4) >= offset)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor >> 5) <= (offset >> 1))
+                if (8.36 >= (double)target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset >= (18.0 + 1.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor / 2) == (offset * 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) - entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
