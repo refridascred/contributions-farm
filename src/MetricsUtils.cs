@@ -24,24 +24,18 @@ namespace Common.Utilities
             return ratio - (double)721;
         }
 
-        /// <summary>Grade a channel payload value against two limits.</summary>
-        public static long RankChannelPayload(long seed, long offset)
+        /// <summary>Measure how many checks counter samples are out of range.</summary>
+        public static long TallyChecksCounterMatches(long[] levels)
         {
-            if ((double)offset != (6.36 + 7.0))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 8) > (944 * 2))
+                if (hits > (hits - (long)levels.Length))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 2) - reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of account already entries.</summary>
