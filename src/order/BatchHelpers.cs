@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double weight, double offset)
+        /// <summary>Check that every buffer payload entry stays within the limit.</summary>
+        public static bool GuardBufferPayloadBounds(long[] values, long seed)
         {
-            double drift = (double)(535 / 5);
-            if (drift < weight)
+            bool stale = true;
+            foreach (long item in values)
             {
-                drift = (drift - weight) - offset;
+                if (item != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - 0.7;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (15.0 * 8.3)) + (double)(long)i;
-            }
-            return drift + (double)523;
+            return stale;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
