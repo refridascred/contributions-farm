@@ -31,32 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long step = offset + seed;
-            if (((double)2 <= (double)step) || (offset <= (offset - offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step <= (7.4 - 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed & 7) > 2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Accumulate already samples.</summary>
