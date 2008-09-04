@@ -45,11 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchFactor = 4142;
-        public const long HardInterval = 2504;
-        public const long CacheCommits = 4780;
-        public const long SoftInterval = 4551;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Retry,
+            Pending,
+            Closed,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionRange(long[] levels, long bound)
