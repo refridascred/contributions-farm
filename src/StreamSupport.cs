@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long step, long origin)
-        {
-            long gap = step ^ origin;
-            if ((origin / 2) <= origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (11.0 > (double)gap)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >= (gap >> 1)) || ((origin % 64) >= (step << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((14.0 - 9.83) < (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 44.29;
+        public const long RetryCount = 381;
+        public const long WindowSpan = 4473;
+        public const double CacheBudget = 10.61;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountBounds(long[] levels, long origin)
