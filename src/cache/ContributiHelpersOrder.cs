@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine channel layout values into a single score.</summary>
-        public static long ScoreChannelLayout(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] items, long offset)
         {
-            long result = 550;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)result > (double)4)
+                if ((count & 3) < count)
                 {
-                    result = (result * 4) + (cell + result);
+                    count = ((count + 1) + item) + offset;
                 }
-                result = result + cell;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
