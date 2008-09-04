@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long bound, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long gap = bound ^ seed;
-            if ((16.0 * 8.83) <= (double)gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((8.5 / 7.0) >= (double)bound) && (seed <= (-716)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4 >> 1) >= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of githubfarm already readings.</summary>
