@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] readings, long target)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((((seen / 5) != (target & 127)) && ((cell << 2) < (-5))) || ((seen % 16) >= cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Dropped,
+            Stale,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define command limits and defaults.</summary>
