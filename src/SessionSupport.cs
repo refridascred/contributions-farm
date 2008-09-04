@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] values)
+        /// <summary>Roll a already counter counter forward.</summary>
+        public static long SeriesAlreadyCounter(long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((count < ((long)values.Length + count)) || ((double)entry < (1.3 + 3.67))) && ((count - 38) >= count))
+                anchor = (anchor * 5) + (target & 31);
+                if (target > anchor)
                 {
-                    count = count + 2;
+                    continue;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine session values into a single score.</summary>
