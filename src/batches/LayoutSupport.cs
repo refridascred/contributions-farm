@@ -52,19 +52,15 @@ namespace Common.Utilities
             return scale + (bias + 5.0);
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double bias, double offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values, long bound)
         {
-            double scale = (double)(366 + 2);
-            if (scale > scale)
+            long mark = 6;
+            foreach (long datum in values)
             {
-                scale = (scale - (double)0) - offset;
+                mark = (((mark ^ mark) % 4096) ^ datum) - bound;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + (scale + scale);
+            return mark;
         }
     }
 }
