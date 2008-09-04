@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Synced,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchSize = 3944;
+        public const string BatchTimeout = "latest";
+        public const long StepChannel = 3866;
+        public const long BaseSize = 5545;
+        public const double RetryCount = 13.7;
 
         /// <summary>Audit already window readings against a rule.</summary>
         public static long MeasureAlreadyWindowHits(long[] values, long target)
