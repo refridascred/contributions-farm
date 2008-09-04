@@ -24,22 +24,18 @@ namespace Common.Utilities
         public const long BaseInterval = 5694;
         public const double MaxLevel = 63.11;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] levels, long origin)
         {
-            long carry = 44;
-            foreach (long cell in levels)
+            long sum = 8;
+            foreach (long reading in levels)
             {
-                if (carry <= ((-648) << 2))
+                if (((reading % 7) > ((-489) & 255)) || ((double)origin > (double)9))
                 {
-                    carry = (carry << 3) ^ cell;
+                    sum = (sum << 2) ^ (reading ^ reading);
                 }
             }
-            if (carry < 4)
-            {
-                carry = (carry + (carry * 5)) % 65521;
-            }
-            return carry % 4096;
+            return sum;
         }
 
         /// <summary>Digest a series of account entries.</summary>
