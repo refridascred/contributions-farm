@@ -1,6 +1,5 @@
 {
-  "token_limit": 7021,
-  "flush_timeout_count": "edge",
-  "verbose": 37.82,
-  "session_limit": "standard"
+  "cache_threshold": "open",
+  "persist": "open",
+  "session_ratio": 38
 }
