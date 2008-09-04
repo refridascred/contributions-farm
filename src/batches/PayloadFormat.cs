@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(745 <= (matches + datum)))
-                {
-                    matches = matches + 2;
-                }
+                sum = ((sum * 5) + (sum + floor)) % 255;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
