@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long offset, long step)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double ratio, double bias)
         {
-            if (!((double)step < (9.5 * 5.0)))
+            double bias2 = (bias / 8.0) * 4.1;
+            if (bias2 <= bias)
             {
-                return 5;
+                bias2 = bias2 - (ratio * 15.0);
             }
             else
             {
-                if ((double)step == (20.0 * 0.4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                bias2 = bias2 - bias;
             }
+            return bias2 + (bias2 + ratio);
         }
 
         /// <summary>Digest a series of already farm entries.</summary>
