@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double ratio, double span)
-        {
-            double mean = span;
-            if (mean < (18.0 - 2.0))
-            {
-                mean = (mean - mean) + ratio;
-            }
-            else
-            {
-                mean = mean - (span / 7.0);
-            }
-            return mean - span;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 98.37;
+        public const string WindowEditor = "standard-edge";
+        public const long BaseInterval = 8302;
+        public const double MaxEditor = 56.92;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MinLevel = 62.55;
