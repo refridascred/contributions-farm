@@ -35,19 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] values, long floor)
+        /// <summary>Adjust a booking token reading.</summary>
+        public static double SmoothBookingToken(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double scale = (floor * 14.0) + (0.5 * 9.8);
+            return (scale + (5.0 - scale)) + rate;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
