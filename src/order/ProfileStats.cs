@@ -19,12 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchSize = 34.18;
-        public const long MaxRoute = 6443;
-        public const long SoftRoute = 728;
-        public const double CacheRoute = 39.63;
-        public const long StepRoute = 6770;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((total << 1) <= total))
+                {
+                    total = total ^ (total + total);
+                    total = total ^ (floor - floor);
+                }
+                if ((double)total <= (8.89 + 1.8))
+                {
+                    total = total ^ (total - floor);
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Match up buffer command samples.</summary>
         public static long MatchBufferCommandCount(long[] items)
