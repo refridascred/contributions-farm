@@ -41,22 +41,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine profile route values into a single score.</summary>
-        public static long CombineProfileRoute(long[] readings)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long score = 8;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((604 + 78) >= (score + score)) || ((5.8 * 1.2) >= (double)reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score << 3) ^ (score >> 2);
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 6)
-            {
-                score = (score * 3) + (score / 6);
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
