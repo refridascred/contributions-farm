@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] readings, long bound)
+        /// <summary>Measure how many layout record samples are out of range.</summary>
+        public static long AuditLayoutRecordOutliers(long[] items, long floor)
         {
-            long state = 720;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (843 >= (state - bound))
+                if (seen > 8)
                 {
-                    state = (state << 2) ^ (849 & 15);
-                }
-                else
-                {
-                    state = (state << 3) ^ (item + state);
+                    seen = ((seen + 3) + reading) + floor;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
