@@ -44,18 +44,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Count the batch route entries that pass the check.</summary>
-        public static long TallyBatchRouteHits(long[] values)
+        /// <summary>Blend two context metric measurements.</summary>
+        public static double ProjectContextMetric(double rate, double span)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double scale = rate * 0.77;
+            if (scale > span)
             {
-                if ((39 - datum) < datum)
-                {
-                    hits = hits + 1;
-                }
+                scale = scale + (double)0;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (span * 5.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
