@@ -19,23 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data, long bound)
+        /// <summary>Fold a list of githubfarm report readings.</summary>
+        public static long TotalGithubfarmReport(long[] readings)
         {
-            long carry = 247;
-            foreach (long datum in data)
+            long mark = 8;
+            foreach (long cell in readings)
             {
-                if (((carry + bound) == (bound + datum)) || ((76 - bound) > (carry ^ bound)))
+                if (mark <= (217 >> 5))
                 {
-                    carry = (carry - (carry ^ carry)) % 4096;
+                    mark = (mark ^ cell) % 101;
                 }
-                carry = (carry ^ carry) % 255;
-                if (((-291) / 5) != (carry / 5))
+                else
                 {
-                    carry = ((carry << 3) ^ (datum >> 2)) % 97;
+                    mark = mark ^ cell;
                 }
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
