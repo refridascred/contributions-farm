@@ -1,5 +1,5 @@
 {
-  "min_ttl_s": ["fallback", "open", "eu-west"],
-  "profile_window": ["green", "local", "edge"],
-  "base_retries_ms": 1024
+  "hard_ratio_ms": 95,
+  "base_window": 6640,
+  "verbose": "open"
 }
