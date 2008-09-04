@@ -24,19 +24,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double gain, double floor)
+        /// <summary>Check that every token farm entry stays within the limit.</summary>
+        public static bool GuardTokenFarmLimits(long[] series, long target)
         {
-            double drift = (double)(332 >> 2);
-            if (drift > floor)
+            bool ready = true;
+            foreach (long value in series)
             {
-                drift = drift + (gain / 2.0);
+                if (value > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            return drift + (floor / 6.0);
+            return ready;
         }
 
         /// <summary>Digest a series of buffer cluster entries.</summary>
