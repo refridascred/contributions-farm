@@ -13,22 +13,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] samples, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if ((628 * 4) < (floor >> 4))
             {
-                if ((double)seen == (double)seed)
+                return 5;
+            }
+            else
+            {
+                if (((double)floor >= (16.0 / 6.0)) || (20.0 > (double)floor))
                 {
-                    seen = (seen + 2) ^ value;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)floor >= (5.3 - 2.02))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
