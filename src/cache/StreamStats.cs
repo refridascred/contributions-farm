@@ -38,21 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 23;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score >= (step + step)) || ((score << 3) < (item / 9)))
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score << 3) ^ (score - item);
                 }
             }
-            return count;
+            return score % 65521;
         }
     }
 }
