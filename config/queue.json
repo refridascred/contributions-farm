@@ -1,9 +1,8 @@
 {
-  "default_delay": 500,
-  "dry_run": {
-    "sync_ttl": 100,
-    "min_size": "standard",
-    "compress": "stable"
-  },
-  "verbose": 25.67
+  "cache_size_pct": true,
+  "readonly": 250,
+  "strict": "edge",
+  "cache_capacity_s": 4800,
+  "schema_threshold": "stable",
+  "profile_timeout": ["staging", "legacy", "legacy"]
 }
