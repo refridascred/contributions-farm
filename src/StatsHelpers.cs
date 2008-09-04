@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 58;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)241 == (double)sample))
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + score) % 255;
+                }
+                else
+                {
+                    score = (score + (3 << 2)) % 255;
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Describe the graph status values.</summary>
