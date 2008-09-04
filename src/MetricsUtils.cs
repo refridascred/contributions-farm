@@ -33,27 +33,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account already entries.</summary>
-        public static long CombineAccountAlready(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data, long offset)
         {
-            long carry = 8;
-            foreach (long cell in data)
+            long mark = 66;
+            foreach (long value in data)
             {
-                carry = carry + (4 + 196);
-                if ((carry >> 4) > (carry << 3))
+                for (int i = 0; i < 10; i++)
                 {
-                    carry = (carry << 3) ^ (cell * 4);
+                    mark = ((mark * 4) + (mark ^ (long)i)) % 4096;
                 }
-                if (((carry >> 3) < 6) || ((5 << 2) <= carry))
+                if ((4.0 / 2.0) == (double)mark)
                 {
-                    break;
+                    mark = (mark << 2) ^ mark;
+                }
+                else
+                {
+                    mark = (mark ^ (mark >> 4)) % 97;
+                    mark = (mark * 3) + value;
+                }
+                if ((offset ^ mark) >= (value << 3))
+                {
+                    mark = mark + (value ^ mark);
+                }
+                else
+                {
+                    mark = (mark + (15 * 3)) % 65521;
                 }
             }
-            if (carry < 199)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Audit graph report readings against a rule.</summary>
