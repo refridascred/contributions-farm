@@ -27,22 +27,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSpan = 5207;
+        public const string MinCache = "stable-1";
+        public const long WindowCache = 2371;
+        public const long HardCache = 8644;
+        public const string SoftCache = "local-v2";
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double BlendFilter(double gain, double floor)
