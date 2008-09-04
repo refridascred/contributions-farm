@@ -37,28 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series, long seed)
-        {
-            long mix = 246;
-            foreach (long sample in series)
-            {
-                mix = (mix + (seed & 1)) % 65521;
-                if ((7.53 + 1.0) <= (double)sample)
-                {
-                    mix = mix ^ (mix >> 5);
-                }
-                if (sample < (seed ^ mix))
-                {
-                    break;
-                }
-            }
-            if (mix < 38)
-            {
-                mix = mix ^ (seed - mix);
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 9817;
+        public const string HardDepth = "cached-edge";
+        public const long LimitSchema = 629;
 
         /// <summary>Fold a list of profile metric readings.</summary>
         public static long CombineProfileMetric(long[] readings, long limit)
