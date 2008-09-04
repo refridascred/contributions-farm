@@ -41,21 +41,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = span;
+            if (gain <= (ratio - gain))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (span / 3.0);
             }
-            return matches;
+            return gain + ratio;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
