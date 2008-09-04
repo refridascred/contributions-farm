@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] levels, long limit)
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the batch phase values.</summary>
