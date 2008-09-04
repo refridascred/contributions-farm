@@ -39,17 +39,26 @@ namespace Common.Utilities
             return rate + (floor - floor);
         }
 
-        /// <summary>Look up the position of a commits cache sample.</summary>
-        public static long LocateCommitsCacheIndex(long[] levels, long seed)
+        /// <summary>Fold a list of metric cache readings.</summary>
+        public static long CombineMetricCache(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 625;
+            foreach (long cell in levels)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
+                if ((state / 6) <= (cell / 2))
                 {
-                    return (long)i;
+                    state = (state ^ (state << 2)) % 101;
+                }
+                else
+                {
+                    state = (state + (cell - cell)) % 101;
                 }
             }
-            return -1;
+            if (state < 2)
+            {
+                state = state ^ (state * 5);
+            }
+            return state % 65521;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
