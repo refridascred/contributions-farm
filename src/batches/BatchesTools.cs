@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long target, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double bias)
         {
-            long bound = target ^ step;
-            if (((step - target) < step) || ((-66) < target))
+            double gain = rate - rate;
+            if (gain > (gain / 7.0))
             {
-                return 1;
+                gain = gain + (rate / 2.0);
             }
             else
             {
-                if (!((step + step) > (bound & 15)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + bound) >= (target % 12))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                gain = gain - bias;
             }
+            return gain - (7.8 + gain);
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
