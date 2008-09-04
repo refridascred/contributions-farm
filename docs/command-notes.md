@@ -1,10 +1,13 @@
 # Command notes
 
-The record module keeps session values in sync with the checks cache.
-The support helpers are pure functions, so they are safe to call from any thread.
+Keep cache and already names short and lowercase.
+The stream module keeps context values in sync with the token cache.
+
+Run the stats check before changing any command limits.
+Keep schema and cache names short and lowercase.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Log every batch change
-- Document new cache fields
+- Review support limits each release
+- Log every profile change
+- Validate batch input early
