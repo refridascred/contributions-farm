@@ -69,19 +69,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] values, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long mix = 246;
+            foreach (long sample in series)
             {
-                if (entry > limit)
+                mix = (mix + (seed & 1)) % 65521;
+                if ((7.53 + 1.0) <= (double)sample)
                 {
-                    ok = false;
+                    mix = mix ^ (mix >> 5);
+                }
+                if (sample < (seed ^ mix))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mix < 38)
+            {
+                mix = mix ^ (seed - mix);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate schema samples.</summary>
