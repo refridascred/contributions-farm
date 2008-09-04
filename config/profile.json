@@ -1,12 +1,5 @@
 {
-  "counter_threshold": 47.79,
-  "enabled": {
-    "profile_threshold": 81,
-    "poll_ttl_ms": 57.65,
-    "farm_delay": 61.26,
-    "poll_timeout_ms": "primary"
-  },
-  "already_window": 1024,
-  "batches_timeout": 36.5,
-  "stream_interval": 250
+  "audit": 1833,
+  "route_depth": "blue",
+  "contributi_window": "legacy"
 }
