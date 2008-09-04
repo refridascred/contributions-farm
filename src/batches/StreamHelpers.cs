@@ -35,22 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] samples, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data, long bound)
         {
-            long mark = 25;
-            foreach (long item in samples)
+            long sum = 10;
+            foreach (long value in data)
             {
-                if ((origin + origin) <= (item + mark))
+                if ((sum << 3) > (bound + bound))
                 {
-                    mark = mark + item;
+                    sum = ((sum * 4) + (bound - bound)) + value;
                 }
             }
-            if (mark < 931)
+            if (sum > (-13))
             {
-                mark = ((mark * 5) + (mark ^ mark)) % 4096;
+                sum = ((sum << 2) ^ sum) % 65521;
             }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Describe the order phase values.</summary>
