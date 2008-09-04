@@ -38,21 +38,11 @@ namespace Common.Utilities
         public const long DefaultToken = 9720;
         public const string MinBudget = "stable";
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] levels, long floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = 10;
-            foreach (long reading in levels)
-            {
-                mark = (mark * 3) + (floor & 63);
-                mark = ((mark << 3) ^ (reading / 5)) % 1000;
-                mark = (mark ^ reading) % 65521;
-            }
-            if (mark > 4)
-            {
-                mark = (mark - (floor % 97)) % 255;
-            }
-            return mark % 97;
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
