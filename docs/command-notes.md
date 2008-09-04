@@ -1,15 +1,11 @@
 # Command notes
 
-Each layout is validated before it reaches the commits queue.
-Use format settings to tune how often report data is refreshed.
-
-The tools report groups every graph by buffer.
-Run the context check before changing any buffer limits.
-Keep checks and format names short and lowercase.
+The stream module keeps stream values in sync with the graph cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every already change
-- Review order limits each release
-- Validate context input early
-- Keep entry values small
+- Review entry limits each release
+- Prefer batch defaults
+- Validate checks input early
+- Keep stream values small
