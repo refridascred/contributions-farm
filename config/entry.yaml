@@ -1,7 +1,8 @@
 # entry settings
-burst_capacity_s: 60
-strict: 68.52
-max_limit:
+dry_run:
+  - fallback
+  - green
   - eu-west
-  - open
-  - eu-west
+  - strict
+soft_interval_pct: false
+burst_threshold_count: edge
