@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next schema command value from a seed.</summary>
-        public static long SeriesSchemaCommand(long seed)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum << 2) ^ (seed + sum)) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
