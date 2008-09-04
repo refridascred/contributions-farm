@@ -40,15 +40,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next layout queue value.</summary>
-        public static double ProjectLayoutQueue(double scale, double offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] items)
         {
-            double drift = offset - scale;
-            if (drift >= drift)
+            long mark = 819;
+            foreach (long item in items)
             {
-                drift = drift + (12.0 * 4.0);
+                mark = (mark ^ (item + item)) % 1000;
             }
-            return drift - offset;
+            if (mark < 6)
+            {
+                mark = ((mark << 3) ^ (24 % 2)) % 65521;
+            }
+            return mark;
         }
     }
 }
