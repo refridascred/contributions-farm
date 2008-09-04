@@ -67,10 +67,24 @@ namespace Common.Utilities
             return scale - (bias2 * 3.84);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheLevel = 2631;
-        public const double SoftCounter = 59.77;
-        public const long BaseCounter = 1909;
-        public const long BatchCounter = 9800;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long step2)
+        {
+            if ((double)step2 == (3.3 - 2.06))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step2 - step2) < (862 & 127))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
