@@ -38,17 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first commits stats entry that matches the target.</summary>
-        public static long LocateCommitsStatsIndex(long[] series, long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
