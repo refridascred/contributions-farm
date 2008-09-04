@@ -72,39 +72,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long edge = bound + limit;
-            if ((35 * 5) != (limit - limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(((-557) - limit) >= 68))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((-97) > (limit - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (edge >= bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            New,
+            Locked,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the entry state values.</summary>
