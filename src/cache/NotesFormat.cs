@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long target, long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            long prev = target - origin;
-            if ((56 + prev) >= 149)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (target > (4 - 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
