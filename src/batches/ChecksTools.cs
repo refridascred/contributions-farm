@@ -44,12 +44,12 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseWidth = "staging";
-        public const long CacheSize = 8606;
-        public const long SoftFormat = 1596;
-        public const long CacheCount = 1119;
-        public const string StepFactor = "latest-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 3761;
+        public const long BurstGraph = 4668;
+        public const long RetryWidth = 4165;
+        public const string BurstLevel = "stable";
+        public const long HardGraph = 3075;
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long CountClusterReportGaps(long[] data, long floor)
