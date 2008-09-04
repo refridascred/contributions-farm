@@ -66,14 +66,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] levels, long seed)
         {
-            New,
-            Locked,
-            Stale,
-            Dropped,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
