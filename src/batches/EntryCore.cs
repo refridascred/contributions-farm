@@ -59,18 +59,11 @@ namespace Common.Utilities
         public const long MaxCache = 1326;
         public const string BurstCache = "stable-v2";
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item * 3) >= (offset + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheTimeout = "cached";
+        public const long RetryFilter = 9205;
+        public const long BurstFilter = 3993;
+        public const long StepLevel = 7460;
+        public const string LimitTimeout = "staging-1";
     }
 }
