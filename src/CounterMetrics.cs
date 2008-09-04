@@ -34,12 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long floor, long offset)
         {
-            Synced,
-            Paused,
-            Idle,
+            if ((double)floor == (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor >= offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of account entries.</summary>
