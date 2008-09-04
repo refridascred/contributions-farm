@@ -27,11 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Blend two stats layout measurements.</summary>
