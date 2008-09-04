@@ -49,19 +49,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile batch entry stays within the limit.</summary>
-        public static bool GuardProfileBatchBounds(long[] items, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= origin)
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
