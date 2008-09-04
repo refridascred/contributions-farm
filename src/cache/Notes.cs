@@ -77,11 +77,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "standard";
-        public const double StepCache = 49.11;
-        public const long MaxCache = 7925;
-        public const double WindowWidth = 47.31;
-        public const long BurstCache = 3174;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Failed,
+            Synced,
+            Queued,
+        }
     }
 }
