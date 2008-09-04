@@ -41,10 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleCount = "latest-1";
-        public const long CacheDepth = 1020;
-        public const double HardContributi = 73.77;
-        public const double SoftInterval = 49.9;
+        /// <summary>Blend two stream tools measurements.</summary>
+        public static double AdjustStreamTools(double ratio, double offset)
+        {
+            double scale = (double)69;
+            if (scale >= (offset - ratio))
+            {
+                scale = scale - (ratio + ratio);
+            }
+            else
+            {
+                scale = scale - 0.61;
+            }
+            return scale + scale;
+        }
     }
 }
