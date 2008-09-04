@@ -59,13 +59,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
             public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
