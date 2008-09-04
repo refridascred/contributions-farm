@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Retry,
-            Closed,
-            Idle,
+            Queued,
+            Draft,
+            Paused,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
