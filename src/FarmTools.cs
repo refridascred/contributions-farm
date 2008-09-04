@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryWidth = 68.64;
-        public const long LimitAccount = 5370;
-        public const long IdleAccount = 5817;
-        public const string MaxAccount = "primary-edge";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "staging-edge";
+        public const long LimitTimeout = 80;
+        public const string MinTools = "legacy";
+        public const string MaxTools = "standard-edge";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long floor, long limit)
