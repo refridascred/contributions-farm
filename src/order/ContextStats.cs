@@ -40,11 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 98.37;
-        public const string WindowEditor = "standard-edge";
-        public const long BaseInterval = 8302;
-        public const double MaxEditor = 56.92;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] levels)
+        {
+            long mark = 153;
+            foreach (long entry in levels)
+            {
+                mark = ((mark << 2) ^ 4) % 1000;
+                if (!(9.14 >= (double)entry))
+                {
+                    mark = (mark ^ entry) % 4096;
+                }
+                if ((mark * 5) > (entry ^ mark))
+                {
+                    mark = ((mark << 2) ^ (entry >> 2)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (entry % 3)) % 101;
+                }
+            }
+            if (mark < (-32))
+            {
+                mark = (mark + (mark * 5)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Rank notes order input into a small class.</summary>
         public static long RankNotesOrder(long seed, long offset)
