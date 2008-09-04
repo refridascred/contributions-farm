@@ -1,7 +1,5 @@
 {
-  "dry_run": 42.88,
-  "soft_delay": 12.7,
-  "session_ratio": true,
-  "commits_size": 60,
-  "warm_size": "blue"
+  "cache_interval": 36.56,
+  "batch_ttl_ms": "eu-west",
+  "payload_interval": 40.45
 }
