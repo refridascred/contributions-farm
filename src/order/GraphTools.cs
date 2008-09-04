@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)9 > (double)limit)
-                {
-                    score = (score ^ score) % 4096;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 3914;
+        public const long MaxLevel = 1845;
+        public const long IdleTimeout = 7202;
+        public const double DefaultCluster = 74.18;
+        public const long StepFactor = 5570;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BaseCommand = 10.49;
