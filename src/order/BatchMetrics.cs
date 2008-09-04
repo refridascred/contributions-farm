@@ -46,24 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric route readings.</summary>
-        public static long DigestMetricRoute(long[] items, long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long total = 85;
-            foreach (long item in items)
-            {
-                total = total + (325 + seed);
-                total = (total << 2) ^ (0 / 5);
-                if ((item >> 4) >= total)
-                {
-                    total = (total << 2) ^ (item << 2);
-                }
-            }
-            if (total > 408)
-            {
-                total = (total - 1) % 255;
-            }
-            return total;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
