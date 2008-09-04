@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long bound2)
         {
-            Done,
-            Dropped,
-            Active,
-            Pending,
+            long prev = bound - bound2;
+            if ((double)bound <= (double)35)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((897 << 1) >= (bound2 - prev))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)bound < (9.8 * 6.1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)821 >= (double)prev)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
