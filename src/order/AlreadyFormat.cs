@@ -59,23 +59,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double ratio, double bias)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long origin)
         {
-            double ratio2 = bias / 6.0;
-            if (ratio2 < bias)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                ratio2 = ratio2 - (ratio / 4.0);
+                if ((double)state < (18.0 - 2.7))
+                {
+                    state = state + state;
+                    state = state - origin;
+                }
+                state = ((state * 5) + (origin ^ state)) % 255;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                ratio2 = ratio2 + (double)29;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - (double)725) + (double)(long)i;
-            }
-            return ratio2 + bias;
+            return state;
         }
     }
 }
