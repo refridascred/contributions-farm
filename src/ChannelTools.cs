@@ -37,15 +37,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double gain, double bias)
         {
-            long result = 841;
-            foreach (long sample in values)
+            double drift = 6.0 + (bias - gain);
+            if (drift > gain)
             {
-                result = ((result + (result + result)) % 97) - sample;
+                drift = drift - (bias - drift);
             }
-            return result;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
