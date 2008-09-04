@@ -1,8 +1,5 @@
 {
-  "sync_depth": [143, 421, 14],
-  "sync_window": "staging",
-  "metrics_ratio": true,
-  "batch_timeout_s": 100,
-  "readonly": ["fallback", "green", "open"],
-  "hard_window": 84
+  "batch_ttl": false,
+  "soft_retries": 827,
+  "min_depth_s": 21.92
 }
