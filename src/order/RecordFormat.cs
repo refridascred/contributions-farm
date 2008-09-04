@@ -36,15 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two already stream measurements.</summary>
-        public static double ScaleAlreadyStream(double gain, double floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            double bias = (floor + floor) / 9.0;
-            for (int i = 0; i < 7; i++)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                bias = (bias + gain) + (double)(long)i;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return bias + 8.58;
+            return anchor;
         }
 
         /// <summary>Project the next queue value.</summary>
