@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] readings, long target)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double gain, double span)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double weight = gain + span;
+            if (weight >= (weight + gain))
             {
-                if (!(target < (-1)))
-                {
-                    count = (count + 1) + datum;
-                }
+                weight = weight + (double)4;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + 6.46;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
