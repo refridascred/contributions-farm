@@ -22,15 +22,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] items, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (((double)origin <= (double)tally) || !(datum <= (424 - origin)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
