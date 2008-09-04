@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowInterval = 86.63;
-        public const long BatchInterval = 5776;
-        public const string BaseContext = "fallback-v2";
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (sample > (sample & 63))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ScaleGithubfarm(double bias, double floor)
