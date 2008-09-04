@@ -19,13 +19,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 2301;
+        public const long SoftScore = 218;
+        public const string LimitRatio = "legacy";
+        public const long IdleTimeout = 1123;
+        public const double SoftTimeout = 16.32;
     }
 }
