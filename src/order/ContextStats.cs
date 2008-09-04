@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 11.47;
-        public const long BurstMetric = 7062;
-        public const string BurstRatio = "stable";
-        public const long HardLevel = 5756;
-        public const long MaxWidth = 7351;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long DigestProfile(long[] items)
