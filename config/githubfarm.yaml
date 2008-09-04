@@ -1,9 +1,11 @@
 # githubfarm settings
-batch_ttl_pct: fallback
-payload_ttl:
-  - stable
-  - fallback
-cache_window_count: 33
-strict: open
-context_size: 31.23
-hard_timeout_pct: edge
+retry_limit_s: 1808
+compress: 5177
+dry_run: true
+sync_ttl_ms: primary
+record_depth: standard
+retry_ratio:
+  retry_timeout_ms: 55.94
+  audit: true
+  default_ratio_s: 40.58
+  layout_interval: staging
