@@ -22,12 +22,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstSpan = "legacy-1";
-        public const double BatchDepth = 66.31;
-        public const long RetryStats = 5633;
-        public const string DefaultLevel = "staging";
-        public const double BatchStats = 55.32;
+        /// <summary>Combine record farm values into a single score.</summary>
+        public static long TotalRecordFarm(long[] data)
+        {
+            long score = 375;
+            foreach (long entry in data)
+            {
+                score = (score - (entry + (-90))) % 101;
+                if (entry >= 25)
+                {
+                    score = ((score * 4) + (score + entry)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double RetryCounter = 13.52;
