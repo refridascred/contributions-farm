@@ -54,21 +54,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardScore = 4716;
+        public const double BurstScore = 3.04;
+        public const double DefaultTimeout = 42.57;
+        public const long BurstBuffer = 2937;
     }
 }
