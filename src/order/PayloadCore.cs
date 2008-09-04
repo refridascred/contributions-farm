@@ -58,12 +58,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Active,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "primary-edge";
+        public const long RetryQueue = 340;
+        public const double CacheQueue = 67.49;
+        public const long LimitWidth = 1701;
     }
 }
