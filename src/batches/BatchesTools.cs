@@ -26,11 +26,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long floor)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            if ((floor < (6 >> 3)) || ((floor - offset) == (floor << 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor > (floor ^ floor)) || ((floor ^ floor) > 93))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)offset < 0.95))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
