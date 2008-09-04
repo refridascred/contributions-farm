@@ -31,12 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double ratio, double floor)
-        {
-            double scale = (floor + floor) / 2.0;
-            return (scale + scale) + ratio;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardWidth = 9895;
+        public const double MaxStats = 97.45;
+        public const long LimitStats = 6779;
+        public const long HardCount = 3973;
+        public const double DefaultRatio = 33.74;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long offset)
