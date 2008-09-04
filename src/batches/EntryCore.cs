@@ -41,12 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 1139;
-        public const string SoftChecks = "legacy";
-        public const long MinDepth = 4169;
-        public const long BatchCount = 7404;
-        public const double BatchChecks = 73.57;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LocateCounterIndex(long[] series, long step)
