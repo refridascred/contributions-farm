@@ -28,24 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] levels, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result >> 3) > (long)i)
+                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
                 {
-                    result = ((result << 3) ^ (result - 934)) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result * 5) + (91 + result)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
