@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Paused,
+            Idle,
         }
 
         /// <summary>Audit already window readings against a rule.</summary>
