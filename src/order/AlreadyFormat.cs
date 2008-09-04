@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples, long limit)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long anchor = 8;
-            foreach (long entry in samples)
-            {
-                if ((4.78 - 10.0) != (double)entry)
-                {
-                    anchor = ((anchor * 2) + (limit - limit)) % 65521;
-                }
-                if ((limit + 771) <= (entry - anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
