@@ -19,10 +19,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 4062;
-        public const long CacheReport = 5680;
-        public const string HardScore = "primary";
-        public const long DefaultSize = 495;
+        public const double CacheWidth = 83.1;
+        public const long LimitTimeout = 314;
+        public const long HardReport = 7618;
 
         /// <summary>Project the next entry value.</summary>
         public static double AdjustEntry(double gain, double bias)
