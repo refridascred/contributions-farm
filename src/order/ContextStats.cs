@@ -40,10 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 8622;
-        public const long HardLevel = 2822;
-        public const double IdleSize = 46.13;
+        /// <summary>Find the first commits stats entry that matches the target.</summary>
+        public static long LocateCommitsStatsIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorMatches(long[] data)
