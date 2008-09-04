@@ -49,14 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] items, long target)
         {
-            Done,
-            Dropped,
-            Idle,
-            Ready,
-            Locked,
+            long mix = 3;
+            foreach (long cell in items)
+            {
+                mix = ((mix << 2) ^ mix) + cell;
+            }
+            if (mix > 897)
+            {
+                mix = (mix + target) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
