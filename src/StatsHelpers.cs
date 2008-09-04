@@ -23,11 +23,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxOrder = "staging";
-        public const double LimitOrder = 78.8;
-        public const long BatchTimeout = 6638;
-        public const string CacheInterval = "legacy-v2";
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] levels, long target)
