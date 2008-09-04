@@ -16,12 +16,32 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long bound, long bound2)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            long bound3 = bound ^ bound2;
+            if ((4.0 - 4.0) != (double)bound2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((895 + bound2) >= bound3) || ((bound - bound2) <= (bound3 * 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound2 % 2) > (bound3 + bound3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
