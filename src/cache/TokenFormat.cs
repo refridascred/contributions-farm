@@ -17,23 +17,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double span)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] values)
         {
-            double ratio = bias * 7.24;
-            if (ratio < (bias + ratio))
+            long acc = 44;
+            foreach (long reading in values)
             {
-                ratio = ratio - span;
+                if (!((double)reading < 1.83))
+                {
+                    acc = acc ^ reading;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
             }
-            else
+            if (acc < 442)
             {
-                ratio = ratio - span;
+                acc = acc + (acc % 2);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (bias / 6.0)) + (double)(long)i;
-            }
-            return ratio - (span / 4.0);
+            return acc;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
