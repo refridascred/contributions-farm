@@ -25,12 +25,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
