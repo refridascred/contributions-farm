@@ -58,18 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values, long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long anchor = 453;
-            foreach (long cell in values)
-            {
-                if ((anchor + cell) == (cell << 3))
-                {
-                    anchor = (anchor - (288 * 2)) + offset;
-                }
-            }
-            return anchor;
+            Paused,
+            Active,
+            New,
+            Dropped,
         }
     }
 }
