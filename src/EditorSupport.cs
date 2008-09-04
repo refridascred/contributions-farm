@@ -50,18 +50,19 @@ namespace Common.Utilities
         public const long MaxSpan = 3338;
         public const string LimitSize = "alpha-v2";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] samples, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((2 - 4) < sample)
+                if (value >= limit)
                 {
-                    matches = (matches + 3) + target;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
