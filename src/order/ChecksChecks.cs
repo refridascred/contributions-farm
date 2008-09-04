@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const string LimitEntry = "open-v2";
         public const string StepFactor = "staging-v2";
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
