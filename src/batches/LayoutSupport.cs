@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Retry,
+            Ready,
+            Stale,
         }
 
         /// <summary>Accumulate token samples.</summary>
