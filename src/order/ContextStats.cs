@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] values)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long floor, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if ((31 & 3) < floor)
             {
-                if (hits >= (item / 2))
+                return 5;
+            }
+            else
+            {
+                if ((floor << 3) <= (step / 4))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (!((step % 12) > 226))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step > (floor - floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
