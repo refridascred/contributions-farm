@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit cluster window readings against a rule.</summary>
+        public static long CountClusterWindowMatches(long[] readings)
         {
-            Done,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((9.32 * 8.0) < (double)reading)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the support phase values.</summary>
