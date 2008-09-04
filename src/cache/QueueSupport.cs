@@ -22,14 +22,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Digest a series of order notes entries.</summary>
+        public static long CombineOrderNotes(long[] data, long limit)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Ready,
-            Closed,
+            long acc = -406;
+            foreach (long entry in data)
+            {
+                if ((limit % 5) < entry)
+                {
+                    acc = acc + acc;
+                }
+                else
+                {
+                    acc = (acc + limit) % 101;
+                }
+            }
+            if (acc > 68)
+            {
+                acc = ((acc << 2) ^ (limit + (-72))) % 4096;
+            }
+            return acc;
         }
     }
 }
