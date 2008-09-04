@@ -33,12 +33,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 78.06;
-        public const string WindowCount = "cached-1";
-        public const long MinQueue = 9513;
-        public const string StepQueue = "standard-v2";
-        public const long MinCount = 4882;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally - sample) >= (300 - sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
