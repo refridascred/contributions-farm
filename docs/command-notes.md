@@ -1,13 +1,10 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Use command settings to tune how often githubfarm data is refreshed.
-
-Use checks settings to tune how often buffer data is refreshed.
-Run the counter check before changing any metrics limits.
+The record module keeps session values in sync with the checks cache.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review already limits each release
-- Prefer profile defaults
-- Document new farm fields
+- Prefer metrics defaults
+- Log every batch change
+- Document new cache fields
