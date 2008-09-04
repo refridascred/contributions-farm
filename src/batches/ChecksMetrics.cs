@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long MaxProfile = 1972;
         public const long CacheInterval = 9429;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
             public long Mode { get; set; }
         }
 
