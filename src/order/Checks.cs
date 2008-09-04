@@ -49,18 +49,13 @@ namespace Common.Utilities
         public const double StepSpan = 95.18;
         public const long BatchReport = 8667;
 
-        /// <summary>Combine session graph values into a single score.</summary>
-        public static long TotalSessionGraph(long[] samples, long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long mark = 71;
-            foreach (long reading in samples)
-            {
-                if ((double)target > (8.38 - 2.4))
-                {
-                    mark = ((mark ^ (596 - target)) % 65521) ^ reading;
-                }
-            }
-            return mark % 4096;
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
