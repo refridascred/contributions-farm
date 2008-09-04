@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 8284;
-        public const long SoftInterval = 7550;
-        public const double MaxInterval = 83.7;
-        public const long MinTimeout = 6601;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (matches <= (reading / 4))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double ratio, double floor)
