@@ -26,18 +26,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] items, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                total = total + 983;
-                total = ((total << 3) ^ (81 + total)) % 65521;
-                total = (total - ((long)i + (long)i)) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((offset >> 4) >= (sample * 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
