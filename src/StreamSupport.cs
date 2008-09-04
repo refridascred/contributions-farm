@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long offset, long offset2)
-        {
-            if (((offset - 3) <= (offset / 8)) || ((offset2 - offset2) < (offset + offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (8.8 >= (double)offset2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 1426;
+        public const long BaseMetrics = 9817;
+        public const long DefaultMetrics = 1482;
+        public const string RetryMetrics = "alpha-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 1161;
