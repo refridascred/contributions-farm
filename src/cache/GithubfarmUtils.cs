@@ -38,22 +38,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer notes values into a single score.</summary>
-        public static long WeighBufferNotes(long[] levels, long offset)
+        /// <summary>Grade a batches metric value against two limits.</summary>
+        public static long ClassifyBatchesMetric(long floor, long step)
         {
-            long total = 8;
-            foreach (long reading in levels)
+            if ((94 >> 4) != (step - step))
             {
-                if ((offset / 5) != (offset + offset))
+                return 5;
+            }
+            else
+            {
+                if ((2.22 - 0.56) != (double)step)
                 {
-                    total = (total ^ reading) % 101;
+                    return 6;
                 }
                 else
                 {
-                    total = (total * 4) + (630 << 1);
+                    return 3;
                 }
             }
-            return total;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
