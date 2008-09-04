@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double weight, double offset)
+        /// <summary>Validate metrics route readings against a bound.</summary>
+        public static bool GuardMetricsRouteBounds(long[] values, long floor)
         {
-            double load = (offset * 4.26) + 3.96;
-            if (load <= load)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                load = (load - (double)97) + weight;
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - 1.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (4.3 + offset)) - (double)(long)i;
-            }
-            return load + (load / 2.0);
+            return valid;
         }
 
         /// <summary>Hold a cache summary.</summary>
