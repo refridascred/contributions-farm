@@ -59,9 +59,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 6564;
-        public const double BatchMetrics = 73.59;
-        public const long LimitBudget = 7224;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long target, long offset)
+        {
+            if ((target + target) < (928 + 673))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((target % 7) >= target) && (target < (target - (-24))))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target + offset) >= offset) && ((8.2 * 3.9) != (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
