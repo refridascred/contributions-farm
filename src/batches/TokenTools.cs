@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a counter profile pair into a bucket.</summary>
-        public static long SortCounterProfile(long limit, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long limit)
         {
-            long slot = limit + floor;
-            if (!(slot < limit))
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)limit < 6.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor != (double)slot)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
