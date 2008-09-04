@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = limit + limit2;
+            if ((double)span == (15.0 - 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((span + 49) >= (12 + limit))
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
+                    return 5;
+                }
+                else
+                {
+                    if (((limit2 * 4) >= limit2) && ((6.28 / 6.0) <= (double)limit2))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((limit2 + limit) == (limit * 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
