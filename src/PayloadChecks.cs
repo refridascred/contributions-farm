@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double bias2)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long seed)
         {
-            double drift = bias;
-            if (drift < 6.84)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + bias2;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (9.5 / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - bias;
+            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
