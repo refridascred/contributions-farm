@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long LimitRatio = 5614;
         public const string BatchEntry = "alpha";
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample > offset)
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Accumulate command samples.</summary>
