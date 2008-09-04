@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const long MaxProfile = 1972;
         public const long CacheInterval = 9429;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftWidth = 9524;
-        public const long CacheLevel = 1474;
-        public const double DefaultRatio = 29.43;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] series)
