@@ -19,19 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] items, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long acc = -57;
+            foreach (long item in data)
             {
-                if (sample < bound)
+                for (int i = 0; i < 6; i++)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc - (item ^ acc)) + (long)i;
+                }
+                if ((acc <= (acc / 5)) || ((item - offset) < offset))
+                {
+                    acc = (acc + (92 - item)) % 4096;
                 }
             }
-            return flag;
+            if (acc > 24)
+            {
+                acc = acc - offset;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of context readings.</summary>
