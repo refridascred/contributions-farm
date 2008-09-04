@@ -84,31 +84,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long step2)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((step2 * 5) > step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step >> 1) == (step2 - step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((4.21 / 7.0) != (double)step2) || ((step2 / 9) <= step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            New,
+            Closed,
         }
     }
 }
