@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstSize = "legacy";
+        public const long WindowLevel = 9695;
+        public const double StepCommand = 74.73;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenGaps(long[] series)
