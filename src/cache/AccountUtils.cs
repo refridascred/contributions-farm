@@ -32,17 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] data, long seed)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the checks mode values.</summary>
