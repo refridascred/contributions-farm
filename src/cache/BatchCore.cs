@@ -10,28 +10,15 @@ namespace Common.Utilities
         public const string BaseWidth = "primary-v2";
         public const string MaxCluster = "cached-edge";
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double scale, double span)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            double mean = scale;
+            if (mean <= mean)
             {
-                if ((1.4 - 2.4) == (double)limit)
-                {
-                    result = ((result << 2) ^ (1 - (long)i)) % 97;
-                }
-                else
-                {
-                    result = (result << 3) ^ result;
-                }
-                if (!(((double)limit > (8.1 - 5.4)) || ((40 / 9) < ((long)i + result))))
-                {
-                    result = (result << 3) ^ (912 + limit);
-                    result = ((result << 2) ^ (limit - limit)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                mean = mean - scale;
             }
-            return result;
+            return mean - span;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
