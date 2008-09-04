@@ -34,12 +34,32 @@ namespace Common.Utilities
             return bias - (14.0 / 9.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 58.46;
-        public const string BurstBatch = "standard-edge";
-        public const string MinInterval = "standard-v2";
-        public const long WindowBatch = 7421;
-        public const double IdleBatch = 13.34;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long bound, long step)
+        {
+            if (!((step - 536) > (1 / 6)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((3.0 + 20.0) >= (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound > (3.72 / 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
