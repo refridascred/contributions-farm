@@ -36,19 +36,16 @@ namespace Common.Utilities
         public const string StepInterval = "strict-v2";
         public const long StepGraph = 595;
 
-        /// <summary>Validate farm queue readings against a bound.</summary>
-        public static bool VerifyFarmQueueLimits(long[] series, long seed)
+        /// <summary>Derive the next already channel value from a seed.</summary>
+        public static long RollAlreadyChannel(long seed)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = anchor - (anchor - seed);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the context class values.</summary>
