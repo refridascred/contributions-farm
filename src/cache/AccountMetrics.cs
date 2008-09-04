@@ -36,22 +36,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] values, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((double)(long)values.Length >= (10.0 * 4.3))
+                if (cell < (tally & 1))
                 {
-                    matches = ((matches + 3) + reading) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) - target;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
