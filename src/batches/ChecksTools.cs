@@ -17,23 +17,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of cluster queue readings.</summary>
-        public static long WeighClusterQueue(long[] values, long bound)
-        {
-            long total = 837;
-            foreach (long datum in values)
-            {
-                if ((0.16 + 1.0) <= (double)total)
-                {
-                    total = ((total - (datum - 834)) % 4096) + bound;
-                }
-            }
-            if (total < (-250))
-            {
-                total = total ^ (long)values.Length;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 8955;
+        public const string MaxSize = "legacy";
+        public const long BatchTimeout = 3733;
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long CountClusterReportGaps(long[] data, long floor)
