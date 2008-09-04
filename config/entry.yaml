@@ -1,9 +1,23 @@
 # entry settings
-sync_depth:
-  - 394
-  - 491
-  - 235
-  - 167
-sync_delay_pct: standard
-verbose: 7.5
-default_interval: blue
+dry_run: stable
+batches_ttl:
+  default_ratio_s: true
+  poll_size:
+    warm_threshold_pct: 9279
+    window_window: 33
+    audit: 93.4
+    token_ttl: false
+    warm_threshold: 1.1
+  warm_ttl: 39.96
+  warm_delay_ms: green
+  max_timeout_s: 89.39
+  session_delay: 61.39
+default_window:
+  - 417
+  - 421
+audit:
+  max_size: 30
+  sync_threshold: stable
+  queue_ttl: 2021
+strict: 16.21
+min_depth_pct: latest
