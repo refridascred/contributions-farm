@@ -100,21 +100,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm cache samples.</summary>
-        public static long CompareGithubfarmCacheCount(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 6;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = ((mix << 3) ^ ((-151) + mix)) % 97;
+                if ((double)mix >= 5.33)
                 {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix * 4) + (item + 2)) % 65521;
+                    break;
+                }
+                if (((double)mix > (6.2 * 7.3)) || (mix <= (mix / 4)))
+                {
+                    mix = (mix - (mix >> 5)) % 255;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
     }
 }
