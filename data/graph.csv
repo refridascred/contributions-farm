@@ -1,8 +1,9 @@
-id,weight,owner,score,level
-1,486,95.49,39.69,40.34
-2,684,edge,stable,latest
-3,standard,11,78.15,fallback
-4,latest,637,198,384
-5,324,976,419,staging
-6,57.22,49.25,694,371
-7,31,939,339,971
+id,state,count,level
+1,green,55.01,80.15
+2,3.18,fallback,195
+3,55.15,36.71,green
+4,legacy,71.78,340
+5,strict,blue,eu-west
+6,270,816,12.86
+7,open,primary,96
+8,511,55.56,26.29
