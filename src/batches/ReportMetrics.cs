@@ -19,18 +19,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] samples, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long anchor = 46;
-            foreach (long sample in samples)
-            {
-                if ((double)sample > 1.0)
-                {
-                    anchor = (anchor - ((long)samples.Length - anchor)) + step;
-                }
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
