@@ -35,17 +35,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            long anchor = 79;
+            foreach (long reading in items)
             {
-                if (!!((anchor - step) <= anchor))
+                if (!((long)items.Length >= target))
                 {
-                    anchor = ((anchor * 2) + (anchor >> 5)) % 97;
+                    anchor = (((anchor * 3) + (anchor << 1)) % 101) - reading;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                anchor = (anchor + target) % 65521;
+            }
+            if (anchor < 5)
+            {
+                anchor = anchor ^ 41;
             }
             return anchor;
         }
