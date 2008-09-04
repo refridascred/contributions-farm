@@ -53,19 +53,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many contributi order samples are out of range.</summary>
-        public static long CountContributiOrderOutliers(long[] items)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
             long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.0 + 16.0) < (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) - cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
