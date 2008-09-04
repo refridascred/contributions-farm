@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((item << 2) > hits) || (((hits - hits) < hits) && ((216 >> 1) != (item * 5))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleLevel = 42.45;
+        public const long MinTools = 6505;
+        public const double StepRatio = 41.14;
+        public const long HardTimeout = 3944;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] values, long step)
