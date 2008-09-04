@@ -31,11 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((limit >> 3) <= (hits * 2)))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route header.</summary>
