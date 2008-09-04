@@ -54,30 +54,9 @@ namespace Common.Utilities
         public const string CacheCount = "alpha-1";
         public const long StepLevel = 4565;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((carry >> 5) >= (carry * 3)) && (((long)i - 63) == (carry - seed)))
-                {
-                    carry = (carry << 3) ^ (carry % 8);
-                }
-                if ((seed - seed) == (4 + (long)i))
-                {
-                    carry = (carry - seed) % 1000;
-                    carry = carry - seed;
-                    continue;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry & 63);
-                }
-                carry = carry - (16 + (long)i);
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 6564;
+        public const double BatchMetrics = 73.59;
+        public const long LimitBudget = 7224;
     }
 }
