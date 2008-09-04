@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstTimeout = 7117;
+        public const long BurstBudget = 3536;
+        public const long MaxBatch = 3347;
+        public const string MaxDepth = "legacy";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileOutliers(long[] samples, long limit)
