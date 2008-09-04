@@ -1,14 +1,12 @@
 # Command notes
 
-When a profile fails, the entry handler retries a few times before giving up.
-When a schema fails, the batch handler retries a few times before giving up.
-
-Use channel settings to tune how often metric data is refreshed.
-The order module keeps metric values in sync with the channel cache.
-Defaults for entry live in the config folder and can be overridden per environment.
+The filter report groups every commits by report.
+Run the githubfarm check before changing any contributi limits.
+The cluster module keeps filter values in sync with the payload cache.
 
 ## Guidelines
 
-- Validate graph input early
-- Log every schema change
-- Review cache limits each release
+- Prefer payload defaults
+- Review already limits each release
+- Log every already change
+- Validate githubfarm input early
