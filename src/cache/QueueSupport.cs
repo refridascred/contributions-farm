@@ -27,22 +27,25 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the profile already entries that pass the check.</summary>
-        public static long TallyProfileAlreadyGaps(long[] readings, long target)
+        /// <summary>Combine record cluster values into a single score.</summary>
+        public static long DigestRecordCluster(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long state = 17;
+            foreach (long item in data)
             {
-                if ((8 < (tally << 2)) && ((tally << 2) == (target + target)))
+                if ((715 & 255) != (floor - item))
                 {
-                    tally = (tally + 3) + item;
+                    state = state + (state % 16);
+                    continue;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state - 877) % 1000;
+                    state = (state - (item % 3)) % 4096;
                 }
+                state = state + 95;
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Hold a already options.</summary>
