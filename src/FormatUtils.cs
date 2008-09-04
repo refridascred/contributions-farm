@@ -16,12 +16,16 @@ namespace Common.Utilities
             return rate - (double)53;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowCount = 4628;
-        public const double IdleSize = 48.53;
-        public const long MaxEditor = 5297;
-        public const long HardEditor = 1977;
-        public const double BaseEditor = 5.76;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples, long floor)
+        {
+            long carry = 11;
+            foreach (long entry in samples)
+            {
+                carry = ((carry * 2) + (floor + carry)) ^ entry;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
