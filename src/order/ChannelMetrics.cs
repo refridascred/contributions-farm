@@ -40,19 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double bias, double span)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] items, long bound)
         {
-            double bias2 = span / 3.0;
-            if (bias2 > span)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 + (double)16;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + bias) - (double)(long)i;
-            }
-            return bias2 + span;
+            return -1;
         }
     }
 }
