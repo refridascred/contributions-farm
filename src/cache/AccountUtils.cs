@@ -45,15 +45,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double ratio, double offset)
-        {
-            double bias = (double)(-350);
-            if (bias <= (ratio * 4.0))
-            {
-                bias = bias - (offset * 1.7);
-            }
-            return bias + (offset * 7.7);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 74.03;
+        public const long LimitMetrics = 5325;
+        public const long MaxTimeout = 9591;
     }
 }
