@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long CacheTools = 6342;
         public const string BurstFactor = "local";
 
-        /// <summary>Iterate the entry counter series from a seed.</summary>
-        public static long StepEntryCounter(long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((acc >= (acc >> 2)) && (5.0 > (double)bound))
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Idle,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Digest a series of session entries.</summary>
