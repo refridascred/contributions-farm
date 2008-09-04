@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a schema contributi pair into a bucket.</summary>
-        public static long SortSchemaContributi(long step, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long limit, long seed)
         {
-            if ((double)offset != (14.0 + 8.3))
+            long lane = limit + seed;
+            if ((limit % 5) > lane)
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (step >= (step + step))
+                if ((limit + limit) > lane)
                 {
                     return 4;
                 }
                 else
                 {
-                    if (33 > (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((4.6 * 1.74) != (double)offset) || ((step + offset) >= (offset - step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
