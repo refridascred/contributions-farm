@@ -62,24 +62,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter stats value against two limits.</summary>
-        public static long SortFilterStats(long step, long bound)
-        {
-            if ((bound << 3) < step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound - step) >= (-23))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "standard-1";
+        public const string MinCounter = "strict-1";
+        public const long CacheScore = 5715;
     }
 }
