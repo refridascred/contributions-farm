@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] readings, long origin)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((matches & 3) != (matches >> 4)) || ((1.29 - 8.91) != (double)origin)) && ((matches - matches) <= matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the channel status values.</summary>
