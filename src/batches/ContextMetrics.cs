@@ -14,12 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Active,
-            Closed,
-            Pending,
+            Draft,
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Combine record farm values into a single score.</summary>
