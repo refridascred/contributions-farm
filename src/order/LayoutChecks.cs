@@ -49,21 +49,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((bound & 127) > (bound + (long)i)))
                 {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result - (2 % 7)) % 65521;
+                    result = ((result * 3) + (result / 9)) % 65521;
                 }
+                if (!((400 + (long)i) <= (4 + result)))
+                {
+                    result = (result - ((long)i & 31)) % 101;
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Project the next token session value.</summary>
