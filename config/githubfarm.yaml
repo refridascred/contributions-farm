@@ -1,5 +1,4 @@
 # githubfarm settings
-base_size_count: 4.86
-compress: 7486
-schema_capacity: primary
-warm_depth: 32.91
+batch_window_s: 39
+flush_threshold_ms: fallback
+batch_ttl: 93
