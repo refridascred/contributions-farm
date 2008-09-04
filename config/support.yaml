@@ -1,7 +1,9 @@
 # support settings
-retry_interval_pct:
-  - 223
-  - 448
-  - 406
-enabled: green
-batch_ratio_s: 1024
+min_capacity:
+  flush_ttl_count: false
+  idle_limit_pct: strict
+  cache_limit: latest
+retry_size_s: 64.75
+farm_window: 47
+schema_threshold: false
+strict: 500
