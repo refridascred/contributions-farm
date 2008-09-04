@@ -20,10 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 2856;
-        public const long SoftWidth = 7942;
-        public const long RetryBatch = 8369;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Idle,
+            Retry,
+            New,
+            Active,
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] series, long bound)
