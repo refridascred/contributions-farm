@@ -23,10 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftToken = "standard-v2";
-        public const long WindowToken = 8626;
-        public const long SoftTimeout = 7805;
+        /// <summary>Audit contributi cache readings against a rule.</summary>
+        public static long CountContributiCacheMatches(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((double)(long)levels.Length >= (double)hits)
+                {
+                    hits = ((hits + 2) - value) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileBounds(long[] readings, long origin)
