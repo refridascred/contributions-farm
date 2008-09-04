@@ -1,7 +1,10 @@
 # support settings
-strict: 43
-persist: latest
-soft_delay: legacy
-hard_interval_ms: 55
-max_limit_s: open
-min_timeout_ms: cached
+notes_threshold: blue
+burst_ratio_count: 12
+stats_ratio: 16.27
+max_depth_pct:
+  - primary
+  - local
+  - staging
+already_ratio: 100
+commits_depth: stable
