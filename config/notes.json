@@ -1,7 +1,14 @@
 {
-  "metric_capacity": 34,
-  "format_capacity": "eu-west",
-  "base_delay_ms": true,
-  "sync_interval": 13,
-  "notes_ratio": ["green", "latest", "open"]
+  "stats_size": ["standard", "staging"],
+  "idle_ttl_ms": {
+    "cache_timeout_ms": 20,
+    "warm_ratio_ms": 754,
+    "burst_ttl_s": "fallback",
+    "flush_interval_s": true,
+    "verbose": 78,
+    "strict": 49
+  },
+  "counter_capacity": [156, 246, 182, 170],
+  "enabled": 8019,
+  "base_delay_s": false
 }
