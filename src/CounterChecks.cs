@@ -20,19 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cluster tools readings.</summary>
-        public static long TotalClusterTools(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] samples, long offset)
         {
-            long score = 759;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                score = (score - (value + value)) % 255;
+                if (value < (matches << 3))
+                {
+                    matches = (matches + 1) - offset;
+                }
             }
-            if (score < 45)
-            {
-                score = score ^ (score << 1);
-            }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
