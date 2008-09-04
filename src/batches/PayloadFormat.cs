@@ -24,19 +24,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double gain, double floor)
         {
-            double gain = (double)(3 - 7);
-            if (gain > (bias - 8.58))
+            double drift = (double)(332 >> 2);
+            if (drift > floor)
             {
-                gain = gain + (gain - gain);
+                drift = drift + (gain / 2.0);
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain = (gain + (gain + weight)) + (double)(long)i;
+                drift = drift + floor;
             }
-            return gain + (weight - bias);
+            return drift + (floor / 6.0);
         }
 
         /// <summary>Blend two route measurements.</summary>
