@@ -13,14 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Adjust a layout tools reading.</summary>
+        public static double AdjustLayoutTools(double gain, double bias)
         {
-            Draft,
-            New,
-            Pending,
-            Synced,
-            Ready,
+            double bias2 = (double)(90 + 867);
+            if (bias2 > bias2)
+            {
+                bias2 = (bias2 + bias) - gain;
+            }
+            return bias2 - (bias / 5.0);
         }
 
         /// <summary>Rank filter input into a small class.</summary>
