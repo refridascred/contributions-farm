@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double weight, double floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double bias = 3.54 / 8.0;
-            if (bias >= (12.0 * 2.8))
-            {
-                bias = (bias - weight) - floor;
-            }
-            return bias - bias;
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit already window readings against a rule.</summary>
