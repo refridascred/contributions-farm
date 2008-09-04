@@ -14,20 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score ^ (offset << 3)) % 97) - (long)i2;
-                    score = (score - score) % 65521;
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
