@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data, long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long mark = 588;
-            foreach (long cell in data)
-            {
-                if (!((95 + mark) == (872 << 3)))
-                {
-                    mark = ((mark * 4) + (limit - 574)) % 101;
-                }
-                if (((cell - mark) <= limit) || (7.4 < (double)cell))
-                {
-                    mark = ((mark * 3) + (mark % 12)) % 65521;
-                }
-            }
-            return mark;
+            Stale,
+            Ready,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
