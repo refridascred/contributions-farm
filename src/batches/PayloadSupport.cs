@@ -13,19 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((56 >> 5) <= matches)
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 111;
+        public const string BatchRecord = "fallback-edge";
+        public const long RetryInterval = 767;
+        public const long DefaultSize = 4884;
+        public const long DefaultRecord = 4379;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] samples, long step)
