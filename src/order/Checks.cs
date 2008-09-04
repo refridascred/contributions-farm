@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const double BatchCount = 52.1;
         public const long BatchBatches = 6224;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] items, long bound)
         {
-            Draft,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((bound << 3) < entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
