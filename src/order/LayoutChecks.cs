@@ -98,32 +98,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long floor, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] samples, long target)
         {
-            long span = floor + limit;
-            if (((limit + span) < 3) && ((floor + limit) < (61 ^ limit)))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit / 8) < limit))
+                if (reading <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (span <= (floor + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
