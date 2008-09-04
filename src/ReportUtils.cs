@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] samples)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)tally != (3.2 * 9.35))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
