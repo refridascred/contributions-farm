@@ -24,12 +24,17 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] data, long limit)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
