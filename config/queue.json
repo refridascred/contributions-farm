@@ -1,6 +1,6 @@
 {
-  "support_depth": 56,
-  "persist": 19.52,
-  "batch_ttl": true,
-  "max_size_pct": [12, 496]
+  "stats_delay": [409, 415],
+  "hard_ratio_ms": "fallback",
+  "batch_size_count": false,
+  "persist": [22, 146, 305]
 }
