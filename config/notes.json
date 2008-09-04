@@ -1,17 +1,8 @@
 {
-  "soft_retries_ms": {
-    "default_size_ms": {
-      "max_retries_count": false,
-      "sync_capacity": "blue",
-      "report_capacity": 8460
-    },
-    "verbose": 21,
-    "retry_retries": "eu-west",
-    "layout_window": [412, 164, 35]
-  },
-  "counter_window": 98,
-  "filter_ttl": false,
-  "base_limit_count": ["eu-west", "latest"],
-  "strict": ["green", "legacy"],
-  "farm_delay": 68
+  "strict": 26,
+  "cluster_ratio": 9,
+  "flush_delay": 2614,
+  "schema_limit": 9060,
+  "base_depth_ms": false,
+  "soft_capacity_pct": true
 }
