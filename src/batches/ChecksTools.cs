@@ -59,18 +59,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit cluster report readings against a rule.</summary>
-        public static long CountClusterReportGaps(long[] data, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)data.Length - seen) <= 9)
+                if ((data[i] < target) && ((data[i] % 2) == 0))
                 {
-                    seen = ((seen + 1) - datum) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
