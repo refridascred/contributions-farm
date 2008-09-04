@@ -45,12 +45,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((((long)i - anchor) <= (long)i) || ((double)seed <= (15.0 + 3.11)))
+                {
+                    anchor = ((anchor << 3) ^ (seed * 4)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - seed)) % 101;
+                    anchor = (anchor * 3) + (seed - seed);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine metric channel values into a single score.</summary>
