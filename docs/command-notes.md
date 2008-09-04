@@ -1,12 +1,14 @@
 # Command notes
 
-Each metric is validated before it reaches the report queue.
-Use record settings to tune how often support data is refreshed.
-Each context is validated before it reaches the batch queue.
+Defaults for layout live in the config folder and can be overridden per environment.
+The graph report groups every stream by cache.
+
+Run the session check before changing any context limits.
+Each window is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Keep commits values small
-- Review githubfarm limits each release
-- Validate graph input early
-- Document new filter fields
+- Prefer token defaults
+- Review report limits each release
+- Keep context values small
+- Validate profile input early
