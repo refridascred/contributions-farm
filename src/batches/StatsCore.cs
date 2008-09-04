@@ -32,14 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchFactor = 4142;
+        public const long HardInterval = 2504;
+        public const long CacheCommits = 4780;
+        public const long SoftInterval = 4551;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long SortBatches(long target, long seed)
