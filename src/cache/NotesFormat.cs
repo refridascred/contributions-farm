@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples)
         {
-            Closed,
-            Retry,
-            Pending,
+            long anchor = 3;
+            foreach (long sample in samples)
+            {
+                if ((sample + anchor) <= (anchor * 5))
+                {
+                    anchor = anchor + (sample + anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Blend two window measurements.</summary>
