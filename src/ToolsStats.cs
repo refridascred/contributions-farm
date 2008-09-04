@@ -42,23 +42,11 @@ namespace Common.Utilities
             return bias2 - (rate - 1.1);
         }
 
-        /// <summary>Fold a list of profile metric readings.</summary>
-        public static long CombineProfileMetric(long[] readings, long limit)
-        {
-            long mix = 422;
-            foreach (long cell in readings)
-            {
-                if (!((limit ^ 82) <= mix))
-                {
-                    mix = (((mix * 5) + (410 & 3)) % 65521) - cell;
-                }
-                else
-                {
-                    mix = mix ^ limit;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardTimeout = 86.6;
+        public const string BaseSpan = "alpha-edge";
+        public const double SoftReport = 82.83;
+        public const string LimitFactor = "fallback-v2";
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] series)
