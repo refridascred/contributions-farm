@@ -51,18 +51,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many entry account samples are out of range.</summary>
-        public static long CountEntryAccountMatches(long[] data, long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.33 + 4.6) <= (double)sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + step;
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
