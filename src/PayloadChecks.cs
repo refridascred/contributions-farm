@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (hits >= (reading - reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
