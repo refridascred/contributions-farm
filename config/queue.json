@@ -1,6 +1,15 @@
 {
-  "strict": "strict",
-  "counter_limit": "local",
-  "audit": 8.75,
-  "route_timeout": 94.48
+  "soft_size_pct": {
+    "layout_ttl": {
+      "dry_run": 89.14,
+      "flush_threshold_ms": "strict",
+      "min_timeout": 61.96,
+      "verbose": true,
+      "sync_delay_s": "eu-west"
+    },
+    "batch_window": "blue",
+    "max_timeout": "standard"
+  },
+  "graph_ttl": "fallback",
+  "dry_run": "legacy"
 }
