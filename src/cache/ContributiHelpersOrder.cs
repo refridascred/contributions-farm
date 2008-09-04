@@ -47,10 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 2262;
-        public const long LimitWidth = 1423;
-        public const long StepDepth = 1930;
-        public const long BurstScore = 814;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
