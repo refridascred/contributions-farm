@@ -15,13 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] items, long seed)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Closed,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up layout samples.</summary>
