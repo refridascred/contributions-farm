@@ -35,22 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] levels, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long acc = 85;
+            foreach (long item in levels)
             {
-                if ((origin >> 3) == (matches - (long)levels.Length))
+                if ((double)(-28) <= (double)acc)
                 {
-                    matches = (matches + 3) + sample;
+                    acc = ((acc << 2) ^ item) % 255;
                 }
-                else
+                if ((double)acc > (double)acc)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Locate a payload layout reading by value.</summary>
