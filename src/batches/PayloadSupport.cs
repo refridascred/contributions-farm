@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 111;
-        public const string BatchRecord = "fallback-edge";
-        public const long RetryInterval = 767;
-        public const long DefaultSize = 4884;
-        public const long DefaultRecord = 4379;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values, long bound)
+        {
+            long mark = -70;
+            foreach (long item in values)
+            {
+                mark = (((mark - (9 % 8)) % 4096) ^ item) - bound;
+                mark = (mark + mark) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] samples, long step)
