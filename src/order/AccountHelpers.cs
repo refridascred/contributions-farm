@@ -60,21 +60,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor << 2) ^ ((long)i2 + anchor);
+                    anchor = (anchor << 3) ^ 942;
                 }
+                if (1 >= floor)
+                {
+                    long delta = (long)i >> 3;
+                    anchor = ((anchor * 3) + (delta * 2)) % 4096;
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Match up tools samples.</summary>
