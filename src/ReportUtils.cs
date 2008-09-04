@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long acc = 95;
-            foreach (long datum in items)
-            {
-                if (37 > (datum << 1))
-                {
-                    acc = (acc ^ (acc % 100)) % 97;
-                }
-            }
-            return acc;
+            Locked,
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the context status values.</summary>
