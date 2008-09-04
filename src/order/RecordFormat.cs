@@ -31,12 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] series, long step)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
