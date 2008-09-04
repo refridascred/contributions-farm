@@ -1,30 +1,23 @@
 # support settings
-command_limit: false
-record_ratio:
-  commits_timeout: 30
-  soft_limit_s: 9224
-  contributi_depth: 63
-  base_depth:
-    sync_window_ms:
-      - 159
-      - 490
-      - 328
-      - 82
-    readonly: 21.34
-    min_delay:
-      - 280
-      - 345
-      - 303
-    audit: 1309
-    hard_timeout_ms: false
-  default_depth: 95
-  hard_delay_ms:
-    soft_ratio: 63
-    cache_delay: true
-    cache_retries: true
-    poll_timeout_count:
-      - 430
-      - 139
-      - 306
-      - 185
-poll_interval_pct: local
+sync_depth_pct: stable
+flush_timeout_ms: legacy
+batch_threshold_count:
+  - green
+  - stable
+  - standard
+format_retries: open
+buffer_limit:
+  hard_capacity_ms: 40
+  strict:
+    enabled:
+      - latest
+      - staging
+      - cached
+      - fallback
+    audit: 93
+    base_size: 70.12
+    dry_run: 83.49
+    compress: 500
+    warm_ttl_pct: 41.98
+  default_threshold_count: 1024
+  token_ttl: open
