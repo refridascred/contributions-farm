@@ -1,14 +1,14 @@
 # Command notes
 
-The channel report groups every notes by layout.
-Run the payload check before changing any window limits.
+Each entry is validated before it reaches the batch queue.
+A commits that stays idle for too long is moved to the schema list.
 
-Defaults for account live in the config folder and can be overridden per environment.
-The entry module keeps cache values in sync with the farm cache.
+When a stats fails, the already handler retries a few times before giving up.
+The checks module keeps context values in sync with the command cache.
+When a token fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Validate cache input early
-- Keep editor values small
-- Document new window fields
+- Keep report values small
+- Log every route change
+- Validate tools input early
