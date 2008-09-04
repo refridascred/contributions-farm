@@ -41,12 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] values, long floor)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((floor - entry) > (entry >> 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
