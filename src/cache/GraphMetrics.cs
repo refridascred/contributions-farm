@@ -35,25 +35,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long floor, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long slot = floor + step;
-            if ((floor & 7) <= 1)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(step < (floor - slot)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Closed,
+            Ready,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
