@@ -1,5 +1,6 @@
 # githubfarm settings
-strict: true
-max_ttl: 769
-cache_capacity_ms: true
-enabled: 8499
+channel_threshold: 60
+batch_size_pct: 20.7
+batch_retries_s: 8.79
+poll_depth: staging
+strict: 40.29
