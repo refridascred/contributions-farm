@@ -33,22 +33,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long floor, long origin)
         {
-            if (8.4 < (double)origin)
+            if (origin < (origin / 5))
             {
                 return 4;
             }
             else
             {
-                if ((origin >= floor) || ((9.1 + 3.62) == (double)floor))
+                if ((floor & 255) != (origin << 3))
                 {
                     return 7;
                 }
                 else
                 {
-                    return 0;
+                    if ((floor / 7) <= (floor >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
