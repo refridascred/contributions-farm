@@ -20,21 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long offset, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            if (!((offset % 16) == (floor << 2)))
             {
-                sum = (sum + (sum % 16)) % 65521;
-                if ((double)floor == (8.42 + 3.18))
-                {
-                    sum = (sum + (floor % 100)) % 255;
-                    sum = (sum - floor) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((7.91 - 1.61) <= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.35 * 6.0) >= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report header.</summary>
