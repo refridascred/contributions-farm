@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Active,
-            New,
-            Queued,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowFactor = "alpha-1";
+        public const long IdleEditor = 7176;
+        public const double HardDepth = 14.35;
+        public const long LimitLevel = 8660;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] readings)
