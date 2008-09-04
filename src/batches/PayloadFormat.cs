@@ -24,19 +24,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate record account readings against a bound.</summary>
-        public static bool VerifyRecordAccountRange(long[] items, long offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double gain = (double)(3 - 7);
+            if (gain > (bias - 8.58))
             {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain + (gain - gain);
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (gain + weight)) + (double)(long)i;
+            }
+            return gain + (weight - bias);
         }
 
         /// <summary>Blend two route measurements.</summary>
