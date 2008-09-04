@@ -1,7 +1,8 @@
 {
-  "audit": 6.41,
-  "cache_timeout_s": false,
-  "readonly": 6477,
-  "base_ttl_s": "strict",
-  "default_size": 29.15
+  "audit": 81.92,
+  "soft_size_ms": 83.67,
+  "soft_capacity_count": false,
+  "sync_delay": false,
+  "max_ttl": 2639,
+  "persist": 66.8
 }
