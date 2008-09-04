@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetrySpan = 7065;
-        public const long SoftRecord = 7895;
-        public const long StepScore = 3138;
-        public const string MaxRecord = "alpha";
-        public const string RetryRecord = "standard-1";
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepTimeout = 7276;
