@@ -24,10 +24,20 @@ namespace Common.Utilities
         public const long SoftWidth = 7942;
         public const long RetryBatch = 8369;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 9693;
-        public const string MaxChecks = "primary-1";
-        public const string MaxBudget = "primary-1";
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((5.75 * 8.99) != (double)origin)
+                {
+                    sum = sum + origin;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] series, long seed)
