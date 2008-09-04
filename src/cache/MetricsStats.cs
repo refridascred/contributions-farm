@@ -39,11 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardSize = "local-v2";
-        public const long MinTools = 2598;
-        public const long IdleTools = 1843;
-        public const long CacheTools = 2729;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seed + seen) < seen)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
