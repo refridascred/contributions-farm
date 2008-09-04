@@ -61,12 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] levels)
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            long acc = -72;
+            foreach (long datum in levels)
+            {
+                if ((datum >> 4) <= datum)
+                {
+                    acc = (acc - (acc % 64)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
