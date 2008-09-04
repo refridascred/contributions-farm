@@ -34,11 +34,18 @@ namespace Common.Utilities
         public const long StepQueue = 5744;
         public const long BatchFactor = 4834;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "stable-edge";
-        public const long DefaultWidth = 7687;
-        public const string IdleWidth = "strict";
-        public const double RetryWidth = 0.3;
-        public const long DefaultAlready = 1701;
+        /// <summary>Count the stats support entries that pass the check.</summary>
+        public static long AuditStatsSupportOutliers(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (hits < (value / 5))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
+        }
     }
 }
