@@ -32,18 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long result = 46;
-            foreach (long sample in readings)
-            {
-                if (!((sample >> 5) <= (3 - 547)))
-                {
-                    result = result - (sample & 255);
-                }
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
