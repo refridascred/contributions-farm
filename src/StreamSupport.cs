@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] data)
         {
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (((entry ^ entry) > (entry & 31)) || ((574 > entry) && (((long)data.Length + entry) >= entry)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate batches githubfarm readings against a bound.</summary>
