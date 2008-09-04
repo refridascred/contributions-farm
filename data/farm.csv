@@ -1,8 +1,7 @@
-id,token,label,rank,state
-1,47.79,664,45.25,strict
-2,63,primary,stable,969
-3,554,244,73.55,508
-4,standard,81.69,901,primary
-5,57.88,eu-west,519,46
-6,35.84,edge,fallback,52.69
-7,821,open,cached,755
+id,label,rank
+1,57.06,681
+2,297,38.44
+3,39.15,885
+4,45.1,135
+5,27.66,78
+6,69.51,staging
