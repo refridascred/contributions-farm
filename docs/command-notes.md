@@ -1,10 +1,12 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the stats list.
-The stats report groups every cluster by editor.
+Use support settings to tune how often githubfarm data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Keep farm and order names short and lowercase.
 
 ## Guidelines
 
-- Keep context values small
-- Validate order input early
-- Log every queue change
+- Validate support input early
+- Document new commits fields
+- Log every route change
+- Prefer githubfarm defaults
