@@ -84,14 +84,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Pending,
-            Active,
-            Done,
-            Paused,
-            Failed,
+            New,
+            Dropped,
+            Queued,
+            Idle,
         }
     }
 }
