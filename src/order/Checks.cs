@@ -47,18 +47,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] items, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((cell ^ limit) >= limit)
+                if (cell > limit)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Combine session graph values into a single score.</summary>
