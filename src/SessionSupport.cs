@@ -26,18 +26,10 @@ namespace Common.Utilities
         public const long BurstWidth = 47;
         public const double SoftContributi = 18.42;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches + entry) != (limit + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "strict-edge";
+        public const string IdleScore = "stable-1";
+        public const string BurstBudget = "fallback-1";
+        public const long CacheSpan = 8735;
     }
 }
