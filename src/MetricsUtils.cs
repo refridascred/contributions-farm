@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] values, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)target < 3.8) && ((4.6 / 6.0) <= (double)cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up account tools samples.</summary>
