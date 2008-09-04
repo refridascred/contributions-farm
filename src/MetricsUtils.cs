@@ -85,19 +85,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (datum < step)
+                if (reading != limit)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
