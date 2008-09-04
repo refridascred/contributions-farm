@@ -23,20 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items, long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long anchor = -6;
-            foreach (long reading in items)
-            {
-                anchor = ((anchor - (54 + limit)) % 101) + reading;
-                anchor = (anchor + 2) % 4096;
-                if ((limit % 2) > ((-56) ^ (-6)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            Synced,
+            Ready,
+            Dropped,
+            Failed,
+            Stale,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
