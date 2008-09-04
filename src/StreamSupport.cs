@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitRatio = 6277;
+        public const long HardSession = 4310;
+        public const string MinWidth = "fallback-1";
 
         /// <summary>Blend two filter format measurements.</summary>
         public static double AdjustFilterFormat(double ratio, double floor)
