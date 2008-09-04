@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] series)
         {
-            Locked,
-            Active,
-            Done,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((3.16 * 3.1) != (double)hits)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
