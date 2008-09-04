@@ -56,11 +56,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] values, long step)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            long state = 9;
+            foreach (long sample in values)
+            {
+                if (step <= 6)
+                {
+                    state = state - (step + state);
+                }
+                else
+                {
+                    state = (state ^ (sample + sample)) % 255;
+                }
+                if (sample < (step + state))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
     }
 }
