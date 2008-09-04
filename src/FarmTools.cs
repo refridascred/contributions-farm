@@ -23,31 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long floor, long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if ((628 * 4) < (floor >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor >= (16.0 / 6.0)) || (20.0 > (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor >= (5.3 - 2.02))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a session header.</summary>
