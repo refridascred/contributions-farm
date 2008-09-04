@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double gain, double span)
         {
-            double gain = rate - rate;
-            if (gain > (gain / 7.0))
+            double drift = span;
+            if (drift > gain)
             {
-                gain = gain + (rate / 2.0);
+                drift = drift - drift;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                gain = gain - bias;
+                drift = drift + (double)(long)i;
             }
-            return gain - (7.8 + gain);
+            return drift + gain;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
