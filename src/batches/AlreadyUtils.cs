@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Queued,
-            Active,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSize = 6494;
+        public const long LimitAccount = 8227;
+        public const long BaseFactor = 7857;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordBounds(long[] values, long limit)
