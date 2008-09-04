@@ -15,18 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] data, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 8;
+            foreach (long sample in values)
             {
-                if ((item / 6) == ((long)data.Length + target))
+                if (target <= anchor)
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor - (target * 3)) % 255) + sample;
                 }
             }
-            return tally;
+            if (anchor < 88)
+            {
+                anchor = (anchor << 2) ^ (55 >> 5);
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
