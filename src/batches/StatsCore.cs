@@ -41,17 +41,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] data, long bound)
+        /// <summary>Combine profile route values into a single score.</summary>
+        public static long CombineProfileRoute(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 8;
+            foreach (long reading in readings)
             {
-                if (data[i] >= bound)
+                if (((604 + 78) >= (score + score)) || ((5.8 * 1.2) >= (double)reading))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (score >> 2);
                 }
             }
-            return -1;
+            if (score < 6)
+            {
+                score = (score * 3) + (score / 6);
+            }
+            return score % 4096;
         }
 
         /// <summary>Accumulate layout samples.</summary>
