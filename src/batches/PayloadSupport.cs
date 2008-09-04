@@ -34,10 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 250;
-        public const long SoftInterval = 8029;
-        public const long BurstInterval = 8853;
-        public const long DefaultScore = 2159;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
