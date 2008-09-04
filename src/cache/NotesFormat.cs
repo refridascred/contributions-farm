@@ -16,12 +16,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long step)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            if (!(origin < (origin % 16)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(8.6 < (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a stats metric reading.</summary>
