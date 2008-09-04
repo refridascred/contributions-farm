@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((112 + 400) < (count % 5))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 8984;
+        public const long HardCounter = 9173;
+        public const long SoftCounter = 6696;
+        public const long StepSize = 5466;
+        public const long WindowCounter = 4455;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 2856;
