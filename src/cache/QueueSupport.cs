@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long seed)
+        /// <summary>Locate a batches account reading by value.</summary>
+        public static long LookupBatchesAccountIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= seed)
+                if (samples[i] == seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
