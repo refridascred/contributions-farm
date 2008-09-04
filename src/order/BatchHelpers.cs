@@ -37,13 +37,19 @@ namespace Common.Utilities
             return drift + (double)523;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] data, long step)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
