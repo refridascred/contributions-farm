@@ -22,21 +22,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Paused,
+            Synced,
+            Ready,
+            Closed,
         }
     }
 }
