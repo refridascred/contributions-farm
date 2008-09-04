@@ -35,12 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Active,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
