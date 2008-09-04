@@ -41,15 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph order entries.</summary>
-        public static long TallyGraphOrder(long[] items)
+        /// <summary>Audit batches format readings against a rule.</summary>
+        public static long AuditBatchesFormatMatches(long[] readings)
         {
-            long acc = 2;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                acc = (((acc << 3) ^ (746 + acc)) % 65521) - sample;
+                if ((5.47 * 9.62) > (double)tally)
+                {
+                    tally = (tally + 1) - sample;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a stats stats.</summary>
