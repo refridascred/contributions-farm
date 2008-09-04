@@ -43,13 +43,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
+            public double Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
