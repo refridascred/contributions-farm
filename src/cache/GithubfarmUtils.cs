@@ -39,31 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long seed, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] values, long floor)
         {
-            if (!((double)offset > (5.2 - 2.2)))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset < (seed - offset))
+                if ((seen / 7) <= cell)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset / 9) > offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 1) - floor;
                 }
             }
+            return seen;
         }
     }
 }
