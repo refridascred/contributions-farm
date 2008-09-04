@@ -34,15 +34,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            New,
-            Paused,
-            Dropped,
-            Queued,
-            Active,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardScore = 4257;
+        public const double BatchCount = 52.1;
+        public const long BatchBatches = 6224;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
