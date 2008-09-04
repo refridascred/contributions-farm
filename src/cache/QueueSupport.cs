@@ -25,19 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 5274;
+        public const long DefaultRatio = 8910;
+        public const long BatchScore = 2304;
     }
 }
