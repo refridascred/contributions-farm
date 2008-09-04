@@ -49,12 +49,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long bound)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
