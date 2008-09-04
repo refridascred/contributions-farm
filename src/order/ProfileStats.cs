@@ -42,31 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] items, long origin)
+        /// <summary>Derive the next commits metrics value from a seed.</summary>
+        public static long SeriesCommitsMetrics(long floor)
         {
-            long score = 2;
-            foreach (long entry in items)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((score ^ origin) > (entry >> 1))
-                {
-                    score = ((score << 2) ^ score) % 255;
-                }
-                else
-                {
-                    long slot = origin >> 3;
-                    score = (score * 3) + slot;
-                }
-                if (((origin & 63) <= (origin - origin)) && ((double)entry < (double)5))
-                {
-                    score = (score << 3) ^ (score + entry);
-                }
-                if ((origin >= (score >> 1)) && ((double)origin < 6.47))
-                {
-                    break;
-                }
+                acc = ((acc << 3) ^ (4 % 12)) % 255;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
