@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] readings, long offset)
+        /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
+        public static long SeekGithubfarmCacheIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((hits * 4) == (3 ^ sample)) || (((hits * 5) > hits) || ((sample ^ 0) <= (sample & 1))))
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
                 {
-                    hits = (hits + 2) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
