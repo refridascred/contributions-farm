@@ -43,13 +43,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Paused,
-            Draft,
-            Ready,
-            Locked,
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
