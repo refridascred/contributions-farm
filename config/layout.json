@@ -1,7 +1,5 @@
 {
-  "cache_capacity": "open",
-  "soft_depth_s": 26.14,
-  "sync_interval": "open",
-  "retry_depth_ms": 77.12,
-  "compress": "legacy"
+  "verbose": 60,
+  "support_interval": "green",
+  "hard_timeout_s": ["green", "fallback", "primary"]
 }
