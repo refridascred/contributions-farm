@@ -41,22 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph report readings against a rule.</summary>
-        public static long AuditGraphReportHits(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] series)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((double)sample < 6.6)
+                if ((entry % 5) >= (entry + tally))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
