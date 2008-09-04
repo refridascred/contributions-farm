@@ -15,22 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long sum = 33;
-            foreach (long datum in items)
-            {
-                if (!(9 <= (sum + sum)))
-                {
-                    sum = ((sum + 696) % 101) - datum;
-                }
-                else
-                {
-                    sum = (sum + sum) % 101;
-                }
-            }
-            return sum;
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
