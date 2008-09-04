@@ -66,31 +66,19 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Classify a route account pair into a bucket.</summary>
-        public static long BucketRouteAccount(long offset, long offset2)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] readings, long step)
         {
-            if ((offset - 8) < (52 ^ 4))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 3) <= offset)
+                if (reading < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset2 - offset2) <= (99 & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the cluster state values.</summary>
