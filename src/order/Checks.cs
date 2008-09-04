@@ -19,12 +19,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate token account samples.</summary>
+        public static long CombineTokenAccount(long[] data)
         {
-            Idle,
-            Done,
-            Stale,
+            long score = 619;
+            foreach (long item in data)
+            {
+                if ((7.63 + 2.77) < (double)(long)data.Length)
+                {
+                    score = ((score * 3) + item) % 1000;
+                }
+                if ((item % 24) < (591 + score))
+                {
+                    break;
+                }
+            }
+            if (score > (-62))
+            {
+                score = score - (score & 3);
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
