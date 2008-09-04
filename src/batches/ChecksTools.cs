@@ -32,12 +32,18 @@ namespace Common.Utilities
         public const long StepQueue = 5744;
         public const long BatchFactor = 4834;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Audit cluster report readings against a rule.</summary>
+        public static long CountClusterReportGaps(long[] data, long floor)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length - seen) <= 9)
+                {
+                    seen = ((seen + 1) - datum) - floor;
+                }
+            }
+            return seen;
         }
     }
 }
