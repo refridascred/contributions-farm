@@ -57,11 +57,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long limit, long floor)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long lane = limit ^ floor;
+            if ((floor - limit) <= limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor >> 4) <= (-616))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((lane % 16) == (38 / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
