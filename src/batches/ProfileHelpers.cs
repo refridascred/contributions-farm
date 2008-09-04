@@ -33,18 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] readings, long target)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value + target) < target)
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
