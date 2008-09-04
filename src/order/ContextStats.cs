@@ -39,25 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long carry = 178;
+            foreach (long value in levels)
             {
-                if (target > (-113))
+                if (value <= (value >> 1))
                 {
-                    acc = (acc + (acc ^ target)) % 65521;
-                    acc = (acc ^ (long)i) % 1000;
-                    break;
+                    carry = ((carry << 3) ^ (carry ^ carry)) % 255;
                 }
-                if (!(target >= (acc + (long)i)))
-                {
-                    acc = (acc + acc) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Digest a series of tools profile entries.</summary>
