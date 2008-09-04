@@ -1,15 +1,12 @@
 {
-  "default_timeout": "fallback",
-  "burst_timeout_pct": {
-    "cache_limit": 22.53,
-    "max_retries_count": 90,
-    "persist": 8153,
-    "warm_size_pct": "stable",
-    "counter_capacity": "staging",
-    "min_depth_count": "blue"
+  "dry_run": false,
+  "warm_limit": {
+    "audit": 5,
+    "compress": 250,
+    "enabled": [102, 144],
+    "strict": "strict"
   },
-  "enabled": true,
-  "compress": true,
-  "warm_capacity": [25, 115, 174, 11],
-  "strict": "latest"
+  "burst_retries_s": "primary",
+  "audit": 250,
+  "max_depth_s": 98.14
 }
