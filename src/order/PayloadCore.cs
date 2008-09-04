@@ -49,10 +49,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "primary-edge";
-        public const long RetryQueue = 340;
-        public const double CacheQueue = 67.49;
-        public const long LimitWidth = 1701;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long floor)
+        {
+            if ((121 ^ 5) < (floor / 6))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-29) * 5) > (floor - 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 3) < (floor * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((423 + step) != (floor >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
