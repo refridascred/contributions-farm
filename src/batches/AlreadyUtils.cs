@@ -34,19 +34,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double scale, double floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double load = (double)(15 + 72);
-            if (load > (scale + load))
-            {
-                load = (load + (load - load)) + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 6.47) + (double)(long)i;
-            }
-            return load + (2.46 / 2.0);
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
