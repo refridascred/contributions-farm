@@ -21,19 +21,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every window contributi entry stays within the limit.</summary>
-        public static bool CheckWindowContributiRange(long[] readings, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long acc = 874;
+            foreach (long cell in readings)
             {
-                if (entry <= bound)
+                if ((acc & 3) != (acc % 97))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc * 3) + (acc >> 2);
+                }
+                else
+                {
+                    acc = acc - cell;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
