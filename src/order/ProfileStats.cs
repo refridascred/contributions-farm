@@ -40,16 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits metrics value from a seed.</summary>
-        public static long SeriesCommitsMetrics(long floor)
+        /// <summary>Match up buffer command samples.</summary>
+        public static long MatchBufferCommandCount(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc << 3) ^ (4 % 12)) % 255;
-                acc = ((acc * 5) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
