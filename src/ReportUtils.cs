@@ -53,13 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] items, long limit)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
