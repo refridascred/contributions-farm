@@ -58,39 +58,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double bias, double bias2)
         {
-            long diff = bound + limit;
-            if ((double)bound > 4.9)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 4) >= (bound & 15))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9 >> 4) < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((diff << 1) == (limit * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double drift = (double)188 / 3.0;
+            return (drift - bias2) + bias;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
