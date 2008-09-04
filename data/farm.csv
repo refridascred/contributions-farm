@@ -1,9 +1,6 @@
-id,weight,rank
-1,primary,599
-2,36.5,17.41
-3,primary,green
-4,55.89,388
-5,open,fallback
-6,blue,standard
-7,staging,650
-8,legacy,304
+id,ratio,region
+1,blue,primary
+2,45.8,97.03
+3,fallback,15.07
+4,514,7.7
+5,113,839
