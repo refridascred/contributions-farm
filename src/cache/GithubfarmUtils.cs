@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long limit, long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long lane = limit + seed;
-            if ((limit % 5) > lane)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) > lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
