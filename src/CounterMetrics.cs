@@ -54,12 +54,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long seed, long limit)
         {
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            if ((double)seed < (1.23 * 2.1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed & 63) < seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit * 3) < seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
