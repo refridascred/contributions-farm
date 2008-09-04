@@ -29,11 +29,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinInterval = "alpha-v2";
-        public const long MaxInterval = 5885;
-        public const long IdleRatio = 3410;
-        public const double HardScore = 57.31;
+        /// <summary>Audit payload layout readings against a rule.</summary>
+        public static long MeasurePayloadLayoutOutliers(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((step >> 5) >= (step + datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double BlendCommits(double rate, double floor)
