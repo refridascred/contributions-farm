@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every metric entry entry stays within the limit.</summary>
-        public static bool ValidateMetricEntryRange(long[] samples, long offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            double drift = bias;
+            if (drift < 6.84)
             {
-                if (cell > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + bias2;
             }
-            return flag;
+            else
+            {
+                drift = drift - (9.5 / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Hold a buffer info.</summary>
