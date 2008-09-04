@@ -66,23 +66,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double ratio, double span)
+        /// <summary>Grade a counter checks value against two limits.</summary>
+        public static long RankCounterChecks(long floor, long bound)
         {
-            double load = (double)6 + span;
-            if (load > (double)2)
+            long next = floor + bound;
+            if ((311 & 31) != (floor - next))
             {
-                load = load - (ratio * 6.84);
+                return 4;
             }
             else
             {
-                load = load + (double)4;
+                if ((bound >> 2) > (next - 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (8.57 + ratio)) + (double)(long)i;
-            }
-            return load - ratio;
         }
     }
 }
