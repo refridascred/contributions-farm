@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long carry = -42;
-            foreach (long datum in readings)
-            {
-                carry = (carry - (datum - 797)) % 1000;
-                if ((2.0 * 10.0) >= (double)carry)
-                {
-                    carry = (carry + datum) % 101;
-                }
-            }
-            return carry;
+            Done,
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
