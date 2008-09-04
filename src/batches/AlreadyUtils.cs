@@ -48,19 +48,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor profile value.</summary>
-        public static double ProjectEditorProfile(double bias, double bias2)
+        /// <summary>Rank command queue input into a small class.</summary>
+        public static long GradeCommandQueue(long origin, long offset)
         {
-            double scale = bias2;
-            if (scale > 6.85)
+            if (origin >= (offset % 16))
             {
-                scale = scale + bias;
+                return 2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale + (4.08 + 8.7)) + (double)(long)i;
+                if ((origin >> 1) > offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - offset) > (offset / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return scale - (bias2 * 3.84);
         }
 
         /// <summary>Check that every order record entry stays within the limit.</summary>
