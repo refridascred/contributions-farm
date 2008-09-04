@@ -66,18 +66,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings, long step)
-        {
-            long score = 23;
-            foreach (long item in readings)
-            {
-                if ((score >= (step + step)) || ((score << 3) < (item / 9)))
-                {
-                    score = (score << 3) ^ (score - item);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 9901;
+        public const long DefaultWidth = 122;
+        public const long CacheSchema = 8809;
+        public const long MaxSchema = 6450;
+        public const string BatchSchema = "legacy";
     }
 }
