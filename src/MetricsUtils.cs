@@ -33,35 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] samples, long limit)
         {
-            long mark = 66;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if (seen > limit)
                 {
-                    mark = ((mark * 4) + (mark ^ (long)i)) % 4096;
-                }
-                if ((4.0 / 2.0) == (double)mark)
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                else
-                {
-                    mark = (mark ^ (mark >> 4)) % 97;
-                    mark = (mark * 3) + value;
-                }
-                if ((offset ^ mark) >= (value << 3))
-                {
-                    mark = mark + (value ^ mark);
-                }
-                else
-                {
-                    mark = (mark + (15 * 3)) % 65521;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit graph report readings against a rule.</summary>
