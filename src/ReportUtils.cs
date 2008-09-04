@@ -27,15 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long score = 20;
-            foreach (long sample in series)
-            {
-                score = (score + (7 - 79)) - sample;
-            }
-            return score;
+            Active,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a metric record.</summary>
