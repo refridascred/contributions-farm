@@ -1,6 +1,15 @@
 {
-  "poll_depth_pct": 500,
-  "audit": 86.49,
-  "soft_limit": 500,
-  "dry_run": [12, 348]
+  "verbose": ["latest", "green", "stable", "legacy"],
+  "readonly": true,
+  "burst_window_ms": 500,
+  "retry_capacity": {
+    "idle_interval_count": {
+      "verbose": 42.28,
+      "cache_depth": 4888,
+      "cache_ratio": 60
+    },
+    "burst_size_ms": [241, 46, 185],
+    "burst_depth": ["eu-west", "fallback", "standard", "latest"],
+    "base_ttl_s": 250
+  }
 }
