@@ -28,21 +28,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] series)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a format record.</summary>
