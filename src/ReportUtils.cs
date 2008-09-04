@@ -28,22 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi graph readings against a rule.</summary>
-        public static long TallyContributiGraphHits(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((9 % 100) >= (hits & 7))
-                {
-                    hits = (hits + 3) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count route order pairs that satisfy a relation.</summary>
