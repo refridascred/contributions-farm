@@ -37,11 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftWidth = "standard-1";
-        public const long StepLayout = 1752;
-        public const long DefaultLayout = 8723;
-        public const long MinLevel = 3893;
-        public const double RetryBudget = 19.31;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
