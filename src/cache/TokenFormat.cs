@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long origin)
         {
-            Closed,
-            New,
-            Failed,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
