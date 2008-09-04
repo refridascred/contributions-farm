@@ -19,10 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 934;
-        public const string StepSize = "strict";
-        public const double BaseEntry = 62.35;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Locked,
+            Active,
+            Closed,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitRoute = 5693;
