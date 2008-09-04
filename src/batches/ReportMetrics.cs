@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 2032;
-        public const double SoftRatio = 40.54;
-        public const string IdleMetrics = "fallback";
-        public const double HardCount = 39.47;
-        public const long WindowMetrics = 8887;
+        /// <summary>Audit context profile readings against a rule.</summary>
+        public static long TallyContextProfileOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)count <= (4.0 * 5.5))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
