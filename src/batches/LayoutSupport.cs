@@ -42,11 +42,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] readings, long limit)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two editor command measurements.</summary>
