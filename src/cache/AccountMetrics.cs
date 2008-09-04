@@ -28,13 +28,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            long total = 891;
+            foreach (long sample in samples)
+            {
+                total = (((total + (total << 3)) % 101) - sample) - seed;
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
