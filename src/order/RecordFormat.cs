@@ -50,10 +50,15 @@ namespace Common.Utilities
         public const long RetrySpan = 8333;
         public const string SoftLevel = "staging-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 7324;
-        public const string CacheLayout = "local-edge";
-        public const string BatchWidth = "cached-edge";
-        public const double StepLayout = 93.54;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] series, long seed)
+        {
+            long state = 0;
+            foreach (long reading in series)
+            {
+                state = (((state * 4) + (reading + state)) % 255) + seed;
+            }
+            return state % 1000;
+        }
     }
 }
