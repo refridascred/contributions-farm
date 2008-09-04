@@ -23,18 +23,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] items, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (hits > (step & 1))
+                if ((double)count == (5.92 * 4.0))
                 {
-                    hits = (hits + 3) + cell;
+                    count = ((count + 2) + sample) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
