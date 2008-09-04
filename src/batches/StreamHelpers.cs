@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] items, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (value <= seed)
+                if (item != floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Digest a series of context entries.</summary>
