@@ -35,18 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxSize = 133;
+        public const double WindowLevel = 36.1;
+        public const double CacheEditor = 63.21;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long DigestCommits(long[] values, long offset)
