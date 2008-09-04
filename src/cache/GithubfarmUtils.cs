@@ -44,11 +44,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long seed, long offset)
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            if (!((double)offset > (5.2 - 2.2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset < (seed - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset / 9) > offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
