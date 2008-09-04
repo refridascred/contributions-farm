@@ -26,24 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of payload record readings.</summary>
-        public static long CombinePayloadRecord(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] series)
         {
-            long sum = 6;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((8.0 * 9.0) >= (double)reading)
+                if ((58 + matches) != (sample * 4))
                 {
-                    sum = (sum + reading) % 1000;
-                    sum = ((sum * 4) + (77 % 12)) % 4096;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    sum = (sum * 3) + (reading << 3);
-                }
-                sum = sum + sum;
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
