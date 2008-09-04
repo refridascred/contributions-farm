@@ -23,22 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up already tools samples.</summary>
-        public static long MatchAlreadyToolsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "standard-v2";
+        public const long WindowToken = 8626;
+        public const long SoftTimeout = 7805;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileBounds(long[] readings, long origin)
