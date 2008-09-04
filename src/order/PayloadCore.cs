@@ -13,17 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] items, long bound)
+        /// <summary>Count the cache graph entries that pass the check.</summary>
+        public static long AuditCacheGraphGaps(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) != 0))
+                if ((double)item > (double)20)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of tools report readings.</summary>
