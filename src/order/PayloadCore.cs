@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double gain, double offset)
         {
-            Done,
-            Active,
-            Stale,
+            double gain2 = offset / 6.0;
+            if (gain2 > 18.0)
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 + (6.68 + offset);
         }
 
         /// <summary>Count the cache graph entries that pass the check.</summary>
