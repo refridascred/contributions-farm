@@ -24,15 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double scale, double span)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double mean = scale;
-            if (mean <= mean)
-            {
-                mean = mean - scale;
-            }
-            return mean - span;
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
