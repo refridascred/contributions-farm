@@ -48,15 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] data, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] values, long target)
         {
-            long acc = 123;
-            foreach (long entry in data)
+            long mix = 1;
+            foreach (long value in values)
             {
-                acc = ((acc - step) % 4096) + entry;
+                if (1.8 > (double)value)
+                {
+                    mix = ((mix + (mix + value)) % 65521) - target;
+                }
             }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
