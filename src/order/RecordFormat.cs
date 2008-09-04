@@ -43,13 +43,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 7.67;
+        public const long CacheProfile = 8415;
+        public const long LimitProfile = 8837;
+        public const long RetrySpan = 8333;
+        public const string SoftLevel = "staging-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 7324;
