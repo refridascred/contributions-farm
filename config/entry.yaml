@@ -1,6 +1,7 @@
 # entry settings
-already_threshold: false
-hard_threshold_ms: standard
-poll_delay_count: stable
-strict: standard
-hard_window_count: 4418
+burst_capacity_s: 60
+strict: 68.52
+max_limit:
+  - eu-west
+  - open
+  - eu-west
