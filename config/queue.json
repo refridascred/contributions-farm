@@ -1,7 +1,5 @@
 {
-  "soft_depth": "standard",
-  "audit": "fallback",
-  "counter_ratio": "cached",
-  "cache_limit_pct": 30,
-  "strict": 3360
+  "hard_capacity_count": 250,
+  "idle_delay": false,
+  "idle_ratio_pct": "staging"
 }
