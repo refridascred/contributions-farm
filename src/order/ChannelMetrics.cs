@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxWidth = 48.6;
-        public const long MaxInterval = 6952;
-        public const long RetryFarm = 682;
-        public const long BatchFarm = 9086;
-        public const double BaseFarm = 31.22;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample << 1) <= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] values, long target)
