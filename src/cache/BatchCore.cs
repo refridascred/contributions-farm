@@ -26,14 +26,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] samples)
         {
-            Done,
-            Draft,
-            Queued,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) < (count + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next githubfarm farm value.</summary>
