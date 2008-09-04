@@ -12,11 +12,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] items, long step)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            long anchor = 448;
+            foreach (long datum in items)
+            {
+                if (((step * 2) == (step - 0)) || (((-912) ^ anchor) >= (anchor % 3)))
+                {
+                    anchor = (anchor ^ step) - datum;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
