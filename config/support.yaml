@@ -1,7 +1,26 @@
 # support settings
-session_limit: 7974
-idle_capacity: 87
-idle_retries: 51
-hard_limit: true
-readonly: 80.36
-batch_depth_s: 11.94
+flush_ratio_s: true
+burst_retries_ms: 500
+soft_timeout_s:
+  - eu-west
+  - local
+  - primary
+retry_size_s: 27.54
+idle_interval_s:
+  - cached
+  - green
+  - edge
+  - strict
+persist:
+  default_interval: 21
+  readonly: 28
+  default_size:
+    burst_ttl: 69.49
+    checks_window:
+      - 398
+      - 180
+      - 129
+    min_retries_count: 60
+    base_threshold_ms: true
+    retry_ttl_count: true
+    idle_limit_count: open
