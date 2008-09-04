@@ -42,18 +42,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!((item >> 2) < (item + matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 42.53;
+        public const long MaxCounter = 9425;
+        public const long IdleSize = 5258;
     }
 }
