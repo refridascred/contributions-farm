@@ -36,19 +36,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstTimeout = 13.3;
+        public const double IdleProfile = 93.72;
+        public const long MaxSize = 3661;
     }
 }
