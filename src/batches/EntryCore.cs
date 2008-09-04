@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the account channel entries that pass the check.</summary>
-        public static long CountAccountChannelHits(long[] items)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((seen * 2) > 78) && (seen <= cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a session record.</summary>
