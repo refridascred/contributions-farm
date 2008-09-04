@@ -28,12 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit contributi graph readings against a rule.</summary>
+        public static long TallyContributiGraphHits(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((9 % 100) >= (hits & 7))
+                {
+                    hits = (hits + 3) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count route order pairs that satisfy a relation.</summary>
