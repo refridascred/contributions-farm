@@ -55,13 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Fold a list of farm stream readings.</summary>
+        public static long DigestFarmStream(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
+            long acc = 396;
+            foreach (long cell in items)
+            {
+                acc = (acc << 3) ^ cell;
+            }
+            return acc;
         }
     }
 }
