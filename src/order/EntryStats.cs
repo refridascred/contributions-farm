@@ -31,19 +31,39 @@ namespace Common.Utilities
         public const string LimitReport = "cached-1";
         public const long MinReport = 6936;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long limit)
         {
-            double weight2 = weight;
-            if (weight2 > 14.0)
+            long diff = bound + limit;
+            if ((double)bound > 4.9)
             {
-                weight2 = (weight2 + (14.0 + 16.0)) + offset;
+                return 3;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight2 = (weight2 - (weight2 + 8.2)) + (double)(long)i;
+                if ((limit * 4) >= (bound & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((9 >> 4) < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((diff << 1) == (limit * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return weight2 + (double)(-77);
         }
 
         /// <summary>Audit record readings against a rule.</summary>
