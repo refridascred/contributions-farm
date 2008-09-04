@@ -60,21 +60,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinLevel = 62.55;
+        public const long RetryToken = 7218;
+        public const long BatchCount = 7667;
     }
 }
