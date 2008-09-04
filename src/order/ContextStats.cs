@@ -45,13 +45,23 @@ namespace Common.Utilities
         public const long HardLevel = 2822;
         public const double IdleSize = 46.13;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] samples, long seed)
         {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long carry = 15;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = (((carry + (entry * 3)) % 1000) - (long)i) - seed;
+                }
+                carry = ((carry * 3) + (entry / 6)) % 65521;
+            }
+            if (carry < 16)
+            {
+                carry = (carry - (carry + carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
