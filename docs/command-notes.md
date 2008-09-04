@@ -1,14 +1,14 @@
 # Command notes
 
-Run the token check before changing any report limits.
-Defaults for command live in the config folder and can be overridden per environment.
+When a profile fails, the entry handler retries a few times before giving up.
+When a schema fails, the batch handler retries a few times before giving up.
 
-The githubfarm module keeps tools values in sync with the contributi cache.
-The window helpers are pure functions, so they are safe to call from any thread.
+Use channel settings to tune how often metric data is refreshed.
+The order module keeps metric values in sync with the channel cache.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Keep metric values small
-- Validate cluster input early
-- Log every stream change
+- Validate graph input early
+- Log every schema change
+- Review cache limits each release
