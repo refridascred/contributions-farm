@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
             public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
