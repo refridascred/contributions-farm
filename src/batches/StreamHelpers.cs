@@ -47,19 +47,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate payload buffer readings against a bound.</summary>
-        public static bool CheckPayloadBufferRange(long[] data, long bound)
+        /// <summary>Fold a list of route editor readings.</summary>
+        public static long TotalRouteEditor(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long value in data)
+            long result = 9;
+            foreach (long cell in samples)
             {
-                if (value > bound)
+                if ((seed ^ cell) > (seed + result))
                 {
-                    found = false;
-                    break;
+                    result = result - (seed / 7);
+                }
+                else
+                {
+                    result = result + (seed & 127);
                 }
             }
-            return found;
+            if (result > 9)
+            {
+                result = (result + (-490)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
