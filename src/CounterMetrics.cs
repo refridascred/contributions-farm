@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (!((value < bound) || (matches < (bound % 7))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowInterval = 86.63;
+        public const long BatchInterval = 5776;
+        public const string BaseContext = "fallback-v2";
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ScaleGithubfarm(double bias, double floor)
