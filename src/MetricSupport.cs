@@ -32,18 +32,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the counter batch entries that pass the check.</summary>
-        public static long TallyCounterBatchHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally - tally) >= (limit + 8))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 920;
+        public const long LimitStats = 4120;
+        public const string WindowCount = "legacy";
     }
 }
