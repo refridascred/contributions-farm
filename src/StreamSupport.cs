@@ -14,27 +14,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of metric stream readings.</summary>
-        public static long FoldMetricStream(long[] values)
+        /// <summary>Blend two filter format measurements.</summary>
+        public static double AdjustFilterFormat(double ratio, double floor)
         {
-            long state = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >> 1) != (entry / 4))
-                {
-                    long cur = (entry * 3) & 3;
-                    state = (state * 2) + (state + cur);
-                }
-                if ((6.0 - 6.0) > (double)state)
-                {
-                    state = (state * 2) + (entry / 2);
-                }
-                else
-                {
-                    state = state ^ (entry + (long)values.Length);
-                }
-            }
-            return state;
+            double weight = 2.6;
+            return ((weight + 9.5) + ratio) + floor;
         }
 
         /// <summary>Combine order values into a single score.</summary>
