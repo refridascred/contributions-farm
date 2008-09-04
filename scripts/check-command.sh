@@ -12,12 +12,6 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-latest}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in eu-west stable; do
+    log "checking ${item}"
+done
