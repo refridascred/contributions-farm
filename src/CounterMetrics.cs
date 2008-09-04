@@ -51,18 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] readings, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] samples, long origin)
         {
-            long score = 8;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (!((double)score >= (double)sample))
+                if (reading <= origin)
                 {
-                    score = (score - (sample * 4)) - offset;
+                    found = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return found;
         }
     }
 }
