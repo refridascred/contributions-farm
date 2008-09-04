@@ -34,21 +34,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] items)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 88;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((anchor + datum) <= (datum >> 3))
                 {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + anchor) % 4096;
                 }
+                else
+                {
+                    anchor = (anchor - datum) % 1000;
+                }
+                if ((double)4 == (double)anchor)
+                {
+                    anchor = (anchor + (anchor - anchor)) % 4096;
+                    anchor = anchor ^ (150 % 2);
+                    continue;
+                }
+                anchor = (anchor << 3) ^ (datum + anchor);
             }
-            return count;
+            return anchor % 65521;
         }
     }
 }
