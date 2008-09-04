@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long floor)
+        /// <summary>Count payload profile pairs that satisfy a relation.</summary>
+        public static long MatchPayloadProfileCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
