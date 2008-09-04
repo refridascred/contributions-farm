@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor filter readings against a bound.</summary>
-        public static bool CheckEditorFilterRange(long[] levels, long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            double drift = floor;
+            if (drift > (bias + 7.81))
             {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + 1.2;
             }
-            return ready;
+            return drift + floor;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
