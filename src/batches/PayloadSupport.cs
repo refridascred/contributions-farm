@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            Dropped,
-            Paused,
-            Idle,
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((acc <= (limit - acc)) || (acc >= limit))
+                {
+                    acc = ((acc << 3) ^ (acc >> 1)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
