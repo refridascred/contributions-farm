@@ -1,8 +1,17 @@
 # githubfarm settings
-idle_ratio: edge
-base_depth_s: local
-stream_delay:
-  poll_timeout_ms: staging
-  burst_interval_pct: 6
-  default_timeout_s: 4.62
-burst_ratio_count: blue
+burst_delay_ms:
+  filter_depth: true
+  retry_size_ms: 35.36
+  burst_timeout_pct: open
+batch_ratio:
+  retry_limit_ms: 63.5
+  min_ttl: eu-west
+  warm_depth_s: open
+  readonly:
+    default_ratio_pct: 1024
+    max_size: 60
+    default_timeout_s: staging
+  support_limit: edge
+enabled: 90
+account_delay: 81.85
+hard_ttl_s: legacy
