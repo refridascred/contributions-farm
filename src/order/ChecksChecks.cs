@@ -26,22 +26,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((offset >> 4) >= (sample * 3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitSpan = "strict-v2";
+        public const double BaseWidth = 2.83;
+        public const long LimitInterval = 1909;
+        public const long CacheTimeout = 6004;
+        public const string LimitContext = "primary-v2";
     }
 }
