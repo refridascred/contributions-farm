@@ -56,15 +56,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] levels)
         {
-            long carry = 9;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                carry = (carry ^ (carry + datum)) % 65521;
+                if ((cell >> 2) == (cell + matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
