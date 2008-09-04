@@ -71,18 +71,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] data)
+        /// <summary>Measure how many buffer record samples are out of range.</summary>
+        public static long AuditBufferRecordOutliers(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((entry ^ tally) <= entry)
+                if ((matches > (matches >> 4)) && ((matches % 24) > (value - origin)))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
