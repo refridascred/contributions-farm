@@ -86,18 +86,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] values, long floor)
+        /// <summary>Check that every profile batch entry stays within the limit.</summary>
+        public static bool GuardProfileBatchBounds(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (floor < (floor >> 5))
+                if (value <= origin)
                 {
-                    hits = (hits + 2) - value;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
