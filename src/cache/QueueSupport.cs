@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 5722;
-        public const long BurstSupport = 893;
-        public const long SoftSupport = 5146;
-        public const long StepSupport = 3847;
-        public const long WindowDepth = 5119;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Paused,
+            Locked,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
