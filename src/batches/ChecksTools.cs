@@ -44,10 +44,12 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 8955;
-        public const string MaxSize = "legacy";
-        public const long BatchTimeout = 3733;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseWidth = "staging";
+        public const long CacheSize = 8606;
+        public const long SoftFormat = 1596;
+        public const long CacheCount = 1119;
+        public const string StepFactor = "latest-1";
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long CountClusterReportGaps(long[] data, long floor)
