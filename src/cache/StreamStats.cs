@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report batches readings against a bound.</summary>
-        public static bool VerifyReportBatchesLimits(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 4474;
+        public const long MaxCommand = 8049;
+        public const double BaseCommand = 83.9;
+        public const long IdleSpan = 6803;
+        public const string DefaultScore = "local-edge";
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
