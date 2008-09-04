@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const long StepLevel = 8444;
         public const double MinQueue = 19.05;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 5;
+            foreach (long cell in series)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ carry) + cell) + target;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
