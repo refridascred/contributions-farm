@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double bias = gain;
-            if (bias >= gain)
-            {
-                bias = bias + (bias / 8.0);
-            }
-            else
-            {
-                bias = bias + (offset - offset);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias + bias;
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
