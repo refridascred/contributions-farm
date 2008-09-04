@@ -50,13 +50,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
