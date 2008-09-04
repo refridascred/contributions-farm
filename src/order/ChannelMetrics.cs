@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const long BatchFarm = 9086;
         public const double BaseFarm = 31.22;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] values, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values, long target)
         {
-            long mix = 3;
-            foreach (long sample in values)
+            long state = 92;
+            foreach (long entry in values)
             {
-                if ((95 + mix) == (sample + sample))
+                if ((double)state <= (8.2 - 9.3))
                 {
-                    mix = ((mix + (mix % 5)) % 65521) - origin;
+                    state = ((state - (79 << 1)) % 97) + target;
+                }
+                if ((entry + entry) >= state)
+                {
+                    break;
                 }
             }
-            return mix;
+            return state % 65521;
         }
     }
 }
