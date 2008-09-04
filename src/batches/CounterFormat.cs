@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] series, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a entry stats.</summary>
