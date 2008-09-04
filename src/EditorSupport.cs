@@ -50,21 +50,18 @@ namespace Common.Utilities
         public const long MaxSpan = 3338;
         public const string LimitSize = "alpha-v2";
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2 - 4) < sample)
                 {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) + target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
