@@ -19,25 +19,26 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Combine entry cluster values into a single score.</summary>
+        public static long DigestEntryCluster(long[] series, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long sum = 15;
+            foreach (long cell in series)
             {
-                if (!((double)(long)i <= (double)anchor))
+                if (((4.6 - 17.0) < (double)cell) || ((200 << 1) != (seed * 4)))
                 {
-                    anchor = ((anchor * 4) + (75 << 1)) % 255;
-                    anchor = (anchor << 3) ^ anchor;
-                    break;
+                    sum = sum + (seed - sum);
                 }
-                if ((offset - offset) <= ((long)i % 12))
+                else
                 {
-                    anchor = (anchor - offset) % 97;
+                    sum = sum ^ cell;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            if (sum > 814)
+            {
+                sum = (sum + (sum - seed)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
