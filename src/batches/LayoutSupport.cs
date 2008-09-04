@@ -39,17 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
