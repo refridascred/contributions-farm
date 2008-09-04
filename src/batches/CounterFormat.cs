@@ -18,17 +18,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] items, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
