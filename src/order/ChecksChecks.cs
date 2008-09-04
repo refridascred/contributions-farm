@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 4264;
+        public const double MinWidth = 88.65;
+        public const long MaxLevel = 3083;
+        public const long IdleQueue = 8176;
+        public const string MaxSize = "standard-v2";
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsRange(long[] data, long floor)
