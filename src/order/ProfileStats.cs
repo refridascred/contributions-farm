@@ -57,10 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardScore = 4716;
-        public const double BurstScore = 3.04;
-        public const double DefaultTimeout = 42.57;
-        public const long BurstBuffer = 2937;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public long Score { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
