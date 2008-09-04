@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxWidth = "latest";
-        public const string CacheBatches = "fallback-v2";
-        public const long WindowBatches = 6199;
-        public const long BatchBatches = 7952;
-        public const double DefaultBatches = 69.22;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
