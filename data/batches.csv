@@ -1,8 +1,8 @@
-id,ratio,region,rank,label
-1,local,466,776,347
-2,41.83,249,40.05,94
-3,878,779,34.49,27.71
-4,legacy,696,31.41,green
-5,562,staging,890,64.6
-6,eu-west,edge,439,598
-7,69.09,520,cached,771
+id,region,state,token,owner
+1,legacy,8.57,422,74.69
+2,51.33,182,stable,881
+3,edge,strict,green,latest
+4,60.97,56.84,227,206
+5,122,59.0,eu-west,484
+6,staging,594,3.14,strict
+7,8.35,open,500,local
