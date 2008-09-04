@@ -1,5 +1,25 @@
 {
-  "min_interval_count": true,
-  "dry_run": ["eu-west", "staging"],
-  "schema_depth": "open"
+  "tools_ratio": {
+    "burst_delay_s": {
+      "batch_depth": "legacy",
+      "hard_timeout_count": "strict",
+      "report_size": false,
+      "hard_limit": "open",
+      "cache_size": ["staging", "eu-west"]
+    },
+    "audit": 71.83,
+    "burst_depth": [93, 51],
+    "batch_interval_pct": false,
+    "default_size_count": 9885,
+    "burst_window_s": ["edge", "blue", "legacy", "standard"]
+  },
+  "sync_ratio_count": "open",
+  "githubfarm_limit": true,
+  "session_size": 86.3,
+  "soft_depth_pct": 30.36,
+  "strict": {
+    "cache_size_s": 60,
+    "retry_threshold_ms": 59.54,
+    "persist": "primary"
+  }
 }
