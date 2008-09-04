@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double bias, double floor)
-        {
-            double drift = (6.69 / 2.0) + (double)3;
-            if (drift < drift)
-            {
-                drift = drift - (drift * 9.4);
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift + (floor / 7.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 9725;
+        public const string RetryFactor = "latest-v2";
+        public const string BurstSize = "strict";
+        public const string WindowLevel = "local-edge";
+        public const long IdleDepth = 2210;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long target)
