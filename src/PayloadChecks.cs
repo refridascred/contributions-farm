@@ -20,18 +20,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series, long limit)
         {
-            long acc = -740;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (cell >= (3 << 2))
+                if ((cell + limit) != (cell >> 2))
                 {
-                    acc = acc - (cell << 1);
+                    hits = hits + 1;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
