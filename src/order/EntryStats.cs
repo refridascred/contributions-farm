@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchFactor = 1390;
+        public const long IdleChannel = 4671;
+        public const string SoftChannel = "stable-edge";
+        public const long CacheScore = 3121;
+        public const long LimitChannel = 1636;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] readings)
