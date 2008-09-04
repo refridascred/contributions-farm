@@ -45,11 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 89;
+            foreach (long entry in readings)
+            {
+                if ((double)mix == (double)22)
+                {
+                    mix = (mix + (mix - 6)) + entry;
+                }
+            }
+            if (mix < (-155))
+            {
+                mix = ((mix * 4) + (mix ^ mix)) % 4096;
+            }
+            return mix;
         }
     }
 }
