@@ -19,12 +19,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 10.94;
-        public const long DefaultContributi = 1168;
-        public const string BatchContributi = "legacy";
-        public const long BurstWidth = 47;
-        public const double SoftContributi = 18.42;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Synced,
+            Locked,
+            Idle,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string LimitFormat = "strict-edge";
