@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxToken = "latest-edge";
-        public const long RetryWidth = 604;
-        public const long LimitToken = 7245;
-        public const long BaseToken = 700;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 111;
