@@ -1,25 +1,16 @@
 # support settings
-poll_timeout_ms: edge
-filter_threshold:
-  hard_threshold:
-    burst_capacity_pct: green
-    readonly: 14.39
-    flush_retries_pct: 82.63
-    soft_threshold_s: open
-  dry_run: 37.05
-  audit:
-    warm_interval_count: 7910
-    hard_capacity: staging
-    cluster_depth: false
-    soft_retries: local
-    burst_delay_ms: 25.33
-  min_capacity_pct: cached
-  default_ttl_pct: 95
-strict: 85
-counter_window: 38.09
-burst_depth:
-  flush_interval_count: 62.67
-  poll_threshold: 60
-  compress: edge
-  default_timeout_ms: 250
-cache_capacity_pct: fallback
+window_delay:
+  poll_ttl:
+    - eu-west
+    - cached
+    - cached
+    - primary
+  strict:
+    - 359
+    - 490
+    - 51
+    - 132
+  sync_window: 1582
+sync_depth_s: open
+readonly: stable
+dry_run: 1744
