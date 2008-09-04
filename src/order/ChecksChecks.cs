@@ -30,17 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] samples, long target)
+        /// <summary>Audit editor contributi readings against a rule.</summary>
+        public static long CountEditorContributiGaps(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] > target) && ((samples[i] % 2) != 0))
+                if ((58 & 255) <= (datum * 2))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
