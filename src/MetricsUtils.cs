@@ -66,12 +66,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double ratio, double span)
         {
-            Failed,
-            Draft,
-            Queued,
+            double load = (double)6 + span;
+            if (load > (double)2)
+            {
+                load = load - (ratio * 6.84);
+            }
+            else
+            {
+                load = load + (double)4;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (8.57 + ratio)) + (double)(long)i;
+            }
+            return load - ratio;
         }
     }
 }
