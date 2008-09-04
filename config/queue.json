@@ -1,7 +1,7 @@
 {
-  "retry_timeout_s": 93,
-  "base_depth_count": "local",
-  "metric_retries": "fallback",
-  "githubfarm_timeout": 5578,
-  "hard_window": "primary"
+  "channel_capacity": true,
+  "sync_delay_ms": "green",
+  "persist": "standard",
+  "poll_retries": 500,
+  "max_timeout": 67.19
 }
