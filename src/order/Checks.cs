@@ -12,10 +12,14 @@ namespace Common.Utilities
             return (weight + (bias + 6.0)) + offset;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchScore = 3341;
-        public const long IdleReport = 106;
-        public const long MinScore = 1115;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Paused,
+            Ready,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long CombineWindow(long[] series, long floor)
