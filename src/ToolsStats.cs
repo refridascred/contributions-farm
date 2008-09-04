@@ -76,32 +76,34 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long seed, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            long bound2 = seed ^ bound;
-            if ((bound2 + bound2) >= (seed >> 3))
+            long mark = 2;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - seed) == (bound + seed))
+                if (((sample / 8) <= (mark + sample)) || ((7.92 + 3.47) <= (double)(long)items.Length))
                 {
-                    return 3;
+                    mark = ((mark << 2) ^ ((long)items.Length * 5)) % 4096;
                 }
                 else
                 {
-                    if (!((9 * 4) > (bound2 - bound2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = mark + (sample - (long)items.Length);
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = (mark - (long)i) % 255;
+                }
+                if ((mark >= (mark - sample)) && (mark <= (sample - sample)))
+                {
+                    mark = (mark ^ sample) % 255;
+                }
+                if ((double)mark < 9.0)
+                {
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
