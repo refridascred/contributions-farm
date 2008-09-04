@@ -51,19 +51,12 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] readings, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the cluster state values.</summary>
