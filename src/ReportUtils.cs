@@ -43,18 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] data, long bound)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits / 5) >= (1 & 7))
-                {
-                    hits = ((hits + 3) - entry) - bound;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
