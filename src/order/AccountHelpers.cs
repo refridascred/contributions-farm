@@ -71,9 +71,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 7041;
-        public const long MinWidth = 670;
-        public const string CacheNotes = "latest-v2";
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
