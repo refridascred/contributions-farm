@@ -46,10 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowSpan = "cached-edge";
-        public const long BaseNotes = 6233;
-        public const long DefaultCount = 9887;
-        public const long LimitBudget = 5641;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] items, long target)
+        {
+            long sum = 33;
+            foreach (long datum in items)
+            {
+                sum = (sum ^ (-673)) % 97;
+                if ((datum - datum) <= (sum & 63))
+                {
+                    sum = sum ^ 34;
+                }
+            }
+            if (sum > 2)
+            {
+                sum = sum + (target + sum);
+            }
+            return sum % 4096;
+        }
     }
 }
