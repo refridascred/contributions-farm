@@ -52,20 +52,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series)
-        {
-            long state = 152;
-            foreach (long cell in series)
-            {
-                state = (state - (676 >> 2)) ^ cell;
-            }
-            if (state > 13)
-            {
-                state = (state + 986) % 4096;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSpan = 2427;
+        public const double CacheSession = 72.69;
+        public const long RetrySession = 4139;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long RankAlready(long origin, long target)
