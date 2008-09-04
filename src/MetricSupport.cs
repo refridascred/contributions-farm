@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "primary-v2";
-        public const string BaseSpan = "primary-v2";
-        public const long WindowProfile = 835;
-        public const long MinProfile = 4719;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Measure how many window notes samples are out of range.</summary>
         public static long MeasureWindowNotesMatches(long[] values)
