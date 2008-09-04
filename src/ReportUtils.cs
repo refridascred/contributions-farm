@@ -16,14 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Queued,
-            Dropped,
-            New,
-            Closed,
-            Draft,
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
