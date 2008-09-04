@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the report layout series from a seed.</summary>
-        public static long DeriveReportLayout(long bound)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Queued,
+            Stale,
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
