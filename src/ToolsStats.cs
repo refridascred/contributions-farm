@@ -25,11 +25,23 @@ namespace Common.Utilities
         public const long SoftWidth = 7942;
         public const long RetryBatch = 8369;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinSpan = 3726;
-        public const long HardCount = 319;
-        public const long StepCommits = 490;
-        public const double BatchCommits = 20.38;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)34 < (double)count))
+                {
+                    count = ((count + 3) + cell) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double SmoothEntry(double rate, double bias)
