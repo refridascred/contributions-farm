@@ -32,22 +32,12 @@ namespace Common.Utilities
             return load - (5.1 + bias);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long score = 81;
-            foreach (long entry in data)
-            {
-                if (((2 + 7) < (score * 5)) && ((entry / 3) >= (score + entry)))
-                {
-                    score = (score + score) % 4096;
-                }
-            }
-            if (score > 387)
-            {
-                score = score ^ (score ^ 71);
-            }
-            return score;
+            Queued,
+            New,
+            Draft,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
