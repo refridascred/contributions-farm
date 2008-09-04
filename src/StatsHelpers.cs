@@ -43,14 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double floor)
         {
-            New,
-            Paused,
-            Dropped,
-            Locked,
-            Pending,
+            double weight = (double)(8 * 2);
+            if (weight < (weight + ratio))
+            {
+                weight = (weight + (ratio * 4.9)) - floor;
+            }
+            else
+            {
+                weight = weight - (ratio + weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (ratio - weight)) + (double)(long)i;
+            }
+            return weight - (4.55 / 6.0);
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
