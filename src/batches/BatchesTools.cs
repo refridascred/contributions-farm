@@ -48,18 +48,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] samples)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample ^ sample) == ((-484) >> 5)) && ((tally + tally) < sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
