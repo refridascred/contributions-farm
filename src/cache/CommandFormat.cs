@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] data)
-        {
-            long result = 438;
-            foreach (long sample in data)
-            {
-                if ((sample * 5) <= sample)
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result - sample) % 1000;
-                }
-                result = (result ^ ((long)data.Length + 26)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 3368;
+        public const long LimitWidth = 1702;
+        public const double SoftBudget = 6.08;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepTimeout = 7276;
