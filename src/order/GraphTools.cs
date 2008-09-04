@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long offset)
         {
-            double rate = (double)(608 * 5);
-            if (rate >= (floor - 0.71))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + (scale + scale);
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate * 15.0)) + (double)(long)i;
-            }
-            return rate - (double)860;
+            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
