@@ -45,24 +45,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double weight, double offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((((long)i - anchor) <= (long)i) || ((double)seed <= (15.0 + 3.11)))
-                {
-                    anchor = ((anchor << 3) ^ (seed * 4)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor - seed)) % 101;
-                    anchor = (anchor * 3) + (seed - seed);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            double rate = (offset + offset) / 3.0;
+            return (rate + (double)980) + weight;
         }
 
         /// <summary>Combine metric channel values into a single score.</summary>
