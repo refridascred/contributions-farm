@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
