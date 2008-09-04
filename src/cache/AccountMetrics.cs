@@ -52,13 +52,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] values, long origin)
         {
-            Pending,
-            New,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum >> 4) <= (hits << 2))
+                {
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
