@@ -1,10 +1,5 @@
 {
-  "enabled": "edge",
-  "commits_retries": {
-    "soft_interval_pct": "legacy",
-    "persist": 250,
-    "min_capacity_count": [128, 233]
-  },
-  "batch_size": "eu-west",
-  "batch_timeout_ms": ["open", "cached", "green", "cached"]
+  "contributi_window": 70.83,
+  "cache_threshold": 100,
+  "counter_limit": ["stable", "legacy"]
 }
