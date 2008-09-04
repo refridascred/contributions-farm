@@ -41,19 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] levels, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading != target)
+                if (((double)(long)i == (double)sum) || ((limit + limit) < (sum % 10)))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum * 2) + (-7)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
