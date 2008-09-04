@@ -1,12 +1,7 @@
 {
-  "verbose": false,
-  "already_retries": "standard",
-  "batch_retries_s": 15.98,
-  "sync_capacity": 11,
-  "route_ttl": 93.64,
-  "max_size_ms": {
-    "cache_capacity_count": 1024,
-    "compress": "open",
-    "idle_interval_count": ["eu-west", "edge", "latest"]
-  }
+  "audit": true,
+  "dry_run": 7,
+  "cache_capacity_count": 6022,
+  "verbose": 9,
+  "soft_interval_pct": "green"
 }
