@@ -49,22 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (632 < (sample - matches))
-                {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowSpan = "cached-edge";
+        public const long BaseNotes = 6233;
+        public const long DefaultCount = 9887;
+        public const long LimitBudget = 5641;
     }
 }
