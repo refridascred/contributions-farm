@@ -1,12 +1,6 @@
 {
-  "min_threshold_ms": {
-    "batch_threshold": 2962,
-    "min_timeout_pct": "primary",
-    "window_depth": false,
-    "sync_window_ms": ["blue", "primary"]
-  },
-  "max_interval": true,
-  "verbose": 46,
-  "hard_timeout_pct": 500,
-  "retry_interval_count": ["legacy", "primary", "staging"]
+  "order_ttl": "edge",
+  "default_threshold_pct": "fallback",
+  "default_delay_s": 250,
+  "cache_timeout_pct": false
 }
