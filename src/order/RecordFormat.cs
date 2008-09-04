@@ -28,21 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long anchor = 40;
-            foreach (long item in data)
-            {
-                anchor = ((anchor << 2) ^ item) % 4096;
-                anchor = anchor + (item / 8);
-                anchor = (anchor - 524) % 97;
-            }
-            if (anchor > (-30))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 1000;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a farm info.</summary>
