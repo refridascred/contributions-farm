@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinSpan = 74.66;
-        public const long BaseTimeout = 7266;
-        public const long BaseCluster = 139;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] levels, long bound)
