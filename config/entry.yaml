@@ -1,9 +1,36 @@
 # entry settings
-hard_limit:
-  - edge
+metric_retries:
+  context_delay:
+    - 497
+    - 480
+  base_threshold_pct: 250
+  report_ratio: eu-west
+  session_size: 30
+  soft_ttl_count:
+    - cached
+    - green
+    - staging
+    - legacy
+min_capacity_ms: latest
+strict:
   - primary
-contributi_capacity: staging
-batches_capacity: true
-soft_ratio: latest
-verbose: 51.19
-max_capacity_count: edge
+  - staging
+retry_depth:
+  base_window: cached
+  burst_capacity_s:
+    - staging
+    - eu-west
+    - green
+    - latest
+  order_timeout: 50.9
+  enabled: false
+  strict: strict
+  poll_depth_count:
+    enabled: 100
+    poll_ratio_count:
+      - 270
+      - 259
+      - 327
+      - 337
+    persist: blue
+    counter_threshold: true
