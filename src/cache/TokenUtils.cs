@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Blend two batch commits measurements.</summary>
+        public static double AdjustBatchCommits(double rate, double floor)
         {
-            Idle,
-            Stale,
-            Dropped,
+            double mean = (double)(2 / 2);
+            if (mean >= (double)1)
+            {
+                mean = ((mean - (double)691) - rate) - floor;
+            }
+            return mean - (double)5;
         }
 
         /// <summary>Match up already tools samples.</summary>
