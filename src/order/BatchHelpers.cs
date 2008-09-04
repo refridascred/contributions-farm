@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] levels)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((5.02 / 5.0) > (double)sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
