@@ -13,14 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Done,
-            Locked,
-            Synced,
-            Dropped,
-            Active,
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate batches githubfarm readings against a bound.</summary>
