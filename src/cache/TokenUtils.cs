@@ -26,12 +26,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchDepth = 5.0;
+        public const string BurstRatio = "latest-edge";
+        public const long IdleScore = 6389;
     }
 }
