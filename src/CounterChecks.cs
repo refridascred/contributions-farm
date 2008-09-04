@@ -48,21 +48,22 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Count filter record pairs that satisfy a relation.</summary>
-        public static long CompareFilterRecordCount(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 209;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4 / 7) > (state & 3))
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    state = (((state << 3) ^ (state - state)) % 101) ^ cell;
                 }
             }
-            return count;
+            if (state > (-20))
+            {
+                state = state ^ (52 + state);
+            }
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
