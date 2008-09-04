@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=263
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in staging fallback stable; do
+for item in standard local strict eu-west; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=298
+log "limit is ${CHANNEL_LIMIT}"
