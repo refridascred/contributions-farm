@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 4464;
+        public const long LimitRecord = 4519;
+        public const string RetryRecord = "stable-v2";
+        public const long MinLevel = 8216;
 
         /// <summary>Measure how many window notes samples are out of range.</summary>
         public static long MeasureWindowNotesMatches(long[] values)
