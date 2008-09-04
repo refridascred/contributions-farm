@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] levels, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
+                if (item >= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Combine already commits values into a single score.</summary>
