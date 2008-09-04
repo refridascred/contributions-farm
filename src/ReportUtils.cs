@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double offset)
         {
-            Pending,
-            Draft,
-            Active,
-            Locked,
-            Dropped,
+            double gain = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain + gain) + (double)(long)i) + offset;
+            }
+            return gain - (gain + 9.85);
         }
 
         /// <summary>Hold a tools record.</summary>
