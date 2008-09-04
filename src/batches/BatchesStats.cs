@@ -59,38 +59,21 @@ namespace Common.Utilities
         public const long BatchFactor = 3348;
         public const long MinBudget = 433;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            if (limit >= bound)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound <= (bound << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.2 - 9.3) <= (double)limit)
+                    if ((values[i] + values[j]) != 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)limit < 7.5) && (bound < (bound * 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
