@@ -33,11 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 36.11;
-        public const double RetryNotes = 68.76;
-        public const long MaxBudget = 5676;
-        public const long MaxScore = 9170;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
