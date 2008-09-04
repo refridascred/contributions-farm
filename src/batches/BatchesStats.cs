@@ -67,28 +67,36 @@ namespace Common.Utilities
         public const long BatchCommits = 9100;
         public const double MinRatio = 74.78;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long floor, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long target)
         {
-            if ((target + target) > (-586))
+            long prev = offset + target;
+            if (!((prev / 6) > (target >> 1)))
             {
                 return 3;
             }
             else
             {
-                if (((69 & 255) < (target + 1)) && (floor >= (target / 9)))
+                if ((double)offset == (0.79 - 4.07))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)floor == (3.78 * 6.28))
+                    if ((double)prev >= 2.5)
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        if (((prev + prev) >= (target + prev)) && (42 <= (offset - prev)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
