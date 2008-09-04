@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 4264;
-        public const double MinWidth = 88.65;
-        public const long MaxLevel = 3083;
-        public const long IdleQueue = 8176;
-        public const string MaxSize = "standard-v2";
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsRange(long[] data, long floor)
