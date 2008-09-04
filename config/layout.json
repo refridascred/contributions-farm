@@ -1,6 +1,5 @@
 {
-  "readonly": 1548,
-  "idle_threshold_count": "legacy",
-  "tools_ratio": "latest",
-  "cache_limit_count": true
+  "report_delay": 250,
+  "sync_retries_pct": 6894,
+  "min_capacity_pct": "fallback"
 }
