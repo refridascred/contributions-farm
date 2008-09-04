@@ -1,10 +1,6 @@
 {
-  "checks_size": 44.07,
-  "soft_capacity": {
-    "layout_capacity": [480, 315],
-    "batch_ttl": 50.18,
-    "max_retries": "primary",
-    "poll_size": 34
-  },
-  "idle_ttl": 17
+  "channel_ttl": ["eu-west", "primary", "local", "green"],
+  "cache_size_pct": "local",
+  "format_window": 90.92,
+  "hard_timeout_count": "green"
 }
