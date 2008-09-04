@@ -63,17 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] data, long target)
+        /// <summary>Digest a series of contributi session entries.</summary>
+        public static long FoldContributiSession(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 12;
+            foreach (long item in readings)
             {
-                if (data[i] <= target)
+                if (!((double)item <= (4.0 / 5.0)))
                 {
-                    return (long)i;
+                    mix = mix ^ item;
                 }
+                mix = (mix ^ (mix ^ mix)) % 101;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Rank session input into a small class.</summary>
