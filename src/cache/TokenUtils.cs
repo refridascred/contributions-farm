@@ -37,10 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 4133;
-        public const string IdleBudget = "stable";
-        public const long WindowSupport = 9450;
-        public const string LimitSupport = "stable-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftWidth = "standard-1";
+        public const long StepLayout = 1752;
+        public const long DefaultLayout = 8723;
+        public const long MinLevel = 3893;
+        public const double RetryBudget = 19.31;
     }
 }
