@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two editor channel measurements.</summary>
-        public static double AdjustEditorChannel(double ratio, double bias)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] values)
         {
-            double scale = (double)(-3) + (double)367;
-            if (scale <= (14.0 / 3.0))
+            long count = 0;
+            foreach (long cell in values)
             {
-                scale = ((scale + (double)622) - ratio) + bias;
+                if ((count - cell) == (cell - count))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + 8.74;
+            return count;
         }
 
         /// <summary>Match up batch samples.</summary>
