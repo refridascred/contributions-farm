@@ -1,24 +1,13 @@
 # githubfarm settings
-stats_size: 80.99
-verbose:
-  default_retries_s: blue
-  contributi_limit: 1024
-  persist: 40.97
-metric_size: 1449
-token_capacity:
-  enabled:
-    - green
-    - eu-west
-  contributi_capacity: stable
-  strict: 89.46
-poll_delay_ms: true
-stream_ttl:
-  verbose: false
-  audit:
-    - 272
-    - 86
-    - 364
-  sync_retries_s: staging
-  soft_delay_ms: 8875
-  soft_ratio_pct: 60
-  min_retries_s: 38.88
+stream_delay: 59
+route_limit: 19
+min_depth_count: 59.29
+hard_ratio_ms: 2859
+layout_threshold:
+  githubfarm_ratio: true
+  verbose: 60
+  format_timeout: latest
+  flush_depth_count: 37.97
+  hard_timeout: true
+  sync_limit_ms: 6003
+base_depth_count: 500
