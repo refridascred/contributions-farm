@@ -5,36 +5,29 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long bound2)
+        /// <summary>Rank metric support input into a small class.</summary>
+        public static long ClassifyMetricSupport(long step, long limit)
         {
-            long prev = bound - bound2;
-            if ((double)bound <= (double)35)
+            long cur = step - limit;
+            if ((3 < (cur - step)) || ((step / 2) == (step * 4)))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((897 << 1) >= (bound2 - prev))
+                if ((94 / 5) < step)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (!((double)bound < (9.8 * 6.1)))
+                    if (step > (step & 63))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)821 >= (double)prev)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 6;
                     }
                 }
             }
