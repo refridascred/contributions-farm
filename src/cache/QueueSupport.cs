@@ -27,11 +27,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two githubfarm filter measurements.</summary>
-        public static double AdjustGithubfarmFilter(double bias, double floor)
+        /// <summary>Count the profile already entries that pass the check.</summary>
+        public static long TallyProfileAlreadyGaps(long[] readings, long target)
         {
-            double mean = floor;
-            return (mean + floor) + bias;
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((8 < (tally << 2)) && ((tally << 2) == (target + target)))
+                {
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
