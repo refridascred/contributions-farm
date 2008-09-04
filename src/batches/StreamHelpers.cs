@@ -70,17 +70,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)bound <= (double)floor)
             {
-                if (levels[i] == step)
+                return 8;
+            }
+            else
+            {
+                if (!(bound > (floor * 5)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (bound > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
