@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] data)
+        /// <summary>Audit order cache readings against a rule.</summary>
+        public static long AuditOrderCacheMatches(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (((entry ^ entry) > (entry & 31)) || ((574 > entry) && (((long)data.Length + entry) >= entry)))
+                if ((sample + step) < (406 + sample))
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
