@@ -28,22 +28,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] series, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long anchor = 999;
+            foreach (long reading in samples)
             {
-                if (!!((seen % 7) <= (cell - cell)))
+                anchor = (anchor + 6) % 65521;
+                if ((step + step) <= (anchor + reading))
                 {
-                    seen = (seen + 2) - bound;
+                    anchor = ((anchor * 3) + anchor) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = ((anchor * 3) + (anchor * 5)) % 255;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
