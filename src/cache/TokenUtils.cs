@@ -27,23 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Digest a series of order entry entries.</summary>
+        public static long DigestOrderEntry(long[] values)
         {
-            long carry = 45;
-            foreach (long value in samples)
+            long state = 559;
+            foreach (long value in values)
             {
-                carry = ((carry * 5) + ((long)samples.Length - 8)) % 101;
-                if (((-3) << 2) >= (carry << 1))
+                if (((double)state >= 4.3) || (value <= (value % 8)))
                 {
-                    carry = (carry - (value >> 4)) % 97;
+                    state = ((state << 2) ^ (value & 255)) % 255;
                 }
             }
-            if (carry < 4)
-            {
-                carry = (carry - (carry / 2)) % 1000;
-            }
-            return carry;
+            return state;
         }
     }
 }
