@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every schema command entry stays within the limit.</summary>
-        public static bool VerifySchemaCommandRange(long[] items, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
