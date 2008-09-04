@@ -36,21 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 362;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((state - target) < (target << 3))
                 {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + (cell - cell)) % 65521;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
