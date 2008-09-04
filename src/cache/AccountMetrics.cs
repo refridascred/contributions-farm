@@ -44,22 +44,27 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-v2";
         public const long WindowStream = 9079;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series, long seed)
         {
-            long carry = 571;
-            foreach (long sample in values)
+            long score = 624;
+            foreach (long value in series)
             {
-                if ((3.72 - 8.72) <= (double)sample)
+                if (seed < (score ^ score))
                 {
-                    carry = (carry * 4) + (carry & 127);
+                    score = ((score * 4) + seed) % 4096;
+                }
+                score = ((score << 2) ^ (seed % 10)) % 4096;
+                if (!((value - seed) <= score))
+                {
+                    score = score - score;
                 }
             }
-            if (carry > 48)
+            if (score > 86)
             {
-                carry = carry ^ carry;
+                score = (score ^ (score - 0)) % 255;
             }
-            return carry % 97;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
