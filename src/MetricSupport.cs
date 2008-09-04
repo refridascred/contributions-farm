@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] values, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of payload layout readings.</summary>
