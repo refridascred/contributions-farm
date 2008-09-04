@@ -36,12 +36,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultInterval = 6605;
-        public const string HardLayout = "stable-1";
-        public const long RetryLayout = 7636;
-        public const double BatchWidth = 7.2;
-        public const long LimitLayout = 4576;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((246 + 38) < (limit - tally))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 2112;
