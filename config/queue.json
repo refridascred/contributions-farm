@@ -1,8 +1,6 @@
 {
-  "soft_retries_s": 41,
-  "verbose": "eu-west",
-  "flush_capacity": "open",
-  "layout_delay": "cached",
-  "sync_window_pct": "green",
-  "support_depth": "legacy"
+  "support_depth": 56,
+  "persist": 19.52,
+  "batch_ttl": true,
+  "max_size_pct": [12, 496]
 }
