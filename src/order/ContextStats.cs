@@ -67,38 +67,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank notes order input into a small class.</summary>
-        public static long RankNotesOrder(long seed, long offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            if (0.72 > (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (offset - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((555 % 24) > (offset + 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset >= (seed % 2)) || ((offset / 3) >= (seed * 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
