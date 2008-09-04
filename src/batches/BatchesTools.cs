@@ -12,22 +12,39 @@ namespace Common.Utilities
         public const double DefaultBuffer = 4.53;
         public const long BurstTimeout = 9550;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long cur = offset + seed;
+            if (!((6.0 / 5.0) == (double)cur))
             {
-                if ((56 * 4) < (hits - hits))
+                return 4;
+            }
+            else
+            {
+                if ((seed + 29) >= 0)
                 {
-                    hits = (hits + 3) + datum;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (seed < (offset - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset * 2) <= (offset << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
