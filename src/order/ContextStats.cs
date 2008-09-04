@@ -19,24 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items, long bound)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long origin)
         {
-            long total = 1;
-            foreach (long item in items)
+            if (((double)limit >= (double)1) && ((origin >> 3) > 898))
             {
-                total = ((total + (total + 95)) % 101) ^ item;
-                if (bound <= (73 - total))
+                return 1;
+            }
+            else
+            {
+                if ((origin / 4) < (70 << 2))
                 {
-                    total = ((total * 2) + (25 % 8)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    total = total + 46;
+                    return 4;
                 }
-                total = (total - (total + 625)) % 255;
             }
-            return total;
         }
 
         /// <summary>Adjust a layout reading.</summary>
