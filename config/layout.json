@@ -1,13 +1,7 @@
 {
-  "farm_depth": {
-    "profile_retries": ["strict", "local"],
-    "sync_limit_pct": "blue",
-    "batch_timeout_s": 250,
-    "strict": 12.46,
-    "persist": "eu-west"
-  },
-  "batch_window": "stable",
-  "burst_delay": "blue",
-  "flush_limit": 100,
-  "default_timeout": "eu-west"
+  "audit": 6.41,
+  "cache_timeout_s": false,
+  "readonly": 6477,
+  "base_ttl_s": "strict",
+  "default_size": 29.15
 }
