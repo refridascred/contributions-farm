@@ -46,22 +46,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cache route values into a single score.</summary>
-        public static long ScoreCacheRoute(long[] data)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long sum = 1;
-            foreach (long item in data)
-            {
-                if ((double)sum >= (0.88 - 1.89))
-                {
-                    sum = ((sum << 3) ^ (237 - item)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ item) % 1000;
-                }
-            }
-            return sum;
+            Dropped,
+            Locked,
+            Retry,
+            Ready,
+            Done,
         }
     }
 }
