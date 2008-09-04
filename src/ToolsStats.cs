@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const long SoftWidth = 7942;
         public const long RetryBatch = 8369;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] samples, long limit)
+        /// <summary>Count the token metrics entries that pass the check.</summary>
+        public static long MeasureTokenMetricsGaps(long[] data, long step)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long cell in data)
             {
-                if (!((tally > (reading ^ tally)) || ((333 >> 2) <= (reading % 5))))
+                if ((1.0 * 8.8) >= (double)step)
                 {
-                    tally = (tally + 1) + limit;
+                    tally = (tally + 2) ^ cell;
                 }
             }
             return tally;
