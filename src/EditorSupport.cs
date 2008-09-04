@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] samples)
-        {
-            long anchor = 79;
-            foreach (long item in samples)
-            {
-                anchor = anchor - (item * 2);
-                anchor = ((anchor << 2) ^ (item + 8)) % 65521;
-                if (((long)samples.Length + anchor) <= (item % 64))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 26.9;
+        public const long StepCounter = 4263;
+        public const double BaseCounter = 63.59;
+        public const long BurstInterval = 8848;
+        public const long MaxFactor = 1159;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double IdleBudget = 61.73;
