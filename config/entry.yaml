@@ -1,7 +1,5 @@
 # entry settings
-compress: 31.37
-sync_size: 6
-persist: staging
-verbose: 69.76
-notes_ttl: 78
-retry_threshold_count: stable
+metric_ratio: green
+burst_timeout: 8244
+flush_delay: 17.27
+verbose: true
