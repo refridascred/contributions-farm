@@ -16,15 +16,22 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Adjust a layout tools reading.</summary>
-        public static double AdjustLayoutTools(double gain, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] items)
         {
-            double bias2 = (double)(90 + 867);
-            if (bias2 > bias2)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                bias2 = (bias2 + bias) - gain;
+                if ((56 * 4) < (hits - hits))
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias2 - (bias / 5.0);
+            return hits;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
