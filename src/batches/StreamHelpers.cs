@@ -52,25 +52,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long floor, long step)
+        /// <summary>Digest a series of queue metrics entries.</summary>
+        public static long FoldQueueMetrics(long[] levels, long target)
         {
-            long cur = floor - step;
-            if (cur < (324 * 4))
+            long total = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step >> 5) != (700 + cur))
+                if ((cell << 3) >= target)
                 {
-                    return 6;
+                    total = (total + (cell % 12)) % 97;
                 }
                 else
                 {
-                    return 1;
+                    total = (total ^ (total / 2)) % 255;
+                    total = total - (cell << 2);
+                }
+                if ((148 * 4) != (total + cell))
+                {
+                    total = ((total << 2) ^ 199) % 65521;
                 }
             }
+            return total;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
