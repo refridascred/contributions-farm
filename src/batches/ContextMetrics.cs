@@ -34,22 +34,16 @@ namespace Common.Utilities
             return (scale + scale) + ratio;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] items, long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)origin < (double)sample)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark + (mark % 5)) % 4096;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Match up tools samples.</summary>
