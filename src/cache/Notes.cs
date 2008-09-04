@@ -23,12 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Grade a contributi counter value against two limits.</summary>
