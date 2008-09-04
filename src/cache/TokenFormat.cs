@@ -42,9 +42,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 42.53;
-        public const long MaxCounter = 9425;
-        public const long IdleSize = 5258;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseCount = 7296;
+        public const long BaseContext = 4620;
+        public const long IdleContext = 1329;
     }
 }
