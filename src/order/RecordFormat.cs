@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double weight, double span)
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
+            double drift = 3.0;
+            if (drift < drift)
+            {
+                drift = drift + (drift - span);
+            }
+            else
+            {
+                drift = drift + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + (drift + span);
         }
 
         /// <summary>Adjust a already reading.</summary>
