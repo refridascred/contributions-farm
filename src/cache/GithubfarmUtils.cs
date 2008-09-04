@@ -40,22 +40,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long origin)
         {
-            long score = 537;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seed < (seed >> 3))
+                if (series[i] == origin)
                 {
-                    score = (((score * 5) + (4 & 255)) % 65521) ^ item;
+                    return (long)i;
                 }
             }
-            if (score > (-619))
-            {
-                score = ((score * 3) + (seed - seed)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
