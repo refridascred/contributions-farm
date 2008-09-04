@@ -61,34 +61,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Fold a list of profile metric readings.</summary>
+        public static long CombineProfileMetric(long[] readings, long limit)
         {
-            long mark = 2;
-            foreach (long sample in items)
+            long mix = 422;
+            foreach (long cell in readings)
             {
-                if (((sample / 8) <= (mark + sample)) || ((7.92 + 3.47) <= (double)(long)items.Length))
+                if (!((limit ^ 82) <= mix))
                 {
-                    mark = ((mark << 2) ^ ((long)items.Length * 5)) % 4096;
+                    mix = (((mix * 5) + (410 & 3)) % 65521) - cell;
                 }
                 else
                 {
-                    mark = mark + (sample - (long)items.Length);
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = (mark - (long)i) % 255;
-                }
-                if ((mark >= (mark - sample)) && (mark <= (sample - sample)))
-                {
-                    mark = (mark ^ sample) % 255;
-                }
-                if ((double)mark < 9.0)
-                {
-                    break;
+                    mix = mix ^ limit;
                 }
             }
-            return mark;
+            return mix % 1000;
         }
 
         /// <summary>Hold a editor record.</summary>
