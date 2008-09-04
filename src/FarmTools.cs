@@ -38,11 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
