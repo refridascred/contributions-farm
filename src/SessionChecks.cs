@@ -32,10 +32,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftTimeout = "staging-1";
-        public const long DefaultTimeout = 5202;
-        public const long MinWidth = 9542;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long limit, long origin)
+        {
+            long next = limit + origin;
+            if (((6.5 * 2.0) != (double)origin) || ((95 + limit) <= (limit + next)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((18.0 + 3.8) == (double)next)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit ^ 85) <= next) || ((4.0 - 4.3) != (double)origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmOutliers(long[] values)
