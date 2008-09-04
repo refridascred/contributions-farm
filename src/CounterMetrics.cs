@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the farm tools series from a seed.</summary>
-        public static long RollFarmTools(long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score << 3) ^ ((long)i * 4);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
