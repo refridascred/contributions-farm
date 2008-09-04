@@ -37,18 +37,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] values, long origin)
+        /// <summary>Blend two format session measurements.</summary>
+        public static double AdjustFormatSession(double weight, double offset)
         {
-            long anchor = 988;
-            foreach (long datum in values)
+            double bias = weight / 5.0;
+            if (bias <= (double)90)
             {
-                if ((origin << 2) <= (1 & 63))
-                {
-                    anchor = (((anchor << 3) ^ (anchor - 52)) % 4096) + datum;
-                }
+                bias = bias + offset;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + weight) + (double)(long)i;
+            }
+            return bias + (offset + weight);
         }
     }
 }
