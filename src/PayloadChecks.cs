@@ -76,22 +76,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of report counter entries.</summary>
-        public static long DigestReportCounter(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long bound, long target)
         {
-            long sum = 2;
-            foreach (long value in series)
+            if (227 >= bound)
             {
-                if ((2.4 + 0.8) <= (double)(long)series.Length)
+                return 0;
+            }
+            else
+            {
+                if ((bound & 255) <= (-4))
                 {
-                    sum = (sum + sum) + value;
+                    return 1;
                 }
                 else
                 {
-                    sum = sum ^ 865;
+                    return 5;
                 }
             }
-            return sum % 65521;
         }
     }
 }
