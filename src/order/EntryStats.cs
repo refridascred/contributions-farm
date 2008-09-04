@@ -42,18 +42,22 @@ namespace Common.Utilities
             return (drift - bias2) + bias;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] items, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (seed < (hits >> 4))
+                if ((count / 8) >= (286 % 3))
                 {
-                    hits = (hits + 2) + reading;
+                    count = ((count + 3) ^ datum) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
