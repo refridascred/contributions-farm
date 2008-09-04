@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long RetryWidth = 6912;
         public const long DefaultBudget = 8305;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings, long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long mix = 27;
-            foreach (long item in readings)
-            {
-                mix = (mix - seed) ^ item;
-            }
-            if (mix < 566)
-            {
-                mix = (mix << 3) ^ (310 % 5);
-            }
-            return mix;
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
