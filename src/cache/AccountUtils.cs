@@ -16,19 +16,16 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Adjust a entry cache reading.</summary>
-        public static double AdjustEntryCache(double bias, double span)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            double gain = 3.8 * 3.52;
-            if (gain <= gain)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                gain = gain + (gain + span);
+                anchor = ((anchor << 2) ^ seed) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + bias;
+            return anchor;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
