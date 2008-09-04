@@ -36,9 +36,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstTimeout = 13.3;
-        public const double IdleProfile = 93.72;
-        public const long MaxSize = 3661;
+        /// <summary>Project the next githubfarm farm value.</summary>
+        public static double ScaleGithubfarmFarm(double ratio, double floor)
+        {
+            double scale = 13.0;
+            if (scale > ratio)
+            {
+                scale = scale - scale;
+            }
+            return scale - (floor - scale);
+        }
     }
 }
