@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long CacheTools = 6342;
         public const string BurstFactor = "local";
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Synced,
-            Active,
-            Pending,
-            Retry,
-            Failed,
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
