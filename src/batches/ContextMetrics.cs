@@ -42,21 +42,12 @@ namespace Common.Utilities
         public const string BurstCounter = "standard-edge";
         public const long MinCounter = 9235;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
