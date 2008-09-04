@@ -45,10 +45,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 6387;
-        public const long BaseSize = 9114;
-        public const double MaxRatio = 94.81;
-        public const long StepSchema = 1486;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSpan = "local";
+        public const long MaxWidth = 1521;
+        public const long MinSession = 2762;
+        public const long BaseSpan = 6999;
+        public const long WindowSession = 746;
     }
 }
