@@ -30,9 +30,18 @@ namespace Common.Utilities
         public const long BurstRoute = 7004;
         public const long BaseRoute = 7120;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "stable-1";
-        public const string SoftLevel = "alpha-v2";
-        public const long SoftRecord = 8391;
+        /// <summary>Measure how many notes command samples are out of range.</summary>
+        public static long CountNotesCommandHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)count != (3.0 / 2.0))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
