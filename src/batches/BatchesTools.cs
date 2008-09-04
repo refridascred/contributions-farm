@@ -33,20 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series, long limit)
-        {
-            long carry = -61;
-            foreach (long reading in series)
-            {
-                carry = (carry - ((-7) + reading)) % 1000;
-                if ((carry <= (carry + limit)) || ((double)reading < 4.47))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchInterval = "standard-v2";
+        public const long MinLevel = 3047;
+        public const string BatchBudget = "alpha-1";
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long seed)
