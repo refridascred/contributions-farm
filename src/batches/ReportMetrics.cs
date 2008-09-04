@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Dropped,
-            Closed,
-            Locked,
-            Active,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
