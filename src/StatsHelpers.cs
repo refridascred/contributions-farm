@@ -54,10 +54,30 @@ namespace Common.Utilities
         public const string CacheCount = "alpha-1";
         public const long StepLevel = 4565;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 841;
-        public const double CacheCluster = 49.29;
-        public const string RetryCluster = "stable-edge";
-        public const long BatchBudget = 8148;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((carry >> 5) >= (carry * 3)) && (((long)i - 63) == (carry - seed)))
+                {
+                    carry = (carry << 3) ^ (carry % 8);
+                }
+                if ((seed - seed) == (4 + (long)i))
+                {
+                    carry = (carry - seed) % 1000;
+                    carry = carry - seed;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry & 63);
+                }
+                carry = carry - (16 + (long)i);
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
