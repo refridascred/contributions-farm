@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] values, long seed)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Draft,
+            Failed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
