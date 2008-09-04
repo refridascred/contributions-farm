@@ -1,25 +1,4 @@
 # support settings
-metric_timeout:
-  - 410
-  - 335
-  - 279
-  - 392
-session_retries:
-  max_threshold: 250
-  soft_interval: 96.01
-  idle_interval_ms:
-    - 449
-    - 340
-base_delay_s: 58
-command_retries: edge
-cache_size: standard
-burst_threshold_s:
-  already_retries: false
-  warm_delay:
-    - fallback
-    - strict
-    - stable
-    - open
-  already_delay: 105
-  payload_retries: false
-  sync_limit: true
+readonly: primary
+window_ttl: 8501
+batch_ttl_s: 39.99
