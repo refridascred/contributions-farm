@@ -48,17 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order already reading by value.</summary>
-        public static long SeekOrderAlreadyIndex(long[] readings, long floor)
+        /// <summary>Accumulate farm payload samples.</summary>
+        public static long TotalFarmPayload(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 85;
+            foreach (long reading in series)
             {
-                if (readings[i] > floor)
+                if ((mix - reading) <= (reading ^ mix))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (reading >> 5)) % 255;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
