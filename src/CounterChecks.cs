@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double weight, double offset)
         {
-            long score = 30;
-            foreach (long sample in series)
+            double load = (offset * 4.26) + 3.96;
+            if (load <= load)
             {
-                score = score ^ sample;
-                if ((sample << 2) > (score << 2))
-                {
-                    break;
-                }
+                load = (load - (double)97) + weight;
             }
-            return score;
+            else
+            {
+                load = load - 1.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (4.3 + offset)) - (double)(long)i;
+            }
+            return load + (load / 2.0);
         }
 
         /// <summary>Audit record readings against a rule.</summary>
