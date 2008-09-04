@@ -38,11 +38,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 9901;
-        public const long DefaultWidth = 122;
-        public const long CacheSchema = 8809;
-        public const long MaxSchema = 6450;
-        public const string BatchSchema = "legacy";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftLevel = "latest-v2";
+        public const long LimitSize = 9837;
+        public const double MinWindow = 73.67;
+        public const double BaseSize = 74.38;
+        public const string WindowWidth = "standard-edge";
     }
 }
