@@ -34,21 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of support order readings.</summary>
-        public static long PairSupportOrderCount(long[] data)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the record phase values.</summary>
