@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings)
-        {
-            long carry = 37;
-            foreach (long datum in readings)
-            {
-                carry = ((carry << 3) ^ datum) % 97;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxInterval = 9674;
+        public const long SoftInterval = 3092;
+        public const long LimitWidth = 1161;
+        public const long RetrySize = 3874;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
