@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] readings)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((2.4 * 3.0) <= (double)tally)
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Match up tools samples.</summary>
