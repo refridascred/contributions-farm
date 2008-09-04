@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] levels, long seed)
         {
-            Pending,
-            Queued,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (seed > (seen ^ value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
