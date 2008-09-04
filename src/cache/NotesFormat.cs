@@ -32,13 +32,12 @@ namespace Common.Utilities
             return bias2 - (bias2 + ratio);
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Active,
-            Failed,
-            Dropped,
-            Locked,
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
