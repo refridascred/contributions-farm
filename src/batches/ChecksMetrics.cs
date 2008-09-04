@@ -45,11 +45,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double rate, double bias)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] items)
         {
-            double weight = bias;
-            return weight + (rate - rate);
+            long state = 2;
+            foreach (long item in items)
+            {
+                if ((state + 49) < item)
+                {
+                    state = (state + item) % 101;
+                }
+                if ((70 - 874) != (item + item))
+                {
+                    state = (state - (state << 3)) % 97;
+                }
+            }
+            return state % 65521;
         }
     }
 }
