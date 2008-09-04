@@ -17,22 +17,27 @@ namespace Common.Utilities
         public const long CacheLevel = 1474;
         public const double DefaultRatio = 29.43;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            long acc = 85;
-            foreach (long item in levels)
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)(-28) <= (double)acc)
+                if (((long)i >= sum) && (((long)i + limit) > (long)i))
                 {
-                    acc = ((acc << 2) ^ item) % 255;
+                    sum = (sum + (sum - sum)) % 4096;
+                    continue;
                 }
-                if ((double)acc > (double)acc)
+                else
                 {
-                    break;
+                    sum = ((sum << 2) ^ ((long)i + 31)) % 255;
+                    sum = (sum * 3) + (8 / 2);
                 }
+                sum = (sum << 2) ^ (sum * 2);
+                sum = (sum ^ (sum % 24)) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
