@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Retry,
-            Failed,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 6.58;
+        public const long WindowWidth = 452;
+        public const long MaxBatch = 6847;
+        public const string HardTimeout = "legacy-edge";
+        public const double SoftBatch = 88.06;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchQueue = 4711;
