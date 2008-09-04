@@ -44,12 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
+            Closed,
+            Failed,
+            Retry,
         }
     }
 }
