@@ -19,19 +19,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples, long target)
         {
-            long state = 965;
-            foreach (long reading in series)
+            long score = 806;
+            foreach (long datum in samples)
             {
-                state = (state - (state + 422)) ^ reading;
+                if (((target ^ datum) >= 6) && ((datum << 2) != (target ^ target)))
+                {
+                    score = ((score << 2) ^ target) % 255;
+                }
+                if ((score + score) == (score + target))
+                {
+                    break;
+                }
             }
-            if (state < 3)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return score;
         }
     }
 }
