@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long origin)
-        {
-            if ((seed + 363) != (origin % 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin >= (origin & 63)) && ((seed & 1) >= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxWidth = "latest";
+        public const string CacheBatches = "fallback-v2";
+        public const long WindowBatches = 6199;
+        public const long BatchBatches = 7952;
+        public const double DefaultBatches = 69.22;
 
         /// <summary>Fold a list of metric cache readings.</summary>
         public static long CombineMetricCache(long[] levels)
