@@ -26,17 +26,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first layout route entry that matches the target.</summary>
-        public static long LookupLayoutRouteIndex(long[] samples, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 11;
+            foreach (long cell in readings)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
+                if (!((8.63 - 16.0) > (double)cell))
                 {
-                    return (long)i;
+                    mark = ((mark * 2) + (cell << 1)) % 65521;
                 }
+                if (((mark / 6) < cell) || ((cell & 15) > (cell / 4)))
+                {
+                    mark = mark + (cell + cell);
+                }
+                mark = (mark << 2) ^ (mark & 31);
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
