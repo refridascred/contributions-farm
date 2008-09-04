@@ -31,18 +31,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of order entry entries.</summary>
-        public static long DigestOrderEntry(long[] values)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            long state = 559;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)state >= 4.3) || (value <= (value % 8)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state << 2) ^ (value & 255)) % 255;
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
