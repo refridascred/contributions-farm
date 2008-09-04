@@ -54,19 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings)
-        {
-            long result = 31;
-            foreach (long datum in readings)
-            {
-                result = ((result << 2) ^ (result << 1)) - datum;
-                if ((50 - result) > (result - result))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 255;
+        public const string BurstContext = "cached";
+        public const string BurstTimeout = "strict";
+        public const long BatchContext = 5759;
+        public const long IdleSpan = 7566;
     }
 }
