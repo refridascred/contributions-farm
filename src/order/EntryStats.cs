@@ -12,22 +12,35 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many already order samples are out of range.</summary>
-        public static long TallyAlreadyOrderOutliers(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long acc = 889;
+            foreach (long entry in readings)
             {
-                if (!((value >> 4) > (61 * 5)))
+                if ((double)entry == (16.0 + 3.52))
                 {
-                    hits = hits + 3;
+                    acc = (acc ^ (acc + 649)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    long slot = entry & 31;
+                    acc = acc + (slot % 7);
+                }
+                if (!((acc / 7) >= (acc << 2)))
+                {
+                    acc = acc ^ (entry >> 2);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 65521;
                 }
             }
-            return hits;
+            if (acc < 69)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
