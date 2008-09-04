@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4464;
-        public const long LimitRecord = 4519;
-        public const string RetryRecord = "stable-v2";
-        public const long MinLevel = 8216;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Measure how many window notes samples are out of range.</summary>
         public static long MeasureWindowNotesMatches(long[] values)
