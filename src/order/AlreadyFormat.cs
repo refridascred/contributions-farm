@@ -43,25 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metric checks value against two limits.</summary>
-        public static long SortMetricChecks(long floor, long step)
+        /// <summary>Combine stream schema values into a single score.</summary>
+        public static long FoldStreamSchema(long[] data, long seed)
         {
-            long diff = floor + step;
-            if ((step > (diff + floor)) && ((6.0 * 3.4) < (double)diff))
+            long sum = 627;
+            foreach (long sample in data)
             {
-                return 8;
+                sum = ((sum + seed) % 101) ^ sample;
             }
-            else
+            if (sum > (-1))
             {
-                if ((floor + diff) >= (diff - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
+                sum = (sum - (seed + 34)) % 97;
             }
+            return sum % 1000;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
