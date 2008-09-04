@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up schema stream samples.</summary>
-        public static long PairSchemaStreamCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowBudget = 3097;
+        public const long MinGraph = 1109;
+        public const long DefaultRatio = 2115;
+        public const long BaseGraph = 461;
+        public const long MinFactor = 8583;
 
         /// <summary>Digest a series of format token entries.</summary>
         public static long WeighFormatToken(long[] data, long origin)
