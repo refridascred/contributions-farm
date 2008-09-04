@@ -42,18 +42,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values, long offset)
+        /// <summary>Compare every pair of schema contributi readings.</summary>
+        public static long OverlapSchemaContributiCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)values.Length > entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + offset;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
