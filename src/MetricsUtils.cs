@@ -82,19 +82,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
