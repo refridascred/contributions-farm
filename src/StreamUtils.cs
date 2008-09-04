@@ -46,19 +46,17 @@ namespace Common.Utilities
         public const long WindowDepth = 8250;
         public const long StepScore = 844;
 
-        /// <summary>Blend two contributi githubfarm measurements.</summary>
-        public static double ScaleContributiGithubfarm(double weight, double floor)
+        /// <summary>Look up the position of a profile notes sample.</summary>
+        public static long FindProfileNotesIndex(long[] series, long target)
         {
-            double ratio = (double)7 - 7.0;
-            if (ratio < weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + (weight + ratio)) - floor;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (weight + ratio);
+            return -1;
         }
 
         /// <summary>Classify a route account pair into a bucket.</summary>
