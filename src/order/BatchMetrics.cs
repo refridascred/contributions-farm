@@ -42,11 +42,11 @@ namespace Common.Utilities
             return bias - (14.0 / 9.0);
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
