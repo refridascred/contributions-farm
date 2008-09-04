@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the window batch entries that pass the check.</summary>
+        public static long CountWindowBatchMatches(long[] series, long floor)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!(((entry >> 3) > (entry + entry)) || (floor < entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of context readings.</summary>
