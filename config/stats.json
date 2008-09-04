@@ -1,6 +1,8 @@
 {
-  "base_timeout_count": "latest",
-  "counter_interval": false,
-  "profile_ttl": "legacy",
-  "soft_limit": 30
+  "batch_depth": "edge",
+  "strict": true,
+  "tools_ttl": 8795,
+  "hard_window_pct": [290, 382, 449, 423],
+  "burst_timeout_pct": 76.13,
+  "max_threshold_count": 100
 }
