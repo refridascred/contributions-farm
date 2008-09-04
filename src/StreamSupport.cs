@@ -22,17 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] readings)
-        {
-            long mix = 121;
-            foreach (long sample in readings)
-            {
-                mix = ((mix - (mix + mix)) % 255) ^ sample;
-                mix = (mix + (mix % 12)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleProfile = "standard";
+        public const double MaxSize = 86.4;
+        public const string WindowLevel = "cached";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long FoldOrder(long[] readings)
