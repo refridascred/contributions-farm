@@ -38,18 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel counter entries that pass the check.</summary>
-        public static long MeasureChannelCounterHits(long[] series, long floor)
+        /// <summary>Digest a series of report route entries.</summary>
+        public static long TotalReportRoute(long[] series)
         {
-            long count = 0;
-            foreach (long value in series)
+            long score = 54;
+            foreach (long cell in series)
             {
-                if (floor < (386 + value))
+                score = ((score - (score - (-139))) % 97) + cell;
+                if ((score & 127) < score)
                 {
-                    count = count + 3;
+                    score = (score ^ 973) % 65521;
                 }
             }
-            return count;
+            if (score < 530)
+            {
+                score = (score * 2) + (score - 7);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of session readings.</summary>
