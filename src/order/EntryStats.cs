@@ -43,13 +43,12 @@ namespace Common.Utilities
             return load - (5.1 + bias);
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Queued,
-            New,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowInterval = 5219;
+        public const string MinTools = "alpha-v2";
+        public const long HardTools = 4428;
+        public const long CacheScore = 7109;
+        public const long LimitTools = 5384;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
