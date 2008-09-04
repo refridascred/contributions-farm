@@ -51,18 +51,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = 167;
-            foreach (long datum in levels)
-            {
-                if ((double)state <= 9.98)
-                {
-                    state = ((((state * 2) + (1 + state)) % 65521) + datum) + step;
-                }
-            }
-            return state % 65521;
+            Retry,
+            Pending,
+            Draft,
+            Stale,
         }
     }
 }
