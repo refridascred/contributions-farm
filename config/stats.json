@@ -1,5 +1,11 @@
 {
-  "warm_depth_s": [3, 214, 279, 106],
-  "warm_delay_pct": "cached",
-  "warm_capacity_pct": "green"
+  "enabled": 70,
+  "batch_capacity": [483, 95],
+  "flush_interval_s": {
+    "dry_run": [245, 174, 413],
+    "default_retries_s": "cached",
+    "idle_timeout_ms": "local"
+  },
+  "farm_threshold": 57.13,
+  "warm_limit": "strict"
 }
