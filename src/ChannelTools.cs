@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long origin)
         {
-            long span = offset - floor;
-            if ((span > (offset & 1)) || (span >= (678 + offset)))
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                sum = (sum ^ (sum / 4)) % 4096;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((5 << 3) < span)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (1 > (floor - 263))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
