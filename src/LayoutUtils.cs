@@ -21,32 +21,18 @@ namespace Common.Utilities
         public const long SoftLevel = 8;
         public const long BatchStats = 9982;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long step, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] samples, long floor)
         {
-            long diff = step - seed;
-            if ((364 << 2) <= seed)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step >> 1) > (85 - step))
+                if ((hits % 100) > value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((diff & 7) <= (diff * 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 3) + floor;
                 }
             }
+            return hits;
         }
     }
 }
