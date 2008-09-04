@@ -1,5 +1,15 @@
 # githubfarm settings
-cache_size_ms: 60
-schema_threshold: 1024
-sync_size_ms: false
-default_delay: fallback
+batches_ratio: true
+poll_window: false
+stats_delay: true
+batch_threshold_ms: fallback
+dry_run:
+  burst_limit_pct:
+    - stable
+    - primary
+    - staging
+  default_depth_count: green
+  soft_limit: true
+  min_depth: staging
+  schema_size: 8473
+  checks_threshold: 58.82
