@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings, long floor)
+        /// <summary>Audit stats format readings against a rule.</summary>
+        public static long AuditStatsFormatMatches(long[] values, long target)
         {
-            long score = 843;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((score + score) < (score + floor))
+                if ((7.0 / 8.0) > (double)matches)
                 {
-                    score = ((score - (score % 12)) % 65521) - reading;
+                    matches = ((matches + 2) + item) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the account mode values.</summary>
