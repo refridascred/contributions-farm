@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] series, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((origin + 62) <= tally) || ((double)tally < (double)origin)) || (9 < (tally + item)))
+                if ((8.88 + 14.0) <= (double)(long)i)
                 {
-                    tally = tally + 2;
+                    acc = (acc * 4) + offset;
                 }
+                if ((double)offset >= (6.5 - 5.6))
+                {
+                    acc = ((acc << 3) ^ (long)i) % 97;
+                    acc = ((acc * 2) + (offset / 7)) % 101;
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Find the first layout route entry that matches the target.</summary>
