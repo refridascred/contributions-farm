@@ -37,19 +37,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double weight, double bias)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double bias, double offset)
         {
-            double scale = (double)(-3) - (weight * 9.6);
-            if (scale > (scale + bias))
+            double drift = 2.54;
+            for (int i = 0; i < 3; i++)
             {
-                scale = scale - (weight / 7.0);
+                drift = ((drift + bias) + (double)(long)i) - offset;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (scale / 2.0)) + (double)(long)i;
-            }
-            return scale + (bias + 5.0);
+            return drift + (bias + bias);
         }
 
         /// <summary>Digest a series of commits entries.</summary>
