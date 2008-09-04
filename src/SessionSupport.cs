@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
+            Stale,
+            Pending,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the report state values.</summary>
