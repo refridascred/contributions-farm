@@ -22,10 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleProfile = "standard";
-        public const double MaxSize = 86.4;
-        public const string WindowLevel = "cached";
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 19; i++)
+            {
+                long next = ((long)i - (long)i) + (mark & 15);
+                if (((371 ^ step) < next) && ((mark ^ step) < step))
+                {
+                    next = (next - step) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long FoldOrder(long[] readings)
