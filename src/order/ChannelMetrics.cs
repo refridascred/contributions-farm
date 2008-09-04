@@ -32,22 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values, long target)
+        /// <summary>Measure how many tools counter samples are out of range.</summary>
+        public static long MeasureToolsCounterMatches(long[] levels, long floor)
         {
-            long state = 92;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((double)state <= (8.2 - 9.3))
+                if (floor <= (floor & 7))
                 {
-                    state = ((state - (79 << 1)) % 97) + target;
-                }
-                if ((entry + entry) >= state)
-                {
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
