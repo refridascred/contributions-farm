@@ -19,11 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
