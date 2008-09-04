@@ -45,31 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] levels, long seed)
+        /// <summary>Compare every pair of tools entry readings.</summary>
+        public static long OverlapToolsEntryCount(long[] values)
         {
-            long result = 75;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (seed / 6)) % 4096;
-                if ((8.17 * 3.3) < (double)seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
-                }
-                if ((12.0 + 2.53) > (double)result)
-                {
-                    result = result ^ (sample + 0);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result - sample)) % 4096;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result > 8)
-            {
-                result = (result * 4) + (79 ^ (-5));
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Blend two checks route measurements.</summary>
