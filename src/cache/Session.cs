@@ -42,17 +42,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a graph buffer reading by value.</summary>
-        public static long SeekGraphBufferIndex(long[] items, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (items[i] <= seed)
+                if (value > limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
