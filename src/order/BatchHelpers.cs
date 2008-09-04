@@ -28,19 +28,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] data, long step)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double drift = 5.5 / 9.0;
+            if (drift < 9.0)
             {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = ((drift + 4.1) + scale) + offset;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)(-108)) + (double)(long)i;
+            }
+            return drift + (double)839;
         }
     }
 }
