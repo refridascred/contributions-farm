@@ -30,11 +30,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 2301;
-        public const long SoftScore = 218;
-        public const string LimitRatio = "legacy";
-        public const long IdleTimeout = 1123;
-        public const double SoftTimeout = 16.32;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
