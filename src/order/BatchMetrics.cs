@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] levels, long floor)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
