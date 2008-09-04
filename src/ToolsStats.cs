@@ -120,19 +120,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] values, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
