@@ -28,23 +28,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] levels, long step)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            long sum = 38;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sum > value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum * 3) + step) % 101;
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-                sum = sum - (value * 4);
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Describe the batch state values.</summary>
