@@ -79,17 +79,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long floor, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((target + target) > (-586))
             {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((69 & 255) < (target + 1)) && (floor >= (target / 9)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor == (3.78 * 6.28))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
