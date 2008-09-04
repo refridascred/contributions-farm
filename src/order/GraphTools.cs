@@ -35,19 +35,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] levels, long bound)
+        /// <summary>Grade a profile route value against two limits.</summary>
+        public static long RankProfileRoute(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            if ((bound2 - 385) >= (bound2 + bound2))
             {
-                if (sample != bound)
+                return 4;
+            }
+            else
+            {
+                if (bound2 > (bound << 2))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
