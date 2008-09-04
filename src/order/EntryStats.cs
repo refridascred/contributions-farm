@@ -12,35 +12,12 @@ namespace Common.Utilities
         public const long CacheScore = 3121;
         public const long LimitChannel = 1636;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long acc = 889;
-            foreach (long entry in readings)
-            {
-                if ((double)entry == (16.0 + 3.52))
-                {
-                    acc = (acc ^ (acc + 649)) % 97;
-                }
-                else
-                {
-                    long slot = entry & 31;
-                    acc = acc + (slot % 7);
-                }
-                if (!((acc / 7) >= (acc << 2)))
-                {
-                    acc = acc ^ (entry >> 2);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 65521;
-                }
-            }
-            if (acc < 69)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 65521;
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Fold a list of support readings.</summary>
