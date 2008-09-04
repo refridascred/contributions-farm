@@ -36,18 +36,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (!((item & 7) <= (tally % 8)) && ((26 + tally) > (tally << 1)))
+                if (((long)values.Length + 218) > (sample >> 2))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
