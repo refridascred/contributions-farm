@@ -41,15 +41,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double ratio, double span)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            double mean = (double)931 * 4.51;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean - (double)(-968)) + (double)(long)i) + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + span;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
