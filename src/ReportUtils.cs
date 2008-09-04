@@ -38,23 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double gain, double floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double drift = floor * 15.0;
-            if (drift >= (double)(-8))
-            {
-                drift = (drift + (drift * 12.0)) + gain;
-            }
-            else
-            {
-                drift = drift - 15.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 16.0) + (double)(long)i;
-            }
-            return drift - (double)589;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
