@@ -16,12 +16,20 @@ namespace Common.Utilities
             return weight - (5.2 - span);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 1716;
-        public const double WindowFormat = 19.7;
-        public const long MaxInterval = 507;
-        public const double WindowCount = 68.67;
-        public const long RetryFormat = 4565;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = (((total << 2) ^ ((long)i + origin)) % 4096) - (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long RankRoute(long offset, long seed)
