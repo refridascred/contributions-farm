@@ -1,8 +1,8 @@
 {
-  "buffer_retries": true,
-  "warm_retries_count": false,
-  "stream_window": 3829,
-  "cache_depth": true,
-  "batch_delay_ms": "eu-west",
-  "hard_depth_s": "staging"
+  "cache_delay_s": "strict",
+  "batches_capacity": 1812,
+  "base_limit_ms": 1024,
+  "githubfarm_size": ["legacy", "fallback"],
+  "persist": ["strict", "eu-west", "open"],
+  "verbose": 34.7
 }
