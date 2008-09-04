@@ -12,17 +12,23 @@ namespace Common.Utilities
         public const long RetryToken = 1750;
         public const double MinDepth = 74.08;
 
-        /// <summary>Look up the position of a filter tools sample.</summary>
-        public static long LocateFilterToolsIndex(long[] items, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 76;
+            foreach (long sample in values)
             {
-                if ((items[i] == floor) && ((items[i] % 5) != 0))
+                anchor = (anchor + sample) % 4096;
+                if (((target - sample) != (anchor % 10)) && ((anchor % 97) > (target & 7)))
                 {
-                    return (long)i;
+                    anchor = anchor + sample;
+                }
+                if ((target << 2) <= (anchor - sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a token header.</summary>
