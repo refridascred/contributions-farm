@@ -63,31 +63,19 @@ namespace Common.Utilities
             return weight - (4.55 / 6.0);
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long target, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long origin)
         {
-            if ((target + target) < (928 + 673))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target % 7) >= target) && (target < (target - (-24))))
+                if (reading > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target + offset) >= offset) && ((8.2 * 3.9) != (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
