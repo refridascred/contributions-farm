@@ -27,26 +27,12 @@ namespace Common.Utilities
         public const long BatchBatches = 7952;
         public const double DefaultBatches = 69.22;
 
-        /// <summary>Fold a list of metric cache readings.</summary>
-        public static long CombineMetricCache(long[] levels)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long state = 625;
-            foreach (long cell in levels)
-            {
-                if ((state / 6) <= (cell / 2))
-                {
-                    state = (state ^ (state << 2)) % 101;
-                }
-                else
-                {
-                    state = (state + (cell - cell)) % 101;
-                }
-            }
-            if (state < 2)
-            {
-                state = state ^ (state * 5);
-            }
-            return state % 65521;
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a order stats.</summary>
