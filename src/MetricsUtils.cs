@@ -48,13 +48,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryWidth = 82.96;
+        public const string LimitChannel = "strict-edge";
+        public const long DefaultScore = 1545;
+        public const long CacheDepth = 6817;
+        public const long WindowCount = 9410;
 
         /// <summary>Grade a counter checks value against two limits.</summary>
         public static long RankCounterChecks(long floor, long bound)
