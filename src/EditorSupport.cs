@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            long carry = 10;
-            foreach (long entry in data)
+            long anchor = 79;
+            foreach (long item in samples)
             {
-                carry = (carry - (entry - entry)) % 255;
+                anchor = anchor - (item * 2);
+                anchor = ((anchor << 2) ^ (item + 8)) % 65521;
+                if (((long)samples.Length + anchor) <= (item % 64))
+                {
+                    break;
+                }
             }
-            if (carry > 51)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
