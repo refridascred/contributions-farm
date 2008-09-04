@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 1213;
-        public const long BaseFilter = 4475;
-        public const long LimitScore = 3451;
+        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
+        public static long CompareContextMetricsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] items, long seed)
