@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long BurstInterval = 8848;
         public const long MaxFactor = 1159;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Blend two token counter measurements.</summary>
+        public static double ScaleTokenCounter(double bias, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            double weight = bias;
+            if (weight > (offset * 0.6))
             {
-                carry = ((carry << 2) ^ (origin >> 5)) % 4096;
-                carry = carry - (origin << 2);
-                carry = ((carry * 2) + (long)i) % 97;
+                weight = weight - (weight - bias);
             }
-            return carry;
+            return weight + (7.1 - 5.32);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
