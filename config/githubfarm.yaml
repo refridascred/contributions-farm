@@ -1,9 +1,7 @@
 # githubfarm settings
-layout_limit: 30
-sync_retries_pct: 14.44
-order_threshold: true
-default_size_ms:
-  - blue
-  - eu-west
-  - primary
-poll_ttl_ms: staging
+cache_ttl_s: true
+payload_limit: legacy
+cache_depth: 67
+session_capacity: 60
+idle_capacity: fallback
+counter_capacity: strict
