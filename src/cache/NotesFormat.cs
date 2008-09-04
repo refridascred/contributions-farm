@@ -23,11 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double scale, double floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] series, long target)
         {
-            double rate = scale;
-            return (rate + (rate + 11.0)) + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches record.</summary>
