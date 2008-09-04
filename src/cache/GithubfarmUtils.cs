@@ -40,18 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] values, long floor)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen / 7) <= cell)
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
