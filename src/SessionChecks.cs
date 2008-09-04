@@ -31,14 +31,9 @@ namespace Common.Utilities
         public const long BurstRoute = 7004;
         public const long BaseRoute = 7120;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            New,
-            Pending,
-            Closed,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 57.0;
+        public const long MaxLevel = 6042;
+        public const double MinCache = 67.46;
     }
 }
