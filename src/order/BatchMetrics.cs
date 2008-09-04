@@ -33,17 +33,11 @@ namespace Common.Utilities
             return bias - (14.0 / 9.0);
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] readings, long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
