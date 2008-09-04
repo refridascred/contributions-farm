@@ -1,7 +1,12 @@
 # githubfarm settings
-sync_threshold_ms: true
-compress: 989
-strict: true
-burst_ratio_s: local
-readonly: local
-base_window_count: primary
+metrics_timeout: false
+schema_size:
+  verbose: true
+  idle_limit_ms: false
+  payload_timeout: legacy
+  metrics_delay: 55.81
+  max_delay: legacy
+min_capacity_s: 1024
+default_timeout: edge
+cache_delay_pct: primary
+farm_limit: 7554
