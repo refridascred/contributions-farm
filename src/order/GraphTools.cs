@@ -20,22 +20,19 @@ namespace Common.Utilities
             return rate - (double)860;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] data, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            long total = 0;
-            foreach (long sample in data)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample < (total + step))
+                if ((double)9 > (double)limit)
                 {
-                    total = (total - step) % 1000;
+                    score = (score ^ score) % 4096;
                 }
-                if ((double)624 >= (double)total)
-                {
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
