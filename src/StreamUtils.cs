@@ -16,22 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 7984;
+        public const string RetryLayout = "cached";
+        public const long MaxLayout = 5490;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] series, long floor)
