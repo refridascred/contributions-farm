@@ -1,5 +1,11 @@
 {
-  "warm_size_pct": ["eu-west", "standard", "cached", "stable"],
-  "dry_run": 7282,
-  "idle_ttl_s": 8274
+  "cluster_retries": 2878,
+  "dry_run": {
+    "compress": [311, 56],
+    "retry_interval_ms": "latest",
+    "order_threshold": 190
+  },
+  "max_window_pct": 250,
+  "stream_delay": 500,
+  "metric_retries": 68
 }
