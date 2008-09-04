@@ -70,10 +70,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "strict";
-        public const long HardCount = 5652;
-        public const long BaseRatio = 3340;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Locked,
+            Pending,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Rank token channel input into a small class.</summary>
         public static long BucketTokenChannel(long step, long bound)
