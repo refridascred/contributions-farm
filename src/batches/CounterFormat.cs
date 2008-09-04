@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] readings, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] <= step)
+                if ((double)seen > 11.0)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) ^ reading) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
