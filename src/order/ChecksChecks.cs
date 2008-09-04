@@ -22,11 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitSpan = "strict-v2";
-        public const double BaseWidth = 2.83;
-        public const long LimitInterval = 1909;
-        public const long CacheTimeout = 6004;
-        public const string LimitContext = "primary-v2";
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Idle,
+            Draft,
+            Stale,
+            Queued,
+        }
     }
 }
