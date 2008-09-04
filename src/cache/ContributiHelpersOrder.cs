@@ -34,19 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report order entry stays within the limit.</summary>
-        public static bool ValidateReportOrderBounds(long[] readings, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Pending,
+            Idle,
+            Active,
+            Dropped,
         }
     }
 }
