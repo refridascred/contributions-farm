@@ -30,21 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of tools report readings.</summary>
-        public static long MatchToolsReportCount(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading > limit)
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
