@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long DefaultBudget = 1583;
         public const long MaxTools = 9335;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] series, long origin)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
