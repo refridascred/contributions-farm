@@ -43,16 +43,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Blend two editor command measurements.</summary>
+        public static double BlendEditorCommand(double bias, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            double ratio = floor;
+            if (ratio >= (bias / 8.0))
             {
-                score = (score - ((-6) >> 3)) % 255;
-                score = ((score * 5) + (long)i) % 4093;
+                ratio = ratio + (floor - bias);
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (4.49 * 2.1)) + (double)(long)i;
+            }
+            return ratio - (double)5;
         }
     }
 }
