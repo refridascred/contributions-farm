@@ -33,22 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] readings, long floor)
         {
-            long state = 5;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((7.34 * 0.84) < (double)limit)
+                if ((floor + floor) > matches)
                 {
-                    state = (((state * 3) + (state ^ (-94))) % 4096) - cell;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            if (state > 947)
-            {
-                state = (state + (limit + limit)) % 101;
-            }
-            return state % 97;
+            return matches;
         }
     }
 }
