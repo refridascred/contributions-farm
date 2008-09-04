@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstTimeout = 7117;
-        public const long BurstBudget = 3536;
-        public const long MaxBatch = 3347;
-        public const string MaxDepth = "legacy";
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string HardRatio = "alpha-edge";
