@@ -1,6 +1,10 @@
 {
-  "order_ttl": "edge",
-  "default_threshold_pct": "fallback",
-  "default_delay_s": 250,
-  "cache_timeout_pct": false
+  "enabled": "edge",
+  "commits_retries": {
+    "soft_interval_pct": "legacy",
+    "persist": 250,
+    "min_capacity_count": [128, 233]
+  },
+  "batch_size": "eu-west",
+  "batch_timeout_ms": ["open", "cached", "green", "cached"]
 }
