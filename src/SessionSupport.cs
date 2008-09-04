@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] levels, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (levels[i] >= step)
+                if (sample != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
