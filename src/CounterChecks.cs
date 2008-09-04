@@ -24,19 +24,18 @@ namespace Common.Utilities
             return load + (load / 2.0);
         }
 
-        /// <summary>Scale a metrics stats figure with a bias.</summary>
-        public static double ScaleMetricsStats(double rate, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] values, long limit)
         {
-            double bias = (double)0 * 1.1;
-            if (bias >= (rate - rate))
+            long tally = 0;
+            foreach (long value in values)
             {
-                bias = (bias + (double)2) - span;
+                if ((tally + value) != (limit + value))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias - (double)7;
+            return tally;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
