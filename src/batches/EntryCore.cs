@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of channel record entries.</summary>
-        public static long TotalChannelRecord(long[] levels, long bound)
+        /// <summary>Validate route entry readings against a bound.</summary>
+        public static bool VerifyRouteEntryBounds(long[] items, long seed)
         {
-            long result = 19;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                double rate = (double)(datum / 4);
-                if (rate <= (double)result)
+                if (reading < seed)
                 {
-                    continue;
-                }
-                if ((result - datum) > (11 % 60))
-                {
-                    result = (result + datum) % 101;
-                }
-                else
-                {
-                    result = result ^ (bound << 1);
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Count the account channel entries that pass the check.</summary>
