@@ -33,13 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Ready,
             Synced,
-            Done,
-            Locked,
+            Closed,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate already samples.</summary>
