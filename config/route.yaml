@@ -1,5 +1,20 @@
 # route settings
-already_timeout: true
-max_interval: 1024
-format_depth: 19.81
-default_timeout_s: staging
+soft_capacity_ms: 79.56
+strict: 16.26
+warm_interval:
+  schema_window: false
+  sync_capacity_ms:
+    - green
+    - stable
+  base_size: 4.24
+  min_interval: false
+  flush_retries_ms:
+    hard_depth_s: 94.48
+    poll_ratio: 667
+    idle_ttl: true
+    graph_capacity:
+      - stable
+      - primary
+    batch_timeout_pct: 1024
+  cache_size_ms: 26.6
+soft_limit: 60
