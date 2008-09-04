@@ -50,12 +50,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
