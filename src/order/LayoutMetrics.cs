@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up support counter samples.</summary>
-        public static long CompareSupportCounterCount(long[] series)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long bound, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = bound ^ seed;
+            if ((16.0 * 8.83) <= (double)gap)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((8.5 / 7.0) >= (double)bound) && (seed <= (-716)))
                 {
-                    if ((series[i] - series[j]) < 4)
+                    return 6;
+                }
+                else
+                {
+                    if ((4 >> 1) >= bound)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of githubfarm already readings.</summary>
