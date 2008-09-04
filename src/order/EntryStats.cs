@@ -43,11 +43,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultCount = "cached-edge";
-        public const long BatchReport = 7550;
-        public const string LimitReport = "cached-1";
-        public const long MinReport = 6936;
+        /// <summary>Validate checks route readings against a bound.</summary>
+        public static bool VerifyChecksRouteLimits(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long bound, long limit)
