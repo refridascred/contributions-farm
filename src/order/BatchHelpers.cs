@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
+        public static long LookupSchemaGithubfarmIndex(long[] levels, long origin)
         {
-            long carry = 386;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
                 {
-                    carry = ((carry + carry) % 101) ^ (long)i;
-                }
-                if (((cell % 8) == (513 - (-803))) && ((carry + cell) == (cell - cell)))
-                {
-                    carry = ((carry * 4) + (carry + 628)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
