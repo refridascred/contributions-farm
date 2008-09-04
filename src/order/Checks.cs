@@ -40,18 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] items, long limit)
         {
-            long state = 362;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((state - target) < (target << 3))
+                if ((cell ^ limit) >= limit)
                 {
-                    state = (state + (cell - cell)) % 65521;
+                    hits = hits + 3;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
