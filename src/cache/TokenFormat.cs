@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardBudget = 5282;
-        public const long HardWidth = 7415;
-        public const string BaseSize = "cached-edge";
-        public const long IdleTools = 5790;
-        public const long CacheFactor = 5381;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((limit & 63) <= limit)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
