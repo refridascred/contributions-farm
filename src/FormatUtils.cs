@@ -61,18 +61,18 @@ namespace Common.Utilities
             return (rate + (double)980) + weight;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((2 / 7) == (hits / 7))
+                if ((3.3 + 7.6) >= (double)datum)
                 {
-                    hits = (hits + 2) + sample;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the contributi state values.</summary>
