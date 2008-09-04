@@ -1,5 +1,6 @@
 {
-  "cache_ratio_ms": 30,
-  "session_ratio": 375,
-  "default_ratio": 29
+  "readonly": 1548,
+  "idle_threshold_count": "legacy",
+  "tools_ratio": "latest",
+  "cache_limit_count": true
 }
