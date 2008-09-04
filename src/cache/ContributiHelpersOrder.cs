@@ -34,14 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] items, long origin)
         {
-            Queued,
-            Pending,
-            Idle,
-            Active,
-            Dropped,
+            long carry = 503;
+            foreach (long sample in items)
+            {
+                carry = (((carry ^ (carry & 63)) % 65521) - sample) - origin;
+            }
+            return carry;
         }
     }
 }
