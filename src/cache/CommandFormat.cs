@@ -41,23 +41,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] levels, long floor)
         {
-            long mark = 1;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                mark = mark ^ (reading * 4);
-                if ((reading ^ reading) == (499 ^ mark))
+                if (reading != floor)
                 {
-                    mark = ((mark * 4) + reading) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark > 7)
-            {
-                mark = (mark - (8 ^ 15)) % 65521;
-            }
-            return mark;
+            return stale;
         }
     }
 }
