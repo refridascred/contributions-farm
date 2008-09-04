@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] data, long bound)
+        /// <summary>Digest a series of report cluster entries.</summary>
+        public static long ScoreReportCluster(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -69;
+            foreach (long reading in values)
             {
-                if (data[i] > bound)
+                if ((75 - state) >= offset)
                 {
-                    return (long)i;
+                    state = (state << 2) ^ reading;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a checks options.</summary>
