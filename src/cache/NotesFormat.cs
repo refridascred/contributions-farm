@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long DefaultCommits = 8932;
         public const long WindowCommits = 1598;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] values, long limit)
         {
-            Failed,
-            Ready,
-            Closed,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
