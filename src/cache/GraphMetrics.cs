@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] series, long origin)
+        /// <summary>Iterate the report layout series from a seed.</summary>
+        public static long DeriveReportLayout(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the stream class values.</summary>
