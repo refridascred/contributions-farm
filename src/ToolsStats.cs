@@ -40,31 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long offset, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] samples, long limit)
         {
-            if (((double)offset != (20.0 - 9.4)) || ((1.5 - 9.94) < (double)offset))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + 801) > (target + offset))
+                if (!((tally > (reading ^ tally)) || ((333 >> 2) <= (reading % 5))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset % 24) == (356 % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 1) + limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
