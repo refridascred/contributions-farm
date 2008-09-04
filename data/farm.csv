@@ -1,11 +1,6 @@
-id,owner,region,score
-1,staging,green,917
-2,open,standard,open
-3,65.31,210,staging
-4,14.59,local,27.81
-5,409,edge,702
-6,eu-west,223,193
-7,staging,930,910
-8,251,672,standard
-9,32.15,stable,fallback
-10,925,767,open
+id,state,count
+1,708,primary
+2,stable,114
+3,35.37,488
+4,standard,517
+5,859,150
