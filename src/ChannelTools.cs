@@ -33,16 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double gain, double offset)
-        {
-            double load = 4.0;
-            if (load >= (load * 15.0))
-            {
-                load = load - (offset - offset);
-            }
-            return load + (offset - gain);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 36.11;
+        public const double RetryNotes = 68.76;
+        public const long MaxBudget = 5676;
+        public const long MaxScore = 9170;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftCount = 9575;
