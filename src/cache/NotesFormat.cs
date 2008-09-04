@@ -32,19 +32,13 @@ namespace Common.Utilities
             return bias2 - (bias2 + ratio);
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] items, long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Failed,
+            Dropped,
+            Locked,
         }
     }
 }
