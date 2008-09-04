@@ -38,39 +38,18 @@ namespace Common.Utilities
         public const long DefaultToken = 9720;
         public const string MinBudget = "stable";
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            long step = floor + offset;
-            if ((1.23 - 0.3) >= (double)offset)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - offset) < offset)
+                if ((tally >> 3) < (sample * 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (floor >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((-33) <= (step + floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
