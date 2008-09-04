@@ -28,22 +28,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data, long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long result = 4;
-            foreach (long value in data)
+            long sum = 51;
+            foreach (long item in readings)
             {
-                if ((6 >> 3) > (value - value))
+                if ((((-7) + item) != (item ^ sum)) && ((double)item <= (1.7 / 5.0)))
                 {
-                    result = result - (seed - result);
+                    sum = sum - (-2);
+                    sum = ((sum * 5) + (sum * 4)) % 101;
                 }
-                else
+                if (((77 + item) <= (sum >> 2)) || ((6.2 + 6.7) >= (double)sum))
                 {
-                    result = ((result << 3) ^ (value - 224)) % 1000;
+                    sum = sum - (item ^ sum);
                 }
             }
-            return result;
+            if (sum < 94)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
