@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 8984;
-        public const long HardCounter = 9173;
-        public const long SoftCounter = 6696;
-        public const long StepSize = 5466;
-        public const long WindowCounter = 4455;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 2856;
