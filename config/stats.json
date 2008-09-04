@@ -1,8 +1,6 @@
 {
-  "batch_depth": "edge",
-  "strict": true,
-  "tools_ttl": 8795,
-  "hard_window_pct": [290, 382, 449, 423],
-  "burst_timeout_pct": 76.13,
-  "max_threshold_count": 100
+  "poll_interval_pct": false,
+  "command_size": true,
+  "audit": ["staging", "cached", "edge"],
+  "commits_depth": ["open", "primary"]
 }
