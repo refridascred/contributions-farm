@@ -32,19 +32,19 @@ namespace Common.Utilities
             return bias2 - (bias2 + ratio);
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long step)
         {
-            long sum = 177;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                sum = ((sum << 2) ^ (sample << 1)) % 65521;
-                if (offset < (sum ^ sample))
+                if (entry < step)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return sum % 4096;
+            return ok;
         }
     }
 }
