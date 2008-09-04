@@ -27,10 +27,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 79.62;
-        public const long LimitRoute = 8634;
-        public const long RetryRoute = 4379;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two stats layout measurements.</summary>
         public static double ProjectStatsLayout(double rate, double floor)
