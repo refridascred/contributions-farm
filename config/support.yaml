@@ -1,8 +1,12 @@
 # support settings
-warm_capacity_count: 57.6
-enabled:
-  dry_run: 100
-  support_size: staging
-  max_delay: 100
-checks_capacity: false
-soft_ratio_pct: 6
+counter_size:
+  idle_retries_count: true
+  queue_limit:
+    entry_interval: stable
+    burst_limit_ms: green
+    retry_ttl_pct: eu-west
+  default_ttl: 60
+  cache_ttl_count: 184
+dry_run: 5.66
+poll_delay_pct: local
+notes_depth: false
