@@ -1,6 +1,10 @@
-id,owner
-1,379
-2,2.4
-3,0.18
-4,57.75
-5,local
+id,owner,rank,state,level
+1,827,open,315,184
+2,433,open,legacy,legacy
+3,869,291,4.45,477
+4,strict,10.35,legacy,55.93
+5,107,blue,edge,legacy
+6,staging,810,standard,881
+7,54.38,standard,31,blue
+8,728,36.58,633,strict
+9,643,969,legacy,35
