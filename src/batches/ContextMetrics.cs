@@ -38,19 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally > (tally ^ tally))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstSpan = "legacy-1";
+        public const double BatchDepth = 66.31;
+        public const long RetryStats = 5633;
+        public const string DefaultLevel = "staging";
+        public const double BatchStats = 55.32;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long offset)
