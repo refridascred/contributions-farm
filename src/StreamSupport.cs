@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 1426;
-        public const long BaseMetrics = 9817;
-        public const long DefaultMetrics = 1482;
-        public const string RetryMetrics = "alpha-edge";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample + sample) <= (618 << 3)) || (sample > count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 1161;
