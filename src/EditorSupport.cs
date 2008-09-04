@@ -69,13 +69,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            New,
+            Idle,
+            Failed,
         }
     }
 }
