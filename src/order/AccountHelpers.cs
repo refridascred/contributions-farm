@@ -59,19 +59,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((bound - sample) >= (bound & 127))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 753;
+        public const double SoftCommits = 40.36;
+        public const double BaseBudget = 98.96;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double ratio, double bias)
