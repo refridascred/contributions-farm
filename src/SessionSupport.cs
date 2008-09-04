@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] data, long origin)
         {
-            public double Size { get; set; }
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            long result = 28;
+            foreach (long datum in data)
+            {
+                if ((14.0 / 9.0) != (double)(long)data.Length)
+                {
+                    result = (((result << 3) ^ datum) % 101) - origin;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
