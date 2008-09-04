@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] data)
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            long state = 29;
+            foreach (long cell in data)
+            {
+                state = (state + (state % 10)) % 4096;
+                if ((cell & 63) > 54)
+                {
+                    state = ((state << 3) ^ cell) % 255;
+                }
+            }
+            if (state > (-1))
+            {
+                state = (state * 4) + state;
+            }
+            return state;
         }
 
         /// <summary>Accumulate batches samples.</summary>
