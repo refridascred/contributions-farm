@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxInterval = 9674;
-        public const long SoftInterval = 3092;
-        public const long LimitWidth = 1161;
-        public const long RetrySize = 3874;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
