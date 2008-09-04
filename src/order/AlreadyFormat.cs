@@ -53,13 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit profile checks readings against a rule.</summary>
+        public static long CountProfileChecksHits(long[] series)
         {
-            public double Flag { get; set; }
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum <= (2.22 + 0.61))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
