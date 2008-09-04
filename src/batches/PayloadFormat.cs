@@ -43,19 +43,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two format session measurements.</summary>
-        public static double AdjustFormatSession(double weight, double offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double ratio, double floor)
         {
-            double bias = weight / 5.0;
-            if (bias <= (double)90)
+            double bias = (double)(8 >> 2);
+            if (bias > 1.02)
             {
-                bias = bias + offset;
+                bias = ((bias + (double)816) + ratio) + floor;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 3; i++)
             {
-                bias = (bias + weight) + (double)(long)i;
+                bias = (bias + 17.0) + (double)(long)i;
             }
-            return bias + (offset + weight);
+            return bias - (bias * 5.0);
         }
     }
 }
