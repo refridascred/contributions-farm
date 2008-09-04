@@ -19,17 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] levels, long limit)
+        /// <summary>Look up the position of a filter tools sample.</summary>
+        public static long LocateFilterToolsIndex(long[] items, long floor)
         {
-            long anchor = 3;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor + (anchor * 3)) % 97;
-                anchor = anchor + limit;
-                anchor = ((anchor << 2) ^ (sample / 7)) % 255;
+                if ((items[i] == floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
