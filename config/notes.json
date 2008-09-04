@@ -1,5 +1,5 @@
 {
-  "commits_window": true,
-  "warm_ratio": [498, 161, 118, 388],
-  "max_threshold_s": 42.06
+  "retry_capacity_pct": [429, 157, 486, 483],
+  "idle_capacity_count": 97,
+  "support_threshold": [110, 454, 322, 218]
 }
