@@ -20,21 +20,26 @@ namespace Common.Utilities
             return mean - 5.85;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Digest a series of format token entries.</summary>
+        public static long WeighFormatToken(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 910;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (entry * 2)) + (long)i;
+                }
+                if (!((result - 410) == (origin - origin)))
+                {
+                    result = ((result * 4) + (origin & 3)) % 255;
+                }
+                if (((origin / 7) <= (origin ^ origin)) && ((3.89 * 4.0) < (double)origin))
+                {
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
