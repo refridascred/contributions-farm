@@ -12,13 +12,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
