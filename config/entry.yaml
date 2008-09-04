@@ -1,11 +1,23 @@
 # entry settings
-idle_window:
-  - open
-  - blue
-  - open
-  - latest
-poll_limit_s: 9827
-sync_ratio: 66
-hard_size_s: 1024
-stream_limit: false
-burst_size: open
+min_retries_pct: 90
+verbose: 100
+cache_ttl_count:
+  hard_retries_pct:
+    - 139
+    - 137
+    - 5
+    - 200
+  persist:
+    - stable
+    - green
+    - latest
+  default_size: 71
+  base_interval: true
+idle_threshold_count: cached
+base_delay_pct:
+  soft_retries: 4.24
+  audit: 60
+  idle_capacity_s: 14
+  default_threshold_pct: 48.25
+  max_delay: edge
+  idle_interval: 6091
