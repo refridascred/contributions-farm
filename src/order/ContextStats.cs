@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] readings, long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = mix - ((long)i + 82);
+                mix = (mix - (bound & 127)) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Accumulate format samples.</summary>
