@@ -47,11 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftLevel = "latest-v2";
-        public const long LimitSize = 9837;
-        public const double MinWindow = 73.67;
-        public const double BaseSize = 74.38;
-        public const string WindowWidth = "standard-edge";
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
