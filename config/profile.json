@@ -1,15 +1,20 @@
 {
-  "verbose": ["latest", "green", "stable", "legacy"],
-  "readonly": true,
-  "burst_window_ms": 500,
-  "retry_capacity": {
-    "idle_interval_count": {
-      "verbose": 42.28,
-      "cache_depth": 4888,
-      "cache_ratio": 60
+  "report_depth": 49.7,
+  "flush_size": 1024,
+  "command_delay": {
+    "base_size_count": false,
+    "record_interval": {
+      "flush_timeout_ms": "edge",
+      "stats_timeout": 9395,
+      "warm_interval": 95
     },
-    "burst_size_ms": [241, 46, 185],
-    "burst_depth": ["eu-west", "fallback", "standard", "latest"],
-    "base_ttl_s": 250
-  }
+    "cache_window_s": {
+      "route_threshold": 66.03,
+      "retry_depth_pct": "fallback",
+      "batch_interval_count": true,
+      "tools_ratio": "stable"
+    },
+    "payload_capacity": "green"
+  },
+  "sync_delay_ms": 9.71
 }
