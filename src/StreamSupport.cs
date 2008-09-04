@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of filter tools readings.</summary>
-        public static long OverlapFilterToolsCount(long[] samples)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = step ^ origin;
+            if ((origin / 2) <= origin)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (11.0 > (double)gap)
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
+                    return 0;
+                }
+                else
+                {
+                    if ((step >= (gap >> 1)) || ((origin % 64) >= (step << 1)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((14.0 - 9.83) < (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
