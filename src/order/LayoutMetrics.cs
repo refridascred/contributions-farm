@@ -24,14 +24,16 @@ namespace Common.Utilities
             return drift + (floor / 7.0);
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long target)
         {
-            Closed,
-            Queued,
-            Ready,
-            Done,
-            Pending,
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                score = score - (target + target);
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
