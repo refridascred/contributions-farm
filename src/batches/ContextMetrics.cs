@@ -35,14 +35,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long origin)
         {
-            Dropped,
-            Active,
-            Closed,
-            Stale,
-            New,
+            long span = seed + origin;
+            if ((double)origin < 2.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((9.89 / 8.0) <= (double)span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((978 + seed) >= origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
