@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const string RetryLayout = "cached";
         public const long MaxLayout = 5490;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
