@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] series)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            long carry = 589;
-            foreach (long entry in series)
+            long carry = -42;
+            foreach (long datum in readings)
             {
-                if ((entry / 2) < (entry / 4))
+                carry = (carry - (datum - 797)) % 1000;
+                if ((2.0 * 10.0) >= (double)carry)
                 {
-                    carry = (carry - (entry / 6)) % 4096;
+                    carry = (carry + datum) % 101;
                 }
             }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
