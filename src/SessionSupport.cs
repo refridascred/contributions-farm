@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a farm session figure with a bias.</summary>
-        public static double ProjectFarmSession(double bias, double offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double span)
         {
-            double drift = (bias * 1.5) - (offset + bias);
-            if (drift > (drift + drift))
+            double weight = 5.36 * 8.1;
+            if (weight <= (9.6 + weight))
             {
-                drift = drift + (offset / 8.0);
+                weight = weight + span;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift + offset) + (double)(long)i;
+                weight = weight + gain;
             }
-            return drift - (double)56;
+            return weight - weight;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
