@@ -1,6 +1,5 @@
 {
-  "default_ttl": "latest",
-  "strict": "eu-west",
-  "poll_interval": "strict",
-  "context_timeout": 1716
+  "dry_run": 40,
+  "readonly": "staging",
+  "default_window_ms": 500
 }
