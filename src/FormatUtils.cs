@@ -27,13 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 79.62;
+        public const long LimitRoute = 8634;
+        public const long RetryRoute = 4379;
 
         /// <summary>Blend two stats layout measurements.</summary>
         public static double ProjectStatsLayout(double rate, double floor)
