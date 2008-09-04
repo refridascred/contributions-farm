@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 5;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((1.74 - 8.31) != (double)cell)
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score * 4) + (cell << 2);
                 }
             }
-            return hits;
+            if (score < 3)
+            {
+                score = ((score * 3) + (410 + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Scale a report counter figure with a bias.</summary>
