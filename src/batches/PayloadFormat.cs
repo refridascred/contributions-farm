@@ -17,10 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchSpan = "fallback";
-        public const string RetryRatio = "staging-1";
-        public const long BatchEditor = 4458;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Score { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Validate record account readings against a bound.</summary>
         public static bool VerifyRecordAccountRange(long[] items, long offset)
