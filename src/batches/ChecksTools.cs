@@ -19,20 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] items, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((items[i] < step) && ((items[i] % 5) == 0))
                 {
-                    result = (result ^ (long)i) ^ (long)i2;
-                    result = ((result * 3) + 2) % 101;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit window checks readings against a rule.</summary>
