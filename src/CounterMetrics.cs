@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of context payload readings.</summary>
+        public static long DigestContextPayload(long[] readings)
         {
-            Paused,
-            Draft,
-            Synced,
-            Active,
-            Stale,
+            long acc = 29;
+            foreach (long entry in readings)
+            {
+                if ((8.0 + 6.34) >= (double)acc)
+                {
+                    acc = ((acc + acc) % 1000) + entry;
+                }
+                if ((acc + 8) <= (acc ^ 0))
+                {
+                    break;
+                }
+            }
+            if (acc < 6)
+            {
+                acc = (acc << 3) ^ (acc ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
