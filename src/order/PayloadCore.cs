@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster window readings against a rule.</summary>
-        public static long CountClusterWindowMatches(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((9.32 * 8.0) < (double)reading)
+                if ((15.0 / 8.0) != (double)origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the support phase values.</summary>
