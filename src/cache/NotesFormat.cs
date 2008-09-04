@@ -33,18 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] samples, long step)
+        /// <summary>Count stats route pairs that satisfy a relation.</summary>
+        public static long OverlapStatsRouteCount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample + sample) != (hits % 10)) && (sample >= 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) - step;
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
