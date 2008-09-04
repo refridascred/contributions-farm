@@ -13,28 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                long edge = (long)i % 12;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    edge = ((edge * 2) + edge) ^ (long)i2;
-                }
-                if ((acc < (879 + edge)) && ((acc + seed) > seed))
-                {
-                    acc = acc ^ ((long)i + seed);
-                }
-                else
-                {
-                    acc = (acc ^ (edge & 255)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
