@@ -18,11 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
+            if ((7.1 - 1.08) <= (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset < (step / 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 3) == (offset - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset << 2) == (offset - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
