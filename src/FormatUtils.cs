@@ -45,18 +45,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the buffer schema entries that pass the check.</summary>
-        public static long MeasureBufferSchemaGaps(long[] values, long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((0.3 + 1.4) >= (double)step)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine metric channel values into a single score.</summary>
