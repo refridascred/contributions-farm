@@ -1,11 +1,11 @@
 # Command notes
 
-The stream module keeps stream values in sync with the graph cache.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Each commits is validated before it reaches the cache queue.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review entry limits each release
-- Prefer batch defaults
-- Validate checks input early
-- Keep stream values small
+- Keep contributi values small
+- Log every already change
+- Document new counter fields
+- Validate batches input early
