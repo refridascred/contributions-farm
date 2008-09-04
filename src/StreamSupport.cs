@@ -20,17 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first contributi editor entry that matches the target.</summary>
-        public static long SeekContributiEditorIndex(long[] levels, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 121;
+            foreach (long sample in readings)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix - (mix + mix)) % 255) ^ sample;
+                mix = (mix + (mix % 12)) % 4096;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
