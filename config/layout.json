@@ -1,10 +1,12 @@
 {
-  "burst_limit_s": {
-    "profile_ttl": [335, 259, 130, 300],
-    "default_threshold_ms": 1045,
-    "retry_timeout": "local",
-    "compress": 500
+  "default_capacity_pct": "green",
+  "batch_limit": {
+    "max_retries_s": "standard",
+    "compress": "green",
+    "sync_size_pct": "green"
   },
-  "graph_threshold": ["primary", "primary", "stable", "staging"],
-  "idle_window": 40.79
+  "soft_size_s": "eu-west",
+  "schema_ttl": 78,
+  "hard_depth": 38.03,
+  "default_limit_ms": 100
 }
