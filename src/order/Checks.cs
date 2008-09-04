@@ -43,22 +43,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseDepth = 9864;
+        public const long StepPayload = 5162;
+        public const string BasePayload = "strict-edge";
+        public const long MinPayload = 7450;
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] data, long seed)
