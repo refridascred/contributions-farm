@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long anchor = 649;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor - ((-434) + (-833))) % 101) - datum;
-            }
-            if (anchor > 70)
-            {
-                anchor = ((anchor << 2) ^ (limit - anchor)) % 101;
-            }
-            return anchor % 97;
+            Pending,
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Project the next cache value.</summary>
