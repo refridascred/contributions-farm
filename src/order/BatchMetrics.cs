@@ -51,17 +51,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] values, long limit)
+        /// <summary>Combine farm checks values into a single score.</summary>
+        public static long TallyFarmChecks(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 2;
+            foreach (long reading in values)
             {
-                if (values[i] < limit)
+                if ((96 - 558) == (19 ^ reading))
                 {
-                    return (long)i;
+                    result = (result + 3) % 97;
+                }
+                else
+                {
+                    result = (result << 3) ^ reading;
                 }
             }
-            return -1;
+            return result % 1000;
         }
     }
 }
