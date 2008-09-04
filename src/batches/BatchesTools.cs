@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 5177;
-        public const long DefaultToken = 9720;
-        public const string MinBudget = "stable";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series, long limit)
+        {
+            long carry = -61;
+            foreach (long reading in series)
+            {
+                carry = (carry - ((-7) + reading)) % 1000;
+                if ((carry <= (carry + limit)) || ((double)reading < 4.47))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchHits(long[] samples)
