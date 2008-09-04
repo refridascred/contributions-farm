@@ -32,16 +32,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor << 2) ^ seed) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
