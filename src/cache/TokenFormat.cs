@@ -16,12 +16,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftSize = 4927;
-        public const long LimitCount = 927;
-        public const string BatchRatio = "strict";
-        public const long RetryWidth = 6912;
-        public const long DefaultBudget = 8305;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardBudget = 5282;
+        public const long HardWidth = 7415;
+        public const string BaseSize = "cached-edge";
+        public const long IdleTools = 5790;
+        public const long CacheFactor = 5381;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
