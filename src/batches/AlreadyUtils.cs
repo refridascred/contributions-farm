@@ -45,13 +45,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double scale, double floor)
         {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            double load = (double)(15 + 72);
+            if (load > (scale + load))
+            {
+                load = (load + (load - load)) + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 6.47) + (double)(long)i;
+            }
+            return load + (2.46 / 2.0);
         }
     }
 }
