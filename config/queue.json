@@ -1,25 +1,7 @@
 {
-  "sync_ratio_s": 6.55,
-  "soft_capacity_count": true,
-  "compress": "primary",
-  "metric_capacity": {
-    "batch_limit": [330, 64, 387, 271],
-    "tools_delay": 30,
-    "persist": {
-      "batch_ttl": 66,
-      "already_ratio": 93.97,
-      "sync_threshold": false,
-      "verbose": ["edge", "edge"],
-      "poll_threshold": "staging",
-      "session_threshold": 500
-    },
-    "contributi_size": 250
-  },
-  "retry_capacity": {
-    "hard_size_ms": "edge",
-    "default_ttl": "strict",
-    "base_capacity_ms": false,
-    "audit": "strict",
-    "warm_retries": 30
-  }
+  "soft_depth": "standard",
+  "audit": "fallback",
+  "counter_ratio": "cached",
+  "cache_limit_pct": 30,
+  "strict": 3360
 }
