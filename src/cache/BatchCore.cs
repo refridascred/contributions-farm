@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long limit)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((-2) * 2) == ((long)i & 63))
+                {
+                    sum = (sum * 2) + (sum - limit);
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (sum - sum) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Blend two cache measurements.</summary>
