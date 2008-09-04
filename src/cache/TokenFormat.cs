@@ -11,30 +11,23 @@ namespace Common.Utilities
         public const long LimitSize = 7570;
         public const long CacheContext = 440;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double span)
         {
-            long state = -7;
-            foreach (long reading in data)
+            double ratio = bias * 7.24;
+            if (ratio < (bias + ratio))
             {
-                if (!(state >= (reading * 4)))
-                {
-                    state = ((state << 3) ^ state) % 65521;
-                }
-                if (state < (reading >> 5))
-                {
-                    state = (state - state) % 101;
-                }
-                if ((121 >> 4) >= (state & 1))
-                {
-                    state = state ^ (state >> 4);
-                }
+                ratio = ratio - span;
             }
-            if (state < (-825))
+            else
             {
-                state = ((state * 4) + (state >> 2)) % 1000;
+                ratio = ratio - span;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (bias / 6.0)) + (double)(long)i;
+            }
+            return ratio - (span / 4.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
