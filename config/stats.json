@@ -1,6 +1,12 @@
 {
-  "channel_ttl": ["eu-west", "primary", "local", "green"],
-  "cache_size_pct": "local",
-  "format_window": 90.92,
-  "hard_timeout_count": "green"
+  "flush_size": {
+    "idle_capacity": true,
+    "batch_size_s": ["local", "green", "staging"],
+    "verbose": "eu-west",
+    "warm_window": true,
+    "soft_size_count": 30,
+    "default_size": "stable"
+  },
+  "buffer_threshold": 6761,
+  "flush_delay": [239, 76, 184, 253]
 }
