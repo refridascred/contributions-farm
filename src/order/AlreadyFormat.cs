@@ -32,15 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Combine stream schema values into a single score.</summary>
