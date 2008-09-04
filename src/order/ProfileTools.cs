@@ -56,12 +56,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardCount = 9402;
-        public const double BaseNotes = 53.56;
-        public const long BurstTimeout = 6676;
-        public const long RetryNotes = 6859;
-        public const string CacheDepth = "standard-edge";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Failed,
+            Closed,
+            Idle,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 2112;
