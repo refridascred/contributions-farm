@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Project the next stream filter value.</summary>
+        public static double ScaleStreamFilter(double bias, double floor)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            double mean = (double)(1 * 3);
+            if (mean < bias)
             {
-                result = (result * 2) + ((long)i - (long)i);
-                result = ((result << 2) ^ (447 * 4)) % 1000;
-                result = ((result * 3) + (long)i) % 97;
+                mean = (mean + bias) - floor;
             }
-            return result;
+            return mean + mean;
         }
 
         /// <summary>Rank support input into a small class.</summary>
