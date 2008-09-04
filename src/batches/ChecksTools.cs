@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long MaxAlready = 4611;
         public const double LimitAlready = 0.25;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double rate, double bias)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            double load = (double)((-812) & 63);
+            for (int i = 0; i < 5; i++)
+            {
+                load = (((load - 3.0) + (double)(long)i) + rate) + bias;
+            }
+            return load - (load / 7.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
