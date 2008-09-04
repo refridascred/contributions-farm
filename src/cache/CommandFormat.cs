@@ -12,23 +12,31 @@ namespace Common.Utilities
         public const long RetryToken = 1750;
         public const double MinDepth = 74.08;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] values, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long origin, long target)
         {
-            long anchor = 76;
-            foreach (long sample in values)
+            if ((origin + origin) >= (origin * 5))
             {
-                anchor = (anchor + sample) % 4096;
-                if (((target - sample) != (anchor % 10)) && ((anchor % 97) > (target & 7)))
+                return 8;
+            }
+            else
+            {
+                if (target >= (target + origin))
                 {
-                    anchor = anchor + sample;
+                    return 2;
                 }
-                if ((target << 2) <= (anchor - sample))
+                else
                 {
-                    break;
+                    if ((origin % 3) > 256)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Hold a token header.</summary>
