@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long origin, long limit)
+        /// <summary>Grade a queue already value against two limits.</summary>
+        public static long ClassifyQueueAlready(long limit, long step)
         {
-            if ((limit ^ origin) >= (origin * 3))
+            if ((limit + limit) >= (55 + limit))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((11.0 >= (double)limit) || ((61 ^ limit) < (82 / 9)))
+                if ((51 >> 2) >= limit)
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if (((origin % 64) != (555 << 2)) && ((double)2 <= (double)limit))
+                    if (limit > (542 % 16))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        if (((-84) % 8) <= (origin - limit))
+                        if (((limit & 63) >= 4) && ((double)90 < (double)step))
                         {
-                            return 1;
+                            return 3;
                         }
                         else
                         {
-                            return 4;
+                            return 0;
                         }
                     }
                 }
