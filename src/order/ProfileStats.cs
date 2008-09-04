@@ -42,23 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report route entries.</summary>
-        public static long TotalReportRoute(long[] series)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long score = 54;
-            foreach (long cell in series)
-            {
-                score = ((score - (score - (-139))) % 97) + cell;
-                if ((score & 127) < score)
-                {
-                    score = (score ^ 973) % 65521;
-                }
-            }
-            if (score < 530)
-            {
-                score = (score * 2) + (score - 7);
-            }
-            return score;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
