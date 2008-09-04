@@ -1,24 +1,4 @@
 # githubfarm settings
-default_ratio_s:
-  - 352
-  - 382
-  - 385
-  - 323
-soft_size_ms: false
-sync_ratio:
-  default_window:
-    batches_ratio: 87.9
-    verbose: 96
-    flush_timeout_s: false
-    flush_limit: legacy
-    base_threshold_ms: 47.4
-  record_delay: 1024
-  cache_ttl: false
-  warm_interval: latest
-  hard_capacity_s: green
-retry_delay: local
-default_ratio_pct: legacy
-entry_interval:
-  audit: eu-west
-  enabled: 99
-  flush_limit_count: 71
+base_capacity: false
+graph_ratio: fallback
+format_capacity: eu-west
