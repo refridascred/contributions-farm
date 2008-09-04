@@ -15,13 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Idle,
             Synced,
-            Failed,
-            Stale,
+            Done,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a entry stats.</summary>
