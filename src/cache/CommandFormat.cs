@@ -39,12 +39,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series)
         {
-            Locked,
-            Ready,
-            Failed,
+            long mark = 1;
+            foreach (long reading in series)
+            {
+                mark = mark ^ (reading * 4);
+                if ((reading ^ reading) == (499 ^ mark))
+                {
+                    mark = ((mark * 4) + reading) % 97;
+                }
+            }
+            if (mark > 7)
+            {
+                mark = (mark - (8 ^ 15)) % 65521;
+            }
+            return mark;
         }
     }
 }
