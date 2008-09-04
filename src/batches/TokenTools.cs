@@ -23,12 +23,23 @@ namespace Common.Utilities
         public const long WindowSize = 6883;
         public const long WindowTimeout = 8556;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] series)
         {
-            Failed,
-            Synced,
-            Closed,
+            long total = 128;
+            foreach (long entry in series)
+            {
+                total = ((total * 4) + entry) % 1000;
+                if (total < (total - total))
+                {
+                    total = total + (total << 1);
+                }
+                else
+                {
+                    total = (total ^ (total >> 2)) % 1000;
+                }
+            }
+            return total;
         }
     }
 }
