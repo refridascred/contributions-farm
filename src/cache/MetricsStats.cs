@@ -25,19 +25,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Look up the position of a route tools sample.</summary>
+        public static long FindRouteToolsIndex(long[] values, long bound)
         {
-            long state = 34;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ state) % 65521;
-                if ((double)datum >= (3.7 * 5.5))
+                if (values[i] >= bound)
                 {
-                    state = ((state << 2) ^ (2 >> 5)) % 65521;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
