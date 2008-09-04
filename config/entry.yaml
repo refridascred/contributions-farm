@@ -1,22 +1,6 @@
 # entry settings
-stats_timeout: true
+queue_ratio: 72.78
+readonly: true
+max_interval: false
 enabled: legacy
-idle_ttl_pct: true
-compress: 30
-max_size: 55.09
-sync_interval:
-  persist: false
-  tools_ttl:
-    dry_run: true
-    warm_delay: 48.84
-    min_threshold_pct: standard
-    enabled: 1673
-    default_size_s:
-      - fallback
-      - eu-west
-      - local
-      - open
-  idle_depth_s: latest
-  already_limit: green
-  soft_ratio: 100
-  default_limit_ms: false
+sync_retries: 7744
