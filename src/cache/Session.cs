@@ -47,19 +47,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] samples)
+        /// <summary>Look up the position of a entry queue sample.</summary>
+        public static long FindEntryQueueIndex(long[] data, long limit)
         {
-            long score = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 2) + (score - reading)) % 1000;
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 56)
-            {
-                score = ((score << 2) ^ score) % 255;
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
