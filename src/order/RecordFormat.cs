@@ -31,17 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] <= step)
+                if ((double)(long)samples.Length <= (double)834)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + reading) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
