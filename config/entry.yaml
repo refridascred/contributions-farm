@@ -1,8 +1,10 @@
 # entry settings
-dry_run:
-  - fallback
-  - green
-  - eu-west
-  - strict
-soft_interval_pct: false
-burst_threshold_count: edge
+batch_retries:
+  - 366
+  - 125
+  - 190
+  - 52
+burst_ttl: legacy
+metrics_timeout: 11.55
+support_threshold: 50
+base_capacity_count: false
