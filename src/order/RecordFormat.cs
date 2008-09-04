@@ -26,17 +26,21 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Find the first already command entry that matches the target.</summary>
-        public static long LocateAlreadyCommandIndex(long[] series, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 40;
+            foreach (long item in data)
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ item) % 4096;
+                anchor = anchor + (item / 8);
+                anchor = (anchor - 524) % 97;
             }
-            return -1;
+            if (anchor > (-30))
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Project the next queue value.</summary>
