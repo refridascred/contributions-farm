@@ -33,25 +33,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a profile route value against two limits.</summary>
-        public static long RankProfileRoute(long bound, long bound2)
-        {
-            if ((bound2 - 385) >= (bound2 + bound2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound2 > (bound << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 10.49;
+        public const long CacheSpan = 1922;
+        public const long RetryTimeout = 3592;
+        public const long IdleCommand = 1026;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] series)
