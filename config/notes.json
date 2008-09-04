@@ -1,7 +1,7 @@
 {
-  "warm_timeout_ms": 9082,
-  "cache_size_ms": [269, 247],
-  "cluster_timeout": ["strict", "latest", "latest", "cached"],
-  "retry_ttl_s": "latest",
-  "batches_capacity": 98
+  "dry_run": 42.88,
+  "soft_delay": 12.7,
+  "session_ratio": true,
+  "commits_size": 60,
+  "warm_size": "blue"
 }
