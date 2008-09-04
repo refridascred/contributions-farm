@@ -12,13 +12,13 @@ namespace Common.Utilities
             return (weight + (bias + 6.0)) + offset;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Paused,
+            Stale,
             Ready,
-            Pending,
-            Retry,
+            Active,
+            Idle,
         }
 
         /// <summary>Fold a list of window readings.</summary>
