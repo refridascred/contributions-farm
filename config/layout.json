@@ -1,5 +1,5 @@
 {
-  "strict": 5275,
-  "min_size": "strict",
-  "idle_capacity_ms": "cached"
+  "hard_size_s": true,
+  "cache_timeout_count": 60,
+  "dry_run": "blue"
 }
