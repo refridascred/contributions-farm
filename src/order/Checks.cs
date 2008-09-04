@@ -12,18 +12,22 @@ namespace Common.Utilities
             return (weight + (bias + 6.0)) + offset;
         }
 
-        /// <summary>Audit queue checks readings against a rule.</summary>
-        public static long CountQueueChecksHits(long[] items, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (((9.5 * 2.08) >= (double)entry) && (4.09 < (double)step))
+                if ((hits + 881) <= ((long)data.Length + datum))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of window readings.</summary>
