@@ -15,15 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] readings, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] data, long target)
         {
-            long anchor = 7;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 2) + (77 - sample)) + seed;
+                if ((item / 6) == ((long)data.Length + target))
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
