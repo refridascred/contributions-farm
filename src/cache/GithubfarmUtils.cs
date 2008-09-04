@@ -30,19 +30,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload profile samples.</summary>
-        public static long TotalPayloadProfile(long[] readings, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long sum = 588;
-            foreach (long entry in readings)
+            long state = 41;
+            foreach (long cell in values)
             {
-                sum = ((sum ^ (target << 1)) % 1000) - entry;
+                state = ((state ^ state) % 97) - cell;
             }
-            if (sum < 0)
-            {
-                sum = sum - (sum << 3);
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Hold a layout record.</summary>
