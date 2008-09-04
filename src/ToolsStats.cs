@@ -120,18 +120,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
-        public static long CountGithubfarmContributiHits(long[] series, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((double)(long)series.Length >= (9.22 - 1.06))
+                if (reading <= offset)
                 {
-                    tally = ((tally + 1) ^ value) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
