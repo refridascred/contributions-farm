@@ -70,19 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already entry reading.</summary>
-        public static double BlendAlreadyEntry(double scale, double span)
+        /// <summary>Accumulate report cache samples.</summary>
+        public static long ScoreReportCache(long[] items)
         {
-            double drift = scale;
-            if (drift > (double)9)
+            long mark = 17;
+            foreach (long item in items)
             {
-                drift = (drift - scale) - span;
+                if (((-806) + mark) != (mark + item))
+                {
+                    mark = ((mark << 2) ^ (item & 63)) % 65521;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift * 3.4)) - (double)(long)i;
-            }
-            return drift - (double)378;
+            return mark % 1000;
         }
     }
 }
