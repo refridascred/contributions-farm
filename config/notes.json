@@ -1,7 +1,15 @@
 {
-  "checks_limit": 2185,
-  "max_timeout_s": "green",
-  "flush_limit_count": true,
-  "burst_delay_s": "strict",
-  "record_ratio": 14
+  "dry_run": {
+    "max_interval": 35.82,
+    "warm_ratio_ms": 250,
+    "command_size": true,
+    "batch_size_ms": false,
+    "metric_limit": "eu-west",
+    "idle_capacity_count": "cached"
+  },
+  "cache_ratio": 7084,
+  "support_capacity": 32.68,
+  "counter_threshold": "local",
+  "verbose": "stable",
+  "compress": 37
 }
