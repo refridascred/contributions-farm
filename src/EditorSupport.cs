@@ -68,10 +68,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheBudget = 8257;
-        public const long HardFormat = 6060;
-        public const long MaxTimeout = 5236;
-        public const long BatchDepth = 6608;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
