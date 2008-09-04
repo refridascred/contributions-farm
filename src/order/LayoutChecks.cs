@@ -85,28 +85,29 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank token channel input into a small class.</summary>
-        public static long BucketTokenChannel(long step, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long floor, long limit)
         {
-            if (((-3) & 255) < (step - bound))
+            long span = floor + limit;
+            if (((limit + span) < 3) && ((floor + limit) < (61 ^ limit)))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((double)bound <= (4.11 - 5.48))
+                if (!((limit / 8) < limit))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((0 > (step % 24)) && ((double)bound >= (5.05 + 11.0)))
+                    if (span <= (floor + limit))
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        return 3;
                     }
                 }
             }
