@@ -39,23 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record format samples.</summary>
-        public static long TotalRecordFormat(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long target)
         {
-            long score = 973;
-            foreach (long reading in data)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score * 4) + (reading % 24)) % 101;
-                if ((score + reading) < (score % 16))
+                if (target > (-113))
                 {
-                    score = score ^ score;
+                    acc = (acc + (acc ^ target)) % 65521;
+                    acc = (acc ^ (long)i) % 1000;
+                    break;
                 }
+                if (!(target >= (acc + (long)i)))
+                {
+                    acc = (acc + acc) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (score > 31)
-            {
-                score = (score * 2) + (score - 3);
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Digest a series of tools profile entries.</summary>
