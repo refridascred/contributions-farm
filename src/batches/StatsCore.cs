@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long IdleWindow = 4452;
         public const string HardWindow = "stable-edge";
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] >= floor)
+                if (data[i] < floor)
                 {
                     return (long)i;
                 }
