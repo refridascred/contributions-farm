@@ -12,29 +12,10 @@ namespace Common.Utilities
             return (weight + (bias + 6.0)) + offset;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((target < (target - 508)) && ((carry - target) > ((long)i + (long)i)))
-                {
-                    carry = ((carry << 3) ^ (carry << 3)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (long)i) % 1000;
-                }
-                if ((double)target <= (5.99 / 7.0))
-                {
-                    carry = (carry << 2) ^ carry;
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchScore = 3341;
+        public const long IdleReport = 106;
+        public const long MinScore = 1115;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long CombineWindow(long[] series, long floor)
