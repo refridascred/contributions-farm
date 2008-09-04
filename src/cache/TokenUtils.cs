@@ -13,23 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels)
-        {
-            long score = 7;
-            foreach (long item in levels)
-            {
-                if ((score * 5) >= (item & 31))
-                {
-                    score = score - (item ^ item);
-                }
-            }
-            if (score > 783)
-            {
-                score = ((score << 2) ^ (score - score)) % 4096;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "fallback-v2";
+        public const string BaseTimeout = "latest-edge";
+        public const double LimitScore = 53.71;
+        public const long WindowContext = 1663;
+        public const double BurstDepth = 19.17;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BatchSupport = 4133;
