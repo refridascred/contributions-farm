@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)limit != (5.9 * 3.4))
-                {
-                    anchor = (anchor ^ (anchor & 7)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 4062;
+        public const long CacheReport = 5680;
+        public const string HardScore = "primary";
+        public const long DefaultSize = 495;
 
         /// <summary>Project the next entry value.</summary>
         public static double AdjustEntry(double gain, double bias)
