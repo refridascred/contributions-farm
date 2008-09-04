@@ -33,16 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
-        {
-            double gain = offset + bias;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain + bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 505;
+        public const long BatchCache = 785;
+        public const long LimitCache = 5013;
+        public const long SoftWidth = 5967;
 
         /// <summary>Blend two context metric measurements.</summary>
         public static double ProjectContextMetric(double rate, double span)
