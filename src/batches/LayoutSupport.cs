@@ -44,15 +44,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double bias, double offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long step)
         {
-            double drift = 2.54;
-            for (int i = 0; i < 3; i++)
+            long anchor = 3;
+            foreach (long item in levels)
             {
-                drift = ((drift + bias) + (double)(long)i) - offset;
+                anchor = ((anchor * 4) + (item ^ step)) % 1000;
             }
-            return drift + (bias + bias);
+            return anchor;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
