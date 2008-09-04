@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long StepWidth = 8788;
         public const long DefaultRatio = 8313;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] data, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long total = 9;
+            foreach (long sample in levels)
             {
-                if (datum <= floor)
+                if (((double)offset >= 1.53) && ((double)offset >= (8.5 * 5.53)))
                 {
-                    found = false;
-                    break;
+                    total = ((total << 2) ^ offset) ^ sample;
                 }
             }
-            return found;
+            return total % 65521;
         }
     }
 }
