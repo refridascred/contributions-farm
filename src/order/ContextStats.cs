@@ -43,13 +43,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
