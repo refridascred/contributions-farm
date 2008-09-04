@@ -37,12 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Paused,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 6087;
+        public const long LimitScore = 1762;
+        public const long SoftSize = 8257;
+        public const double HardDepth = 52.24;
+        public const long DefaultSize = 3370;
     }
 }
