@@ -51,15 +51,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] series, long target)
+        /// <summary>Rank entry editor input into a small class.</summary>
+        public static long ClassifyEntryEditor(long offset, long limit)
         {
-            long acc = 499;
-            foreach (long entry in series)
+            long slot = offset + limit;
+            if ((74 / 9) >= slot)
             {
-                acc = (((acc * 2) + (85 - entry)) % 255) + target;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((limit + limit) <= (limit ^ limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit < (offset % 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)slot == (5.0 - 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
