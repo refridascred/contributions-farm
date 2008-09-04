@@ -20,13 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
