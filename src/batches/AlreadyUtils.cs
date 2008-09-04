@@ -44,17 +44,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] items, long step)
+        /// <summary>Project the next editor profile value.</summary>
+        public static double ProjectEditorProfile(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = bias2;
+            if (scale > 6.85)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                scale = scale + bias;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (4.08 + 8.7)) + (double)(long)i;
+            }
+            return scale - (bias2 * 3.84);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
