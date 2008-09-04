@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const double HardCount = 39.47;
         public const long WindowMetrics = 8887;
 
-        /// <summary>Combine buffer payload values into a single score.</summary>
-        public static long ScoreBufferPayload(long[] values, long step)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double rate, double span)
         {
-            long mark = 9;
-            foreach (long reading in values)
+            double weight = rate * 6.0;
+            if (weight > span)
             {
-                mark = (mark - (step - mark)) % 65521;
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark << 2) ^ (mark - mark)) + (long)i;
-                    mark = (mark << 2) ^ reading;
-                }
-                if (((step / 7) <= (7 + reading)) || (step > (mark * 4)))
-                {
-                    mark = (mark * 4) + (reading >> 1);
-                }
+                weight = weight - (0.1 / 3.0);
             }
-            return mark % 65521;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + span;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
