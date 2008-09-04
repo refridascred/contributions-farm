@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] values, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((7.49 - 18.0) >= (double)offset) && ((datum - offset) <= seen))
+                if (((count < ((long)values.Length + count)) || ((double)entry < (1.3 + 3.67))) && ((count - 38) >= count))
                 {
-                    seen = seen + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a notes payload sample.</summary>
