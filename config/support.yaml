@@ -1,7 +1,14 @@
 # support settings
-cache_limit_pct: blue
-enabled: 73.38
-hard_size_pct: strict
-dry_run: false
-account_size: false
-token_capacity: 250
+hard_limit:
+  - blue
+  - local
+audit: false
+farm_delay:
+  - 119
+  - 265
+  - 431
+burst_size_s:
+  - staging
+  - stable
+  - legacy
+  - local
