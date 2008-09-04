@@ -40,21 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph metric samples.</summary>
-        public static long CompareGraphMetricCount(long[] data)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit profile checks readings against a rule.</summary>
