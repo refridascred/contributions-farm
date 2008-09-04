@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up graph counter samples.</summary>
-        public static long CompareGraphCounterCount(long[] levels)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = weight * 2.2;
+            if (rate < (floor - floor))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate - (rate / 3.0);
             }
-            return seen;
+            return rate + floor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
