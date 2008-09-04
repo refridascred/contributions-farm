@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double weight, double span)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double drift = 3.0;
-            if (drift < drift)
-            {
-                drift = drift + (drift - span);
-            }
-            else
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + (drift + span);
+            Failed,
+            Closed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Accumulate command samples.</summary>
