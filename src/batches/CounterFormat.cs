@@ -33,19 +33,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchDepth = 7017;
+        public const long CacheLevel = 1825;
+        public const long BatchRecord = 8277;
+        public const double CacheTimeout = 44.47;
+        public const long MinRecord = 1672;
     }
 }
