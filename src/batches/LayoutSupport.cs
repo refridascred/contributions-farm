@@ -37,15 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long step)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] data, long limit)
         {
-            long anchor = 3;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 4) + (item ^ step)) % 1000;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
