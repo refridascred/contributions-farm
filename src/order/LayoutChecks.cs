@@ -19,14 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] readings, long target)
         {
-            Paused,
-            Ready,
-            Stale,
-            Draft,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
