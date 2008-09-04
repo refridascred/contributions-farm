@@ -1,6 +1,6 @@
 {
-  "default_ratio_s": 1024,
-  "channel_retries": "latest",
-  "soft_ttl_pct": 88.05,
-  "base_interval_pct": 60
+  "poll_size": [244, 469, 228],
+  "flush_ttl": ["latest", "fallback", "primary", "standard"],
+  "poll_ttl_count": "edge",
+  "retry_timeout_pct": "eu-west"
 }
