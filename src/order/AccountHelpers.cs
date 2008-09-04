@@ -16,25 +16,17 @@ namespace Common.Utilities
             return weight - (5.2 - span);
         }
 
-        /// <summary>Classify a record already pair into a bucket.</summary>
-        public static long BucketRecordAlready(long bound, long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] levels, long offset)
         {
-            long gap = bound - limit;
-            if (!((bound * 4) != (gap - bound)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.0 * 2.92) == (double)bound)
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already status values.</summary>
