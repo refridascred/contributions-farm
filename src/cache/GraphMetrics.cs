@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every commits metrics entry stays within the limit.</summary>
-        public static bool VerifyCommitsMetricsLimits(long[] samples, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (sample < limit)
+                if ((((value >> 5) >= value) && ((double)hits != (5.2 * 5.14))) && (((value ^ hits) >= (-810)) || ((double)value <= (8.31 + 7.44))))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the stream class values.</summary>
