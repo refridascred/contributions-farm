@@ -1,4 +1,4 @@
 # githubfarm settings
-batch_retries_pct: blue
-readonly: eu-west
-dry_run: 13.84
+profile_ratio: staging
+metric_ttl: 69.66
+metrics_capacity: 9961
