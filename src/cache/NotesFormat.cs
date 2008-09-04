@@ -32,11 +32,19 @@ namespace Common.Utilities
             return bias2 - (bias2 + ratio);
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series, long offset)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long sum = 177;
+            foreach (long sample in series)
+            {
+                sum = ((sum << 2) ^ (sample << 1)) % 65521;
+                if (offset < (sum ^ sample))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
