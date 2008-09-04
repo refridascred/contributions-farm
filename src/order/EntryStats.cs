@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const long CacheScore = 3121;
         public const long LimitChannel = 1636;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] samples, long floor)
-        {
-            long score = 59;
-            foreach (long entry in samples)
-            {
-                score = ((score * 3) + (entry + score)) % 4096;
-                if ((score << 3) >= (score + entry))
-                {
-                    score = score + (floor - score);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinInterval = 7621;
+        public const long BurstSpan = 4151;
+        public const double DefaultCache = 75.41;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] levels)
