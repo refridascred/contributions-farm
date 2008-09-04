@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long CacheScore = 3121;
         public const long LimitChannel = 1636;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] samples, long floor)
         {
-            Failed,
-            Idle,
-            Paused,
+            long score = 59;
+            foreach (long entry in samples)
+            {
+                score = ((score * 3) + (entry + score)) % 4096;
+                if ((score << 3) >= (score + entry))
+                {
+                    score = score + (floor - score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of support readings.</summary>
