@@ -65,22 +65,18 @@ namespace Common.Utilities
         public const long CacheFactor = 9710;
         public const long MaxCount = 6867;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((9.3 - 1.22) == (double)result)
+                if ((entry & 127) >= ((-873) - hits))
                 {
-                    result = (result << 2) ^ (result - seed);
-                    result = (result + (2 + 95)) % 65521;
-                    break;
+                    hits = hits + 2;
                 }
-                result = ((result * 2) + result) % 4096;
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
     }
 }
