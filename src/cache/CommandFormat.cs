@@ -29,23 +29,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of tools queue readings.</summary>
-        public static long DigestToolsQueue(long[] items)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long total = 7;
-            foreach (long value in items)
-            {
-                total = total ^ (170 + total);
-                if (((0 << 2) < (value << 1)) && ((4.0 * 6.0) == (double)total))
-                {
-                    total = (total + ((-50) + (-17))) % 4096;
-                }
-            }
-            if (total < 21)
-            {
-                total = total + (total / 7);
-            }
-            return total;
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine context cluster values into a single score.</summary>
