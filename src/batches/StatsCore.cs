@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double gain, double bias)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double weight, double bias)
         {
-            double rate = (double)(86 + 92);
-            return ((rate - (double)631) + gain) + bias;
+            double bias2 = (weight + 14.0) * 2.0;
+            if (bias2 >= bias2)
+            {
+                bias2 = (bias2 + 14.0) - bias;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Fold a list of command readings.</summary>
