@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
