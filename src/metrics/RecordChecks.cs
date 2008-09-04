@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const long DefaultCache = 3006;
         public const long BatchRatio = 9160;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] series, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 33;
+            foreach (long sample in series)
             {
-                if ((series[i] == step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (mark * 2)) ^ sample;
             }
-            return -1;
+            return mark;
         }
     }
 }
