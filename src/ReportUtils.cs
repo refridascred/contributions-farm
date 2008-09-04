@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double ratio, double offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double scale = 8.54;
-            if (scale < (11.0 - offset))
-            {
-                scale = scale + ratio;
-            }
-            return scale - (offset * 6.7);
+            Queued,
+            Dropped,
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
