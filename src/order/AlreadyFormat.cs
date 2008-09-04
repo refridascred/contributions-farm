@@ -20,18 +20,12 @@ namespace Common.Utilities
             return weight - 0.5;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] readings, long step)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!((double)reading >= (1.06 * 9.36)))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
