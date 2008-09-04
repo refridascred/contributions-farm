@@ -40,32 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] levels)
-        {
-            long mark = 153;
-            foreach (long entry in levels)
-            {
-                mark = ((mark << 2) ^ 4) % 1000;
-                if (!(9.14 >= (double)entry))
-                {
-                    mark = (mark ^ entry) % 4096;
-                }
-                if ((mark * 5) > (entry ^ mark))
-                {
-                    mark = ((mark << 2) ^ (entry >> 2)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (entry % 3)) % 101;
-                }
-            }
-            if (mark < (-32))
-            {
-                mark = (mark + (mark * 5)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 8622;
+        public const long HardLevel = 2822;
+        public const double IdleSize = 46.13;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
