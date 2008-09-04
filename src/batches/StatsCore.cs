@@ -14,10 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleRatio = 4084;
-        public const long IdleWindow = 4452;
-        public const string HardWindow = "stable-edge";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (datum < (offset >> 1))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long SeekPayloadIndex(long[] data, long floor)
