@@ -1,5 +1,6 @@
 # entry settings
-metrics_depth: 21
-format_delay: 100
-readonly: 52.96
-already_retries: 30
+warm_window_count: 92.38
+audit: strict
+batch_delay_pct: 1024
+dry_run: strict
+warm_capacity_ms: green
