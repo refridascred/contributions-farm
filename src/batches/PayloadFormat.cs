@@ -17,21 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item > target)
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Check that every token farm entry stays within the limit.</summary>
