@@ -13,19 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] levels, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            bool ok = true;
+            long score = 7;
             foreach (long item in levels)
             {
-                if (item > origin)
+                if ((score * 5) >= (item & 31))
                 {
-                    ok = false;
-                    break;
+                    score = score - (item ^ item);
                 }
             }
-            return ok;
+            if (score > 783)
+            {
+                score = ((score << 2) ^ (score - score)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
