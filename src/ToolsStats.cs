@@ -61,19 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context report reading.</summary>
-        public static double BlendContextReport(double rate, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long limit)
         {
-            double mean = rate;
-            if (mean <= (double)69)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                mean = (mean - (double)786) - floor;
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (mean * 3.6);
-            }
-            return mean - mean;
+            return ok;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
