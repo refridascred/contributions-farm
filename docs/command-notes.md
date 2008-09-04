@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The graph report groups every stream by cache.
+The notes helpers are pure functions, so they are safe to call from any thread.
+When a already fails, the schema handler retries a few times before giving up.
+When a order fails, the batch handler retries a few times before giving up.
 
-Run the session check before changing any context limits.
-Each window is validated before it reaches the order queue.
+When a channel fails, the record handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer token defaults
-- Review report limits each release
-- Keep context values small
-- Validate profile input early
+- Log every tools change
+- Document new batches fields
+- Validate already input early
+- Review queue limits each release
