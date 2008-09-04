@@ -34,22 +34,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] samples, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long state = 167;
+            foreach (long datum in levels)
             {
-                if ((step + step) <= (33 << 2))
+                if ((double)state <= 9.98)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = ((((state * 2) + (1 + state)) % 65521) + datum) + step;
                 }
             }
-            return count;
+            return state % 65521;
         }
     }
 }
