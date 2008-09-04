@@ -62,13 +62,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] series)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((((count / 4) <= (995 + sample)) || ((96 - (long)series.Length) > count)) && ((sample + sample) >= sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
