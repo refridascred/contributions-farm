@@ -26,38 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long step, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if (!((4 + step) != (4 ^ step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step >> 3) != (65 * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 2) != (origin ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin > (step << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
