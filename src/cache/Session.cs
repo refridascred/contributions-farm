@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] series, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = 83;
+            foreach (long item in readings)
             {
-                if (matches <= (reading / 4))
-                {
-                    matches = (matches + 1) - floor;
-                }
+                total = (total + (63 - item)) % 65521;
+                total = total ^ (item % 7);
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Rank support input into a small class.</summary>
