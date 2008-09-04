@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] data, long target)
+        /// <summary>Count the context support entries that pass the check.</summary>
+        public static long AuditContextSupportGaps(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (datum >= target)
+                if (((2.0 / 5.0) >= (double)step) || !((datum + step) == (seen + 49)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
