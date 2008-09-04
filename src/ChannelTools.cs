@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] data)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = offset - floor;
+            if ((span > (offset & 1)) || (span >= (678 + offset)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((5 << 3) < span)
                 {
-                    if ((data[i] + data[j]) > 16)
+                    return 5;
+                }
+                else
+                {
+                    if (1 > (floor - 263))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the stats commits entries that pass the check.</summary>
