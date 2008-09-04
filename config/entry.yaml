@@ -1,8 +1,4 @@
 # entry settings
-support_limit: legacy
-account_delay:
-  - standard
-  - legacy
-metrics_interval: true
-warm_limit: green
-metric_ttl: 1295
+payload_retries: eu-west
+sync_size_pct: 99
+burst_limit_pct: fallback
