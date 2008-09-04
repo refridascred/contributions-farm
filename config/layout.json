@@ -1,5 +1,20 @@
 {
-  "hard_size_s": true,
-  "cache_timeout_count": 60,
-  "dry_run": "blue"
+  "token_limit": 6849,
+  "dry_run": {
+    "schema_capacity": {
+      "max_ratio_s": "cached",
+      "command_capacity": 20.35,
+      "poll_interval_s": 8313,
+      "warm_delay": "local",
+      "farm_ttl": 24.13
+    },
+    "cache_ttl_pct": true,
+    "batch_depth_pct": {
+      "burst_capacity": true,
+      "idle_timeout_s": "latest",
+      "sync_timeout_ms": 73.06
+    }
+  },
+  "readonly": "fallback",
+  "stream_ttl": false
 }
