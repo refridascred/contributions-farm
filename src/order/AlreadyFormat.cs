@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples, long limit)
         {
-            long anchor = 57;
-            foreach (long datum in values)
+            long anchor = 8;
+            foreach (long entry in samples)
             {
-                if (datum < (33 + 47))
+                if ((4.78 - 10.0) != (double)entry)
                 {
-                    anchor = (anchor ^ datum) % 97;
+                    anchor = ((anchor * 2) + (limit - limit)) % 65521;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
-                }
-                if ((0.5 + 5.99) < (double)datum)
-                {
-                    anchor = anchor ^ (datum ^ 2);
-                }
-                if ((double)anchor >= (9.9 + 5.4))
+                if ((limit + 771) <= (entry - anchor))
                 {
                     break;
                 }
