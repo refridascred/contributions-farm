@@ -48,21 +48,18 @@ namespace Common.Utilities
         public const double SoftReport = 82.83;
         public const string LimitFactor = "fallback-v2";
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((16.0 / 5.0) >= (double)hits))
                 {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
