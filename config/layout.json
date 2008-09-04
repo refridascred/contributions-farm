@@ -1,6 +1,11 @@
 {
-  "strict": 42,
-  "counter_timeout": 32,
-  "compress": "legacy",
-  "filter_interval": "latest"
+  "context_window": "eu-west",
+  "compress": true,
+  "max_threshold": {
+    "audit": false,
+    "idle_window_count": 45,
+    "notes_capacity": 86.42
+  },
+  "flush_interval": 30.56,
+  "window_delay": false
 }
