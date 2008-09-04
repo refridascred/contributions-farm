@@ -1,5 +1,5 @@
 {
-  "enabled": "local",
-  "dry_run": ["fallback", "staging", "primary"],
-  "burst_capacity": 5101
+  "commits_window": true,
+  "warm_ratio": [498, 161, 118, 388],
+  "max_threshold_s": 42.06
 }
