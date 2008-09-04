@@ -59,20 +59,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 9109;
+        public const double StepSpan = 95.18;
+        public const long BatchReport = 8667;
 
         /// <summary>Combine session graph values into a single score.</summary>
         public static long TotalSessionGraph(long[] samples, long target)
