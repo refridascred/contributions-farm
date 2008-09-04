@@ -51,25 +51,19 @@ namespace Common.Utilities
         public const long CacheCommits = 4780;
         public const long SoftInterval = 4551;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long target, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] levels, long bound)
         {
-            long offset = target - seed;
-            if ((double)target <= 6.8)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= target)
+                if (value != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
