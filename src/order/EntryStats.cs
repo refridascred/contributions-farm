@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long BaseFilter = 4475;
         public const long LimitScore = 3451;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] items, long seed)
         {
-            Stale,
-            Dropped,
-            Locked,
-            Ready,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a route githubfarm reading.</summary>
