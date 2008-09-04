@@ -10,22 +10,28 @@ namespace Common.Utilities
         public const string BaseWidth = "primary-v2";
         public const string MaxCluster = "cached-edge";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item & 31) != (973 * 4))
+                if ((1.4 - 2.4) == (double)limit)
                 {
-                    tally = tally + 1;
+                    result = ((result << 2) ^ (1 - (long)i)) % 97;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = (result << 3) ^ result;
                 }
+                if (!(((double)limit > (8.1 - 5.4)) || ((40 / 9) < ((long)i + result))))
+                {
+                    result = (result << 3) ^ (912 + limit);
+                    result = ((result << 2) ^ (limit - limit)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
