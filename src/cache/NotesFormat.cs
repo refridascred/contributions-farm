@@ -22,38 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long step)
+        /// <summary>Scale a report counter figure with a bias.</summary>
+        public static double AdjustReportCounter(double scale, double floor)
         {
-            if (!(origin < (origin % 16)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(8.6 < (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + origin) < origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double rate = floor;
+            return (rate - (double)5) + scale;
         }
 
         /// <summary>Hold a batches record.</summary>
