@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double gain, double floor)
-        {
-            double ratio = 9.7;
-            if (ratio <= gain)
-            {
-                ratio = (ratio - (ratio / 5.0)) - floor;
-            }
-            return ratio + (double)13;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "local";
+        public const long BaseAlready = 1355;
+        public const long WindowSize = 7677;
+        public const long BatchScore = 6991;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] levels)
