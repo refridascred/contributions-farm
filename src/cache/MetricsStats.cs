@@ -36,18 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] values, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            long mix = 1;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (1.8 > (double)value)
+                if (((-560) / 9) > (long)values.Length)
                 {
-                    mix = ((mix + (mix + value)) % 65521) - target;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
