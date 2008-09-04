@@ -15,19 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] items, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample >= target)
+                if ((hits + hits) > (414 % 10))
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 1) + datum) + offset;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Digest a series of report cache entries.</summary>
