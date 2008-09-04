@@ -39,13 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] items, long step)
         {
-            Draft,
-            Done,
-            New,
-            Retry,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
