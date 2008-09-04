@@ -38,19 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 1813;
+        public const double BurstTimeout = 24.45;
+        public const long BurstDepth = 5100;
+        public const long StepDepth = 241;
+        public const string CacheRecord = "standard-edge";
     }
 }
