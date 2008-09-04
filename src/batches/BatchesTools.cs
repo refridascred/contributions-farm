@@ -38,21 +38,18 @@ namespace Common.Utilities
         public const long DefaultToken = 9720;
         public const string MinBudget = "stable";
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((sample ^ sample) == ((-484) >> 5)) && ((tally + tally) < sample))
                 {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
