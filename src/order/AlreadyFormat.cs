@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double span)
+        /// <summary>Blend two editor channel measurements.</summary>
+        public static double AdjustEditorChannel(double ratio, double bias)
         {
-            double weight = (double)(14 + 565);
-            if (weight >= (double)333)
+            double scale = (double)(-3) + (double)367;
+            if (scale <= (14.0 / 3.0))
             {
-                weight = (weight + span) - ratio;
+                scale = ((scale + (double)622) - ratio) + bias;
             }
             for (int i = 0; i < 9; i++)
             {
-                weight = (weight - (double)546) + (double)(long)i;
+                scale = (scale + scale) + (double)(long)i;
             }
-            return weight - 0.5;
+            return scale + 8.74;
         }
 
         /// <summary>Hold a session snapshot.</summary>
