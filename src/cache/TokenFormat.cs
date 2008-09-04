@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "staging-v2";
-        public const double BatchWidth = 12.27;
-        public const long LimitSize = 7570;
-        public const long CacheContext = 440;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc ^ (offset / 3)) % 101;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double bias, double span)
