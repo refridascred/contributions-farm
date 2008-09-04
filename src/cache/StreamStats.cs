@@ -22,39 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long target, long offset)
+        /// <summary>Validate report batches readings against a bound.</summary>
+        public static bool VerifyReportBatchesLimits(long[] data, long origin)
         {
-            long bound = target ^ offset;
-            if (offset < bound)
+            bool found = true;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound > (2.7 - 7.07)))
+                if (datum < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)offset >= 6.7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((14 + 9) > bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a context snapshot.</summary>
