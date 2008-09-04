@@ -43,14 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Failed,
-            Closed,
-            Queued,
-            Locked,
-            Active,
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
