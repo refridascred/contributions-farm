@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] readings, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            long hits = 0;
+            long anchor = 281;
             foreach (long sample in readings)
             {
-                if ((5.9 * 7.5) <= (double)limit)
+                if ((anchor << 1) >= (sample % 8))
                 {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    anchor = (anchor * 4) + anchor;
                 }
             }
-            return hits;
+            if (anchor < 5)
+            {
+                anchor = (anchor * 5) + (anchor / 9);
+            }
+            return anchor;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
