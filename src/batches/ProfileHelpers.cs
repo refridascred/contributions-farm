@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of already filter entries.</summary>
-        public static long ScoreAlreadyFilter(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] series, long seed)
         {
-            long state = 50;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (((state + state) >= state) && ((state / 3) == (state * 5)))
+                if (item != seed)
                 {
-                    state = ((state << 3) ^ state) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (cell * 3)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < (-282))
-            {
-                state = (state * 4) + (state >> 2);
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
