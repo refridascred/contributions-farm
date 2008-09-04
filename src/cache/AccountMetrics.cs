@@ -52,27 +52,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series, long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            long score = 624;
-            foreach (long value in series)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (seed < (score ^ score))
-                {
-                    score = ((score * 4) + seed) % 4096;
-                }
-                score = ((score << 2) ^ (seed % 10)) % 4096;
-                if (!((value - seed) <= score))
-                {
-                    score = score - score;
-                }
+                mix = (mix - (277 / 3)) % 97;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            if (score > 86)
-            {
-                score = (score ^ (score - 0)) % 255;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
