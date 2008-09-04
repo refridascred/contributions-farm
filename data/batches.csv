@@ -1,6 +1,8 @@
-id,owner,token
-1,45.34,42.27
-2,722,47.18
-3,edge,45.14
-4,882,682
-5,fallback,508
+id,ratio,region,rank,label
+1,local,466,776,347
+2,41.83,249,40.05,94
+3,878,779,34.49,27.71
+4,legacy,696,31.41,green
+5,562,staging,890,64.6
+6,eu-west,edge,439,598
+7,69.09,520,cached,771
