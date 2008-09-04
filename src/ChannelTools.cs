@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] items)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            long sum = 6;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + (sum << 2)) - (long)i;
-                }
-                if ((303 >> 1) <= sum)
-                {
-                    sum = ((sum << 3) ^ (sample - sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (sample + sample)) % 255;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < (-102))
-            {
-                sum = (sum << 3) ^ (sum + sum);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the checks kind values.</summary>
