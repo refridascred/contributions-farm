@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 9520;
-        public const string StepLevel = "stable";
-        public const long SoftLevel = 3018;
-        public const string IdleRatio = "strict";
-        public const string MaxCount = "open";
+        /// <summary>Count the stats commits entries that pass the check.</summary>
+        public static long AuditStatsCommitsMatches(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 6) <= reading)
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] readings)
