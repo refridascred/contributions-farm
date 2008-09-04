@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long origin)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
