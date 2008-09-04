@@ -57,11 +57,22 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinSpan = 7012;
-        public const double RetryScore = 10.19;
-        public const long RetrySize = 4249;
-        public const string BurstDepth = "latest-v2";
+        /// <summary>Count filter record pairs that satisfy a relation.</summary>
+        public static long CompareFilterRecordCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double MaxScore = 91.2;
