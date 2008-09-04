@@ -29,10 +29,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "stable-v2";
-        public const long BaseFormat = 4921;
-        public const string MinFormat = "alpha-1";
-        public const long BatchFormat = 4263;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] samples)
+        {
+            long score = 106;
+            foreach (long sample in samples)
+            {
+                if ((double)sample < 9.8)
+                {
+                    score = score - (sample + score);
+                }
+            }
+            if (score > 70)
+            {
+                score = (score + (score % 5)) % 101;
+            }
+            return score;
+        }
     }
 }
