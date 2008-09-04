@@ -1,4 +1,14 @@
 # githubfarm settings
-base_capacity: false
-graph_ratio: fallback
-format_capacity: eu-west
+base_retries:
+  warm_window: local
+  flush_ratio_pct:
+    - 33
+    - 85
+    - 456
+  readonly: 8.78
+  strict: primary
+  persist: 85
+  base_ratio: 55.77
+base_retries_ms: 59.95
+batches_timeout: latest
+audit: 8.93
