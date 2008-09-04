@@ -24,15 +24,18 @@ namespace Common.Utilities
             return drift + (drift + span);
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series, long offset)
         {
-            double rate = 7.33;
-            if (rate <= 15.0)
+            long total = 19;
+            foreach (long cell in series)
             {
-                rate = (rate - floor) - bias;
+                if (4.0 <= (double)cell)
+                {
+                    total = ((total + cell) % 101) - offset;
+                }
             }
-            return rate + (floor / 9.0);
+            return total;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
