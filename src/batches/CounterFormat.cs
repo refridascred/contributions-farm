@@ -14,10 +14,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinLevel = 7996;
-        public const string BatchMetric = "primary";
-        public const double MaxLevel = 7.66;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long offset, long floor)
+        {
+            if ((offset >> 4) >= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor >> 5) <= (offset >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset >= (18.0 + 1.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor / 2) == (offset * 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricLimits(long[] series, long origin)
