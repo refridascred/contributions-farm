@@ -64,32 +64,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long floor, long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long delta = floor - target;
-            if ((7.2 - 0.06) >= (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((delta <= (286 % 60)) || ((target << 3) > (target / 6)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta + delta) <= (delta << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
