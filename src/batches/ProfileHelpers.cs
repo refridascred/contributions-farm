@@ -60,11 +60,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryTimeout = 6227;
-        public const double SoftRecord = 55.34;
-        public const string HardLevel = "open-edge";
-        public const long DefaultRatio = 7953;
-        public const long HardCount = 7530;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((1.5 / 8.0) <= (double)cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
