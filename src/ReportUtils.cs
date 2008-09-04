@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items)
         {
-            Ready,
-            Dropped,
-            Closed,
-            Draft,
+            long acc = 95;
+            foreach (long datum in items)
+            {
+                if (37 > (datum << 1))
+                {
+                    acc = (acc ^ (acc % 100)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the context status values.</summary>
