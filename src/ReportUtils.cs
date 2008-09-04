@@ -40,14 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] readings, long seed)
         {
-            Ready,
-            Active,
-            Idle,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading >> 3) > (94 + reading))
+                {
+                    hits = (hits + 3) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
