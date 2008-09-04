@@ -41,15 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] levels, long seed)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long entry in levels)
             {
-                if ((seen + item) == (item * 4))
+                if ((double)entry > (20.0 / 2.0))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 2) - seed;
                 }
             }
             return seen;
