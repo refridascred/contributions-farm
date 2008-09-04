@@ -27,9 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSize = 7151;
-        public const double WindowSize = 61.0;
-        public const long MaxCount = 9681;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
