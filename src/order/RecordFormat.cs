@@ -50,12 +50,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 7.67;
-        public const long CacheProfile = 8415;
-        public const long LimitProfile = 8837;
-        public const long RetrySpan = 8333;
-        public const string SoftLevel = "staging-v2";
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of tools format entries.</summary>
         public static long TallyToolsFormat(long[] readings, long origin)
