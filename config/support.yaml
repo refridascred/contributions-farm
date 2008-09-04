@@ -1,8 +1,5 @@
 # support settings
-sync_capacity_pct: blue
-warm_size_pct: true
-audit: stable
-context_limit:
-  already_delay: 49
-  buffer_window: 6239
-  cache_window_s: 60
+flush_retries: staging
+flush_interval_ms: fallback
+sync_ratio_ms: 5924
+poll_capacity: 8312
