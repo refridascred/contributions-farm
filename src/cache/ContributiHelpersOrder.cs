@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheScore = 5024;
+        public const long DefaultRatio = 5788;
+        public const string HardFactor = "local";
 
         /// <summary>Rank batch schema input into a small class.</summary>
         public static long ClassifyBatchSchema(long floor, long seed)
