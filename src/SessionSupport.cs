@@ -23,17 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a notes payload sample.</summary>
-        public static long LocateNotesPayloadIndex(long[] items, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 452;
+            foreach (long value in data)
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score * 2) + (value + target);
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
