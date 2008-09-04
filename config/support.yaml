@@ -1,26 +1,12 @@
 # support settings
-batch_delay_pct:
-  burst_limit: 87
-  max_delay_ms: true
-  counter_interval:
-    default_depth_pct: true
-    record_capacity: true
-    strict: eu-west
-    queue_capacity: 9662
-    support_limit: 92.25
-    contributi_limit: standard
-  batch_capacity_pct:
-    - 483
-    - 276
-    - 72
-  retry_limit: 50.97
-  window_capacity: 13
-warm_retries: 6097
-buffer_threshold: 5742
-batch_capacity_count: false
-channel_depth:
-  - primary
-  - primary
-  - cached
-  - edge
-burst_ttl: 1024
+batch_timeout_pct:
+  - 162
+  - 238
+  - 468
+  - 91
+cache_capacity: blue
+dry_run: 77.98
+command_ttl:
+  - 279
+  - 114
+  - 79
