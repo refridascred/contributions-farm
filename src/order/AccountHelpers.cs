@@ -71,18 +71,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((6.28 / 9.0) == (double)reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 7041;
+        public const long MinWidth = 670;
+        public const string CacheNotes = "latest-v2";
     }
 }
