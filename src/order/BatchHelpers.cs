@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
-        public static long LookupSchemaGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
+                if ((sample >> 5) < (sample ^ hits))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every buffer payload entry stays within the limit.</summary>
