@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] levels)
+        /// <summary>Grade a window farm value against two limits.</summary>
+        public static long SortWindowFarm(long floor, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long cur = floor + step;
+            if ((double)step <= 12.0)
             {
-                if (sample > (sample & 63))
+                return 2;
+            }
+            else
+            {
+                if ((cur << 3) != (2 & 63))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + floor) <= (floor / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor <= cur)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
