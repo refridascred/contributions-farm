@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 7783;
-        public const double BurstBuffer = 42.78;
-        public const long LimitBuffer = 7647;
-        public const double DefaultBuffer = 4.53;
-        public const long BurstTimeout = 9550;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data, long floor)
+        {
+            long result = 74;
+            foreach (long value in data)
+            {
+                if ((value >> 5) == (floor + result))
+                {
+                    result = (result - (4 << 1)) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long offset, long seed)
