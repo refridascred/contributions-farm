@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long target, long seed)
-        {
-            if (target > seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target * 5) >= (778 >> 2)) && ((seed << 2) >= (seed + target)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchCount = 8775;
+        public const long CacheInterval = 9810;
+        public const long BaseReport = 2087;
+        public const long LimitReport = 7601;
+        public const string BatchReport = "legacy-v2";
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long origin)
