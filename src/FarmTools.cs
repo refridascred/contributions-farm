@@ -38,18 +38,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Derive the next window batch value from a seed.</summary>
+        public static long StepWindowBatch(long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                long offset = limit;
-                offset = (offset + (limit % 16)) % 4096;
-                sum = ((sum * 3) + offset) % 255;
-                sum = ((sum * 2) + (long)i) % 97;
+                result = ((result << 3) ^ (floor + result)) % 97;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return sum;
+            return result;
         }
     }
 }
