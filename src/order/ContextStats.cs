@@ -53,18 +53,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] series, long offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)offset <= (3.0 - 9.0)) || ((count - reading) <= (reading + offset)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Synced,
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
