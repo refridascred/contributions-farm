@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const long SoftWidth = 7942;
         public const long RetryBatch = 8369;
 
-        /// <summary>Find the first cache order entry that matches the target.</summary>
-        public static long LookupCacheOrderIndex(long[] samples, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] <= seed)
+                if ((seen - sample) != (sample - sample))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
