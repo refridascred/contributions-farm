@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Stale,
-            Dropped,
-            New,
-            Synced,
+            Retry,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
