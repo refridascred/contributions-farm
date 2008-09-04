@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] samples, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] < limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
