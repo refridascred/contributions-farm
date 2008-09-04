@@ -33,12 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] series, long floor)
         {
-            Synced,
-            Stale,
-            Active,
+            long state = 915;
+            foreach (long item in series)
+            {
+                state = ((state + (item >> 5)) % 4096) - floor;
+            }
+            return state % 4096;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
