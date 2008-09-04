@@ -62,18 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] data)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + sample) <= (sample - sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
