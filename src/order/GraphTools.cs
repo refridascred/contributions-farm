@@ -41,19 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (((double)(long)i == (double)sum) || ((limit + limit) < (sum % 10)))
+                if ((seen + item) == (item * 4))
                 {
-                    sum = ((sum * 2) + (-7)) % 65521;
+                    seen = seen + 1;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
