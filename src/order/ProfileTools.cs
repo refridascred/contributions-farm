@@ -56,15 +56,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Failed,
-            Closed,
-            Idle,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBudget = 1783;
+        public const double CacheBatches = 14.98;
+        public const long BurstFactor = 5669;
+        public const double BatchCount = 53.93;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 2112;
