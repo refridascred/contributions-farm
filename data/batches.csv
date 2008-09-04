@@ -1,6 +1,6 @@
-id,active,state
-1,32.87,51.17
-2,open,stable
-3,staging,857
-4,574,0.84
-5,latest,108
+id,ratio,state,weight
+1,294,50,546
+2,open,edge,cached
+3,893,94.02,2.63
+4,760,329,895
+5,60.88,95.17,local
