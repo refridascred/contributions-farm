@@ -49,12 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] readings, long floor)
         {
-            Closed,
-            Pending,
-            Done,
+            long mark = 705;
+            foreach (long sample in readings)
+            {
+                mark = (mark - (sample + mark)) - floor;
+            }
+            if (mark < 710)
+            {
+                mark = ((mark * 4) + (mark - 198)) % 101;
+            }
+            return mark;
         }
     }
 }
