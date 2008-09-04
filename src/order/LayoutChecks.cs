@@ -49,25 +49,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long bound, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            if ((limit - limit) >= limit)
             {
-                if (!((bound & 127) > (bound + (long)i)))
-                {
-                    result = (result - (2 % 7)) % 65521;
-                    result = ((result * 3) + (result / 9)) % 65521;
-                }
-                if (!((400 + (long)i) <= (4 + result)))
-                {
-                    result = (result - ((long)i & 31)) % 101;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (!((bound / 2) > (4 + limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1.8 * 4.61) <= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((595 * 5) > (limit + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
