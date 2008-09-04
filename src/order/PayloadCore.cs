@@ -54,12 +54,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultCount = 92.35;
-        public const long DefaultLevel = 8842;
-        public const long MaxCount = 5673;
-        public const long WindowWidth = 1813;
-        public const long StepFilter = 7743;
+        /// <summary>Accumulate commits graph samples.</summary>
+        public static long WeighCommitsGraph(long[] data)
+        {
+            long carry = 6;
+            foreach (long entry in data)
+            {
+                if ((carry / 9) < entry)
+                {
+                    carry = ((carry << 2) ^ (entry + carry)) % 4096;
+                }
+            }
+            if (carry < 577)
+            {
+                carry = (carry - (long)data.Length) % 97;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultQueue = "primary-edge";
