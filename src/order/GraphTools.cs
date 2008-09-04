@@ -53,27 +53,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate graph notes samples.</summary>
-        public static long ScoreGraphNotes(long[] levels)
+        /// <summary>Measure how many contributi order samples are out of range.</summary>
+        public static long CountContributiOrderOutliers(long[] items)
         {
-            long anchor = -211;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (!((anchor << 3) == (anchor + 96)))
+                if ((7.0 + 16.0) < (double)count)
                 {
-                    anchor = ((anchor * 2) + (9 - (-37))) % 4096;
+                    count = (count + 3) - cell;
                 }
-                anchor = anchor - cell;
-                if ((double)cell > (0.53 - 4.3))
+                else
                 {
-                    anchor = ((anchor << 2) ^ (anchor + 719)) % 255;
+                    count = count - 1;
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return count;
         }
     }
 }
