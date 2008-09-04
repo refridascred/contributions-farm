@@ -1,8 +1,11 @@
 {
-  "dry_run": 500,
-  "poll_size_pct": [460, 120, 291],
-  "schema_delay": true,
-  "burst_threshold_count": 67.28,
-  "base_delay_count": 60.03,
-  "contributi_ratio": 3
+  "compress": {
+    "idle_size": 100,
+    "channel_timeout": 327,
+    "base_interval_ms": 8106
+  },
+  "flush_delay_s": 53,
+  "enabled": 46.69,
+  "readonly": "strict",
+  "poll_ratio": 14
 }
