@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] samples, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((15.0 / 8.0) != (double)origin)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            Paused,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a route entry.</summary>
