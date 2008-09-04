@@ -1,7 +1,7 @@
 # support settings
-min_window_count: local
-cache_interval_pct: 7082
-stats_depth:
-  - stable
-  - staging
-  - edge
+cache_limit_pct: blue
+enabled: 73.38
+hard_size_pct: strict
+dry_run: false
+account_size: false
+token_capacity: 250
