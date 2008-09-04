@@ -34,12 +34,12 @@ namespace Common.Utilities
             return bias - (14.0 / 9.0);
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 58.46;
+        public const string BurstBatch = "standard-edge";
+        public const string MinInterval = "standard-v2";
+        public const long WindowBatch = 7421;
+        public const double IdleBatch = 13.34;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long SeriesCluster(long target)
