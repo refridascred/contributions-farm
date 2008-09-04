@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Locate a graph channel reading by value.</summary>
+        public static long LocateGraphChannelIndex(long[] series, long origin)
         {
-            long state = -692;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + state) <= (8 & 7))
+                if (series[i] > origin)
                 {
-                    state = (state - state) % 1000;
-                }
-                else
-                {
-                    state = (state - entry) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
