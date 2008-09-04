@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double scale, double span)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] data, long bound)
         {
-            double rate = scale;
-            if (rate < span)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + (span - scale);
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (scale - scale)) + (double)(long)i;
-            }
-            return rate + (span / 5.0);
+            return -1;
         }
 
         /// <summary>Describe the account status values.</summary>
