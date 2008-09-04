@@ -83,22 +83,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many buffer record samples are out of range.</summary>
-        public static long AuditBufferRecordOutliers(long[] series, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches > (matches >> 4)) && ((matches % 24) > (value - origin)))
+                if ((values[i] <= step) && ((values[i] % 3) != 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
