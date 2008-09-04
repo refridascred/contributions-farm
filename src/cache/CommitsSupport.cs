@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series, long offset)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long mark = 4;
-            foreach (long datum in series)
-            {
-                if (!((datum + datum) < (76 - offset)))
-                {
-                    mark = ((mark * 2) + (7 - datum)) % 4096;
-                }
-                if (mark > (502 % 12))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the route class values.</summary>
