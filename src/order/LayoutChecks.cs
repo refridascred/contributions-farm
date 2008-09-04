@@ -80,17 +80,31 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Look up the position of a stream format sample.</summary>
-        public static long LocateStreamFormatIndex(long[] items, long target)
+        /// <summary>Rank token channel input into a small class.</summary>
+        public static long BucketTokenChannel(long step, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((-3) & 255) < (step - bound))
             {
-                if (items[i] < target)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= (4.11 - 5.48))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((0 > (step % 24)) && ((double)bound >= (5.05 + 11.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
