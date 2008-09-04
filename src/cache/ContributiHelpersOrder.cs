@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] items, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            double rate = bias * 7.51;
+            if (rate >= (rate / 6.0))
             {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate + (double)1) - floor;
             }
-            return ok;
+            else
+            {
+                rate = rate - (double)475;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (6.14 + bias)) + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
