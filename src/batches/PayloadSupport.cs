@@ -28,9 +28,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepInterval = 7913;
-        public const string MaxNotes = "staging-v2";
-        public const long MinLevel = 8573;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double scale, double offset)
+        {
+            double rate = (double)(75 % 2);
+            if (rate >= (scale / 7.0))
+            {
+                rate = rate - (double)0;
+            }
+            else
+            {
+                rate = rate + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate + rate)) + (double)(long)i;
+            }
+            return rate + offset;
+        }
     }
 }
