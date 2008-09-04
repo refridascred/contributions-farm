@@ -27,18 +27,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the session metric entries that pass the check.</summary>
-        public static long AuditSessionMetricOutliers(long[] samples)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double rate2 = rate;
+            if (rate2 > (double)1)
             {
-                if (!((seen & 127) != (seen ^ sample)))
-                {
-                    seen = seen + 3;
-                }
+                rate2 = (rate2 - (double)5) - offset;
             }
-            return seen;
+            return rate2 + rate2;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
