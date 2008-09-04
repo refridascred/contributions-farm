@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] values)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double gain2 = floor / 4.0;
+            if (gain2 >= gain2)
             {
-                if ((seen - item) >= (item % 64))
-                {
-                    seen = seen + 1;
-                }
+                gain2 = gain2 + gain;
             }
-            return seen;
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            return gain2 - 2.89;
         }
     }
 }
