@@ -38,16 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window batch value from a seed.</summary>
-        public static long StepWindowBatch(long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result << 3) ^ (floor + result)) % 97;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
