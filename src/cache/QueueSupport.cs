@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many token graph samples are out of range.</summary>
+        public static long CountTokenGraphOutliers(long[] readings, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum % 97) > (5 + count))
+                {
+                    count = (count + 3) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel mode values.</summary>
