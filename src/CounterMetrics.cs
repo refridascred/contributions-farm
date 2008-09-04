@@ -54,19 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardCount = "latest-1";
+        public const string MinDepth = "primary-edge";
+        public const double StepBatches = 35.07;
+        public const long MinBudget = 3757;
     }
 }
