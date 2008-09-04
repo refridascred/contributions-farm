@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if ((682 & 255) <= (origin >> 1))
             {
-                if ((tally % 16) <= (947 / 8))
+                return 0;
+            }
+            else
+            {
+                if (((origin2 - origin2) >= (29 - 2)) || ((double)origin2 < (1.49 / 9.0)))
                 {
-                    tally = (tally + 3) + cell;
+                    return 6;
+                }
+                else
+                {
+                    if (!(origin >= (origin2 - origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next stream value.</summary>
