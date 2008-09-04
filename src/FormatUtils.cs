@@ -30,19 +30,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] data, long target)
+        /// <summary>Blend two stats layout measurements.</summary>
+        public static double ProjectStatsLayout(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double gain = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = ((gain + (rate / 7.0)) + (double)(long)i) + floor;
             }
-            return stale;
+            return gain + (double)66;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
