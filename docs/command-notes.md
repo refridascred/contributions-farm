@@ -1,13 +1,11 @@
 # Command notes
 
-Keep cache and already names short and lowercase.
-The stream module keeps context values in sync with the token cache.
-
-Run the stats check before changing any command limits.
-Keep schema and cache names short and lowercase.
+Keep stats and account names short and lowercase.
+Use notes settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every profile change
-- Validate batch input early
+- Validate commits input early
+- Prefer account defaults
+- Log every entry change
+- Document new window fields
