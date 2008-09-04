@@ -30,21 +30,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Accumulate stats samples.</summary>
