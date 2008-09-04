@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long CacheScore = 3121;
         public const long LimitChannel = 1636;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Active,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinDepth = "legacy-edge";
+        public const double RetryLevel = 50.46;
+        public const long IdleQueue = 1913;
+        public const long BaseQueue = 8789;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] levels)
