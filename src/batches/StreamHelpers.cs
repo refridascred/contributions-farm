@@ -53,19 +53,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] values, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Paused,
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a tools stats.</summary>
