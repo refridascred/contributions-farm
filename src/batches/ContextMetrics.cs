@@ -38,22 +38,17 @@ namespace Common.Utilities
         public const string DefaultLevel = "staging";
         public const double BatchStats = 55.32;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] items, long origin)
         {
-            long mix = 308;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= (cell & 15))
+                if (items[i] > origin)
                 {
-                    mix = (mix + (mix / 4)) % 65521;
-                }
-                if (((cell & 255) <= 98) || ((cell + cell) <= (7 & 7)))
-                {
-                    mix = (mix ^ (cell + cell)) % 97;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
