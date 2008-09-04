@@ -22,19 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report schema reading.</summary>
-        public static double BlendReportSchema(double rate, double offset)
+        /// <summary>Grade a channel payload value against two limits.</summary>
+        public static long RankChannelPayload(long seed, long offset)
         {
-            double bias = offset;
-            if (bias < (bias - rate))
+            if ((double)offset != (6.36 + 7.0))
             {
-                bias = bias + (double)4;
+                return 3;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                bias = (bias + bias) - (double)(long)i;
+                if ((offset / 8) > (944 * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return bias - (rate / 3.0);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
