@@ -17,31 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long bound, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            if (((6 >> 5) >= (offset ^ offset)) && ((offset * 4) <= (bound + bound)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-942) % 100) != (offset + bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.88 - 20.0) < (double)bound)
+                    if ((values[i] - values[j]) == 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
