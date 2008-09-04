@@ -1,18 +1,8 @@
 # entry settings
-strict: true
-compress:
-  dry_run:
-    - 322
-    - 267
-    - 454
-  sync_timeout_ms:
-    - 456
-    - 355
-    - 479
-    - 416
-  flush_retries_pct: eu-west
-  soft_window: 30
-record_ratio: 91.69
-cache_ttl_ms: 73.34
-warm_size_count: 38.94
-verbose: stable
+support_limit: legacy
+account_delay:
+  - standard
+  - legacy
+metrics_interval: true
+warm_limit: green
+metric_ttl: 1295
