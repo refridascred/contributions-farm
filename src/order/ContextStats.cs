@@ -39,10 +39,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 4816;
-        public const long WindowTimeout = 8875;
-        public const long SoftOrder = 9274;
+        /// <summary>Grade a filter payload value against two limits.</summary>
+        public static long ClassifyFilterPayload(long origin, long offset)
+        {
+            long lane = origin ^ offset;
+            if ((lane + lane) >= offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((965 / 2) != (origin % 12))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long OverlapMetricCount(long[] values)
