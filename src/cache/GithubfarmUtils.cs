@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long floor, long step)
+        /// <summary>Combine tools batches values into a single score.</summary>
+        public static long ScoreToolsBatches(long[] samples, long limit)
         {
-            if ((double)step < (7.0 * 2.49))
+            long mark = 776;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1 + step) > (step & 1))
+                mark = ((mark * 3) + (33 + cell)) % 101;
+                if ((double)cell >= (12.0 + 15.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    mark = ((mark * 5) + (limit << 1)) % 97;
                 }
             }
+            if (mark < 12)
+            {
+                mark = mark - (limit & 127);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
