@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] data, long target)
         {
-            long sum = 6;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum & 3) >= (datum & 7))
+                if ((data[i] > target) && ((data[i] % 2) == 0))
                 {
-                    sum = (sum ^ datum) % 1000;
+                    return (long)i;
                 }
             }
-            if (sum < 343)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank support input into a small class.</summary>
