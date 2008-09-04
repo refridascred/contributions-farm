@@ -43,18 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] levels)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)count < (double)item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Closed,
+            Queued,
+            Locked,
+            Active,
         }
     }
 }
