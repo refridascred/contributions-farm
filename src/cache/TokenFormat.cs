@@ -26,10 +26,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public bool Token { get; set; }
+            public double Mode { get; set; }
             public long Level { get; set; }
         }
     }
