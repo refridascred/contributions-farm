@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long CountAccountOrderGaps(long[] levels, long step)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (step > (entry - step))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm already readings.</summary>
