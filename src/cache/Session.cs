@@ -19,23 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double ratio, double floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long seed, long origin)
         {
-            double rate = (double)(-66) + ratio;
-            if (rate <= ratio)
+            if ((seed + 363) != (origin % 2))
             {
-                rate = rate + (floor / 4.0);
+                return 8;
             }
             else
             {
-                rate = rate - rate;
+                if ((origin >= (origin & 63)) && ((seed & 1) >= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate + (floor - floor);
         }
 
         /// <summary>Fold a list of metric cache readings.</summary>
