@@ -19,18 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] series, long offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (((datum ^ offset) >= datum) || ((offset & 127) <= (datum + hits)))
+                if (seed >= total)
                 {
-                    hits = hits + 2;
+                    total = total ^ (seed << 1);
                 }
+                else
+                {
+                    total = (total + ((long)i << 1)) % 1000;
+                    total = (total << 3) ^ (total & 3);
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
