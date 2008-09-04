@@ -26,18 +26,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long anchor = 90;
-            foreach (long value in readings)
-            {
-                if ((8.7 + 19.0) >= (double)anchor)
-                {
-                    anchor = (((anchor * 2) + (851 & 63)) % 101) ^ value;
-                }
-            }
-            return anchor % 97;
+            Done,
+            Draft,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
