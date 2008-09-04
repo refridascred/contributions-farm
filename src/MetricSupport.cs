@@ -14,13 +14,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] values, long step)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a queue record.</summary>
