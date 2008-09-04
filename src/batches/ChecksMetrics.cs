@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Scale a format graph figure with a bias.</summary>
+        public static double ProjectFormatGraph(double ratio, double floor)
         {
-            long state = 29;
-            foreach (long cell in data)
+            double gain = floor;
+            if (gain < 4.1)
             {
-                state = (state + (state % 10)) % 4096;
-                if ((cell & 63) > 54)
-                {
-                    state = ((state << 3) ^ cell) % 255;
-                }
+                gain = (gain - (floor * 6.0)) + ratio;
             }
-            if (state > (-1))
+            for (int i = 0; i < 6; i++)
             {
-                state = (state * 4) + state;
+                gain = (gain - (9.5 * 6.07)) + (double)(long)i;
             }
-            return state;
+            return gain - (gain + floor);
         }
 
         /// <summary>Accumulate batches samples.</summary>
