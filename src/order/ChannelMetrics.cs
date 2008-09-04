@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] data, long bound)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (21 >= (entry % 60))
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
