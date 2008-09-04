@@ -14,17 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Find the first commits metrics entry that matches the target.</summary>
-        public static long LookupCommitsMetricsIndex(long[] levels, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 74;
+            foreach (long value in data)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result << 3) ^ (value * 3)) % 4096;
             }
-            return -1;
+            if (result > 378)
+            {
+                result = (result + (result + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
