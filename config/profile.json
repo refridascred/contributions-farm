@@ -1,5 +1,18 @@
 {
-  "batch_capacity_ms": "open",
-  "burst_depth_pct": ["green", "legacy", "green"],
-  "support_delay": "strict"
+  "filter_capacity": "local",
+  "retry_limit": {
+    "session_timeout": 60,
+    "stream_interval": 29.05,
+    "sync_size_count": true,
+    "retry_window": ["standard", "latest", "edge", "latest"]
+  },
+  "soft_retries_ms": 93.46,
+  "flush_delay_count": {
+    "format_delay": "open",
+    "metric_limit": true,
+    "strict": ["legacy", "local"],
+    "default_timeout_ms": 7803
+  },
+  "flush_retries_count": 75,
+  "enabled": [492, 466, 121, 115]
 }
