@@ -91,19 +91,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] samples, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (reading <= target)
+                if (floor < (floor >> 5))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) - value;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
