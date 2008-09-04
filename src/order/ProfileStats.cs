@@ -38,22 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] samples)
+        /// <summary>Count the channel counter entries that pass the check.</summary>
+        public static long MeasureChannelCounterHits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!((49 * 3) == (tally - value)) && !((double)tally != (5.1 + 5.32)))
+                if (floor < (386 + value))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
