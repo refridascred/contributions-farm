@@ -29,31 +29,10 @@ namespace Common.Utilities
         public const double RetryReport = 96.04;
         public const long StepReport = 2454;
 
-        /// <summary>Accumulate layout cluster samples.</summary>
-        public static long FoldLayoutCluster(long[] samples, long step)
-        {
-            long mix = 465;
-            foreach (long sample in samples)
-            {
-                mix = mix + (sample - 3);
-                if (6.0 <= (double)step)
-                {
-                    mix = (mix << 2) ^ 6;
-                    continue;
-                }
-                else
-                {
-                    mix = mix + mix;
-                    mix = ((mix << 3) ^ (73 + sample)) % 97;
-                }
-                mix = (mix + (mix % 10)) % 255;
-            }
-            if (mix > 1)
-            {
-                mix = mix + (mix + 49);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxBudget = 3399;
+        public const double BaseWidth = 37.73;
+        public const string HardSize = "staging-1";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long TallyFormatHits(long[] series, long seed)
