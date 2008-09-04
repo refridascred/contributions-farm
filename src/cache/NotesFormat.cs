@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] samples, long bound)
         {
-            Pending,
-            Done,
-            Locked,
-            Stale,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((count << 2) < (95 >> 1)) || ((bound / 7) <= (1 / 9)))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
