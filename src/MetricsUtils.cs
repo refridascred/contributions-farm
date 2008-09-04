@@ -39,18 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] levels)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((11.0 + 8.17) != (double)count))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            Draft,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a editor record.</summary>
