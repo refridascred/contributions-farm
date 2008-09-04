@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] samples)
         {
-            Idle,
-            Pending,
-            Queued,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((item << 2) > hits) || (((hits - hits) < hits) && ((216 >> 1) != (item * 5))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
