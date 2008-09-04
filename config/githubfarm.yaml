@@ -1,12 +1,13 @@
 # githubfarm settings
-metrics_timeout: false
-schema_size:
-  verbose: true
-  idle_limit_ms: false
-  payload_timeout: legacy
-  metrics_delay: 55.81
-  max_delay: legacy
-min_capacity_s: 1024
-default_timeout: edge
-cache_delay_pct: primary
-farm_limit: 7554
+batches_delay: cached
+default_ratio_pct:
+  - 178
+  - 420
+  - 315
+  - 394
+compress:
+  - latest
+  - blue
+  - primary
+  - fallback
+burst_size: 6418
