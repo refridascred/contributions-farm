@@ -1,6 +1,8 @@
 {
-  "retry_delay_count": false,
-  "idle_delay_pct": 57,
-  "soft_retries": "stable",
-  "record_size": false
+  "min_interval_count": 9290,
+  "retry_ttl_count": ["latest", "green"],
+  "audit": true,
+  "max_size": "primary",
+  "hard_limit_ms": true,
+  "default_window_pct": "edge"
 }
