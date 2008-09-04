@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Paused,
-            Locked,
-            Stale,
-            Synced,
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the channel mode values.</summary>
