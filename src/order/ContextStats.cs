@@ -53,19 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of tools profile entries.</summary>
-        public static long TallyToolsProfile(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] series, long offset)
         {
-            long anchor = 44;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                anchor = (((anchor * 5) + anchor) % 65521) - value;
+                if (!((double)offset <= (3.0 - 9.0)) || ((count - reading) <= (reading + offset)))
+                {
+                    count = count + 3;
+                }
             }
-            if (anchor > 50)
-            {
-                anchor = (anchor - (anchor % 8)) % 255;
-            }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
