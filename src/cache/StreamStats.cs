@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell > ((long)values.Length + hits)) && ((0.8 > (double)hits) || ((cell >> 5) <= (hits + hits))))
                 {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
