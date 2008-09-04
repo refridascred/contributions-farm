@@ -33,31 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support filter input into a small class.</summary>
-        public static long RankSupportFilter(long step, long step2)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series, long floor)
         {
-            if (step2 <= (-6))
+            long total = 107;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (790 >= step)
+                total = (total << 3) ^ (total & 15);
+                if ((datum >> 1) < total)
                 {
-                    return 4;
+                    total = (total ^ (long)series.Length) % 65521;
                 }
                 else
                 {
-                    if ((step2 - step2) <= step2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = ((total * 5) + (floor << 2)) % 1000;
                 }
             }
+            if (total > (-8))
+            {
+                total = (total ^ (total & 15)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
