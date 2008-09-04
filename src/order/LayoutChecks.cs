@@ -27,14 +27,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Active,
-            Done,
-            Locked,
-            Pending,
-            Dropped,
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
