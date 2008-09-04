@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] samples)
+        /// <summary>Audit batch stats readings against a rule.</summary>
+        public static long TallyBatchStatsGaps(long[] series, long bound)
         {
             long matches = 0;
-            foreach (long reading in samples)
+            foreach (long entry in series)
             {
-                if ((14.0 - 4.83) < (double)reading)
+                if ((double)matches < (double)627)
                 {
-                    matches = matches + 3;
+                    matches = ((matches + 2) ^ entry) + bound;
                 }
             }
             return matches;
