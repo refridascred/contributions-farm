@@ -1,5 +1,6 @@
 {
-  "poll_size_s": 1298,
-  "enabled": "latest",
-  "batch_window_count": 80
+  "session_ratio": "strict",
+  "readonly": true,
+  "order_ratio": 49.62,
+  "metrics_threshold": [276, 287]
 }
