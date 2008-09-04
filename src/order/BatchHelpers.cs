@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] items)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 5) < (sample ^ hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every buffer payload entry stays within the limit.</summary>
