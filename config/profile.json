@@ -1,6 +1,11 @@
 {
-  "hard_limit_count": true,
-  "batches_delay": false,
-  "cluster_retries": ["strict", "stable", "green", "fallback"],
-  "cache_retries": "cached"
+  "max_threshold_s": ["standard", "staging"],
+  "burst_ttl": false,
+  "poll_timeout_pct": {
+    "warm_capacity_ms": false,
+    "format_ttl": true,
+    "cache_delay_s": false,
+    "audit": true,
+    "cache_limit_pct": "green"
+  }
 }
