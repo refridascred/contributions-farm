@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long LimitAccount = 8227;
         public const long BaseFactor = 7857;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] values, long limit)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
