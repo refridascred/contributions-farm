@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double rate, double offset)
+        /// <summary>Validate support queue readings against a bound.</summary>
+        public static bool VerifySupportQueueLimits(long[] data, long offset)
         {
-            double bias = offset;
-            if (bias >= (double)87)
+            bool found = true;
+            foreach (long reading in data)
             {
-                bias = (bias + bias) + rate;
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)955) + (double)(long)i;
-            }
-            return bias - (double)(-1);
+            return found;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
