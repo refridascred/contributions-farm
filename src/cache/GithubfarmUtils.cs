@@ -24,19 +24,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] readings, long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
