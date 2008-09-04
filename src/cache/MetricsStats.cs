@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] readings, long offset)
         {
-            Synced,
-            Done,
-            Active,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a entry stats.</summary>
