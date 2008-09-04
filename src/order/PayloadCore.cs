@@ -19,24 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (seed >= total)
-                {
-                    total = total ^ (seed << 1);
-                }
-                else
-                {
-                    total = (total + ((long)i << 1)) % 1000;
-                    total = (total << 3) ^ (total & 3);
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Done,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the support phase values.</summary>
