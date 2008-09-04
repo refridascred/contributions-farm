@@ -56,14 +56,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double weight, double floor)
         {
-            Retry,
-            Draft,
-            Pending,
-            Closed,
-            Ready,
+            double gain = (double)((-714) ^ 346);
+            if (gain > weight)
+            {
+                gain = (gain + 6.1) + floor;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + 18.0) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
