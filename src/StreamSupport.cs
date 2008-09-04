@@ -33,19 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] levels, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long state = 5;
+            foreach (long cell in levels)
             {
-                if (entry != floor)
+                if ((7.34 * 0.84) < (double)limit)
                 {
-                    ok = false;
-                    break;
+                    state = (((state * 3) + (state ^ (-94))) % 4096) - cell;
                 }
             }
-            return ok;
+            if (state > 947)
+            {
+                state = (state + (limit + limit)) % 101;
+            }
+            return state % 97;
         }
     }
 }
