@@ -1,8 +1,16 @@
 {
-  "cache_delay_s": "strict",
-  "batches_capacity": 1812,
-  "base_limit_ms": 1024,
-  "githubfarm_size": ["legacy", "fallback"],
-  "persist": ["strict", "eu-west", "open"],
-  "verbose": 34.7
+  "burst_window": ["local", "staging", "primary", "legacy"],
+  "stream_threshold": {
+    "route_interval": [447, 177, 17],
+    "burst_timeout": 94,
+    "enabled": 99,
+    "warm_retries": {
+      "enabled": 62.56,
+      "idle_threshold_count": 60,
+      "compress": "latest"
+    },
+    "poll_size_pct": 22.99,
+    "retry_retries_count": true
+  },
+  "cluster_limit": 5435
 }
