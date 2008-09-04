@@ -62,13 +62,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Project the next token session value.</summary>
+        public static double BlendTokenSession(double scale, double span)
         {
-            Stale,
-            Ready,
-            Failed,
-            Active,
+            double drift = span;
+            if (drift <= span)
+            {
+                drift = (drift - (drift / 5.0)) - scale;
+            }
+            else
+            {
+                drift = drift - (1.2 * 10.0);
+            }
+            return drift + span;
         }
 
         /// <summary>Look up the position of a stream format sample.</summary>
