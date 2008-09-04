@@ -29,12 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Check that every window contributi entry stays within the limit.</summary>
+        public static bool CheckWindowContributiRange(long[] readings, long bound)
         {
-            Pending,
-            Closed,
-            Synced,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a report reading.</summary>
