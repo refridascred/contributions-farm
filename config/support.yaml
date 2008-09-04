@@ -1,14 +1,19 @@
 # support settings
-hard_limit:
-  - blue
-  - local
-audit: false
-farm_delay:
-  - 119
-  - 265
-  - 431
-burst_size_s:
-  - staging
-  - stable
-  - legacy
-  - local
+cache_capacity: 5.05
+persist: false
+strict: open
+buffer_interval:
+  cache_ratio_pct:
+    - staging
+    - legacy
+    - staging
+    - fallback
+  checks_capacity: 22.86
+  stats_depth: edge
+  flush_ratio_ms: 1024
+  max_capacity_pct:
+    - stable
+    - stable
+    - strict
+min_ttl_pct: true
+burst_limit_ms: 35.12
