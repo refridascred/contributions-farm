@@ -19,18 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window format samples are out of range.</summary>
-        public static long CountWindowFormatOutliers(long[] readings)
+        /// <summary>Combine account already values into a single score.</summary>
+        public static long WeighAccountAlready(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = 9;
+            foreach (long sample in values)
             {
-                if (!((tally + tally) > sample) && ((tally - 3) > 536))
+                if ((mark % 97) != (mark << 3))
                 {
-                    tally = tally + 2;
+                    mark = (mark ^ sample) % 255;
+                }
+                if ((8.09 + 5.43) != (double)sample)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark < 837)
+            {
+                mark = mark ^ (floor + mark);
+            }
+            return mark;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
