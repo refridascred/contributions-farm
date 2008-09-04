@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Locked,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowSpan = 1322;
+        public const double BatchFarm = 69.96;
+        public const double MinFactor = 34.38;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
