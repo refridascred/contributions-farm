@@ -1,7 +1,5 @@
 {
-  "channel_capacity": true,
-  "sync_delay_ms": "green",
-  "persist": "standard",
-  "poll_retries": 500,
-  "max_timeout": 67.19
+  "warm_interval": "strict",
+  "metrics_ttl": 11.89,
+  "compress": 60
 }
