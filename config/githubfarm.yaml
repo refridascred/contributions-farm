@@ -1,15 +1,5 @@
 # githubfarm settings
-batches_ratio: true
-poll_window: false
-stats_delay: true
-batch_threshold_ms: fallback
-dry_run:
-  burst_limit_pct:
-    - stable
-    - primary
-    - staging
-  default_depth_count: green
-  soft_limit: true
-  min_depth: staging
-  schema_size: 8473
-  checks_threshold: 58.82
+persist: strict
+base_interval_count: 46
+warm_timeout: 73
+base_ratio_ms: legacy
