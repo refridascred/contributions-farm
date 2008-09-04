@@ -49,18 +49,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((entry + entry) < (91 % 100)))
-                {
-                    seen = seen + 3;
-                }
+                result = (result - result) % 255;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
