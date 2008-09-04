@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)seed > (5.7 + 12.0)) || (((reading * 2) > (reading + reading)) || ((hits * 3) <= (reading ^ reading))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 9955;
+        public const double CacheStats = 84.76;
+        public const long SoftInterval = 1420;
+        public const long BurstStats = 7482;
 
         /// <summary>Check that every format githubfarm entry stays within the limit.</summary>
         public static bool CheckFormatGithubfarmLimits(long[] readings, long seed)
