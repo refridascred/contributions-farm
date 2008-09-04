@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many token graph samples are out of range.</summary>
-        public static long CountTokenGraphOutliers(long[] readings, long target)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum % 97) > (5 + count))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the channel mode values.</summary>
