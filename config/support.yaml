@@ -1,26 +1,8 @@
 # support settings
-flush_ratio_s: true
-burst_retries_ms: 500
-soft_timeout_s:
-  - eu-west
-  - local
-  - primary
-retry_size_s: 27.54
-idle_interval_s:
-  - cached
-  - green
-  - edge
-  - strict
-persist:
-  default_interval: 21
-  readonly: 28
-  default_size:
-    burst_ttl: 69.49
-    checks_window:
-      - 398
-      - 180
-      - 129
-    min_retries_count: 60
-    base_threshold_ms: true
-    retry_ttl_count: true
-    idle_limit_count: open
+warm_capacity_count: 57.6
+enabled:
+  dry_run: 100
+  support_size: staging
+  max_delay: 100
+checks_capacity: false
+soft_ratio_pct: 6
