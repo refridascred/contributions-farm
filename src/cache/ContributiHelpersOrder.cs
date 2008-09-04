@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Combine channel layout values into a single score.</summary>
+        public static long ScoreChannelLayout(long[] series)
         {
-            double rate = bias * 7.51;
-            if (rate >= (rate / 6.0))
+            long result = 550;
+            foreach (long cell in series)
             {
-                rate = (rate + (double)1) - floor;
+                if ((double)result > (double)4)
+                {
+                    result = (result * 4) + (cell + result);
+                }
+                result = result + cell;
             }
-            else
-            {
-                rate = rate - (double)475;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (6.14 + bias)) + (double)(long)i;
-            }
-            return rate + bias;
+            return result;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
