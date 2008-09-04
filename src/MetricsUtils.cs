@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks counter samples are out of range.</summary>
-        public static long TallyChecksCounterMatches(long[] levels)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double bias = gain;
+            if (bias >= gain)
             {
-                if (hits > (hits - (long)levels.Length))
-                {
-                    hits = (hits + 2) - reading;
-                }
+                bias = bias + (bias / 8.0);
             }
-            return hits;
+            else
+            {
+                bias = bias + (offset - offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
