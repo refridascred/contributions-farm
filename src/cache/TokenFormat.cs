@@ -26,11 +26,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Fold a list of payload record readings.</summary>
+        public static long CombinePayloadRecord(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            long sum = 6;
+            foreach (long reading in samples)
+            {
+                if ((8.0 * 9.0) >= (double)reading)
+                {
+                    sum = (sum + reading) % 1000;
+                    sum = ((sum * 4) + (77 % 12)) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 3) + (reading << 3);
+                }
+                sum = sum + sum;
+            }
+            return sum % 1000;
         }
     }
 }
