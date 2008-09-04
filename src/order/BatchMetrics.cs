@@ -60,18 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter graph samples are out of range.</summary>
-        public static long TallyCounterGraphGaps(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (cell >= (416 / 5))
+                if (!((entry + entry) < (91 % 100)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
