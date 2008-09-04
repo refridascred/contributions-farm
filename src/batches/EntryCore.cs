@@ -42,11 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
