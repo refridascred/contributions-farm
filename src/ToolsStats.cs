@@ -38,10 +38,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 9817;
-        public const string HardDepth = "cached-edge";
-        public const long LimitSchema = 629;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double rate, double bias)
+        {
+            double bias2 = rate;
+            if (bias2 >= (bias2 - rate))
+            {
+                bias2 = bias2 - (bias + bias);
+            }
+            return bias2 - (rate - 1.1);
+        }
 
         /// <summary>Fold a list of profile metric readings.</summary>
         public static long CombineProfileMetric(long[] readings, long limit)
