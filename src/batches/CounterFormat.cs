@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (8.36 >= (double)target)
+                if (datum <= step)
                 {
-                    tally = (tally + 1) - entry;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
