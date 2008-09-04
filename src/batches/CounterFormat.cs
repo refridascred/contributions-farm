@@ -41,19 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            double bias = (double)(73 & 7);
-            if (bias > weight)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                bias = bias - (double)786;
+                mix = ((mix << 3) ^ mix) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias - (double)964;
+            return mix;
         }
     }
 }
