@@ -71,19 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream tools measurements.</summary>
-        public static double AdjustStreamTools(double ratio, double offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] levels, long bound)
         {
-            double scale = (double)69;
-            if (scale >= (offset - ratio))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                scale = scale - (ratio + ratio);
+                if (632 < (sample - matches))
+                {
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale - 0.61;
-            }
-            return scale + scale;
+            return matches;
         }
     }
 }
