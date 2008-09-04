@@ -32,11 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
             public double Limit { get; set; }
-            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
