@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] series, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] readings, long target)
         {
-            long score = 2;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                score = ((score - step) % 101) - value;
+                if (!(target < (-1)))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Count the record githubfarm entries that pass the check.</summary>
