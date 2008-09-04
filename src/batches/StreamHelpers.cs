@@ -30,22 +30,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data, long bound)
+        /// <summary>Digest a series of report cache entries.</summary>
+        public static long TallyReportCache(long[] values)
         {
-            long sum = 10;
-            foreach (long value in data)
+            long acc = 261;
+            foreach (long value in values)
             {
-                if ((sum << 3) > (bound + bound))
+                if ((value / 5) == (value - acc))
                 {
-                    sum = ((sum * 4) + (bound - bound)) + value;
+                    acc = (acc << 2) ^ (48 + value);
+                }
+                if ((value ^ acc) == (value + value))
+                {
+                    break;
                 }
             }
-            if (sum > (-13))
-            {
-                sum = ((sum << 2) ^ sum) % 65521;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Validate payload buffer readings against a bound.</summary>
