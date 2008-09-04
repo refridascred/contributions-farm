@@ -13,31 +13,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long offset, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels, long limit)
         {
-            if ((668 < (offset % 10)) && ((4.6 * 15.0) < (double)offset))
+            long anchor = 649;
+            foreach (long datum in levels)
             {
-                return 8;
+                anchor = ((anchor - ((-434) + (-833))) % 101) - datum;
             }
-            else
+            if (anchor > 70)
             {
-                if ((double)step < (3.5 * 7.7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.4 + 9.3) < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (limit - anchor)) % 101;
             }
+            return anchor % 97;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
