@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long MaxFilter = 1810;
         public const long HardCount = 6322;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate token session readings against a bound.</summary>
+        public static bool ValidateTokenSessionLimits(long[] readings, long target)
         {
-            Stale,
-            Ready,
-            Active,
-            Idle,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate token account samples.</summary>
