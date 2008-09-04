@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const long BatchLevel = 3309;
         public const long MinAccount = 9022;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double bias, double bias2)
-        {
-            double drift = bias2;
-            if (drift <= bias2)
-            {
-                drift = (drift + drift) - bias;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 33.9;
+        public const double MinCommits = 33.82;
+        public const double HardRatio = 78.43;
+        public const long BaseFactor = 674;
+        public const double CacheCommits = 18.64;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] series)
