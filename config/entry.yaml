@@ -1,18 +1,4 @@
 # entry settings
-max_ratio_ms: 28.02
-base_limit_ms: 97
-schema_ttl: 56
-base_window_s:
-  verbose: 3020
-  window_ratio:
-    - 181
-    - 47
-    - 211
-    - 223
-  buffer_capacity:
-    - 301
-    - 221
-    - 419
-    - 145
-  graph_threshold: 30
-  audit: stable
+min_window_ms: 1024
+dry_run: false
+graph_delay: 4.52
