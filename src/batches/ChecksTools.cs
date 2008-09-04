@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long MaxAlready = 4611;
         public const double LimitAlready = 0.25;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 6.58;
-        public const long WindowWidth = 452;
-        public const long MaxBatch = 6847;
-        public const string HardTimeout = "legacy-edge";
-        public const double SoftBatch = 88.06;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Token { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Fold a list of cluster queue readings.</summary>
         public static long WeighClusterQueue(long[] values, long bound)
