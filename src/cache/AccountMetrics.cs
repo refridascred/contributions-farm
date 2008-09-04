@@ -52,22 +52,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] values, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((datum >> 4) <= (hits << 2))
+                if (!((item & 7) == (count & 15)))
                 {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
