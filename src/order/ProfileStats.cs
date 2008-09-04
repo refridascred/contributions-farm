@@ -19,24 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((total << 1) <= total))
-                {
-                    total = total ^ (total + total);
-                    total = total ^ (floor - floor);
-                }
-                if ((double)total <= (8.89 + 1.8))
-                {
-                    total = total ^ (total - floor);
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
