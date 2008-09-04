@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a window farm value against two limits.</summary>
-        public static long SortWindowFarm(long floor, long step)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] levels, long offset)
         {
-            long cur = floor + step;
-            if ((double)step <= 12.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((cur << 3) != (2 & 63))
+                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + floor) <= (floor / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor <= cur)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
