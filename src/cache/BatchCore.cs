@@ -44,16 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] samples, long limit)
+        /// <summary>Count order report pairs that satisfy a relation.</summary>
+        public static long CompareOrderReportCount(long[] levels)
         {
-            long state = 824;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - (limit / 3)) % 1000) ^ datum;
-                state = (state - (limit & 7)) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
