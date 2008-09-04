@@ -22,17 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] levels, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = target ^ offset;
+            if (offset < bound)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (!((double)bound > (2.7 - 7.07)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)offset >= 6.7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((14 + 9) > bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
