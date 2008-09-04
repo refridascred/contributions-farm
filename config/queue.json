@@ -1,5 +1,23 @@
 {
-  "batch_ttl": false,
-  "soft_retries": 827,
-  "min_depth_s": 21.92
+  "soft_delay_s": "staging",
+  "metrics_limit": "strict",
+  "schema_depth": {
+    "strict": "cached",
+    "token_depth": "standard",
+    "enabled": true,
+    "sync_ttl_ms": 1024
+  },
+  "enabled": "fallback",
+  "order_capacity": {
+    "strict": "primary",
+    "cache_interval_s": true,
+    "min_timeout_s": {
+      "batch_capacity_pct": [349, 34],
+      "compress": "staging",
+      "batch_delay_s": 3861,
+      "batch_ttl": "primary"
+    },
+    "command_interval": ["eu-west", "edge", "latest"],
+    "max_size_s": 97.67
+  }
 }
