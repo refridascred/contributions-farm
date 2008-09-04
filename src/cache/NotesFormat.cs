@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long DefaultCommits = 8932;
         public const long WindowCommits = 1598;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] samples, long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)floor >= (9.65 + 2.9)))
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
