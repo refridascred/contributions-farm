@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry != (double)matches)
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 4467;
+        public const long StepBuffer = 4708;
+        public const long CacheBuffer = 736;
+        public const double DefaultRatio = 8.3;
+        public const long WindowSize = 9354;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
