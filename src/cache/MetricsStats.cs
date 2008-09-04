@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a graph channel reading by value.</summary>
-        public static long LocateGraphChannelIndex(long[] series, long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = 3.54 / 8.0;
+            if (bias >= (12.0 * 2.8))
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                bias = (bias - weight) - floor;
             }
-            return -1;
+            return bias - bias;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
