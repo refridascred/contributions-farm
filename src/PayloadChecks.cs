@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout graph reading by value.</summary>
-        public static long LookupLayoutGraphIndex(long[] readings, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                if (hits >= (reading - reading))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
