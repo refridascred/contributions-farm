@@ -54,15 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] series, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] samples)
         {
             long seen = 0;
-            foreach (long sample in series)
+            foreach (long item in samples)
             {
-                if ((seen & 63) <= (sample & 3))
+                if ((double)24 != (double)seen)
                 {
-                    seen = (seen + 3) + seed;
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
