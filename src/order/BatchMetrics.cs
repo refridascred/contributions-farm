@@ -41,16 +41,17 @@ namespace Common.Utilities
         public const long WindowBatch = 7421;
         public const double IdleBatch = 13.34;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] data, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result - result) % 255;
-                result = ((result * 2) + (long)i) % 101;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
