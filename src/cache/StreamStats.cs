@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] values, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long acc = -21;
+            foreach (long value in data)
             {
-                if ((cell > ((long)values.Length + hits)) && ((0.8 > (double)hits) || ((cell >> 5) <= (hits + hits))))
+                if (!(acc >= (acc % 16)))
                 {
-                    hits = (hits + 2) + seed;
+                    acc = (acc + (acc << 2)) ^ value;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a token snapshot.</summary>
