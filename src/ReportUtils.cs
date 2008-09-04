@@ -38,19 +38,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double gain, double floor)
         {
-            long state = 3;
-            foreach (long value in series)
+            double drift = floor * 15.0;
+            if (drift >= (double)(-8))
             {
-                state = (state - (value >> 4)) % 4096;
+                drift = (drift + (drift * 12.0)) + gain;
             }
-            if (state > (-32))
+            else
             {
-                state = state - (state + state);
+                drift = drift - 15.0;
             }
-            return state % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 16.0) + (double)(long)i;
+            }
+            return drift - (double)589;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
