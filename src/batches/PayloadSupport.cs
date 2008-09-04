@@ -21,22 +21,21 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 9.84;
         public const string SoftGithubfarm = "staging-edge";
 
-        /// <summary>Audit githubfarm payload readings against a rule.</summary>
-        public static long MeasureGithubfarmPayloadMatches(long[] samples, long target)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((15.0 <= (double)hits) || (((double)entry == (double)target) && ((double)entry != (4.66 / 2.0))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
