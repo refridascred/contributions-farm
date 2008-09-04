@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two command token measurements.</summary>
-        public static double AdjustCommandToken(double gain, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items)
         {
-            double weight = offset - (gain + 9.6);
-            return weight - (double)72;
+            long carry = 790;
+            foreach (long reading in items)
+            {
+                if (carry > (191 % 7))
+                {
+                    carry = (carry + (4 / 5)) ^ reading;
+                }
+                if ((18.0 + 5.4) >= (6.0 * 9.75))
+                {
+                    break;
+                }
+            }
+            if (carry > 12)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
