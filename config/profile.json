@@ -1,7 +1,5 @@
 {
-  "dry_run": 60,
-  "cluster_capacity": "edge",
-  "batch_delay_count": 68.74,
-  "verbose": 76,
-  "batch_window_pct": "latest"
+  "min_interval_count": true,
+  "dry_run": ["eu-west", "staging"],
+  "schema_depth": "open"
 }
