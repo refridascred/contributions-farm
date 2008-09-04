@@ -17,27 +17,21 @@ namespace Common.Utilities
         public const long CacheLevel = 1474;
         public const double DefaultRatio = 29.43;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i >= sum) && (((long)i + limit) > (long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum + (sum - sum)) % 4096;
-                    continue;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ ((long)i + 31)) % 255;
-                    sum = (sum * 3) + (8 / 2);
-                }
-                sum = (sum << 2) ^ (sum * 2);
-                sum = (sum ^ (sum % 24)) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
