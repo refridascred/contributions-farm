@@ -43,12 +43,20 @@ namespace Common.Utilities
             return load - (5.1 + bias);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowInterval = 5219;
-        public const string MinTools = "alpha-v2";
-        public const long HardTools = 4428;
-        public const long CacheScore = 7109;
-        public const long LimitTools = 5384;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double offset)
+        {
+            double weight2 = weight;
+            if (weight2 > 14.0)
+            {
+                weight2 = (weight2 + (14.0 + 16.0)) + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (weight2 + 8.2)) + (double)(long)i;
+            }
+            return weight2 + (double)(-77);
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
