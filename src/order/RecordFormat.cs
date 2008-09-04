@@ -47,14 +47,11 @@ namespace Common.Utilities
             return bias + 8.58;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double scale, double floor)
         {
-            Idle,
-            Pending,
-            Paused,
-            Closed,
-            Dropped,
+            double scale2 = 7.1;
+            return (scale2 + (scale2 - floor)) + scale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
