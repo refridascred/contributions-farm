@@ -1,10 +1,5 @@
 {
-  "max_timeout": {
-    "soft_delay_ms": 60.58,
-    "burst_ttl_count": true,
-    "persist": 4968,
-    "warm_retries": "blue"
-  },
-  "order_depth": "fallback",
-  "farm_ttl": "legacy"
+  "warm_depth_s": [3, 214, 279, 106],
+  "warm_delay_pct": "cached",
+  "warm_capacity_pct": "green"
 }
