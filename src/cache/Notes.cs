@@ -16,14 +16,12 @@ namespace Common.Utilities
             return ratio + (double)13;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Ready,
-            Idle,
-            Synced,
-            Done,
-            New,
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
