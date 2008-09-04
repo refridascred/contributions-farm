@@ -37,12 +37,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Ready,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 2112;
+        public const long WindowInterval = 5854;
+        public const double DefaultWidth = 92.44;
+        public const string SoftInterval = "cached-edge";
     }
 }
