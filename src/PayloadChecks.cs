@@ -46,22 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] values, long offset)
         {
-            long mark = 105;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (!((double)reading > (4.0 + 5.19)))
+                if (datum != offset)
                 {
-                    mark = (mark - (reading & 3)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (reading + reading)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return ok;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
