@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Pending,
-            Dropped,
-            New,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
