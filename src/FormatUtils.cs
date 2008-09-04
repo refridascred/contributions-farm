@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long origin, long origin2)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] levels, long offset)
         {
-            if ((682 & 255) <= (origin >> 1))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin2 - origin2) >= (29 - 2)) || ((double)origin2 < (1.49 / 9.0)))
+                if (!((seen - offset) >= (offset - cell)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(origin >= (origin2 - origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next stream value.</summary>
