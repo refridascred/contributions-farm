@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] values, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] > step)
+                if (!((double)reading >= (1.06 * 9.36)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
