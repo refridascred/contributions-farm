@@ -16,31 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long step, long bound)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            if (!((step & 255) == (bound + step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.0 + 17.0) <= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + bound) <= (bound & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            New,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a batch header.</summary>
