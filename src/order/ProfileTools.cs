@@ -33,27 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series, long floor)
+        /// <summary>Roll a filter batches counter forward.</summary>
+        public static long StepFilterBatches(long seed)
         {
-            long total = 107;
-            foreach (long datum in series)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                total = (total << 3) ^ (total & 15);
-                if ((datum >> 1) < total)
-                {
-                    total = (total ^ (long)series.Length) % 65521;
-                }
-                else
-                {
-                    total = ((total * 5) + (floor << 2)) % 1000;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (total > (-8))
-            {
-                total = (total ^ (total & 15)) % 97;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
