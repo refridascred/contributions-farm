@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate support queue readings against a bound.</summary>
-        public static bool VerifySupportQueueLimits(long[] data, long offset)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 8284;
+        public const long SoftInterval = 7550;
+        public const double MaxInterval = 83.7;
+        public const long MinTimeout = 6601;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double ratio, double floor)
