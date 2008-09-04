@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "local-edge";
-        public const long MaxAlready = 4611;
-        public const double LimitAlready = 0.25;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long bound)
+        {
+            long step = origin + bound;
+            if ((bound / 9) >= (bound + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= (2.0 + 8.55))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8.2 * 7.6) == (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double SmoothBatch(double rate, double bias)
