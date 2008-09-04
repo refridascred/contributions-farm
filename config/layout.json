@@ -1,12 +1,15 @@
 {
-  "default_capacity_pct": "green",
-  "batch_limit": {
-    "max_retries_s": "standard",
-    "compress": "green",
-    "sync_size_pct": "green"
+  "editor_retries": "eu-west",
+  "record_window": "edge",
+  "idle_depth_count": true,
+  "account_depth": {
+    "default_timeout_count": "strict",
+    "token_timeout": 100,
+    "strict": 37.28,
+    "soft_timeout_ms": 3.08,
+    "stream_window": 500,
+    "audit": "open"
   },
-  "soft_size_s": "eu-west",
-  "schema_ttl": 78,
-  "hard_depth": 38.03,
-  "default_limit_ms": 100
+  "max_ttl_count": 60,
+  "max_interval_ms": [423, 271, 73, 294]
 }
