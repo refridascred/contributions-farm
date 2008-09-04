@@ -39,21 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up buffer command samples.</summary>
-        public static long MatchBufferCommandCount(long[] items)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
