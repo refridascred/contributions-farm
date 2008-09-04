@@ -47,12 +47,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitTimeout = "staging-edge";
-        public const long MaxSchema = 6968;
-        public const long RetryBudget = 4593;
-        public const string CacheCount = "alpha-1";
-        public const long StepLevel = 4565;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values, long limit)
+        {
+            long anchor = 586;
+            foreach (long datum in values)
+            {
+                if ((limit + (-3)) <= 989)
+                {
+                    anchor = anchor + (305 + datum);
+                }
+                if (((58 - datum) >= anchor) && ((double)anchor == (16.0 * 18.0)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryMetrics = 6564;
