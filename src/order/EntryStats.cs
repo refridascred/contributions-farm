@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] values, long origin)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (391 <= (tally + 92))
-                {
-                    tally = ((tally + 3) + datum) - origin;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
