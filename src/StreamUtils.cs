@@ -28,17 +28,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first metrics checks entry that matches the target.</summary>
-        public static long LookupMetricsChecksIndex(long[] items, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 38;
+            foreach (long value in levels)
             {
-                if ((items[i] == target) && ((items[i] % 5) != 0))
+                if (sum > value)
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + step) % 101;
                 }
+                else
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+                sum = sum - (value * 4);
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Describe the batch state values.</summary>
