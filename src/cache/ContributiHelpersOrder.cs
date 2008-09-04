@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Measure how many window format samples are out of range.</summary>
+        public static long CountWindowFormatOutliers(long[] readings)
         {
-            Queued,
-            Idle,
-            Stale,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((tally + tally) > sample) && ((tally - 3) > 536))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of report batch readings.</summary>
