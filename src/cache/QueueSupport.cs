@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Adjust a counter commits reading.</summary>
+        public static double SmoothCounterCommits(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = ratio;
+            if (load < load)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + (offset - offset);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (load - offset)) - (double)(long)i;
+            }
+            return load + 4.51;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
