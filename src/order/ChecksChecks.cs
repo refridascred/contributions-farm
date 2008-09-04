@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long limit, long limit2)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            long prev = limit + limit2;
-            if (((limit & 3) >= (prev % 16)) || (limit2 < prev))
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
+                long edge = ((long)i ^ (long)i) - (mix - mix);
+                mix = mix - edge;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((limit2 + limit) > 208))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit << 1) != (517 + prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Accumulate stream samples.</summary>
