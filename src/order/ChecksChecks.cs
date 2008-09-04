@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 12.62;
-        public const double DefaultWindow = 51.36;
-        public const long StepFactor = 8261;
-        public const long BatchRatio = 2213;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseBudget = 41.45;
+        public const double CacheQueue = 87.03;
+        public const long MaxSpan = 8875;
+        public const long CacheSize = 7069;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] values)
