@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseBudget = 41.45;
-        public const double CacheQueue = 87.03;
-        public const long MaxSpan = 8875;
-        public const long CacheSize = 7069;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((10.0 * 6.0) <= (double)matches)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long StepAlready(long seed)
