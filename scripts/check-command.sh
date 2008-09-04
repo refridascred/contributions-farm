@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=68
-log "limit is ${COMMAND_LIMIT}"
-
-for item in fallback cached open strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-cached}"
 case "${mode}" in
-    legacy)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=172
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
