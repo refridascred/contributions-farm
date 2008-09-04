@@ -49,19 +49,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] items, long offset)
+        /// <summary>Count the editor farm entries that pass the check.</summary>
+        public static long MeasureEditorFarmOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (item < offset)
+                if (!(((count % 16) < reading) || (count >= (425 >> 2))))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Project the next token session value.</summary>
