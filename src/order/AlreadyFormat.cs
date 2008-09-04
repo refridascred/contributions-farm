@@ -75,10 +75,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetrySpan = 9029;
-        public const long RetryStream = 9790;
-        public const long BaseStream = 7434;
-        public const long BurstTimeout = 973;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double ratio, double bias)
+        {
+            double ratio2 = bias / 6.0;
+            if (ratio2 < bias)
+            {
+                ratio2 = ratio2 - (ratio / 4.0);
+            }
+            else
+            {
+                ratio2 = ratio2 + (double)29;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - (double)725) + (double)(long)i;
+            }
+            return ratio2 + bias;
+        }
     }
 }
