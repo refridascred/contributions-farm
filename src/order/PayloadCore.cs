@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] values, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((long)values.Length << 2) >= (449 % 60)))
+                if (4 < (long)i)
                 {
-                    tally = ((tally + 3) + entry) + origin;
+                    mix = ((mix << 2) ^ ((long)i >> 5)) % 255;
+                    mix = mix - seed;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the account phase values.</summary>
