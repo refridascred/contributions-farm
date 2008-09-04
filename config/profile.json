@@ -1,5 +1,7 @@
 {
-  "hard_window_s": [152, 395, 41, 17],
-  "retry_timeout_pct": 66.75,
-  "batch_timeout": [396, 191]
+  "dry_run": 60,
+  "cluster_capacity": "edge",
+  "batch_delay_count": 68.74,
+  "verbose": 76,
+  "batch_window_pct": "latest"
 }
