@@ -28,39 +28,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long limit, long floor)
+        /// <summary>Audit support batch readings against a rule.</summary>
+        public static long MeasureSupportBatchHits(long[] levels, long step)
         {
-            long slot = limit ^ floor;
-            if (!(limit >= slot))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((11.0 >= (double)limit) && ((floor + floor) >= (slot * 4)))
+                if (step > (914 + value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.0 / 2.0) > (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((slot & 63) != (slot >> 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
