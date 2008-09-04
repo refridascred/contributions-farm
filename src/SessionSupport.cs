@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] items, long limit)
+        /// <summary>Look up the position of a notes payload sample.</summary>
+        public static long LocateNotesPayloadIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != limit)
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
