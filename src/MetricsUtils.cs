@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up account tools samples.</summary>
-        public static long MatchAccountToolsCount(long[] series)
+        /// <summary>Adjust a report schema reading.</summary>
+        public static double BlendReportSchema(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = offset;
+            if (bias < (bias - rate))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias + (double)4;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (rate / 3.0);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
