@@ -1,11 +1,6 @@
 {
-  "compress": {
-    "idle_size": 100,
-    "channel_timeout": 327,
-    "base_interval_ms": 8106
-  },
-  "flush_delay_s": 53,
-  "enabled": 46.69,
-  "readonly": "strict",
-  "poll_ratio": 14
+  "default_ttl": "latest",
+  "strict": "eu-west",
+  "poll_interval": "strict",
+  "context_timeout": 1716
 }
