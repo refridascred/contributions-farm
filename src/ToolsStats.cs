@@ -104,19 +104,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
+        public static long CountGithubfarmContributiHits(long[] series, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((long)i > (origin + state))
+                if ((double)(long)series.Length >= (9.22 - 1.06))
                 {
-                    state = (state - ((long)i ^ 572)) % 255;
+                    tally = ((tally + 1) ^ value) - limit;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
     }
 }
