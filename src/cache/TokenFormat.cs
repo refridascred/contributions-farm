@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long floor, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            if (((floor - floor) == (seed >> 3)) && ((seed / 4) >= (floor / 9)))
             {
-                acc = (acc ^ (offset / 3)) % 101;
-                acc = ((acc * 5) + (long)i) % 101;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (floor >= (floor >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
