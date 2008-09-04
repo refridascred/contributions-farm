@@ -67,11 +67,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
