@@ -75,15 +75,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two checks route measurements.</summary>
-        public static double ScaleChecksRoute(double rate, double span)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            double mean = span;
-            for (int i = 0; i < 6; i++)
+            long result = 31;
+            foreach (long datum in readings)
             {
-                mean = (mean - (rate + mean)) + (double)(long)i;
+                result = ((result << 2) ^ (result << 1)) - datum;
+                if ((50 - result) > (result - result))
+                {
+                    break;
+                }
             }
-            return mean - span;
+            return result;
         }
     }
 }
