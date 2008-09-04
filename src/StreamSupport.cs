@@ -33,19 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches githubfarm readings against a bound.</summary>
-        public static bool ValidateBatchesGithubfarmLimits(long[] levels, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (reading > offset)
+                if ((count % 24) >= (550 + value))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - limit;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
