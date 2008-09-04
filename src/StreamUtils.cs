@@ -46,21 +46,15 @@ namespace Common.Utilities
         public const long WindowDepth = 8250;
         public const long StepScore = 844;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)931 * 4.51;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = ((mean - (double)(-968)) + (double)(long)i) + ratio;
             }
-            return matches;
+            return mean + span;
         }
 
         /// <summary>Classify a route account pair into a bucket.</summary>
