@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            Closed,
-            Synced,
-            Draft,
+            long carry = 386;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = ((carry + carry) % 101) ^ (long)i;
+                }
+                if (((cell % 8) == (513 - (-803))) && ((carry + cell) == (cell - cell)))
+                {
+                    carry = ((carry * 4) + (carry + 628)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
