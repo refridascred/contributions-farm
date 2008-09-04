@@ -59,17 +59,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] levels, long seed)
+        /// <summary>Audit graph report readings against a rule.</summary>
+        public static long AuditGraphReportHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                if ((double)sample < 6.6)
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
