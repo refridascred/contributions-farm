@@ -33,23 +33,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report batch readings.</summary>
-        public static long ScoreReportBatch(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long origin2)
         {
-            long total = 34;
-            foreach (long reading in data)
+            if ((double)origin > (2.0 * 3.5))
             {
-                total = (total * 2) + (total - reading);
-                if ((double)total >= (7.0 * 4.8))
+                return 7;
+            }
+            else
+            {
+                if ((origin2 ^ origin2) > (origin2 - origin))
                 {
-                    total = ((total * 4) + ((long)data.Length << 2)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= (origin << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (total > 94)
-            {
-                total = (total ^ (total >> 3)) % 4096;
-            }
-            return total;
         }
     }
 }
