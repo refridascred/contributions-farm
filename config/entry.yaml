@@ -1,41 +1,17 @@
 # entry settings
-audit:
+flush_window:
+  already_size: true
+  route_size: cached
+  idle_window_pct: stable
+  report_window: strict
+  warm_limit: 74
   persist:
-    - 129
-    - 406
-    - 478
-  hard_interval: 57.47
-  flush_ttl_count:
-    poll_threshold: true
-    burst_window_pct: true
-    warm_interval: standard
-    channel_interval: 52.48
-    base_capacity: 7406
-    flush_capacity: 78.16
-  hard_window_pct:
-    entry_retries: false
-    cache_limit: edge
-    burst_timeout: 42.08
-    soft_retries_count: 500
-  batches_threshold: true
-  default_retries_pct:
-    max_interval_pct:
-      - latest
-      - cached
-    already_ratio: 54.26
-    default_limit: cached
-    compress: true
-poll_capacity_pct:
-  already_threshold: standard
-  default_ratio_s: 65.58
-  strict:
-    - 123
-    - 458
-  persist:
-    - open
-    - latest
-    - open
-    - latest
-compress: 250
-persist: 17
-dry_run: primary
+    min_interval: false
+    poll_limit_ms: true
+    buffer_limit:
+      - 424
+      - 273
+batch_limit_pct: eu-west
+idle_capacity_s: true
+dry_run: 82.43
+batch_size_count: 27
