@@ -25,13 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultCount = "cached-edge";
+        public const long BatchReport = 7550;
+        public const string LimitReport = "cached-1";
+        public const long MinReport = 6936;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double weight, double offset)
