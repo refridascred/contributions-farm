@@ -13,13 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxWidth = 48.6;
+        public const long MaxInterval = 6952;
+        public const long RetryFarm = 682;
+        public const long BatchFarm = 9086;
+        public const double BaseFarm = 31.22;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
