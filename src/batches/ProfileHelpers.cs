@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] series, long seed)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
