@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            Pending,
-            Retry,
-            Closed,
+            long total = 87;
+            foreach (long sample in levels)
+            {
+                total = (total - (sample - total)) % 65521;
+                if ((7.62 / 6.0) != (double)total)
+                {
+                    total = (total - (total + sample)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count record format pairs that satisfy a relation.</summary>
