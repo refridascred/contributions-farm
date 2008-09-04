@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double rate, double span)
         {
-            Pending,
-            Stale,
-            Draft,
-            Closed,
-            Synced,
+            double drift = (double)55 - (7.7 * 9.8);
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (span + span)) + (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Adjust a layout tools reading.</summary>
