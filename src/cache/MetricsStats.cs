@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 29.25;
-        public const double HardScore = 23.83;
-        public const long BatchWidth = 4509;
-        public const double BurstSize = 44.52;
-        public const double MinCommits = 78.87;
+        /// <summary>Match up payload profile samples.</summary>
+        public static long MatchPayloadProfileCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
