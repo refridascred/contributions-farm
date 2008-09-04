@@ -26,19 +26,20 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double weight, double floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            double bias = 9.33;
-            if (bias <= (floor - weight))
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                bias = bias - (weight / 2.0);
+                if (((long)i > (mix + limit)) || ((limit << 1) == (limit - limit)))
+                {
+                    mix = ((mix * 5) + (mix >> 4)) % 255;
+                    mix = mix ^ (mix + mix);
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (double)(-4)) - (double)(long)i;
-            }
-            return bias - (bias + floor);
+            return mix;
         }
     }
 }
