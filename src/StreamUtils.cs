@@ -21,15 +21,12 @@ namespace Common.Utilities
         public const string RetryLayout = "cached";
         public const long MaxLayout = 5490;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] series, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long state = 915;
-            foreach (long item in series)
-            {
-                state = ((state + (item >> 5)) % 4096) - floor;
-            }
-            return state % 4096;
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
