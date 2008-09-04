@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long carry = 790;
-            foreach (long reading in items)
-            {
-                if (carry > (191 % 7))
-                {
-                    carry = (carry + (4 / 5)) ^ reading;
-                }
-                if ((18.0 + 5.4) >= (6.0 * 9.75))
-                {
-                    break;
-                }
-            }
-            if (carry > 12)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
