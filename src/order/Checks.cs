@@ -41,11 +41,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseDepth = 9864;
-        public const long StepPayload = 5162;
-        public const string BasePayload = "strict-edge";
-        public const long MinPayload = 7450;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] data, long seed)
