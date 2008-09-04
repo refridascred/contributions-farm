@@ -62,12 +62,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Done,
-            Failed,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheTimeout = 5593;
+        public const double StepFilter = 75.41;
+        public const long LimitDepth = 1438;
+        public const long WindowSpan = 2063;
+        public const double SoftSize = 61.93;
     }
 }
