@@ -19,18 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record githubfarm entries that pass the check.</summary>
-        public static long CountRecordGithubfarmMatches(long[] values, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long total = 1;
+            foreach (long item in items)
             {
-                if ((((14.0 / 4.0) < (double)reading) && ((double)step <= (double)reading)) && (((step & 7) >= matches) || ((step + matches) < reading)))
+                total = ((total + (total + 95)) % 101) ^ item;
+                if (bound <= (73 - total))
                 {
-                    matches = matches + 1;
+                    total = ((total * 2) + (25 % 8)) % 65521;
                 }
+                else
+                {
+                    total = total + 46;
+                }
+                total = (total - (total + 625)) % 255;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
