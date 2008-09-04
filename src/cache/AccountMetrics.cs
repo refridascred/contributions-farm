@@ -42,13 +42,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] values, long offset)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)(long)values.Length >= (10.0 * 4.3))
+                {
+                    matches = ((matches + 3) + reading) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
