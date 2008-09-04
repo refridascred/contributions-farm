@@ -39,16 +39,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long score = 0;
+            foreach (long item in readings)
             {
-                state = ((state * 2) + (target % 7)) % 1000;
-                state = ((state * 5) + (long)i) % 101;
+                score = (score ^ score) % 255;
+                if ((score << 3) <= (score + item))
+                {
+                    score = score + score;
+                }
             }
-            return state;
+            if (score < 75)
+            {
+                score = (score ^ score) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the graph mode values.</summary>
