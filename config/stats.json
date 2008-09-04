@@ -1,8 +1,12 @@
 {
-  "batch_timeout": "stable",
-  "default_depth_ms": 83.28,
-  "max_delay_pct": [274, 130, 370, 37],
-  "queue_limit": "eu-west",
-  "hard_timeout": 92.98,
-  "max_threshold_count": [459, 214, 59, 410]
+  "min_threshold_ms": {
+    "batch_threshold": 2962,
+    "min_timeout_pct": "primary",
+    "window_depth": false,
+    "sync_window_ms": ["blue", "primary"]
+  },
+  "max_interval": true,
+  "verbose": 46,
+  "hard_timeout_pct": 500,
+  "retry_interval_count": ["legacy", "primary", "staging"]
 }
