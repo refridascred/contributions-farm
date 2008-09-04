@@ -1,6 +1,37 @@
 # entry settings
-warm_window_count: 92.38
-audit: strict
-batch_delay_pct: 1024
-dry_run: strict
-warm_capacity_ms: green
+base_threshold_ms:
+  cache_timeout:
+    batches_ttl: standard
+    cache_size_s: 63
+    hard_timeout_count: legacy
+    compress: 4568
+    order_capacity: cached
+  enabled:
+    dry_run: 1024
+    checks_size:
+      - 144
+      - 285
+    batch_limit: fallback
+    sync_ttl: false
+  flush_interval: 500
+  verbose:
+    - strict
+    - legacy
+    - standard
+  sync_limit_pct:
+    - 102
+    - 224
+burst_delay: standard
+dry_run:
+  min_threshold_count:
+    audit: 1024
+    batches_depth: 9957
+    soft_ratio: 8248
+  graph_timeout: 3.64
+  min_ttl_s: latest
+  burst_capacity_ms: primary
+  enabled: false
+  hard_limit: 51
+checks_delay: 43.5
+enabled: 36
+verbose: local
