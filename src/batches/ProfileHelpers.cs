@@ -46,17 +46,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] levels, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long target, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = target ^ origin;
+            if ((origin >= (slot - target)) && ((double)origin != (double)4))
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((origin - origin) == (origin + target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up window samples.</summary>
