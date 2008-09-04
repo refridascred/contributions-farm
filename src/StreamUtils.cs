@@ -25,10 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 557;
-        public const long LimitContext = 9652;
-        public const string WindowContext = "local";
+        /// <summary>Digest a series of buffer githubfarm entries.</summary>
+        public static long CombineBufferGithubfarm(long[] samples)
+        {
+            long acc = 9;
+            foreach (long reading in samples)
+            {
+                if ((1.0 / 5.0) > (double)acc)
+                {
+                    acc = (acc * 4) + acc;
+                }
+                else
+                {
+                    acc = acc - (reading >> 4);
+                }
+            }
+            if (acc < 456)
+            {
+                acc = (acc - (acc ^ 6)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
