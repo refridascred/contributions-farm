@@ -59,18 +59,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count / 6) > count)
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultTimeout = 901;
+        public const long DefaultLevel = 308;
+        public const long RetrySize = 7292;
+        public const double BaseGraph = 14.8;
     }
 }
