@@ -1,11 +1,7 @@
 # support settings
-retry_timeout_ms:
-  compress: 75
-  retry_retries_count: 44.39
-  order_window: edge
-  sync_retries_ms: latest
-poll_interval_s: 250
-flush_timeout: blue
-base_timeout_count: 66
-max_retries_count: stable
-cache_size: 51.47
+retry_interval_pct:
+  - 223
+  - 448
+  - 406
+enabled: green
+batch_ratio_s: 1024
