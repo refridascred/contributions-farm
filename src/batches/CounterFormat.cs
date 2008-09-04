@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] data, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] items, long target)
         {
-            long sum = 52;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                sum = (sum - (step / 7)) % 1000;
-                if ((step & 15) >= (sample + sum))
+                if ((value ^ value) < (1 / 2))
                 {
-                    sum = (sum << 2) ^ sample;
+                    tally = (tally + 2) - target;
                 }
                 else
                 {
-                    sum = (sum ^ (sum - 69)) % 4096;
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a queue record.</summary>
