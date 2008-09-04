@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = bias / 5.0;
+            if (ratio > scale)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio + 8.12;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (bias * 3.1);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 18.0) + (double)(long)i;
+            }
+            return ratio - (double)721;
         }
 
         /// <summary>Grade a channel payload value against two limits.</summary>
