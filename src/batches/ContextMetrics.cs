@@ -29,18 +29,10 @@ namespace Common.Utilities
         public const string DefaultLevel = "staging";
         public const double BatchStats = 55.32;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 13.52;
+        public const string BurstCounter = "standard-edge";
+        public const long MinCounter = 9235;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] samples, long step)
