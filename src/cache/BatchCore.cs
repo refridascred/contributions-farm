@@ -51,10 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 7866;
-        public const long MinEntry = 685;
-        public const long StepInterval = 3790;
-        public const string CacheEntry = "primary-edge";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)count < (double)item)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
