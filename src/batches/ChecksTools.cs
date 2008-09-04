@@ -35,14 +35,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Dropped,
-            Locked,
-            Retry,
-            Ready,
-            Done,
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
