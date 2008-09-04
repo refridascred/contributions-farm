@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] readings, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] readings, long target)
         {
-            bool flag = true;
+            long seen = 0;
             foreach (long cell in readings)
             {
-                if (cell > limit)
+                if ((((seen / 5) != (target & 127)) && ((cell << 2) < (-5))) || ((seen % 16) >= cell))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
