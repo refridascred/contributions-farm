@@ -44,21 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order report pairs that satisfy a relation.</summary>
-        public static long CompareOrderReportCount(long[] levels)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = floor;
+            if (scale >= 8.0)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - (floor + gain);
             }
-            return matches;
+            else
+            {
+                scale = scale - (floor + scale);
+            }
+            return scale - (scale / 5.0);
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
