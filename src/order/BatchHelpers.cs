@@ -27,13 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 7378;
+        public const string BatchSpan = "staging";
+        public const long WindowDepth = 8443;
+        public const long RetryInterval = 1139;
     }
 }
