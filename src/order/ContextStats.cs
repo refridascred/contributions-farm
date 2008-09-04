@@ -67,13 +67,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Closed,
-            Locked,
-            Paused,
-            Stale,
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
