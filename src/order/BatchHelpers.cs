@@ -37,10 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 7378;
-        public const string BatchSpan = "staging";
-        public const long WindowDepth = 8443;
-        public const long RetryInterval = 1139;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 2888;
+        public const double IdleToken = 5.22;
+        public const double MaxRatio = 96.31;
+        public const long WindowLevel = 9723;
+        public const long HardTimeout = 4196;
     }
 }
