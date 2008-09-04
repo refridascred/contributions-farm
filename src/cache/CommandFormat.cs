@@ -49,12 +49,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Draft,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 5353;
+        public const long DefaultSpan = 7504;
+        public const string RetryToken = "staging";
+        public const long MaxToken = 5637;
+        public const double RetryInterval = 77.46;
     }
 }
