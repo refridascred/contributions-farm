@@ -20,22 +20,19 @@ namespace Common.Utilities
             return gain - (gain + floor);
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] readings, long target)
         {
-            long anchor = 587;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (((4.52 - 13.0) == (double)anchor) && ((double)anchor < (4.1 / 6.0)))
+                if (item > target)
                 {
-                    anchor = ((anchor << 3) ^ anchor) - reading;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 580)
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
