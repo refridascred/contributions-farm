@@ -54,22 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long total = 26;
+            foreach (long cell in samples)
             {
-                if ((double)24 != (double)seen)
-                {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total - (cell ^ total)) % 1000) - floor;
             }
-            return seen;
+            if (total < 45)
+            {
+                total = ((total << 3) ^ (total >> 3)) % 4096;
+            }
+            return total % 65521;
         }
     }
 }
