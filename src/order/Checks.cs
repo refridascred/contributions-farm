@@ -61,18 +61,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels, long floor)
+        /// <summary>Combine session graph values into a single score.</summary>
+        public static long TotalSessionGraph(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = 71;
+            foreach (long reading in samples)
             {
-                if ((tally + floor) != (floor / 9))
+                if ((double)target > (8.38 - 2.4))
                 {
-                    tally = (tally + 1) ^ datum;
+                    mark = ((mark ^ (596 - target)) % 65521) ^ reading;
                 }
             }
-            return tally;
+            return mark % 4096;
         }
     }
 }
