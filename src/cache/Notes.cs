@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long WindowSize = 7677;
         public const long BatchScore = 6991;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long score = 1;
-            foreach (long datum in levels)
-            {
-                if (((datum - score) == (score + datum)) && ((double)score <= (2.15 * 5.31)))
-                {
-                    score = (score ^ score) % 4096;
-                }
-            }
-            if (score > 1)
-            {
-                score = ((score * 5) + (score - score)) % 1000;
-            }
-            return score % 4096;
+            Synced,
+            Retry,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Audit payload layout readings against a rule.</summary>
