@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-legacy}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in primary strict; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=187
+log "limit is ${COMMAND_LIMIT}"
