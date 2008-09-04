@@ -20,18 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 7143;
+        public const long IdleInterval = 4111;
+        public const string LimitRatio = "standard-v2";
 
         /// <summary>Roll a filter batches counter forward.</summary>
         public static long StepFilterBatches(long seed)
