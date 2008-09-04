@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double floor)
+        /// <summary>Look up the position of a queue metrics sample.</summary>
+        public static long FindQueueMetricsIndex(long[] items, long bound)
         {
-            double rate = weight * 2.2;
-            if (rate < (floor - floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - (rate / 3.0);
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return rate + floor;
+            return -1;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
