@@ -28,11 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
