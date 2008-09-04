@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long BaseSize = 5545;
         public const double RetryCount = 13.7;
 
-        /// <summary>Audit already window readings against a rule.</summary>
-        public static long MeasureAlreadyWindowHits(long[] values, long target)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item - seen) <= (target + target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
