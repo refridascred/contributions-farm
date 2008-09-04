@@ -18,12 +18,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long limit, long offset)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long step = limit ^ offset;
+            if ((offset + limit) == (96 * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (6.9 <= (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((3.3 / 4.0) != (double)step) && ((limit - 408) >= 47))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes mode values.</summary>
