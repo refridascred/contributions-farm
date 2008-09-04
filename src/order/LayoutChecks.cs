@@ -49,22 +49,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the editor farm entries that pass the check.</summary>
-        public static long MeasureEditorFarmOutliers(long[] samples)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((count % 16) < reading) || (count >= (425 >> 2))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Project the next token session value.</summary>
