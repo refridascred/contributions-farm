@@ -23,19 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] data, long bound)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
