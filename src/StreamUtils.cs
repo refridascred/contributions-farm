@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long target, long seed)
         {
-            long sum = 3;
-            foreach (long entry in readings)
+            if (((double)seed <= (double)43) && ((4.0 / 9.0) <= (double)seed))
             {
-                if (entry >= (entry >> 3))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed < (1.0 * 12.0))
                 {
-                    sum = sum + (sum ^ entry);
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
