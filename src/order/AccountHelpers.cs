@@ -57,18 +57,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] levels)
+        /// <summary>Scale a stats window figure with a bias.</summary>
+        public static double ProjectStatsWindow(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double bias = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell >> 2) == (cell + matches))
-                {
-                    matches = matches + 3;
-                }
+                bias = (bias + bias) + (double)(long)i;
             }
-            return matches;
+            return bias - (scale / 7.0);
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
