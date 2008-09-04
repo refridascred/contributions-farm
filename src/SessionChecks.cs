@@ -31,15 +31,14 @@ namespace Common.Utilities
         public const long BurstRoute = 7004;
         public const long BaseRoute = 7120;
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double weight, double offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double drift = offset;
-            if (drift > 7.1)
-            {
-                drift = drift + (weight / 7.0);
-            }
-            return drift - drift;
+            New,
+            Pending,
+            Closed,
+            Queued,
+            Failed,
         }
     }
 }
