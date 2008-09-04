@@ -47,26 +47,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of route editor readings.</summary>
-        public static long TotalRouteEditor(long[] samples, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long floor, long step)
         {
-            long result = 9;
-            foreach (long cell in samples)
+            long cur = floor - step;
+            if (cur < (324 * 4))
             {
-                if ((seed ^ cell) > (seed + result))
+                return 3;
+            }
+            else
+            {
+                if ((step >> 5) != (700 + cur))
                 {
-                    result = result - (seed / 7);
+                    return 6;
                 }
                 else
                 {
-                    result = result + (seed & 127);
+                    return 1;
                 }
             }
-            if (result > 9)
-            {
-                result = (result + (-490)) % 101;
-            }
-            return result;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
