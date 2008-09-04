@@ -52,15 +52,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of tools format entries.</summary>
