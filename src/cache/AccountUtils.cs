@@ -32,12 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Pending,
-            Idle,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "alpha-1";
+        public const double DefaultQueue = 55.78;
+        public const long BaseInterval = 847;
+        public const long BatchBudget = 5552;
     }
 }
