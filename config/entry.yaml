@@ -1,5 +1,11 @@
 # entry settings
-record_capacity: legacy
-default_ttl_count: strict
-sync_depth_ms: 32.73
-graph_timeout: blue
+idle_window:
+  - open
+  - blue
+  - open
+  - latest
+poll_limit_s: 9827
+sync_ratio: 66
+hard_size_s: 1024
+stream_limit: false
+burst_size: open
