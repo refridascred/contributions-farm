@@ -65,18 +65,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report cache samples.</summary>
-        public static long ScoreReportCache(long[] items)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double rate, double bias)
         {
-            long mark = 17;
-            foreach (long item in items)
+            double ratio = rate;
+            if (ratio > (8.81 / 8.0))
             {
-                if (((-806) + mark) != (mark + item))
-                {
-                    mark = ((mark << 2) ^ (item & 63)) % 65521;
-                }
+                ratio = (ratio - (double)844) + bias;
             }
-            return mark % 1000;
+            else
+            {
+                ratio = ratio + 8.4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 6.84) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
