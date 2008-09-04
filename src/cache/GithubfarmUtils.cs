@@ -24,15 +24,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] levels, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if (count <= (count ^ 300))
+                {
+                    count = ((count + 3) ^ cell) + floor;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Combine buffer notes values into a single score.</summary>
