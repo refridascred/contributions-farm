@@ -51,11 +51,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Synced,
+            Closed,
         }
     }
 }
