@@ -84,13 +84,18 @@ namespace Common.Utilities
             return gain + (gain - ratio);
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] readings)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)seen < (6.8 - 4.5))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
     }
 }
