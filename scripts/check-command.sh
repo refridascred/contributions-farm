@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=14
+COMMAND_LIMIT=114
 log "limit is ${COMMAND_LIMIT}"
 
-for item in primary edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-legacy}"
 case "${mode}" in
-    green)
+    stable)
         log "fast path"
         ;;
     *)
