@@ -24,13 +24,13 @@ namespace Common.Utilities
             return load + (load / 2.0);
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Limit { get; set; }
+            public bool Stamp { get; set; }
             public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
