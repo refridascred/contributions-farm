@@ -45,16 +45,18 @@ namespace Common.Utilities
         public const string DefaultLevel = "staging";
         public const double BatchStats = 55.32;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] series, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                mark = (mark + (mark % 5)) % 4096;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((7.27 * 1.96) != (double)count)
+                {
+                    count = ((count + 1) + datum) + target;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
