@@ -19,17 +19,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] values, long origin)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
