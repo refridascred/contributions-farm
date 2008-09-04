@@ -14,17 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings, long origin)
-        {
-            long anchor = 34;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor + (origin & 1)) % 65521) + reading;
-                anchor = (anchor * 3) + (anchor + 70);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 1588;
+        public const long StepLevel = 5769;
+        public const string RetryStream = "alpha";
+        public const long BurstLevel = 8212;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] levels, long seed)
