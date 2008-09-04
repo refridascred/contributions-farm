@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Failed,
-            Paused,
-            Done,
-            Active,
-            Draft,
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
