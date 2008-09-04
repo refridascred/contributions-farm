@@ -1,31 +1,5 @@
 {
-  "filter_threshold": {
-    "account_size": {
-      "payload_interval": 32.61,
-      "base_limit": 7890,
-      "checks_ttl": true,
-      "batch_retries": "green",
-      "cache_limit": true,
-      "sync_window": 27.6
-    },
-    "dry_run": {
-      "retry_interval_count": 99,
-      "cache_interval_count": ["eu-west", "latest", "standard", "fallback"],
-      "max_window": 9542
-    },
-    "hard_threshold_ms": {
-      "farm_size": 1024,
-      "cache_window": 89.58,
-      "format_delay": 88.2,
-      "idle_ratio": false,
-      "support_retries": 8900,
-      "audit": 6.25
-    },
-    "idle_window_count": ["stable", "legacy", "staging", "primary"]
-  },
-  "enabled": 3.93,
-  "cluster_depth": false,
-  "readonly": false,
-  "min_window_count": 4.82,
-  "retry_capacity_count": "eu-west"
+  "idle_limit": false,
+  "batch_timeout_s": "green",
+  "metric_retries": 6
 }
