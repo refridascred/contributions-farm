@@ -16,11 +16,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] readings, long step)
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
