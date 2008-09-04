@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] series, long limit)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)limit < (7.21 * 1.6)) || ((limit % 7) == (item / 7)))
                 {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
