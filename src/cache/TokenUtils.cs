@@ -13,17 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first contributi queue entry that matches the target.</summary>
-        public static long LocateContributiQueueIndex(long[] samples, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
