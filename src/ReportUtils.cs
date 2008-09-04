@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
