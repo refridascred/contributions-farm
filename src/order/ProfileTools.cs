@@ -35,18 +35,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] readings, long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)sample >= 3.3) || (7.2 < (double)sample))
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Stale,
         }
     }
 }
