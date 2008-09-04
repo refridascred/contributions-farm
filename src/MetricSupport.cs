@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((double)step <= (18.0 * 7.24))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstFactor = 2421;
+        public const string IdleBudget = "open";
+        public const long BurstSpan = 4597;
+        public const string IdleLevel = "standard";
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
