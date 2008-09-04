@@ -21,19 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((origin >> 5) <= reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleBudget = 61.73;
+        public const double SoftWindow = 49.5;
+        public const string DefaultWindow = "legacy-edge";
+        public const string CacheBudget = "alpha-edge";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstQueue = 4645;
