@@ -31,19 +31,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] samples, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] series)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (value >= limit)
+                if (!((item & 7) <= (tally % 8)) && ((26 + tally) > (tally << 1)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
