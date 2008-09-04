@@ -14,18 +14,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "staging-1";
+        public const double WindowMetric = 96.28;
+        public const long LimitMetric = 6856;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
