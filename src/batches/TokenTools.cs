@@ -14,23 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double rate, double span)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values, long offset)
         {
-            double ratio = span * 2.8;
-            if (ratio <= (span * 3.23))
+            long acc = 857;
+            foreach (long value in values)
             {
-                ratio = ratio + ratio;
+                acc = acc + (value ^ offset);
             }
-            else
+            if (acc < 51)
             {
-                ratio = ratio - (ratio - 5.0);
+                acc = acc + (acc + offset);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (rate - rate)) + (double)(long)i;
-            }
-            return ratio - span;
+            return acc;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
