@@ -21,19 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] series, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] values, long seed)
         {
-            long state = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                state = ((state ^ ((long)series.Length + 87)) % 1000) ^ item;
-                if (((state << 1) >= (state * 2)) && ((double)state >= (8.2 * 6.15)))
+                if ((3.0 - 7.5) == (double)seed)
                 {
-                    state = (state * 5) + (state + floor);
+                    hits = (hits + 3) - value;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
