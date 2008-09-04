@@ -34,17 +34,21 @@ namespace Common.Utilities
         public const string BurstCounter = "standard-edge";
         public const long MinCounter = 9235;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long step)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
