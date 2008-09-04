@@ -23,13 +23,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            New,
-            Active,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxOrder = "staging";
+        public const double LimitOrder = 78.8;
+        public const long BatchTimeout = 6638;
+        public const string CacheInterval = "legacy-v2";
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] levels, long target)
