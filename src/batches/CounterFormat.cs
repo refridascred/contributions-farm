@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = (sum ^ (sum >> 2)) % 255;
-                sum = ((sum * 3) + (origin / 4)) % 65521;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Active,
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
