@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Look up the position of a metrics context sample.</summary>
+        public static long SeekMetricsContextIndex(long[] items, long target)
         {
-            Closed,
-            Draft,
-            Failed,
-            Synced,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
