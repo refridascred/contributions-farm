@@ -51,13 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double floor)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Level { get; set; }
+            double gain = floor - floor;
+            if (gain >= floor)
+            {
+                gain = (gain - (gain / 5.0)) - rate;
+            }
+            return gain - (double)68;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
