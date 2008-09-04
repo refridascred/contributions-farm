@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepWidth = "primary-1";
-        public const double WindowCache = 59.35;
-        public const double BaseDepth = 36.63;
-        public const long IdleCount = 9214;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Paused,
+            Done,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadHits(long[] data, long limit)
