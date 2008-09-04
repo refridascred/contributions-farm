@@ -1,5 +1,8 @@
 {
-  "warm_interval": "strict",
-  "metrics_ttl": 11.89,
-  "compress": 60
+  "soft_retries_s": 41,
+  "verbose": "eu-west",
+  "flush_capacity": "open",
+  "layout_delay": "cached",
+  "sync_window_pct": "green",
+  "support_depth": "legacy"
 }
