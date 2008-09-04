@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long step, long floor)
         {
-            long result = 43;
-            foreach (long datum in data)
+            if (step <= (72 - (-70)))
             {
-                result = result - (result + datum);
-                if ((2.9 - 8.9) <= (double)result)
+                return 8;
+            }
+            else
+            {
+                if ((1.4 * 0.6) > (double)step)
                 {
-                    result = (result - datum) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if (!((825 * 5) < floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
