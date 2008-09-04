@@ -39,13 +39,12 @@ namespace Common.Utilities
         public const double BatchCount = 52.1;
         public const long BatchBatches = 6224;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            Draft,
+            Closed,
+            Idle,
         }
     }
 }
