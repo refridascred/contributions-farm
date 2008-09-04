@@ -14,19 +14,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] items, long target)
+        /// <summary>Accumulate already metrics samples.</summary>
+        public static long TallyAlreadyMetrics(long[] values)
         {
-            bool found = true;
-            foreach (long item in items)
+            long score = 43;
+            foreach (long datum in values)
             {
-                if (item > target)
+                score = (score << 3) ^ (689 & 255);
+                if ((datum & 63) <= datum)
                 {
-                    found = false;
+                    score = (score << 2) ^ (score / 4);
+                }
+                if (((score + score) >= (datum + (-7))) && (0.71 < (double)score))
+                {
                     break;
                 }
             }
-            return found;
+            return score % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
