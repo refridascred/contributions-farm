@@ -44,12 +44,20 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 3761;
-        public const long BurstGraph = 4668;
-        public const long RetryWidth = 4165;
-        public const string BurstLevel = "stable";
-        public const long HardGraph = 3075;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long CountClusterReportGaps(long[] data, long floor)
