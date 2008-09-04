@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long edge = ((long)i ^ (long)i) - (mix - mix);
-                mix = mix - edge;
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
