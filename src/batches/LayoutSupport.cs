@@ -36,23 +36,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of route support readings.</summary>
-        public static long FoldRouteSupport(long[] levels)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double weight, double bias)
         {
-            long mark = 414;
-            foreach (long entry in levels)
+            double scale = (double)(-3) - (weight * 9.6);
+            if (scale > (scale + bias))
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = (((mark << 3) ^ mark) + (long)i) ^ entry;
-                }
-                mark = ((mark * 4) + mark) % 101;
+                scale = scale - (weight / 7.0);
             }
-            if (mark > 0)
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark ^ (mark ^ 854)) % 4096;
+                scale = (scale - (scale / 2.0)) + (double)(long)i;
             }
-            return mark;
+            return scale + (bias + 5.0);
         }
 
         /// <summary>Blend two commits measurements.</summary>
