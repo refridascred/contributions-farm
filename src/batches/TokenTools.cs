@@ -14,12 +14,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 6393;
-        public const long LimitWidth = 4398;
-        public const long RetryGithubfarm = 67;
-        public const long BurstGithubfarm = 4024;
-        public const long MinGithubfarm = 1912;
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double rate, double span)
+        {
+            double ratio = span * 2.8;
+            if (ratio <= (span * 3.23))
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio - (ratio - 5.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (rate - rate)) + (double)(long)i;
+            }
+            return ratio - span;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long GradeContext(long floor, long step)
