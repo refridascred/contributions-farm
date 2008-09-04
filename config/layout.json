@@ -1,7 +1,6 @@
 {
-  "stats_delay": ["standard", "fallback"],
-  "warm_limit_s": true,
-  "burst_threshold": false,
-  "poll_ratio_count": 17.09,
-  "min_depth_ms": false
+  "min_threshold_pct": 5563,
+  "retry_size": ["edge", "latest", "standard"],
+  "hard_interval": "strict",
+  "entry_limit": "edge"
 }
