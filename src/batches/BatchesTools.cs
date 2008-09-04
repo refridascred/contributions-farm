@@ -35,13 +35,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum - (sum ^ (long)i)) % 101;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
