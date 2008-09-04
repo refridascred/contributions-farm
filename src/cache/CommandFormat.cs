@@ -18,27 +18,23 @@ namespace Common.Utilities
         public const long MaxSize = 8797;
         public const double MaxEntry = 23.44;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data, long seed)
+        /// <summary>Fold a list of tools queue readings.</summary>
+        public static long DigestToolsQueue(long[] items)
         {
-            long mix = -20;
-            foreach (long item in data)
+            long total = 7;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 12; i++)
+                total = total ^ (170 + total);
+                if (((0 << 2) < (value << 1)) && ((4.0 * 6.0) == (double)total))
                 {
-                    mix = (mix ^ (item - (long)i)) % 97;
-                    mix = (mix + (seed << 2)) % 65521;
-                }
-                if ((seed % 64) <= seed)
-                {
-                    mix = (mix << 2) ^ seed;
-                }
-                else
-                {
-                    mix = (mix - (item + item)) % 4096;
+                    total = (total + ((-50) + (-17))) % 4096;
                 }
             }
-            return mix % 97;
+            if (total < 21)
+            {
+                total = total + (total / 7);
+            }
+            return total;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
