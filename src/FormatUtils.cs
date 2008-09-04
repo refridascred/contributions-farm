@@ -46,18 +46,11 @@ namespace Common.Utilities
             return gain + (double)66;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((3.3 + 7.6) >= (double)datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
