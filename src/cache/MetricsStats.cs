@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCommits = 29.25;
+        public const double HardScore = 23.83;
+        public const long BatchWidth = 4509;
+        public const double BurstSize = 44.52;
+        public const double MinCommits = 78.87;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
