@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double gain, double span)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double weight = gain + span;
-            if (weight >= (weight + gain))
-            {
-                weight = weight + (double)4;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + 6.46;
+            Pending,
+            Done,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
