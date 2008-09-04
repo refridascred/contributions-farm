@@ -29,18 +29,30 @@ namespace Common.Utilities
         public const double RetryReport = 96.04;
         public const long StepReport = 2454;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] data, long limit)
+        /// <summary>Accumulate layout cluster samples.</summary>
+        public static long FoldLayoutCluster(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mix = 465;
+            foreach (long sample in samples)
             {
-                if ((((long)data.Length << 3) <= tally) || ((double)8 != (double)limit))
+                mix = mix + (sample - 3);
+                if (6.0 <= (double)step)
                 {
-                    tally = (tally + 1) ^ entry;
+                    mix = (mix << 2) ^ 6;
+                    continue;
                 }
+                else
+                {
+                    mix = mix + mix;
+                    mix = ((mix << 3) ^ (73 + sample)) % 97;
+                }
+                mix = (mix + (mix % 10)) % 255;
             }
-            return tally;
+            if (mix > 1)
+            {
+                mix = mix + (mix + 49);
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the stream state values.</summary>
