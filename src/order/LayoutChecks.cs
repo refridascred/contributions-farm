@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long BurstBuffer = 6716;
         public const long BaseSize = 828;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Queued,
-            Dropped,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 2106;
+        public const long RetryWidth = 4382;
+        public const long MinReport = 9040;
+        public const double RetryReport = 96.04;
+        public const long StepReport = 2454;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiOutliers(long[] data, long limit)
