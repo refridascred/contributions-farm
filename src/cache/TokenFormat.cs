@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = -805;
-            foreach (long entry in data)
-            {
-                state = (((state * 4) + (entry + 23)) % 65521) - floor;
-            }
-            return state % 4096;
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
