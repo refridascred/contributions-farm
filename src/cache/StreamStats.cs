@@ -35,19 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] items, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Combine tools values into a single score.</summary>
