@@ -53,10 +53,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSpan = 2427;
-        public const double CacheSession = 72.69;
-        public const long RetrySession = 4139;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
