@@ -47,11 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
