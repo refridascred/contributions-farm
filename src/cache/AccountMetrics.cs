@@ -68,12 +68,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Active,
-            Done,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 4438;
+        public const long StepTools = 568;
+        public const string WindowScore = "latest";
+        public const long LimitTools = 7330;
+        public const string BatchRatio = "fallback-edge";
     }
 }
