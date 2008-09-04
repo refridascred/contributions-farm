@@ -24,20 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate account entry readings against a bound.</summary>
-        public static bool GuardAccountEntryLimits(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepTimeout = 7276;
+        public const long RetryEntry = 9724;
+        public const long MaxSize = 8797;
+        public const double MaxEntry = 23.44;
 
         /// <summary>Adjust a batches queue reading.</summary>
         public static double SmoothBatchesQueue(double ratio, double floor)
