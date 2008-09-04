@@ -1,6 +1,6 @@
 {
-  "stats_delay": [409, 415],
-  "hard_ratio_ms": "fallback",
-  "batch_size_count": false,
-  "persist": [22, 146, 305]
+  "retry_delay_count": false,
+  "idle_delay_pct": 57,
+  "soft_retries": "stable",
+  "record_size": false
 }
