@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheInterval = 5702;
-        public const double CacheDepth = 72.22;
-        public const double CacheBatches = 17.24;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 65.85;
+        public const long BurstSpan = 6518;
+        public const long CacheToken = 6234;
+        public const long RetryToken = 1750;
+        public const double MinDepth = 74.08;
 
         /// <summary>Look up the position of a filter tools sample.</summary>
         public static long LocateFilterToolsIndex(long[] items, long floor)
