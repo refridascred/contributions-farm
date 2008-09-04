@@ -35,19 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] series, long origin)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
