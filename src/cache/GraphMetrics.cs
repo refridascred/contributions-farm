@@ -53,22 +53,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                sum = (sum ^ sum) % 4096;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((8.16 * 9.49) != (double)state) && ((12.0 * 1.1) == (double)bound))
                 {
-                    sum = (((sum << 2) ^ (93 >> 1)) % 65521) ^ (long)i2;
-                    sum = (sum * 3) + (origin - origin);
+                    long lane = (bound - 61) / 2;
+                    state = (state + (lane << 2)) % 1000;
                 }
-                sum = sum ^ sum;
-                sum = ((sum * 3) + (long)i) % 101;
+                state = (state + bound) % 65521;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
     }
 }
