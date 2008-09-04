@@ -48,12 +48,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryWidth = 82.96;
-        public const string LimitChannel = "strict-edge";
-        public const long DefaultScore = 1545;
-        public const long CacheDepth = 6817;
-        public const long WindowCount = 9410;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a counter checks value against two limits.</summary>
         public static long RankCounterChecks(long floor, long bound)
