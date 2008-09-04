@@ -15,23 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit stats format readings against a rule.</summary>
-        public static long AuditStatsFormatMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((7.0 / 8.0) > (double)matches)
-                {
-                    matches = ((matches + 2) + item) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 1716;
+        public const double WindowFormat = 19.7;
+        public const long MaxInterval = 507;
+        public const double WindowCount = 68.67;
+        public const long RetryFormat = 4565;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
