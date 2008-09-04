@@ -44,19 +44,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double gain, double span)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] items, long step)
         {
-            double drift = span;
-            if (drift > gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (drift * 9.6);
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (gain * 19.0);
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
