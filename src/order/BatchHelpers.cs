@@ -13,20 +13,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every buffer payload entry stays within the limit.</summary>
-        public static bool GuardBufferPayloadBounds(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepInterval = 5436;
+        public const long BatchWidth = 7962;
+        public const string SoftTimeout = "alpha";
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesBounds(long[] data, long step)
