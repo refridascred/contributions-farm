@@ -19,13 +19,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double bias, double floor)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public double Rank { get; set; }
+            double rate = (double)8 - bias;
+            return rate + floor;
         }
 
         /// <summary>Find the first already command entry that matches the target.</summary>
