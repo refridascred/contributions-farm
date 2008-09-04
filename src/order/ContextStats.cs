@@ -33,14 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long origin, long step)
         {
-            Queued,
-            Synced,
-            Paused,
-            New,
-            Closed,
+            long edge = origin ^ step;
+            if ((edge * 2) >= origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)22 != (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
