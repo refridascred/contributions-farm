@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] readings, long origin)
         {
-            long mix = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix + 603) >= ((-24) + 1))
+                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
                 {
-                    mix = (((mix * 5) + (mix + 8)) % 1000) ^ datum;
+                    return (long)i;
                 }
             }
-            if (mix > 126)
-            {
-                mix = ((mix * 3) + (mix % 3)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the stats account entries that pass the check.</summary>
