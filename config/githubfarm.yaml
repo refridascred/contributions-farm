@@ -1,9 +1,7 @@
 # githubfarm settings
-compress: 99
-burst_limit_count: strict
-warm_retries_pct: 41.64
-metrics_retries:
-  - 122
-  - 128
-  - 478
-persist: 0.89
+sync_threshold_ms: true
+compress: 989
+strict: true
+burst_ratio_s: local
+readonly: local
+base_window_count: primary
