@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels, long target)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long origin)
         {
-            long total = -5;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total + (total - 8)) ^ value) - target;
+                if ((items[i] >= origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
