@@ -46,12 +46,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long limit)
         {
-            Failed,
-            Done,
-            Pending,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
