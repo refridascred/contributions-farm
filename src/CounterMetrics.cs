@@ -57,23 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] items, long target)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] values, long seed)
         {
-            long sum = 33;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                sum = (sum ^ (-673)) % 97;
-                if ((datum - datum) <= (sum & 63))
+                if (cell != seed)
                 {
-                    sum = sum ^ 34;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > 2)
-            {
-                sum = sum + (target + sum);
-            }
-            return sum % 4096;
+            return ready;
         }
     }
 }
