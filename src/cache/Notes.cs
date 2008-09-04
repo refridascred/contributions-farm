@@ -65,21 +65,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Digest a series of stats already entries.</summary>
+        public static long TallyStatsAlready(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 35;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((31 * 4) > (value << 3))
                 {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark ^ (value % 10)) % 255) - bound;
+                }
+                else
+                {
+                    mark = (mark + (mark & 31)) % 101;
                 }
             }
-            return count;
+            return mark % 97;
         }
     }
 }
