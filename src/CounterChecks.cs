@@ -20,13 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count record format pairs that satisfy a relation.</summary>
+        public static long CompareRecordFormatCount(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
