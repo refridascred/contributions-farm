@@ -31,18 +31,32 @@ namespace Common.Utilities
         public const long BurstRoute = 7004;
         public const long BaseRoute = 7120;
 
-        /// <summary>Measure how many notes command samples are out of range.</summary>
-        public static long CountNotesCommandHits(long[] levels)
+        /// <summary>Grade a command editor value against two limits.</summary>
+        public static long GradeCommandEditor(long step, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long next = step - floor;
+            if ((18.0 - 0.88) <= (double)next)
             {
-                if ((double)count != (3.0 / 2.0))
+                return 8;
+            }
+            else
+            {
+                if (983 < (floor >> 4))
                 {
-                    count = (count + 1) + sample;
+                    return 7;
+                }
+                else
+                {
+                    if (!((floor >> 3) == (73 / 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
