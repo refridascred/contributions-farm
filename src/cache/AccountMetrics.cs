@@ -68,16 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = carry ^ (long)i;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Active,
+            Done,
+            Idle,
         }
     }
 }
