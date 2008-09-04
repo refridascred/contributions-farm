@@ -27,12 +27,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardTimeout = 3137;
-        public const double WindowContributi = 82.24;
-        public const long StepContributi = 823;
-        public const long CacheWidth = 7351;
-        public const string IdleTimeout = "legacy";
+        /// <summary>Count the session metric entries that pass the check.</summary>
+        public static long AuditSessionMetricOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (!((seen & 127) != (seen ^ sample)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
