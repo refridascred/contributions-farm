@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long limit, long limit2)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
+            long prev = limit + limit2;
+            if (((limit & 3) >= (prev % 16)) || (limit2 < prev))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((limit2 + limit) > 208))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit << 1) != (517 + prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
