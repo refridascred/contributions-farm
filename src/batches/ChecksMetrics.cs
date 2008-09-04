@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const long BatchBuffer = 5255;
         public const string LimitSize = "primary-edge";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinFactor = 4742;
-        public const long HardSchema = 7906;
-        public const long DefaultSize = 2550;
-        public const string StepSchema = "alpha";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value + matches) < value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] data)
