@@ -33,10 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxSpan = "strict";
-        public const long StepCount = 6014;
-        public const long LimitLevel = 6707;
-        public const double MinPayload = 32.12;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
