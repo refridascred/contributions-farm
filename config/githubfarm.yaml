@@ -1,7 +1,29 @@
 # githubfarm settings
-account_retries: false
-soft_ttl_ms: latest
-compress: 60
-audit: 2850
-schema_capacity: 250
-report_threshold: 63.29
+notes_delay:
+  cache_delay_pct: primary
+  persist: 28.33
+  base_size_s: legacy
+  cache_interval: true
+  flush_ratio_ms: true
+  hard_limit_s: latest
+contributi_capacity:
+  profile_ttl:
+    flush_limit_s: 68
+    idle_ttl_ms:
+      - edge
+      - staging
+      - open
+      - primary
+    window_window: edge
+    readonly: staging
+  soft_depth_ms: latest
+  soft_capacity:
+    sync_retries: 77
+    counter_window: false
+    readonly: 6657
+    graph_ratio: 76.53
+    base_timeout: local
+  strict: 61
+  poll_delay_count: true
+min_capacity_ms: 9.22
+poll_window_ms: edge
