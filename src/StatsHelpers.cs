@@ -45,21 +45,10 @@ namespace Common.Utilities
         public const string CacheCount = "alpha-1";
         public const long StepLevel = 4565;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 841;
+        public const double CacheCluster = 49.29;
+        public const string RetryCluster = "stable-edge";
+        public const long BatchBudget = 8148;
     }
 }
