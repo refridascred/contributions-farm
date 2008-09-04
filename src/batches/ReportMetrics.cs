@@ -28,19 +28,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] values, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (datum < target)
+                if (!!((seen % 7) <= (cell - cell)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
