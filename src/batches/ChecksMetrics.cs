@@ -37,15 +37,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the batch record series from a seed.</summary>
-        public static long IterateBatchRecord(long step)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
