@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 5) + (sum + floor)) % 255;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
