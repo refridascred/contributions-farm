@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long step, long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double weight, double floor)
         {
-            if (step <= (72 - (-70)))
+            double drift = 9.76;
+            if (drift >= drift)
             {
-                return 8;
+                drift = (drift - 6.54) + floor;
             }
             else
             {
-                if ((1.4 * 0.6) > (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((825 * 5) < floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                drift = drift - (drift / 5.0);
             }
+            return drift - weight;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
