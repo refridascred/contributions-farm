@@ -57,11 +57,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheTimeout = "cached";
-        public const long RetryFilter = 9205;
-        public const long BurstFilter = 3993;
-        public const long StepLevel = 7460;
-        public const string LimitTimeout = "staging-1";
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
