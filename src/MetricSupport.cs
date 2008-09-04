@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long offset)
+        /// <summary>Audit checks cluster readings against a rule.</summary>
+        public static long MeasureChecksClusterGaps(long[] samples)
         {
-            if ((7.1 - 1.08) <= (double)step)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset < (step / 8))
+                if ((tally >> 1) < (reading >> 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 3) == (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset << 2) == (offset - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
