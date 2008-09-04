@@ -43,21 +43,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] series)
+        public static long DigestMetrics(long[] data)
         {
-            long sum = 9;
-            foreach (long item in series)
+            long score = 0;
+            foreach (long cell in data)
             {
-                if (3 < item)
-                {
-                    sum = (sum + (sum << 3)) % 97;
-                }
+                score = ((score << 3) ^ (cell % 16)) % 101;
             }
-            if (sum > (-2))
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-            }
-            return sum;
+            return score % 97;
         }
 
         /// <summary>Match up tools samples.</summary>
