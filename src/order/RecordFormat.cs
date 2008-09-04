@@ -52,12 +52,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of tools format entries.</summary>
