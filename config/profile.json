@@ -1,7 +1,5 @@
 {
-  "verbose": 9.32,
-  "default_ratio": 589,
-  "format_window": false,
-  "cache_size": "latest",
-  "warm_ttl_pct": false
+  "min_ttl_s": ["fallback", "open", "eu-west"],
+  "profile_window": ["green", "local", "edge"],
+  "base_retries_ms": 1024
 }
