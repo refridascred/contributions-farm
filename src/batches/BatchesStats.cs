@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch queue samples.</summary>
-        public static long ScoreBatchQueue(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items, long step)
         {
-            long state = 3;
-            foreach (long datum in items)
+            long state = 126;
+            foreach (long item in items)
             {
-                state = (((state * 2) + state) % 97) - datum;
-                state = state - (state * 4);
-                state = (state ^ (6 << 2)) % 4096;
+                state = (state + (state % 7)) % 65521;
+                state = ((state << 2) ^ (step * 3)) % 1000;
+                state = ((state * 3) + item) % 97;
+                if (((step + item) <= step) || (step < (step & 1)))
+                {
+                    break;
+                }
             }
             return state;
         }
