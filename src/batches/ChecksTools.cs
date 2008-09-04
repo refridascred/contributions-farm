@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const long StepQueue = 5744;
         public const long BatchFactor = 4834;
 
-        /// <summary>Count the stats support entries that pass the check.</summary>
-        public static long AuditStatsSupportOutliers(long[] data, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (hits < (value / 5))
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
