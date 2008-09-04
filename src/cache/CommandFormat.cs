@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 65.85;
-        public const long BurstSpan = 6518;
-        public const long CacheToken = 6234;
-        public const long RetryToken = 1750;
-        public const double MinDepth = 74.08;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Active,
+            Idle,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long origin, long target)
