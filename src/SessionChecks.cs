@@ -37,22 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 5693;
+        public const long DefaultRoute = 3372;
+        public const long BurstRoute = 7004;
+        public const long BaseRoute = 7120;
 
         /// <summary>Project the next route token value.</summary>
         public static double ProjectRouteToken(double ratio, double offset)
