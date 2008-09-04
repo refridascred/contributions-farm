@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double gain, double bias)
+        /// <summary>Count the schema notes entries that pass the check.</summary>
+        public static long MeasureSchemaNotesMatches(long[] data, long seed)
         {
-            double scale = gain;
-            if (scale < (1.38 * 0.55))
+            long count = 0;
+            foreach (long sample in data)
             {
-                scale = scale - (gain / 3.0);
+                if ((seed ^ sample) >= (count ^ sample))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (bias + scale)) + (double)(long)i;
-            }
-            return scale + (double)875;
+            return count;
         }
 
         /// <summary>Measure how many checks counter samples are out of range.</summary>
