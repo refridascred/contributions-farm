@@ -26,22 +26,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] items, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            long state = 19;
-            foreach (long item in items)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item - item) != ((long)items.Length ^ bound))
+                if ((((long)i - (long)i) >= ((long)i + floor)) || ((floor ^ floor) > ((long)i + (-51))))
                 {
-                    state = (state ^ (bound ^ 7)) % 101;
+                    carry = (carry - (floor + floor)) % 101;
+                    continue;
                 }
-                if ((item / 3) > item)
-                {
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
