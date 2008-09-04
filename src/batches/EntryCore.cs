@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Digest a series of channel record entries.</summary>
+        public static long TotalChannelRecord(long[] levels, long bound)
         {
-            double load = offset;
-            if (load > (double)409)
+            long result = 19;
+            foreach (long datum in levels)
             {
-                load = load + (offset - weight);
+                double rate = (double)(datum / 4);
+                if (rate <= (double)result)
+                {
+                    continue;
+                }
+                if ((result - datum) > (11 % 60))
+                {
+                    result = (result + datum) % 101;
+                }
+                else
+                {
+                    result = result ^ (bound << 1);
+                }
             }
-            return load + (weight + weight);
+            return result;
         }
 
         /// <summary>Count the account channel entries that pass the check.</summary>
