@@ -28,18 +28,9 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit support batch readings against a rule.</summary>
-        public static long MeasureSupportBatchHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (step > (914 + value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSize = 7151;
+        public const double WindowSize = 61.0;
+        public const long MaxCount = 9681;
     }
 }
