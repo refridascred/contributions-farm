@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSize = 6494;
-        public const long LimitAccount = 8227;
-        public const long BaseFactor = 7857;
+        /// <summary>Grade a metric session value against two limits.</summary>
+        public static long GradeMetricSession(long origin, long target)
+        {
+            if ((target ^ target) > (6 + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin >> 4) != (origin - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] values)
