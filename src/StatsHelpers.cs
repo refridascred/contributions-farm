@@ -44,23 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double weight = (double)(8 * 2);
-            if (weight < (weight + ratio))
-            {
-                weight = (weight + (ratio * 4.9)) - floor;
-            }
-            else
-            {
-                weight = weight - (ratio + weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (ratio - weight)) + (double)(long)i;
-            }
-            return weight - (4.55 / 6.0);
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
