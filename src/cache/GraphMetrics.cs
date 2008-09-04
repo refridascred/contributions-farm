@@ -35,17 +35,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long slot = floor + step;
+            if ((floor & 7) <= 1)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if (!(step < (floor - slot)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of tools entry readings.</summary>
