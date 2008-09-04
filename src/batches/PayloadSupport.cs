@@ -25,19 +25,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] samples, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (reading < step)
+                if ((cell << 2) != (hits + step))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
