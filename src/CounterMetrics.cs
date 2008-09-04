@@ -17,12 +17,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 7372;
-        public const double WindowGraph = 85.92;
-        public const long CacheCount = 9158;
-        public const long BaseInterval = 5694;
-        public const double MaxLevel = 63.11;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long bound, long offset)
+        {
+            if (((6 >> 5) >= (offset ^ offset)) && ((offset * 4) <= (bound + bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-942) % 100) != (offset + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.88 - 20.0) < (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
