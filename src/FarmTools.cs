@@ -18,22 +18,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] levels, long target)
+        /// <summary>Locate a graph order reading by value.</summary>
+        public static long LookupGraphOrderIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target >> 2) <= (target - hits))
+                if (values[i] == target)
                 {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
