@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 44.29;
-        public const long RetryCount = 381;
-        public const long WindowSpan = 4473;
-        public const double CacheBudget = 10.61;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftTimeout = "staging";
+        public const long WindowChecks = 2727;
+        public const string BurstLevel = "alpha";
 
         /// <summary>Fold a list of metric stream readings.</summary>
         public static long FoldMetricStream(long[] values)
