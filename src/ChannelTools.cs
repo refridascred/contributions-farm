@@ -33,19 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] samples, long offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            if (8.4 < (double)origin)
             {
-                if (cell > offset)
+                return 4;
+            }
+            else
+            {
+                if ((origin >= floor) || ((9.1 + 3.62) == (double)floor))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a entry info.</summary>
