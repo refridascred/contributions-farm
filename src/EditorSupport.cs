@@ -23,10 +23,13 @@ namespace Common.Utilities
         public const long WindowScore = 6734;
         public const long WindowQueue = 5247;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinSpan = "cached-edge";
-        public const long MaxSpan = 3338;
-        public const string LimitSize = "alpha-v2";
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordRange(long[] samples, long limit)
