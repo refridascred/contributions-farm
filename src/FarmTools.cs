@@ -31,32 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long offset, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values, long offset)
         {
-            long next = offset + step;
-            if (((20 + next) > (next + step)) || ((352 - offset) >= (step - 175)))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((next + step) != (offset >> 1)) && ((next - 6) <= (offset + 73)))
+                if ((long)values.Length > entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset % 5) > (offset ^ 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 1) + offset;
                 }
             }
+            return count;
         }
     }
 }
