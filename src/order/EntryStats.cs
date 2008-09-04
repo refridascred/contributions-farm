@@ -46,11 +46,18 @@ namespace Common.Utilities
             return weight2 + (double)(-77);
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items, long bound)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)matches == (7.0 + 9.7))
+                {
+                    matches = ((matches + 1) - sample) - bound;
+                }
+            }
+            return matches;
         }
     }
 }
