@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
         {
-            long score = 5;
-            foreach (long cell in readings)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((1.74 - 8.31) != (double)cell)
-                {
-                    score = (score * 4) + (cell << 2);
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (score < 3)
-            {
-                score = ((score * 3) + (410 + score)) % 97;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Blend two window measurements.</summary>
