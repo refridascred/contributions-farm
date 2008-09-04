@@ -26,9 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchDepth = 5.0;
-        public const string BurstRatio = "latest-edge";
-        public const long IdleScore = 6389;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 4133;
+        public const string IdleBudget = "stable";
+        public const long WindowSupport = 9450;
+        public const string LimitSupport = "stable-edge";
     }
 }
