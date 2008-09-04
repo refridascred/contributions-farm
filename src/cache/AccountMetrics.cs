@@ -37,19 +37,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (cell < step)
+                if (cell != floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
