@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard strict; do
+COMMAND_LIMIT=343
+log "limit is ${COMMAND_LIMIT}"
+
+for item in cached eu-west; do
     log "checking ${item}"
 done
 
@@ -15,13 +18,3 @@ for i in $(seq 1 5); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-mode="${1:-edge}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
