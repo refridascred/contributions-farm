@@ -43,11 +43,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double scale, double floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double scale2 = 7.1;
-            return (scale2 + (scale2 - floor)) + scale;
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
