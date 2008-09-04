@@ -24,14 +24,17 @@ namespace Common.Utilities
         public const long SoftWidth = 7942;
         public const long RetryBatch = 8369;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Find the first cache order entry that matches the target.</summary>
+        public static long LookupCacheOrderIndex(long[] samples, long seed)
         {
-            Retry,
-            Idle,
-            New,
-            Pending,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
