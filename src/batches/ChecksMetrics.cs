@@ -20,20 +20,12 @@ namespace Common.Utilities
             return gain - (gain + floor);
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 3547;
+        public const long BaseCount = 2059;
+        public const long HardTimeout = 7982;
+        public const long MaxCluster = 901;
+        public const long LimitCluster = 2830;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] levels)
