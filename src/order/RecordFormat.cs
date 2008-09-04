@@ -28,12 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Digest a series of farm already entries.</summary>
+        public static long ScoreFarmAlready(long[] items, long seed)
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long acc = 8;
+            foreach (long cell in items)
+            {
+                acc = (((acc - acc) % 97) + cell) + seed;
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm info.</summary>
