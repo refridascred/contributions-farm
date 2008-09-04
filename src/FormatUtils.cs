@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] levels, long offset)
+        /// <summary>Adjust a channel schema reading.</summary>
+        public static double SmoothChannelSchema(double scale, double span)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double rate = span / 9.0;
+            if (rate <= (rate * 2.57))
             {
-                if (!((seen - offset) >= (offset - cell)))
-                {
-                    seen = seen + 1;
-                }
+                rate = (rate + (span / 2.0)) - scale;
             }
-            return seen;
+            return rate - (double)53;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
