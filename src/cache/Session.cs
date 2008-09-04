@@ -60,14 +60,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Derive the next route graph value from a seed.</summary>
+        public static long DeriveRouteGraph(long limit)
         {
-            Done,
-            Failed,
-            Retry,
-            Ready,
-            Stale,
+            long total = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((9.0 + 8.3) > (double)limit)
+                {
+                    total = (total << 2) ^ ((long)i + total);
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
