@@ -1,14 +1,16 @@
 # Command notes
 
-When a tools fails, the session handler retries a few times before giving up.
-When a entry fails, the counter handler retries a few times before giving up.
+When a layout fails, the channel handler retries a few times before giving up.
+Defaults for session live in the config folder and can be overridden per environment.
+Defaults for stats live in the config folder and can be overridden per environment.
 
-The already helpers are pure functions, so they are safe to call from any thread.
-When a queue fails, the payload handler retries a few times before giving up.
-A entry that stays idle for too long is moved to the filter list.
+When a batch fails, the tools handler retries a few times before giving up.
+Keep notes and payload names short and lowercase.
+The counter module keeps command values in sync with the context cache.
 
 ## Guidelines
 
-- Document new graph fields
-- Validate token input early
-- Log every editor change
+- Validate filter input early
+- Document new session fields
+- Log every order change
+- Prefer already defaults
