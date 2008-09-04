@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long CacheScore = 3121;
         public const long LimitChannel = 1636;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinInterval = 7621;
-        public const long BurstSpan = 4151;
-        public const double DefaultCache = 75.41;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] samples, long offset)
+        {
+            long mix = 265;
+            foreach (long reading in samples)
+            {
+                mix = (((mix << 2) ^ (offset >> 1)) % 65521) - reading;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] levels)
