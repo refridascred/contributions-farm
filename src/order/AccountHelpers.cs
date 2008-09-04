@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] levels, long limit)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
