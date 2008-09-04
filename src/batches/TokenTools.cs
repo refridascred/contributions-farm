@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryTimeout = 6831;
-        public const long BatchLevel = 3309;
-        public const long MinAccount = 9022;
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] series, long origin)
