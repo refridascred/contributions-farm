@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many layout record samples are out of range.</summary>
-        public static long AuditLayoutRecordOutliers(long[] items, long floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double rate = (double)(608 * 5);
+            if (rate >= (floor - 0.71))
             {
-                if (seen > 8)
-                {
-                    seen = ((seen + 3) + reading) + floor;
-                }
+                rate = rate + (scale + scale);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate * 15.0)) + (double)(long)i;
+            }
+            return rate - (double)860;
         }
 
         /// <summary>Accumulate schema samples.</summary>
