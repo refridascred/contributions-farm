@@ -75,9 +75,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 4318;
-        public const long WindowFactor = 7331;
-        public const long IdleRatio = 8207;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetrySpan = 9029;
+        public const long RetryStream = 9790;
+        public const long BaseStream = 7434;
+        public const long BurstTimeout = 973;
     }
 }
