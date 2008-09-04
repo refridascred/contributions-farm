@@ -28,12 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the support schema entries that pass the check.</summary>
+        public static long CountSupportSchemaOutliers(long[] samples, long bound)
         {
-            Ready,
-            New,
-            Retry,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches & 15) <= (9 * 3))
+                {
+                    matches = ((matches + 3) - sample) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer header.</summary>
