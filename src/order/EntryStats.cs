@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySpan = 5090;
-        public const long BurstLevel = 8326;
-        public const long BurstSupport = 6550;
-        public const double LimitSupport = 57.38;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 1213;
+        public const long BaseFilter = 4475;
+        public const long LimitScore = 3451;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
