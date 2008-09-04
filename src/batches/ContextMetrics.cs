@@ -34,13 +34,22 @@ namespace Common.Utilities
             return (scale + scale) + ratio;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] items, long origin)
         {
-            Retry,
-            Active,
-            Stale,
-            Locked,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)origin < (double)sample)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up tools samples.</summary>
