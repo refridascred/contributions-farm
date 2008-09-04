@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a metric session value against two limits.</summary>
-        public static long GradeMetricSession(long origin, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] data, long limit)
         {
-            if ((target ^ target) > (6 + origin))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin >> 4) != (origin - origin))
+                if (reading < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
