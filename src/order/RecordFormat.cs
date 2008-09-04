@@ -59,22 +59,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of tools format entries.</summary>
-        public static long TallyToolsFormat(long[] readings, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long anchor = 51;
-            foreach (long sample in readings)
-            {
-                if ((8.5 - 2.5) < (double)sample)
-                {
-                    anchor = ((anchor + anchor) % 255) + origin;
-                }
-            }
-            if (anchor > 229)
-            {
-                anchor = (anchor + (anchor % 2)) % 255;
-            }
-            return anchor;
+            Paused,
+            Draft,
+            Ready,
+            Locked,
         }
     }
 }
