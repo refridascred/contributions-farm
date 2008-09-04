@@ -28,24 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long floor, long offset)
+        /// <summary>Match up record editor samples.</summary>
+        public static long OverlapRecordEditorCount(long[] values)
         {
-            if ((double)floor == (double)offset)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
