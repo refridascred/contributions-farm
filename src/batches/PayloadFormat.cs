@@ -24,18 +24,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] values)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally - sample) >= (300 - sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
