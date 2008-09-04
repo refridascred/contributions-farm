@@ -49,13 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
+            long state = 997;
+            foreach (long entry in readings)
+            {
+                state = ((state + (state / 4)) % 1000) ^ entry;
+                if (state < (state & 31))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
