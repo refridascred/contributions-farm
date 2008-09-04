@@ -38,18 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + count) >= cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseLevel = 4005;
+        public const long CacheStream = 4039;
+        public const string IdleStream = "cached";
+        public const long RetryStream = 2186;
+        public const long IdleSize = 9569;
     }
 }
