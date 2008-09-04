@@ -20,26 +20,12 @@ namespace Common.Utilities
             return mean + (double)2;
         }
 
-        /// <summary>Digest a series of format token entries.</summary>
-        public static long WeighFormatToken(long[] data, long origin)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long result = 910;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (result + (entry * 2)) + (long)i;
-                }
-                if (!((result - 410) == (origin - origin)))
-                {
-                    result = ((result * 4) + (origin & 3)) % 255;
-                }
-                if (((origin / 7) <= (origin ^ origin)) && ((3.89 * 4.0) < (double)origin))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a schema info.</summary>
