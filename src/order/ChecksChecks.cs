@@ -19,12 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
+            Synced,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
