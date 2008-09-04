@@ -60,12 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Measure how many counter graph samples are out of range.</summary>
+        public static long TallyCounterGraphGaps(long[] readings)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (cell >= (416 / 5))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
