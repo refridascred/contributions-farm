@@ -14,20 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data)
-        {
-            long result = 74;
-            foreach (long value in data)
-            {
-                result = ((result << 3) ^ (value * 3)) % 4096;
-            }
-            if (result > 378)
-            {
-                result = (result + (result + result)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 2694;
+        public const string IdleRecord = "legacy-1";
+        public const long RetryRecord = 8331;
+        public const long BatchDepth = 6551;
+        public const long WindowRecord = 9095;
 
         /// <summary>Project the next stats value.</summary>
         public static double SmoothStats(double gain, double span)
