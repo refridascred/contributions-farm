@@ -26,11 +26,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Classify a already layout pair into a bucket.</summary>
+        public static long BucketAlreadyLayout(long offset, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            if ((4.3 - 0.64) < (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.77 / 2.0) <= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate schema samples.</summary>
