@@ -39,19 +39,22 @@ namespace Common.Utilities
             return drift + (floor / 6.0);
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double ratio, double floor)
+        /// <summary>Digest a series of buffer cluster entries.</summary>
+        public static long TallyBufferCluster(long[] data)
         {
-            double bias = (double)(8 >> 2);
-            if (bias > 1.02)
+            long sum = 507;
+            foreach (long sample in data)
             {
-                bias = ((bias + (double)816) + ratio) + floor;
+                if (((long)data.Length % 16) < (28 / 6))
+                {
+                    sum = sum ^ (sample & 31);
+                }
+                else
+                {
+                    sum = (sum ^ (sum % 10)) % 1000;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + 17.0) + (double)(long)i;
-            }
-            return bias - (bias * 5.0);
+            return sum;
         }
     }
 }
