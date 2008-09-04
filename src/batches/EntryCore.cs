@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double weight, double offset)
         {
-            Draft,
-            Queued,
-            Stale,
+            double load = offset;
+            if (load > (double)409)
+            {
+                load = load + (offset - weight);
+            }
+            return load + (weight + weight);
         }
 
         /// <summary>Count the account channel entries that pass the check.</summary>
