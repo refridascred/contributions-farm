@@ -30,11 +30,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 3386;
-        public const string IdleFactor = "staging";
-        public const long LimitCache = 6357;
-        public const long BaseCache = 7831;
-        public const long HardCache = 4051;
+        public const string MinInterval = "alpha-v2";
+        public const long MaxInterval = 5885;
+        public const long IdleRatio = 3410;
+        public const double HardScore = 57.31;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double BlendCommits(double rate, double floor)
