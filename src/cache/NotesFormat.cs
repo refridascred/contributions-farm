@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryDepth = 1311;
-        public const long DefaultCommits = 8932;
-        public const long WindowCommits = 1598;
+        /// <summary>Count the report window entries that pass the check.</summary>
+        public static long AuditReportWindowHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item - item) < (247 + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] values, long limit)
