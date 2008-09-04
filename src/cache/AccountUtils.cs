@@ -32,10 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "alpha-1";
-        public const double DefaultQueue = 55.78;
-        public const long BaseInterval = 847;
-        public const long BatchBudget = 5552;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((616 >> 1) == (tally % 16))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
     }
 }
