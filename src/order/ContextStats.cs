@@ -58,19 +58,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Digest a series of tools profile entries.</summary>
+        public static long TallyToolsProfile(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long anchor = 44;
+            foreach (long value in data)
             {
-                if (!((5.0 + 7.6) >= (double)origin))
-                {
-                    acc = (acc * 3) + origin;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                anchor = (((anchor * 5) + anchor) % 65521) - value;
             }
-            return acc;
+            if (anchor > 50)
+            {
+                anchor = (anchor - (anchor % 8)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the batches status values.</summary>
