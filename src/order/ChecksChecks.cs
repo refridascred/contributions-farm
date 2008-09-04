@@ -30,28 +30,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels, long step)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] samples, long target)
         {
-            long state = 967;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((45 << 2) > step)
+                if ((samples[i] > target) && ((samples[i] % 2) != 0))
                 {
-                    long count = datum;
-                    state = state ^ (count ^ count);
-                }
-                state = (state - (step + datum)) % 1000;
-                if (!((state & 255) < step))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 34)
-            {
-                state = ((state * 4) + (state + 87)) % 255;
-            }
-            return state;
+            return -1;
         }
     }
 }
