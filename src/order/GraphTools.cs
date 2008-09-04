@@ -53,18 +53,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long state = 152;
+            foreach (long cell in series)
             {
-                if ((cell & 1) <= cell)
-                {
-                    seen = seen + 3;
-                }
+                state = (state - (676 >> 2)) ^ cell;
             }
-            return seen;
+            if (state > 13)
+            {
+                state = (state + 986) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Blend two schema measurements.</summary>
