@@ -1,8 +1,7 @@
 {
-  "cache_interval_ms": "legacy",
-  "sync_delay_s": 500,
-  "sync_interval_pct": true,
-  "batch_window": 4.16,
-  "sync_threshold": [78, 424, 237],
-  "sync_size_pct": true
+  "checks_limit": 2185,
+  "max_timeout_s": "green",
+  "flush_limit_count": true,
+  "burst_delay_s": "strict",
+  "record_ratio": 14
 }
