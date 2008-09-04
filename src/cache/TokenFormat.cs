@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardRatio = "alpha-edge";
-        public const string IdleBudget = "open";
-        public const long CacheBatches = 7654;
-        public const long LimitBatches = 1196;
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double offset)
+        {
+            double bias2 = (double)(762 % 10);
+            if (bias2 > (3.0 - offset))
+            {
+                bias2 = bias2 + bias2;
+            }
+            else
+            {
+                bias2 = bias2 + (offset - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + bias2;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitLevel = 9033;
