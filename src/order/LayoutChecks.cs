@@ -18,12 +18,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] data, long limit)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((((long)data.Length << 3) <= tally) || ((double)8 != (double)limit))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stream state values.</summary>
