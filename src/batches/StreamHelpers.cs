@@ -35,21 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 25;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin + origin) <= (item + mark))
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark + item;
                 }
             }
-            return hits;
+            if (mark < 931)
+            {
+                mark = ((mark * 5) + (mark ^ mark)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
