@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double scale, double bias)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double gain, double bias)
         {
-            double ratio = bias / 5.0;
-            if (ratio > scale)
+            double scale = gain;
+            if (scale < (1.38 * 0.55))
             {
-                ratio = ratio + 8.12;
+                scale = scale - (gain / 3.0);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ratio - (bias * 3.1);
+                scale = (scale + (bias + scale)) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 18.0) + (double)(long)i;
-            }
-            return ratio - (double)721;
+            return scale + (double)875;
         }
 
         /// <summary>Measure how many checks counter samples are out of range.</summary>
