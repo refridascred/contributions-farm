@@ -38,11 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 1813;
-        public const double BurstTimeout = 24.45;
-        public const long BurstDepth = 5100;
-        public const long StepDepth = 241;
-        public const string CacheRecord = "standard-edge";
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "stable-v2";
+        public const long BaseFormat = 4921;
+        public const string MinFormat = "alpha-1";
+        public const long BatchFormat = 4263;
     }
 }
