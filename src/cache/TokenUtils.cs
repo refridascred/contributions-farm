@@ -13,18 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] series, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long result = -338;
+            foreach (long reading in values)
             {
-                if (!((double)hits != (2.05 - 6.12)) && (49 > hits))
+                if (((double)step >= 6.96) || ((reading & 3) < reading))
                 {
-                    hits = ((hits + 1) ^ datum) + target;
+                    result = result - (step - 595);
                 }
             }
-            return hits;
+            if (result < (-30))
+            {
+                result = ((result << 3) ^ (step >> 4)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Digest a series of order entry entries.</summary>
