@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)entry != (double)matches)
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a stream header.</summary>
