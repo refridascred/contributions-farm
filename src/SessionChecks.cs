@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
             public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
