@@ -45,9 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 74.03;
-        public const long LimitMetrics = 5325;
-        public const long MaxTimeout = 9591;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Pending,
+            Idle,
+            Active,
+        }
     }
 }
