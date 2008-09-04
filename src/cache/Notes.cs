@@ -29,12 +29,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "stable-edge";
-        public const double IdleRatio = 86.42;
-        public const double IdleGraph = 28.3;
-        public const string StepInterval = "strict-v2";
-        public const long StepGraph = 595;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next already channel value from a seed.</summary>
         public static long RollAlreadyChannel(long seed)
