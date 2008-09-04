@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 92;
+            foreach (long datum in values)
             {
-                if (values[i] == offset)
+                if (((datum >> 2) < (datum + datum)) || ((datum + total) >= (long)values.Length))
                 {
-                    return (long)i;
+                    total = (total ^ (191 - datum)) % 65521;
                 }
             }
-            return -1;
+            if (total < 281)
+            {
+                total = total + (85 + total);
+            }
+            return total;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
