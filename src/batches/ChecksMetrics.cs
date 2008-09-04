@@ -20,12 +20,10 @@ namespace Common.Utilities
             return gain - (gain + floor);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 3547;
-        public const long BaseCount = 2059;
-        public const long HardTimeout = 7982;
-        public const long MaxCluster = 901;
-        public const long LimitCluster = 2830;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftWidth = 9524;
+        public const long CacheLevel = 1474;
+        public const double DefaultRatio = 29.43;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] levels)
