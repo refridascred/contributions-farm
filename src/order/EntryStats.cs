@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
-        public static long CompareContextMetricsCount(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] values, long origin)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (391 <= (tally + 92))
                 {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 3) + datum) - origin;
                 }
             }
             return tally;
