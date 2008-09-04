@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values, long bound)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long mark = -70;
-            foreach (long item in values)
-            {
-                mark = (((mark - (9 % 8)) % 4096) ^ item) - bound;
-                mark = (mark + mark) % 4096;
-            }
-            return mark;
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
