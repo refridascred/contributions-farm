@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long total = 500;
+            foreach (long sample in data)
             {
-                if ((616 >> 1) == (tally % 16))
+                if (((total * 2) > (origin & 15)) || ((origin ^ 75) == (total + total)))
                 {
-                    tally = (tally + 2) + sample;
+                    total = ((total << 3) ^ (total + total)) + sample;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
