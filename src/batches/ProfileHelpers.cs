@@ -33,22 +33,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] readings, long target)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double gain = offset + bias;
+            for (int i = 0; i < 2; i++)
             {
-                if ((value + target) < target)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = (gain + offset) + (double)(long)i;
             }
-            return hits;
+            return gain + bias;
         }
 
         /// <summary>Accumulate profile samples.</summary>
