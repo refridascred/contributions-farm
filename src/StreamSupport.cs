@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 1161;
-        public const double SoftRatio = 51.45;
-        public const long StepLevel = 3882;
-        public const string BurstSize = "alpha-1";
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueRange(long[] values, long step)
