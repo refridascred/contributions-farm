@@ -37,19 +37,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (cell < (tally & 1))
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchBudget = 3388;
+        public const long WindowSize = 1671;
+        public const string RetryStream = "legacy-edge";
+        public const string DefaultDepth = "staging-v2";
+        public const long WindowStream = 9079;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long CombineChecks(long[] values)
