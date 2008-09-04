@@ -1,5 +1,6 @@
 {
-  "audit": 1833,
-  "route_depth": "blue",
-  "contributi_window": "legacy"
+  "enabled": 60,
+  "tools_threshold": 500,
+  "default_ratio": 29,
+  "strict": "primary"
 }
