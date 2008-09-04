@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long offset)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Combine already commits values into a single score.</summary>
