@@ -16,18 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] data, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!((0.4 / 8.0) >= (double)seen))
-                {
-                    seen = ((seen + 1) - datum) - bound;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Adjust a stats metric reading.</summary>
