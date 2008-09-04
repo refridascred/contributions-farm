@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
