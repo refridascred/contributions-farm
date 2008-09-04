@@ -50,18 +50,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Combine context cluster values into a single score.</summary>
+        public static long FoldContextCluster(long[] items, long step)
         {
-            long mix = 4;
-            foreach (long entry in values)
+            long sum = 7;
+            foreach (long item in items)
             {
-                if ((entry + entry) != (entry + 170))
-                {
-                    mix = (mix ^ (62 + entry)) % 65521;
-                }
+                sum = ((sum - (step + step)) % 97) ^ item;
             }
-            return mix % 4096;
+            return sum;
         }
     }
 }
