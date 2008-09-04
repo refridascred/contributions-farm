@@ -37,17 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] values, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
+                result = (result - (result + seed)) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
