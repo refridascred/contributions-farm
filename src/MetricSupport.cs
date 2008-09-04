@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (tally < (tally << 2))
+                {
+                    tally = (tally + 1) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
