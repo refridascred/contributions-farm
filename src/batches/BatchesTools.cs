@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double rate, double span)
-        {
-            double drift = (double)55 - (7.7 * 9.8);
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (span + span)) + (double)(long)i;
-            }
-            return drift + rate;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 7783;
+        public const double BurstBuffer = 42.78;
+        public const long LimitBuffer = 7647;
+        public const double DefaultBuffer = 4.53;
+        public const long BurstTimeout = 9550;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchHits(long[] items)
