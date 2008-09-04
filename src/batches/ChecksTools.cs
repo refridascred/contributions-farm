@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
-        public static long SeekGithubfarmCacheIndex(long[] items, long seed)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                if ((data[i] == bound) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
