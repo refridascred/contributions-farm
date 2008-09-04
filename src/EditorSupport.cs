@@ -34,21 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
