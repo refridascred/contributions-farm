@@ -33,17 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state * 4) + (long)i;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 5177;
+        public const long DefaultToken = 9720;
+        public const string MinBudget = "stable";
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long BucketGraph(long floor, long offset)
