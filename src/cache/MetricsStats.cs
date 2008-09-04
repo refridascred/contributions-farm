@@ -16,13 +16,18 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit already window readings against a rule.</summary>
+        public static long MeasureAlreadyWindowHits(long[] values, long target)
         {
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item - seen) <= (target + target))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a route tools sample.</summary>
