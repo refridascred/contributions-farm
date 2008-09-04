@@ -57,14 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] samples, long seed)
         {
-            Dropped,
-            Queued,
-            Pending,
-            New,
-            Closed,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((matches >> 4) == (value >> 4)) && ((matches - seed) > (seed / 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
