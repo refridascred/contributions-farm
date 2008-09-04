@@ -33,18 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((floor + floor) > matches)
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxSpan = "strict";
+        public const long StepCount = 6014;
+        public const long LimitLevel = 6707;
+        public const double MinPayload = 32.12;
     }
 }
