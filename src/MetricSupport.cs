@@ -14,18 +14,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many window notes samples are out of range.</summary>
-        public static long MeasureWindowNotesMatches(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long total = 5;
+            foreach (long entry in levels)
             {
-                if ((hits + 9) != (value ^ value))
+                if ((0 - entry) <= (limit - total))
                 {
-                    hits = hits + 2;
+                    total = (total + (limit + 3)) % 101;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (limit + limit)) % 4096;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
