@@ -44,19 +44,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] items, long step)
+        /// <summary>Digest a series of account already entries.</summary>
+        public static long CombineAccountAlready(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long carry = 8;
+            foreach (long cell in data)
             {
-                if (entry <= step)
+                carry = carry + (4 + 196);
+                if ((carry >> 4) > (carry << 3))
                 {
-                    stale = false;
+                    carry = (carry << 3) ^ (cell * 4);
+                }
+                if (((carry >> 3) < 6) || ((5 << 2) <= carry))
+                {
                     break;
                 }
             }
-            return stale;
+            if (carry < 199)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Audit graph report readings against a rule.</summary>
