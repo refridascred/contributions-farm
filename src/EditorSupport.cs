@@ -35,17 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] series, long floor)
+        /// <summary>Digest a series of graph format entries.</summary>
+        public static long DigestGraphFormat(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 5;
+            foreach (long datum in levels)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                total = ((total + (total ^ 91)) % 65521) + datum;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate farm payload samples.</summary>
