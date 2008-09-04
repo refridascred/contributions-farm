@@ -1,7 +1,19 @@
 # entry settings
-sync_limit_s: eu-west
-warm_limit: 100
-default_depth_pct: green
-default_ttl_s: false
-min_threshold: false
-soft_ratio_pct: 39
+persist:
+  audit:
+    cache_capacity_ms: 250
+    burst_ttl_s: 5
+    compress: 71.78
+    base_size_pct: 4624
+  max_capacity: 70.76
+  dry_run:
+    readonly:
+      - stable
+      - cached
+    burst_threshold_ms:
+      - cached
+      - open
+    format_retries: 23
+    max_delay_pct: primary
+sync_timeout_pct: 70.12
+graph_threshold: 1
