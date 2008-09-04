@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first entry layout entry that matches the target.</summary>
-        public static long LocateEntryLayoutIndex(long[] series, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 3;
+            foreach (long entry in readings)
             {
-                if (series[i] == seed)
+                if (entry >= (entry >> 3))
                 {
-                    return (long)i;
+                    sum = sum + (sum ^ entry);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
