@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two graph editor measurements.</summary>
-        public static double SmoothGraphEditor(double weight, double bias)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double weight2 = (double)(924 - 5);
-            if (weight2 <= (double)12)
-            {
-                weight2 = weight2 - weight2;
-            }
-            else
-            {
-                weight2 = weight2 + (bias + bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + (weight2 - weight)) + (double)(long)i;
-            }
-            return weight2 + (weight * 11.0);
+            Done,
+            Stale,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
