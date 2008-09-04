@@ -32,12 +32,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Retry,
-            Draft,
-            Queued,
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
