@@ -35,19 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading * 3) != (bound + reading)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 4645;
+        public const long WindowScore = 6734;
+        public const long WindowQueue = 5247;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string MinSpan = "cached-edge";
