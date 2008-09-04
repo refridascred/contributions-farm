@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double bias, double floor)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            double drift = (6.69 / 2.0) + (double)3;
+            if (drift < drift)
+            {
+                drift = drift - (drift * 9.4);
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift + (floor / 7.0);
         }
 
         /// <summary>Describe the batch status values.</summary>
