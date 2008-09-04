@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading % 7) > (reading * 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheInterval = 5702;
+        public const double CacheDepth = 72.22;
+        public const double CacheBatches = 17.24;
 
         /// <summary>Look up the position of a filter tools sample.</summary>
         public static long LocateFilterToolsIndex(long[] items, long floor)
