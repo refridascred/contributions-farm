@@ -1,6 +1,17 @@
 {
-  "context_threshold": true,
-  "sync_depth_s": [430, 436, 334],
-  "retry_interval_pct": "latest",
-  "warm_retries_s": "legacy"
+  "audit": true,
+  "schema_depth": {
+    "soft_ratio": {
+      "record_delay": 12.22,
+      "audit": 56,
+      "sync_retries": 5291
+    },
+    "stream_threshold": "blue",
+    "poll_capacity_s": 56,
+    "idle_window": 98
+  },
+  "persist": 25.25,
+  "burst_limit": "latest",
+  "sync_interval": 30,
+  "soft_timeout_count": 5317
 }
