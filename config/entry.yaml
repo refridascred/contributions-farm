@@ -1,5 +1,5 @@
 # entry settings
-metric_ratio: green
-burst_timeout: 8244
-flush_delay: 17.27
-verbose: true
+record_capacity: legacy
+default_ttl_count: strict
+sync_depth_ms: 32.73
+graph_timeout: blue
