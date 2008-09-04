@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Paused,
-            Dropped,
-            Retry,
+            Failed,
             Locked,
+            Stale,
+            Ready,
             Active,
         }
 
