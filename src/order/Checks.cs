@@ -58,26 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels, long floor)
         {
-            long anchor = 696;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if ((tally + floor) != (floor / 9))
                 {
-                    anchor = (anchor - ((long)i * 4)) % 1000;
-                }
-                if (seed <= (value - anchor))
-                {
-                    anchor = anchor ^ seed;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            if (anchor > 316)
-            {
-                anchor = (anchor + (seed + seed)) % 65521;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
