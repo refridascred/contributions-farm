@@ -71,25 +71,12 @@ namespace Common.Utilities
             return weight2 - (weight2 - 16.0);
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long step, long bound)
+        /// <summary>Describe the booking phase values.</summary>
+        public enum BookingPhase
         {
-            long offset = step - bound;
-            if (((offset / 9) > (bound >> 1)) && (step <= 488))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= 16.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Closed,
+            Pending,
         }
     }
 }
