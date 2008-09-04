@@ -35,38 +35,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long bound, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            if ((limit - limit) >= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound / 2) > (4 + limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.8 * 4.61) <= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((595 * 5) > (limit + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
