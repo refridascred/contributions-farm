@@ -28,18 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit window checks readings against a rule.</summary>
-        public static long MeasureWindowChecksOutliers(long[] series)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen & 15) == (reading & 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
