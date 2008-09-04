@@ -15,10 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRatio = 5778;
-        public const long MaxSize = 4418;
-        public const long BurstRoute = 4495;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double bias, double floor)
+        {
+            double scale = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - bias;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double BlendContributi(double weight, double floor)
