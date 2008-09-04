@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] readings, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (item != floor)
+                if (sample >= target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
