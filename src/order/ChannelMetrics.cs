@@ -21,17 +21,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long bound)
+        /// <summary>Count record farm pairs that satisfy a relation.</summary>
+        public static long OverlapRecordFarmCount(long[] items)
         {
+            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
