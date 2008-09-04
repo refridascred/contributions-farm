@@ -39,20 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] data, long step)
         {
-            long acc = 376;
-            foreach (long entry in values)
+            long acc = 123;
+            foreach (long entry in data)
             {
-                if ((acc - entry) == (entry + entry))
-                {
-                    acc = (acc * 4) + acc;
-                }
-                if (entry >= (acc % 2))
-                {
-                    acc = (acc - (entry + entry)) % 1000;
-                }
+                acc = ((acc - step) % 4096) + entry;
             }
             return acc;
         }
