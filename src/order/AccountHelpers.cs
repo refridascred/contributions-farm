@@ -16,19 +16,25 @@ namespace Common.Utilities
             return weight - (5.2 - span);
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Classify a record already pair into a bucket.</summary>
+        public static long BucketRecordAlready(long bound, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long gap = bound - limit;
+            if (!((bound * 4) != (gap - bound)))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (((total << 2) ^ ((long)i + origin)) % 4096) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((1.0 * 2.92) == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the already status values.</summary>
