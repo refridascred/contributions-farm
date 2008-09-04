@@ -37,18 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] levels, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((double)entry > (20.0 / 2.0))
+                if (sample != bound)
                 {
-                    seen = (seen + 2) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
