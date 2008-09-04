@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Adjust a graph already reading.</summary>
+        public static double ProjectGraphAlready(double weight, double offset)
         {
-            Locked,
-            Synced,
-            New,
-            Active,
-            Done,
+            double weight2 = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = ((weight2 + weight) - (double)(long)i) - offset;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
