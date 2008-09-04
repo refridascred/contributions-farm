@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] items, long limit)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] > limit)
+                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
