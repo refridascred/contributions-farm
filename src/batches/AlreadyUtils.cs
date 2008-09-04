@@ -59,14 +59,10 @@ namespace Common.Utilities
             return drift - (gain * 19.0);
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Idle,
-            Active,
-            Paused,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheLevel = 2631;
+        public const double SoftCounter = 59.77;
+        public const long BaseCounter = 1909;
+        public const long BatchCounter = 9800;
     }
 }
