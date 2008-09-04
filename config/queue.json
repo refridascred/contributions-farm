@@ -1,29 +1,11 @@
 {
-  "session_delay": "standard",
-  "warm_limit": 87.24,
-  "sync_interval_ms": {
-    "flush_timeout": {
-      "strict": 58.34,
-      "min_timeout_ms": 54,
-      "base_delay": "fallback"
-    },
-    "min_capacity_s": "strict",
-    "soft_interval_ms": 100,
-    "buffer_capacity": [391, 324, 284],
-    "retry_capacity_pct": 2628,
-    "metrics_ttl": "open"
+  "token_interval": 100,
+  "min_timeout_ms": 51.05,
+  "contributi_delay": 60,
+  "warm_threshold_s": {
+    "persist": true,
+    "min_threshold_pct": false,
+    "soft_depth_pct": 500
   },
-  "min_retries_s": {
-    "max_retries_s": {
-      "strict": 17.3,
-      "queue_capacity": "open",
-      "cache_ttl": "blue",
-      "sync_interval_s": 42.2
-    },
-    "flush_size": [337, 371],
-    "dry_run": "fallback",
-    "default_ratio_count": 100,
-    "commits_window": "fallback",
-    "flush_retries": 250
-  }
+  "base_window_count": "edge"
 }
