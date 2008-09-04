@@ -25,19 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double bias, double floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double scale = 9.02;
-            if (scale >= floor)
-            {
-                scale = (scale + floor) - bias;
-            }
-            else
-            {
-                scale = scale + (double)76;
-            }
-            return scale + (double)532;
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
