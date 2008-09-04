@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
