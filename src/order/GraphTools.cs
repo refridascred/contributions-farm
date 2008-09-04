@@ -68,23 +68,27 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double rate, double bias)
+        /// <summary>Accumulate graph notes samples.</summary>
+        public static long ScoreGraphNotes(long[] levels)
         {
-            double ratio = rate;
-            if (ratio > (8.81 / 8.0))
+            long anchor = -211;
+            foreach (long cell in levels)
             {
-                ratio = (ratio - (double)844) + bias;
+                if (!((anchor << 3) == (anchor + 96)))
+                {
+                    anchor = ((anchor * 2) + (9 - (-37))) % 4096;
+                }
+                anchor = anchor - cell;
+                if ((double)cell > (0.53 - 4.3))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + 719)) % 255;
+                }
             }
-            else
+            if (anchor > 3)
             {
-                ratio = ratio + 8.4;
+                anchor = anchor + anchor;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 6.84) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return anchor;
         }
     }
 }
