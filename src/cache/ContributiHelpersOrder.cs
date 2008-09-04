@@ -24,10 +24,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 91.72;
-        public const long CacheTimeout = 7643;
-        public const long DefaultBudget = 2401;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] levels, long origin)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)matches != (9.49 / 7.0))
+                {
+                    matches = ((matches + 2) ^ item) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsMatches(long[] items, long floor)
