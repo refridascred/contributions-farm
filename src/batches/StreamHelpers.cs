@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] values, long seed)
         {
-            Pending,
-            Paused,
-            Closed,
-            Stale,
-            Idle,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
