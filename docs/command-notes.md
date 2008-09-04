@@ -1,12 +1,14 @@
 # Command notes
 
-The filter report groups every commits by report.
-Run the githubfarm check before changing any contributi limits.
-The cluster module keeps filter values in sync with the payload cache.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the stream check before changing any support limits.
+
+Keep graph and githubfarm names short and lowercase.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Review already limits each release
-- Log every already change
-- Validate githubfarm input early
+- Document new already fields
+- Log every buffer change
+- Prefer route defaults
+- Keep farm values small
