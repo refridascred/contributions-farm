@@ -57,32 +57,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long limit, long floor)
+        /// <summary>Validate layout queue readings against a bound.</summary>
+        public static bool VerifyLayoutQueueRange(long[] series, long step)
         {
-            long lane = limit ^ floor;
-            if ((floor - limit) <= limit)
+            bool found = true;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor >> 4) <= (-616))
+                if (item < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((lane % 16) == (38 / 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Accumulate account samples.</summary>
