@@ -1,11 +1,12 @@
 # Command notes
 
-Use order settings to tune how often batch data is refreshed.
-Defaults for stats live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the record list.
+Each metric is validated before it reaches the report queue.
+Use record settings to tune how often support data is refreshed.
+Each context is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Validate layout input early
-- Document new route fields
-- Review graph limits each release
+- Keep commits values small
+- Review githubfarm limits each release
+- Validate graph input early
+- Document new filter fields
