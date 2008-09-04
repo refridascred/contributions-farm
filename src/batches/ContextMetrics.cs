@@ -34,15 +34,13 @@ namespace Common.Utilities
             return (scale + scale) + ratio;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long score = 0;
-            foreach (long cell in data)
-            {
-                score = ((score << 3) ^ (cell % 16)) % 101;
-            }
-            return score % 97;
+            Retry,
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Match up tools samples.</summary>
