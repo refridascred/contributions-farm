@@ -27,12 +27,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 4711;
+        public const long DefaultQueue = 7245;
+        public const string BurstQueue = "strict-edge";
+        public const long StepQueue = 5744;
+        public const long BatchFactor = 4834;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string SoftAlready = "stable-edge";
