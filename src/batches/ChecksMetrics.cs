@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a format graph figure with a bias.</summary>
-        public static double ProjectFormatGraph(double ratio, double floor)
-        {
-            double gain = floor;
-            if (gain < 4.1)
-            {
-                gain = (gain - (floor * 6.0)) + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (9.5 * 6.07)) + (double)(long)i;
-            }
-            return gain - (gain + floor);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 45.79;
+        public const double DefaultLevel = 12.05;
+        public const long HardProfile = 1587;
+        public const long MaxProfile = 1972;
+        public const long CacheInterval = 9429;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftWidth = 9524;
