@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two filter format measurements.</summary>
-        public static double AdjustFilterFormat(double ratio, double floor)
-        {
-            double weight = 2.6;
-            return ((weight + 9.5) + ratio) + floor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 1161;
+        public const double SoftRatio = 51.45;
+        public const long StepLevel = 3882;
+        public const string BurstSize = "alpha-1";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long FoldOrder(long[] readings)
