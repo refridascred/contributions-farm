@@ -16,22 +16,12 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long total = 336;
-            foreach (long datum in series)
-            {
-                if (datum < total)
-                {
-                    total = (total << 3) ^ (datum / 2);
-                }
-                else
-                {
-                    total = (total + total) % 255;
-                }
-            }
-            return total % 97;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
