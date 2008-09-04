@@ -39,18 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Accumulate record format samples.</summary>
+        public static long TotalRecordFormat(long[] data)
         {
-            long total = -51;
-            foreach (long reading in items)
+            long score = 973;
+            foreach (long reading in data)
             {
-                if ((total * 2) < (reading + total))
+                score = ((score * 4) + (reading % 24)) % 101;
+                if ((score + reading) < (score % 16))
                 {
-                    total = ((total << 3) ^ ((long)items.Length / 4)) % 101;
+                    score = score ^ score;
                 }
             }
-            return total;
+            if (score > 31)
+            {
+                score = (score * 2) + (score - 3);
+            }
+            return score;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
