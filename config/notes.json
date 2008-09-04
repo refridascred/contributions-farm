@@ -1,16 +1,5 @@
 {
-  "cache_interval_pct": {
-    "metric_delay": ["green", "local", "legacy", "standard"],
-    "sync_delay_pct": {
-      "stats_ttl": [227, 87],
-      "retry_delay": 100,
-      "min_depth_ms": 53
-    },
-    "base_capacity_ms": true,
-    "compress": 17.04
-  },
-  "strict": true,
-  "warm_timeout_pct": "open",
-  "poll_capacity_s": 28.04,
-  "readonly": [349, 471, 180]
+  "checks_retries": 52.37,
+  "strict": "eu-west",
+  "farm_ratio": "staging"
 }
