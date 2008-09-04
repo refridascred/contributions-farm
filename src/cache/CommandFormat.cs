@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (!((reading % 7) > (reading * 2)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
