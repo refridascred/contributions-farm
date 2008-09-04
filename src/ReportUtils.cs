@@ -44,11 +44,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSpan = "local";
-        public const long MaxWidth = 1521;
-        public const long MinSession = 2762;
-        public const long BaseSpan = 6999;
-        public const long WindowSession = 746;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (tally <= (tally ^ (long)samples.Length))
+                {
+                    tally = ((tally + 1) + cell) - offset;
+                }
+            }
+            return tally;
+        }
     }
 }
