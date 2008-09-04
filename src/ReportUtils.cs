@@ -40,18 +40,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] readings, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long total = 5;
+            foreach (long entry in levels)
             {
-                if ((reading >> 3) > (94 + reading))
+                total = ((total * 3) + (entry - (-190))) % 97;
+                if (!((total + entry) >= total))
                 {
-                    hits = (hits + 3) - seed;
+                    total = (total - 820) % 97;
+                    total = (total ^ (total * 3)) % 1000;
                 }
+                total = total - (6 ^ entry);
             }
-            return hits;
+            if (total > 951)
+            {
+                total = ((total * 4) + (total % 60)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
