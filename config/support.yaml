@@ -1,12 +1,5 @@
 # support settings
-counter_size:
-  idle_retries_count: true
-  queue_limit:
-    entry_interval: stable
-    burst_limit_ms: green
-    retry_ttl_pct: eu-west
-  default_ttl: 60
-  cache_ttl_count: 184
-dry_run: 5.66
-poll_delay_pct: local
-notes_depth: false
+dry_run: 57.95
+default_timeout_pct: legacy
+token_capacity: 68
+soft_depth_ms: local
