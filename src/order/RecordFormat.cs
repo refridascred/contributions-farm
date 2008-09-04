@@ -53,15 +53,22 @@ namespace Common.Utilities
         public const long RetrySpan = 8333;
         public const string SoftLevel = "staging-v2";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series, long seed)
+        /// <summary>Digest a series of tools format entries.</summary>
+        public static long TallyToolsFormat(long[] readings, long origin)
         {
-            long state = 0;
-            foreach (long reading in series)
+            long anchor = 51;
+            foreach (long sample in readings)
             {
-                state = (((state * 4) + (reading + state)) % 255) + seed;
+                if ((8.5 - 2.5) < (double)sample)
+                {
+                    anchor = ((anchor + anchor) % 255) + origin;
+                }
             }
-            return state % 1000;
+            if (anchor > 229)
+            {
+                anchor = (anchor + (anchor % 2)) % 255;
+            }
+            return anchor;
         }
     }
 }
