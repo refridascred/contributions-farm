@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the channel route series from a seed.</summary>
-        public static long SeriesChannelRoute(long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double rate, double offset)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            double bias = offset;
+            if (bias >= (double)87)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (sum ^ ((long)i2 - (long)i)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                bias = (bias + bias) + rate;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)955) + (double)(long)i;
+            }
+            return bias - (double)(-1);
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
