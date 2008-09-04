@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((11.0 + 8.9) != (double)sample) && (hits > (offset + sample)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 934;
+        public const string StepSize = "strict";
+        public const double BaseEntry = 62.35;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitRoute = 5693;
