@@ -34,15 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double bias, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] series, long bound)
         {
-            double scale = (double)700;
-            if (scale > scale)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                scale = ((scale + (double)102) - bias) + offset;
+                if (!((reading * 3) != (bound + reading)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return scale + (double)23;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
