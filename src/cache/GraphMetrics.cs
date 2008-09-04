@@ -52,18 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] data, long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches - matches) != (matches & 1))
+                sum = (sum ^ sum) % 4096;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = ((matches + 2) + sample) + seed;
+                    sum = (((sum << 2) ^ (93 >> 1)) % 65521) ^ (long)i2;
+                    sum = (sum * 3) + (origin - origin);
                 }
+                sum = sum ^ sum;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
