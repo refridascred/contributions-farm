@@ -45,14 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Synced,
-            Pending,
-            Stale,
-            Failed,
-            Idle,
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
