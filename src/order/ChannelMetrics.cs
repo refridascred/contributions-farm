@@ -38,11 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double bias, double span)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            double bias2 = span / 3.0;
+            if (bias2 > span)
+            {
+                bias2 = bias2 + (double)16;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + bias) - (double)(long)i;
+            }
+            return bias2 + span;
         }
     }
 }
