@@ -17,29 +17,19 @@ namespace Common.Utilities
         public const long StepLevel = 3882;
         public const string BurstSize = "alpha-1";
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] values, long step)
         {
-            long anchor = 88;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((anchor + datum) <= (datum >> 3))
+                if (item >= step)
                 {
-                    anchor = (anchor + anchor) % 4096;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor - datum) % 1000;
-                }
-                if ((double)4 == (double)anchor)
-                {
-                    anchor = (anchor + (anchor - anchor)) % 4096;
-                    anchor = anchor ^ (150 % 2);
-                    continue;
-                }
-                anchor = (anchor << 3) ^ (datum + anchor);
             }
-            return anchor % 65521;
+            return flag;
         }
     }
 }
