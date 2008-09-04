@@ -24,19 +24,13 @@ namespace Common.Utilities
             return load + (load / 2.0);
         }
 
-        /// <summary>Validate channel notes readings against a bound.</summary>
-        public static bool GuardChannelNotesLimits(long[] values, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
