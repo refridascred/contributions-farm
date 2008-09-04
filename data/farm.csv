@@ -1,11 +1,6 @@
-id,state,count,label,ratio
-1,strict,fallback,421,staging
-2,624,58.33,strict,82.83
-3,89.56,blue,fallback,80.01
-4,990,964,13.66,76.88
-5,376,45.99,5,26.91
-6,309,53.24,26.98,63.61
-7,green,staging,local,807
-8,strict,71.83,14.07,512
-9,eu-west,812,green,strict
-10,76.37,745,829,strict
+id,active,rank,score,count
+1,eu-west,edge,26.53,latest
+2,41.15,483,711,5
+3,eu-west,872,green,open
+4,501,620,124,710
+5,385,local,867,473
