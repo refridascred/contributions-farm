@@ -36,17 +36,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long limit)
+        /// <summary>Compare every pair of tools report readings.</summary>
+        public static long MatchToolsReportCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
