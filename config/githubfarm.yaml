@@ -1,9 +1,18 @@
 # githubfarm settings
-batch_retries_s: strict
-cache_threshold_ms: 94
-verbose: 1339
-format_size: 53.85
-max_size_count:
-  - edge
-  - open
-  - legacy
+default_ttl:
+  - 462
+  - 34
+  - 345
+  - 185
+min_limit_ms: false
+warm_timeout_ms:
+  - green
+  - staging
+  - staging
+  - standard
+cache_retries_ms:
+  - strict
+  - latest
+  - strict
+  - stable
+audit: cached
