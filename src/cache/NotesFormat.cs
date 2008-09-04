@@ -23,11 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a report counter figure with a bias.</summary>
-        public static double AdjustReportCounter(double scale, double floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double scale, double floor)
         {
-            double rate = floor;
-            return (rate - (double)5) + scale;
+            double rate = scale;
+            return (rate + (rate + 11.0)) + floor;
         }
 
         /// <summary>Hold a batches record.</summary>
