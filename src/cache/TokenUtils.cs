@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleLevel = 42.45;
-        public const long MinTools = 6505;
-        public const double StepRatio = 41.14;
-        public const long HardTimeout = 3944;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first contributi queue entry that matches the target.</summary>
         public static long LocateContributiQueueIndex(long[] samples, long limit)
