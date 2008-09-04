@@ -53,19 +53,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
     }
 }
