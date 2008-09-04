@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Retry,
-            Queued,
-            Dropped,
+            Pending,
+            Stale,
+            Draft,
+            Closed,
+            Synced,
         }
 
         /// <summary>Adjust a layout tools reading.</summary>
