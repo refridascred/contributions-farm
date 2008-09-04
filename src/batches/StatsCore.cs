@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next stream filter value.</summary>
-        public static double ScaleStreamFilter(double bias, double floor)
+        /// <summary>Grade a buffer account value against two limits.</summary>
+        public static long ClassifyBufferAccount(long seed, long floor)
         {
-            double mean = (double)(1 * 3);
-            if (mean < bias)
+            long delta = seed + floor;
+            if (((910 - seed) > (floor - seed)) || ((double)seed >= (20.0 / 4.0)))
             {
-                mean = (mean + bias) - floor;
+                return 2;
             }
-            return mean + mean;
+            else
+            {
+                if (seed <= (seed - delta))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed > (floor * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed == (9.9 * 5.21))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank support input into a small class.</summary>
