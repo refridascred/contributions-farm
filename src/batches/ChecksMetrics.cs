@@ -50,18 +50,21 @@ namespace Common.Utilities
         public const long DefaultSize = 2550;
         public const string StepSchema = "alpha";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] series)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((count / 4) <= (995 + sample)) || ((96 - (long)series.Length) > count)) && ((sample + sample) >= sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
