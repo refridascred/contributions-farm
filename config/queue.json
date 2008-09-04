@@ -1,15 +1,12 @@
 {
-  "soft_size_pct": {
-    "layout_ttl": {
-      "dry_run": 89.14,
-      "flush_threshold_ms": "strict",
-      "min_timeout": 61.96,
-      "verbose": true,
-      "sync_delay_s": "eu-west"
-    },
-    "batch_window": "blue",
-    "max_timeout": "standard"
-  },
-  "graph_ttl": "fallback",
-  "dry_run": "legacy"
+  "verbose": false,
+  "already_retries": "standard",
+  "batch_retries_s": 15.98,
+  "sync_capacity": 11,
+  "route_ttl": 93.64,
+  "max_size_ms": {
+    "cache_capacity_count": 1024,
+    "compress": "open",
+    "idle_interval_count": ["eu-west", "edge", "latest"]
+  }
 }
