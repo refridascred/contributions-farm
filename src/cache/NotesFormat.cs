@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] values, long limit)
         {
-            long score = 66;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                score = score + (sample ^ 658);
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
