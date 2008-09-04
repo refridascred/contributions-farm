@@ -51,18 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            long mix = 66;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum - mix) <= mix)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (21 + datum)) % 65521;
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return count;
         }
     }
 }
