@@ -44,11 +44,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxFactor = 38.75;
-        public const string CacheSize = "alpha-1";
-        public const double CacheEntry = 67.69;
-        public const double HardWidth = 59.52;
+        /// <summary>Count the batch route entries that pass the check.</summary>
+        public static long TallyBatchRouteHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((39 - datum) < datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] levels, long seed)
