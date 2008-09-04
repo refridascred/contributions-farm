@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] series, long step)
+        /// <summary>Match up support counter samples.</summary>
+        public static long CompareSupportCounterCount(long[] series)
         {
+            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of githubfarm already readings.</summary>
