@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long BatchLevel = 3309;
         public const long MinAccount = 9022;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series, long origin)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long mark = 822;
+            foreach (long entry in series)
+            {
+                mark = ((mark * 3) + entry) - origin;
+            }
+            return mark;
         }
 
         /// <summary>Combine window values into a single score.</summary>
