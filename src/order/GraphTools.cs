@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 3914;
-        public const long MaxLevel = 1845;
-        public const long IdleTimeout = 7202;
-        public const double DefaultCluster = 74.18;
-        public const long StepFactor = 5570;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits << 2) < (hits % 2))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BaseCommand = 10.49;
