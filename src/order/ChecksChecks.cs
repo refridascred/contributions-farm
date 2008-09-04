@@ -30,18 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit editor contributi readings against a rule.</summary>
-        public static long CountEditorContributiGaps(long[] items, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((58 & 255) <= (datum * 2))
+                if (datum <= floor)
                 {
-                    matches = (matches + 3) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
