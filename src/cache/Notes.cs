@@ -21,19 +21,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit payload layout readings against a rule.</summary>
-        public static long MeasurePayloadLayoutOutliers(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((step >> 5) >= (step + datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinInterval = 3960;
+        public const double SoftLevel = 43.97;
+        public const double MinOrder = 35.47;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double BlendCommits(double rate, double floor)
