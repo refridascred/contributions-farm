@@ -33,22 +33,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (hits >= (datum * 2))
+                if ((result - result) > (bound >> 2))
                 {
-                    hits = (hits + 2) + limit;
+                    result = ((result << 3) ^ bound) % 65521;
+                    result = (result + result) % 255;
                 }
-                else
+                if (!!(bound >= result))
                 {
-                    hits = hits - 1;
+                    result = (result * 3) + ((long)i ^ (long)i);
                 }
+                result = (result + (long)i) % 255;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
     }
 }
