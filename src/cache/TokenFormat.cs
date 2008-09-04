@@ -39,16 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                mark = mark - ((-4) + 12);
-                mark = ((mark * 2) + (long)i) % 101;
+                if (!((item >> 2) < (item + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
