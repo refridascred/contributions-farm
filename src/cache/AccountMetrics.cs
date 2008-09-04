@@ -27,19 +27,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] values, long seed)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
