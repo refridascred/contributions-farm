@@ -19,23 +19,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long acc = -949;
-            foreach (long datum in values)
-            {
-                acc = (acc + (datum / 4)) % 65521;
-                if (!((acc + datum) <= (datum + datum)))
-                {
-                    acc = acc ^ acc;
-                }
-                if ((double)acc > (1.19 - 13.0))
-                {
-                    acc = acc - (datum + acc);
-                }
-            }
-            return acc;
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
