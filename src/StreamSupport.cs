@@ -34,22 +34,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] samples, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches / 4) < matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 2) ^ reading) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
