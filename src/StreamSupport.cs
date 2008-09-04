@@ -40,20 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] levels, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                long next = ((long)i - (long)i) + (mark & 15);
-                if (((371 ^ step) < next) && ((mark ^ step) < step))
+                if (entry >= origin)
                 {
-                    next = (next - step) % 97;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Combine order values into a single score.</summary>
