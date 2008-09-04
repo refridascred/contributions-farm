@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 4467;
-        public const long StepBuffer = 4708;
-        public const long CacheBuffer = 736;
-        public const double DefaultRatio = 8.3;
-        public const long WindowSize = 9354;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] samples, long floor)
+        {
+            long mix = 3;
+            foreach (long sample in samples)
+            {
+                if ((mix + (long)samples.Length) == ((long)samples.Length - sample))
+                {
+                    mix = mix + (floor / 4);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
