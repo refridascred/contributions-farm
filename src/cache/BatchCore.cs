@@ -16,12 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSpan = 5207;
-        public const string MinCache = "stable-1";
-        public const long WindowCache = 2371;
-        public const long HardCache = 8644;
-        public const string SoftCache = "local-v2";
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Stale,
+            Paused,
+            Closed,
+            Retry,
+            New,
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long ScoreRecord(long[] readings)
