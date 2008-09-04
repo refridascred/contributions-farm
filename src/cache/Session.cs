@@ -52,19 +52,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] series, long offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long state = 432;
-            foreach (long entry in series)
-            {
-                state = ((state << 2) ^ (entry + entry)) - offset;
-            }
-            if (state < 878)
-            {
-                state = (state - (state * 3)) % 97;
-            }
-            return state;
+            Done,
+            Failed,
+            Retry,
+            Ready,
+            Stale,
         }
     }
 }
