@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((616 - 63) <= ((long)series.Length - (long)series.Length))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 4855;
+        public const double StepBudget = 11.82;
+        public const long DefaultTimeout = 3575;
+        public const long WindowSize = 6883;
+        public const long WindowTimeout = 8556;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
