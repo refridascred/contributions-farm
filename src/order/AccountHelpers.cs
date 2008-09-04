@@ -47,12 +47,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] items)
         {
-            Ready,
-            Retry,
-            Stale,
+            long score = 4;
+            foreach (long entry in items)
+            {
+                if ((double)score <= (8.6 * 14.0))
+                {
+                    score = (score ^ (score ^ entry)) % 97;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
