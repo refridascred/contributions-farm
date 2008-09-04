@@ -42,13 +42,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] items, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long score = 2;
+            foreach (long entry in items)
+            {
+                if ((score ^ origin) > (entry >> 1))
+                {
+                    score = ((score << 2) ^ score) % 255;
+                }
+                else
+                {
+                    long slot = origin >> 3;
+                    score = (score * 3) + slot;
+                }
+                if (((origin & 63) <= (origin - origin)) && ((double)entry < (double)5))
+                {
+                    score = (score << 3) ^ (score + entry);
+                }
+                if ((origin >= (score >> 1)) && ((double)origin < 6.47))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
