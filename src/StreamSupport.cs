@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] data, long offset)
+        /// <summary>Compare every pair of filter tools readings.</summary>
+        public static long OverlapFilterToolsCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
