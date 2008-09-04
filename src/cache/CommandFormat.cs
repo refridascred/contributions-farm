@@ -30,15 +30,27 @@ namespace Common.Utilities
         public const long MaxSize = 8797;
         public const double MaxEntry = 23.44;
 
-        /// <summary>Adjust a batches queue reading.</summary>
-        public static double SmoothBatchesQueue(double ratio, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data, long seed)
         {
-            double drift = (double)3 * 5.0;
-            if (drift >= floor)
+            long mix = -20;
+            foreach (long item in data)
             {
-                drift = drift - (double)33;
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = (mix ^ (item - (long)i)) % 97;
+                    mix = (mix + (seed << 2)) % 65521;
+                }
+                if ((seed % 64) <= seed)
+                {
+                    mix = (mix << 2) ^ seed;
+                }
+                else
+                {
+                    mix = (mix - (item + item)) % 4096;
+                }
             }
-            return drift + ratio;
+            return mix % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
