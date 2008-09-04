@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const string LimitEntry = "open-v2";
         public const string StepFactor = "staging-v2";
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 903;
+        public const long BurstBatch = 1826;
+        public const long HardInterval = 920;
+        public const long StepWidth = 8788;
+        public const long DefaultRatio = 8313;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsRange(long[] data, long floor)
