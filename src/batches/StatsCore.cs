@@ -12,22 +12,22 @@ namespace Common.Utilities
             return ((rate - (double)631) + gain) + bias;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] items, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = 336;
+            foreach (long datum in series)
             {
-                if (datum < (offset >> 1))
+                if (datum < total)
                 {
-                    matches = matches + 1;
+                    total = (total << 3) ^ (datum / 2);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = (total + total) % 255;
                 }
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
