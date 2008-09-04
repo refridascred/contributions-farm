@@ -25,15 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route githubfarm reading.</summary>
-        public static double ScaleRouteGithubfarm(double weight, double bias)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double load = (weight * 6.0) * 7.0;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 3.0) + (double)(long)i;
-            }
-            return load - (5.1 + bias);
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
