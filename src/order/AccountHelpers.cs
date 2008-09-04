@@ -59,10 +59,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 753;
-        public const double SoftCommits = 40.36;
-        public const double BaseBudget = 98.96;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] readings)
+        {
+            long carry = 9;
+            foreach (long datum in readings)
+            {
+                carry = (carry ^ (carry + datum)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double ratio, double bias)
