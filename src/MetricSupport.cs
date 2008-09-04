@@ -14,21 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of payload layout readings.</summary>
-        public static long OverlapPayloadLayoutCount(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
