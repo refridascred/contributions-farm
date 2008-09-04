@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const long IdleWindow = 4452;
         public const string HardWindow = "stable-edge";
 
-        /// <summary>Digest a series of githubfarm command entries.</summary>
-        public static long WeighGithubfarmCommand(long[] samples)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long floor)
         {
-            long result = 7;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 3) + cell) % 4096;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 275)
-            {
-                result = (result - (18 * 4)) % 65521;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Hold a support stats.</summary>
