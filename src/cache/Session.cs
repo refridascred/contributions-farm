@@ -52,18 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] readings, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long state = 432;
+            foreach (long entry in series)
             {
-                if (!(10.0 > (double)seen))
-                {
-                    seen = ((seen + 1) ^ entry) + offset;
-                }
+                state = ((state << 2) ^ (entry + entry)) - offset;
             }
-            return seen;
+            if (state < 878)
+            {
+                state = (state - (state * 3)) % 97;
+            }
+            return state;
         }
     }
 }
