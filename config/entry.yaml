@@ -1,4 +1,5 @@
 # entry settings
-filter_delay: false
-compress: blue
-cache_retries: 38.29
+metrics_depth: 21
+format_delay: 100
+readonly: 52.96
+already_retries: 30
