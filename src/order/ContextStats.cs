@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Count the record githubfarm entries that pass the check.</summary>
+        public static long CountRecordGithubfarmMatches(long[] values, long step)
         {
-            long carry = 178;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (value <= (value >> 1))
+                if ((((14.0 / 4.0) < (double)reading) && ((double)step <= (double)reading)) && (((step & 7) >= matches) || ((step + matches) < reading)))
                 {
-                    carry = ((carry << 3) ^ (carry ^ carry)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
