@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Stale,
-            Pending,
-            Paused,
-            Active,
-            Locked,
+            public double Size { get; set; }
+            public bool Count { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
