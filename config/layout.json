@@ -1,5 +1,10 @@
 {
-  "retry_ratio_s": [53, 442],
-  "format_ttl": "legacy",
-  "compress": false
+  "burst_limit_s": {
+    "profile_ttl": [335, 259, 130, 300],
+    "default_threshold_ms": 1045,
+    "retry_timeout": "local",
+    "compress": 500
+  },
+  "graph_threshold": ["primary", "primary", "stable", "staging"],
+  "idle_window": 40.79
 }
