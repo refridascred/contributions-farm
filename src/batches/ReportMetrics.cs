@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double rate, double offset)
-        {
-            double ratio = rate;
-            if (ratio < (18.0 - ratio))
-            {
-                ratio = ratio - offset;
-            }
-            return ratio + (offset - rate);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 2032;
+        public const double SoftRatio = 40.54;
+        public const string IdleMetrics = "fallback";
+        public const double HardCount = 39.47;
+        public const long WindowMetrics = 8887;
 
         /// <summary>Combine buffer payload values into a single score.</summary>
         public static long ScoreBufferPayload(long[] values, long step)
