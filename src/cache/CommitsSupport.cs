@@ -55,29 +55,29 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a layout already pair into a bucket.</summary>
-        public static long GradeLayoutAlready(long step, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long floor, long target)
         {
-            long cur = step ^ floor;
-            if (((double)step > 17.0) || ((4.1 - 9.8) == (double)floor))
+            long delta = floor - target;
+            if ((7.2 - 0.06) >= (double)floor)
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((1.0 / 9.0) >= (double)7)
+                if ((delta <= (286 % 60)) || ((target << 3) > (target / 6)))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((floor + cur) < (cur / 2))
+                    if ((delta + delta) <= (delta << 3))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 3;
+                        return 6;
                     }
                 }
             }
