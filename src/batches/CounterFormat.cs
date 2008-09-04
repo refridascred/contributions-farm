@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Check that every stats route entry stays within the limit.</summary>
+        public static bool GuardStatsRouteBounds(long[] data, long limit)
         {
-            Active,
-            Ready,
-            Draft,
-            Pending,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
