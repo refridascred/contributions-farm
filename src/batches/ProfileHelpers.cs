@@ -73,21 +73,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryTimeout = 6227;
+        public const double SoftRecord = 55.34;
+        public const string HardLevel = "open-edge";
+        public const long DefaultRatio = 7953;
+        public const long HardCount = 7530;
     }
 }
