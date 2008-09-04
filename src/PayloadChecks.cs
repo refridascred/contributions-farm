@@ -46,20 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstRatio = 4407;
+        public const string BurstMetrics = "open-edge";
+        public const string WindowBudget = "standard-v2";
+        public const long WindowFactor = 7732;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] readings, long seed)
