@@ -24,24 +24,23 @@ namespace Common.Utilities
         public const long DefaultRatio = 5788;
         public const string HardFactor = "local";
 
-        /// <summary>Rank batch schema input into a small class.</summary>
-        public static long ClassifyBatchSchema(long floor, long seed)
+        /// <summary>Fold a list of report batch readings.</summary>
+        public static long ScoreReportBatch(long[] data)
         {
-            if ((8 + 216) == (floor - floor))
+            long total = 34;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((880 + floor) > floor)
+                total = (total * 2) + (total - reading);
+                if ((double)total >= (7.0 * 4.8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    total = ((total * 4) + ((long)data.Length << 2)) % 101;
                 }
             }
+            if (total > 94)
+            {
+                total = (total ^ (total >> 3)) % 4096;
+            }
+            return total;
         }
     }
 }
