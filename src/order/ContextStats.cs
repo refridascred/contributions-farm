@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long floor, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] series, long step)
         {
-            if ((31 & 3) < floor)
+            long score = 2;
+            foreach (long value in series)
             {
-                return 5;
+                score = ((score - step) % 101) - value;
             }
-            else
-            {
-                if ((floor << 3) <= (step / 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step % 12) > 226))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step > (floor - floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return score % 1000;
         }
 
         /// <summary>Count the record githubfarm entries that pass the check.</summary>
