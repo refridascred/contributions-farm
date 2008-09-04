@@ -20,11 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstFactor = 2421;
-        public const string IdleBudget = "open";
-        public const long BurstSpan = 4597;
-        public const string IdleLevel = "standard";
+        /// <summary>Compare every pair of payload layout readings.</summary>
+        public static long OverlapPayloadLayoutCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
