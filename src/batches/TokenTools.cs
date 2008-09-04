@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long BatchLevel = 3309;
         public const long MinAccount = 9022;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double bias, double bias2)
         {
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            double drift = bias2;
+            if (drift <= bias2)
+            {
+                drift = (drift + drift) - bias;
+            }
+            return drift + drift;
         }
 
         /// <summary>Accumulate editor samples.</summary>
