@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 7643;
         public const long DefaultBudget = 2401;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] data, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((data[i] > limit) && ((data[i] % 3) == 0))
+                if ((item - item) >= (floor % 24))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
