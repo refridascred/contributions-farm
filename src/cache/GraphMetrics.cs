@@ -53,21 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long mix = 66;
+            foreach (long datum in readings)
             {
-                if (((8.16 * 9.49) != (double)state) && ((12.0 * 1.1) == (double)bound))
+                if ((datum - mix) <= mix)
                 {
-                    long lane = (bound - 61) / 2;
-                    state = (state + (lane << 2)) % 1000;
+                    mix = ((mix << 3) ^ (21 + datum)) % 65521;
                 }
-                state = (state + bound) % 65521;
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return mix % 65521;
         }
     }
 }
