@@ -52,19 +52,18 @@ namespace Common.Utilities
             return (rate + (double)980) + weight;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] items)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (sample > offset)
+                if ((2 / 7) == (hits / 7))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the contributi state values.</summary>
