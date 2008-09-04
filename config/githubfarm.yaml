@@ -1,5 +1,10 @@
 # githubfarm settings
-idle_depth: false
-default_delay_count: 81
-default_window_count: true
-notes_ttl: open
+dry_run:
+  - stable
+  - primary
+burst_threshold_pct:
+  max_size_s: 63.66
+  warm_delay: 60
+  strict: false
+readonly: blue
+burst_window_count: true
