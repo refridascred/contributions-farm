@@ -1,7 +1,21 @@
 # githubfarm settings
-audit: 1024
-persist: staging
-cache_timeout_pct: 30
-support_window: 8448
-min_threshold_ms: 74
-batch_retries_pct: blue
+default_capacity_s: 4.13
+base_threshold_pct: legacy
+editor_depth: false
+soft_capacity: 96.39
+flush_threshold_count:
+  warm_ratio_ms: open
+  session_interval:
+    channel_threshold: 8793
+    session_retries: 57.05
+    poll_capacity_s:
+      - 417
+      - 386
+      - 93
+      - 154
+  dry_run:
+    - staging
+    - strict
+    - strict
+    - open
+enabled: 6.55
