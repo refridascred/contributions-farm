@@ -59,27 +59,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] samples)
         {
-            long acc = 2;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                acc = (acc + (acc % 100)) % 101;
-                if ((acc >> 1) == (limit << 3))
+                if ((hits - hits) < hits)
                 {
-                    acc = acc ^ (reading & 127);
-                }
-                if ((acc % 60) <= (limit % 64))
-                {
-                    acc = acc + (reading >> 2);
+                    hits = (hits + 2) + sample;
                 }
                 else
                 {
-                    acc = (acc * 3) + (167 - 11);
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
