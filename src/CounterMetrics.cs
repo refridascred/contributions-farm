@@ -17,21 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 859;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > (7 >> 5))
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry - 10) + bound;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
