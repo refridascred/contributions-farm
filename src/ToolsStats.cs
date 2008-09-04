@@ -27,19 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format githubfarm entry stays within the limit.</summary>
-        public static bool CheckFormatGithubfarmLimits(long[] readings, long seed)
+        /// <summary>Find the first schema batches entry that matches the target.</summary>
+        public static long LocateSchemaBatchesIndex(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > seed)
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
