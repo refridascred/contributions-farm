@@ -1,28 +1,5 @@
 {
-  "hard_capacity_ms": {
-    "min_threshold_s": {
-      "command_ttl": ["strict", "local"],
-      "audit": "blue",
-      "min_timeout": [338, 429, 453, 147],
-      "command_threshold": "eu-west",
-      "burst_capacity_s": [45, 13]
-    },
-    "max_retries_s": true,
-    "persist": {
-      "format_capacity": 6011,
-      "base_capacity": "local",
-      "idle_ratio_count": 60,
-      "context_timeout": [94, 378, 6, 210],
-      "soft_timeout_s": "primary",
-      "compress": 51.64
-    }
-  },
-  "already_limit": 100,
-  "record_ratio": {
-    "warm_ttl_count": true,
-    "hard_threshold": [240, 323],
-    "readonly": false,
-    "batch_capacity": 39.96,
-    "sync_timeout_count": [41, 456]
-  }
+  "graph_interval": 60,
+  "strict": "legacy",
+  "counter_depth": 98
 }
