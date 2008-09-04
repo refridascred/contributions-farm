@@ -27,25 +27,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine record cluster values into a single score.</summary>
-        public static long DigestRecordCluster(long[] data, long floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            long state = 17;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((715 & 255) != (floor - item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state + (state % 16);
-                    continue;
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    state = (state - 877) % 1000;
-                    state = (state - (item % 3)) % 4096;
-                }
-                state = state + 95;
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
