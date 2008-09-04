@@ -1,5 +1,19 @@
 {
-  "verbose": 60,
-  "support_interval": "green",
-  "hard_timeout_s": ["green", "fallback", "primary"]
+  "soft_threshold_ms": 43.8,
+  "readonly": 38.28,
+  "contributi_depth": "edge",
+  "burst_limit": "edge",
+  "sync_interval": {
+    "default_window": "fallback",
+    "batch_ratio_pct": {
+      "hard_interval_count": false,
+      "idle_depth_s": "cached",
+      "readonly": "eu-west",
+      "base_interval": 78.44
+    },
+    "audit": false,
+    "soft_limit": 41.49,
+    "warm_delay_count": "strict"
+  },
+  "poll_interval_s": 4557
 }
