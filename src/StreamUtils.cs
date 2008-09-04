@@ -47,19 +47,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double ratio, double floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long target)
         {
-            double drift = (double)(53 >> 1);
-            if (drift > ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + ratio;
+                if ((readings[i] > target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (drift - 1.37);
-            }
-            return drift - floor;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
