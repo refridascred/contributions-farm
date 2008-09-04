@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] data, long offset)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
