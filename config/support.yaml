@@ -1,11 +1,9 @@
 # support settings
-hard_threshold_ms: false
-soft_threshold_count: fallback
-counter_threshold: open
-batches_threshold:
-  - 138
-  - 40
-  - 182
-  - 163
-hard_depth: 92.01
-warm_limit_ms: 1718
+min_ratio_s: 10.24
+strict: 52.97
+max_delay_s:
+  - 168
+  - 83
+  - 494
+  - 52
+min_delay: primary
