@@ -79,21 +79,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset - hits) != (hits + offset))
                 {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
