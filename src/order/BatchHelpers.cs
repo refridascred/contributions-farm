@@ -13,13 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] values)
         {
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!(((matches << 1) == (matches / 5)) || ((item >> 5) > ((long)values.Length << 2))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
