@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
+            Failed,
             Paused,
             Done,
-            Dropped,
-            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
