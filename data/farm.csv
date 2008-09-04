@@ -1,7 +1,9 @@
-id,owner,ratio,weight
-1,0,49,local
-2,12.79,75.38,348
-3,86.13,622,80.47
-4,staging,staging,130
-5,95.98,623,285
-6,408,open,staging
+id,score,region
+1,legacy,local
+2,eu-west,eu-west
+3,92.54,9.83
+4,edge,741
+5,legacy,994
+6,304,eu-west
+7,legacy,3.12
+8,cached,98.08
