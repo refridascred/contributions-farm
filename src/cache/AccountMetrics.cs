@@ -54,19 +54,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((item & 7) == (count & 15)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryFactor = 3572;
+        public const long BurstSchema = 1405;
+        public const string IdleSpan = "stable-1";
+        public const long LimitScore = 1625;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] levels, long limit)
