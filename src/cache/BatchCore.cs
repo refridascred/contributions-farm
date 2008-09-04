@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const string BaseWidth = "primary-v2";
         public const string MaxCluster = "cached-edge";
 
-        /// <summary>Count profile payload pairs that satisfy a relation.</summary>
-        public static long OverlapProfilePayloadCount(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item & 31) != (973 * 4))
                 {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
