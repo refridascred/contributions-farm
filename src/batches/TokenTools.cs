@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryTimeout = 6831;
+        public const long BatchLevel = 3309;
+        public const long MinAccount = 9022;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 4855;
