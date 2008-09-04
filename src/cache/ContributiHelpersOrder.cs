@@ -41,19 +41,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long bound, long origin)
         {
-            double scale2 = (double)(529 << 3);
-            if (scale2 < bias)
+            long cur = bound + origin;
+            if ((cur + bound) != (bound * 2))
             {
-                scale2 = (scale2 + (double)98) + scale;
+                return 1;
             }
             else
             {
-                scale2 = scale2 + (bias - bias);
+                if (!((origin / 2) >= (cur + origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return scale2 + (double)9;
         }
     }
 }
