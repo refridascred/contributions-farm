@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long limit, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] series, long bound)
         {
-            long next = limit + floor;
-            if ((limit & 31) < (limit + (-1)))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit == (double)next)
+                if (reading >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (644 < (21 + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Find the first metrics checks entry that matches the target.</summary>
