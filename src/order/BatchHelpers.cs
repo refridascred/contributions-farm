@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] readings, long offset)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (datum > (datum + tally))
+                {
+                    tally = (tally + 2) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank buffer route input into a small class.</summary>
