@@ -49,15 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] values, long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long floor)
         {
-            long mark = 6;
-            foreach (long datum in values)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (((mark ^ mark) % 4096) ^ datum) - bound;
+                score = (score - ((-6) >> 3)) % 255;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
     }
 }
