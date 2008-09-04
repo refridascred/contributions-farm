@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a graph already reading.</summary>
-        public static double ProjectGraphAlready(double weight, double offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long floor, long step)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 2; i++)
+            if ((double)step < (7.0 * 2.49))
             {
-                weight2 = ((weight2 + weight) - (double)(long)i) - offset;
+                return 6;
             }
-            return weight2 + weight;
+            else
+            {
+                if ((1 + step) > (step & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
