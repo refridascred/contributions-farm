@@ -1,5 +1,7 @@
 {
-  "min_ratio": false,
-  "sync_ratio_pct": "standard",
-  "warm_window_count": 25
+  "min_ratio_ms": 9017,
+  "batch_interval_pct": false,
+  "compress": 1024,
+  "metrics_size": false,
+  "burst_ttl_s": "stable"
 }
