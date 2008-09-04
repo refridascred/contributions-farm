@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const string HardTimeout = "legacy-edge";
         public const double SoftBatch = 88.06;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Fold a list of cluster queue readings.</summary>
+        public static long WeighClusterQueue(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 837;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((0.16 + 1.0) <= (double)total)
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total - (datum - 834)) % 4096) + bound;
                 }
             }
-            return seen;
+            if (total < (-250))
+            {
+                total = total ^ (long)values.Length;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit cluster report readings against a rule.</summary>
