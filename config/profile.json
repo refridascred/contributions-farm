@@ -1,16 +1,5 @@
 {
-  "warm_window_ms": false,
-  "batch_retries_count": 69,
-  "batch_ratio_count": ["green", "legacy", "open"],
-  "compress": true,
-  "min_capacity_s": {
-    "idle_retries_count": [119, 450, 327, 104],
-    "tools_capacity": 3.11,
-    "buffer_retries": 6898,
-    "batch_limit_count": {
-      "verbose": 20,
-      "cache_ttl": [461, 200, 8],
-      "batch_ttl": true
-    }
-  }
+  "batch_capacity_ms": "open",
+  "burst_depth_pct": ["green", "legacy", "green"],
+  "support_delay": "strict"
 }
