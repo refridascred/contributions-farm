@@ -52,16 +52,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix - (277 / 3)) % 97;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Pending,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
