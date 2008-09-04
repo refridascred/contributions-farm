@@ -18,32 +18,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long limit, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] items, long seed)
         {
-            long step = limit ^ offset;
-            if ((offset + limit) == (96 * 2))
+            long total = 2;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (6.9 <= (double)limit)
+                if ((total + item) > (-3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((3.3 / 4.0) != (double)step) && ((limit - 408) >= 47))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = total - seed;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a layout info.</summary>
