@@ -1,13 +1,7 @@
 {
-  "max_threshold": 95,
-  "session_delay": {
-    "strict": ["fallback", "strict", "edge"],
-    "cache_ratio": "edge",
-    "soft_threshold_pct": "latest",
-    "batch_delay_pct": "eu-west",
-    "retry_ttl_ms": "green",
-    "readonly": false
-  },
-  "poll_interval_ms": "blue",
-  "base_limit_ms": "fallback"
+  "retry_timeout_s": 93,
+  "base_depth_count": "local",
+  "metric_retries": "fallback",
+  "githubfarm_timeout": 5578,
+  "hard_window": "primary"
 }
