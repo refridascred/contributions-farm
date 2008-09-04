@@ -23,21 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format token readings.</summary>
-        public static long CompareFormatTokenCount(long[] items)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= offset)
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the payload status values.</summary>
