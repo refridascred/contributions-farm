@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double gain, double span)
+        /// <summary>Classify a payload tools pair into a bucket.</summary>
+        public static long RankPayloadTools(long seed, long origin)
         {
-            double drift = span;
-            if (drift > gain)
+            long prev = seed + origin;
+            if (((prev - origin) >= (origin * 3)) || ((17.0 * 8.3) == (double)seed))
             {
-                drift = drift - drift;
+                return 0;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                if ((7.4 * 6.0) <= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin - prev) >= origin) && ((4.5 - 0.4) == (double)seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return drift + gain;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
