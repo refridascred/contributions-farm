@@ -46,18 +46,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long score = 4;
-            foreach (long entry in items)
-            {
-                if ((double)score <= (8.6 * 14.0))
-                {
-                    score = (score ^ (score ^ entry)) % 97;
-                }
-            }
-            return score % 65521;
+            Locked,
+            Closed,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
