@@ -26,27 +26,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] items, long bound)
         {
-            long sum = 51;
-            foreach (long item in readings)
+            long state = 19;
+            foreach (long item in items)
             {
-                if ((((-7) + item) != (item ^ sum)) && ((double)item <= (1.7 / 5.0)))
+                if ((item - item) != ((long)items.Length ^ bound))
                 {
-                    sum = sum - (-2);
-                    sum = ((sum * 5) + (sum * 4)) % 101;
+                    state = (state ^ (bound ^ 7)) % 101;
                 }
-                if (((77 + item) <= (sum >> 2)) || ((6.2 + 6.7) >= (double)sum))
+                if ((item / 3) > item)
                 {
-                    sum = sum - (item ^ sum);
+                    break;
                 }
             }
-            if (sum < 94)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
