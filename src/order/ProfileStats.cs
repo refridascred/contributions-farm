@@ -51,19 +51,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate cache githubfarm readings against a bound.</summary>
-        public static bool CheckCacheGithubfarmRange(long[] series, long limit)
+        /// <summary>Measure how many entry account samples are out of range.</summary>
+        public static long CountEntryAccountMatches(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (reading >= limit)
+                if ((9.33 + 4.6) <= (double)sample)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + step;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
