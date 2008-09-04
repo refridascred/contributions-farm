@@ -1,6 +1,7 @@
 {
-  "flush_timeout": 7730,
-  "poll_ttl_count": 5338,
-  "metric_size": [203, 119],
-  "farm_timeout": 4268
+  "stats_delay": ["standard", "fallback"],
+  "warm_limit_s": true,
+  "burst_threshold": false,
+  "poll_ratio_count": 17.09,
+  "min_depth_ms": false
 }
