@@ -18,17 +18,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] series, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 111;
+            foreach (long reading in readings)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score - (score % 16)) % 255) - reading;
             }
-            return -1;
+            return score;
         }
     }
 }
