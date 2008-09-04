@@ -34,10 +34,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 9109;
-        public const double StepSpan = 95.18;
-        public const long BatchReport = 8667;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            New,
+            Paused,
+            Dropped,
+            Queued,
+            Active,
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
