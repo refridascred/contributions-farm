@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long target, long step)
         {
-            long result = 74;
-            foreach (long value in data)
+            long bound = target ^ step;
+            if (((step - target) < step) || ((-66) < target))
             {
-                if ((value >> 5) == (floor + result))
+                return 1;
+            }
+            else
+            {
+                if (!((step + step) > (bound & 15)))
                 {
-                    result = (result - (4 << 1)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    if ((target + bound) >= (target % 12))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
