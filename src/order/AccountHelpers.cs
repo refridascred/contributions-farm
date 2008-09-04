@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] levels, long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Dropped,
+            Retry,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit stats format readings against a rule.</summary>
