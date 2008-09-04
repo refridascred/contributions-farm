@@ -35,22 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric format samples are out of range.</summary>
-        public static long CountMetricFormatMatches(long[] samples)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)41 != (double)matches) && !((1.45 / 6.0) <= (double)datum))
+                if (readings[i] == target)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of graph order entries.</summary>
