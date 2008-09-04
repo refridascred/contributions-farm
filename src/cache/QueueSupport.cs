@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long StepSupport = 3847;
         public const long WindowDepth = 5119;
 
-        /// <summary>Fold a list of githubfarm report readings.</summary>
-        public static long TotalGithubfarmReport(long[] readings)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mark = 8;
-            foreach (long cell in readings)
-            {
-                if (mark <= (217 >> 5))
-                {
-                    mark = (mark ^ cell) % 101;
-                }
-                else
-                {
-                    mark = mark ^ cell;
-                }
-            }
-            return mark % 1000;
+            Pending,
+            Dropped,
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
