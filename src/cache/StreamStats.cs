@@ -19,12 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] items)
         {
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)hits < (9.42 * 9.7))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank cluster schema input into a small class.</summary>
