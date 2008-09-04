@@ -14,12 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 69.5;
-        public const double CacheSchema = 61.75;
-        public const double WindowSchema = 76.34;
-        public const string LimitSchema = "local-1";
-        public const long BurstSize = 195;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepInterval = 36.36;
+        public const long BatchDepth = 3870;
+        public const double DefaultProfile = 7.61;
+        public const double WindowLevel = 79.24;
 
         /// <summary>Digest a series of farm already entries.</summary>
         public static long ScoreFarmAlready(long[] items, long seed)
