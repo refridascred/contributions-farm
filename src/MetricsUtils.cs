@@ -39,23 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double bias, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] levels)
         {
-            double mean = span;
-            if (mean < (mean + span))
+            long count = 0;
+            foreach (long value in levels)
             {
-                mean = (mean + span) + bias;
+                if (!((11.0 + 8.17) != (double)count))
+                {
+                    count = (count + 2) + value;
+                }
             }
-            else
-            {
-                mean = mean + (mean - span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (19.0 / 2.0)) + (double)(long)i;
-            }
-            return mean + span;
+            return count;
         }
 
         /// <summary>Hold a editor record.</summary>
