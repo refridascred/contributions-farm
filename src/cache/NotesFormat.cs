@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Blend two window measurements.</summary>
