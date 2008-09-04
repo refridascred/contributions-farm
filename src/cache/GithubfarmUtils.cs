@@ -14,21 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Project the next context profile value.</summary>
+        public static double SmoothContextProfile(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double scale = span * 5.79;
+            return (scale + scale) + weight;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
