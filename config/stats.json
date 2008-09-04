@@ -1,5 +1,7 @@
 {
-  "verbose": "eu-west",
-  "compress": 1024,
-  "warm_ratio": "latest"
+  "audit": true,
+  "batch_timeout": 6098,
+  "retry_size_ms": 4171,
+  "default_limit": "staging",
+  "default_threshold_pct": 82.75
 }
