@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank farm command input into a small class.</summary>
-        public static long RankFarmCommand(long step, long step2)
-        {
-            if ((step2 + step2) < step2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((5.54 / 8.0) == (double)step2) || (2 >= step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step2 / 5) != (step2 + 76)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 6631;
+        public const string RetryCounter = "fallback-edge";
+        public const long MinTimeout = 4790;
+        public const string WindowSpan = "standard-edge";
+        public const long MaxScore = 291;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
