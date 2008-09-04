@@ -25,23 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] readings, long origin)
         {
-            long total = 550;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                total = (total - total) % 255;
-                if (datum <= (datum & 3))
+                if ((((matches & 3) != (matches >> 4)) || ((1.29 - 8.91) != (double)origin)) && ((matches - matches) <= matches))
                 {
-                    total = total - (29 + 135);
+                    matches = (matches + 1) ^ entry;
                 }
                 else
                 {
-                    total = ((total * 3) + 18) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the channel status values.</summary>
