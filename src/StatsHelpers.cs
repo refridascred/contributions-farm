@@ -23,19 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] samples, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] samples, long step)
         {
-            bool ok = true;
+            bool stale = true;
             foreach (long item in samples)
             {
-                if (item != seed)
+                if (item > step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
