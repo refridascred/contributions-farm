@@ -37,12 +37,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchBudget = 3388;
-        public const long WindowSize = 1671;
-        public const string RetryStream = "legacy-edge";
-        public const string DefaultDepth = "staging-v2";
-        public const long WindowStream = 9079;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] series, long seed)
