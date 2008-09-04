@@ -59,21 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)state < (18.0 - 2.7))
-                {
-                    state = state + state;
-                    state = state - origin;
-                }
-                state = ((state * 5) + (origin ^ state)) % 255;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
     }
 }
