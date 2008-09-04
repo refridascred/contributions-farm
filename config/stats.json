@@ -1,8 +1,8 @@
 {
-  "hard_retries": 95.18,
-  "poll_delay_count": 8137,
-  "batch_limit": "local",
-  "default_timeout_pct": 24.49,
-  "persist": true,
-  "retry_limit_s": 83.75
+  "readonly": ["local", "standard", "edge", "open"],
+  "sync_retries_pct": "standard",
+  "base_size_count": "standard",
+  "cache_ratio_s": [349, 241, 225, 461],
+  "sync_delay_s": true,
+  "min_size": 41
 }
