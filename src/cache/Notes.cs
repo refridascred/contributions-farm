@@ -28,39 +28,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a contributi counter value against two limits.</summary>
-        public static long SortContributiCounter(long offset, long step)
-        {
-            if ((569 * 3) == (step % 97))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step & 3) > (offset % 12))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)step < (4.0 * 6.1)) || ((step & 255) < (offset - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((54 ^ offset) >= offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "stable-edge";
+        public const double IdleRatio = 86.42;
+        public const double IdleGraph = 28.3;
+        public const string StepInterval = "strict-v2";
+        public const long StepGraph = 595;
 
         /// <summary>Validate farm queue readings against a bound.</summary>
         public static bool VerifyFarmQueueLimits(long[] series, long seed)
