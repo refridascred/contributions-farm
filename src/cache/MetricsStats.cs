@@ -32,21 +32,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 16)
+                    if ((data[i] ^ data[j]) == 1)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
