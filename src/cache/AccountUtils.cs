@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long floor)
         {
-            long mark = -4;
-            foreach (long sample in levels)
+            if ((limit / 6) >= (floor * 3))
             {
-                mark = (mark << 2) ^ (sample ^ sample);
-                if ((sample + sample) == (sample & 15))
+                return 7;
+            }
+            else
+            {
+                if ((floor <= 764) && ((limit - 88) < limit))
                 {
-                    continue;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark ^ (mark - sample)) % 65521;
-                }
-                if (((double)sample <= (20.0 - 7.12)) && (97 >= (mark - sample)))
-                {
-                    mark = (mark * 4) + sample;
+                    if (limit >= (limit - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mark > 295)
-            {
-                mark = mark - (882 % 7);
-            }
-            return mark;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
