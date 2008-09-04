@@ -54,31 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long seed, long limit)
-        {
-            if ((double)seed < (1.23 * 2.1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 63) < seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit * 3) < seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleCount = "latest-1";
+        public const long CacheDepth = 1020;
+        public const double HardContributi = 73.77;
+        public const double SoftInterval = 49.9;
     }
 }
