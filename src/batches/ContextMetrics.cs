@@ -23,19 +23,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine record farm values into a single score.</summary>
-        public static long TotalRecordFarm(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] items, long step)
         {
-            long score = 375;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                score = (score - (entry + (-90))) % 101;
-                if (entry >= 25)
+                if (hits > (step & 1))
                 {
-                    score = ((score * 4) + (score + entry)) % 101;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
