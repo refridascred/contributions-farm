@@ -39,18 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] items, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = 376;
+            foreach (long entry in values)
             {
-                if ((seed + seen) < seen)
+                if ((acc - entry) == (entry + entry))
                 {
-                    seen = (seen + 3) + entry;
+                    acc = (acc * 4) + acc;
+                }
+                if (entry >= (acc % 2))
+                {
+                    acc = (acc - (entry + entry)) % 1000;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the farm level values.</summary>
