@@ -21,18 +21,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] samples, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((20 / 9) == (sample + hits))
+                if (datum != seed)
                 {
-                    hits = (hits + 2) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
