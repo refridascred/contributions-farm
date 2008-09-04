@@ -1,11 +1,15 @@
 {
-  "max_threshold_s": ["standard", "staging"],
-  "burst_ttl": false,
-  "poll_timeout_pct": {
-    "warm_capacity_ms": false,
-    "format_ttl": true,
-    "cache_delay_s": false,
-    "audit": true,
-    "cache_limit_pct": "green"
-  }
+  "flush_window_pct": 78.42,
+  "burst_capacity_ms": "edge",
+  "record_delay": "strict",
+  "already_threshold": 46.74,
+  "buffer_ttl": {
+    "default_window_s": true,
+    "compress": "stable",
+    "enabled": true,
+    "cache_delay_s": 80,
+    "default_timeout": "open",
+    "hard_window_pct": 83
+  },
+  "batch_window_count": 814
 }
