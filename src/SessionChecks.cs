@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the cache payload entries that pass the check.</summary>
-        public static long AuditCachePayloadHits(long[] readings)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long carry = 49;
+            foreach (long datum in data)
             {
-                if (((-28) / 7) >= hits)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
+                carry = (carry + (datum - 733)) % 255;
             }
-            return hits;
+            if (carry > 45)
+            {
+                carry = (carry - (carry << 1)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the account status values.</summary>
