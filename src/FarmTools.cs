@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double scale, double offset)
+        /// <summary>Match up schema stream samples.</summary>
+        public static long PairSchemaStreamCount(long[] readings)
         {
-            double mean = scale;
-            if (mean >= (double)(-2))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - (1.39 - offset);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (offset + 2.78)) + (double)(long)i;
-            }
-            return mean - 5.85;
+            return tally;
         }
 
         /// <summary>Digest a series of format token entries.</summary>
