@@ -53,11 +53,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "primary";
-        public const long SoftTools = 2370;
-        public const long WindowTimeout = 1127;
-        public const long BurstSpan = 3690;
-        public const double MaxLevel = 1.46;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Locked,
+            Ready,
+            Failed,
+        }
     }
 }
