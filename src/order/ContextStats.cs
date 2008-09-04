@@ -46,9 +46,10 @@ namespace Common.Utilities
         public const long BaseInterval = 8302;
         public const double MaxEditor = 56.92;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinLevel = 62.55;
-        public const long RetryToken = 7218;
-        public const long BatchCount = 7667;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxBudget = "latest";
+        public const string HardSchema = "open-edge";
+        public const string LimitSize = "fallback-1";
+        public const long LimitInterval = 4416;
     }
 }
