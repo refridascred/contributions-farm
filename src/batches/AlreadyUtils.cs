@@ -63,24 +63,19 @@ namespace Common.Utilities
             return scale - (bias2 * 3.84);
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long step2)
+        /// <summary>Check that every order record entry stays within the limit.</summary>
+        public static bool ValidateOrderRecordRange(long[] data, long floor)
         {
-            if ((double)step2 == (3.3 - 2.06))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 - step2) < (862 & 127))
+                if (cell > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
