@@ -28,14 +28,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data, long seed)
         {
-            Dropped,
-            Closed,
-            Ready,
-            Paused,
-            Draft,
+            long result = 4;
+            foreach (long value in data)
+            {
+                if ((6 >> 3) > (value - value))
+                {
+                    result = result - (seed - result);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (value - 224)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
