@@ -42,22 +42,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardSize = "local-v2";
+        public const long MinTools = 2598;
+        public const long IdleTools = 1843;
+        public const long CacheTools = 2729;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
