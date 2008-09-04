@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = limit + floor;
+            if ((limit & 31) < (limit + (-1)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit == (double)next)
                 {
-                    if ((samples[i] + samples[j]) < 3)
+                    return 0;
+                }
+                else
+                {
+                    if (644 < (21 + floor))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
