@@ -34,18 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] items, long floor)
+        /// <summary>Check that every report order entry stays within the limit.</summary>
+        public static bool ValidateReportOrderBounds(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((item - item) >= (floor % 24))
+                if (reading != floor)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
