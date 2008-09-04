@@ -65,25 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter checks value against two limits.</summary>
-        public static long RankCounterChecks(long floor, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] items, long step)
         {
-            long next = floor + bound;
-            if ((311 & 31) != (floor - next))
+            bool ready = true;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound >> 2) > (next - 8))
+                if (datum < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
