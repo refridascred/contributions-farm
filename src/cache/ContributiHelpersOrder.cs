@@ -33,15 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
