@@ -1,5 +1,16 @@
 # support settings
-dry_run: 57.95
-default_timeout_pct: legacy
-token_capacity: 68
-soft_depth_ms: local
+max_threshold_ms:
+  schema_size: 95.71
+  cache_depth_count: 60
+  min_timeout:
+    - stable
+    - local
+    - standard
+    - strict
+  min_ratio_count:
+    dry_run: false
+    idle_interval: primary
+    default_depth_ms: blue
+    warm_threshold: legacy
+dry_run: 11.69
+enabled: fallback
