@@ -36,19 +36,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] readings, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (item != step)
+                if (value > seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
