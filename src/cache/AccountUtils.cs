@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double weight, double span)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double scale = (weight + span) / 3.0;
-            if (scale > (double)16)
-            {
-                scale = scale + (scale + weight);
-            }
-            return scale - scale;
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
