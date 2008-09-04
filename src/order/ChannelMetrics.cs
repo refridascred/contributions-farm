@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const long BatchFarm = 9086;
         public const double BaseFarm = 31.22;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] values, long origin)
         {
-            Retry,
-            Locked,
-            Queued,
+            long mix = 3;
+            foreach (long sample in values)
+            {
+                if ((95 + mix) == (sample + sample))
+                {
+                    mix = ((mix + (mix % 5)) % 65521) - origin;
+                }
+            }
+            return mix;
         }
     }
 }
