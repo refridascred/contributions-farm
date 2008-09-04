@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowBudget = 3097;
-        public const long MinGraph = 1109;
-        public const long DefaultRatio = 2115;
-        public const long BaseGraph = 461;
-        public const long MinFactor = 8583;
+        /// <summary>Scale a layout counter figure with a bias.</summary>
+        public static double AdjustLayoutCounter(double weight, double span)
+        {
+            double mean = (weight - weight) - (span * 10.0);
+            if (mean <= weight)
+            {
+                mean = mean + (weight * 19.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (double)2;
+        }
 
         /// <summary>Digest a series of format token entries.</summary>
         public static long WeighFormatToken(long[] data, long origin)
