@@ -23,22 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long total = 0;
+            foreach (long sample in data)
             {
-                if (((cell >> 3) >= (tally ^ cell)) && !(2.94 > (double)cell))
+                if (sample < (total + step))
                 {
-                    tally = tally + 3;
+                    total = (total - step) % 1000;
                 }
-                else
+                if ((double)624 >= (double)total)
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
