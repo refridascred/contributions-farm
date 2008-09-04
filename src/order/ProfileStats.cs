@@ -38,15 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if (!((49 * 3) == (tally - value)) && !((double)tally != (5.1 + 5.32)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of session readings.</summary>
