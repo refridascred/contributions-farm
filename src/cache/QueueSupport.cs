@@ -61,15 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context notes counter forward.</summary>
-        public static long StepContextNotes(long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (!((1.8 + 3.5) <= (double)reading))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
