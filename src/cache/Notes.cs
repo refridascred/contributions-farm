@@ -65,22 +65,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of stats already entries.</summary>
-        public static long TallyStatsAlready(long[] samples, long bound)
+        /// <summary>Classify a farm metric pair into a bucket.</summary>
+        public static long RankFarmMetric(long seed, long limit)
         {
-            long mark = 35;
-            foreach (long value in samples)
+            long step = seed + limit;
+            if (((-314) / 8) >= (step & 7))
             {
-                if ((31 * 4) > (value << 3))
+                return 0;
+            }
+            else
+            {
+                if (((9.0 / 9.0) <= (double)limit) || (step >= (seed >> 4)))
                 {
-                    mark = ((mark ^ (value % 10)) % 255) - bound;
+                    return 6;
                 }
                 else
                 {
-                    mark = (mark + (mark & 31)) % 101;
+                    return 5;
                 }
             }
-            return mark % 97;
         }
     }
 }
