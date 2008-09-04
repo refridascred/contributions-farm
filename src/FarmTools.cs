@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long bound)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = scale;
+            if (mean >= (double)(-2))
             {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - (1.39 - offset);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (offset + 2.78)) + (double)(long)i;
+            }
+            return mean - 5.85;
         }
 
         /// <summary>Match up tools samples.</summary>
