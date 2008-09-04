@@ -47,11 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] values)
         {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + count) >= cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
