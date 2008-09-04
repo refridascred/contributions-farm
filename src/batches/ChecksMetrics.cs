@@ -53,18 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a payload layout reading by value.</summary>
-        public static long SeekPayloadLayoutIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 23.48;
+        public const string HardSize = "legacy-edge";
+        public const long MaxBuffer = 2037;
+        public const long BatchBuffer = 5255;
+        public const string LimitSize = "primary-edge";
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesLimits(long[] series, long seed)
