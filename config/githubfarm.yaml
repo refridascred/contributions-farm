@@ -1,5 +1,8 @@
 # githubfarm settings
-verbose: 40.4
-audit: 71.66
-max_window_count: local
-queue_capacity: 766
+idle_ratio: edge
+base_depth_s: local
+stream_delay:
+  poll_timeout_ms: staging
+  burst_interval_pct: 6
+  default_timeout_s: 4.62
+burst_ratio_count: blue
