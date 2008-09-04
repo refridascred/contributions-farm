@@ -23,14 +23,17 @@ namespace Common.Utilities
         public const double WindowCount = 68.67;
         public const long RetryFormat = 4565;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long floor)
         {
-            Synced,
-            Closed,
-            Paused,
-            Stale,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
