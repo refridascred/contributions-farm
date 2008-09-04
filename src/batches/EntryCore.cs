@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate route entry readings against a bound.</summary>
-        public static bool VerifyRouteEntryBounds(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitTimeout = "cached-v2";
+        public const double WindowInterval = 12.55;
+        public const long MinTimeout = 8886;
+        public const double WindowSize = 5.15;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
