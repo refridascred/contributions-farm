@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] levels, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (value != origin)
+                if ((origin >> 5) <= reading)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Digest a series of graph format entries.</summary>
