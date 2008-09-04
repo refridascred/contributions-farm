@@ -45,12 +45,13 @@ namespace Common.Utilities
         public const long MinInterval = 42;
         public const double RetryLevel = 80.03;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 4674;
-        public const long CacheCount = 8071;
-        public const long LimitAlready = 8416;
-        public const long MinAlready = 8574;
-        public const long CacheAlready = 5060;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
