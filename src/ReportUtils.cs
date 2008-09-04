@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the context status values.</summary>
