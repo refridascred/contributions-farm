@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Dropped,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "latest-edge";
+        public const long RetryWidth = 604;
+        public const long LimitToken = 7245;
+        public const long BaseToken = 700;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 111;
