@@ -19,14 +19,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long origin, long bound)
         {
-            Synced,
-            Locked,
-            Idle,
-            Stale,
-            Paused,
+            long bound2 = origin - bound;
+            if (origin <= (bound ^ origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((12.0 - 6.4) > (double)origin) && ((bound2 ^ origin) != (bound2 >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) < (bound * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a channel counter sample.</summary>
