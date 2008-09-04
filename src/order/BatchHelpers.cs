@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] levels)
         {
-            Draft,
-            Dropped,
-            Stale,
-            Closed,
-            Ready,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((5.02 / 5.0) > (double)sample)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the support tools entries that pass the check.</summary>
