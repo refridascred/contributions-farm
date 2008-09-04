@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double floor)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            double weight2 = (double)(4 + 6);
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = ((weight2 + (double)0) + (double)(long)i) - floor;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Match up batch samples.</summary>
