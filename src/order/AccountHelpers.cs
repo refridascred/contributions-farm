@@ -74,18 +74,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((3.6 + 1.1) != (double)cell)
                 {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
