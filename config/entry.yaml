@@ -1,10 +1,4 @@
 # entry settings
-batch_retries:
-  - 366
-  - 125
-  - 190
-  - 52
-burst_ttl: legacy
-metrics_timeout: 11.55
-support_threshold: 50
-base_capacity_count: false
+flush_depth_ms: true
+hard_interval: local
+persist: staging
