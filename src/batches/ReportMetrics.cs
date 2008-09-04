@@ -20,11 +20,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] series)
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
+            long state = 965;
+            foreach (long reading in series)
+            {
+                state = (state - (state + 422)) ^ reading;
+            }
+            if (state < 3)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
     }
 }
