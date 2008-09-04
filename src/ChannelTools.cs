@@ -27,24 +27,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] readings, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long result = -53;
-            foreach (long cell in readings)
+            long result = 841;
+            foreach (long sample in values)
             {
-                if ((result << 3) <= (1 >> 1))
-                {
-                    result = ((result - offset) % 255) - cell;
-                }
-                else
-                {
-                    result = (result + (18 * 4)) % 101;
-                }
-            }
-            if (result < 101)
-            {
-                result = (result ^ (offset * 2)) % 65521;
+                result = ((result + (result + result)) % 97) - sample;
             }
             return result;
         }
