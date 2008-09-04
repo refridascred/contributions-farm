@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 6631;
-        public const string RetryCounter = "fallback-edge";
-        public const long MinTimeout = 4790;
-        public const string WindowSpan = "standard-edge";
-        public const long MaxScore = 291;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value - value) <= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long WeighChecks(long[] data)
