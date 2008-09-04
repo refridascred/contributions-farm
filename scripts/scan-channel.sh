@@ -6,21 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=351
-log "limit is ${CHANNEL_LIMIT}"
+for item in green fallback stable local; do
+    log "checking ${item}"
+done
 
-mode="${1:-stable}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
