@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] levels, long seed)
+        /// <summary>Classify a schema contributi pair into a bucket.</summary>
+        public static long SortSchemaContributi(long step, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if ((double)offset != (14.0 + 8.3))
             {
-                if (seed > (seen ^ value))
+                return 2;
+            }
+            else
+            {
+                if (step >= (step + step))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (33 > (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((4.6 * 1.74) != (double)offset) || ((step + offset) >= (offset - step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
