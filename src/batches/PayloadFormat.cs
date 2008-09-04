@@ -22,20 +22,19 @@ namespace Common.Utilities
         public const string RetryRatio = "staging-1";
         public const long BatchEditor = 4458;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Validate record account readings against a bound.</summary>
+        public static bool VerifyRecordAccountRange(long[] items, long offset)
         {
-            long mark = 10;
+            bool valid = true;
             foreach (long value in items)
             {
-                mark = mark - (mark & 31);
-                mark = mark + (value & 63);
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark > 727)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Blend two route measurements.</summary>
