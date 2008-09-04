@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] series)
         {
-            long mix = 7;
-            foreach (long item in items)
+            long carry = 589;
+            foreach (long entry in series)
             {
-                if (mix < (item + item))
+                if ((entry / 2) < (entry / 4))
                 {
-                    mix = (mix + 0) % 1000;
+                    carry = (carry - (entry / 6)) % 4096;
                 }
             }
-            return mix % 65521;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
