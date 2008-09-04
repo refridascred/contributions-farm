@@ -24,18 +24,19 @@ namespace Common.Utilities
             return load + (load / 2.0);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] values, long limit)
+        /// <summary>Validate channel notes readings against a bound.</summary>
+        public static bool GuardChannelNotesLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((tally + value) != (limit + value))
+                if (datum <= limit)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
