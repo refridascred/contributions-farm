@@ -29,15 +29,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] items, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long step)
         {
-            long carry = 503;
-            foreach (long sample in items)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (((carry ^ (carry & 63)) % 65521) - sample) - origin;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
     }
 }
