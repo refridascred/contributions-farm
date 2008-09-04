@@ -1,5 +1,9 @@
 {
-  "graph_interval": 60,
-  "strict": "legacy",
-  "counter_depth": 98
+  "max_interval_s": {
+    "poll_delay": "local",
+    "flush_capacity_s": false,
+    "hard_window_count": [56, 125, 8, 454]
+  },
+  "report_limit": "local",
+  "editor_depth": "edge"
 }
