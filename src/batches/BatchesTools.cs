@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a payload tools pair into a bucket.</summary>
-        public static long RankPayloadTools(long seed, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] levels)
         {
-            long prev = seed + origin;
-            if (((prev - origin) >= (origin * 3)) || ((17.0 * 8.3) == (double)seed))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.4 * 6.0) <= (double)origin)
+                if (!((double)count > (7.8 * 4.9)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin - prev) >= origin) && ((4.5 - 0.4) == (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 1) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
