@@ -76,35 +76,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long limit, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long step2)
         {
-            if ((step * 2) < (limit << 3))
+            if ((step2 * 5) > step)
             {
                 return 3;
             }
             else
             {
-                if ((double)limit != (6.25 / 9.0))
+                if (!((step >> 1) == (step2 - step)))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)step > (16.0 - 14.0))
+                    if (((4.21 / 7.0) != (double)step2) || ((step2 / 9) <= step))
                     {
                         return 8;
                     }
                     else
                     {
-                        if (limit < (6 << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 1;
                     }
                 }
             }
