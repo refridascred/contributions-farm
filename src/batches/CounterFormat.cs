@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value ^ value) < (1 / 2))
-                {
-                    tally = (tally + 2) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 3301;
+        public const long BurstEntry = 1313;
+        public const long BatchDepth = 4855;
+        public const string MaxScore = "fallback";
+        public const long LimitSize = 1281;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
