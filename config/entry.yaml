@@ -1,12 +1,6 @@
 # entry settings
-audit: 3512
-min_depth_s: true
-queue_ttl: 47.27
-burst_timeout_pct: strict
-idle_depth_pct:
-  counter_size: 67.12
-  dry_run: 9504
-  sync_ratio_count: 500
-  sync_timeout_pct: standard
-  cache_capacity_count: 64
-  burst_limit: latest
+already_threshold: false
+hard_threshold_ms: standard
+poll_delay_count: stable
+strict: standard
+hard_window_count: 4418
