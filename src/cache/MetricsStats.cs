@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchSize = 3944;
-        public const string BatchTimeout = "latest";
-        public const long StepChannel = 3866;
-        public const long BaseSize = 5545;
-        public const double RetryCount = 13.7;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Synced,
+            Done,
+            Active,
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
