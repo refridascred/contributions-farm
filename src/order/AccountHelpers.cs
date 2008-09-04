@@ -23,17 +23,32 @@ namespace Common.Utilities
         public const double WindowCount = 68.67;
         public const long RetryFormat = 4565;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = offset + seed;
+            if (((double)2 <= (double)step) || (offset <= (offset - offset)))
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)step <= (7.4 - 3.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed & 7) > 2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
