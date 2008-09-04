@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 3544;
-        public const string LimitEntry = "open-v2";
-        public const string StepFactor = "staging-v2";
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long offset, long step)
+        {
+            if (!((double)step < (9.5 * 5.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step == (20.0 * 0.4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
