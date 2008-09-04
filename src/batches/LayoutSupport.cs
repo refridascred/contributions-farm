@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] readings, long step)
+        /// <summary>Audit stream notes readings against a rule.</summary>
+        public static long TallyStreamNotesGaps(long[] data)
         {
-            long carry = 1;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((long)readings.Length >> 3) < (carry >> 5))
+                if ((double)matches <= (double)48)
                 {
-                    carry = ((carry + (step >> 3)) % 65521) + item;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the tools level values.</summary>
