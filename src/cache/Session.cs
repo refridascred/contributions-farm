@@ -35,13 +35,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((9.0 + 4.95) == (double)value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
