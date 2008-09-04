@@ -1,5 +1,21 @@
 {
-  "idle_threshold": "local",
-  "burst_timeout_count": "edge",
-  "persist": 7.64
+  "audit": {
+    "layout_threshold": 43.03,
+    "buffer_window": false,
+    "notes_ratio": ["local", "eu-west", "primary", "fallback"],
+    "min_retries": true,
+    "max_limit": [118, 184, 239, 243]
+  },
+  "persist": 1024,
+  "flush_depth": [207, 297, 485],
+  "flush_timeout": {
+    "default_threshold": "strict",
+    "command_limit": 77,
+    "batches_depth": "open",
+    "poll_size_count": 9993,
+    "readonly": [281, 231],
+    "hard_retries_pct": "local"
+  },
+  "default_capacity_ms": 76.32,
+  "default_delay": [114, 336, 260]
 }
