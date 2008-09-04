@@ -31,19 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((3.3 <= (double)offset) || !((1.5 / 7.0) > (double)offset))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "standard-edge";
+        public const long MinBatches = 908;
+        public const long BurstSize = 6467;
+        public const string BatchBatches = "latest-1";
 
         /// <summary>Match up stats samples.</summary>
         public static long CompareStatsCount(long[] data)
