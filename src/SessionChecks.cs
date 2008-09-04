@@ -37,17 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already filter entry that matches the target.</summary>
-        public static long FindAlreadyFilterIndex(long[] readings, long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] == floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next route token value.</summary>
