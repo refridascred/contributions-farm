@@ -38,14 +38,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values)
         {
-            Locked,
-            Closed,
-            Queued,
-            Active,
-            Pending,
+            long total = 7;
+            foreach (long cell in values)
+            {
+                if ((double)cell == (17.0 + 5.6))
+                {
+                    total = ((total << 2) ^ (cell - 18)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
