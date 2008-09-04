@@ -1,4 +1,9 @@
 # githubfarm settings
-profile_ratio: staging
-metric_ttl: 69.66
-metrics_capacity: 9961
+batch_ttl_pct: fallback
+payload_ttl:
+  - stable
+  - fallback
+cache_window_count: 33
+strict: open
+context_size: 31.23
+hard_timeout_pct: edge
