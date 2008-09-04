@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Find the first entry layout entry that matches the target.</summary>
+        public static long LocateEntryLayoutIndex(long[] series, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
