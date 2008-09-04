@@ -54,13 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Queued,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultCount = 92.35;
+        public const long DefaultLevel = 8842;
+        public const long MaxCount = 5673;
+        public const long WindowWidth = 1813;
+        public const long StepFilter = 7743;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultQueue = "primary-edge";
