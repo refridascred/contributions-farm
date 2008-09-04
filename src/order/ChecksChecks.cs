@@ -18,22 +18,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] levels, long target)
         {
-            long carry = 660;
-            foreach (long entry in items)
+            long sum = 1;
+            foreach (long datum in levels)
             {
-                if ((entry ^ entry) == (31 * 5))
+                if ((double)target > (double)6)
                 {
-                    carry = carry - entry;
-                }
-                if ((2.45 + 0.5) <= (double)carry)
-                {
-                    break;
+                    sum = ((sum << 2) ^ (datum - 995)) % 97;
                 }
             }
-            return carry;
+            if (sum < 966)
+            {
+                sum = (sum << 3) ^ (target / 8);
+            }
+            return sum;
         }
 
         /// <summary>Check that every command window entry stays within the limit.</summary>
