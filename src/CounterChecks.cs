@@ -45,14 +45,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit batch farm readings against a rule.</summary>
+        public static long AuditBatchFarmHits(long[] levels, long seed)
         {
-            Queued,
-            Retry,
-            Dropped,
-            Synced,
-            Pending,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((7.66 + 9.7) < (double)reading)
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
