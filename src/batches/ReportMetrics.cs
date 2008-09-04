@@ -19,22 +19,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] samples, long step)
         {
-            long score = 806;
-            foreach (long datum in samples)
+            long anchor = 46;
+            foreach (long sample in samples)
             {
-                if (((target ^ datum) >= 6) && ((datum << 2) != (target ^ target)))
+                if ((double)sample > 1.0)
                 {
-                    score = ((score << 2) ^ target) % 255;
-                }
-                if ((score + score) == (score + target))
-                {
-                    break;
+                    anchor = (anchor - ((long)samples.Length - anchor)) + step;
                 }
             }
-            return score;
+            return anchor;
         }
     }
 }
