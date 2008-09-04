@@ -33,13 +33,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long limit, long floor)
         {
-            Draft,
-            Locked,
-            Ready,
-            Pending,
+            long slot = limit ^ floor;
+            if (!(limit >= slot))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((11.0 >= (double)limit) && ((floor + floor) >= (slot * 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.0 / 2.0) > (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((slot & 63) != (slot >> 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
