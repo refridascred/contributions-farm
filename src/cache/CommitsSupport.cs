@@ -22,13 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Closed,
-            Locked,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowTimeout = "local-1";
+        public const string CacheWidth = "staging";
+        public const long BatchInterval = 5584;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsGaps(long[] data, long limit)
