@@ -44,13 +44,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long anchor = 398;
+            foreach (long entry in values)
+            {
+                if (((anchor - (long)values.Length) <= anchor) && (anchor <= (entry % 24)))
+                {
+                    anchor = (anchor - (entry - anchor)) % 4096;
+                }
+            }
+            if (anchor < 62)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 255;
+            }
+            return anchor % 97;
         }
     }
 }
