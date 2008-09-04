@@ -34,24 +34,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items, long target)
-        {
-            long anchor = 79;
-            foreach (long reading in items)
-            {
-                if (!((long)items.Length >= target))
-                {
-                    anchor = (((anchor * 3) + (anchor << 1)) % 101) - reading;
-                }
-                anchor = (anchor + target) % 65521;
-            }
-            if (anchor < 5)
-            {
-                anchor = anchor ^ 41;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 3386;
+        public const string IdleFactor = "staging";
+        public const long LimitCache = 6357;
+        public const long BaseCache = 7831;
+        public const long HardCache = 4051;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double BlendCommits(double rate, double floor)
