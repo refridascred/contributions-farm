@@ -30,19 +30,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] values, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long offset)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long step = floor + offset;
+            if ((1.23 - 0.3) >= (double)offset)
             {
-                if (sample <= target)
+                return 8;
+            }
+            else
+            {
+                if ((offset - offset) < offset)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (floor >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((-33) <= (step + floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
