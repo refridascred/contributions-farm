@@ -20,28 +20,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long offset, long floor)
+        /// <summary>Grade a route payload value against two limits.</summary>
+        public static long GradeRoutePayload(long limit, long bound)
         {
-            if (!((offset % 16) == (floor << 2)))
+            if (((limit % 2) <= (bound >> 4)) || ((bound & 31) != (limit ^ 29)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((7.91 - 1.61) <= (double)offset)
+                if ((double)bound > (3.3 * 7.68))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((9.35 * 6.0) >= (double)offset)
+                    if (bound >= (limit - limit))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        return 2;
+                        return 0;
                     }
                 }
             }
