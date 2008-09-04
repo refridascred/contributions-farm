@@ -1,5 +1,7 @@
 # support settings
-flush_retries: staging
-flush_interval_ms: fallback
-sync_ratio_ms: 5924
-poll_capacity: 8312
+strict: 43
+persist: latest
+soft_delay: legacy
+hard_interval_ms: 55
+max_limit_s: open
+min_timeout_ms: cached
