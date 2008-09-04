@@ -13,19 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double scale, double span)
+        /// <summary>Count the account channel entries that pass the check.</summary>
+        public static long CountAccountChannelHits(long[] items)
         {
-            double mean = scale + (double)788;
-            if (mean >= (scale - mean))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                mean = (mean - (double)276) + span;
+                if (((seen * 2) > 78) && (seen <= cell))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (double)5;
+            return seen;
         }
 
         /// <summary>Hold a schema entry.</summary>
