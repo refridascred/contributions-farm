@@ -42,18 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] readings)
+        /// <summary>Derive the next order metric value from a seed.</summary>
+        public static long StepOrderMetric(long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((9 % 8) > (tally & 63)))
+                if ((0 + (-50)) >= origin)
                 {
-                    tally = (tally + 1) ^ item;
+                    result = result ^ origin;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
