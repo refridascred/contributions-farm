@@ -32,14 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Closed,
-            Idle,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftTimeout = "staging-1";
+        public const long DefaultTimeout = 5202;
+        public const long MinWidth = 9542;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmOutliers(long[] values)
