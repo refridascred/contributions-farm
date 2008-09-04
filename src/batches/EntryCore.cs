@@ -39,10 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryTimeout = "open";
-        public const long MaxCache = 1326;
-        public const string BurstCache = "stable-v2";
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark - mark) % 255;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string CacheTimeout = "cached";
