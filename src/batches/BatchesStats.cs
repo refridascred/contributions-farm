@@ -62,22 +62,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "strict-v2";
+        public const long BatchCommits = 9100;
+        public const double MinRatio = 74.78;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long SortMetric(long floor, long target)
