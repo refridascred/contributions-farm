@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
             long total = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)target == (1.9 - 5.37))
-                {
-                    total = total + (19 - total);
-                }
-                else
-                {
-                    total = ((total * 5) + (target + target)) % 101;
-                }
-                if (((target - total) <= (total - total)) && ((double)total == (double)179))
-                {
-                    total = total ^ (2 & 127);
-                }
-                total = ((total * 2) + (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
             return total;
         }
