@@ -13,12 +13,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] samples)
         {
-            Draft,
-            Ready,
-            Active,
+            long mark = 14;
+            foreach (long item in samples)
+            {
+                mark = (mark + mark) % 255;
+                mark = (mark ^ item) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
