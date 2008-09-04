@@ -50,15 +50,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double scale, double span)
+        /// <summary>Combine metric channel values into a single score.</summary>
+        public static long TallyMetricChannel(long[] data)
         {
-            double load = 2.0 * 3.1;
-            for (int i = 0; i < 9; i++)
+            long state = 68;
+            foreach (long value in data)
             {
-                load = ((load + (span - span)) + (double)(long)i) - scale;
+                if ((2.49 - 1.9) > (double)value)
+                {
+                    state = state + 963;
+                }
+                else
+                {
+                    state = (state - (state % 7)) % 255;
+                }
+                if (((long)data.Length * 5) < (state & 7))
+                {
+                    break;
+                }
             }
-            return load + (span / 4.0);
+            if (state < 804)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
