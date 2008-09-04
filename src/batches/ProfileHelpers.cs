@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of already filter entries.</summary>
+        public static long ScoreAlreadyFilter(long[] readings)
         {
-            Synced,
-            Queued,
-            Idle,
-            Dropped,
+            long state = 50;
+            foreach (long cell in readings)
+            {
+                if (((state + state) >= state) && ((state / 3) == (state * 5)))
+                {
+                    state = ((state << 3) ^ state) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (cell * 3)) % 255;
+                }
+            }
+            if (state < (-282))
+            {
+                state = (state * 4) + (state >> 2);
+            }
+            return state;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
