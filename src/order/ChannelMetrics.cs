@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const string CacheSize = "strict-edge";
         public const double StepCommits = 64.12;
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double scale = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - bias;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
