@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] data, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (item > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum ^ (sum >> 2)) % 255;
+                sum = ((sum * 3) + (origin / 4)) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
